@@ -1,0 +1,77 @@
+#ifndef CFORMAT_PRINTF_FORMAT_INCLUDED
+#define CFORMAT_PRINTF_FORMAT_INCLUDED
+
+#ifndef __STDC_FORMAT_MACROS
+#define __STDC_FORMAT_MACROS 1
+#endif
+
+#include <inttypes.h>
+
+namespace cformat {
+
+template <typename T>
+const char* const
+printf_format (const T&)
+{
+	return 0;
+}
+
+template <>
+const char* const
+printf_format (const int8_t&)
+{
+	return "%" PRIi8 ;
+}
+
+template <>
+const char* const
+printf_format (const int16_t&)
+{
+	return "%" PRIi16;
+}
+
+template <>
+const char* const
+printf_format (const int32_t&)
+{
+	return "%" PRIi32;
+}
+
+template <>
+const char* const
+printf_format (const int64_t&)
+{
+	return "%" PRIi64;
+}
+
+template <>
+const char* const
+printf_format (const uint8_t&)
+{
+	return "%" PRIu8;
+}
+
+template <>
+const char* const
+printf_format (const uint16_t&)
+{
+	return "%" PRIu16;
+}
+
+template <>
+const char* const
+printf_format (const uint32_t&)
+{
+	return "%" PRIu32;
+}
+
+template <>
+const char* const
+printf_format (const uint64_t&)
+{
+	return "%" PRIu64;
+}
+
+} // namespace cformat
+
+#endif // CFORMAT_PRINTF_FORMAT_INCLUDED
