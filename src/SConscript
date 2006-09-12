@@ -1,0 +1,64 @@
+# -*- python -*-
+
+import os
+import os.path
+import glob
+
+Import('env')
+
+if env['DEBUG']:
+	liblogx_source_files=Split("""
+	liblogx/file_identifier.cpp
+	liblogx/function_identifier.cpp
+	liblogx/glib_handler.cpp
+	liblogx/glib_handler_map.cpp
+	liblogx/line_identifier.cpp
+	liblogx/pretty_formatter.cpp
+	liblogx/thread_identifier.cpp
+	liblogx/uncopyable.cpp
+	""")
+
+libgleam_source_files = Split("""
+libgleam/dispatcher.cpp
+libgleam/file_utils.cpp
+libgleam/log_domain.cpp
+libgleam/manual_dispatcher.cpp
+libgleam/periodic_signal.cpp
+libgleam/periodic_signals.cpp
+libgleam/search_path.cpp
+libgleam/semaphore.cpp
+libgleam/terminate_process.cpp
+libgleam/thread_debug.cpp
+libgleam/thread_map.cpp
+""")
+
+libgleam_posix_source_files = Split("""
+libgleam/posix_signals.cpp
+""")
+
+if env['PLATFORM'] == 'posix':
+	libgleam_source_files += libgleam_posix_source_files
+
+libmojo_source_files = Split("""
+""")
+
+gmojo_source_files = Split("""
+log_domain.cpp
+thread_names.cpp
+main.cpp
+""")
+
+all_source_files = libgleam_source_files + \
+libmojo_source_files + \
+gmojo_source_files
+
+if env['DEBUG']:
+	all_source_files += liblogx_source_files
+
+
+gmojo = env.Program( env['VERSIONED_NAME'], all_source_files)
+
+Default(gmojo)
+
+env.Install(env['BINDIR'], gmojo)
+

@@ -1,0 +1,52 @@
+The purpose of this file is to outline the design for a gtk widget called cairo meter that is drawn with cairo.
+
+One style of interface could be to show the physical output port in as a combination of all of the output ports feeding it and then be able to drag a pane handle so that the input ports go from being overlayed each other to being separated out into the respective channels.
+
+A meter will have a number of properties that can be adjusted to suite the use of the meter.
+
+orientation, horizontal or vertical.
+
+meter value.
+
+hold count
+
+colour of meters, there will be at least three? gradient stop positions and two gradient stop positions for the level overlay.
+
+background colour
+
+peak level.
+
+functions to change hold count, and to reset peak level at any time.
+
+hold is a small signed value that if less than zero will hold indefinately, if equal to zero hold mode is off and if greater than zero it is the rate of decay of the hold point meaning that the hold point will be updated every n times a new level is set.
+
+The will also be a decay value that is used to set the a new hold point each time the hold point decays.
+
+
+Widgets:
+
+Audio Meter Widget
+
+displays sound level
+Vertical and Horizontal orientations
+
+Waveform Widget
+
+A waveform widget that can be used to view sound files and live sound,
+or two separate widgets.
+
+Spectrogram
+
+A basic demonstration of these widgets.
+
+stage 1:
+
+create window with a gtkwaveform widget that renders an audiofile.
+
+meter all jack physical input and output ports using JACK.
+ 
+Extra Modules
+
+C++ wrappers
+
+
