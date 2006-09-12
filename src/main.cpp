@@ -1,5 +1,6 @@
 
 #include <gleam.hpp>
+#include <cformat.hpp>
 
 #include <gtkmm/main.h>
 
