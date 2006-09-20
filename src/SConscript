@@ -21,6 +21,7 @@ if env['DEBUG']:
 libgleam_source_files = Split("""
 libgleam/dispatcher.cpp
 libgleam/file_utils.cpp
+libgleam/filesystem_paths.cpp
 libgleam/locale_guard.cpp
 libgleam/log_domain.cpp
 libgleam/manual_dispatcher.cpp
