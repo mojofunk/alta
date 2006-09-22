@@ -1,3 +1,5 @@
+#include <glib.h>
+
 #include <libgleam/filesystem_paths.hpp>
 
 #include "debug.hpp"

@@ -1,3 +1,8 @@
+#include <glib.h>
+
+#include <clocale>
+#include <cstring>
+#include <cstdlib>
 
 #include <libgleam/locale_guard.hpp>
 
