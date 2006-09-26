@@ -1,21 +1,3 @@
-/*
-   Copyright (C) 2006 Tim Mayberry
-
-   This program is free software; you can redistribute it and/or
-   modify it under the terms of the GNU General Public License
-   as published by the Free Software Foundation; either version 2
-   of the License, or (at your option) any later version.
-
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
-   MA  02110-1301, USA.
-*/
 
 #include <unistd.h>
 
@@ -125,56 +107,66 @@ SearchPath::get_search_path_string () const
 	return path;
 }
 
-const SearchPath&
+SearchPath&
 SearchPath::operator= (const SearchPath& path)
 {
 	m_dirs = path.m_dirs;
 	return *this;
 }
 
-const SearchPath& 
+SearchPath& 
+SearchPath::operator+= (const SearchPath& spath)
+{
+	m_dirs.insert(m_dirs.end(), spath.m_dirs.begin(), spath.m_dirs.end());
+	return *this;
+}
+
+SearchPath& 
 SearchPath::operator+= (const string& directory_path)
 {
 	add_readable_directory (directory_path);
 	return *this;
 }
 
-const SearchPath 
-operator+ (const SearchPath& lhs_path, const SearchPath& rhs_path)
+SearchPath& 
+SearchPath::operator+ (const string& directory_path)
 {
-	SearchPath tmp_path(lhs_path); // does this do what I think it does.
+	add_readable_directory (directory_path);
+	return *this;
+}
+
+SearchPath& 
+SearchPath::operator+ (const SearchPath& spath)
+{
 	// concatenate paths into new SearchPath
-	tmp_path.m_dirs.insert(tmp_path.m_dirs.end(), rhs_path.m_dirs.begin(), rhs_path.m_dirs.end());
-	return tmp_path;
+	m_dirs.insert(m_dirs.end(), spath.m_dirs.begin(), spath.m_dirs.end());
+	return *this;
 }
 
 SearchPath&
-SearchPath::add_subdirectory_to_path (const string& subdir)
+SearchPath::add_subdirectory_to_paths (const string& subdir)
 {
 	vector<string> tmp;
 	string directory_path;
 
-	for (vector<string>::iterator i = m_dirs.begin(); i != m_dirs.end(); ++i) {
+	for (vector<string>::iterator i = m_dirs.begin(); i != m_dirs.end(); ++i)
+	{
 		directory_path = Glib::build_filename (*i, subdir);
-		if(readable_directory(directory_path)) {
+
+		if(readable_directory(directory_path))
+		{
 			tmp.push_back(directory_path);
 		}
 	}
+
 	m_dirs = tmp;
 	return *this;
 }
-
-bool
-find_file_in_path (const SearchPath& search_path,
-                   const string& filename,
-                   string& resulting_path)
+	
+SearchPath&
+SearchPath::operator/ (const string& subdir)
 {
-	return find_file_in_search_path
-		(
-		 search_path.get_search_path_string(),
-		 filename,
-		 resulting_path
-		);
+	return add_subdirectory_to_paths (subdir);
 }
 
 } // namespace gleam

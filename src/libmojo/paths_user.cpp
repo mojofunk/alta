@@ -1,45 +1,23 @@
-/*
-   Copyright (C) 2006 Tim Mayberry
 
-   This program is free software; you can redistribute it and/or
-   modify it under the terms of the GNU General Public License
-   as published by the Free Software Foundation; either version 2
-   of the License, or (at your option) any later version.
+#include <string>
 
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
+using std::string;
 
-   You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
-   MA  02110-1301, USA.
-*/
+#include <glibmm/miscutils.h>
 
-#include <boost/filesystem/operations.hpp>
+#include <libgleam/file_utils.hpp>
 
-#include "libmojo/paths_user.hpp"
-#include "libmojo/dir_names.hpp"
+#include <libmojo/paths_user.hpp>
+#include <libmojo/dir_names.hpp>
 
-namespace mojo {
+namespace {
 
-namespace paths {
+using namespace mojo;
 
-namespace user {
-
-static const char* const mojo_dir_name = ".mojo";
-
-static const char* const preset_dir_name = "rdf";
-
-static const char* const vst_dir_name = ".vst";
-
-static const char* const ladspa_dir_name = ".ladspa";
-	
-static const path
+const string
 home_dir ()
 {
-	path home_dir(Glib::get_home_dir());
+	string home_dir(Glib::get_home_dir());
 
 	if(home_dir.empty()) {
 
@@ -54,45 +32,74 @@ home_dir ()
 	return home_dir;
 }
 
-const path
-mojo_dir()
+const char * const dot_prefix = ".";
+
+const string
+user_mojo_dir_name ()
 {
-	path mojo_dir ( home_dir() / mojo_dir_name );
-	create_directory(mojo_dir);
+	return string(dot_prefix) + mojo_dir_name;
+}
+
+const string
+user_ladspa_dir_name ()
+{
+	return string(dot_prefix) + ladspa_dir_name;
+}
+
+const string
+user_vst_dir_name ()
+{
+	return string(dot_prefix) + vst_dir_name;
+}
+
+} // anonymous namespace
+
+namespace mojo {
+
+namespace paths {
+
+namespace user {
+
+using namespace gleam;
+
+const SearchPath
+mojo_search_path ()
+{
+	string mojo_dir ( home_dir() / user_mojo_dir_name() );
+	create_directory ( mojo_dir );
 	return mojo_dir;    
 }
 
-const path
-vst_dir ()
+const SearchPath
+ladspa_search_path ()
 {
-	path vst_dir = Glib::build_filename ( home_dir(), vst_dir_name );
-	PBD::ensure_directory_exists (vst_dir);
-	return vst_dir;
-	
-}
-
-const path
-vst_preset_dir ()
-{
-	path vst_preset_dir = Glib::build_filename ( vst_dir(), preset_dir_name );
-	PBD::ensure_directory_exists (vst_preset_dir);
-	return vst_preset_dir;
-}
-
-const path
-ladspa_dir ()
-{
-	path ladspa_dir = Glib::build_filename ( home_dir(), ladspa_dir_name );
-	PBD::ensure_directory_exists (ladspa_dir);
+	string ladspa_dir ( home_dir() / user_ladspa_dir_name() );
+	create_directory ( ladspa_dir );
 	return ladspa_dir;
 }
 
-const path
-ladspa_preset_dir ()
+const SearchPath
+ladspa_rdf_search_path ()
 {
-	path ladspa_preset_dir = Glib::build_filename ( ladspa_dir(), preset_dir_name );
-	PBD::ensure_directory_exists (ladspa_preset_dir);
-	return ladspa_preset_dir;
+	string ladspa_rdf_dir ( home_dir() / user_ladspa_dir_name() / rdf_dir_name );
+	create_directory ( ladspa_rdf_dir );
+	return ladspa_rdf_dir;
+}
+
+const SearchPath
+vst_search_path ()
+{
+	string vst_dir ( home_dir() / user_vst_dir_name() );
+	create_directory ( vst_dir );
+	return vst_dir;
+}
+
+const SearchPath
+vst_rdf_search_path ()
+{
+	string vst_rdf_dir ( home_dir() / user_vst_dir_name() / rdf_dir_name );
+	create_directory ( vst_rdf_dir );
+	return vst_rdf_dir;
 }
 
 } // namespace user

@@ -1,21 +1,3 @@
-/*
-   Copyright (C) 2006 Tim Mayberry
-
-   This program is free software; you can redistribute it and/or
-   modify it under the terms of the GNU General Public License
-   as published by the Free Software Foundation; either version 2
-   of the License, or (at your option) any later version.
-
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
-   MA  02110-1301, USA.
-*/
 
 #ifndef GLEAM_FILE_UTILS_INCLUDED
 #define GLEAM_FILE_UTILS_INCLUDED
@@ -33,6 +15,12 @@ using std::string;
 using std::vector;
 
 const string path_delimiter();
+
+/**
+ *
+ */
+const string
+operator/ (const string& base_path, const string& path_element);
 
 /**
   Get a list of files names in a directory.
@@ -127,17 +115,11 @@ bool directory_is_writable (const string& path);
 
 /**
  * Create a directory at path with the default permissions
- * \return true if directory was able to be created.
+ * \return true if directory was able to be created or 
+ * already exists, false if an error occured and the
+ * directory could not be created.
  */
 bool create_directory (const string& path);
-
-/**
- * Ensure a directory exists at path with the default
- * . If the directory
- * doesn't exist it will be created.
- * \return true if directory exists.
- */
-bool ensure_directory_exists (const string& path);
 
 /**
  * \return true if newer_file has been more recently modified

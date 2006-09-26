@@ -119,6 +119,8 @@ for pkg, version in deps.iteritems():
 
 # err actually check for these.
 
+env.Append(LINKFLAGS = '-lboost_filesystem')
+
 env.Append(CCFLAGS = '-DHAVE_INTTYPES')
 env.Append(CCFLAGS = '-DHAVE_RINT')
 env.Append(CCFLAGS = '-DHAVE_STRING_H')

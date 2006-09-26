@@ -80,22 +80,37 @@ public:
 	 */
 	const string get_search_path_string () const;
 
-	// XXX todo, fix the operator situation.
-	const SearchPath& operator= (const SearchPath& path);
+	SearchPath& operator= (const SearchPath& path);
 
+	/**
+	 * Add all the directories in path to this.
+	 */
+	SearchPath& operator+= (const SearchPath& path);
+
+	/**
+	 * Add another directory path to the search path.
+	 */
+	SearchPath& operator+= (const string& directory_path);
+
+	SearchPath& operator+ (const SearchPath&);
+	
 	/**
 	 * Add another path to the search path.
 	 */
-	const SearchPath& operator+= (const string& directory_path);
+	SearchPath& operator+ (const string& directory_path);
 
 	/**
 	 * Add a sub-directory to each path in the search path.
 	 */
-	SearchPath& add_subdirectory_to_path (const string& subdir);
+	SearchPath& add_subdirectory_to_paths (const string& subdir);
+
+	/**
+	 * Add a sub-directory to each path in the search path.
+	 * \see add_subdirectory_to_paths
+	 */
+	SearchPath& operator/ (const string& subdir);
 
 protected:
-	
-	friend const SearchPath operator+ (const SearchPath&, const SearchPath&);
 
 	bool readable_directory (const string& directory_path);
 
@@ -106,15 +121,6 @@ protected:
 	vector<string> m_dirs;
 
 };
-
-/**
- * \return true If file is found in the SearchPath, false if the file
- * wasn't found or more than a single file name with the name filename
- * was found.
- */
-bool find_file_in_search_path (const SearchPath& path, 
-                               const string& filename,
-                               string& resulting_path_to_file);
 
 } // namespace gleam
 

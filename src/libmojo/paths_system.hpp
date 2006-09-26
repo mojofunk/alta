@@ -1,51 +1,34 @@
-/*
-   Copyright (C) 2006 Tim Mayberry
 
-   This program is free software; you can redistribute it and/or
-   modify it under the terms of the GNU General Public License
-   as published by the Free Software Foundation; either version 2
-   of the License, or (at your option) any later version.
+#ifndef MOJO_PATHS_SYSTEM_INCLUDED
+#define MOJO_PATHS_SYSTEM_INCLUDED
 
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
+#include <libgleam/search_path.hpp>
 
-   You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
-   MA  02110-1301, USA.
-*/
-
-#ifndef ARDOUR_SYSTEM_PATHS_HEADER
-#define ARDOUR_SYSTEM_PATHS_HEADER
-
-#include <string>
-
-#include <pbd/path.h>
-
-namespace ARDOUR {
+namespace mojo {
 
 using std::string;
-using PBD::Path;
+using gleam::SearchPath;
 
-namespace SystemPaths {
+namespace paths {
 
-Path data_path ();
+namespace system {
 
-const Path config_path ();
+SearchPath data_search_path ();
 
-const Path module_path ();
+SearchPath config_search_path ();
 
-const Path pixmap_path ();
+SearchPath ladspa_search_path();
 
-const Path template_path ();
+SearchPath ladspa_rdf_search_path();
 
-// XXX expose?
-//Path system_data_path();
+SearchPath module_search_path ();
 
-} // namespace SystemPaths
+SearchPath template_search_path ();
 
-} // namespace ARDOUR
+} // namespace system
 
-#endif // ARDOUR_SYSTEM_PATHS_HEADER
+} // namespace paths
+
+} // namespace mojo
+
+#endif // MOJO_PATHS_SYSTEM_INCLUDED

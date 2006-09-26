@@ -1,28 +1,11 @@
-/*
-   Copyright (C) 2006 Tim Mayberry
 
-   This program is free software; you can redistribute it and/or
-   modify it under the terms of the GNU General Public License
-   as published by the Free Software Foundation; either version 2
-   of the License, or (at your option) any later version.
+#include <libgleam/file_utils.hpp>
 
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
+using namespace gleam;
 
-   You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
-   MA  02110-1301, USA.
-*/
+#include <libmojo/project_dir.hpp>
 
-#include <boost/filesystem/path.hpp>
-#include <boost/filesystem/operations.hpp>
-
-#include <libmojo/project_dir.h>
-
-//#include "debug.h"
+#include "debug.hpp"
 
 namespace mojo {
 
@@ -35,34 +18,16 @@ ProjectDir::ProjectDir (const string& project_path)
 {
 	if(!directories_exist()) {
 
-		// throw a meaningful exception containing the log string.
-#ifdef MOJO_DEBUG
-		LOG_MOJO_WARNING
-			<< m_path
-			<< "is not a project directory";
-#endif	
-
-		throw failed_constructor ();
+	//	throw invalid_project_exception ();
 	}
 }
 
 ProjectDir::ProjectDir (const string& project_path,
-		const string& project_name)
-	: m_path(Glib::build_filename (project_path, project_name))
+                        const string& project_name)
+	: m_path(project_path / project_name)
 {
-	if (!PBD::create_directory(m_path)) {
-
-#ifdef MOJO_DEBUG
-		LOG_MOJO_WARNING
-			<< "Cannot create project directory at path"
-			<< m_path;
-#endif
-
-		throw failed_constructor ();
-	}
-
 	if(!create_subdirectories()) {
-		throw failed_constructor ();
+//		throw failed_constructor ();
 	}
 }
 
@@ -72,7 +37,7 @@ ProjectDir::create_subdirectories () const
 	vector<string> sub_dirs = sub_directories ();
 
 	for(vector<string>::const_iterator i = sub_dirs.begin(); i != sub_dirs.end(); ++i) {
-		if (!PBD::create_directory (*i)) {
+		if (!create_directory (*i)) {
 
 #ifdef MOJO_DEBUG
 			LOG_MOJO_WARNING
@@ -92,7 +57,7 @@ ProjectDir::directories_exist () const
 {
 	vector<string> sub_dirs = sub_directories ();
 
-	if (!PBD::directory_exists (m_path)) {
+	if (!directory_exists (m_path)) {
 
 #ifdef MOJO_DEBUG
 		LOG_MOJO_WARNING
@@ -104,12 +69,12 @@ ProjectDir::directories_exist () const
 	}
 
 	for(vector<string>::iterator i = sub_dirs.begin(); i != sub_dirs.end(); ++i) {
-		if (!PBD::directory_exists (m_path)) {
+		if (!directory_exists (*i)) {
 
 #ifdef MOJO_DEBUG
 			LOG_MOJO_WARNING
 				<< "project subdirectory does not exist at path"
-				<< m_path;
+				<< *i;
 #endif
 
 			return false;
@@ -121,13 +86,13 @@ ProjectDir::directories_exist () const
 const string
 ProjectDir::sound_dir () const
 {
-	return Glib::build_filename (m_path, sound_dir_name);
+	return m_path / sound_dir_name;
 }
 
 const string
 ProjectDir::peak_dir () const
 {
-	return Glib::build_filename (m_path, peak_dir_name);
+	return m_path / peak_dir_name;
 }
 
 const vector<string>

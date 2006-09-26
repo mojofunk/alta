@@ -1,37 +1,69 @@
-/*
-   Copyright (C) 2006 Tim Mayberry
 
-   This program is free software; you can redistribute it and/or
-   modify it under the terms of the GNU General Public License
-   as published by the Free Software Foundation; either version 2
-   of the License, or (at your option) any later version.
+#include <boost/filesystem/operations.hpp>
 
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
-   MA  02110-1301, USA.
-*/
-
-#include <libgleam/file_utils.hpp>
+using namespace boost::filesystem;
 
 #include <libmojo/file_utils.hpp>
 
 namespace mojo {
 
-const
-vector<path>&
-get_sound_files(const vector<path>& paths,
-                vector<path>& result)
+vector<string>
+paths_to_strings(const vector<path>& paths)
 {
-    
-    find_matching_files (paths, compare_func, result);
 
-    return result;
+	return vector<string>();
+}
+
+vector<path>
+strings_to_paths(const vector<string>& string_paths)
+{
+
+	return vector<path>();
+}
+
+std::size_t
+find_matching_files (const vector<path>& paths,
+                     FileMatchFunc match_func,
+                     vector<path>& result)
+{
+	std::size_t count = 0;
+
+	for ( vector<path>::const_iterator iter = paths.begin(),
+			end = paths.end();
+			iter != end;
+			++iter )
+	{
+		count += find_matching_files(*iter, match_func, result);
+	}
+
+	return count;
+}
+
+std::size_t
+find_matching_files (const path& dir_path, 
+                     FileMatchFunc match_func,
+                     vector<path>& result)
+{
+	std::size_t count = 0;
+
+	if ( !exists( dir_path ) ) return 0;
+
+	directory_iterator end_itr; // default construction yields past-the-end
+	for ( directory_iterator itr( dir_path );
+			itr != end_itr;
+			++itr )
+	{
+		if ( is_directory( *itr ) )
+		{
+			count += find_matching_files ( *itr, match_func, result );
+		}
+		else if (match_func(itr->leaf()))
+		{
+			result.push_back(*itr);
+			++count;
+		}
+	}
+	return count;
 }
 
 } // namespace mojo

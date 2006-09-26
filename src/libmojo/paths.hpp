@@ -2,27 +2,21 @@
 #ifndef MOJO_PATHS_INCLUDED
 #define MOJO_PATHS_INCLUDED
 
-#include <libgleam/path_string.hpp>
+#include <libgleam/search_path.hpp>
 
 namespace mojo {
 
-using gleam::path_string;
+using gleam::SearchPath;
 
 namespace paths {
 
-	const path_string mojo_env_path_string ();
+	SearchPath mojo_env_search_path ();
 
-	const path_string config_path_string ();
-	
-	const path_string pixmap_path_string ();
+	SearchPath config_search_path ();
 
-	const path_string ladspa_path_string ();
+	SearchPath ladspa_search_path ();
 
-	const path_string ladspa_rdf_path_string ();
-
-	const path_string vst_path_string ();
-
-	const path_string vst_rdf_path_string ();
+	SearchPath ladspa_rdf_search_path ();
 
 } // namespace paths
 

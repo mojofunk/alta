@@ -1,21 +1,3 @@
-/*
-   Copyright (C) 2006 Tim Mayberry
-
-   This program is free software; you can redistribute it and/or
-   modify it under the terms of the GNU General Public License
-   as published by the Free Software Foundation; either version 2
-   of the License, or (at your option) any later version.
-
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
-   MA  02110-1301, USA.
-*/
 
 #if HAVE_UNISTD_H
 #include <unistd.h>
@@ -51,17 +33,27 @@ path_delimiter()
 	return &path_delim;
 }
 
+const string
+operator/ (const string& base_path, const string& path_element)
+{
+	return Glib::build_filename(base_path, path_element);
+}
+
 void
 get_files_in_directory (const string& directory, vector<string>& result)
 {
-	try {
+	try
+	{
 		Glib::Dir dir(directory);
 		std::copy(dir.begin(), dir.end(), std::back_inserter(result));
-	} catch (Glib::FileError& err) {
+	}
+	catch (Glib::FileError& err)
+	{
 
 #ifdef GLEAM_DEBUG		
 		LOG_GLEAM_WARNING << err.what();
-#endif		
+#endif
+
 	}
 }
 
@@ -155,15 +147,15 @@ file_exists (const string& path)
 bool
 file_is_writable (const string& path)
 {
-	if(!file_exists (path)) {
-		return false;
-	}
+	if(!file_exists (path))	return false;
 	
-	if(g_access(path.c_str(), W_OK) != 0) {
+	if(g_access(path.c_str(), W_OK) != 0)
+	{
 
 #ifdef GLEAM_DEBUG
 		LOG_GLEAM_WARNING << path << g_strerror(errno);
 #endif		
+
 		return false;
 	}
 	return true;
@@ -240,11 +232,10 @@ directory_exists (const string& path)
 bool
 directory_is_writable (const string& path)
 {
-	if(!directory_exists(path)) {
-		return false;
-	}
+	if(!directory_exists(path)) return false;
 	
-	if(g_access(path.c_str(), W_OK) != 0) {
+	if(g_access(path.c_str(), W_OK) != 0)
+	{
 
 #ifdef GLEAM_DEBUG
 		LOG_GLEAM_WARNING << g_strerror(errno);
@@ -258,7 +249,8 @@ directory_is_writable (const string& path)
 bool
 create_directory (const string& path)
 {
-	if ((g_mkdir (path.c_str(), default_permission_mode) != 0)) {
+	if ((g_mkdir_with_parents (path.c_str(), default_permission_mode) != 0))
+	{
 
 #ifdef GLEAM_DEBUG
 		LOG_GLEAM_WARNING
@@ -274,23 +266,6 @@ create_directory (const string& path)
 }
 
 bool
-ensure_directory_exists (const string& path)
-{
-	if(directory_exists(path)) return true;
-		
-	if ((g_mkdir (path.c_str(), default_permission_mode) != 0)) {
-#ifdef GLEAM_DEBUG
-		LOG_GLEAM_WARNING
-			<< "Cannot create directory at path"
-			<< path
-			<< g_strerror(errno);
-#endif
-		return false;	
-	}
-	return true;
-}
-
-bool
 file_is_more_recently_modified (const string& newer_file,
                                 const string& older_file)
 {
@@ -299,21 +274,25 @@ file_is_more_recently_modified (const string& newer_file,
 
 	if(g_stat (newer_file.c_str(), &stat_buf_newer) != 0)
 	{
+
 #ifdef GLEAM_DEBUG
 		LOG_GLEAM_WARNING
 			<< newer_file
 			<< g_strerror(errno);
 #endif
+
 		return true;
 	}
 
 	if(g_stat (older_file.c_str(), &stat_buf_older) != 0)
 	{
+
 #ifdef GLEAM_DEBUG
 		LOG_GLEAM_WARNING
 			<< older_file
 			<< g_strerror(errno);
 #endif
+
 		return true;
 	}
 
