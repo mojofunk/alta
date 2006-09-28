@@ -45,6 +45,7 @@ libmojo_source_files = Split("""
 libmojo/dir_names.cpp
 libmojo/file_extensions.cpp
 libmojo/file_utils.cpp
+libmojo/log_domain.cpp
 libmojo/paths.cpp
 libmojo/paths_system.cpp
 libmojo/paths_user.cpp
@@ -56,6 +57,7 @@ gmojo_source_files = Split("""
 log_domain.cpp
 thread_names.cpp
 main.cpp
+signal_handler.cpp
 """)
 
 all_source_files = libgleam_source_files + \
