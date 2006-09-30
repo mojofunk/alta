@@ -1,6 +1,6 @@
 
-#ifndef MOJO_FILE_UTILS_INCLUDED
-#define MOJO_FILE_UTILS_INCLUDED
+#ifndef BOOTY_FILE_UTILS_INCLUDED
+#define BOOTY_FILE_UTILS_INCLUDED
 
 #include <vector>
 #include <string>
@@ -8,7 +8,7 @@
 
 #include <boost/filesystem/path.hpp>
 
-namespace mojo {
+namespace booty {
 
 using std::vector;
 using std::string;
@@ -44,6 +44,6 @@ find_matching_files (const path& directory_path,
                      FileMatchFunc match_functor,
                      vector<path>& result);
 
-} // namespace mojo
+} // namespace booty
 
-#endif // MOJO_FILE_UTILS_INCLUDED
+#endif // BOOTY_FILE_UTILS_INCLUDED

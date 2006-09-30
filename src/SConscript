@@ -41,10 +41,13 @@ libgleam/posix_signals.cpp
 if env['PLATFORM'] == 'posix':
 	libgleam_source_files += libgleam_posix_source_files
 
+libbooty_source_files = Split("""
+libbooty/file_utils.cpp
+""")
+
 libmojo_source_files = Split("""
 libmojo/dir_names.cpp
 libmojo/file_extensions.cpp
-libmojo/file_utils.cpp
 libmojo/log_domain.cpp
 libmojo/paths.cpp
 libmojo/paths_system.cpp
@@ -61,6 +64,7 @@ signal_handler.cpp
 """)
 
 all_source_files = libgleam_source_files + \
+libbooty_source_files + \
 libmojo_source_files + \
 gmojo_source_files
 

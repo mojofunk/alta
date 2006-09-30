@@ -3,9 +3,9 @@
 
 using namespace boost::filesystem;
 
-#include <libmojo/file_utils.hpp>
+#include <libbooty/file_utils.hpp>
 
-namespace mojo {
+namespace booty {
 
 vector<string>
 paths_to_strings(const vector<path>& paths)
@@ -61,4 +61,4 @@ find_matching_files (const path& dir_path,
 	return result.size();
 }
 
-} // namespace mojo
+} // namespace booty
