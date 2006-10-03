@@ -1,5 +1,5 @@
-#ifndef OBJECT_COLOR_MAP_H
-#define OBJECT_COLOR_MAP_H
+#ifndef BLING_OBJECT_COLOR_MAP_INCLUDED
+#define BLING_OBJECT_COLOR_MAP_INCLUDED
 
 #include <map>
 #include <cmath>
@@ -7,6 +7,8 @@
 
 #include <gdkmm/color.h>
 #include <sigc++/sigc++.h>
+
+namespace bling {
 
 /**
    This class can be used so that if there is
@@ -133,4 +135,6 @@ private:
 
 };
 
-#endif // OBJECT_COLOR_MAP_H
+} // namespace bling
+
+#endif // BLING_OBJECT_COLOR_MAP_INCLUDED
