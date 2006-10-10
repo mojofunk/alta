@@ -1,20 +1,13 @@
 
 #include <gleam.hpp>
 #include <cformat.hpp>
+#include <mojo.hpp>
 
 #include <gtkmm/main.h>
 
 #include "signal_handler.hpp"
 
-
 #include "debug.hpp"
-
-#ifdef GMOJO_DEBUG
-
-#include <libgleam/log_domain.hpp>
-#include <libmojo/log_domain.hpp>
-
-#endif
 
 using namespace gmojo;
 
@@ -31,6 +24,12 @@ main(int argc, char* argv[])
 
 	Gtk::Main kit(argc, argv);
 
+#ifdef GMOJO_DEBUG_EXTRA
+
+	LOG_GMOJO_DEBUG << mojo::get_unique_filename ("/home/timbyr", "audio", ".wav");
+	LOG_GMOJO_DEBUG << mojo::get_unique_filename ("/home/timbyr", "audio", ".wav");
+
+#endif
 
 #ifdef GMOJO_DEBUG
 	gleam::thread_map().unregister_thread(gmojo::gui_thread_name);

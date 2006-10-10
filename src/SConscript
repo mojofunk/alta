@@ -48,6 +48,7 @@ libbooty/file_utils.cpp
 libmojo_source_files = Split("""
 libmojo/dir_names.cpp
 libmojo/file_extensions.cpp
+libmojo/file_utils.cpp
 libmojo/log_domain.cpp
 libmojo/paths.cpp
 libmojo/paths_system.cpp

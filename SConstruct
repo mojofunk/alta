@@ -132,6 +132,7 @@ env = conf.Finish()
 env.Append(CPPPATH = [ '#src' ])
 env.Append(CPPPATH = [ '#src/libgleam' ])
 env.Append(CPPPATH = [ '#src/libcformat' ])
+env.Append(CPPPATH = [ '#src/libmojo' ])
 
 
 if env['DEBUG']:
