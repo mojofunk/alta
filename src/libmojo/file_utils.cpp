@@ -7,8 +7,6 @@
 
 #include "debug.hpp"
 
-#include <iostream>
-
 using namespace std;
 
 namespace mojo {
@@ -50,8 +48,6 @@ get_unique_filename (const string& dir,
 
 		tmppath /= filename.str();
 
-		std::cout << filename.str();
-
 #ifdef MOJO_DEBUG_EXTRA
 
 			LOG_MOJO_DEBUG << filepath.native_file_string();
@@ -61,8 +57,6 @@ get_unique_filename (const string& dir,
 		if(!exists(tmppath)) {
 
 			filepath = tmppath;
-		
-			std::cout << "break";
 
 			break;
 		}
