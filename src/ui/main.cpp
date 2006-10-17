@@ -5,6 +5,7 @@
 
 #include <gtkmm/main.h>
 
+#include "application.hpp"
 #include "signal_handler.hpp"
 
 #include "debug.hpp"
@@ -17,22 +18,25 @@ main(int argc, char* argv[])
 	Glib::thread_init();
 
 #ifdef GMOJO_DEBUG
-	gleam::thread_map().register_thread(gmojo::gui_thread_name);
+	gleam::thread_map().register_thread(gui_thread_name);
 #endif
 
 	SignalHandler	signal_handler;
 
 	Gtk::Main kit(argc, argv);
 
-#ifdef GMOJO_DEBUG_EXTRA
+	try {
+		Application* gmojo_app = new Application(argc, argv);
+	} catch (...) {
 
-	LOG_GMOJO_DEBUG << mojo::get_unique_filename ("/home/timbyr", "audio", ".wav");
-	LOG_GMOJO_DEBUG << mojo::get_unique_filename ("/home/timbyr", "audio", ".wav");
+#ifdef GMOJO_DEBUG
 
 #endif
 
+	}
+
 #ifdef GMOJO_DEBUG
-	gleam::thread_map().unregister_thread(gmojo::gui_thread_name);
+	gleam::thread_map().unregister_thread(gui_thread_name);
 #endif
 
     return EXIT_SUCCESS;

@@ -58,6 +58,7 @@ libmojo/project_dir.cpp
 """)
 
 gmojo_source_files = Split("""
+ui/application.cpp
 ui/log_domain.cpp
 ui/thread_names.cpp
 ui/main.cpp
