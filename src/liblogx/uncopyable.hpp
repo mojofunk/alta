@@ -33,10 +33,10 @@ class Uncopyable
 protected:
 
 	/// Allow construction of derived objects.
-	Uncopyable();
+	Uncopyable() {}
 
 	/// Allow destruction of derived objects.
-	~Uncopyable();
+	~Uncopyable() {}
 
 private:
 

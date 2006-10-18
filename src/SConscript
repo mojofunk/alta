@@ -15,7 +15,6 @@ if env['DEBUG']:
 	liblogx/line_identifier.cpp
 	liblogx/pretty_formatter.cpp
 	liblogx/thread_identifier.cpp
-	liblogx/uncopyable.cpp
 	""")
 
 libgleam_source_files = Split("""
