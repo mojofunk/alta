@@ -75,7 +75,7 @@ public:
 private:
 
 	// Has to be mutable when using the apple version of gcc.
-	mutable gint                   m_value;
+	mutable volatile gint             m_value;
 
 };
 

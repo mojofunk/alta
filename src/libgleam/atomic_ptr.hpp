@@ -60,7 +60,7 @@ public:
 private:
 
 	// Has to be mutable when using the apple version of gcc.
-	mutable pointer                    m_ptr;
+	mutable volatile pointer             m_ptr;
 
 };
 
