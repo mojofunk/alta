@@ -72,6 +72,22 @@ printf_format (const uint64_t&)
 	return "%" PRIu64;
 }
 
+template <>
+const char* const
+printf_format (const float&)
+{
+	// I think this is the default anyway?
+	return "%.6g";
+}
+
+template <>
+const char* const
+printf_format (const double&)
+{
+	// make sure full precision is retained.
+	return "%.12g";
+}
+
 } // namespace cformat
 
 #endif // CFORMAT_PRINTF_FORMAT_INCLUDED

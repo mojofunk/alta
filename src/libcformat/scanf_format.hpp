@@ -72,6 +72,20 @@ scanf_format (const uint64_t&)
 	return "%" SCNu64;
 }
 
+template <>
+const char* const
+scanf_format (const float&)
+{
+	return "%f";
+}
+
+template <>
+const char* const
+scanf_format (const double&)
+{
+	return "%f";
+}
+
 } // namespace cformat
 
 #endif // CFORMAT_SCANF_FORMAT_INCLUDED
