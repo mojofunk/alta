@@ -6,6 +6,8 @@
 #include <cstring>
 #include <cstdlib>
 
+#include <libcformat/cformat_exception.hpp>
+
 namespace cformat {
 
 struct LocaleGuard {
@@ -20,7 +22,7 @@ struct LocaleGuard {
 
 		// I doubt this is even possible.
 		if(!original_locale) {
-			// throw
+			throw cformat_exception();
 		}
 
 		m_original_locale = strdup (original_locale);

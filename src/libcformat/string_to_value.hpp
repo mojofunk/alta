@@ -3,6 +3,7 @@
 
 #include <string>
 
+#include <libcformat/cformat_exception.hpp>
 #include <libcformat/locale_guard.hpp>
 #include <libcformat/scanf_format.hpp>
 
@@ -19,7 +20,7 @@ string_to_value (const string& value_string)
 	T tmp = 0;
 
 	if(sscanf (value_string.c_str(), scanf_format(tmp), &tmp) != 1) {
-		// throw exception?
+		throw cformat_exception();
 	}
 	return tmp;
 }

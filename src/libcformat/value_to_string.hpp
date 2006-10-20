@@ -3,6 +3,7 @@
 
 #include <string>
 
+#include <libcformat/cformat_exception.hpp>
 #include <libcformat/locale_guard.hpp>
 #include <libcformat/printf_format.hpp>
 
@@ -20,7 +21,7 @@ value_to_string (const T& value)
 	int retval = snprintf (buf, sizeof (buf), printf_format(value), value);
 
 	if(retval <= 0 || retval >= sizeof (buf)) {
-		// throw exception?
+		throw cformat_exception();
 	}
 
 	return buf;

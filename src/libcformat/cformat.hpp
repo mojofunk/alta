@@ -1,6 +1,7 @@
 #ifndef CFORMAT_CFORMAT_INCLUDED
 #define CFORMAT_CFORMAT_INCLUDED
 
+#include <libcformat/cformat_exception.hpp>
 #include <libcformat/locale_guard.hpp>
 #include <libcformat/printf_format.hpp>
 #include <libcformat/scanf_format.hpp>
