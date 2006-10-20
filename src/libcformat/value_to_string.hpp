@@ -11,12 +11,20 @@ namespace cformat {
 
 using std::string;
 
+/**
+ * Convert a value to string form using C formatting functions
+ *
+ * \throw cformat_exception A cformat_exception is thrown if a conversion
+ * error occurs.
+ *
+ * \note A NumericGuard should be used if it is intended that the
+ * conversion be the same irrespective of the locale setting.
+ */
 template <class T>
 const string
 value_to_string (const T& value)
 {
 	char buf[32];
-	NumericGuard guard;
 
 	int retval = snprintf (buf, sizeof (buf), printf_format(value), value);
 
