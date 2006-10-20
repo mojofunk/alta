@@ -3,6 +3,7 @@
 
 #include <string>
 
+#include <libcformat/locale_guard.hpp>
 #include <libcformat/printf_format.hpp>
 
 namespace cformat {
@@ -14,6 +15,8 @@ const string
 value_to_string (const T& value)
 {
 	char buf[32];
+	NumericGuard guard;
+
 	int retval = snprintf (buf, sizeof (buf), printf_format(value), value);
 
 	if(retval <= 0 || retval >= sizeof (buf)) {

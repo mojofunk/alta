@@ -3,6 +3,7 @@
 
 #include <string>
 
+#include <libcformat/locale_guard.hpp>
 #include <libcformat/scanf_format.hpp>
 
 namespace cformat {
@@ -13,6 +14,8 @@ template <class T>
 const T
 string_to_value (const string& value_string)
 {
+	NumericGuard guard;
+
 	T tmp = 0;
 
 	if(sscanf (value_string.c_str(), scanf_format(tmp), &tmp) != 1) {
