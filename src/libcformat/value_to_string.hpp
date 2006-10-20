@@ -20,7 +20,7 @@ value_to_string (const T& value)
 
 	int retval = snprintf (buf, sizeof (buf), printf_format(value), value);
 
-	if(retval <= 0 || retval >= sizeof (buf)) {
+	if(retval <= 0 || retval >= (int)sizeof (buf)) {
 		throw cformat_exception();
 	}
 
