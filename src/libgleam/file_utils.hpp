@@ -109,7 +109,12 @@ bool rename_file (const string& old_path,
 bool directory_exists (const string& path);
 
 /**
- * \return true if directory at path is writable
+ * \return true if directory at path exists and is readable
+ */
+bool directory_is_readable (const string& path);
+
+/**
+ * \return true if directory at path exists and is writable
  */
 bool directory_is_writable (const string& path);
 

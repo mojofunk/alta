@@ -224,6 +224,23 @@ directory_exists (const string& path)
 			Glib::file_test (path, Glib::FILE_TEST_IS_DIR));
 }
 
+bool
+directory_is_readable (const string& path)
+{
+	if(!directory_exists(path)) return false;
+	
+	if(g_access(path.c_str(), R_OK) != 0)
+	{
+
+#ifdef GLEAM_DEBUG
+		LOG_GLEAM_WARNING << g_strerror(errno);
+#endif		
+
+		return false;
+	}
+	return true;
+}
+
 /*
  * XXX according to this :
  * http://developer.gnome.org/doc/API/2.0/glib/glib-File-Utilities.html#g-access
