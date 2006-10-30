@@ -20,14 +20,14 @@ public:
     
     static Application& instance();
     
-    virtual void run();
+    void run();
     
     /**
       must check the state of each open project,
       if state is dirty then ask the user if they
       want to save the project.
     */
-    virtual void quit();
+    void quit();
     
     /// all new projects are created in a 
     /// temp directory
