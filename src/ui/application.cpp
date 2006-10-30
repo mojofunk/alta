@@ -24,7 +24,7 @@ Application::~Application()
 void
 Application::run()
 {
-
+	// run splash
 }
 
 void
@@ -32,7 +32,6 @@ Application::quit()
 {
 
 }
-
 
 void
 Application::new_project()

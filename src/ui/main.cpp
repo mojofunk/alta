@@ -25,8 +25,10 @@ main(int argc, char* argv[])
 
 	Gtk::Main kit(argc, argv);
 
+	Application* gmojo_app = 0;
+
 	try {
-		Application* gmojo_app = new Application(argc, argv);
+		gmojo_app = new Application(argc, argv);
 	} catch (...) {
 
 #ifdef GMOJO_DEBUG
@@ -34,6 +36,8 @@ main(int argc, char* argv[])
 #endif
 
 	}
+
+	gmojo_app->run();
 
 #ifdef GMOJO_DEBUG
 	gleam::thread_map().unregister_thread(gui_thread_name);
