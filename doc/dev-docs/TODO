@@ -1,0 +1,2 @@
+Create region and playlist classes and use PIMPL and or inheritance for
+state management using boost/serialization.
