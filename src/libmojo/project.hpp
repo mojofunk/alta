@@ -31,7 +31,6 @@ protected:
     /// path to project file.
     //const std::string m_path;
     
-    
 };
 
 } // namespace mojo
