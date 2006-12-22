@@ -12,9 +12,16 @@ system.
 
 Server
 
-The state of all objects is maintained on the server side. The clients can
-manipulate or query that state via the client API. The state of a project is
-stored and restored by the server.
+The state of all objects is maintained on the server side.
+
+The clients can manipulate or query that state via the client API.
+
+The state of a project is stored and restored by the server.
+
+The gui state is not part of the project state and should probably
+be stored separately.
+
+The 
 
 Client API
 
@@ -35,14 +42,52 @@ preferably the command interface would be very similar to libsigc++
 The client API should only communicate with the gui/controller via one
 thread.
 
-The gui must "connect" to the engine and provide an object that can be used
+The controller must "connect" to the server and provide an object that can be used
 for communication. This "object" is used to ensure that any messages sent by
 the engine are executed in the thread of the gui/controller.
 
-when the server is in-process the command should not have to be converted from
+When the server is in-process the command should not have to be converted from
 a functor with bound arguments etc. to some serialized form.
+
+Using an MVC pattern where the latency between updates to the model being
+reflected in the view is such that it effects the perceived responsiveness 
+of the system may call for an alternate method where the view is updated 
+immediately and the model is then updated asyncronously. Other views would
+still need to be notified by the server once the model is updated and the
+modifier would need to be notified if the update to the model was
+unsuccessful.
+
+If there are several client connections then there may need to be some 
+mechanism for keeping the internal state of the clients consistant. 
+If two clients send a modify command then one will succeed and the other
+will fail and a notification is sent to the client. 
+
+
+
 
 The base functionality of classes should assume a single thread model and not
 use locking. If a class is used in a multi-threaded environment then locking
 can be performed externally.
+
+Object Lifetime Management.
+
+The "business logic" of each class should be defined in an implementation 
+class that should depend on as few libraries as possible.
+
+The private implementation(PIMPL) idiom could be used in conjunction with
+a thread safe smart pointer for access to objects from multiple threads.
+
+One idea would be for each class to use a boost::shared_ptr to hold a pointer
+to the member data so that objects are held/passed/copied by value and the
+internal reference counting of the shared_ptr
+
+Some interesting articles/concepts on the www.c2.com pattern wiki that 
+should be kept in mind.
+
+PrematureGeneralization
+
+
+
+
+
 

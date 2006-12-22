@@ -1,7 +1,12 @@
 Gui
 
-Gtk+
-GooCanvas/future Gtk+ canvas.
-libglade.
+Widget toolkit : Gtk+, libglade.
 
+Canvas : GooCanvas/future Gtk+ canvas.
+
+General
+
+A serialization library : boost::serialization
+
+Atomic primitives for reference counting and lock-free stuff : GLib
 
