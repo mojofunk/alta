@@ -1,3 +1,5 @@
+Compile time dependencies.
+
 Gui
 
 Widget toolkit : Gtk+, libglade.
@@ -10,3 +12,12 @@ A serialization library : boost::serialization
 
 Atomic primitives for reference counting and lock-free stuff : GLib
 
+Possible Run-time dependencies.
+
+libsndfile
+ladspa/plugin factory/etc
+lv2
+
+alsa
+jack
+portaudio

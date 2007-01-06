@@ -4,7 +4,7 @@
 
 namespace mojo {
 
-class event {
+class Event {
 
 
 };
