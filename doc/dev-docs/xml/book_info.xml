@@ -1,0 +1,43 @@
+<?xml version='1.0'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+
+<!ENTITY BOOKNAME "Developer's Guide">
+<!ENTITY BOOKVERSION "0.01"> <!-- change version here -->
+<!ENTITY BOOKDATE "2007-01-10"> <!-- change revision date here -->
+<!ENTITY BOOKID "&BOOKNAME;-&BOOKVERSION; (&BOOKDATE;)">
+<!ENTITY BUG-NUM "000001"> <!-- use this only while in draft stage -->
+
+]>
+<bookinfo>
+	<title>Developer's Guide</title>
+	<!-- 
+	<subtitle>Developer's Guide</subtitle>
+	-->
+	<issuenum>1.0</issuenum>
+	<productnumber>1</productnumber>
+	<abstract><para>An incomplete developers guide to ......</para>
+	</abstract>
+	<isbn>
+		N/A
+	</isbn>
+	<mediaobject>
+		<imageobject>
+			<imagedata fileref="Common_Content/images/rhlogo-chapter-title.png"/>
+		</imageobject>
+	</mediaobject>
+	<publisher>
+		<publishername>
+			<inlinemediaobject>
+				<imageobject>
+					<imagedata fileref="Common_Content/images/rhlogo-title.png" />
+				</imageobject>
+			</inlinemediaobject>
+		</publishername>
+	</publisher>
+	<copyright>
+		<year>2006</year>
+		<holder>Tim Mayberry</holder>
+	</copyright>
+</bookinfo>
+
+
