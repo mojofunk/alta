@@ -1,6 +1,3 @@
-Books
-
-Code Complete
 
 Coding Style
 
@@ -9,6 +6,13 @@ Coding Idioms
 No multiple implementation inheritance(MII), prefer single implementation
 inheritance(SII). This avoids possible problems and complexity associated with
 MII such as virtual inheritance.
+
+If a method signature contains a bool argument, consider whether it could
+be split into two separate methods.
+
+Avoid explicit memory allocation, prefer an API that uses factory methods
+so that memory allocation for a particular object only occurs in a single
+place that is preferably within the library.
 
 Gui
 
