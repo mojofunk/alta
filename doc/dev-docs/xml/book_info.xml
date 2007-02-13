@@ -10,30 +10,13 @@
 ]>
 <bookinfo>
 	<title>Developer's Guide</title>
-	<!-- 
-	<subtitle>Developer's Guide</subtitle>
-	-->
 	<issuenum>1.0</issuenum>
 	<productnumber>1</productnumber>
-	<abstract><para>An incomplete developers guide to ......</para>
+	<abstract><para>An incomplete developers guide to GMojo</para>
 	</abstract>
 	<isbn>
 		N/A
 	</isbn>
-	<mediaobject>
-		<imageobject>
-			<imagedata fileref="Common_Content/images/rhlogo-chapter-title.png"/>
-		</imageobject>
-	</mediaobject>
-	<publisher>
-		<publishername>
-			<inlinemediaobject>
-				<imageobject>
-					<imagedata fileref="Common_Content/images/rhlogo-title.png" />
-				</imageobject>
-			</inlinemediaobject>
-		</publishername>
-	</publisher>
 	<copyright>
 		<year>2006</year>
 		<holder>Tim Mayberry</holder>
