@@ -6,7 +6,8 @@
 
 <chapter id="ch-construction">
   <title>Construction</title>
-  <subtitle>Subtitle</subtitle>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
+		href="coding_conventions.xml" />
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
 		href="coding_style.xml" />
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 

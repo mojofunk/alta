@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+
+]>
+
+<section id="sn-coding-conventions">
+  <title>Identifier Naming Conventions</title>
+  <para>
+    Identifiers are all lower case letters. An underscore is used for word
+    separation.
+  </para>
+
+  <para>
+    Member variables are prefixed by <literal>m_</literal>, so for instance
+    <literal>name</literal> would become <literal>m_name</literal>.
+  </para>
+
+  <para>
+    Static member variables are prefixed by <literal>sm_</literal>.
+  </para>
+
+  <para>
+    This helps identify what the type of an variable is and it is less ugly
+    than just prefixing with <literal>_</literal>.
+  </para>
+<!--
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
+		href="Some_Subsection.xml" />
+	-->
+</section>
