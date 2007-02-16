@@ -1,0 +1,43 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+
+]>
+
+<section id="coding-idioms">
+  <title>Coding Idioms</title>
+  <variablelist>
+    <title></title>
+    <varlistentry>
+      <term>Prefer SII to MII</term>
+      <listitem>
+        <para>
+          No multiple implementation inheritance(MII), prefer single
+          implementation inheritance(SII). This avoids possible problems and
+          complexity associated with MII such as virtual inheritance.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Bool Arguments</term>
+      <listitem>
+        <para>
+          If a method signature contains a bool argument, consider whether
+          it could be split into two separate methods.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Memory allocation</term>
+      <listitem>
+        <para>
+          Avoid explicit memory allocation, prefer an API that uses factory
+          methods so that memory allocation for a particular object only
+          occurs in a single place that is preferably within the library.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+</section>

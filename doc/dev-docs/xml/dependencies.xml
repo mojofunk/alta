@@ -1,0 +1,78 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+
+]>
+
+<chapter id="ch-dependencies">
+  <title>Dependencies</title>
+  <section id="gui-dependencies">
+    <title>GUI</title>
+    <para>
+      Widget toolkit : Gtk+, libglade.
+    </para>
+
+    <para>
+      Canvas : GooCanvas/future Gtk+ canvas.
+    </para>
+  </section>
+
+  <section id="serialization-deps">
+    <title>Serialization Dependencies</title>
+    <para>
+      A serialization library : boost::serialization
+    </para>
+  </section>
+
+  <section id="atomic-primitives">
+    <title>Atomic Primitives</title>
+    <para>
+      Atomic primitives for reference counting and lock-free stuff : GLib
+    </para>
+  </section>
+
+  <section id="run-time-deps">
+    <title></title>
+    <itemizedlist>
+      <listitem>
+        <para>
+          libsndfile
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          ladspa/plugin factory/etc
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          lv2
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          alsa
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          jack
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          portaudio
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+<!--
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
+		href="Some_Subsection.xml" />
+	-->
+</chapter>

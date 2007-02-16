@@ -1,4 +1,5 @@
 <?xml version="1.0" standalone="no"?>
+
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
 
 <!-- Entities -->
@@ -6,13 +7,18 @@
 ]>
 
 <book id="bk-dev-guide">
-
-	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
 		href="book_info.xml" />
 
-	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
+		href="design.xml" />
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
+		href="dependencies.xml" />
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
 		href="reference_books.xml" />
-	
-	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
 		href="construction.xml" />
 </book>

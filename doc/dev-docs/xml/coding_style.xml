@@ -1,24 +1,19 @@
 <?xml version="1.0" standalone="no"?>
+
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
 
 ]>
 
 <section id="sn-coding-style">
-
-	<title>Coding Style</title>
-
-	<section>
-		<title>Indentation</title>
-
-		<para>
-			Tabs are used for indentation.
-		</para>
-
-	</section>
-
-	<!--
+  <title>Coding Style</title>
+  <section>
+    <title>Indentation</title>
+    <para>
+      Tabs are used for indentation.
+    </para>
+  </section>
+<!--
 	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
 		href="Some_Subsection.xml" />
 	-->
-
 </section>

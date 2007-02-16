@@ -1,4 +1,5 @@
 <?xml version='1.0'?>
+
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
 
 <!ENTITY BOOKNAME "Developer's Guide">
@@ -8,19 +9,21 @@
 <!ENTITY BUG-NUM "000001"> <!-- use this only while in draft stage -->
 
 ]>
+
 <bookinfo>
-	<title>Developer's Guide</title>
-	<issuenum>1.0</issuenum>
-	<productnumber>1</productnumber>
-	<abstract><para>An incomplete developers guide to GMojo</para>
-	</abstract>
-	<isbn>
+  <title>Developer's Guide</title>
+  <issuenum>1.0</issuenum>
+  <productnumber>1</productnumber>
+  <abstract>
+    <para>
+      An incomplete developers guide to GMojo
+    </para>
+  </abstract>
+  <isbn>
 		N/A
 	</isbn>
-	<copyright>
-		<year>2006</year>
-		<holder>Tim Mayberry</holder>
-	</copyright>
+  <copyright>
+    <year>2006</year>
+    <holder>Tim Mayberry</holder>
+  </copyright>
 </bookinfo>
-
-
