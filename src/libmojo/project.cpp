@@ -1,15 +1,25 @@
+#include <boost/noncopyable.hpp>
 
 #include "project.hpp"
 
 namespace mojo {
 
-Project::Project()
+class project::impl : boost::noncopyable
+{
+public:
+
+
+
+};
+
+project::project()
+	: m_pimpl(new impl)
 {
 
 
 }
 
-Project::~Project()
+project::~project()
 {
 
 

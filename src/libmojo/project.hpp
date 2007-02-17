@@ -4,12 +4,16 @@
 
 #include <string>
 
-#include <libmojo/project_dir.hpp>
+#include <boost/shared_ptr.hpp>
 
 namespace mojo {
 
-class Project
+class project
 {
+private:
+	class impl;
+	boost::shared_ptr<impl> m_pimpl;
+
 public:
     
     /**
@@ -19,12 +23,18 @@ public:
     
     
     /**
-       
-    */
-    Project();
+	 * This will create temporary project in a temporary
+	 * directory until the project is saved.
+	 */
+    project();
 
-    ~Project();
-    
+	/*
+	 project(const string& path);
+	 */
+
+    ~project();
+
+// need a operator== ?
 
 protected:
 

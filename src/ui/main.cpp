@@ -25,17 +25,7 @@ main(int argc, char* argv[])
 
 	Gtk::Main kit(argc, argv);
 
-	Application* gmojo_app = 0;
-
-	try {
-		gmojo_app = new Application(argc, argv);
-	} catch (...) {
-
-#ifdef GMOJO_DEBUG
-
-#endif
-
-	}
+	boost::shared_ptr<Application> gmojo_app = Application::create(argc, argv);
 
 	gmojo_app->run();
 
