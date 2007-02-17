@@ -13,6 +13,79 @@
     <para>
       A listing of functional software requirements for &GMOJO_APP;
     </para>
+
+	<section id="project-files">
+		<title>Project Files</title>
+
+		<para>
+			An entire project consists of the project file and all the data
+			referenced by that file.
+		</para>
+
+		<para>
+			The user should not have to name the project until saving.
+		</para>
+
+		<para>
+			The user should not have to specify any directories to save data
+			to when creating a new project.
+		</para>
+
+		<section id="project-file">
+			<title>The Project File</title>
+			<para>
+				The project the file contains data aswell as references to
+				the audio data on disk.
+			</para>
+
+			<variablelist>
+				<title>Project File Requirements</title>
+				<varlistentry>
+					<term>Human Readable</term>
+					<listitem>
+						<para>
+							A project file should be human readable. why?
+						</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>Able to be moved</term>
+					<listitem>
+						<para>
+							The project file must be able to be moved and the project
+							should still open.
+						</para>
+					</listitem>
+				</varlistentry>
+			</variablelist>
+		</section>
+
+		<section id="audio data">
+			<title>Audio Data</title>
+			<para>
+
+			</para>
+			<variablelist>
+				<title>Audio Data Requirements</title>
+				<varlistentry>
+					<term>Formats</term>
+					<listitem>
+						<para>
+
+						</para>
+					</listitem>
+				</varlistentry>
+			</variablelist>
+		</section>
+
+	</section>
+
+	<section id="compatibility">
+		<title>Compatibility</title>
+		<para>
+		</para>
+	</section>
+
   </section>
 <!--
 	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
