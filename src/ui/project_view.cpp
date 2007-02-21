@@ -36,4 +36,13 @@ ProjectView::run()
 #endif
 }
 
+bool
+ProjectView::quit()
+{
+#ifdef GMOJO_DEBUG_EXTRA
+	LOG_GMOJO_DEBUG;
+#endif
+	return true;
+}
+
 } // namespace gmojo

@@ -46,14 +46,6 @@ private:
 
 	static Application* sm_app;
 
-	struct deleter;
-	friend struct deleter;
-
-	struct deleter
-	{
-		void operator()(Application* app) { delete app; sm_app = 0; }
-	};
-
     Application (int argc, char *argv[]);
     ~Application();
 
@@ -76,6 +68,25 @@ private:
     // tool
 
     // edit buffer cut/paste
+
+private:
+
+	// GtkToolTips?
+
+	/**
+	 * for recieving async events from the mojo::project
+	 */
+	// glib::bus
+
+private:
+
+	struct deleter;
+	friend struct deleter;
+
+	struct deleter
+	{
+		void operator()(Application* app) { delete app; sm_app = 0; }
+	};
 
 };
 
