@@ -62,6 +62,7 @@ ui/project_view.cpp
 ui/thread_names.cpp
 ui/main.cpp
 ui/signal_handler.cpp
+ui/window_title.cpp
 """)
 
 all_source_files = libgleam_source_files + \
