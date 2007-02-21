@@ -7,8 +7,8 @@
 <section id="sn-coding-conventions">
   <title>Identifier Naming Conventions</title>
   <para>
-    Identifiers are all lower case letters. An underscore is used for word
-    separation.
+    Member variable and member function identifiers are all lower case
+    letters. An underscore is used for word separation.
   </para>
 
   <para>
@@ -23,6 +23,14 @@
   <para>
     This helps identify what the type of an variable is and it is less ugly
     than just prefixing with <literal>_</literal>.
+  </para>
+
+  <para>
+    namespace identifiers should be as short as possible and lower case.
+  </para>
+
+  <para>
+    Class names should use UpperCamelCase
   </para>
 <!--
 	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
