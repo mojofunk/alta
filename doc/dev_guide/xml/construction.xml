@@ -14,4 +14,6 @@
 		href="coding_idioms.xml" />
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
 		href="dependencies.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
+		href="error_conditions.xml" />
 </chapter>
