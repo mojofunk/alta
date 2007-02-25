@@ -16,4 +16,6 @@
 		href="dependencies.xml" />
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
 		href="error_conditions.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
+		href="testing.xml" />
 </chapter>
