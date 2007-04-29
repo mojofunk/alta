@@ -74,19 +74,8 @@ deps = \
 	'gtk+-2.0'             : '2.8.1',
 	'glibmm-2.4'           : '2.8.1',
 	'gtkmm-2.4'            : '2.8.1',
-	'libxml-2.0'           : '2.6.0',
-	'sndfile'              : '1.0.15',
-	'samplerate'           : '0.1.2',
-	'raptor'               : '1.4.8',
-	'lrdf'                 : '0.4.0',
-	'soundtouch-1.0'       : '1.3.1',
 	'goocanvas'            : '0.8'
 }
-
-if env['PLATFORM'] == 'win32':
-	deps['jackmp'] = '0.1.0'
-else:
-	deps['jack'] = '0.101.1'
 
 def CheckPKGConfig(context, version):
      context.Message( 'Checking for pkg-config version >= %s... ' %version )
