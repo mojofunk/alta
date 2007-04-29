@@ -9,6 +9,8 @@
 
 #include <libmojo/project.hpp>
 
+#include "edit_canvas.hpp"
+
 namespace gmojo {
 
 class EditWindow : boost::noncopyable
@@ -24,13 +26,8 @@ private:
 	mojo::project m_project;
 
 	GtkWidget* m_edit_window;
-	GtkWidget* m_scrolled_window;
 
-	GtkWidget* m_canvas;
-
-	GooCanvasItem* m_root_item;
-	GooCanvasItem* m_rect_item;
-	GooCanvasItem* m_text_item;
+	EditCanvas m_edit_canvas;
 };
 
 } // namespace gmojo
