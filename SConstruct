@@ -80,7 +80,7 @@ deps = \
 	'raptor'               : '1.4.8',
 	'lrdf'                 : '0.4.0',
 	'soundtouch-1.0'       : '1.3.1',
-	'libgnomecanvasmm-2.6' : '2.12.0'
+	'goocanvas'            : '0.8'
 }
 
 if env['PLATFORM'] == 'win32':

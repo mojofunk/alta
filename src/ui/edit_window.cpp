@@ -1,3 +1,4 @@
+
 #include "edit_window.hpp"
 
 #include "debug.hpp"
@@ -25,7 +26,23 @@ on_destroy (GtkWidget* widget, gpointer)
 	gtk_main_quit();
 }
 
+
+gboolean
+on_rect_button_press (GooCanvasItem  *view,
+		GooCanvasItem  *target,
+		GdkEventButton *event,
+		gpointer        data)
+{
+#ifdef GMOJO_DEBUG_EXTRA
+	LOG_GMOJO_DEBUG;
+#endif
+	return TRUE;
+}
+
+
 } // anonymous namespace
+
+
 
 namespace gmojo {
 
@@ -48,6 +65,36 @@ EditWindow::EditWindow(mojo::project project)
 	g_signal_connect (G_OBJECT (m_edit_window), "destroy",
 			G_CALLBACK (on_destroy), this);
 
+	m_canvas = goo_canvas_new ();
+	gtk_widget_set_size_request (m_canvas, 600, 450);
+	goo_canvas_set_bounds (GOO_CANVAS (m_canvas), 0, 0, 1000, 1000);
+
+	gtk_widget_show (m_canvas);
+	gtk_container_add (GTK_CONTAINER (m_edit_window), m_canvas);
+
+	m_root_item = goo_canvas_get_root_item (GOO_CANVAS (m_canvas));
+
+	/* Add a few simple items. */
+	m_rect_item = goo_canvas_rect_new (m_root_item, 100, 100, 400, 400,
+			"line-width", 10.0,
+			"radius-x", 20.0,
+			"radius-y", 10.0,
+			"stroke-color", "yellow",
+			"fill-color", "red",
+			NULL);
+
+	m_text_item = goo_canvas_text_new (m_root_item, "Hello World", 300, 300, -1,
+			GTK_ANCHOR_CENTER,
+			"font", "Sans 24",
+			NULL);
+
+	goo_canvas_item_rotate (m_text_item, 45, 300, 300);
+
+	/* Connect a signal handler for the rectangle item. */
+	g_signal_connect (m_rect_item, "button_press_event",
+			(GtkSignalFunc) on_rect_button_press, NULL);
+
+
 }
 
 EditWindow::~EditWindow()
@@ -56,4 +103,5 @@ EditWindow::~EditWindow()
 	LOG_GMOJO_DEBUG;
 #endif
 }
+
 } // namespace gmojo

@@ -5,9 +5,9 @@
 #include <boost/noncopyable.hpp>
 
 #include <gtk/gtk.h>
+#include <goocanvas.h>
 
 #include <libmojo/project.hpp>
-
 
 namespace gmojo {
 
@@ -24,6 +24,12 @@ private:
 	mojo::project m_project;
 
 	GtkWidget* m_edit_window;
+
+	GtkWidget* m_canvas;
+
+	GooCanvasItem* m_root_item;
+	GooCanvasItem* m_rect_item;
+	GooCanvasItem* m_text_item;
 };
 
 } // namespace gmojo
