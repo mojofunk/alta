@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.45.1"
+   sodipodi:docbase="/home/timbyr/devel/gmojo.git/doc/dev_guide/diagrams"
+   sodipodi:docname="edit_window_layout.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="269.02165"
+     inkscape:cy="476.4959"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="947"
+     inkscape:window-height="847"
+     inkscape:window-x="20"
+     inkscape:window-y="56" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g3168">
+      <rect
+         y="199.79343"
+         x="-2.0203044"
+         height="495.34351"
+         width="735.39111"
+         id="rect3152"
+         style="opacity:0.9837838;fill:#ffaaaa;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text3164"
+         y="228.07771"
+         x="92.934036"
+         style="font-size:20px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="228.07771"
+           x="92.934036"
+           id="tspan3166"
+           sodipodi:role="line">CanvasVBox</tspan></text>
+    </g>
+    <g
+       id="g3154"
+       transform="matrix(0.8630212,0,0,1.0199715,-17.272796,-11.01197)">
+      <rect
+         y="262.1778"
+         x="38.140694"
+         height="400.63675"
+         width="239.35901"
+         id="rect2160"
+         style="opacity:0.9837838;fill:#e6e6e6;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.26339197;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text3134"
+         y="298.07648"
+         x="48.57143"
+         style="font-size:20px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="298.07648"
+           x="48.57143"
+           id="tspan3136"
+           sodipodi:role="line">Track Header Canvas</tspan></text>
+    </g>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3140"><flowRegion
+         id="flowRegion3142"><rect
+           id="rect3144"
+           width="4.0406103"
+           height="20.203051"
+           x="357.59399"
+           y="587.69202" /></flowRegion><flowPara
+         id="flowPara3146">MainM</flowPara></flowRoot>    <g
+       id="g3159"
+       transform="translate(-68.690323,-5.0507628)">
+      <rect
+         y="260.40259"
+         x="307.08636"
+         height="408.10162"
+         width="414.16254"
+         id="rect3138"
+         style="opacity:0.9837838;fill:#e6e6e6;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text3148"
+         y="298.78842"
+         x="390.92905"
+         style="font-size:20px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="298.78842"
+           x="390.92905"
+           id="tspan3150"
+           sodipodi:role="line">Track Time Axis Canvas</tspan></text>
+    </g>
+    <rect
+       style="opacity:0.9837838;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3.99999976;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3173"
+       width="39.425682"
+       height="407.65857"
+       x="671.43457"
+       y="255.65131" />
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="754.08655"
+       y="394.3714"
+       id="text3175"><tspan
+         sodipodi:role="line"
+         id="tspan3177"
+         x="754.08655"
+         y="394.3714">Vertical ScrollBar</tspan></text>
+    <rect
+       style="opacity:0.9837838;fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3179"
+       width="32.474667"
+       height="115.70545"
+       x="674.59949"
+       y="356.24744" />
+  </g>
+</svg>
