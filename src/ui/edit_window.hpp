@@ -24,6 +24,7 @@ private:
 	mojo::project m_project;
 
 	GtkWidget* m_edit_window;
+	GtkWidget* m_scrolled_window;
 
 	GtkWidget* m_canvas;
 

@@ -65,12 +65,19 @@ EditWindow::EditWindow(mojo::project project)
 	g_signal_connect (G_OBJECT (m_edit_window), "destroy",
 			G_CALLBACK (on_destroy), this);
 
+	m_scrolled_window = gtk_scrolled_window_new (NULL, NULL);
+	gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (m_scrolled_window),
+			GTK_SHADOW_IN);
+	gtk_widget_show (m_scrolled_window);
+
+	gtk_container_add (GTK_CONTAINER (m_edit_window), m_scrolled_window);
+
 	m_canvas = goo_canvas_new ();
 	gtk_widget_set_size_request (m_canvas, 600, 450);
 	goo_canvas_set_bounds (GOO_CANVAS (m_canvas), 0, 0, 1000, 1000);
 
 	gtk_widget_show (m_canvas);
-	gtk_container_add (GTK_CONTAINER (m_edit_window), m_canvas);
+	gtk_container_add (GTK_CONTAINER (m_scrolled_window), m_canvas);
 
 	m_root_item = goo_canvas_get_root_item (GOO_CANVAS (m_canvas));
 
