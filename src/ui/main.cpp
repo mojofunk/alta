@@ -3,7 +3,7 @@
 #include <cformat.hpp>
 #include <mojo.hpp>
 
-#include <gtkmm/main.h>
+#include <gtk/gtk.h>
 
 #include "application.hpp"
 #include "signal_handler.hpp"
@@ -15,7 +15,7 @@ using namespace gmojo;
 int
 main(int argc, char* argv[])
 {
-	Glib::thread_init();
+	g_thread_init(NULL);
 
 #ifdef GMOJO_DEBUG
 	gleam::thread_map().register_thread(gui_thread_name);
@@ -23,7 +23,7 @@ main(int argc, char* argv[])
 
 	SignalHandler	signal_handler;
 
-	Gtk::Main kit(argc, argv);
+	gtk_init(&argc, &argv);
 
 	boost::shared_ptr<Application> gmojo_app = Application::create(argc, argv);
 

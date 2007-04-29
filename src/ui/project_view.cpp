@@ -12,7 +12,9 @@ ProjectView::create (mojo::project project)
 }
 
 ProjectView::ProjectView(mojo::project project)
-	: m_project(project)
+	:
+		m_project(project),
+		m_edit_window(project)
 {
 #ifdef GMOJO_DEBUG_EXTRA
 	LOG_GMOJO_DEBUG;
@@ -34,6 +36,8 @@ ProjectView::run()
 #ifdef GMOJO_DEBUG_EXTRA
 	LOG_GMOJO_DEBUG;
 #endif
+	
+	gtk_main();
 }
 
 bool

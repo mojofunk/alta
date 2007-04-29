@@ -7,6 +7,8 @@
 
 #include <libmojo/project.hpp>
 
+#include "edit_window.hpp"
+
 namespace gmojo {
 
 /**
@@ -37,6 +39,8 @@ private:
     ~ProjectView();
 
 	mojo::project m_project;
+
+	EditWindow m_edit_window;
 
 	/**
 	 * The canvasview shouldn't need access to anything
