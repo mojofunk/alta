@@ -39,6 +39,7 @@ EditWindow::EditWindow(mojo::project project)
 
 	m_edit_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 
+	gtk_window_set_default_size (GTK_WINDOW (m_edit_window), 640, 480);
 	gtk_widget_show (m_edit_window);
 
 	g_signal_connect (G_OBJECT (m_edit_window), "delete_event",
