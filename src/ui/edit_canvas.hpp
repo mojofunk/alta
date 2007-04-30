@@ -21,6 +21,19 @@ public:
 
 	GtkWidget* widget() const { return m_scrolled_window;}
 
+public:
+
+	static gboolean public_on_rect_button_press (GooCanvasItem  *view,
+			GooCanvasItem  *target,
+			GdkEventButton *event,
+			gpointer        data);
+
+private:
+
+	bool on_rect_button_press (GooCanvasItem  *view,
+			GooCanvasItem  *target,
+			GdkEventButton *event);
+
 private:
 
 	mojo::project m_project;

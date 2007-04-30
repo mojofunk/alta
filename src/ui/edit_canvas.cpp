@@ -3,10 +3,10 @@
 
 #include "debug.hpp"
 
-namespace {
+namespace gmojo {
 
 gboolean
-on_rect_button_press (GooCanvasItem  *view,
+EditCanvas::public_on_rect_button_press (GooCanvasItem  *view,
 		GooCanvasItem  *target,
 		GdkEventButton *event,
 		gpointer        data)
@@ -14,13 +14,23 @@ on_rect_button_press (GooCanvasItem  *view,
 #ifdef GMOJO_DEBUG_EXTRA
 	LOG_GMOJO_DEBUG;
 #endif
-	return TRUE;
+
+	EditCanvas* edit_canvas = static_cast<EditCanvas*>(data);
+
+	return edit_canvas->on_rect_button_press(view, target, event);
 }
 
-} // anonymous namespace
+bool
+EditCanvas::on_rect_button_press (GooCanvasItem  *view,
+		GooCanvasItem  *target,
+		GdkEventButton *event)
+{
+#ifdef GMOJO_DEBUG_EXTRA
+	LOG_GMOJO_DEBUG;
+#endif
+	return true;
+}
 
-
-namespace gmojo {
 
 EditCanvas::EditCanvas(mojo::project project)
 	:
@@ -62,7 +72,7 @@ EditCanvas::EditCanvas(mojo::project project)
 
 	/* Connect a signal handler for the rectangle item. */
 	g_signal_connect (m_rect_item, "button_press_event",
-			(GtkSignalFunc) on_rect_button_press, NULL);
+			(GtkSignalFunc) public_on_rect_button_press, NULL);
 
 }
 
