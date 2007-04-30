@@ -52,6 +52,14 @@ EditCanvas::EditCanvas(mojo::project project)
 	gtk_widget_show (m_canvas);
 	gtk_container_add (GTK_CONTAINER (m_scrolled_window), m_canvas);
 
+	m_label = gtk_label_new("Track Controls");
+	gtk_widget_show(m_label);
+
+	m_hpaned = gtk_hpaned_new ();
+	gtk_paned_pack1(GTK_PANED (m_hpaned), m_label, TRUE, TRUE);
+	gtk_paned_pack2(GTK_PANED (m_hpaned), m_scrolled_window, TRUE, TRUE);
+	gtk_widget_show (m_hpaned);
+	
 	m_root_item = goo_canvas_get_root_item (GOO_CANVAS (m_canvas));
 
 	/* Add a few simple items. */

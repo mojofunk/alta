@@ -19,7 +19,7 @@ public:
 
 	~EditCanvas();
 
-	GtkWidget* widget() const { return m_scrolled_window;}
+	GtkWidget* widget() const { return m_hpaned;}
 
 public:
 
@@ -38,6 +38,9 @@ private:
 
 	mojo::project m_project;
 
+	GtkWidget* m_hpaned;
+
+	GtkWidget* m_label;
 	GtkWidget* m_scrolled_window;
 
 	GtkWidget* m_canvas;
