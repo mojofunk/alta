@@ -25,9 +25,11 @@ main(int argc, char* argv[])
 
 	gtk_init(&argc, &argv);
 
-	boost::shared_ptr<Application> gmojo_app = Application::create(argc, argv);
+	{
+		boost::shared_ptr<Application> gmojo_app = Application::create(argc, argv);
 
-	gmojo_app->run();
+		gmojo_app->run();
+	}
 
 #ifdef GMOJO_DEBUG
 	gleam::thread_map().unregister_thread(gui_thread_name);
