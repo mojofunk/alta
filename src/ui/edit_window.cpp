@@ -23,6 +23,7 @@ on_destroy (GtkWidget* widget, gpointer)
 	LOG_GMOJO_DEBUG;
 #endif
 	// this should be in ProjectView::quit
+	// or perhaps ProjectView destructor?
 	gtk_main_quit();
 }
 
@@ -31,7 +32,7 @@ on_destroy (GtkWidget* widget, gpointer)
 
 namespace gmojo {
 
-EditWindow::EditWindow(mojo::project project)
+EditWindow::EditWindow(boost::shared_ptr<mojo::Project> project)
 	:
 		m_project(project),
 		m_edit_canvas(project)

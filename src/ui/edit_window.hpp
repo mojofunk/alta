@@ -17,13 +17,13 @@ class EditWindow : boost::noncopyable
 {
 public:
 
-	EditWindow(mojo::project project);
+	EditWindow(boost::shared_ptr<mojo::Project> project);
 
 	~EditWindow();
 
 private:
 
-	mojo::project m_project;
+	boost::shared_ptr<mojo::Project> m_project;
 
 	GtkWidget* m_edit_window;
 

@@ -30,15 +30,15 @@ public:
 
 //   mojo::Project& project() { return *m_project; }
 
-	static boost::shared_ptr<ProjectView> create (mojo::project project);
+	static boost::shared_ptr<ProjectView> create (boost::shared_ptr<mojo::Project> project);
 
 private:
 
-    ProjectView(mojo::project project);
+    ProjectView(boost::shared_ptr<mojo::Project> project);
 
     ~ProjectView();
 
-	mojo::project m_project;
+	boost::shared_ptr<mojo::Project> m_project;
 
 	EditWindow m_edit_window;
 
@@ -49,10 +49,6 @@ private:
 	// ProjectCanvas
 
     // TransportControl m_transport_control;
-
-
-private:
-
 
 private:
 

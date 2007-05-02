@@ -6,7 +6,7 @@
 namespace gmojo {
 
 gboolean
-EditCanvas::public_on_rect_button_press (GooCanvasItem  *view,
+EditCanvas::public_on_root_button_press (GooCanvasItem  *view,
 		GooCanvasItem  *target,
 		GdkEventButton *event,
 		gpointer        data)
@@ -17,28 +17,30 @@ EditCanvas::public_on_rect_button_press (GooCanvasItem  *view,
 
 	EditCanvas* edit_canvas = static_cast<EditCanvas*>(data);
 
-	return edit_canvas->on_rect_button_press(view, target, event);
+	return edit_canvas->on_root_button_press(view, target, event);
 }
 
 bool
-EditCanvas::on_rect_button_press (GooCanvasItem  *view,
+EditCanvas::on_root_button_press (GooCanvasItem  *view,
 		GooCanvasItem  *target,
 		GdkEventButton *event)
 {
 #ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
+	LOG_GMOJO_DEBUG << m_project->get_name();
 #endif
 	return true;
 }
 
 
-EditCanvas::EditCanvas(mojo::project project)
+EditCanvas::EditCanvas(boost::shared_ptr<mojo::Project> project)
 	:
 		m_project(project)
 {
 #ifdef GMOJO_DEBUG_EXTRA
 	LOG_GMOJO_DEBUG;
 #endif
+
+	/* create and pack the widgets */
 
 	m_scrolled_window = gtk_scrolled_window_new (NULL, NULL);
 	gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (m_scrolled_window),
@@ -52,7 +54,7 @@ EditCanvas::EditCanvas(mojo::project project)
 	gtk_widget_show (m_canvas);
 	gtk_container_add (GTK_CONTAINER (m_scrolled_window), m_canvas);
 
-	m_label = gtk_label_new("Track Controls");
+	m_label = gtk_label_new("Track Control List");
 	gtk_widget_show(m_label);
 
 	m_hpaned = gtk_hpaned_new ();
@@ -62,26 +64,11 @@ EditCanvas::EditCanvas(mojo::project project)
 	
 	m_root_item = goo_canvas_get_root_item (GOO_CANVAS (m_canvas));
 
-	/* Add a few simple items. */
-	m_rect_item = goo_canvas_rect_new (m_root_item, 100, 100, 400, 400,
-			"line-width", 10.0,
-			"radius-x", 20.0,
-			"radius-y", 10.0,
-			"stroke-color", "yellow",
-			"fill-color", "red",
-			NULL);
+	/* Connect a signal handlers for the root canvas item. */
+	g_signal_connect (m_root_item, "button_press_event",
+			(GtkSignalFunc) public_on_root_button_press, this);
 
-	m_text_item = goo_canvas_text_new (m_root_item, "Hello World", 300, 300, -1,
-			GTK_ANCHOR_CENTER,
-			"font", "Sans 24",
-			NULL);
-
-	goo_canvas_item_rotate (m_text_item, 45, 300, 300);
-
-	/* Connect a signal handler for the rectangle item. */
-	g_signal_connect (m_rect_item, "button_press_event",
-			(GtkSignalFunc) public_on_rect_button_press, NULL);
-
+	m_project->set_name("Untitled");
 }
 
 EditCanvas::~EditCanvas()

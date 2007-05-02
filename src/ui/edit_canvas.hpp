@@ -2,12 +2,17 @@
 #ifndef GMOJO_EDIT_CANVAS_INCLUDED
 #define GMOJO_EDIT_CANVAS_INCLUDED
 
+#include <list>
+
 #include <boost/noncopyable.hpp>
+#include <boost/shared_ptr.hpp>
 
 #include <gtk/gtk.h>
 #include <goocanvas.h>
 
 #include <libmojo/project.hpp>
+
+#include "track_view.hpp"
 
 namespace gmojo {
 
@@ -15,7 +20,14 @@ class EditCanvas : boost::noncopyable
 {
 public:
 
-	EditCanvas(mojo::project project);
+	/**
+	 * EditCanvas needs to iterate through the tracks in 
+	 * the project and create a new TrackView for each 
+	 * track type. It also needs to connect to the track 
+	 * added signal so it can create a new TrackView for
+	 * any tracks that are added to the project.
+	 */
+	EditCanvas(boost::shared_ptr<mojo::Project> project);
 
 	~EditCanvas();
 
@@ -23,20 +35,20 @@ public:
 
 public:
 
-	static gboolean public_on_rect_button_press (GooCanvasItem  *view,
+	static gboolean public_on_root_button_press (GooCanvasItem  *view,
 			GooCanvasItem  *target,
 			GdkEventButton *event,
 			gpointer        data);
 
 private:
 
-	bool on_rect_button_press (GooCanvasItem  *view,
+	bool on_root_button_press (GooCanvasItem  *view,
 			GooCanvasItem  *target,
 			GdkEventButton *event);
 
 private:
 
-	mojo::project m_project;
+	boost::shared_ptr<mojo::Project> m_project;
 
 	GtkWidget* m_hpaned;
 
@@ -46,8 +58,11 @@ private:
 	GtkWidget* m_canvas;
 
 	GooCanvasItem* m_root_item;
-	GooCanvasItem* m_rect_item;
-	GooCanvasItem* m_text_item;
+
+	typedef std::list<boost::shared_ptr<TrackView> > TrackViewList;
+
+	TrackViewList m_track_list;
+
 };
 
 } // namespace gmojo

@@ -2,6 +2,8 @@
 #include "application.hpp"
 #include "project_view.hpp"
 
+#include "debug.hpp"
+
 namespace gmojo {
 
 Application* Application::sm_app;
@@ -21,24 +23,38 @@ Application::create (int argc, char *argv[])
 
 Application::Application (int argc, char *argv[])
 {
-
+#ifdef GMOJO_DEBUG_EXTRA
+	LOG_GMOJO_DEBUG;
+#endif
 }
 
 Application::~Application()
 {
 
+#ifdef GMOJO_DEBUG_EXTRA
+	LOG_GMOJO_DEBUG;
+#endif
 
 }
 
 void
 Application::run()
 {
+
+#ifdef GMOJO_DEBUG_EXTRA
+	LOG_GMOJO_DEBUG;
+#endif
+
 	new_project();
 }
 
 void
 Application::quit()
 {
+
+#ifdef GMOJO_DEBUG_EXTRA
+	LOG_GMOJO_DEBUG;
+#endif
 
 }
 
@@ -49,7 +65,7 @@ Application::new_project()
 	// so that the project can send signals to the gtk 
 	// main loop
 	// try/catch probably
-	mojo::project new_project;
+	boost::shared_ptr<mojo::Project> new_project = mojo::Project::create();
 
 	boost::shared_ptr<ProjectView> pview = ProjectView::create(new_project);
 
@@ -60,6 +76,13 @@ Application::new_project()
 
 	// Create an temporary project
 	// and ProjectView
+
+}
+
+bool
+Application::close_project(boost::shared_ptr<ProjectView> project_view)
+{
+	return true;
 
 }
 

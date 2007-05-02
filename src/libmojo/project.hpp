@@ -2,45 +2,56 @@
 #ifndef MOJO_PROJECT_HPP
 #define MOJO_PROJECT_HPP
 
-#include <string>
-
+#include <boost/noncopyable.hpp>
 #include <boost/shared_ptr.hpp>
+
+#include <string>
 
 namespace mojo {
 
-class project
+class Project : boost::noncopyable
 {
-private:
-	class impl;
-	boost::shared_ptr<impl> m_pimpl;
+public:
+
+	// factory functions
+
+	// create a new project
+	static boost::shared_ptr<Project> create();
 
 public:
-    
-    /**
-       path to project 
-    */
-    //const std::string& path() { return m_path; }
-    
-    
+
+	void set_name(const std::string&);
+
+	const std::string& get_name () const;
+
+private:
+
     /**
 	 * This will create temporary project in a temporary
 	 * directory until the project is saved.
 	 */
-    project();
+    Project();
 
-	/*
-	 project(const string& path);
+    ~Project();
+
+	/**
+	 * load a project from disk
 	 */
+	 //project(const string& file_path);
 
-    ~project();
+	// member data
+	std::string m_name;
 
-// need a operator== ?
+private:
+	
+	struct deleter;
+	friend struct deleter;
+		
+	struct deleter
+	{
+		void operator()(Project* project) { delete project; }
+	};
 
-protected:
-
-    /// path to project file.
-    //const std::string m_path;
-    
 };
 
 } // namespace mojo

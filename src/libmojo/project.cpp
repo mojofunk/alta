@@ -1,28 +1,37 @@
-#include <boost/noncopyable.hpp>
 
 #include "project.hpp"
 
 namespace mojo {
 
-class project::impl : boost::noncopyable
+boost::shared_ptr<Project>
+Project::create()
 {
-public:
+	boost::shared_ptr<Project> ptr(new Project, Project::deleter());
+	return ptr;
+}
 
-
-
-};
-
-project::project()
-	: m_pimpl(new impl)
+Project::Project ()
 {
 
 
 }
 
-project::~project()
+Project::~Project()
 {
 
 
+}
+
+void
+Project::set_name (const std::string& new_name)
+{
+	m_name = new_name;
+}
+
+const std::string&
+Project::get_name () const
+{
+	return m_name;
 }
 
 } // namespace mojo

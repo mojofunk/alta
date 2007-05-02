@@ -5,13 +5,13 @@
 namespace gmojo {
 
 boost::shared_ptr<ProjectView>
-ProjectView::create (mojo::project project)
+ProjectView::create (boost::shared_ptr<mojo::Project> project)
 {
 	boost::shared_ptr<ProjectView> ptr(new ProjectView(project), ProjectView::deleter());
 	return ptr;
 }
 
-ProjectView::ProjectView(mojo::project project)
+ProjectView::ProjectView(boost::shared_ptr<mojo::Project> project)
 	:
 		m_project(project),
 		m_edit_window(project)

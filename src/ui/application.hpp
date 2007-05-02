@@ -41,6 +41,8 @@ public:
     
     /// Create a new ProjectView.
     void new_project();
+
+	bool close_project (boost::shared_ptr<ProjectView> project_view);
     
 private:
 
