@@ -6,10 +6,18 @@
 
 <section id="sn-coding-style">
   <title>Coding Style</title>
-  <section>
+  <section id="indentation">
     <title>Indentation</title>
     <para>
       Tabs are used for indentation.
+    </para>
+  </section>
+
+  <section id="function-calls">
+    <title>Function Calls</title>
+    <para>
+      When calling a function there should be no space between the function
+      name and the starting bracket
     </para>
   </section>
 <!--

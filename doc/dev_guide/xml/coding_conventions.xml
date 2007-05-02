@@ -5,33 +5,43 @@
 ]>
 
 <section id="sn-coding-conventions">
-  <title>Identifier Naming Conventions</title>
-  <para>
-    Member variable and member function identifiers are all lower case
-    letters. An underscore is used for word separation.
-  </para>
+  <title>Naming Conventions</title>
+  <section id="member-variable-names">
+    <title>Member Variable Names</title>
+    <para>
+      Member variable and member function identifiers are all lower case
+      letters. An underscore is used for word separation.
+    </para>
 
-  <para>
-    Member variables are prefixed by <literal>m_</literal>, so for instance
-    <literal>name</literal> would become <literal>m_name</literal>.
-  </para>
+    <para>
+      Member variables are prefixed by <literal>m_</literal>, so for
+      instance <literal>name</literal> would become
+      <literal>m_name</literal>.
+    </para>
 
-  <para>
-    Static member variables are prefixed by <literal>sm_</literal>.
-  </para>
+    <para>
+      Static member variables are prefixed by <literal>sm_</literal>.
+    </para>
 
-  <para>
-    This helps identify what the type of an variable is and it is less ugly
-    than just prefixing with <literal>_</literal>.
-  </para>
+    <para>
+      This helps identify what the type of an variable is and it is less
+      ugly than just prefixing with <literal>_</literal>.
+    </para>
+  </section>
 
-  <para>
-    namespace identifiers should be as short as possible and lower case.
-  </para>
+  <section id="namespace-names">
+    <title>Namespace Names</title>
+    <para>
+      namespace identifiers should be as short as possible and lower case.
+    </para>
+  </section>
 
-  <para>
-    Class names should use UpperCamelCase
-  </para>
+  <section id="class-names">
+    <title>Class Names</title>
+    <para>
+      Class names should use UpperCamelCase
+    </para>
+  </section>
 <!--
 	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
 		href="Some_Subsection.xml" />
