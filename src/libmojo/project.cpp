@@ -1,18 +1,21 @@
 
 #include "project.hpp"
 
-namespace mojo {
+#include "debug.hpp"
 
-boost::shared_ptr<Project>
-Project::create()
-{
-	boost::shared_ptr<Project> ptr(new Project, Project::deleter());
-	return ptr;
-}
+namespace mojo {
 
 Project::Project ()
 {
+#ifdef MOJO_DEBUG
+	LOG_MOJO_DEBUG;
+#endif
 
+}
+
+Project::Project(const Project& other)
+: m_name(other.m_name)
+{
 
 }
 
@@ -32,6 +35,14 @@ const std::string&
 Project::get_name () const
 {
 	return m_name;
+}
+
+bool
+Project::add_audio_track(AudioTrack* audio_track)
+{
+	m_audio_tracks.push_back(audio_track);
+
+	return true;
 }
 
 } // namespace mojo

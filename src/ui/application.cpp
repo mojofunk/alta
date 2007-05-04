@@ -65,7 +65,7 @@ Application::new_project()
 	// so that the project can send signals to the gtk 
 	// main loop
 	// try/catch probably
-	boost::shared_ptr<mojo::Project> new_project = mojo::Project::create();
+	boost::shared_ptr<mojo::Project> new_project(new mojo::Project);
 
 	boost::shared_ptr<ProjectView> pview = ProjectView::create(new_project);
 

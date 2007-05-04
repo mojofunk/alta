@@ -44,6 +44,7 @@ libbooty/file_utils.cpp
 """)
 
 libmojo_source_files = Split("""
+libmojo/audio_track.cpp
 libmojo/dir_names.cpp
 libmojo/file_extensions.cpp
 libmojo/file_utils.cpp
@@ -53,6 +54,7 @@ libmojo/paths_system.cpp
 libmojo/paths_user.cpp
 libmojo/project.cpp
 libmojo/project_dir.cpp
+libmojo/project_format.cpp
 """)
 
 gmojo_source_files = Split("""
@@ -81,4 +83,3 @@ gmojo = env.Program( env['VERSIONED_NAME'], all_source_files)
 Default(gmojo)
 
 env.Install(env['BINDIR'], gmojo)
-

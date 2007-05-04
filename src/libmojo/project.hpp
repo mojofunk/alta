@@ -2,29 +2,19 @@
 #ifndef MOJO_PROJECT_HPP
 #define MOJO_PROJECT_HPP
 
-#include <boost/noncopyable.hpp>
-#include <boost/shared_ptr.hpp>
+#include <boost/serialization/nvp.hpp>
+#include <boost/serialization/string.hpp>
+#include <boost/serialization/list.hpp>
 
-#include <string>
+#include "audio_track.hpp"
 
 namespace mojo {
 
-class Project : boost::noncopyable
+/**
+ */
+class Project
 {
 public:
-
-	// factory functions
-
-	// create a new project
-	static boost::shared_ptr<Project> create();
-
-public:
-
-	void set_name(const std::string&);
-
-	const std::string& get_name () const;
-
-private:
 
     /**
 	 * This will create temporary project in a temporary
@@ -32,25 +22,44 @@ private:
 	 */
     Project();
 
+	/**
+	 * not sure if this should be a shallow or deep copy
+	 */
+	Project(const Project& other);
+
     ~Project();
 
-	/**
-	 * load a project from disk
-	 */
-	 //project(const string& file_path);
+public:
 
+	void set_name(const std::string&);
+
+	const std::string& get_name() const;
+
+	bool add_audio_track(AudioTrack* audio_track);
+
+	typedef std::list<AudioTrack*> AudioTrackList;
+
+	const AudioTrackList& track_list() const
+	{ return m_audio_tracks; }
+
+private:
+
+	// serialization
+	friend class boost::serialization::access;
+
+	template<class Archive>
+	void serialize(Archive & ar, const unsigned int version)
+	{
+		ar & BOOST_SERIALIZATION_NVP(m_name);
+		ar & BOOST_SERIALIZATION_NVP(m_audio_tracks);
+	}
+
+protected:
+	
 	// member data
 	std::string m_name;
 
-private:
-	
-	struct deleter;
-	friend struct deleter;
-		
-	struct deleter
-	{
-		void operator()(Project* project) { delete project; }
-	};
+	AudioTrackList  m_audio_tracks;
 
 };
 
