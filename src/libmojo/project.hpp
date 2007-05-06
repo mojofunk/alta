@@ -2,38 +2,39 @@
 #ifndef MOJO_PROJECT_HPP
 #define MOJO_PROJECT_HPP
 
-#include <boost/serialization/nvp.hpp>
-#include <boost/serialization/string.hpp>
-#include <boost/serialization/list.hpp>
+#include <string>
 
-#include "audio_track.hpp"
+#include <libido/project.hpp>
+
+#include <libmojo/audio_track.hpp>
 
 namespace mojo {
 
-/**
- */
-class Project
+using std::string;
+
+class Project : public ido::IProject
 {
 public:
 
-    /**
-	 * This will create temporary project in a temporary
-	 * directory until the project is saved.
-	 */
     Project();
 
-	/**
-	 * not sure if this should be a shallow or deep copy
-	 */
-	Project(const Project& other);
+	const string& get_name() const
+	{ return m_name; }
 
-    ~Project();
+	void set_name(const string& name)
+	{ m_name = name; }
+
+private:
+
+	string m_name;
 
 public:
 
-	void set_name(const std::string&);
+	//IProjectDescription& get_description() = 0;
 
-	const std::string& get_name() const;
+
+
+#if 0
 
 	bool add_audio_track(AudioTrack* audio_track);
 
@@ -41,28 +42,10 @@ public:
 
 	const AudioTrackList& track_list() const
 	{ return m_audio_tracks; }
-
-private:
-
-	// serialization
-	friend class boost::serialization::access;
-
-	template<class Archive>
-	void serialize(Archive & ar, const unsigned int version)
-	{
-		ar & BOOST_SERIALIZATION_NVP(m_name);
-		ar & BOOST_SERIALIZATION_NVP(m_audio_tracks);
-	}
-
-protected:
-	
-	// member data
-	std::string m_name;
-
-	AudioTrackList  m_audio_tracks;
+#endif
 
 };
 
 } // namespace mojo
 
-#endif // MOJO_PROJECT_HPP
+#endif
