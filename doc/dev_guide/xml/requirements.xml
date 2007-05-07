@@ -14,6 +14,23 @@
       A listing of functional software requirements for &GMOJO_APP;
     </para>
 
+	<section id="project-formats">
+		<title>Project Formats</title>
+		<para>
+			A project format is all the files and directories that make
+			up the representation of a Project on disk.
+		</para>
+		<para>
+			The application must support reading and writing of several
+			formats for interoperability between different DAW's.
+		</para>
+		<para>
+			The application must be able to convert a project from one
+			format to any other format with as little information loss
+			as possible.
+		</para>
+	</section>
+
     <section id="project-files">
       <title>Project Files</title>
       <para>
