@@ -1,6 +1,3 @@
-Create event_impl and sequence_impl classes and use PIMPL and or inheritance for
-state management using boost/serialization.
-
 for methods in gleam:: that create directories etc. add an argument to take a mode
 and have it default to gleam::default_file_mode or whatever.
 
