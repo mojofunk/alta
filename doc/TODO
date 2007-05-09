@@ -6,4 +6,7 @@ locking to take place. glib logging can't easily be made lock-free. There are
 no real advantages to providing a glib logging backend that I can think of.
 
 In mojo::user::paths don't create the directory when returning the search path.
-don't return search path, just a string
+don't return search path, just a string.
+
+explore using boost::thread instead of glib/mm threads in libgleam or possibly
+a compile time selection.
