@@ -1,6 +1,5 @@
-
-#ifndef MOJO_PATHS_INCLUDED
-#define MOJO_PATHS_INCLUDED
+#ifndef MOJO_AUDIO_TRACK_INCLUDED
+#define MOJO_AUDIO_TRACK_INCLUDED
 
 #include <libido/audio_track.hpp>
 #include <libido/event.hpp>
@@ -46,4 +45,4 @@ private:
 
 } // namespace mojo
 
-#endif // MOJO_PATHS_INCLUDED
+#endif // MOJO_AUDIO_TRACK_INCLUDED
