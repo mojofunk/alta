@@ -19,7 +19,7 @@ get_unique_filename (const string& dir,
                      const string& ext)
 {
 
-	if(!(exists (dir) && is_directory (dir)))
+	if(!is_directory (dir))
 	{
 
 #ifdef MOJO_DEBUG
