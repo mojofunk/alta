@@ -10,3 +10,14 @@ don't return search path, just a string.
 
 explore using boost::thread instead of glib/mm threads in libgleam or possibly
 a compile time selection.
+
+Break build system up so that testing for dependencies does not have to be done
+each time.
+
+Add a build script for building unit tests, which implies breaking the existing
+build script up somewhat into:
+
+check dependencies
+configure
+build
+check/test
