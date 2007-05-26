@@ -12,7 +12,7 @@
 
 #include <libmojo/project.hpp>
 
-#include "track_view.hpp"
+#include <ui/track_view.hpp>
 
 namespace gmojo {
 

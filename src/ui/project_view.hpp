@@ -40,15 +40,9 @@ private:
 
 	boost::shared_ptr<mojo::Project> m_project;
 
+	// per project windows
+
 	EditWindow m_edit_window;
-
-	/**
-	 * The canvasview shouldn't need access to anything
-	 * in this class.
-	 */
-	// ProjectCanvas
-
-    // TransportControl m_transport_control;
 
 private:
 

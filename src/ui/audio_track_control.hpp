@@ -2,13 +2,13 @@
 #ifndef GMOJO_AUDIO_TRACK_CONTROL_INCLUDED
 #define GMOJO_AUDIO_TRACK_CONTROL_INCLUDED
 
-#include <boost/noncopyable.hpp>
-
 #include <gtk/gtk.h>
+
+#include <ui/track_control.hpp>
 
 namespace gmojo {
 
-class AudioTrackControl : boost::noncopyable
+class AudioTrackControl : TrackControl
 {
 public:
 

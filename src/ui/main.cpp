@@ -5,8 +5,8 @@
 
 #include <gtk/gtk.h>
 
-#include "application.hpp"
-#include "signal_handler.hpp"
+#include <ui/application.hpp>
+#include <ui/signal_handler.hpp>
 
 #include "debug.hpp"
 
@@ -28,7 +28,6 @@ main(int argc, char* argv[])
 
 	SignalHandler	signal_handler;
 
-#if 0
 	gtk_init(&argc, &argv);
 
 	{
@@ -36,9 +35,6 @@ main(int argc, char* argv[])
 
 		gmojo_app->run();
 	}
-#endif
-
-
 
 #ifdef GMOJO_DEBUG
 	gleam::thread_map().unregister_thread(gui_thread_name);

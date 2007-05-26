@@ -61,6 +61,8 @@ gmojo_source_files = Split("""
 ui/application.cpp
 ui/edit_canvas.cpp
 ui/edit_window.cpp
+ui/edit_window_menu_bar.cpp
+ui/gtk_ui_manager.cpp
 ui/log_domain.cpp
 ui/project_view.cpp
 ui/thread_names.cpp

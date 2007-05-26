@@ -9,7 +9,9 @@
 
 #include <libmojo/project.hpp>
 
-#include "edit_canvas.hpp"
+#include <ui/gtk_ui_manager.hpp>
+#include <ui/edit_window_menu_bar.hpp>
+#include <ui/edit_canvas.hpp>
 
 namespace gmojo {
 
@@ -26,6 +28,12 @@ private:
 	boost::shared_ptr<mojo::Project> m_project;
 
 	GtkWidget* m_edit_window;
+
+	boost::intrusive_ptr<GtkUIManager> m_ui_manager;
+
+	//EditWindowActions m_actions;
+
+	EditWindowMenuBar m_menu_bar;
 
 	EditCanvas m_edit_canvas;
 };
