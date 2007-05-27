@@ -1,7 +1,10 @@
 
-#include <ui/application_actions.hpp>
 #include <ui/edit_window.hpp>
-#include <ui/edit_window_ui_defs.hpp>
+
+#include <ui/application_action_group.hpp>
+#include <ui/edit_window_menu_action_group.hpp>
+
+#include <ui/edit_window_menu_ui_definition.hpp>
 
 #include <ui/debug/debug.hpp>
 
@@ -21,17 +24,21 @@ EditWindow::EditWindow(boost::shared_ptr<mojo::Project> project)
 	LOG_GMOJO_DEBUG;
 #endif
 
-	create_window();
+	create_window ();
 
-	create_packing_widgets();
+	create_packing_widgets ();
 
-	create_ui_manager();
+	create_ui_manager ();
 
-	create_menu_bar();
+	add_action_groups_to_ui_manager ();
 
-	pack_widgets();
+	merge_ui_definitions ();
 
-	connect_signals();
+	create_menu_bar ();
+
+	pack_widgets ();
+
+	connect_signals ();
 
 }
 
@@ -58,10 +65,10 @@ EditWindow::create_window()
 }
 
 bool
-EditWindow::create_packing_widgets()
+EditWindow::create_packing_widgets ()
 {
 	// check return
-	m_main_vbox = gtk_vbox_new(false, 0);
+	m_main_vbox = gtk_vbox_new (false, 0);
 	gtk_widget_show (m_main_vbox);
 
 	return true;
@@ -70,31 +77,51 @@ EditWindow::create_packing_widgets()
 bool
 EditWindow::create_ui_manager()
 {
-	m_ui_manager = gtk_ui_manager_new();
+	m_ui_manager = gtk_ui_manager_new ();
+
+	if(!m_ui_manager)
+	{
+
+#ifdef GMOJO_DEBUG
+		LOG_GMOJO_CRITICAL;
+#endif
+
+		return false;
+	}
+
+	return true;
+}
+
+bool
+EditWindow::add_action_groups_to_ui_manager ()
+{
+	GtkActionGroup * action_group = 0;
 
 	// add ui_manager accel group to window
 	gtk_window_add_accel_group (GTK_WINDOW (m_window),
 			gtk_ui_manager_get_accel_group (m_ui_manager));
 
-	// do something better here
-	GtkActionGroup* app_action_group = gtk_action_group_new ("ApplicationActions");
-	//gtk_action_group_set_translation_domain (app_action_group, NULL);
-
-	gtk_action_group_add_actions (app_action_group,
-			application_action_entries,
-			G_N_ELEMENTS (application_action_entries),
-			&Application::instance());
-
-	gtk_ui_manager_insert_action_group (m_ui_manager, app_action_group, 0);
+	// add top level menu actions
+	action_group = edit_window_menu_action_group_new();
+	gtk_ui_manager_insert_action_group (m_ui_manager, action_group, 0);
+	g_object_unref (action_group);
 	
-	// m_ui_manager now holds the only reference
-	g_object_unref (app_action_group);
+	// add application actions
+	action_group = application_action_group_new(&Application::instance());
+	gtk_ui_manager_insert_action_group (m_ui_manager, action_group, 0);
+	g_object_unref (action_group);
 
+	return true;
+}
+
+bool
+EditWindow::merge_ui_definitions ()
+{
 	guint merge_id = 0;
 	GError * error = NULL;
 
 	merge_id = gtk_ui_manager_add_ui_from_string (m_ui_manager,
-			edit_menu_ui_defs, -1, &error);
+			edit_window_menu_ui_definition, -1, &error);
 
 	if (merge_id == 0) {
 		
@@ -103,8 +130,8 @@ EditWindow::create_ui_manager()
 #endif
 
 		g_error_free(error);
-		
-		// throw 
+	
+		return false;
 	}
 
 	return true;

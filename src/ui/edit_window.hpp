@@ -23,13 +23,17 @@ public:
 
 private:
 
-	bool create_window();
+	bool create_window ();
 
-	bool create_packing_widgets();
+	bool create_packing_widgets ();
 
 	bool create_ui_manager();
 
-	bool create_menu_bar();
+	bool add_action_groups_to_ui_manager ();
+
+	bool merge_ui_definitions ();
+
+	bool create_menu_bar ();
 
 	//bool create_edit_canvas();
 
