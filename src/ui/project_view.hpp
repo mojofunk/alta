@@ -7,14 +7,15 @@
 
 #include <libmojo/project.hpp>
 
-#include "edit_window.hpp"
+#include <ui/edit_window.hpp>
 
 namespace gmojo {
 
 /**
    The project view is intended to be the central
    class through which all the different Views of
-   the project are created and accessed.
+   the project are created and accessed. It also 
+   manages the top level windows for a project
 
 */
 class ProjectView : boost::noncopyable
@@ -30,7 +31,10 @@ public:
 
 //   mojo::Project& project() { return *m_project; }
 
-	static boost::shared_ptr<ProjectView> create (boost::shared_ptr<mojo::Project> project);
+	static boost::shared_ptr<ProjectView>
+		create (boost::shared_ptr<mojo::Project> project);
+
+	EditWindow& get_edit_window() { return m_edit_window; }
 
 private:
 

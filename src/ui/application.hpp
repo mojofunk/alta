@@ -20,7 +20,7 @@ public:
 
 	static boost::shared_ptr<Application> create (int argc, char *argv[]);
 
-	Application& instance() { return *sm_app; }
+	static Application& instance() { return *sm_app; }
 
 	/**
 	 * Start the event loop and Create a new
