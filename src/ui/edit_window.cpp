@@ -1,10 +1,9 @@
 
-
 #include <ui/application_actions.hpp>
 #include <ui/edit_window.hpp>
 #include <ui/edit_window_ui_defs.hpp>
 
-#include "debug.hpp"
+#include <ui/debug/debug.hpp>
 
 
 namespace gmojo {

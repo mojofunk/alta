@@ -1,5 +1,5 @@
 
-#include "log_domain.hpp"
+#include <ui/debug/log_domain.hpp>
 
 namespace gmojo {
 

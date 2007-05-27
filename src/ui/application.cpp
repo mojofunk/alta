@@ -1,8 +1,8 @@
 
-#include "application.hpp"
-#include "project_view.hpp"
+#include <ui/application.hpp>
+#include <ui/project_view.hpp>
 
-#include "debug.hpp"
+#include <ui/debug/debug.hpp>
 
 namespace gmojo {
 

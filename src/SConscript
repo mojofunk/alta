@@ -63,12 +63,15 @@ ui/application_commands.cpp
 ui/edit_canvas.cpp
 ui/edit_window.cpp
 ui/edit_window_ui_defs.cpp
-ui/log_domain.cpp
 ui/project_view.cpp
-ui/thread_names.cpp
 ui/main.cpp
 ui/signal_handler.cpp
 ui/window_title.cpp
+""")
+
+gmojo_debug_files=Split("""
+ui/debug/log_domain.cpp
+ui/debug/thread_names.cpp
 """)
 
 all_source_files = libgleam_source_files + \
@@ -78,7 +81,7 @@ gmojo_source_files
 
 if env['DEBUG']:
 	all_source_files += liblogx_source_files
-
+	all_source_files += gmojo_debug_files
 
 gmojo = env.Program( env['VERSIONED_NAME'], all_source_files)
 

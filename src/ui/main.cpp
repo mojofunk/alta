@@ -8,7 +8,7 @@
 #include <ui/application.hpp>
 #include <ui/signal_handler.hpp>
 
-#include "debug.hpp"
+#include <ui/debug/debug.hpp>
 
 #include <iostream>
 

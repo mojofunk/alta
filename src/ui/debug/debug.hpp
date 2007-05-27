@@ -17,8 +17,8 @@
 
 #include <libgleam/thread_debug.hpp>
 
-#include "log_domain.hpp"
-#include "thread_names.hpp"
+#include <ui/debug/log_domain.hpp>
+#include <ui/debug/thread_names.hpp>
 
 /*
  * Define the default log types available when GMOJO_DEBUG is

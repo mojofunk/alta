@@ -1,7 +1,7 @@
 
-#include "edit_canvas.hpp"
+#include <ui/edit_canvas.hpp>
 
-#include "debug.hpp"
+#include <ui/debug/debug.hpp>
 
 namespace gmojo {
 

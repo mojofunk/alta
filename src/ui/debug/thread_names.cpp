@@ -1,4 +1,4 @@
-#include "thread_names.hpp"
+#include <ui/debug/thread_names.hpp>
 
 namespace gmojo {
 

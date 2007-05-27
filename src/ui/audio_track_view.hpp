@@ -2,8 +2,8 @@
 #ifndef GMOJO_AUDIO_TRACK_VIEW_INCLUDED
 #define GMOJO_AUDIO_TRACK_VIEW_INCLUDED
 
-#include "track_view.hpp"
-#include "audio_track_control.hpp"
+#include <ui/track_view.hpp>
+#include <ui/audio_track_control.hpp>
 
 namespace gmojo {
 

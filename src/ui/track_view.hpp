@@ -4,7 +4,7 @@
 
 #include <boost/noncopyable.hpp>
 
-#include "track_control.hpp"
+#include <ui/track_control.hpp>
 
 namespace gmojo {
 
