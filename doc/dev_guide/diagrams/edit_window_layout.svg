@@ -28,17 +28,17 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="269.02165"
-     inkscape:cy="476.4959"
+     inkscape:zoom="0.9899495"
+     inkscape:cx="486.76376"
+     inkscape:cy="581.77748"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:window-width="947"
-     inkscape:window-height="847"
-     inkscape:window-x="20"
-     inkscape:window-y="56" />
+     inkscape:window-width="1280"
+     inkscape:window-height="949"
+     inkscape:window-x="0"
+     inkscape:window-y="25" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -54,36 +54,66 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <g
-       id="g3168">
-      <rect
-         y="199.79343"
-         x="-2.0203044"
-         height="495.34351"
-         width="735.39111"
-         id="rect3152"
-         style="opacity:0.9837838;fill:#ffaaaa;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      <text
-         id="text3164"
-         y="228.07771"
-         x="92.934036"
-         style="font-size:20px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
-         xml:space="preserve"><tspan
-           y="228.07771"
-           x="92.934036"
-           id="tspan3166"
-           sodipodi:role="line">CanvasVBox</tspan></text>
-    </g>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3140"><flowRegion
+         id="flowRegion3142"><rect
+           id="rect3144"
+           width="4.0406103"
+           height="20.203051"
+           x="357.59399"
+           y="587.69202" /></flowRegion><flowPara
+         id="flowPara3146">MainM</flowPara></flowRoot>    <text
+       xml:space="preserve"
+       style="font-size:17.3895359px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="677.78345"
+       y="411.07843"
+       id="text3175"><tspan
+         sodipodi:role="line"
+         id="tspan3177"
+         x="677.78345"
+         y="411.07843">Vertical ScrollBar</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16.56274223px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="217.37546"
+       y="278.83557"
+       id="text3152"
+       sodipodi:linespacing="125%"
+       transform="scale(1.000054,0.999946)"><tspan
+         sodipodi:role="line"
+         id="tspan3154"
+         x="217.37546"
+         y="278.83557">VerticalPane</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24.46157646px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="300.86176"
+       y="173.50749"
+       id="text3158"
+       sodipodi:linespacing="125%"
+       transform="scale(1.000054,0.999946)"><tspan
+         sodipodi:role="line"
+         id="tspan3160"
+         x="300.86176"
+         y="173.50749">GlobalHBox</tspan></text>
+    <rect
+       style="opacity:0.9837838;fill:#ffaaaa;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3.99999952;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3152"
+       width="603.78564"
+       height="433.00076"
+       x="64.132355"
+       y="295.57388" />
     <g
        id="g3154"
-       transform="matrix(0.8630212,0,0,1.0199715,-17.272796,-11.01197)">
+       transform="matrix(0.7155251,0,0,0.8455601,47.933356,120.74426)">
       <rect
          y="262.1778"
          x="38.140694"
          height="400.63675"
          width="239.35901"
          id="rect2160"
-         style="opacity:0.9837838;fill:#e6e6e6;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.26339197;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="opacity:0.9837838;fill:#e6e6e6;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:5.1425128;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <text
          id="text3134"
          y="298.07648"
@@ -95,25 +125,16 @@
            id="tspan3136"
            sodipodi:role="line">Track Header Canvas</tspan></text>
     </g>
-    <flowRoot
-       xml:space="preserve"
-       id="flowRoot3140"><flowRegion
-         id="flowRegion3142"><rect
-           id="rect3144"
-           width="4.0406103"
-           height="20.203051"
-           x="357.59399"
-           y="587.69202" /></flowRegion><flowPara
-         id="flowPara3146">MainM</flowPara></flowRoot>    <g
+    <g
        id="g3159"
-       transform="translate(-68.690323,-5.0507628)">
+       transform="matrix(0.8460878,0,0,0.8318775,8.4095383,124.94353)">
       <rect
          y="260.40259"
          x="307.08636"
          height="408.10162"
          width="414.16254"
          id="rect3138"
-         style="opacity:0.9837838;fill:#e6e6e6;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="opacity:0.9837838;fill:#e6e6e6;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.76784992;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <text
          id="text3148"
          y="298.78842"
@@ -125,29 +146,107 @@
            id="tspan3150"
            sodipodi:role="line">Track Time Axis Canvas</tspan></text>
     </g>
+    <g
+       id="g4188"
+       transform="matrix(0.8290932,0,0,0.8290036,70.545043,129.87322)">
+      <rect
+         style="opacity:0.9837838;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.82480812;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect4178"
+         width="39.425682"
+         height="407.65857"
+         x="671.43457"
+         y="255.65131" />
+      <rect
+         style="opacity:0.9837838;fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.8248086;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect4182"
+         width="32.474667"
+         height="115.70545"
+         x="674.59949"
+         y="356.24744" />
+    </g>
+    <g
+       id="g4184"
+       transform="matrix(0.852112,0,0,0.8290036,-397.51296,320.54406)">
+      <rect
+         transform="matrix(0,-1,-1,0,0,0)"
+         y="-1190.6909"
+         x="-482.05054"
+         height="407.65857"
+         width="39.425682"
+         id="rect3173"
+         style="opacity:0.9837838;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.7591939;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         transform="matrix(0,-1,-1,0,0,0)"
+         y="-1047.8822"
+         x="-477.48026"
+         height="115.70545"
+         width="32.474667"
+         id="rect3179"
+         style="opacity:0.9837838;fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.7591939;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4.99999952;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 256.49882,296.44792 C 256.49882,725.16121 256.49882,725.16121 256.49882,725.16121"
+       id="path2179" />
+    <g
+       id="g4202"
+       transform="matrix(0.8290932,0,0,0.8290036,65.807371,129.87322)">
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:6.03101063;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M -47.142857,143.79076 C 800,143.79076 800,143.79076 800,143.79076"
+         id="path4135" />
+      <g
+         id="g4198">
+        <rect
+           style="opacity:0.9837838;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:6.03101063;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect3156"
+           width="845.71429"
+           height="740"
+           x="-44.285713"
+           y="69.505043" />
+        <path
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:6.03101063;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="M -44.285714,739.50504 C 802.85714,739.50504 802.85714,739.50504 802.85714,739.50504"
+           id="path3164" />
+      </g>
+    </g>
     <rect
-       style="opacity:0.9837838;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3.99999976;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect3173"
-       width="39.425682"
-       height="407.65857"
-       x="671.43457"
-       y="255.65131" />
+       style="opacity:0.9837838;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.99999952;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4137"
+       width="677.48755"
+       height="36.713017"
+       x="42.118992"
+       y="754.76843" />
     <text
        xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
-       x="754.08655"
-       y="394.3714"
-       id="text3175"><tspan
+       style="font-size:22.82000732px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="308.06003"
+       y="781.01868"
+       id="text4139"
+       sodipodi:linespacing="125%"
+       transform="scale(1.000054,0.999946)"><tspan
          sodipodi:role="line"
-         id="tspan3177"
-         x="754.08655"
-         y="394.3714">Vertical ScrollBar</tspan></text>
+         id="tspan4141"
+         x="308.06003"
+         y="781.01868">GtkStatusbar</tspan></text>
     <rect
-       style="opacity:0.9837838;fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect3179"
-       width="32.474667"
-       height="115.70545"
-       x="674.59949"
-       y="356.24744" />
+       style="opacity:0.9837838;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.99999952;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4192"
+       width="688.14734"
+       height="45.003056"
+       x="36.196896"
+       y="195.7832" />
+    <text
+       xml:space="preserve"
+       style="font-size:25.36587143px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="295.82834"
+       y="228.5007"
+       id="text4194"
+       sodipodi:linespacing="125%"
+       transform="scale(1.000054,0.999946)"><tspan
+         sodipodi:role="line"
+         id="tspan4196"
+         x="295.82834"
+         y="228.5007">GtkMenuBar</tspan></text>
   </g>
 </svg>
