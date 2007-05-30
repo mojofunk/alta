@@ -49,6 +49,7 @@ libmojo/dir_names.cpp
 libmojo/file_extensions.cpp
 libmojo/file_utils.cpp
 libmojo/log_domain.cpp
+libmojo/object.cpp
 libmojo/paths.cpp
 libmojo/paths_system.cpp
 libmojo/paths_user.cpp
@@ -65,6 +66,8 @@ ui/edit_canvas.cpp
 ui/edit_window.cpp
 ui/edit_window_menu_action_group.cpp
 ui/edit_window_menu_ui_definition.cpp
+ui/project_action_group.cpp
+ui/project_actions.cpp
 ui/project_view.cpp
 ui/main.cpp
 ui/signal_handler.cpp

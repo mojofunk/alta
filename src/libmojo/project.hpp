@@ -4,19 +4,24 @@
 
 #include <string>
 
+#include <boost/signal.hpp>
+
 #include <libido/project.hpp>
 
+#include <libmojo/object.hpp>
 #include <libmojo/audio_track.hpp>
 
 namespace mojo {
 
 using std::string;
 
-class Project : public ido::IProject
+class Project : public Object
 {
 public:
 
     Project();
+
+    ~Project();
 
 	const string& get_name() const
 	{ return m_name; }
@@ -24,9 +29,27 @@ public:
 	void set_name(const string& name)
 	{ m_name = name; }
 
+	/**
+	 * @return true if project was closed
+	 * close will cause the signal_close
+	 * to be emitted. If the return value
+	 * of the signal is false then the 
+	 * dispose method will be executed
+	 */
+	void close ();
+
+public:
+
+	boost::signal<bool ()>& signal_close()
+	{ return m_signal_close; }
+
 private:
 
 	string m_name;
+	
+	// signals
+
+	boost::signal<bool ()> m_signal_close;
 
 public:
 

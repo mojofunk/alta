@@ -8,9 +8,9 @@
 
 namespace gmojo {
 
-	void new_project(GtkAction*, Application*);
+	void new_project (GtkAction*, Application*);
 	
-	void quit(GtkAction*, Application*);
+	void quit (GtkAction*, Application*);
 
 } // namespace gmojo
 

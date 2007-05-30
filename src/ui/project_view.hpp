@@ -18,9 +18,13 @@ namespace gmojo {
    manages the top level windows for a project
 
 */
-class ProjectView : boost::noncopyable
+class ProjectView : public mojo::Object, boost::noncopyable
 {
 public:
+
+    ProjectView(mojo::Project* project);
+
+    ~ProjectView();
 
 	void run();
 
@@ -31,36 +35,19 @@ public:
 
 //   mojo::Project& project() { return *m_project; }
 
-	static boost::shared_ptr<ProjectView>
-		create (boost::shared_ptr<mojo::Project> project);
-
 	EditWindow& get_edit_window() { return m_edit_window; }
 
 private:
 
-    ProjectView(boost::shared_ptr<mojo::Project> project);
+	void on_project_signal_destroy ();
 
-    ~ProjectView();
+private:
 
-	boost::shared_ptr<mojo::Project> m_project;
+	mojo::Project* m_project;
 
 	// per project windows
 
 	EditWindow m_edit_window;
-
-private:
-
-	struct deleter;
-	friend struct deleter;
-
-	/**
-	 * So the destructor can be private and thus
-	 * preventing delete sp.get()
-	 */
-	struct deleter
-	{
-		void operator()(ProjectView* p) { delete p; }
-	};
 
 };
 

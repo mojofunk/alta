@@ -27,7 +27,7 @@ public:
 	 * added signal so it can create a new TrackView for
 	 * any tracks that are added to the project.
 	 */
-	EditCanvas(boost::shared_ptr<mojo::Project> project);
+	EditCanvas(mojo::Project* project);
 
 	~EditCanvas();
 
@@ -48,7 +48,7 @@ private:
 
 private:
 
-	boost::shared_ptr<mojo::Project> m_project;
+	mojo::Project* m_project;
 
 	GtkWidget* m_hpaned;
 

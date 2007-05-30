@@ -32,7 +32,7 @@ EditCanvas::on_root_button_press (GooCanvasItem  *view,
 }
 
 
-EditCanvas::EditCanvas(boost::shared_ptr<mojo::Project> project)
+EditCanvas::EditCanvas(mojo::Project* project)
 	:
 		m_project(project)
 {
@@ -68,6 +68,7 @@ EditCanvas::EditCanvas(boost::shared_ptr<mojo::Project> project)
 	g_signal_connect (m_root_item, "button_press_event",
 			(GtkSignalFunc) public_on_root_button_press, this);
 
+	//
 	m_project->set_name("Untitled");
 }
 

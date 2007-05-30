@@ -1,3 +1,4 @@
+#include <boost/bind.hpp>
 
 #include <ui/application.hpp>
 #include <ui/project_view.hpp>
@@ -51,38 +52,49 @@ Application::run()
 void
 Application::quit()
 {
-
 #ifdef GMOJO_DEBUG_EXTRA
 	LOG_GMOJO_DEBUG;
 #endif
+
 
 }
 
 void
 Application::new_project()
 {
-	// need to pass in implementation of a async signal bus
-	// so that the project can send signals to the gtk 
-	// main loop
-	// try/catch probably
-	boost::shared_ptr<mojo::Project> new_project(new mojo::Project);
+#ifdef GMOJO_DEBUG_EXTRA
+	LOG_GMOJO_DEBUG;
+#endif
 
-	boost::shared_ptr<ProjectView> pview = ProjectView::create(new_project);
+	mojo::Project* new_project = new mojo::Project();
+
+	ProjectView* pview = new ProjectView (new_project);
+
+	new_project->unref();
+
+	pview->signal_destroy().connect
+		(
+		 boost::bind (
+			 boost::mem_fn (&Application::on_projectview_signal_destroy),
+			 this, pview)
+		);
 
 	// check the return?
 	m_projects.insert(pview);
-
+	
 	pview->run();
-
-	// Create an temporary project
-	// and ProjectView
-
 }
 
-bool
-Application::close_project(boost::shared_ptr<ProjectView> project_view)
+void
+Application::on_projectview_signal_destroy (ProjectView* projectview)
 {
-	return true;
+#ifdef GMOJO_DEBUG_EXTRA
+	LOG_GMOJO_DEBUG;
+#endif
+
+	m_projects.erase(projectview);
+
+	projectview->unref();
 
 }
 
@@ -92,5 +104,6 @@ Application::open_project(const string& path_to_file)
     
     
 }
+
 
 } // namespace gmojo

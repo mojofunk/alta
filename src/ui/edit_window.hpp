@@ -3,21 +3,21 @@
 #define GMOJO_EDIT_WINDOW_INCLUDED
 
 #include <gtk/gtk.h>
-#include <goocanvas.h>
 
 #include <boost/noncopyable.hpp>
 
+#include <libmojo/object.hpp>
 #include <libmojo/project.hpp>
 
 #include <ui/edit_canvas.hpp>
 
 namespace gmojo {
 
-class EditWindow : boost::noncopyable
+class EditWindow : public mojo::Object, boost::noncopyable
 {
 public:
 
-	EditWindow(boost::shared_ptr<mojo::Project> project);
+	EditWindow(mojo::Project* project);
 
 	~EditWindow();
 
@@ -60,7 +60,14 @@ private:
 
 private:
 
-	boost::shared_ptr<mojo::Project> m_project;
+	bool on_project_signal_close ();
+
+
+	void on_project_signal_destroy ();
+
+private:
+
+	mojo::Project* m_project;
 	
 	// gobjects
 	GtkUIManager* m_ui_manager;

@@ -42,7 +42,14 @@ public:
     /// Create a new ProjectView.
     void new_project();
 
-	bool close_project (boost::shared_ptr<ProjectView> project_view);
+	/**
+	 * Create a new ProjectView if one doesn't 
+	 * already exist for that project.
+	 *
+	 * If it does exist bring the ProjectView into into 
+	 * focus.
+	 */
+	void open_project(const string& path_to_file);
     
 private:
 
@@ -51,28 +58,23 @@ private:
     Application (int argc, char *argv[]);
     ~Application();
 
-	typedef set<boost::shared_ptr<ProjectView> > Projects;
+	typedef set<ProjectView*> Projects;
 
 	Projects m_projects;
 
-	/**
-	 * Create a new ProjectView if one doesn't 
-	 * already exist for that project.
-	 *
-	 * If it does exist bring the ProjectView into into focus.
-	 */
-	void open_project(const string& path_to_file);
-        
+private:
+
+	void on_projectview_signal_destroy (ProjectView*);
+
     /// project agnostic top level dialogs
 
     // about dialog
     // preferences dialog
-    // tool
 
     // edit buffer cut/paste
 
 private:
-
+	
 	// GtkToolTips?
 
 	/**

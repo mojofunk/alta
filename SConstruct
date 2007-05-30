@@ -108,7 +108,7 @@ for pkg, version in deps.iteritems():
 
 # err actually check for these.
 
-env.Append(LIBS = ['boost_filesystem', 'boost_serialization'])
+env.Append(LIBS = ['boost_filesystem', 'boost_serialization', 'boost_signals'])
 
 env.Append(CCFLAGS = '-DHAVE_INTTYPES')
 env.Append(CCFLAGS = '-DHAVE_RINT')

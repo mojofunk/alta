@@ -11,7 +11,7 @@ ostream&
 PrettyFormatter::operator()(ostream& out) const
 {
 	const string separator(" : ");
-	const unsigned int max_column_width = 30;
+	const unsigned int max_column_width = 50;
 
 	for(const_iterator iter = m_log_data.begin(),
 			end = m_log_data.end(); iter != end; ++iter)

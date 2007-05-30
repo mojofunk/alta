@@ -1,8 +1,12 @@
 
+#include <boost/bind.hpp>
+
+
 #include <ui/edit_window.hpp>
 
-#include <ui/application_action_group.hpp>
 #include <ui/edit_window_menu_action_group.hpp>
+#include <ui/application_action_group.hpp>
+#include <ui/project_action_group.hpp>
 
 #include <ui/edit_window_menu_ui_definition.hpp>
 
@@ -11,7 +15,7 @@
 
 namespace gmojo {
 
-EditWindow::EditWindow(boost::shared_ptr<mojo::Project> project)
+EditWindow::EditWindow(mojo::Project* project)
 	:
 		m_project(project),
 		m_ui_manager(0),
@@ -23,6 +27,22 @@ EditWindow::EditWindow(boost::shared_ptr<mojo::Project> project)
 #ifdef GMOJO_DEBUG_EXTRA
 	LOG_GMOJO_DEBUG;
 #endif
+
+	m_project->ref();
+
+	m_project->signal_close().connect
+		(
+		 boost::bind (
+			 boost::mem_fn (&EditWindow::on_project_signal_close),
+			 this)
+		);
+	
+	m_project->signal_destroy().connect
+		(
+		 boost::bind (
+			 boost::mem_fn (&EditWindow::on_project_signal_destroy),
+			 this)
+		);
 
 	create_window ();
 
@@ -108,6 +128,11 @@ EditWindow::add_action_groups_to_ui_manager ()
 	
 	// add application actions
 	action_group = application_action_group_new(&Application::instance());
+	gtk_ui_manager_insert_action_group (m_ui_manager, action_group, 0);
+	g_object_unref (action_group);
+
+	// add project actions
+	action_group = project_action_group_new(m_project);
 	gtk_ui_manager_insert_action_group (m_ui_manager, action_group, 0);
 	g_object_unref (action_group);
 
@@ -199,14 +224,12 @@ EditWindow::on_delete_event(GtkWidget* widget, GdkEvent* event)
 	LOG_GMOJO_DEBUG;
 #endif
 
-	// if projects state is modified, ask about saving.
+	m_project->close();
 
-	// causes signal_close signal to be emitted.
-	// which will cause the Application class to
-	// destroy the ProjectView which includes this window.
-	// close_project();
-	return FALSE;
-
+	// always handle the event so the destroy callback is not
+	// called. If the project is closed then we will destroy
+	// the window.
+	return true;
 }
 
 void
@@ -223,9 +246,37 @@ EditWindow::on_destroy (GtkWidget* widget)
 #ifdef GMOJO_DEBUG_EXTRA
 	LOG_GMOJO_DEBUG;
 #endif
-	// this should be in ProjectView::quit
-	// or perhaps ProjectView destructor?
-	gtk_main_quit();
+	// why do we need this?
+	// gtk_main_quit();
+	// do we need to handle this and call gtk_main_quit();
+}
+
+bool
+EditWindow::on_project_signal_close ()
+{
+	// ask about saving.
+
+	return true;
+}
+
+void
+EditWindow::on_project_signal_destroy ()
+{
+	// disconnect signals connected to project
+	
+	// unref project
+	m_project->unref();
+
+	//destroy the window
+	gtk_widget_destroy (GTK_WIDGET (m_window));
+
+	// must now signal the projectview, or should we
+	// do that first?
+
+	// ???
+	//quit();
+
+	signal_destroy ();
 }
 
 } // namespace gmojo

@@ -1,18 +1,13 @@
 
+#include <boost/bind.hpp>
+
 #include <ui/project_view.hpp>
 
 #include <ui/debug/debug.hpp>
 
 namespace gmojo {
 
-boost::shared_ptr<ProjectView>
-ProjectView::create (boost::shared_ptr<mojo::Project> project)
-{
-	boost::shared_ptr<ProjectView> ptr(new ProjectView(project), ProjectView::deleter());
-	return ptr;
-}
-
-ProjectView::ProjectView(boost::shared_ptr<mojo::Project> project)
+ProjectView::ProjectView(mojo::Project* project)
 	:
 		m_project(project),
 		m_edit_window(project)
@@ -20,8 +15,16 @@ ProjectView::ProjectView(boost::shared_ptr<mojo::Project> project)
 #ifdef GMOJO_DEBUG_EXTRA
 	LOG_GMOJO_DEBUG;
 #endif
-    // connect
 
+	m_project->ref();
+    
+	// get notification of project "destruction" for unref
+	m_project->signal_destroy().connect
+		(
+		 boost::bind (
+			 boost::mem_fn (&ProjectView::on_project_signal_destroy),
+			 this)
+		);
 }
 
 ProjectView::~ProjectView()
@@ -37,7 +40,8 @@ ProjectView::run()
 #ifdef GMOJO_DEBUG_EXTRA
 	LOG_GMOJO_DEBUG;
 #endif
-	
+
+	// I think this should be in edit window
 	gtk_main();
 }
 
@@ -47,7 +51,29 @@ ProjectView::quit()
 #ifdef GMOJO_DEBUG_EXTRA
 	LOG_GMOJO_DEBUG;
 #endif
+
+	// I think this should be in edit window
+	gtk_main_quit();
 	return true;
+}
+
+void
+ProjectView::on_project_signal_destroy ()
+{
+#ifdef GMOJO_DEBUG_EXTRA
+	LOG_GMOJO_DEBUG;
+#endif
+
+	// disconnect signals connected to project
+	
+	// unref project
+	m_project->unref();
+
+	// close all the project windows
+
+	quit ();
+
+	m_signal_destroy ();
 }
 
 } // namespace gmojo
