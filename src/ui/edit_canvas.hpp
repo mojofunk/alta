@@ -42,6 +42,21 @@ protected:
 
 private:
 
+	bool create_scrolled_window ();
+
+	bool create_canvas ();
+
+	bool create_track_control_list ();
+	
+	bool create_packing_widgets ();
+
+	void pack_widgets ();
+
+	void connect_signals ();
+
+
+private:
+
 	static gboolean public_on_root_button_press (GooCanvasItem  *view,
 			GooCanvasItem  *target,
 			GdkEventButton *event,
