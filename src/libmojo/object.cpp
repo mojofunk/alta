@@ -43,9 +43,8 @@ Object::unref ()
 
 	if(m_ref_count.get() == 0)
 	{
-		// dispose();
+		dispose();
 		delete this;
-
 	}
 }
 

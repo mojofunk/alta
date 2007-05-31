@@ -19,7 +19,19 @@ public:
 
 	EditWindow(mojo::Project* project);
 
+	// wrap gtk_widget_destroy (window)
+	virtual void destroy ();
+
+	boost::signal<bool ()>& signal_delete_event ()
+	{ return m_signal_delete_event; }
+
+protected:
+
 	~EditWindow();
+
+	virtual void dispose ();
+
+	boost::signal<bool ()> m_signal_delete_event;
 
 private:
 
@@ -43,25 +55,17 @@ private:
 
 private:
 
-	// static signal handlers
-	
-	static gboolean on_edit_window_delete_event(GtkWidget*, GdkEvent*,
+	static gboolean on_window_delete_event(GtkWidget*, GdkEvent*,
 				gpointer edit_window);
 
-	static void on_edit_window_destroy(GtkWidget*, gpointer edit_window);
-
-	// instance signal handlers
-	
-	// ask about saving and possibly close project
 	bool on_delete_event(GtkWidget*, GdkEvent*);
 
-	// no sure what to do on_destroy, possibly nothing.
+
+	static void on_window_destroy(GtkWidget*, gpointer edit_window);
+
 	void on_destroy(GtkWidget*);
 
 private:
-
-	bool on_project_signal_close ();
-
 
 	void on_project_signal_destroy ();
 

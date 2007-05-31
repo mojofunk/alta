@@ -19,14 +19,22 @@ class Project : public Object
 {
 public:
 
-    Project();
+    Project ();
+
+	virtual void destroy () { }
+
+protected:
 
     ~Project();
 
-	const string& get_name() const
+	virtual void dispose () { }
+	
+public:
+
+	const string& get_name () const
 	{ return m_name; }
 
-	void set_name(const string& name)
+	void set_name (const string& name)
 	{ m_name = name; }
 
 	/**
@@ -34,11 +42,9 @@ public:
 	 * close will cause the signal_close
 	 * to be emitted. If the return value
 	 * of the signal is false then the 
-	 * dispose method will be executed
+	 * destroy method will be executed
 	 */
 	void close ();
-
-public:
 
 	boost::signal<bool ()>& signal_close()
 	{ return m_signal_close; }

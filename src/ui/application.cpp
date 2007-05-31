@@ -46,7 +46,9 @@ Application::run()
 	LOG_GMOJO_DEBUG;
 #endif
 
-	new_project();
+	new_project ();
+
+	gtk_main ();
 }
 
 void
@@ -56,7 +58,18 @@ Application::quit()
 	LOG_GMOJO_DEBUG;
 #endif
 
+	// can't use ProjectView::destroy here as it
+	// will invalidate the iterator
+	std::for_each
+		(
+		 m_projects.begin(),
+		 m_projects.end(),
+		 boost::bind (&ProjectView::unref, _1)
+		);
 
+	m_projects.clear();
+
+	gtk_main_quit ();
 }
 
 void
@@ -81,8 +94,6 @@ Application::new_project()
 
 	// check the return?
 	m_projects.insert(pview);
-	
-	pview->run();
 }
 
 void
@@ -92,10 +103,15 @@ Application::on_projectview_signal_destroy (ProjectView* projectview)
 	LOG_GMOJO_DEBUG;
 #endif
 
+	// check
 	m_projects.erase(projectview);
 
 	projectview->unref();
 
+	if(m_projects.empty ())
+	{
+		quit();
+	}
 }
 
 void

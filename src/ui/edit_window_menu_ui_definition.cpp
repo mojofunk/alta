@@ -9,6 +9,7 @@ const char* const edit_window_menu_ui_definition =
 "     <menu name=\"FileMenu\" action=\"File\">" \
 "        <menuitem name=\"NewProjectMenu\" action=\"NewProject\" />" \
 "        <menuitem name=\"CloseProjectMenu\" action=\"CloseProject\" />" \
+"        <menuitem name=\"QuitProjectMenu\" action=\"Quit\" />" \
 "     </menu>" \
 "     <menu name=\"EditMenu\" action=\"Edit\">" \
 "     </menu>" \

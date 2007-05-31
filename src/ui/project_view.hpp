@@ -22,24 +22,25 @@ class ProjectView : public mojo::Object, boost::noncopyable
 {
 public:
 
-    ProjectView(mojo::Project* project);
+    ProjectView (mojo::Project* project);
 
-    ~ProjectView();
+	void destroy ();
 
-	void run();
+protected:
 
-	/**
-	 * @return false if the user cancels.
-	 */
-	bool quit();
+    ~ProjectView ();
 
-//   mojo::Project& project() { return *m_project; }
-
-	EditWindow& get_edit_window() { return m_edit_window; }
+	virtual void dispose ();
 
 private:
 
+	bool on_project_signal_close ();
+
 	void on_project_signal_destroy ();
+
+	void on_edit_window_signal_destroy ();
+
+	bool on_edit_window_signal_delete_event ();
 
 private:
 
@@ -47,7 +48,7 @@ private:
 
 	// per project windows
 
-	EditWindow m_edit_window;
+	EditWindow* m_edit_window;
 
 };
 

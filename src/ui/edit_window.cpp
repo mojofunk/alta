@@ -1,7 +1,6 @@
 
 #include <boost/bind.hpp>
 
-
 #include <ui/edit_window.hpp>
 
 #include <ui/edit_window_menu_action_group.hpp>
@@ -29,13 +28,6 @@ EditWindow::EditWindow(mojo::Project* project)
 #endif
 
 	m_project->ref();
-
-	m_project->signal_close().connect
-		(
-		 boost::bind (
-			 boost::mem_fn (&EditWindow::on_project_signal_close),
-			 this)
-		);
 	
 	m_project->signal_destroy().connect
 		(
@@ -68,8 +60,29 @@ EditWindow::~EditWindow()
 	LOG_GMOJO_DEBUG;
 #endif
 
-	g_object_unref(m_ui_manager);
+}
 
+void
+EditWindow::destroy ()
+{
+#ifdef GMOJO_DEBUG_EXTRA
+	LOG_GMOJO_DEBUG;
+#endif
+
+	//destroy the window
+	gtk_widget_destroy (GTK_WIDGET (m_window));
+}
+
+void
+EditWindow::dispose ()
+{
+#ifdef GMOJO_DEBUG_EXTRA
+	LOG_GMOJO_DEBUG;
+#endif
+	
+	if (m_project) m_project->unref();
+	
+	g_object_unref(m_ui_manager);
 }
 
 bool
@@ -200,16 +213,17 @@ EditWindow::pack_widgets()
 void
 EditWindow::connect_signals()
 {
-	// connect signals
+	// connect to window signals so we can propogate them
+	// using boost::signal
 	g_signal_connect (G_OBJECT (m_window), "delete_event",
-			G_CALLBACK (EditWindow::on_edit_window_delete_event), this);
-
+			G_CALLBACK (EditWindow::on_window_delete_event), this);
+	
 	g_signal_connect (G_OBJECT (m_window), "destroy",
-			G_CALLBACK (EditWindow::on_edit_window_destroy), this);
+			G_CALLBACK (EditWindow::on_window_destroy), this);
 }
 
 gboolean
-EditWindow::on_edit_window_delete_event (GtkWidget* widget,
+EditWindow::on_window_delete_event (GtkWidget* widget,
 		GdkEvent* event, gpointer data )
 {
 	EditWindow* edit_window = static_cast<EditWindow*>(data);
@@ -224,20 +238,17 @@ EditWindow::on_delete_event(GtkWidget* widget, GdkEvent* event)
 	LOG_GMOJO_DEBUG;
 #endif
 
-	m_project->close();
+	g_assert (widget == m_window);
 
-	// always handle the event so the destroy callback is not
-	// called. If the project is closed then we will destroy
-	// the window.
-	return true;
+	return m_signal_delete_event ();
 }
 
 void
-EditWindow::on_edit_window_destroy (GtkWidget* widget, gpointer data)
+EditWindow::on_window_destroy (GtkWidget* widget, gpointer window)
 {
-	EditWindow* edit_window = static_cast<EditWindow*>(data);
+	EditWindow* edit_window = static_cast<EditWindow*>(window);
 
-	edit_window->on_destroy(widget);
+	return edit_window->on_destroy (widget);
 }
 
 void
@@ -246,37 +257,22 @@ EditWindow::on_destroy (GtkWidget* widget)
 #ifdef GMOJO_DEBUG_EXTRA
 	LOG_GMOJO_DEBUG;
 #endif
-	// why do we need this?
-	// gtk_main_quit();
-	// do we need to handle this and call gtk_main_quit();
-}
 
-bool
-EditWindow::on_project_signal_close ()
-{
-	// ask about saving.
+	g_assert (widget == m_window);
 
-	return true;
+	m_signal_destroy ();
+
+	m_window = 0;
 }
 
 void
 EditWindow::on_project_signal_destroy ()
 {
 	// disconnect signals connected to project
-	
-	// unref project
-	m_project->unref();
 
-	//destroy the window
-	gtk_widget_destroy (GTK_WIDGET (m_window));
+	m_project->unref ();
+	m_project = 0;
 
-	// must now signal the projectview, or should we
-	// do that first?
-
-	// ???
-	//quit();
-
-	signal_destroy ();
 }
 
 } // namespace gmojo
