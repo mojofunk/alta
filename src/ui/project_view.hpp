@@ -16,9 +16,8 @@ namespace gmojo {
    class through which all the different Views of
    the project are created and accessed. It also 
    manages the top level windows for a project
-
 */
-class ProjectView : public mojo::Object, boost::noncopyable
+class ProjectView : public mojo::Object
 {
 public:
 

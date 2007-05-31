@@ -13,7 +13,7 @@
 
 namespace gmojo {
 
-class EditWindow : public mojo::Object, boost::noncopyable
+class EditWindow : public mojo::Object
 {
 public:
 

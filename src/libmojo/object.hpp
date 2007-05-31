@@ -1,13 +1,14 @@
 #ifndef MOJO_OBJECT_INCLUDED
 #define MOJO_OBJECT_INCLUDED
 
+#include <boost/noncopyable.hpp>
 #include <boost/signal.hpp>
 
 #include <libgleam/atomic_counter.hpp>
 
 namespace mojo {
 
-class Object
+class Object : public boost::noncopyable
 {
 protected:
 
