@@ -9,18 +9,16 @@
   <section id="gui-interfaces">
     <title>GUI Interfaces</title>
     <para>
-      Each class that represents some aspect of the gui should be defined by
-      an interface(even if that is done after the fact) and no toolkit
-      specific structures should be exposed in the interface/public api. In
-      theory it should abstract the functionality so that any GUI toolkit
-      could be used and the class api would stay the same.
+		Some elements of the GUI should be defined as interfaces and factory
+		functions used to create instances so that different implementations
+		can be used in certain areas.
     </para>
 
-    <para>
-      The gui and engine separation must communicate through an interface
-      that would allow for the engine to be located in a different process
-      or even different system.
-    </para>
+	<para>
+		One situation where technique would be useful is for testing and or
+		using different canvas implementations.
+	</para>
+
   </section>
 
   <section id="server">

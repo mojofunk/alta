@@ -16,8 +16,8 @@
   <section id="function-calls">
     <title>Function Calls</title>
     <para>
-      When calling a function there should be no space between the function
-      name and the starting bracket
+      When calling a function there should be a single space between the function
+      or method name and the starting bracket.
     </para>
   </section>
 <!--
