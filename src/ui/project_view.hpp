@@ -2,7 +2,6 @@
 #ifndef GMOJO_PROJECT_VIEW_INCLUDED
 #define GMOJO_PROJECT_VIEW_INCLUDED
 
-#include <boost/noncopyable.hpp>
 #include <boost/shared_ptr.hpp>
 
 #include <libmojo/project.hpp>

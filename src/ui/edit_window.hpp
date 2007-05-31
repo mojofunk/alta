@@ -4,8 +4,6 @@
 
 #include <gtk/gtk.h>
 
-#include <boost/noncopyable.hpp>
-
 #include <libmojo/object.hpp>
 #include <libmojo/project.hpp>
 
