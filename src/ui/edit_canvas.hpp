@@ -10,13 +10,14 @@
 #include <gtk/gtk.h>
 #include <goocanvas.h>
 
+#include <libmojo/object.hpp>
 #include <libmojo/project.hpp>
 
 #include <ui/track_view.hpp>
 
 namespace gmojo {
 
-class EditCanvas : boost::noncopyable
+class EditCanvas : public mojo::Object
 {
 public:
 
@@ -33,14 +34,18 @@ public:
 
 	GtkWidget* widget() const { return m_hpaned;}
 
-public:
+protected:
+
+	virtual void destroy ();
+
+	virtual void dispose ();
+
+private:
 
 	static gboolean public_on_root_button_press (GooCanvasItem  *view,
 			GooCanvasItem  *target,
 			GdkEventButton *event,
 			gpointer        data);
-
-private:
 
 	bool on_root_button_press (GooCanvasItem  *view,
 			GooCanvasItem  *target,

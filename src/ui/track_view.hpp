@@ -9,8 +9,8 @@
 namespace gmojo {
 
 /**
- * Is TrackView an appropriate name? there could be an
- * argument for calling the widget that contains all the tracks
+ * Is TrackView an appropriate name? there could be an argument 
+ * for calling the widget that contains all the tracks
  * the TrackView.
  */
 

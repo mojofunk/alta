@@ -21,7 +21,7 @@ EditWindow::EditWindow(mojo::Project* project)
 		m_window(0),
 		m_main_vbox(0),
 		m_menu_bar(0),
-		m_edit_canvas(project)
+		m_edit_canvas(0)
 {
 #ifdef GMOJO_DEBUG_EXTRA
 	LOG_GMOJO_DEBUG;
@@ -47,6 +47,8 @@ EditWindow::EditWindow(mojo::Project* project)
 	merge_ui_definitions ();
 
 	create_menu_bar ();
+
+	create_edit_canvas ();
 
 	pack_widgets ();
 
@@ -82,7 +84,9 @@ EditWindow::dispose ()
 	
 	if (m_project) m_project->unref();
 	
-	g_object_unref(m_ui_manager);
+	g_object_unref (m_ui_manager);
+
+	m_edit_canvas->unref ();
 }
 
 bool
@@ -193,6 +197,24 @@ EditWindow::create_menu_bar()
 	return true;
 }
 
+bool
+EditWindow::create_edit_canvas ()
+{
+	m_edit_canvas = new EditCanvas(m_project);
+
+	if(!m_edit_canvas)
+	{
+
+#ifdef GMOJO_DEBUG
+		LOG_GMOJO_CRITICAL;
+#endif
+
+		return false;
+	}
+
+	return true;
+}
+
 void
 EditWindow::pack_widgets()
 {
@@ -202,9 +224,8 @@ EditWindow::pack_widgets()
 						false, false, 0);
 	
 	gtk_box_pack_start (GTK_BOX (m_main_vbox),
-						m_edit_canvas.widget(),
+						m_edit_canvas->widget(),
 						true, true, 0);
-
 
 	// pack main vbox in window
 	gtk_container_add (GTK_CONTAINER (m_window), m_main_vbox);

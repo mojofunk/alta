@@ -45,7 +45,7 @@ private:
 
 	bool create_menu_bar ();
 
-	//bool create_edit_canvas();
+	bool create_edit_canvas();
 
 	void pack_widgets();
 
@@ -81,8 +81,8 @@ private:
 
 	GtkWidget* m_menu_bar;
 
+	EditCanvas* m_edit_canvas;
 
-	EditCanvas m_edit_canvas;
 };
 
 } // namespace gmojo

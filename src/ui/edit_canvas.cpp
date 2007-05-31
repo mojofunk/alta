@@ -5,31 +5,6 @@
 
 namespace gmojo {
 
-gboolean
-EditCanvas::public_on_root_button_press (GooCanvasItem  *view,
-		GooCanvasItem  *target,
-		GdkEventButton *event,
-		gpointer        data)
-{
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
-
-	EditCanvas* edit_canvas = static_cast<EditCanvas*>(data);
-
-	return edit_canvas->on_root_button_press(view, target, event);
-}
-
-bool
-EditCanvas::on_root_button_press (GooCanvasItem  *view,
-		GooCanvasItem  *target,
-		GdkEventButton *event)
-{
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG << m_project->get_name();
-#endif
-	return true;
-}
 
 
 EditCanvas::EditCanvas(mojo::Project* project)
@@ -77,6 +52,50 @@ EditCanvas::~EditCanvas()
 #ifdef GMOJO_DEBUG_EXTRA
 	LOG_GMOJO_DEBUG;
 #endif
+
 }
 
+void
+EditCanvas::destroy ()
+{
+#ifdef GMOJO_DEBUG_EXTRA
+	LOG_GMOJO_DEBUG;
+#endif
+
+}
+
+void
+EditCanvas::dispose ()
+{
+#ifdef GMOJO_DEBUG_EXTRA
+	LOG_GMOJO_DEBUG;
+#endif
+	
+}
+
+gboolean
+EditCanvas::public_on_root_button_press (GooCanvasItem  *view,
+		GooCanvasItem  *target,
+		GdkEventButton *event,
+		gpointer        data)
+{
+#ifdef GMOJO_DEBUG_EXTRA
+	LOG_GMOJO_DEBUG;
+#endif
+
+	EditCanvas* edit_canvas = static_cast<EditCanvas*>(data);
+
+	return edit_canvas->on_root_button_press(view, target, event);
+}
+
+bool
+EditCanvas::on_root_button_press (GooCanvasItem  *view,
+		GooCanvasItem  *target,
+		GdkEventButton *event)
+{
+#ifdef GMOJO_DEBUG_EXTRA
+	LOG_GMOJO_DEBUG << m_project->get_name();
+#endif
+	return true;
+}
 } // namespace gmojo
