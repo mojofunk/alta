@@ -13,31 +13,14 @@ AudioTrack::AudioTrack()
 
 }
 
-const std::string&
-AudioTrack::get_name() const
-{
-	return m_name;
-}
-
-bool
-AudioTrack::set_name(const std::string& name)
-{
-	m_name = name;
-	return true;
-}
-
-const ido::id_t
-AudioTrack::get_identifier() const
-{
-	return m_id;
-}
-
 void
-AudioTrack::set_identifier(const ido::id_t id)
+AudioTrack::set_name(const std::string& new_name)
 {
-	m_id = id;
+	if (m_name != new_name)
+	{
+		m_name = new_name;
+		m_signal_name_change ();
+	}
 }
 
-
-	//ido::EventList& get_events();
 } // namespace mojo

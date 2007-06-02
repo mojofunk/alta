@@ -6,7 +6,9 @@
 
 #include <boost/signal.hpp>
 
-#include <libido/project.hpp>
+#include <boost/serialization/nvp.hpp>
+#include <boost/serialization/string.hpp>
+#include <boost/serialization/list.hpp>
 
 #include <libmojo/object.hpp>
 #include <libmojo/audio_track.hpp>
@@ -18,6 +20,8 @@ using std::string;
 class Project : public Object
 {
 public:
+
+	typedef std::list<AudioTrack*> AudioTrackList;
 
     Project ();
 
@@ -31,11 +35,13 @@ protected:
 	
 public:
 
-	const string& get_name () const
-	{ return m_name; }
+	const string&
+		get_name () const { return m_name; }
 
-	void set_name (const string& name)
-	{ m_name = name; }
+	void set_name (const string& name);
+
+	bool save ();
+	// bool save_as ();
 
 	/**
 	 * @return true if project was closed
@@ -46,32 +52,50 @@ public:
 	 */
 	void close ();
 
-	boost::signal<bool ()>& signal_close()
-	{ return m_signal_close; }
+	void create_audio_track ();
+
+	const AudioTrackList&
+		audio_tracks () const { return m_audio_tracks; }
+
+
+public:
+	
+	boost::signal<void ()>&
+		signal_name_change () { return m_signal_name_change; }
+
+	boost::signal<bool ()>&
+		signal_close () { return m_signal_close; }
+
+	boost::signal<void (AudioTrack*)>&
+		signal_new_audio_track () { return m_signal_new_audio_track; }
 
 private:
 
-	string m_name;
+	// serialization
+	friend class boost::serialization::access;
 	
+	template<class Archive>
+		void serialize(Archive & ar, const unsigned int version)
+		{
+			ar & BOOST_SERIALIZATION_NVP(m_name);
+			ar & BOOST_SERIALIZATION_NVP(m_audio_tracks);
+		}
+
+private:
+
+	// member data
+	std::string m_name;
+
+
+	AudioTrackList m_audio_tracks;
+
+
 	// signals
+	boost::signal<void ()> m_signal_name_change;
 
 	boost::signal<bool ()> m_signal_close;
 
-public:
-
-	//IProjectDescription& get_description() = 0;
-
-
-
-#if 0
-
-	bool add_audio_track(AudioTrack* audio_track);
-
-	typedef std::list<AudioTrack*> AudioTrackList;
-
-	const AudioTrackList& track_list() const
-	{ return m_audio_tracks; }
-#endif
+	boost::signal<void (AudioTrack*)> m_signal_new_audio_track;
 
 };
 
