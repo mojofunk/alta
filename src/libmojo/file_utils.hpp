@@ -2,25 +2,15 @@
 #ifndef MOJO_FILE_UTILS_INCLUDED
 #define MOJO_FILE_UTILS_INCLUDED
 
-#include <string>
+#include <libmojo/filesystem.hpp>
 
 namespace mojo {
 
-using std::string;
-
 /**
- * Given a directory, file name and file extension get a string
- * representing the first non-existing file name containing name, a
- * hyphen, a number(greater than zero) and the file extension.
- * 
- * i.e. name-1.txt
- *
- * \todo legalize characters, I18N, etc.
- *
+ * Given a full path to a file that may or may not exist,
+ * return a unique non-existing file path.
  */
-const string get_unique_filename (const string& directory,
-                                  const string& name,
-                                  const string& extension);
+const fs::path get_non_existent_file_path (const fs::path& file_path);
 
 } // namespace mojo
 

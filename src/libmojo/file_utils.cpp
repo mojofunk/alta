@@ -1,68 +1,50 @@
+
 #include <sstream>
 
-#include <boost/filesystem/operations.hpp>
-#include <boost/filesystem/path.hpp>
-
+#include <libmojo/filesystem.hpp>
 #include <libmojo/file_utils.hpp>
 
-#include "debug.hpp"
-
-using namespace std;
+#include <libmojo/debug.hpp>
 
 namespace mojo {
 
-using namespace boost::filesystem;
-
-const string
-get_unique_filename (const string& dir,
-                     const string& name,
-                     const string& ext)
+const fs::path
+get_non_existent_file_path (const fs::path& desired_file_path)
 {
 
-	if(!is_directory (dir))
+	if (!fs::exists (desired_file_path))
 	{
-
-#ifdef MOJO_DEBUG
-
-		LOG_MOJO_CRITICAL;
-
-#endif
-
-		// throw exception ??
-		return string();
+		return desired_file_path;
 	}
 
-	path filepath;
+	fs::path filepath(desired_file_path.branch_path ());
 
 	for (
-			std::size_t num = 1;
-			num < std::numeric_limits<std::size_t>::max();
-			++num
-		)
+		std::size_t num = 1;
+		num < std::numeric_limits<std::size_t>::max();
+		++num
+	    )
 	{
-		std::ostringstream filename(name);
 
-		path tmppath(dir);
+		std::ostringstream filename("");
 
-		filename << name << '-' << num << ext;
+		std::string basename = fs::basename (desired_file_path);
 
-		tmppath /= filename.str();
+		filename << basename << '-' << num << fs::extension(desired_file_path);
+
+		filepath /= filename.str();
 
 #ifdef MOJO_DEBUG_EXTRA
-
-			LOG_MOJO_DEBUG << filepath.native_file_string();
-
+		LOG_MOJO_DEBUG << filepath.string ();
 #endif
 
-		if(!exists(tmppath)) {
-
-			filepath = tmppath;
+		if(!fs::exists(filepath)) {
 
 			break;
 		}
 	}
 	
-	return filepath.native_file_string();
+	return filepath;
 }
 
 } // namespace mojo
