@@ -26,28 +26,6 @@ config_search_path ()
 		);
 }
 
-SearchPath
-ladspa_search_path ()
-{
-	return SearchPath
-		(
-		 mojo_env_search_path() + 
-		 paths::user::ladspa_search_path() + 
-		 paths::system::ladspa_search_path()
-		);
-}
-
-SearchPath
-ladspa_rdf_search_path ()
-{
-	return SearchPath
-		(
-		 mojo_env_search_path() + 
-		 paths::user::ladspa_rdf_search_path() + 
-		 paths::system::ladspa_rdf_search_path()
-		);
-}
-
 } // namespace paths
 
 } // namespace mojo

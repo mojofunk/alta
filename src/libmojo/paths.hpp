@@ -14,10 +14,6 @@ namespace paths {
 
 	SearchPath config_search_path ();
 
-	SearchPath ladspa_search_path ();
-
-	SearchPath ladspa_rdf_search_path ();
-
 } // namespace paths
 
 } // namespace mojo

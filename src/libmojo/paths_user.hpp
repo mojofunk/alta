@@ -13,14 +13,6 @@ namespace paths {
 namespace user {
 	
 	const SearchPath mojo_search_path ();
-
-	const SearchPath vst_search_path ();
-	
-	const SearchPath vst_rdf_search_path ();
-
-	const SearchPath ladspa_search_path ();
-
-	const SearchPath ladspa_rdf_search_path ();
 	
 } // namespace user
 

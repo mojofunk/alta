@@ -23,9 +23,9 @@ public:
 
 	virtual void destroy () { }
 
-	// name ()
+	// type_name ()
 	//
-	// extension ()
+	// extensions ()
 };
 
 } // namespace mojo

@@ -6,9 +6,9 @@
 #include <libgleam/filesystem_paths.hpp>
 
 #include <libmojo/paths_system.hpp>
-#include <libmojo/dir_names.hpp>
+#include <libmojo/directory_names.hpp>
 
-#include "debug.hpp"
+#include <libmojo/debug.hpp>
 
 namespace mojo {
 
