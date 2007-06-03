@@ -55,7 +55,7 @@ libmojo/paths_system.cpp
 libmojo/paths_user.cpp
 libmojo/project.cpp
 libmojo/project_dir.cpp
-libmojo/project_format.cpp
+libmojo/mojo_project_format.cpp
 """)
 
 gmojo_source_files = Split("""

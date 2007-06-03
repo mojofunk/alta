@@ -9,7 +9,7 @@
 #include <libmojo/paths.hpp>
 #include <libmojo/paths_system.hpp>
 #include <libmojo/paths_user.hpp>
-#include <libmojo/project_dir.hpp>
+//#include <libmojo/project_directory.hpp>
 #include <libmojo/project_format.hpp>
 #include <libmojo/project.hpp>
 

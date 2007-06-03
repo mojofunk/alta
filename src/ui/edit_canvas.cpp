@@ -26,8 +26,6 @@ EditCanvas::EditCanvas(mojo::Project* project)
 
 	gtk_widget_show_all (m_hpaned);
 
-	//
-	m_project->set_name("Untitled");
 }
 
 EditCanvas::~EditCanvas()
@@ -134,7 +132,7 @@ EditCanvas::on_root_button_press (GooCanvasItem  *view,
 		GdkEventButton *event)
 {
 #ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG << m_project->get_name();
+	LOG_GMOJO_DEBUG;
 #endif
 	return true;
 }

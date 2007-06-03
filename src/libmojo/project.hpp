@@ -12,6 +12,7 @@
 
 #include <libmojo/object.hpp>
 #include <libmojo/audio_track.hpp>
+#include <libmojo/project_format.hpp>
 
 namespace mojo {
 
@@ -25,23 +26,35 @@ public:
 
     Project ();
 
-	virtual void destroy () { }
+	virtual void destroy ()
+	{ m_signal_destroy (); }
 
-protected:
+	/**
+	 * This will save the file using the current
+	 * name + ProjectFormat::extension using the
+	 * current ProjectFormat. If there is no
+	 * ProjectFormat then an exception will be 
+	 * thrown or some indication of error.
+	 */
+	void save ();
 
-    ~Project();
+	/**
+	 * Save the project using the project format
+	 * to a specific directory.
+	 *
+	 * The project format will then be used by
+	 * further calls to save ()
+	 */
+	void save_as (ProjectFormat* format,
+			const fs::path& directory,
+			const fs::path& project_name);
 
-	virtual void dispose () { }
-	
-public:
 
-	const string&
-		get_name () const { return m_name; }
+	const fs::path&
+		project_file () const { return m_project_file; }
 
-	void set_name (const string& name);
-
-	bool save ();
-	// bool save_as ();
+	ProjectFormat*
+		format () const { return m_format; }
 
 	/**
 	 * @return true if project was closed
@@ -51,6 +64,15 @@ public:
 	 * destroy method will be executed
 	 */
 	void close ();
+
+
+protected:
+
+    ~Project();
+
+	virtual void dispose ();
+	
+public:
 
 	void create_audio_track ();
 
@@ -77,18 +99,19 @@ private:
 	template<class Archive>
 		void serialize(Archive & ar, const unsigned int version)
 		{
-			ar & BOOST_SERIALIZATION_NVP(m_name);
 			ar & BOOST_SERIALIZATION_NVP(m_audio_tracks);
 		}
 
 private:
 
 	// member data
-	std::string m_name;
-
+	fs::path m_project_file;
 
 	AudioTrackList m_audio_tracks;
 
+	ProjectFormat* m_format;
+
+private:
 
 	// signals
 	boost::signal<void ()> m_signal_name_change;

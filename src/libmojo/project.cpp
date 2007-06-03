@@ -1,10 +1,4 @@
-#include <fstream>
 
-#include <boost/archive/xml_iarchive.hpp>
-#include <boost/archive/xml_oarchive.hpp>
-
-
-// 
 #include <libmojo/project.hpp>
 
 #include <libmojo/debug.hpp>
@@ -12,7 +6,9 @@
 namespace mojo {
 
 Project::Project()
-	: m_name("")
+	:
+		m_project_file(),
+		m_format(0)
 {
 #ifdef MOJO_DEBUG_EXTRA
 	LOG_MOJO_DEBUG;
@@ -27,40 +23,58 @@ Project::~Project()
 }
 
 void
-Project::set_name (const string& new_name)
+Project::dispose ()
 {
-	if (m_name != new_name)
+	if (m_format)
 	{
-		m_name = new_name;
-		m_signal_name_change ();
+		m_format->unref ();
 	}
 }
 
-bool
+void
 Project::save ()
 {
-#ifdef MOJO_DEBUG_EXTRA
-	LOG_MOJO_DEBUG;
-#endif
 
-	std::ofstream ofs(m_name.c_str());
-	
-	// check stream state
-	
-	// save data to archive
+	if(!m_format)
 	{
-		boost::archive::xml_oarchive oa(ofs);
-
-		// can't pass *this, must be const, can't remember why.
-		const Project& project = *this;
-
-		// write class instance to archive
-		oa << BOOST_SERIALIZATION_NVP(project);
-		// archive and stream closed when destructors are called
+		throw;
 	}
 
-	// check stream state?
-	return true;
+	try
+	{
+		m_format->save_project (*this, m_project_file);
+	}
+	catch (...)
+	{
+
+#ifdef MOJO_DEBUG_EXTRA
+		LOG_MOJO_DEBUG;
+#endif
+
+	}
+
+}
+
+void
+Project::save_as (ProjectFormat* format,
+		const fs::path& directory, const fs::path& name)
+{
+
+	if(m_format)
+	{
+		m_format->unref ();
+		m_format = 0;
+	}
+
+	format->ref();
+	m_format = format;
+
+	m_project_file = directory / name; // + format->extension ();
+
+	// move project files to directory etc
+
+	save ();
+
 }
 
 void
@@ -74,7 +88,7 @@ Project::close ()
 
 	if(close)
 	{
-		m_signal_destroy ();
+		destroy ();
 	}
 }
 

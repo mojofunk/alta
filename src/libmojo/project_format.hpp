@@ -2,15 +2,30 @@
 #ifndef MOJO_PROJECT_FORMAT_INCLUDED
 #define MOJO_PROJECT_FORMAT_INCLUDED
 
-#include <libido/project.hpp>
+#include <libmojo/object.hpp>
+#include <libmojo/filesystem.hpp>
 
 namespace mojo {
 
-class ProjectFormat {
+class Project;
+
+class ProjectFormat : public Object {
 public:
 
-	ProjectFormat();
+	virtual Project*
+		open_project (const fs::path& project_file) = 0;
 
+	virtual void
+		save_project (const Project& project,
+				const fs::path& project_file) = 0;
+
+	virtual void dispose () { }
+
+	virtual void destroy () { }
+
+	// name ()
+	//
+	// extension ()
 };
 
 } // namespace mojo
