@@ -74,7 +74,7 @@ deps = \
 	'gtk+-2.0'             : '2.8.1',
 	'glibmm-2.4'           : '2.8.1',
 #	'gtkmm-2.4'            : '2.8.1',
-	'goocanvas'            : '0.8'
+	'goocanvas'            : '0.6'
 }
 
 def CheckPKGConfig(context, version):
