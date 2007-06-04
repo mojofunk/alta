@@ -41,7 +41,6 @@ Application::~Application()
 void
 Application::run()
 {
-
 #ifdef GMOJO_DEBUG_EXTRA
 	LOG_GMOJO_DEBUG;
 #endif
@@ -58,15 +57,6 @@ Application::quit()
 	LOG_GMOJO_DEBUG;
 #endif
 
-	// can't use ProjectView::destroy here as it
-	// will invalidate the iterator
-	std::for_each
-		(
-		 m_projects.begin(),
-		 m_projects.end(),
-		 boost::bind (&ProjectView::unref, _1)
-		);
-
 	m_projects.clear();
 
 	gtk_main_quit ();
@@ -79,34 +69,34 @@ Application::new_project()
 	LOG_GMOJO_DEBUG;
 #endif
 
-	mojo::Project* new_project = new mojo::Project();
+	mojo::Project::ptr new_project(new mojo::Project());
 
-	ProjectView* pview = new ProjectView (new_project);
+	ProjectView::ptr pview(new ProjectView (new_project));
 
-	new_project->unref();
-
-	pview->signal_destroy().connect
-		(
-		 boost::bind (
-			 boost::mem_fn (&Application::on_projectview_signal_destroy),
-			 this, pview)
-		);
+	// a reference to the project is not held by this class
+	// so if the project is destroyed rely on the projectview's
+	// destroy signal
+	pview->on_signal_destroy (
+			boost::bind (
+				boost::mem_fn (&Application::on_projectview_signal_destroy),
+				this, ProjectView::weak_ptr(pview))
+			);
 
 	// check the return?
 	m_projects.insert(pview);
 }
 
 void
-Application::on_projectview_signal_destroy (ProjectView* projectview)
+Application::on_projectview_signal_destroy (ProjectView::weak_ptr projectview)
 {
 #ifdef GMOJO_DEBUG_EXTRA
 	LOG_GMOJO_DEBUG;
 #endif
 
+	ProjectView::ptr pview(projectview.lock ());
+	
 	// check
-	m_projects.erase(projectview);
-
-	projectview->unref();
+	m_projects.erase(pview);
 
 	if(m_projects.empty ())
 	{

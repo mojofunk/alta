@@ -28,17 +28,11 @@ public:
 	 * added signal so it can create a new TrackView for
 	 * any tracks that are added to the project.
 	 */
-	EditCanvas(mojo::Project* project);
+	EditCanvas(mojo::Project::ptr project);
 
 	~EditCanvas();
 
 	GtkWidget* widget() const { return m_hpaned;}
-
-protected:
-
-	virtual void destroy ();
-
-	virtual void dispose ();
 
 private:
 
@@ -54,7 +48,6 @@ private:
 
 	void connect_signals ();
 
-
 private:
 
 	static gboolean public_on_root_button_press (GooCanvasItem  *view,
@@ -68,7 +61,7 @@ private:
 
 private:
 
-	mojo::Project* m_project;
+	mojo::Project::ptr m_project;
 
 	GtkWidget* m_hpaned;
 

@@ -4,32 +4,28 @@
 
 #include <gtk/gtk.h>
 
-#include <mojo/object.hpp>
 #include <mojo/project.hpp>
 
 #include <ui/edit_canvas.hpp>
 
 namespace gmojo {
 
-class EditWindow : public mojo::Object
+class EditWindow
 {
 public:
+	
+	typedef boost::shared_ptr<EditWindow> ptr;
 
-	EditWindow(mojo::Project* project);
+	typedef boost::signal<bool ()> delete_signal_t;
 
-	// wrap gtk_widget_destroy (window)
-	virtual void destroy ();
+public:
 
-	boost::signal<bool ()>& signal_delete_event ()
-	{ return m_signal_delete_event; }
-
-protected:
+	EditWindow(mojo::Project::ptr project);
 
 	~EditWindow();
 
-	virtual void dispose ();
-
-	boost::signal<bool ()> m_signal_delete_event;
+	void on_delete_event (const delete_signal_t::slot_type& handler)
+	{ m_signal_delete_event.connect(handler); }
 
 private:
 
@@ -58,19 +54,13 @@ private:
 
 	bool on_delete_event(GtkWidget*, GdkEvent*);
 
-
-	static void on_window_destroy(GtkWidget*, gpointer edit_window);
-
-	void on_destroy(GtkWidget*);
-
 private:
 
-	void on_project_signal_destroy ();
+	mojo::Project::ptr m_project;
 
-private:
+	// signals
+	delete_signal_t m_signal_delete_event;
 
-	mojo::Project* m_project;
-	
 	// gobjects
 	GtkUIManager* m_ui_manager;
 

@@ -7,7 +7,7 @@
 
 namespace gmojo {
 
-ProjectView::ProjectView(mojo::Project* project)
+ProjectView::ProjectView(mojo::Project::ptr project)
 	:
 		m_project(project),
 		m_edit_window(new EditWindow(project))
@@ -15,8 +15,6 @@ ProjectView::ProjectView(mojo::Project* project)
 #ifdef GMOJO_DEBUG_EXTRA
 	LOG_GMOJO_DEBUG;
 #endif
-
-	m_project->ref ();
 	
 	m_project->signal_close ().connect
 		(
@@ -25,21 +23,14 @@ ProjectView::ProjectView(mojo::Project* project)
 			 this)
 		);
 
-	m_project->signal_destroy ().connect
+	m_project->on_signal_destroy
 		(
 		 boost::bind (
 			 boost::mem_fn (&ProjectView::on_project_signal_destroy),
 			 this)
 		);
 
-	m_edit_window->signal_destroy ().connect
-		(
-		 boost::bind (
-			 boost::mem_fn (&ProjectView::on_edit_window_signal_destroy),
-			 this)
-		);
-	
-	m_edit_window->signal_delete_event ().connect
+	m_edit_window->on_delete_event
 		(
 		 boost::bind (
 			 boost::mem_fn (&ProjectView::on_edit_window_signal_delete_event),
@@ -53,30 +44,6 @@ ProjectView::~ProjectView()
 	LOG_GMOJO_DEBUG;
 #endif
 
-}
-
-void
-ProjectView::destroy ()
-{
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
-
-	m_edit_window->destroy ();
-
-	m_signal_destroy ();
-}
-
-void
-ProjectView::dispose ()
-{
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
-
-	if (m_project) m_project->unref ();
-
-	if (m_edit_window) m_edit_window->unref ();
 }
 
 bool
@@ -101,28 +68,10 @@ ProjectView::on_project_signal_destroy ()
 	// disconnect signals connected to projectview
 	// although it doesn't really matter in this case
 
-	m_project->unref ();
-	m_project = 0;
-
 	// The Application could destroy the ProjectView
 	// when the project is destroyed.
 	destroy ();
 
-}
-
-void
-ProjectView::on_edit_window_signal_destroy ()
-{
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
-
-	// disconnect signals connected to the EditWindow
-	// although it doesn't really matter in this case
-
-	m_edit_window->unref ();
-
-	m_edit_window = 0;
 }
 
 bool

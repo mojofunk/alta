@@ -14,23 +14,28 @@
 
 #include <mojo/object.hpp>
 #include <mojo/audio_track.hpp>
+#include <mojo/project_format.hpp>
 
 namespace mojo {
 
 using std::string;
 
-class ProjectFormat;
-
 class Project : public Object
 {
 public:
 
-	typedef std::list<AudioTrack*> AudioTrackList;
+	typedef boost::shared_ptr<Project>    ptr;
+	typedef boost::weak_ptr<Project>      weak_ptr;
+
+	typedef std::list<AudioTrack*>        AudioTrackList;
+
+public:
 
     Project ();
 
-	virtual void destroy ()
-	{ m_signal_destroy (); }
+    ~Project();
+
+public:
 
 	/**
 	 * This will save the file using the current
@@ -48,7 +53,7 @@ public:
 	 * The project format will then be used by
 	 * further calls to save ()
 	 */
-	void save_as (ProjectFormat* format,
+	void save_as (ProjectFormat::ptr format,
 			const fs::path& directory,
 			const fs::path& project_name);
 
@@ -56,7 +61,7 @@ public:
 	const fs::path&
 		project_file () const { return m_project_file; }
 
-	ProjectFormat*
+	ProjectFormat::ptr
 		format () const { return m_format; }
 
 	/**
@@ -67,13 +72,6 @@ public:
 	 * destroy method will be executed
 	 */
 	void close ();
-
-
-protected:
-
-    ~Project();
-
-	virtual void dispose ();
 	
 public:
 
@@ -112,7 +110,7 @@ private:
 
 	AudioTrackList m_audio_tracks;
 
-	ProjectFormat* m_format;
+	ProjectFormat::ptr m_format;
 
 private:
 

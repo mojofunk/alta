@@ -8,8 +8,7 @@ namespace mojo {
 
 Project::Project()
 	:
-		m_project_file(),
-		m_format(0)
+		m_project_file()
 {
 #ifdef MOJO_DEBUG_EXTRA
 	LOG_MOJO_DEBUG;
@@ -21,15 +20,6 @@ Project::~Project()
 #ifdef MOJO_DEBUG_EXTRA
 	LOG_MOJO_DEBUG;
 #endif
-}
-
-void
-Project::dispose ()
-{
-	if (m_format)
-	{
-		m_format->unref ();
-	}
 }
 
 void
@@ -57,17 +47,9 @@ Project::save ()
 }
 
 void
-Project::save_as (ProjectFormat* format,
+Project::save_as (ProjectFormat::ptr format,
 		const fs::path& directory, const fs::path& name)
 {
-
-	if(m_format)
-	{
-		m_format->unref ();
-		m_format = 0;
-	}
-
-	format->ref();
 	m_format = format;
 
 	m_project_file = directory / name; // + format->extension ();

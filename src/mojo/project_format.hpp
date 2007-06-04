@@ -2,15 +2,21 @@
 #ifndef MOJO_PROJECT_FORMAT_INCLUDED
 #define MOJO_PROJECT_FORMAT_INCLUDED
 
-#include <booty/filesystem.hpp>
+#include <boost/shared_ptr.hpp>
 
-#include <mojo/object.hpp>
+#include <booty/filesystem.hpp>
 
 namespace mojo {
 
 class Project;
 
-class ProjectFormat : public Object {
+class ProjectFormat {
+public:
+
+	typedef boost::shared_ptr<ProjectFormat> ptr;
+
+	virtual ~ProjectFormat () { }
+
 public:
 
 	virtual Project*
@@ -19,10 +25,6 @@ public:
 	virtual void
 		save_project (const Project& project,
 				const fs::path& project_file) = 0;
-
-	virtual void dispose () { }
-
-	virtual void destroy () { }
 
 	// type_name ()
 	//

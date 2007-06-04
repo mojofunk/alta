@@ -7,7 +7,7 @@ namespace gmojo {
 
 
 
-EditCanvas::EditCanvas(mojo::Project* project)
+EditCanvas::EditCanvas(mojo::Project::ptr project)
 	:
 		m_project(project)
 {
@@ -34,24 +34,6 @@ EditCanvas::~EditCanvas()
 	LOG_GMOJO_DEBUG;
 #endif
 
-}
-
-void
-EditCanvas::destroy ()
-{
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
-
-}
-
-void
-EditCanvas::dispose ()
-{
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
-	
 }
 
 bool

@@ -1,7 +1,7 @@
 #ifndef MOJO_AUDIO_TRACK_INCLUDED
 #define MOJO_AUDIO_TRACK_INCLUDED
 
-#include <boost/signal.hpp>
+//#include <boost/signal.hpp>
 
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/string.hpp>
@@ -36,6 +36,8 @@ public:
 
 	boost::signal<void ()>&
 		signal_name_change () { return m_signal_name_change; }
+
+	void on_signal_destroy (const destroy_signal_t::slot_type& handler) { }
 
 private:
 	

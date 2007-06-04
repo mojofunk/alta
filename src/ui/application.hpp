@@ -7,12 +7,12 @@
 
 #include <boost/shared_ptr.hpp>
 
+#include <ui/project_view.hpp>
+
 namespace gmojo {
 
 using std::set;
 using std::string;
-
-class ProjectView;
 
 class Application
 {
@@ -58,13 +58,13 @@ private:
     Application (int argc, char *argv[]);
     ~Application();
 
-	typedef set<ProjectView*> Projects;
+	typedef set<ProjectView::ptr> Projects;
 
 	Projects m_projects;
 
 private:
 
-	void on_projectview_signal_destroy (ProjectView*);
+	void on_projectview_signal_destroy (ProjectView::weak_ptr);
 
     /// project agnostic top level dialogs
 

@@ -10,7 +10,7 @@ void
 save_project (GtkAction*, mojo::Project* project)
 {
 
-	mojo::ProjectFormat* format = project->format ();
+	mojo::ProjectFormat::ptr format = project->format ();
 
 	if(format)
 	{
@@ -36,7 +36,7 @@ save_project (GtkAction*, mojo::Project* project)
 
 	const fs::path dir("./");
 
-	mojo::MojoProjectFormat* mojo_format = new mojo::MojoProjectFormat;
+	mojo::MojoProjectFormat::ptr mojo_format(new mojo::MojoProjectFormat);
 
 	try
 	{
@@ -50,8 +50,6 @@ save_project (GtkAction*, mojo::Project* project)
 #endif
 
 	}
-
-	mojo_format->unref ();
 
 }
 

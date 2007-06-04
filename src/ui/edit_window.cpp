@@ -14,7 +14,7 @@
 
 namespace gmojo {
 
-EditWindow::EditWindow(mojo::Project* project)
+EditWindow::EditWindow(mojo::Project::ptr project)
 	:
 		m_project(project),
 		m_ui_manager(0),
@@ -26,15 +26,6 @@ EditWindow::EditWindow(mojo::Project* project)
 #ifdef GMOJO_DEBUG_EXTRA
 	LOG_GMOJO_DEBUG;
 #endif
-
-	m_project->ref();
-	
-	m_project->signal_destroy().connect
-		(
-		 boost::bind (
-			 boost::mem_fn (&EditWindow::on_project_signal_destroy),
-			 this)
-		);
 
 	create_window ();
 
@@ -62,31 +53,11 @@ EditWindow::~EditWindow()
 	LOG_GMOJO_DEBUG;
 #endif
 
-}
-
-void
-EditWindow::destroy ()
-{
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
-
-	//destroy the window
-	gtk_widget_destroy (GTK_WIDGET (m_window));
-}
-
-void
-EditWindow::dispose ()
-{
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
-	
-	if (m_project) m_project->unref();
-	
 	g_object_unref (m_ui_manager);
 
-	m_edit_canvas->unref ();
+	gtk_widget_destroy (GTK_WIDGET (m_window));
+
+	delete m_edit_canvas;
 }
 
 bool
@@ -149,7 +120,7 @@ EditWindow::add_action_groups_to_ui_manager ()
 	g_object_unref (action_group);
 
 	// add project actions
-	action_group = project_action_group_new(m_project);
+	action_group = project_action_group_new(m_project.get());
 	gtk_ui_manager_insert_action_group (m_ui_manager, action_group, 0);
 	g_object_unref (action_group);
 
@@ -238,9 +209,6 @@ EditWindow::connect_signals()
 	// using boost::signal
 	g_signal_connect (G_OBJECT (m_window), "delete_event",
 			G_CALLBACK (EditWindow::on_window_delete_event), this);
-	
-	g_signal_connect (G_OBJECT (m_window), "destroy",
-			G_CALLBACK (EditWindow::on_window_destroy), this);
 }
 
 gboolean
@@ -262,38 +230,6 @@ EditWindow::on_delete_event(GtkWidget* widget, GdkEvent* event)
 	g_assert (widget == m_window);
 
 	return m_signal_delete_event ();
-}
-
-void
-EditWindow::on_window_destroy (GtkWidget* widget, gpointer window)
-{
-	EditWindow* edit_window = static_cast<EditWindow*>(window);
-
-	return edit_window->on_destroy (widget);
-}
-
-void
-EditWindow::on_destroy (GtkWidget* widget)
-{
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
-
-	g_assert (widget == m_window);
-
-	m_signal_destroy ();
-
-	m_window = 0;
-}
-
-void
-EditWindow::on_project_signal_destroy ()
-{
-	// disconnect signals connected to project
-
-	m_project->unref ();
-	m_project = 0;
-
 }
 
 } // namespace gmojo

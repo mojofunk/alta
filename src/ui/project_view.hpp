@@ -20,15 +20,14 @@ class ProjectView : public mojo::Object
 {
 public:
 
-    ProjectView (mojo::Project* project);
+	typedef boost::shared_ptr<ProjectView> ptr;
+	typedef boost::weak_ptr<ProjectView> weak_ptr;
 
-	void destroy ();
+public:
 
-protected:
+    ProjectView (mojo::Project::ptr project);
 
     ~ProjectView ();
-
-	virtual void dispose ();
 
 private:
 
@@ -42,11 +41,11 @@ private:
 
 private:
 
-	mojo::Project* m_project;
+	mojo::Project::ptr m_project;
 
 	// per project windows
 
-	EditWindow* m_edit_window;
+	EditWindow::ptr m_edit_window;
 
 };
 
