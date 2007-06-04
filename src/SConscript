@@ -46,7 +46,6 @@ booty/file_utils.cpp
 mojo_source_files = Split("""
 mojo/audio_track.cpp
 mojo/directory_names.cpp
-mojo/file_extensions.cpp
 mojo/object.cpp
 mojo/paths.cpp
 mojo/paths_system.cpp
