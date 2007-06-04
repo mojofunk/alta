@@ -1,11 +1,11 @@
 
 //#include <cerrno>
 
-#include <libmojo/filesystem.hpp>
-#include <libmojo/directory_names.hpp>
-#include <libmojo/project_directory.hpp>
+#include <mojo/filesystem.hpp>
+#include <mojo/directory_names.hpp>
+#include <mojo/project_directory.hpp>
 
-#include <libmojo/debug.hpp>
+#include <mojo/debug.hpp>
 
 namespace mojo {
 

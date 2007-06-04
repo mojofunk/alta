@@ -3,7 +3,7 @@
 
 #include <gtk/gtk.h>
 
-#include <libmojo/project.hpp>
+#include <mojo/project.hpp>
 
 namespace gmojo {
 

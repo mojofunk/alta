@@ -1,10 +1,10 @@
 
 #include <sstream>
 
-#include <libmojo/filesystem.hpp>
-#include <libmojo/file_utils.hpp>
+#include <mojo/filesystem.hpp>
+#include <mojo/file_utils.hpp>
 
-#include <libmojo/debug.hpp>
+#include <mojo/debug.hpp>
 
 namespace mojo {
 

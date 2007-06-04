@@ -1,5 +1,5 @@
 
-#include <libmojo/file_extensions.hpp>
+#include <mojo/file_extensions.hpp>
 
 namespace mojo {
 

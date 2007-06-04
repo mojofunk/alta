@@ -10,9 +10,9 @@
 #include <boost/serialization/string.hpp>
 #include <boost/serialization/list.hpp>
 
-#include <libmojo/object.hpp>
-#include <libmojo/audio_track.hpp>
-#include <libmojo/project_format.hpp>
+#include <mojo/object.hpp>
+#include <mojo/audio_track.hpp>
+#include <mojo/project_format.hpp>
 
 namespace mojo {
 

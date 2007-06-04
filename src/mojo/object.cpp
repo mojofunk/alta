@@ -1,7 +1,7 @@
 
-#include <libmojo/object.hpp>
+#include <mojo/object.hpp>
 
-#include <libmojo/debug.hpp>
+#include <mojo/debug.hpp>
 
 namespace mojo {
 

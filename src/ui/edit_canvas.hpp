@@ -10,8 +10,8 @@
 #include <gtk/gtk.h>
 #include <goocanvas.h>
 
-#include <libmojo/object.hpp>
-#include <libmojo/project.hpp>
+#include <mojo/object.hpp>
+#include <mojo/project.hpp>
 
 #include <ui/track_view.hpp>
 

@@ -1,6 +1,6 @@
 
-#include <libmojo/project_format.hpp>
-#include <libmojo/mojo_project_format.hpp>
+#include <mojo/project_format.hpp>
+#include <mojo/mojo_project_format.hpp>
 
 #include <ui/project_actions.hpp>
 

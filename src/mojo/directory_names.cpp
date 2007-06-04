@@ -1,5 +1,5 @@
 
-#include <libmojo/directory_names.hpp>
+#include <mojo/directory_names.hpp>
 
 namespace mojo {
  

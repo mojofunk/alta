@@ -2,7 +2,7 @@
 #ifndef MOJO_FILE_UTILS_INCLUDED
 #define MOJO_FILE_UTILS_INCLUDED
 
-#include <libmojo/filesystem.hpp>
+#include <mojo/filesystem.hpp>
 
 namespace mojo {
 

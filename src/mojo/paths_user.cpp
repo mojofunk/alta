@@ -7,8 +7,8 @@ using std::string;
 
 #include <libgleam/file_utils.hpp>
 
-#include <libmojo/paths_user.hpp>
-#include <libmojo/directory_names.hpp>
+#include <mojo/paths_user.hpp>
+#include <mojo/directory_names.hpp>
 
 namespace {
 

@@ -4,7 +4,7 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include <libmojo/project.hpp>
+#include <mojo/project.hpp>
 
 #include <ui/edit_window.hpp>
 

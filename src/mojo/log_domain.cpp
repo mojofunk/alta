@@ -1,5 +1,5 @@
 
-#include <libmojo/log_domain.hpp>
+#include <mojo/log_domain.hpp>
 
 namespace mojo {
 

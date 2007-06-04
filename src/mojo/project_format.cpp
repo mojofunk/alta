@@ -1,5 +1,5 @@
 
-#include <libmojo/project_format.hpp>
+#include <mojo/project_format.hpp>
 
 namespace mojo {
 

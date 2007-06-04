@@ -43,19 +43,19 @@ libbooty_source_files = Split("""
 libbooty/file_utils.cpp
 """)
 
-libmojo_source_files = Split("""
-libmojo/audio_track.cpp
-libmojo/directory_names.cpp
-libmojo/file_extensions.cpp
-libmojo/file_utils.cpp
-libmojo/log_domain.cpp
-libmojo/object.cpp
-libmojo/paths.cpp
-libmojo/paths_system.cpp
-libmojo/paths_user.cpp
-libmojo/project.cpp
-libmojo/project_directory.cpp
-libmojo/mojo_project_format.cpp
+mojo_source_files = Split("""
+mojo/audio_track.cpp
+mojo/directory_names.cpp
+mojo/file_extensions.cpp
+mojo/file_utils.cpp
+mojo/log_domain.cpp
+mojo/object.cpp
+mojo/paths.cpp
+mojo/paths_system.cpp
+mojo/paths_user.cpp
+mojo/project.cpp
+mojo/project_directory.cpp
+mojo/mojo_project_format.cpp
 """)
 
 gmojo_source_files = Split("""
@@ -81,7 +81,7 @@ ui/debug/thread_names.cpp
 
 all_source_files = libgleam_source_files + \
 libbooty_source_files + \
-libmojo_source_files + \
+mojo_source_files + \
 gmojo_source_files
 
 if env['DEBUG']:

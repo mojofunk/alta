@@ -6,7 +6,7 @@
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/string.hpp>
 
-#include <libmojo/object.hpp>
+#include <mojo/object.hpp>
 
 namespace mojo {
 

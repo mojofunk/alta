@@ -4,10 +4,10 @@
 #include <boost/archive/xml_iarchive.hpp>
 #include <boost/archive/xml_oarchive.hpp>
 
-#include <libmojo/project.hpp>
-#include <libmojo/mojo_project_format.hpp>
+#include <mojo/project.hpp>
+#include <mojo/mojo_project_format.hpp>
 
-#include <libmojo/debug.hpp>
+#include <mojo/debug.hpp>
 
 namespace mojo {
 

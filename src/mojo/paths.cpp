@@ -1,9 +1,9 @@
 
 #include <glibmm/miscutils.h>
 
-#include <libmojo/paths.hpp>
-#include <libmojo/paths_user.hpp>
-#include <libmojo/paths_system.hpp>
+#include <mojo/paths.hpp>
+#include <mojo/paths_user.hpp>
+#include <mojo/paths_system.hpp>
 
 namespace mojo {
 

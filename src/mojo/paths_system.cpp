@@ -5,10 +5,10 @@
 
 #include <libgleam/filesystem_paths.hpp>
 
-#include <libmojo/paths_system.hpp>
-#include <libmojo/directory_names.hpp>
+#include <mojo/paths_system.hpp>
+#include <mojo/directory_names.hpp>
 
-#include <libmojo/debug.hpp>
+#include <mojo/debug.hpp>
 
 namespace mojo {
 

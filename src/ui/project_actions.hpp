@@ -4,7 +4,7 @@
 
 #include <gtk/gtkaction.h>
 
-#include <libmojo/project.hpp>
+#include <mojo/project.hpp>
 
 namespace gmojo {
 

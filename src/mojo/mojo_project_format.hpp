@@ -1,7 +1,7 @@
 #ifndef MOJO_MOJO_PROJECT_FORMAT_INCLUDED
 #define MOJO_MOJO_PROJECT_FORMAT_INCLUDED
 
-#include <libmojo/project_format.hpp>
+#include <mojo/project_format.hpp>
 
 namespace mojo {
 

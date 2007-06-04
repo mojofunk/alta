@@ -4,8 +4,8 @@
 
 #include <gtk/gtk.h>
 
-#include <libmojo/object.hpp>
-#include <libmojo/project.hpp>
+#include <mojo/object.hpp>
+#include <mojo/project.hpp>
 
 #include <ui/edit_canvas.hpp>
 
