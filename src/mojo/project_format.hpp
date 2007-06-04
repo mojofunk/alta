@@ -2,8 +2,9 @@
 #ifndef MOJO_PROJECT_FORMAT_INCLUDED
 #define MOJO_PROJECT_FORMAT_INCLUDED
 
+#include <booty/filesystem.hpp>
+
 #include <mojo/object.hpp>
-#include <mojo/filesystem.hpp>
 
 namespace mojo {
 

@@ -10,13 +10,16 @@
 #include <boost/serialization/string.hpp>
 #include <boost/serialization/list.hpp>
 
+#include <booty/filesystem.hpp>
+
 #include <mojo/object.hpp>
 #include <mojo/audio_track.hpp>
-#include <mojo/project_format.hpp>
 
 namespace mojo {
 
 using std::string;
+
+class ProjectFormat;
 
 class Project : public Object
 {

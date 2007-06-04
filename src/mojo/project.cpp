@@ -1,5 +1,6 @@
 
 #include <mojo/project.hpp>
+#include <mojo/project_format.hpp>
 
 #include <mojo/debug.hpp>
 
