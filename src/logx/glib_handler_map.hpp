@@ -22,7 +22,7 @@
 
 #include <map>
 
-#include <liblogx/uncopyable.hpp>
+#include <logx/uncopyable.hpp>
 
 #include <glib.h>
 

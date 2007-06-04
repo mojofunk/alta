@@ -24,9 +24,9 @@
 #include <string>
 #include <sstream>
 
-#include <liblogx/uncopyable.hpp>
-#include <liblogx/glib_log_level_flags.hpp>
-#include <liblogx/log_data_types.hpp>
+#include <logx/uncopyable.hpp>
+#include <logx/glib_log_level_flags.hpp>
+#include <logx/log_data_types.hpp>
 
 namespace logx {
 

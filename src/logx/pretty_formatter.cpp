@@ -1,4 +1,4 @@
-#include <liblogx/pretty_formatter.hpp>
+#include <logx/pretty_formatter.hpp>
 
 namespace logx {
 

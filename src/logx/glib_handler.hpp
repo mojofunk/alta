@@ -22,8 +22,8 @@
 
 #include <string>
 
-#include <liblogx/uncopyable.hpp>
-#include <liblogx/glib_log_level_flags.hpp>
+#include <logx/uncopyable.hpp>
+#include <logx/glib_log_level_flags.hpp>
 
 namespace logx {
 

@@ -17,9 +17,9 @@
  * MA  02110-1301, USA.
  */
 
-#include <liblogx/glib_handler_map.hpp>
-#include <liblogx/glib_log_level_flags.hpp>
-#include <liblogx/glib_handler.hpp>
+#include <logx/glib_handler_map.hpp>
+#include <logx/glib_log_level_flags.hpp>
+#include <logx/glib_handler.hpp>
 
 namespace {
 

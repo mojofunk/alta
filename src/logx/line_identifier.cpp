@@ -2,7 +2,7 @@
 
 #include <sstream>
 
-#include <liblogx/line_identifier.hpp>
+#include <logx/line_identifier.hpp>
 
 namespace logx {
 

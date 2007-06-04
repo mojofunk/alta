@@ -1,4 +1,4 @@
-#include <liblogx/thread_identifier.hpp>
+#include <logx/thread_identifier.hpp>
 
 namespace logx {
 

@@ -26,7 +26,7 @@
 #include <iostream>
 #include <algorithm> // min/max
 
-#include <liblogx/uncopyable.hpp>
+#include <logx/uncopyable.hpp>
 
 namespace logx {
 

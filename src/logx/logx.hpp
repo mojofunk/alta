@@ -17,27 +17,15 @@
  * MA  02110-1301, USA.
  */
 
-#include <liblogx/glib_handler.hpp>
-#include <liblogx/glib_handler_map.hpp>
+#ifndef LOGX_LOGX_HEADER
+#define LOGX_LOGX_HEADER
 
-namespace logx {
+#include <logx/glib_handler.hpp>
+#include <logx/glib_handler_map.hpp>
+#include <logx/glib_logger.hpp>
+#include <logx/glib_log_level_flags.hpp>
+#include <logx/pretty_formatter.hpp>
+#include <logx/log_data_types.hpp>
+#include <logx/uncopyable.hpp>
 
-namespace Glib {
-
-Handler::Handler (const std::string& log_domain,
-			LogLevelFlags log_flags)
-	:
-		m_domain(log_domain),
-		m_flags(log_flags)
-{
-	HandlerMap::instance().set_handler(this);
-}
-
-Handler::~Handler ()
-{
-	HandlerMap::instance().remove_handler(this);
-}
-
-} // namespace Glib
-
-} // namespace logx
+#endif // LOGX_LOGX_HEADER

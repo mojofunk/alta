@@ -126,7 +126,7 @@ env.Append(CPPPATH = [ '#src/mojo' ])
 
 if env['DEBUG']:
 	
-	env.Append(CPPPATH = [ '#src/liblogx' ])
+	env.Append(CPPPATH = [ '#src/logx' ])
 
 	env.Append(CCFLAGS = ['-g'])
 	env.Append(CCFLAGS = ['-Wextra'])

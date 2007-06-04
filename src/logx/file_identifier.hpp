@@ -4,7 +4,7 @@
 #include <string>
 #include <iosfwd>
 
-#include <liblogx/log_data.hpp>
+#include <logx/log_data.hpp>
 
 namespace logx {
 

@@ -7,14 +7,14 @@ import glob
 Import('env')
 
 if env['DEBUG']:
-	liblogx_source_files=Split("""
-	liblogx/file_identifier.cpp
-	liblogx/function_identifier.cpp
-	liblogx/glib_handler.cpp
-	liblogx/glib_handler_map.cpp
-	liblogx/line_identifier.cpp
-	liblogx/pretty_formatter.cpp
-	liblogx/thread_identifier.cpp
+	logx_source_files=Split("""
+	logx/file_identifier.cpp
+	logx/function_identifier.cpp
+	logx/glib_handler.cpp
+	logx/glib_handler_map.cpp
+	logx/line_identifier.cpp
+	logx/pretty_formatter.cpp
+	logx/thread_identifier.cpp
 	""")
 
 libgleam_source_files = Split("""
@@ -85,7 +85,7 @@ mojo_source_files + \
 gmojo_source_files
 
 if env['DEBUG']:
-	all_source_files += liblogx_source_files
+	all_source_files += logx_source_files
 	all_source_files += gmojo_debug_files
 
 gmojo = env.Program( env['VERSIONED_NAME'], all_source_files)

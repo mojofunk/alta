@@ -1,4 +1,4 @@
-#include <liblogx/function_identifier.hpp>
+#include <logx/function_identifier.hpp>
 
 namespace logx {
 

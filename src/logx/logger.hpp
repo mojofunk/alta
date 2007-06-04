@@ -1,9 +1,9 @@
 #ifndef LOGX_LOGGER_HEADER
 #define LOGX_LOGGER_HEADER
 
-#include <liblogx/uncopyable.hpp>
-#include <liblogx/glib_log_level_flags.hpp>
-#include <liblogx/log_handler_map.hpp>
+#include <logx/uncopyable.hpp>
+#include <logx/glib_log_level_flags.hpp>
+#include <logx/log_handler_map.hpp>
 
 namespace logx {
 
