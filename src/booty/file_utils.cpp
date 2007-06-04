@@ -1,32 +1,14 @@
 
-#include <boost/filesystem/operations.hpp>
-
-using namespace boost::filesystem;
-
 #include <booty/file_utils.hpp>
 
 namespace booty {
 
-vector<string>
-paths_to_strings(const vector<path>& paths)
-{
-
-	return vector<string>();
-}
-
-vector<path>
-strings_to_paths(const vector<string>& string_paths)
-{
-
-	return vector<path>();
-}
-
 std::size_t
-find_matching_files (const vector<path>& paths,
+find_matching_files (const vector<fs::path>& paths,
                      FileMatchFunc match_func,
-                     vector<path>& result)
+                     vector<fs::path>& result)
 {
-	for ( vector<path>::const_iterator iter = paths.begin(),
+	for ( vector<fs::path>::const_iterator iter = paths.begin(),
 			end = paths.end();
 			iter != end;
 			++iter )
@@ -38,18 +20,19 @@ find_matching_files (const vector<path>& paths,
 }
 
 std::size_t
-find_matching_files (const path& dir_path, 
+find_matching_files (const fs::path& dir_path, 
                      FileMatchFunc match_func,
-                     vector<path>& result)
+                     vector<fs::path>& result)
 {
 	if ( !exists( dir_path ) ) return 0;
 
-	directory_iterator end_itr; // default construction yields past-the-end
-	for ( directory_iterator itr( dir_path );
+	fs::directory_iterator end_itr; // default construction yields past-the-end
+
+	for ( fs::directory_iterator itr( dir_path );
 			itr != end_itr;
 			++itr )
 	{
-		if ( is_directory( *itr ) )
+		if ( fs::is_directory( *itr ) )
 		{
 			find_matching_files ( *itr, match_func, result );
 		}
