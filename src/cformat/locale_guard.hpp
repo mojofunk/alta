@@ -6,7 +6,7 @@
 #include <cstring>
 #include <cstdlib>
 
-#include <libcformat/cformat_exception.hpp>
+#include <cformat/cformat_exception.hpp>
 
 namespace cformat {
 

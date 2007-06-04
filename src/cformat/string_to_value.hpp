@@ -3,9 +3,9 @@
 
 #include <string>
 
-#include <libcformat/cformat_exception.hpp>
-#include <libcformat/locale_guard.hpp>
-#include <libcformat/scanf_format.hpp>
+#include <cformat/cformat_exception.hpp>
+#include <cformat/locale_guard.hpp>
+#include <cformat/scanf_format.hpp>
 
 namespace cformat {
 

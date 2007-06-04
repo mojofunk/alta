@@ -120,7 +120,7 @@ env = conf.Finish()
 
 env.Append(CPPPATH = [ '#src' ])
 env.Append(CPPPATH = [ '#src/libgleam' ])
-env.Append(CPPPATH = [ '#src/libcformat' ])
+env.Append(CPPPATH = [ '#src/cformat' ])
 env.Append(CPPPATH = [ '#src/mojo' ])
 
 
