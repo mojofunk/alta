@@ -8,7 +8,7 @@
 #include <mojo/paths_system.hpp>
 #include <mojo/directory_names.hpp>
 
-#include <mojo/debug.hpp>
+#include <mojo/debug/debug.hpp>
 
 namespace mojo {
 

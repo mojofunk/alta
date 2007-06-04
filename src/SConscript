@@ -47,7 +47,6 @@ mojo_source_files = Split("""
 mojo/audio_track.cpp
 mojo/directory_names.cpp
 mojo/file_extensions.cpp
-mojo/log_domain.cpp
 mojo/object.cpp
 mojo/paths.cpp
 mojo/paths_system.cpp
@@ -55,6 +54,10 @@ mojo/paths_user.cpp
 mojo/project.cpp
 mojo/project_directory.cpp
 mojo/mojo_project_format.cpp
+""")
+
+mojo_debug_files=Split("""
+mojo/debug/log_domain.cpp
 """)
 
 gmojo_source_files = Split("""
@@ -85,6 +88,7 @@ gmojo_source_files
 
 if env['DEBUG']:
 	all_source_files += logx_source_files
+	all_source_files += mojo_debug_files
 	all_source_files += gmojo_debug_files
 
 gmojo = env.Program( env['VERSIONED_NAME'], all_source_files)

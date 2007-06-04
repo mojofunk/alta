@@ -2,7 +2,7 @@
 #include <mojo/project.hpp>
 #include <mojo/project_format.hpp>
 
-#include <mojo/debug.hpp>
+#include <mojo/debug/debug.hpp>
 
 namespace mojo {
 

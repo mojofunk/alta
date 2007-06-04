@@ -4,7 +4,6 @@
 #include <mojo/audio_track.hpp>
 #include <mojo/directory_names.hpp>
 #include <mojo/file_extensions.hpp>
-#include <mojo/log_domain.hpp>
 #include <mojo/paths.hpp>
 #include <mojo/paths_system.hpp>
 #include <mojo/paths_user.hpp>

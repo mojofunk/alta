@@ -2,7 +2,7 @@
 #include <mojo/directory_names.hpp>
 #include <mojo/project_directory.hpp>
 
-#include <mojo/debug.hpp>
+#include <mojo/debug/debug.hpp>
 
 namespace mojo {
 
