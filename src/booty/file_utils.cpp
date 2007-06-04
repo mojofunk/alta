@@ -3,7 +3,7 @@
 
 using namespace boost::filesystem;
 
-#include <libbooty/file_utils.hpp>
+#include <booty/file_utils.hpp>
 
 namespace booty {
 

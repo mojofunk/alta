@@ -39,8 +39,8 @@ libgleam/posix_signals.cpp
 if env['PLATFORM'] == 'posix':
 	libgleam_source_files += libgleam_posix_source_files
 
-libbooty_source_files = Split("""
-libbooty/file_utils.cpp
+booty_source_files = Split("""
+booty/file_utils.cpp
 """)
 
 mojo_source_files = Split("""
@@ -80,7 +80,7 @@ ui/debug/thread_names.cpp
 """)
 
 all_source_files = libgleam_source_files + \
-libbooty_source_files + \
+booty_source_files + \
 mojo_source_files + \
 gmojo_source_files
 
