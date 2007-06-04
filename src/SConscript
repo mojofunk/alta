@@ -47,7 +47,6 @@ mojo_source_files = Split("""
 mojo/audio_track.cpp
 mojo/directory_names.cpp
 mojo/file_extensions.cpp
-mojo/file_utils.cpp
 mojo/log_domain.cpp
 mojo/object.cpp
 mojo/paths.cpp

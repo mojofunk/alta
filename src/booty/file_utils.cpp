@@ -1,3 +1,4 @@
+#include <sstream>
 
 #include <booty/file_utils.hpp>
 
@@ -44,4 +45,38 @@ find_matching_files (const fs::path& dir_path,
 	return result.size();
 }
 
+const fs::path
+get_non_existent_file_path (const fs::path& desired_file_path)
+{
+
+	if (!fs::exists (desired_file_path))
+	{
+		return desired_file_path;
+	}
+
+	fs::path filepath(desired_file_path.branch_path ());
+
+	for (
+		std::size_t num = 1;
+		num < std::numeric_limits<std::size_t>::max ();
+		++num
+	    )
+	{
+
+		std::ostringstream filename("");
+
+		std::string basename = fs::basename (desired_file_path);
+
+		filename << basename << '-' << num << fs::extension (desired_file_path);
+
+		filepath /= filename.str ();
+
+		if(!fs::exists(filepath)) {
+
+			break;
+		}
+	}
+	
+	return filepath;
+}
 } // namespace booty

@@ -28,6 +28,12 @@ find_matching_files (const fs::path& directory_path,
                      FileMatchFunc match_functor,
                      vector<fs::path>& result);
 
+/**
+ * Given a full path to a file that may or may not exist,
+ * return a unique non-existing file path.
+ */
+const fs::path get_non_existent_file_path (const fs::path& file_path);
+
 } // namespace booty
 
 #endif // BOOTY_FILE_UTILS_INCLUDED
