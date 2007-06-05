@@ -17,6 +17,7 @@ public:
 	typedef boost::shared_ptr<EditWindow> ptr;
 
 	typedef boost::signal<bool ()> delete_signal_t;
+	typedef boost::signals::connection  connection_t;
 
 public:
 
@@ -24,8 +25,8 @@ public:
 
 	~EditWindow();
 
-	void on_delete_event (const delete_signal_t::slot_type& handler)
-	{ m_signal_delete_event.connect(handler); }
+	connection_t on_delete_event (const delete_signal_t::slot_type& handler)
+	{ return m_signal_delete_event.connect(handler); }
 
 private:
 
