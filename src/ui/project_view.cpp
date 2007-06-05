@@ -2,6 +2,7 @@
 #include <boost/bind.hpp>
 
 #include <ui/project_view.hpp>
+#include <ui/edit_window.hpp>
 
 #include <ui/debug/debug.hpp>
 
@@ -88,4 +89,5 @@ ProjectView::on_edit_window_signal_delete_event ()
 	
 	return true;
 }
+
 } // namespace gmojo

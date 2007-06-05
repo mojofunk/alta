@@ -11,14 +11,12 @@
 
 #include <ui/debug/debug.hpp>
 
-
 namespace gmojo {
 
 EditWindow::EditWindow(mojo::Project::ptr project)
 	:
 		m_project(project),
 		m_ui_manager(0),
-		m_window(0),
 		m_main_vbox(0),
 		m_menu_bar(0),
 		m_edit_canvas(0)
@@ -26,8 +24,6 @@ EditWindow::EditWindow(mojo::Project::ptr project)
 #ifdef GMOJO_DEBUG_EXTRA
 	LOG_GMOJO_DEBUG;
 #endif
-
-	create_window ();
 
 	create_packing_widgets ();
 
@@ -43,8 +39,7 @@ EditWindow::EditWindow(mojo::Project::ptr project)
 
 	pack_widgets ();
 
-	connect_signals ();
-
+	setup_window ();
 }
 
 EditWindow::~EditWindow()
@@ -55,29 +50,15 @@ EditWindow::~EditWindow()
 
 	g_object_unref (m_ui_manager);
 
-	gtk_widget_destroy (GTK_WIDGET (m_window));
-
 	delete m_edit_canvas;
 }
 
-bool
-EditWindow::create_window()
-{
-	// check return
-	m_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-
-	gtk_window_set_default_size (GTK_WINDOW (m_window), 640, 480);
-	gtk_widget_show (m_window);
-	
-	return true;
-}
 
 bool
 EditWindow::create_packing_widgets ()
 {
 	// check return
 	m_main_vbox = gtk_vbox_new (false, 0);
-	gtk_widget_show (m_main_vbox);
 
 	return true;
 }
@@ -203,33 +184,10 @@ EditWindow::pack_widgets()
 }
 
 void
-EditWindow::connect_signals()
+EditWindow::setup_window()
 {
-	// connect to window signals so we can propogate them
-	// using boost::signal
-	g_signal_connect (G_OBJECT (m_window), "delete_event",
-			G_CALLBACK (EditWindow::on_window_delete_event), this);
-}
-
-gboolean
-EditWindow::on_window_delete_event (GtkWidget* widget,
-		GdkEvent* event, gpointer data )
-{
-	EditWindow* edit_window = static_cast<EditWindow*>(data);
-
-	return edit_window->on_delete_event(widget, event);
-}
-
-bool
-EditWindow::on_delete_event(GtkWidget* widget, GdkEvent* event)
-{
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
-
-	g_assert (widget == m_window);
-
-	return m_signal_delete_event ();
+	gtk_window_set_default_size (GTK_WINDOW (m_window), 640, 480);
+	gtk_widget_show_all (m_window);
 }
 
 } // namespace gmojo

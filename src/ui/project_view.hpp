@@ -6,7 +6,7 @@
 
 #include <mojo/project.hpp>
 
-#include <ui/edit_window.hpp>
+#include <ui/gtk/window.hpp>
 
 namespace gmojo {
 
@@ -35,8 +35,6 @@ private:
 
 	void on_project_signal_destroy ();
 
-	void on_edit_window_signal_destroy ();
-
 	bool on_edit_window_signal_delete_event ();
 
 private:
@@ -45,7 +43,7 @@ private:
 
 	// per project windows
 
-	EditWindow::ptr m_edit_window;
+	gtk::Window::ptr m_edit_window;
 
 };
 
