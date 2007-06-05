@@ -71,16 +71,16 @@ ui/project_action_group.cpp
 ui/project_actions.cpp
 ui/project_view.cpp
 ui/main.cpp
-ui/signal_handler.cpp
 ui/window_title.cpp
 """)
 
 gmojo_debug_files=Split("""
+ui/signal_handler.cpp
 ui/debug/log_domain.cpp
 ui/debug/thread_names.cpp
 """)
 
-all_source_files = libgleam_source_files + \
+all_source_files = \
 booty_source_files + \
 mojo_source_files + \
 gtk_source_files + \
@@ -88,6 +88,7 @@ gmojo_source_files
 
 if env['DEBUG']:
 	all_source_files += logx_source_files
+	all_source_files += libgleam_source_files
 	all_source_files += mojo_debug_files
 	all_source_files += gmojo_debug_files
 

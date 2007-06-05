@@ -2,6 +2,8 @@
 #ifndef CFORMAT_CFORMAT_EXCEPTION_INCLUDED
 #define CFORMAT_CFORMAT_EXCEPTION_INCLUDED
 
+#include <exception>
+
 namespace cformat {
 
 struct cformat_exception : public std::exception {

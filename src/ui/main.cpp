@@ -1,5 +1,4 @@
 
-#include <gleam.hpp>
 #include <cformat.hpp>
 #include <mojo.hpp>
 
@@ -10,23 +9,22 @@
 
 #include <ui/debug/debug.hpp>
 
-#include <iostream>
-
-using std::cout;
-using std::cerr;
+#ifdef GMOJO_DEBUG
+#include <gleam.hpp>
+#endif
 
 using namespace gmojo;
 
 int
 main(int argc, char* argv[])
 {
-	g_thread_init(NULL);
-
 #ifdef GMOJO_DEBUG
+	g_thread_init(NULL);
+	
 	gleam::thread_map().register_thread(gui_thread_name);
-#endif
 
 	SignalHandler	signal_handler;
+#endif
 
 	gtk_init(&argc, &argv);
 
