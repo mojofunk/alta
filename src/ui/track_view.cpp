@@ -1,5 +1,5 @@
 
-#include <ui/edit_canvas.hpp>
+#include <ui/track_view.hpp>
 
 #include <ui/debug/debug.hpp>
 
@@ -7,7 +7,7 @@ namespace gmojo {
 
 
 
-EditCanvas::EditCanvas(mojo::Project::ptr project)
+TrackView::TrackView(mojo::Project::ptr project)
 	:
 		m_project(project)
 {
@@ -28,7 +28,7 @@ EditCanvas::EditCanvas(mojo::Project::ptr project)
 
 }
 
-EditCanvas::~EditCanvas()
+TrackView::~TrackView()
 {
 #ifdef GMOJO_DEBUG_EXTRA
 	LOG_GMOJO_DEBUG;
@@ -37,7 +37,7 @@ EditCanvas::~EditCanvas()
 }
 
 bool
-EditCanvas::create_scrolled_window ()
+TrackView::create_scrolled_window ()
 {
 	m_scrolled_window = gtk_scrolled_window_new (NULL, NULL);
 	gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (m_scrolled_window),
@@ -47,7 +47,7 @@ EditCanvas::create_scrolled_window ()
 }
 
 bool
-EditCanvas::create_canvas ()
+TrackView::create_canvas ()
 {
 	m_canvas = goo_canvas_new ();
 	m_root_item = goo_canvas_get_root_item (GOO_CANVAS (m_canvas));
@@ -59,7 +59,7 @@ EditCanvas::create_canvas ()
 }
 
 bool
-EditCanvas::create_track_control_list ()
+TrackView::create_track_control_list ()
 {
 	m_label = gtk_label_new("Track Control List");
 
@@ -67,7 +67,7 @@ EditCanvas::create_track_control_list ()
 }
 
 bool
-EditCanvas::create_packing_widgets ()
+TrackView::create_packing_widgets ()
 {
 	m_hpaned = gtk_hpaned_new ();
 
@@ -75,7 +75,7 @@ EditCanvas::create_packing_widgets ()
 }
 
 void
-EditCanvas::pack_widgets ()
+TrackView::pack_widgets ()
 {
 	// add canvas to scrolled window
 	gtk_container_add (GTK_CONTAINER (m_scrolled_window), m_canvas);
@@ -86,7 +86,7 @@ EditCanvas::pack_widgets ()
 }
 
 void
-EditCanvas::connect_signals ()
+TrackView::connect_signals ()
 {
 	/* Connect a signal handlers for the root canvas item. */
 	g_signal_connect (m_root_item, "button_press_event",
@@ -94,7 +94,7 @@ EditCanvas::connect_signals ()
 }
 
 gboolean
-EditCanvas::public_on_root_button_press (GooCanvasItem  *view,
+TrackView::public_on_root_button_press (GooCanvasItem  *view,
 		GooCanvasItem  *target,
 		GdkEventButton *event,
 		gpointer        data)
@@ -103,13 +103,13 @@ EditCanvas::public_on_root_button_press (GooCanvasItem  *view,
 	LOG_GMOJO_DEBUG;
 #endif
 
-	EditCanvas* edit_canvas = static_cast<EditCanvas*>(data);
+	TrackView* track_view = static_cast<TrackView*>(data);
 
-	return edit_canvas->on_root_button_press(view, target, event);
+	return track_view->on_root_button_press(view, target, event);
 }
 
 bool
-EditCanvas::on_root_button_press (GooCanvasItem  *view,
+TrackView::on_root_button_press (GooCanvasItem  *view,
 		GooCanvasItem  *target,
 		GdkEventButton *event)
 {

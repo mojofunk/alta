@@ -6,7 +6,7 @@
 
 #include <ui/gtk/window.hpp>
 
-#include <ui/edit_canvas.hpp>
+#include <ui/track_view.hpp>
 
 namespace gmojo {
 
@@ -48,7 +48,7 @@ private:
 
 	GtkWidget* m_menu_bar;
 
-	EditCanvas* m_edit_canvas;
+	TrackView* m_track_view;
 
 };
 

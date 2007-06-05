@@ -17,7 +17,7 @@ EditWindow::EditWindow(mojo::Project::ptr project)
 		m_ui_manager(0),
 		m_main_vbox(0),
 		m_menu_bar(0),
-		m_edit_canvas(0)
+		m_track_view(0)
 {
 #ifdef GMOJO_DEBUG_EXTRA
 	LOG_GMOJO_DEBUG;
@@ -48,7 +48,7 @@ EditWindow::~EditWindow()
 
 	g_object_unref (m_ui_manager);
 
-	delete m_edit_canvas;
+	delete m_track_view;
 }
 
 
@@ -150,9 +150,9 @@ EditWindow::create_menu_bar()
 bool
 EditWindow::create_edit_canvas ()
 {
-	m_edit_canvas = new EditCanvas(m_project);
+	m_track_view = new TrackView (m_project);
 
-	if(!m_edit_canvas)
+	if(!m_track_view)
 	{
 
 #ifdef GMOJO_DEBUG
@@ -174,7 +174,7 @@ EditWindow::pack_widgets()
 						false, false, 0);
 	
 	gtk_box_pack_start (GTK_BOX (m_main_vbox),
-						m_edit_canvas->widget(),
+						m_track_view->widget(),
 						true, true, 0);
 
 	// pack main vbox in window
