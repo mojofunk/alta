@@ -37,8 +37,6 @@ public:
 	boost::signal<void ()>&
 		signal_name_change () { return m_signal_name_change; }
 
-	void on_signal_destroy (const destroy_signal_t::slot_type& handler) { }
-
 private:
 	
 	friend class boost::serialization::access;
