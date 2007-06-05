@@ -40,7 +40,7 @@ public:
 	 * This should also take a bus so that the handler is called
 	 * in an appropriate thread context.
 	 */
-	void on_signal_destroy (const destroy_signal_t::slot_type& handler)
+	void on_destroy (const destroy_signal_t::slot_type& handler)
 	{ m_signal_destroy.connect(handler);}
 
 protected:

@@ -76,7 +76,7 @@ Application::new_project()
 	// a reference to the project is not held by this class
 	// so if the project is destroyed rely on the projectview's
 	// destroy signal
-	pview->on_signal_destroy (
+	pview->on_destroy (
 			boost::bind (
 				boost::mem_fn (&Application::on_projectview_signal_destroy),
 				this, ProjectView::weak_ptr(pview))

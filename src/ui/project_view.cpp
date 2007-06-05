@@ -23,7 +23,7 @@ ProjectView::ProjectView(mojo::Project::ptr project)
 			 this)
 		);
 
-	m_project->on_signal_destroy
+	m_project->on_destroy
 		(
 		 boost::bind (
 			 boost::mem_fn (&ProjectView::on_project_signal_destroy),
