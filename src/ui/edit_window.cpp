@@ -1,6 +1,4 @@
 
-#include <boost/bind.hpp>
-
 #include <ui/edit_window.hpp>
 
 #include <ui/edit_window_menu_action_group.hpp>

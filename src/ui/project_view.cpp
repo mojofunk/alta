@@ -17,25 +17,16 @@ ProjectView::ProjectView(mojo::Project::ptr project)
 	LOG_GMOJO_DEBUG;
 #endif
 	
-	m_project->signal_close ().connect
-		(
-		 boost::bind (
-			 boost::mem_fn (&ProjectView::on_project_signal_close),
-			 this)
+	m_project->on_close (
+		 boost::bind (&ProjectView::on_project_signal_close, this)
 		);
 
-	m_project->on_destroy
-		(
-		 boost::bind (
-			 boost::mem_fn (&ProjectView::on_project_signal_destroy),
-			 this)
+	m_project->on_destroy (
+		 boost::bind (&ProjectView::on_project_signal_destroy, this)
 		);
 
-	m_edit_window->on_delete_event
-		(
-		 boost::bind (
-			 boost::mem_fn (&ProjectView::on_edit_window_signal_delete_event),
-			 this)
+	m_edit_window->on_delete_event (
+		 boost::bind (&ProjectView::on_edit_window_delete_event, this)
 		);
 }
 
@@ -76,7 +67,7 @@ ProjectView::on_project_signal_destroy ()
 }
 
 bool
-ProjectView::on_edit_window_signal_delete_event ()
+ProjectView::on_edit_window_delete_event ()
 {
 #ifdef GMOJO_DEBUG_EXTRA
 	LOG_GMOJO_DEBUG;

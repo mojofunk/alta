@@ -29,6 +29,8 @@ public:
 
 	typedef std::list<AudioTrack*>        AudioTrackList;
 
+	typedef boost::signal<bool ()>        close_signal_t;
+
 public:
 
     Project ();
@@ -83,8 +85,9 @@ public:
 
 public:
 
-	boost::signal<bool ()>&
-		signal_close () { return m_signal_close; }
+	// return connection?
+	void on_close (const close_signal_t::slot_type& slot)
+	{ m_signal_close.connect(slot); }
 
 	boost::signal<void (AudioTrack*)>&
 		signal_new_audio_track () { return m_signal_new_audio_track; }

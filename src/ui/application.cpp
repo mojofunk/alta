@@ -77,10 +77,11 @@ Application::new_project()
 	// so if the project is destroyed rely on the projectview's
 	// destroy signal
 	pview->on_destroy (
-			boost::bind (
-				boost::mem_fn (&Application::on_projectview_signal_destroy),
-				this, ProjectView::weak_ptr(pview))
-			);
+		 boost::bind (
+			 &Application::on_projectview_signal_destroy, this,
+			 ProjectView::weak_ptr(pview)
+			 )
+		);
 
 	// check the return?
 	m_projects.insert(pview);
