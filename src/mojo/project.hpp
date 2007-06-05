@@ -82,9 +82,6 @@ public:
 
 
 public:
-	
-	boost::signal<void ()>&
-		signal_name_change () { return m_signal_name_change; }
 
 	boost::signal<bool ()>&
 		signal_close () { return m_signal_close; }
