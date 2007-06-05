@@ -20,17 +20,11 @@ public:
 
 private:
 
-	bool create_packing_widgets ();
-
-	bool create_ui_manager();
-
 	bool add_action_groups_to_ui_manager ();
 
 	bool merge_ui_definitions ();
 
 	bool create_menu_bar ();
-
-	bool create_edit_canvas();
 
 	void pack_widgets();
 	
@@ -43,12 +37,10 @@ private:
 	// gobjects
 	GtkUIManager* m_ui_manager;
 
-
 	GtkWidget* m_main_vbox;
-
 	GtkWidget* m_menu_bar;
 
-	TrackView* m_track_view;
+	TrackView m_track_view;
 
 };
 

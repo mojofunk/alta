@@ -14,26 +14,20 @@ namespace gmojo {
 EditWindow::EditWindow(mojo::Project::ptr project)
 	:
 		m_project(project),
-		m_ui_manager(0),
-		m_main_vbox(0),
+		m_ui_manager(gtk_ui_manager_new ()),
+		m_main_vbox(gtk_vbox_new (false, 0)),
 		m_menu_bar(0),
-		m_track_view(0)
+		m_track_view(project)
 {
 #ifdef GMOJO_DEBUG_EXTRA
 	LOG_GMOJO_DEBUG;
 #endif
-
-	create_packing_widgets ();
-
-	create_ui_manager ();
 
 	add_action_groups_to_ui_manager ();
 
 	merge_ui_definitions ();
 
 	create_menu_bar ();
-
-	create_edit_canvas ();
 
 	pack_widgets ();
 
@@ -47,37 +41,8 @@ EditWindow::~EditWindow()
 #endif
 
 	g_object_unref (m_ui_manager);
-
-	delete m_track_view;
 }
 
-
-bool
-EditWindow::create_packing_widgets ()
-{
-	// check return
-	m_main_vbox = gtk_vbox_new (false, 0);
-
-	return true;
-}
-
-bool
-EditWindow::create_ui_manager()
-{
-	m_ui_manager = gtk_ui_manager_new ();
-
-	if(!m_ui_manager)
-	{
-
-#ifdef GMOJO_DEBUG
-		LOG_GMOJO_CRITICAL;
-#endif
-
-		return false;
-	}
-
-	return true;
-}
 
 bool
 EditWindow::add_action_groups_to_ui_manager ()
@@ -147,24 +112,6 @@ EditWindow::create_menu_bar()
 	return true;
 }
 
-bool
-EditWindow::create_edit_canvas ()
-{
-	m_track_view = new TrackView (m_project);
-
-	if(!m_track_view)
-	{
-
-#ifdef GMOJO_DEBUG
-		LOG_GMOJO_CRITICAL;
-#endif
-
-		return false;
-	}
-
-	return true;
-}
-
 void
 EditWindow::pack_widgets()
 {
@@ -174,7 +121,7 @@ EditWindow::pack_widgets()
 						false, false, 0);
 	
 	gtk_box_pack_start (GTK_BOX (m_main_vbox),
-						m_track_view->widget(),
+						m_track_view.widget(),
 						true, true, 0);
 
 	// pack main vbox in window
