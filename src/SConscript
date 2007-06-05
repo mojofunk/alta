@@ -59,6 +59,10 @@ gtk_source_files = Split("""
 ui/gtk/window.cpp
 """)
 
+goo_source_files = Split("""
+ui/goo/canvas.cpp
+""")
+
 gmojo_source_files = Split("""
 ui/application.cpp
 ui/application_action_group.cpp
@@ -84,6 +88,7 @@ all_source_files = \
 booty_source_files + \
 mojo_source_files + \
 gtk_source_files + \
+goo_source_files + \
 gmojo_source_files
 
 if env['DEBUG']:

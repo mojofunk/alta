@@ -5,12 +5,11 @@
 #include <list>
 
 #include <gtk/gtk.h>
-#include <goocanvas.h>
 
-#include <mojo/object.hpp>
 #include <mojo/project.hpp>
 
 #include <ui/track.hpp>
+#include <ui/track_canvas.hpp>
 
 namespace gmojo {
 
@@ -33,41 +32,13 @@ public:
 
 private:
 
-	bool create_scrolled_window ();
-
-	bool create_canvas ();
-
-	bool create_track_control_list ();
-	
-	bool create_packing_widgets ();
-
-	void pack_widgets ();
-
-	void connect_signals ();
-
-private:
-
-	static gboolean public_on_root_button_press (GooCanvasItem  *view,
-			GooCanvasItem  *target,
-			GdkEventButton *event,
-			gpointer        data);
-
-	bool on_root_button_press (GooCanvasItem  *view,
-			GooCanvasItem  *target,
-			GdkEventButton *event);
-
-private:
-
 	mojo::Project::ptr m_project;
 
+	GtkWidget* m_scrolled_window;
+	GtkWidget* m_label;
 	GtkWidget* m_hpaned;
 
-	GtkWidget* m_label;
-	GtkWidget* m_scrolled_window;
-
-	GtkWidget* m_canvas;
-
-	GooCanvasItem* m_root_item;
+	TrackCanvas m_canvas;
 
 	typedef std::list<boost::shared_ptr<Track> > TrackList;
 
