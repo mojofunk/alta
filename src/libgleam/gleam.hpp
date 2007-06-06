@@ -12,7 +12,6 @@
 #include <libgleam/periodic_signals.hpp>
 #include <libgleam/posix_signals.hpp>
 #include <libgleam/scoped_handle.hpp>
-#include <libgleam/search_path.hpp>
 #include <libgleam/semaphore.hpp>
 #include <libgleam/terminate_process.hpp>
 #include <libgleam/thread_debug.hpp>

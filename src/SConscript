@@ -20,12 +20,10 @@ if env['DEBUG']:
 libgleam_source_files = Split("""
 libgleam/dispatcher.cpp
 libgleam/file_utils.cpp
-libgleam/filesystem_paths.cpp
 libgleam/log_domain.cpp
 libgleam/manual_dispatcher.cpp
 libgleam/periodic_signal.cpp
 libgleam/periodic_signals.cpp
-libgleam/search_path.cpp
 libgleam/semaphore.cpp
 libgleam/terminate_process.cpp
 libgleam/thread_debug.cpp
@@ -41,6 +39,7 @@ if env['PLATFORM'] == 'posix':
 
 booty_source_files = Split("""
 booty/file_utils.cpp
+booty/search_path.cpp
 """)
 
 mojo_source_files = Split("""
