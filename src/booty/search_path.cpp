@@ -124,12 +124,11 @@ SearchPath::add_subdirectory_to_paths (const string& subdir)
 
 	for (vector<fs::path>::iterator i = m_dirs.begin(); i != m_dirs.end(); ++i)
 	{
-		tmp.push_back ( *i / subdir );
+		// should these new paths just be added to the end of 
+		// the search path rather than replace?
+		*i /= subdir;
 	}
-
-	// should these new paths just be added to the end of 
-	// the search path rather than replace?
-	m_dirs = tmp;
+	
 	return *this;
 }
 	
