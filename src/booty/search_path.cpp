@@ -66,7 +66,7 @@ SearchPath::add_directories (const vector<fs::path>& paths)
 }
 
 const string
-SearchPath::get_search_path_string () const
+SearchPath::to_string () const
 {
 	string path;
 

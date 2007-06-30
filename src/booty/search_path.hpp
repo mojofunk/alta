@@ -16,7 +16,7 @@ using std::vector;
  * @class The SearchPath class is a helper class for getting a 
  * vector of paths contained in a search path string where a 
  * "search path string" contains absolute directory paths 
- * separated by a colon(:) or a semi-colon(;) * on windows.
+ * separated by a colon(:) or a semi-colon(;) on windows.
  */
 class SearchPath {
 public:
@@ -95,7 +95,7 @@ public:
 	 * method is indicitive that I don't think it should be used
 	 * that often.
 	 */
-	const string get_search_path_string () const;
+	const string to_string () const;
 
 	SearchPath& operator= (const SearchPath& path);
 
