@@ -4,6 +4,8 @@
 
 #include <ui/project_actions.hpp>
 
+#include <ui/dialogs/new_audio_track_dialog.hpp>
+
 namespace gmojo {
 
 void
@@ -60,5 +62,21 @@ close_project (GtkAction*, mojo::Project* project)
 
 }
 
+void
+create_audio_track (GtkAction*, mojo::Project* project)
+{
+#ifdef GMOJO_DEBUG_EXTRA
+		LOG_GMOJO_DEBUG;
+#endif
+
+	NewAudioTrackDialog dialog;
+
+	NewAudioTrackDialog::Response response = dialog.run();
+
+	if (response == NewAudioTrackDialog::Cancel) return;
+
+	// new audio track dialog etc
+
+}
 
 }

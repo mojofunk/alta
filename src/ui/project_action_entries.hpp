@@ -18,6 +18,9 @@ const GtkActionEntry project_action_entries[] =
 	{ "CloseProject", GTK_STOCK_CLOSE, NULL, "<control>W",
 		N_("Close the current project"), G_CALLBACK (close_project) },
 
+	{ "CreateAudioTrack", GTK_STOCK_NEW, NULL, "<control>A",
+		N_("Create a new audio track"), G_CALLBACK (create_audio_track) },
+
 };
 
 } // namespace gmojo

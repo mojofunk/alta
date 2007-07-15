@@ -75,5 +75,17 @@ Project::close ()
 	}
 }
 
+void
+Project::create_audio_track ()
+{
+
+	AudioTrack::ptr new_track (new AudioTrack());
+
+	m_audio_tracks.push_back (new_track);
+
+	m_signal_new_audio_track (new_track);
+
+}
+
 
 } // namespace mojo

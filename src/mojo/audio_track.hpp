@@ -27,6 +27,11 @@ class AudioTrack : public Object
 {
 public:
 
+	typedef boost::shared_ptr<AudioTrack>    ptr;
+	typedef boost::weak_ptr<AudioTrack>      weak_ptr;
+
+public:
+
 	AudioTrack ();
 	
 	const std::string&

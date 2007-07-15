@@ -75,6 +75,8 @@ ui/project_actions.cpp
 ui/project_view.cpp
 ui/main.cpp
 ui/window_title.cpp
+ui/dialogs/audio_file_import_dialog.cpp
+ui/dialogs/new_audio_track_dialog.cpp
 """)
 
 gmojo_debug_files=Split("""

@@ -12,6 +12,8 @@ namespace gmojo {
 	
 	void close_project (GtkAction*, mojo::Project*);
 
+	void create_audio_track (GtkAction*, mojo::Project*);
+
 } // namespace gmojo
 
 #endif

@@ -10,6 +10,9 @@ const char* const edit_window_menu_ui_definition =
 "        <menuitem name=\"NewProjectMenu\" action=\"NewProject\" />" \
 "        <menuitem name=\"SaveProjectMenu\" action=\"SaveProject\" />" \
 "        <menuitem name=\"CloseProjectMenu\" action=\"CloseProject\" />" \
+"        <menu name=\"ImportMenu\" action=\"Import\">" \
+"            <menuitem name=\"CreateAudioTrackMenu\" action=\"CreateAudioTrack\" />" \
+"        </menu>" \
 "        <menuitem name=\"QuitProjectMenu\" action=\"Quit\" />" \
 "     </menu>" \
 "     <menu name=\"EditMenu\" action=\"Edit\">" \

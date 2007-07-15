@@ -9,6 +9,7 @@
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/string.hpp>
 #include <boost/serialization/list.hpp>
+#include <boost/serialization/shared_ptr.hpp>
 
 #include <booty/filesystem.hpp>
 
@@ -27,7 +28,7 @@ public:
 	typedef boost::shared_ptr<Project>    ptr;
 	typedef boost::weak_ptr<Project>      weak_ptr;
 
-	typedef std::list<AudioTrack*>        AudioTrackList;
+	typedef std::list<AudioTrack::ptr>    AudioTrackList;
 
 	typedef boost::signal<bool ()>        close_signal_t;
 
@@ -82,6 +83,7 @@ public:
 	const AudioTrackList&
 		audio_tracks () const { return m_audio_tracks; }
 
+	//void add_audio_file (const fs::path& audio_file_path);
 
 public:
 
@@ -89,7 +91,7 @@ public:
 	void on_close (const close_signal_t::slot_type& slot)
 	{ m_signal_close.connect(slot); }
 
-	boost::signal<void (AudioTrack*)>&
+	boost::signal<void (AudioTrack::ptr)>&
 		signal_new_audio_track () { return m_signal_new_audio_track; }
 
 private:
@@ -119,7 +121,7 @@ private:
 
 	boost::signal<bool ()> m_signal_close;
 
-	boost::signal<void (AudioTrack*)> m_signal_new_audio_track;
+	boost::signal<void (AudioTrack::ptr)> m_signal_new_audio_track;
 
 };
 
