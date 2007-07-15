@@ -9,18 +9,22 @@
   <section id="gui-dependencies">
     <title>GUI</title>
     <para>
-      Widget toolkit : Gtk+, libglade.
+      Widget toolkit : Gtk+, libglade(or Gtkbuilder)
     </para>
 
     <para>
       Canvas : GooCanvas/future Gtk+ canvas.
     </para>
+
+	<para>
+		Phat?
+	</para>
   </section>
 
   <section id="serialization-deps">
     <title>Serialization Dependencies</title>
     <para>
-      A serialization library : boost::serialization
+		None, use serialization modules
     </para>
   </section>
 

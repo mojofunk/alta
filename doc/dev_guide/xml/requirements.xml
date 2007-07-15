@@ -14,37 +14,84 @@
       A listing of functional software requirements for &GMOJO_APP;
     </para>
 
-	<section id="project-formats">
-		<title>Project Formats</title>
-		<para>
-			A project format is all the files and directories that make
-			up the representation of a Project on disk.
-		</para>
-		<para>
-			The application must support reading and writing of several
-			formats for interoperability between different DAW's.
-		</para>
-		<para>
-			The application must be able to convert a project from one
-			format to any other format with as little information loss
-			as possible.
-		</para>
-	</section>
-
-    <section id="project-files">
-      <title>Project Files</title>
+    <section id="application-usage-requirements">
+      <title>Application Usage Requirments</title>
       <para>
-        An entire project consists of the project file and all the data
-        referenced by that file.
+        The application must be able to create a new project without any
+        input from the user at the creation time. For instance the user
+        should not have to name the project or specify any directories to
+        save data to until the project is saved.
+      </para>
+    </section>
+
+    <section id="project-formats">
+      <title>Project Formats</title>
+      <para>
+        A project format is all the files and directories that make up the
+        representation of a Project on disk.
       </para>
 
       <para>
-        The user should not have to name the project until saving.
+        The application must support reading and writing of several formats
+        for interoperability between different applications.
       </para>
 
       <para>
-        The user should not have to specify any directories to save data to
-        when creating a new project.
+        It must support exporting to a format that is application agnostic
+        and has no significant barriers to usage in other applications such
+        as AAF.
+      </para>
+
+      <para>
+        The application must be able to convert a project from one format to
+        any other format with as little information loss as possible.
+      </para>
+
+      <itemizedlist>
+        <title>Possible Project Formats</title>
+        <listitem>
+          <para>
+            Native format
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            AAF format
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Ardour format
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Traverso format
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            QTractor format
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Rosegarden format
+          </para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section id="native-project-format">
+      <title>Native Project Format</title>
+      <para>
+        The native project format consists of a project file and all the
+        data referenced by that file in one of several project directories.
       </para>
 
       <section id="project-file">
@@ -70,7 +117,8 @@
             <listitem>
               <para>
                 The project file must be able to be moved and the project
-                should still open.
+                should still open. Which indicates a path to the root
+                directory of project should be stored in project file.
               </para>
             </listitem>
           </varlistentry>
@@ -118,6 +166,39 @@
     <para>
       The first version will have extremely limited functionality.
     </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          Must be able to create a new project, save its state and reopen
+          it.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Must be able to open multiple projects at once.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Must be able to import audio files into the project.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Must be able to create and delete audio tracks.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Must display audio files in an audio track in the edit window.
+        </para>
+      </listitem>
+    </itemizedlist>
   </section>
 <!--
 	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 

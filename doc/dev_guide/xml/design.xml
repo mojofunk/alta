@@ -9,16 +9,15 @@
   <section id="gui-interfaces">
     <title>GUI Interfaces</title>
     <para>
-		Some elements of the GUI should be defined as interfaces and factory
-		functions used to create instances so that different implementations
-		can be used in certain areas.
+      Some elements of the GUI should be defined as interfaces and factory
+      functions used to create instances so that different implementations
+      can be used in certain areas.
     </para>
 
-	<para>
-		One situation where technique would be useful is for testing and or
-		using different canvas implementations.
-	</para>
-
+    <para>
+      One situation where technique would be useful is for testing and or
+      using different canvas implementations.
+    </para>
   </section>
 
   <section id="server">
