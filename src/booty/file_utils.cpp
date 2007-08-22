@@ -49,34 +49,37 @@ const fs::path
 get_non_existent_file_path (const fs::path& desired_file_path)
 {
 
-	if (!fs::exists (desired_file_path))
+	if (!fs::exists( desired_file_path ))
 	{
 		return desired_file_path;
 	}
 
-	fs::path filepath(desired_file_path.branch_path ());
+	fs::path final_path( desired_file_path.branch_path() );
+
+	const string filename_no_extension = fs::basename( desired_file_path );
+	const string extension = fs::extension( desired_file_path );
 
 	for (
 		std::size_t num = 1;
-		num < std::numeric_limits<std::size_t>::max ();
+		num < std::numeric_limits<std::size_t>::max();
 		++num
 	    )
 	{
 
 		std::ostringstream filename("");
 
-		std::string basename = fs::basename (desired_file_path);
+		std::string basename = fs::basename( desired_file_path );
 
-		filename << basename << '-' << num << fs::extension (desired_file_path);
+		filename << filename_no_extension << '-' << num << extension;
 
-		filepath /= filename.str ();
+		final_path /= filename.str();
 
-		if(!fs::exists(filepath)) {
+		if(!fs::exists( final_path )) {
 
 			break;
 		}
 	}
 	
-	return filepath;
+	return final_path;
 }
 } // namespace booty
