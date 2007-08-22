@@ -8,7 +8,6 @@ Import('env')
 
 libgleam_source_files = Split("""
 libgleam/dispatcher.cpp
-libgleam/file_utils.cpp
 libgleam/manual_dispatcher.cpp
 libgleam/periodic_signal.cpp
 libgleam/periodic_signals.cpp
