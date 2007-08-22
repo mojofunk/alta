@@ -1,8 +1,6 @@
 
 #include <ui/track_view.hpp>
 
-#include <ui/debug/debug.hpp>
-
 namespace gmojo {
 
 TrackView::TrackView(mojo::Project::ptr project)
@@ -12,10 +10,6 @@ TrackView::TrackView(mojo::Project::ptr project)
 		m_label(gtk_label_new("Track Control List")),
 		m_hpaned(gtk_hpaned_new ())
 {
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
-	
 	gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (m_scrolled_window),
 			GTK_SHADOW_IN);
 	
@@ -32,9 +26,6 @@ TrackView::TrackView(mojo::Project::ptr project)
 
 TrackView::~TrackView()
 {
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
 
 }
 

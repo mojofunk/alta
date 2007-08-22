@@ -7,17 +7,11 @@
 #include <mojo/project.hpp>
 #include <mojo/mojo_project_format.hpp>
 
-#include <mojo/debug/debug.hpp>
-
 namespace mojo {
 
 Project*
 MojoProjectFormat::open_project (const fs::path& project_file)
 {
-#ifdef MOJO_DEBUG
-	LOG_MOJO_DEBUG;
-#endif
-
 	Project* project = new Project;
 
 	// why does this have to be opened in binary mode again?

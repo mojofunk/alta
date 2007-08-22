@@ -23,8 +23,6 @@
 
 #include <libgleam/posix_signals.hpp>
 
-#include "debug.hpp"
-
 namespace {
 
 gleam::TraceMode stack_trace_mode = gleam::STACK_TRACE_QUERY;
@@ -54,23 +52,12 @@ signal (int sig_num, PosixSignalHandlerFunc handler, int flags)
 	sigfillset (&sa.sa_mask);
 
 	sa.sa_flags = flags;
-
-#ifdef GLEAM_DEBUG_EXTRA
-	LOG_GLEAM_DEBUG
-		<< "Adding handler for signal"
-		<< g_strsignal (sig_num);
-#endif
 	
 	ret = sigaction (sig_num, &sa, &osa);
 
 	if (ret < 0) {
 
-#ifdef GLEAM_DEBUG
-		LOG_GLEAM_CRITICAL
-			<< "Unable to set handler for signal"
-			<< sig_num;
-#endif
-
+		// XXX
 	}
 
 	return (PosixSignalHandlerFunc) osa.sa_handler;

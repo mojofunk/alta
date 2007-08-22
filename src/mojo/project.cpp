@@ -2,24 +2,18 @@
 #include <mojo/project.hpp>
 #include <mojo/project_format.hpp>
 
-#include <mojo/debug/debug.hpp>
-
 namespace mojo {
 
 Project::Project()
 	:
 		m_project_file()
 {
-#ifdef MOJO_DEBUG_EXTRA
-	LOG_MOJO_DEBUG;
-#endif
+
 }
 
 Project::~Project()
 {
-#ifdef MOJO_DEBUG_EXTRA
-	LOG_MOJO_DEBUG;
-#endif
+
 }
 
 void
@@ -37,10 +31,6 @@ Project::save ()
 	}
 	catch (...)
 	{
-
-#ifdef MOJO_DEBUG_EXTRA
-		LOG_MOJO_DEBUG;
-#endif
 
 	}
 
@@ -65,10 +55,6 @@ Project::close ()
 {
 	bool close = m_signal_close ();
 
-#ifdef MOJO_DEBUG_EXTRA
-	LOG_MOJO_DEBUG << "signal_close returned" << close;
-#endif
-
 	if(close)
 	{
 		destroy ();
@@ -78,13 +64,11 @@ Project::close ()
 void
 Project::create_audio_track ()
 {
-
 	AudioTrack::ptr new_track (new AudioTrack());
 
 	m_audio_tracks.push_back (new_track);
 
 	m_signal_new_audio_track (new_track);
-
 }
 
 

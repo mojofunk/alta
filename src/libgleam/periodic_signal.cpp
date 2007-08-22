@@ -1,8 +1,6 @@
 
 #include <libgleam/periodic_signal.hpp>
 
-#include "debug.hpp"
-
 namespace gleam {
 
 PeriodicSignal::PeriodicSignal (unsigned int interval,
@@ -32,14 +30,6 @@ PeriodicSignal::signal()
         // so the source that was created stays around after the RefPtr
         // goes out of scope.
         timeout_source->attach(m_main_context);
-
-#ifdef GLEAM_DEBUG_EXTRA
-        LOG_GLEAM_DEBUG
-            << "Attached Timeout Source to MainContext"
-            << "Interval" << m_timeout_interval
-            << "Priority" << m_priority;
-#endif
-
     }
 
     return m_signal;
@@ -51,23 +41,9 @@ PeriodicSignal::timeout_handler()
     if(m_signal.size() == 0)
     {
         m_timeout_connection.disconnect();
-
-#ifdef GLEAM_DEBUG_EXTRA
-        LOG_GLEAM_DEBUG
-            << "Disconnected Timeout Source"
-            << "Interval" << m_timeout_interval
-            << "Priority" << m_priority;
-#endif
         
         return false;
     }
-
-#ifdef GLEAM_DEBUG_EXTRA
-        LOG_GLEAM_DEBUG
-            << "Interval" << m_timeout_interval
-            << "Priority" << m_priority
-			<< "Connections" << m_signal.size();
-#endif
 
     m_signal();
 

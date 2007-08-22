@@ -36,7 +36,6 @@ private:
     sigc::signal<void>                  m_signal;
 
 	sigc::connection                    m_timeout_connection;
-
 };
 
 } // namespace gleam

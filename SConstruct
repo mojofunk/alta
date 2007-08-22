@@ -67,24 +67,16 @@ env.Append(VERSIONED_NAME = "%s-%s.%s" % (env['PACKAGE_NAME'], env['MAJOR'], env
 # Dependency Checking #
 #######################
 
-deps = { }
+#deps = { }
 
-if env['DEBUG']:
-	deps = \
-	{
+deps = \
+{
 		'glib-2.0'             : '2.10.1',
 		'gthread-2.0'          : '2.10.1',
 		'gtk+-2.0'             : '2.8.1',
 		'glibmm-2.4'           : '2.8.1',
 		'goocanvas'            : '0.6'
-	}
-else:
-	deps = \
-	{
-		'glib-2.0'             : '2.10.1',
-		'gtk+-2.0'             : '2.8.1',
-		'goocanvas'            : '0.6'
-	}
+}
 
 def CheckPKGConfig(context, version):
      context.Message( 'Checking for pkg-config version >= %s... ' %version )
@@ -134,8 +126,6 @@ env.Append(CPPPATH = [ '#src/mojo' ])
 
 
 if env['DEBUG']:
-	
-	env.Append(CPPPATH = [ '#src/logx' ])
 
 	env.Append(CCFLAGS = ['-g'])
 	env.Append(CCFLAGS = ['-Wextra'])

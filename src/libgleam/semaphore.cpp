@@ -1,8 +1,6 @@
 
 #include <libgleam/semaphore.hpp>
 
-#include "debug.hpp"
-
 namespace gleam {
 
 // These should probably be inline
@@ -22,12 +20,6 @@ Semaphore::aquire ()
 	}
 
 	--m_counter;
-
-#ifdef GLEAM_DEBUG_EXTRA
-	LOG_GLEAM_DEBUG
-		<< "Semaphore AQUIRE"
-		<< m_counter.get();
-#endif
 }
 
 bool
@@ -41,12 +33,6 @@ void
 Semaphore::release ()
 {
 	++m_counter;
-
-#ifdef GLEAM_DEBUG_EXTRA
-	LOG_GLEAM_DEBUG
-		<< "Semaphore RELEASE"
-		<< m_counter.get();
-#endif
 
 	m_cond.signal();
 }

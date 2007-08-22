@@ -18,8 +18,6 @@
 #include <libgleam/file_utils.hpp>
 #include <libgleam/tokenize.hpp>
 
-#include "debug.hpp"
-
 namespace {
 	const char path_delim = G_SEARCHPATH_SEPARATOR;
 	const int default_permission_mode = 0775;
@@ -42,19 +40,8 @@ operator/ (const string& base_path, const string& path_element)
 void
 get_files_in_directory (const string& directory, vector<string>& result)
 {
-	try
-	{
-		Glib::Dir dir(directory);
-		std::copy(dir.begin(), dir.end(), std::back_inserter(result));
-	}
-	catch (Glib::FileError& err)
-	{
-
-#ifdef GLEAM_DEBUG		
-		LOG_GLEAM_WARNING << err.what();
-#endif
-
-	}
+	Glib::Dir dir(directory);
+	std::copy(dir.begin(), dir.end(), std::back_inserter(result));
 }
 
 void
@@ -74,19 +61,11 @@ find_matching_files (const vector<string>& paths,
 				file_iter != tmp_files.end();
 				++file_iter)
 		{
-			
 			if(!pattern.match(*file_iter)) continue;
 
 			string full_path = Glib::build_filename(*path_iter, *file_iter);
 
 			result.push_back(full_path);
-
-#ifdef GLEAM_DEBUG_EXTRA
-			LOG_GLEAM_DEBUG
-				<< "Found file"
-				<< full_path;
-#endif
-
 		}
 
 		tmp_files.clear();
@@ -100,11 +79,6 @@ find_matching_files_in_search_path (const string& search_path,
 {
 	vector<string> dirs;
 	if(!tokenize(search_path, path_delimiter(), std::back_inserter(dirs))) {
-
-#ifdef GLEAM_DEBUG
-		LOG_GLEAM_CRITICAL ;
-#endif
-
 		return;
 	}
 	find_matching_files (dirs, pattern, result);    
@@ -121,13 +95,6 @@ find_file_in_search_path(const string& search_path,
 	find_matching_files_in_search_path(search_path, tmp_pattern, tmp);
 
 	if(tmp.size() != 1) {
-
-#ifdef GLEAM_DEBUG
-		LOG_GLEAM_WARNING
-			<< "Found more than a single file in search path"
-			<< filename;
-#endif
-
 		return false;
 	}
 
@@ -151,11 +118,6 @@ file_is_writable (const string& path)
 	
 	if(g_access(path.c_str(), W_OK) != 0)
 	{
-
-#ifdef GLEAM_DEBUG
-		LOG_GLEAM_WARNING << path << g_strerror(errno);
-#endif		
-
 		return false;
 	}
 	return true;
@@ -170,10 +132,6 @@ file_is_empty (const string& path)
 
 	if(g_stat (path.c_str(), &stat_buf) != 0)
 	{
-
-#ifdef GLEAM_DEBUG
-		LOG_GLEAM_WARNING << path << g_strerror(errno);
-#endif
 		return true;
 	}
 
@@ -185,14 +143,6 @@ access_file (const string& path, int mode)
 {
 	if(g_access(path.c_str(), mode) != 0)
 	{
-
-#ifdef GLEAM_DEBUG
-		LOG_GLEAM_WARNING
-			<< path
-			<< mode
-			<< g_strerror(errno);
-#endif
-
 		return false;
 	}
 	return true;
@@ -204,14 +154,6 @@ rename_file(const string& old_path, const string& new_path)
 
 	if (g_rename(old_path.c_str(), new_path.c_str()) != 0)
 	{
-
-#ifdef GLEAM_DEBUG
-		LOG_GLEAM_WARNING
-			<< old_path
-			<< new_path
-			<< g_strerror(errno);
-#endif
-
 		return false;
 	}
 	return true;
@@ -231,11 +173,6 @@ directory_is_readable (const string& path)
 	
 	if(g_access(path.c_str(), R_OK) != 0)
 	{
-
-#ifdef GLEAM_DEBUG
-		LOG_GLEAM_WARNING << g_strerror(errno);
-#endif		
-
 		return false;
 	}
 	return true;
@@ -253,11 +190,6 @@ directory_is_writable (const string& path)
 	
 	if(g_access(path.c_str(), W_OK) != 0)
 	{
-
-#ifdef GLEAM_DEBUG
-		LOG_GLEAM_WARNING << g_strerror(errno);
-#endif		
-
 		return false;
 	}
 	return true;
@@ -268,14 +200,6 @@ create_directory (const string& path)
 {
 	if ((g_mkdir_with_parents (path.c_str(), default_permission_mode) != 0))
 	{
-
-#ifdef GLEAM_DEBUG
-		LOG_GLEAM_WARNING
-			<< "Cannot create directory at path" 
-			<< path
-			<< g_strerror(errno);
-#endif
-
 		return false;	
 	}
 
@@ -291,25 +215,11 @@ file_is_more_recently_modified (const string& newer_file,
 
 	if(g_stat (newer_file.c_str(), &stat_buf_newer) != 0)
 	{
-
-#ifdef GLEAM_DEBUG
-		LOG_GLEAM_WARNING
-			<< newer_file
-			<< g_strerror(errno);
-#endif
-
 		return true;
 	}
 
 	if(g_stat (older_file.c_str(), &stat_buf_older) != 0)
 	{
-
-#ifdef GLEAM_DEBUG
-		LOG_GLEAM_WARNING
-			<< older_file
-			<< g_strerror(errno);
-#endif
-
 		return true;
 	}
 

@@ -7,8 +7,6 @@
 
 #include <ui/edit_window_menu_ui_definition.hpp>
 
-#include <ui/debug/debug.hpp>
-
 namespace gmojo {
 
 EditWindow::EditWindow(mojo::Project::ptr project)
@@ -19,10 +17,6 @@ EditWindow::EditWindow(mojo::Project::ptr project)
 		m_menu_bar(0),
 		m_track_view(project)
 {
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
-
 	add_action_groups_to_ui_manager ();
 
 	merge_ui_definitions ();
@@ -36,10 +30,6 @@ EditWindow::EditWindow(mojo::Project::ptr project)
 
 EditWindow::~EditWindow()
 {
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
-
 	g_object_unref (m_ui_manager);
 }
 
@@ -81,10 +71,6 @@ EditWindow::merge_ui_definitions ()
 			edit_window_menu_ui_definition, -1, &error);
 
 	if (merge_id == 0) {
-		
-#ifdef GMOJO_DEBUG
-		LOG_GMOJO_CRITICAL << error->message;
-#endif
 
 		g_error_free(error);
 	
@@ -102,11 +88,6 @@ EditWindow::create_menu_bar()
 	
 	if(!m_menu_bar)
 	{
-
-#ifdef GMOJO_DEBUG
-		LOG_GMOJO_CRITICAL;
-#endif
-
 		return false;
 	}
 	return true;

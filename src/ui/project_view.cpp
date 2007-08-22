@@ -4,8 +4,6 @@
 #include <ui/project_view.hpp>
 #include <ui/edit_window.hpp>
 
-#include <ui/debug/debug.hpp>
-
 namespace gmojo {
 
 ProjectView::ProjectView(mojo::Project::ptr project)
@@ -13,10 +11,6 @@ ProjectView::ProjectView(mojo::Project::ptr project)
 		m_project(project),
 		m_edit_window(new EditWindow(project))
 {
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
-	
 	m_project->on_close (
 		 boost::bind (&ProjectView::on_project_signal_close, this)
 		);
@@ -32,19 +26,12 @@ ProjectView::ProjectView(mojo::Project::ptr project)
 
 ProjectView::~ProjectView()
 {
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
 
 }
 
 bool
 ProjectView::on_project_signal_close ()
 {
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
-
 	// ask to save project etc
 	
 	return true;
@@ -53,10 +40,6 @@ ProjectView::on_project_signal_close ()
 void
 ProjectView::on_project_signal_destroy ()
 {
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
-
 	// disconnect signals connected to projectview
 	// although it doesn't really matter in this case
 
@@ -69,10 +52,6 @@ ProjectView::on_project_signal_destroy ()
 bool
 ProjectView::on_edit_window_delete_event ()
 {
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
-
 	// disconnect signals connected to the EditWindow
 	// although it doesn't really matter in this case
 

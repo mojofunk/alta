@@ -3,8 +3,6 @@
 #include <ui/application.hpp>
 #include <ui/project_view.hpp>
 
-#include <ui/debug/debug.hpp>
-
 namespace gmojo {
 
 Application* Application::sm_app;
@@ -24,27 +22,17 @@ Application::create (int argc, char *argv[])
 
 Application::Application (int argc, char *argv[])
 {
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
+
 }
 
 Application::~Application()
 {
-
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
 
 }
 
 void
 Application::run()
 {
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
-
 	new_project ();
 
 	gtk_main ();
@@ -53,10 +41,6 @@ Application::run()
 void
 Application::quit()
 {
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
-
 	m_projects.clear();
 
 	gtk_main_quit ();
@@ -65,10 +49,6 @@ Application::quit()
 void
 Application::new_project()
 {
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
-
 	mojo::Project::ptr new_project(new mojo::Project());
 
 	ProjectView::ptr pview(new ProjectView (new_project));
@@ -90,10 +70,6 @@ Application::new_project()
 void
 Application::on_projectview_signal_destroy (ProjectView::weak_ptr projectview)
 {
-#ifdef GMOJO_DEBUG_EXTRA
-	LOG_GMOJO_DEBUG;
-#endif
-
 	ProjectView::ptr pview(projectview.lock ());
 	
 	// check

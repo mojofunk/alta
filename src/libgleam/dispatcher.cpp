@@ -21,8 +21,6 @@
 
 #include <libgleam/dispatcher.hpp>
 
-#include "debug.hpp"
-
 namespace gleam {
 
 struct Dispatcher::ThreadData
@@ -61,19 +59,8 @@ Dispatcher::run()
 
 		m_thread = Glib::Thread::create(main_func, true);
 
-#ifdef GLEAM_DEBUG_EXTRA
-		LOG_GLEAM_DEBUG
-			<< "Waiting for Dispatcher to run"
-			<< m_name;
-#endif
 		// wait thread to start
 		m_cond.wait(m_iter_mtx);
-
-#ifdef GLEAM_DEBUG_EXTRA
-		LOG_GLEAM_DEBUG
-			<< m_name
-			<< "Running";
-#endif
 	}
 }
 
@@ -85,12 +72,6 @@ Dispatcher::quit ()
 	Glib::Mutex::Lock lock(m_iter_mtx);
 
 	m_quit = true;
-
-#ifdef GLEAM_DEBUG_EXTRA
-	LOG_GLEAM_DEBUG
-		<< "Waiting for dispatcher to quit"
-		<< m_name;
-#endif
 
 	// wait for the iteration to complete
 	// which can only happen when m_iter_mtx
@@ -115,14 +96,6 @@ Dispatcher::thread_main ()
 	m_thread_data.set(pdata);
 
 	pdata->m_context = Glib::MainContext::create();
-
-#ifdef GLEAM_DEBUG
-	gleam::thread_map().register_thread(m_name);
-#endif
-
-#ifdef GLEAM_DEBUG_EXTRA
-	LOG_GLEAM_DEBUG << "Dispatcher calling on_run";
-#endif
 	
 	/**
 	 * This is the chance for inheriting thread classes 
@@ -135,23 +108,10 @@ Dispatcher::thread_main ()
 		m_cond.signal();
 	}
 
-#ifdef GLEAM_DEBUG_EXTRA
-	LOG_GLEAM_DEBUG << "Calling Dispatcher main_loop()";
-#endif
-
 	// start the processing loop
 	main_loop();
 
-#ifdef GLEAM_DEBUG_EXTRA
-	LOG_GLEAM_DEBUG << "Dispatcher main_loop() finished, calling on_quit";
-#endif
-
 	on_quit();
-
-#ifdef GLEAM_DEBUG
-	gleam::thread_map().unregister_thread(m_name);
-#endif
-
 }
 
 bool
@@ -161,11 +121,6 @@ Dispatcher::can_run()
 
 	if(m_quit)
 	{
-
-#ifdef GLEAM_DEBUG_EXTRA
-		LOG_GLEAM_DEBUG << "Quit";
-#endif
-
 		m_cond.signal();
 		return false;
 	}

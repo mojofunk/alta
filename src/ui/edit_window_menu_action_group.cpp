@@ -2,8 +2,6 @@
 #include <ui/edit_window_menu_action_group.hpp>
 #include <ui/edit_window_menu_action_entries.hpp>
 
-#include <ui/debug/debug.hpp>
-
 namespace gmojo {
 
 const char* const edit_window_menu_action_group_name = "EditWindowMenuActions";
@@ -13,13 +11,6 @@ edit_window_menu_action_group_new()
 {
 	GtkActionGroup* action_group =
 		gtk_action_group_new (edit_window_menu_action_group_name);
-
-	if(!action_group)
-	{
-#ifdef GMOJO_DEBUG
-		LOG_GMOJO_CRITICAL;
-#endif
-	}
 
 	//gtk_action_group_set_translation_domain (action_group, NULL);
 

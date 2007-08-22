@@ -11,18 +11,11 @@
 #include <signal.h>
 #endif
 
-#include "debug.hpp"
-
 namespace gleam {
 
 void
 terminate_process(int status)
 {
-
-#ifdef GLEAM_DEBUG_EXTRA
-	LOG_GLEAM_DEBUG << "Terminating process";
-#endif	
-	
 #ifdef G_OS_WIN32
 	ExitProcess(status);
 #else

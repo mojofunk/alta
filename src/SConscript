@@ -6,21 +6,9 @@ import glob
 
 Import('env')
 
-if env['DEBUG']:
-	logx_source_files=Split("""
-	logx/file_identifier.cpp
-	logx/function_identifier.cpp
-	logx/glib_handler.cpp
-	logx/glib_handler_map.cpp
-	logx/line_identifier.cpp
-	logx/pretty_formatter.cpp
-	logx/thread_identifier.cpp
-	""")
-
 libgleam_source_files = Split("""
 libgleam/dispatcher.cpp
 libgleam/file_utils.cpp
-libgleam/log_domain.cpp
 libgleam/manual_dispatcher.cpp
 libgleam/periodic_signal.cpp
 libgleam/periodic_signals.cpp
@@ -50,10 +38,6 @@ mojo/project_directory.cpp
 mojo/mojo_project_format.cpp
 """)
 
-mojo_debug_files=Split("""
-mojo/debug/log_domain.cpp
-""")
-
 gtk_source_files = Split("""
 ui/gtk/window.cpp
 """)
@@ -77,26 +61,16 @@ ui/main.cpp
 ui/window_title.cpp
 ui/dialogs/audio_file_import_dialog.cpp
 ui/dialogs/new_audio_track_dialog.cpp
-""")
-
-gmojo_debug_files=Split("""
 ui/signal_handler.cpp
-ui/debug/log_domain.cpp
-ui/debug/thread_names.cpp
 """)
 
 all_source_files = \
+libgleam_source_files + \
 booty_source_files + \
 mojo_source_files + \
 gtk_source_files + \
 goo_source_files + \
 gmojo_source_files
-
-if env['DEBUG']:
-	all_source_files += logx_source_files
-	all_source_files += libgleam_source_files
-	all_source_files += mojo_debug_files
-	all_source_files += gmojo_debug_files
 
 gmojo = env.Program( env['VERSIONED_NAME'], all_source_files)
 

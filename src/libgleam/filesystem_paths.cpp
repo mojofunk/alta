@@ -2,8 +2,6 @@
 
 #include <libgleam/filesystem_paths.hpp>
 
-#include "debug.hpp"
-
 namespace gleam {
 
 SearchPath
@@ -19,10 +17,6 @@ get_system_data_search_path()
 	for (int i = 0; dirs[i] != NULL; i++) {
 		tmp += dirs[i];
 	}
-
-#ifdef GLEAM_DEBUG_EXTRA
-	LOG_GLEAM_DEBUG << tmp.get_search_path_string();
-#endif
 
 	return tmp;
 }
@@ -40,10 +34,6 @@ get_system_config_search_path()
 	for (int i = 0; dirs[i] != NULL; i++) {
 		tmp += dirs[i];
 	}
-
-#ifdef GLEAM_DEBUG_EXTRA
-	LOG_GLEAM_DEBUG << tmp.get_search_path_string();
-#endif
 
 	return tmp;
 }

@@ -3,8 +3,6 @@
 
 #include <libgleam/manual_dispatcher.hpp>
 
-#include "debug.hpp"
-
 namespace gleam {
 
 ManualDispatcher::ManualDispatcher(const char* const name)
@@ -22,11 +20,6 @@ ManualDispatcher::iteration (bool block)
 		//signal other thread to run
 		m_iter_sema.release();
 
-#ifdef GLEAM_DEBUG_EXTRA
-		LOG_GLEAM_DEBUG
-			<< "waiting for iteration of ManualDispatcher to finish"
-			<< m_name;
-#endif
 		// wait for one iteration to complete
 		m_cond.wait(m_iter_mtx);
 	}
@@ -44,12 +37,6 @@ ManualDispatcher::quit ()
 	m_quit = true;
 
 	iteration(true);
-
-#ifdef GLEAM_DEBUG_EXTRA
-	LOG_GLEAM_DEBUG
-		<< "Waiting for ManualDispatcher to quit"
-		<< m_name;
-#endif
 	
 	// free all resources for the thread
 	m_thread->join();
@@ -62,10 +49,6 @@ ManualDispatcher::main_loop()
 	while(can_run())
 	{
 		m_iter_sema.aquire();
-
-#ifdef GLEAM_DEBUG_EXTRA
-		LOG_GLEAM_DEBUG << "Iteration of MainContext";
-#endif
 
 		get_main_context()->iteration(true);
 
