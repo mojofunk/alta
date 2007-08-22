@@ -13,6 +13,7 @@ libgleam/periodic_signal.cpp
 libgleam/periodic_signals.cpp
 libgleam/semaphore.cpp
 libgleam/terminate_process.cpp
+libgleam/filesystem_paths.cpp
 """)
 
 libgleam_posix_source_files = Split("""

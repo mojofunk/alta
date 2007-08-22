@@ -4,10 +4,10 @@
 
 namespace gleam {
 
-SearchPath
+vector<string>
 get_system_data_search_path()
 {
-	SearchPath tmp;
+	vector<string> tmp;
 	const char * const * dirs;
 
 	dirs = g_get_system_data_dirs ();
@@ -15,16 +15,16 @@ get_system_data_search_path()
 	if (dirs == NULL) return tmp;
 	
 	for (int i = 0; dirs[i] != NULL; i++) {
-		tmp += dirs[i];
+		tmp.push_back( dirs[i] );
 	}
 
 	return tmp;
 }
 
-SearchPath
+vector<string>
 get_system_config_search_path()
 {
-	SearchPath tmp;
+	vector<string> tmp;
 	const char * const * dirs;
 
 	dirs = g_get_system_config_dirs ();
@@ -32,7 +32,7 @@ get_system_config_search_path()
 	if (dirs == NULL) return tmp;
 	
 	for (int i = 0; dirs[i] != NULL; i++) {
-		tmp += dirs[i];
+		tmp.push_back ( dirs[i] );
 	}
 
 	return tmp;
