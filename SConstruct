@@ -162,7 +162,7 @@ if env['DEBUG']:
 	
 else:
 	env.Append(CXXFLAGS = ['-DNDEBUG'])
-	env.Append(CXXFLAGS = ['-O3'])
+	env.Append(CXXFLAGS = ['-O2'])
 
 if env['DISABLE_ASSERT']:
 	env.Append(CXXFLAGS = ['-DG_DISABLE_ASSERT'])
