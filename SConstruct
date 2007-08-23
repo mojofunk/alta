@@ -76,29 +76,13 @@ deps = \
     'sndfile'              : '1.0'
 }
 
+pkgconfig.CheckDependencies ( env, deps )
 
-conf = Configure(env, custom_tests = { 'CheckVersion' : pkgconfig.CheckVersion,
-                                       'CheckPackage' : pkgconfig.CheckPackage })
-
-# I think we actually do need a recent version on WIN32, XXX need to check
-min_pkg_config_version = '0.18.0'
-
-if not conf.CheckVersion(min_pkg_config_version):
-     print 'pkg-config >= %s not found.' % min_pkg_config_version
-     Exit(1)
-
-for pkg, version in deps.iteritems():
-	if not conf.CheckPackage( pkg, version ):
-		print '%s >= %s not found.' %(pkg, version)
-		Exit(1)
-	else:
-		env.ParseConfig ('pkg-config --cflags --libs %s' %pkg )
+pkgconfig.ParseDependencies ( env, deps )
 
 # err actually check for these.
 
 env.Append(LIBS = ['boost_filesystem', 'boost_serialization', 'boost_signals'])
-
-env = conf.Finish()
 
 env.Append(CPPPATH = [ '#src' ])
 env.Append(CPPPATH = [ '#src/libgleam' ])
