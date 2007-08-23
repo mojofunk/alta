@@ -1,5 +1,7 @@
 # -*- python -*-
 #
+# vim: tabstop=4 expandtab shiftwidth=4
+#
 # SConstruct
 # gmojo build script
 #
@@ -20,13 +22,8 @@
 import os
 import sys
 
-#needed for subst_in_file
-import re
-import string
-#import glob
-import SCons.Node.FS
-
 import tools.pkgconfig as pkgconfig
+import tools.substitute as substitute
 
 conf_file = 'gmojo.conf'
 
@@ -159,66 +156,9 @@ opts.Save(conf_file, env)
 #  Builders  #
 ##############
 
-# Substitution dictionary for generating a pkg-config file,
-# Documentation, etc.
-subst_dict = { }
-
-def do_subst_in_file(targetfile, sourcefile, dict):
-        """Replace all instances of the keys of dict with their values.
-        For example, if dict is {'%VERSION%': '1.2345', '%BASE%': 'MyProg'},
-        then all instances of %VERSION% in the file will be replaced with 1.2345 etc.
-        """
-        try:
-            f = open(sourcefile, 'rb')
-            contents = f.read()
-            f.close()
-        except:
-            raise SCons.Errors.UserError, "Can't read source file %s"%sourcefile
-        for (k,v) in dict.items():
-            contents = re.sub(k, v, contents)
-        try:
-            f = open(targetfile, 'wb')
-            f.write(contents)
-            f.close()
-        except:
-            raise SCons.Errors.UserError, "Can't write target file %s"%targetfile
-        return 0 # success
- 
-def subst_in_file(target, source, env):
-        if not env.has_key('SUBST_DICT'):
-            raise SCons.Errors.UserError, "SubstInFile requires SUBST_DICT to be set."
-        d = dict(env['SUBST_DICT']) # copy it
-        for (k,v) in d.items():
-            if callable(v):
-                d[k] = env.subst(v())
-            elif SCons.Util.is_String(v):
-                d[k]=env.subst(v)
-            else:
-                raise SCons.Errors.UserError, "SubstInFile: key %s: %s must be a string or callable"%(k, repr(v))
-        for (t,s) in zip(target, source):
-            return do_subst_in_file(str(t), str(s), d)
- 
-def subst_in_file_string(target, source, env):
-        """This is what gets printed on the console."""
-        return '\n'.join(['Substituting vars from %s into %s'%(str(s), str(t))
-                          for (t,s) in zip(target, source)])
- 
-def subst_emitter(target, source, env):
-        """Add dependency from substituted SUBST_DICT to target.
-        Returns original target, source tuple unchanged.
-        """
-        d = env['SUBST_DICT'].copy() # copy it
-        for (k,v) in d.items():
-            if callable(v):
-                d[k] = env.subst(v())
-            elif SCons.Util.is_String(v):
-                d[k]=env.subst(v)
-        Depends(target, SCons.Node.Python.Value(d))
-        # Depends(target, source) # this doesn't help the install-sapphire-linux.sh problem
-        return target, source
- 
-subst_action = Action (subst_in_file, subst_in_file_string)
-subst_builder = Builder(action=subst_action, emitter=subst_emitter)
+# Substitute values into files
+subst_action = Action (substitute.subst_in_file, substitute.subst_in_file_string)
+subst_builder = Builder(action=subst_action, emitter=substitute.subst_emitter)
 env.Append (BUILDERS = {'SubstInFile' : subst_builder})
 
 # Documentation generation system
@@ -294,6 +234,10 @@ Export('env')
 # These are also properties of the scons environment but
 # are used for substituting values into foo.in files.
 
+# Substitution dictionary for generating a pkg-config file,
+# Documentation, etc.
+subst_dict = { }
+
 subst_dict['%PACKAGE_NAME%'] = env['PACKAGE_NAME']
 subst_dict['%VERSIONED_NAME%'] = env['VERSIONED_NAME']
 subst_dict['%MAJOR%'] = env['MAJOR']
@@ -334,4 +278,3 @@ doxygen_path = '(doxygen-generated-files)'
 
 env.DoxygenDoc(doxygen_path, 'doc/doxygen/Doxyfile')
 env.Alias('doc', doxygen_path)
-
