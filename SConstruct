@@ -45,7 +45,6 @@ opts.AddOptions(
 	('LIBDIR', 'path for library files (default is $PREFIX/lib', '/lib'),
 	BoolOption('DEBUG', 'Debug version (useful for developers only)', 1),
 	BoolOption('DEBUG_EXTRA', 'Include extra debugging information in debugging output (useful for developers only)', 1),
-	BoolOption('DISABLE_ASSERT', 'Disable Assertions (useful for developers only)', 0)
 )
 
 ###############################
@@ -163,10 +162,6 @@ if env['DEBUG']:
 else:
 	env.Append(CXXFLAGS = ['-DNDEBUG'])
 	env.Append(CXXFLAGS = ['-O2'])
-
-if env['DISABLE_ASSERT']:
-	env.Append(CXXFLAGS = ['-DG_DISABLE_ASSERT'])
-
 
 # Generate help text for command line options
 Help(opts.GenerateHelpText(env))
