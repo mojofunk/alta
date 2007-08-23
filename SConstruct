@@ -1,7 +1,7 @@
 # -*- python -*-
 #
 # SConstruct
-# ardour win32/msys/mingw build script
+# gmojo build script
 #
 # Process this file with 'scons' to build the project.
 # For more information, please visit: http://www.scons.org/ .
@@ -25,6 +25,8 @@ import re
 import string
 #import glob
 import SCons.Node.FS
+
+import tools.pkgconfig as pkgconfig
 
 conf_file = 'gmojo.conf'
 
@@ -69,37 +71,27 @@ env.Append(VERSIONED_NAME = "%s-%s.%s" % (env['PACKAGE_NAME'], env['MAJOR'], env
 
 deps = \
 {
-		'glib-2.0'             : '2.10.1',
-		'gthread-2.0'          : '2.10.1',
-		'gtk+-2.0'             : '2.8.1',
-		'glibmm-2.4'           : '2.8.1',
-		'goocanvas'            : '0.6'
+    'glib-2.0'             : '2.10.1',
+    'gthread-2.0'          : '2.10.1',
+    'gtk+-2.0'             : '2.8.1',
+    'glibmm-2.4'           : '2.8.1',
+    'goocanvas'            : '0.6',
+    'sndfile'              : '1.0'
 }
 
-def CheckPKGConfig(context, version):
-     context.Message( 'Checking for pkg-config version >= %s... ' %version )
-     ret = context.TryAction('pkg-config --atleast-pkgconfig-version=%s' % version)[0]
-     context.Result( ret )
-     return ret
 
-def CheckPKG(context, name):
-     context.Message( 'Checking for %s... ' % name )
-     ret = context.TryAction('pkg-config --exists \'%s\'' % name)[0]
-     context.Result( ret )
-     return ret
-
-conf = Configure(env, custom_tests = { 'CheckPKGConfig' : CheckPKGConfig,
-                                       'CheckPKG' : CheckPKG })
+conf = Configure(env, custom_tests = { 'CheckVersion' : pkgconfig.CheckVersion,
+                                       'CheckPackage' : pkgconfig.CheckPackage })
 
 # I think we actually do need a recent version on WIN32, XXX need to check
 min_pkg_config_version = '0.18.0'
 
-if not conf.CheckPKGConfig(min_pkg_config_version):
+if not conf.CheckVersion(min_pkg_config_version):
      print 'pkg-config >= %s not found.' % min_pkg_config_version
      Exit(1)
 
 for pkg, version in deps.iteritems():
-	if not conf.CheckPKG( '%s >= %s' %(pkg, version) ):
+	if not conf.CheckPackage( pkg, version ):
 		print '%s >= %s not found.' %(pkg, version)
 		Exit(1)
 	else:
@@ -118,7 +110,6 @@ env.Append(CPPPATH = [ '#src/mojo' ])
 
 
 if env['DEBUG']:
-
 	env.Append(CCFLAGS = ['-g'])
 	env.Append(CCFLAGS = ['-Wextra'])
 	env.Append(CCFLAGS = ['-Wall'])
@@ -128,32 +119,31 @@ if env['DEBUG']:
 	env.Append(CCFLAGS = ['-Wpointer-arith'])
 	env.Append(CCFLAGS = ['-Wconversion'])
 	env.Append(CCFLAGS = ['-Wcast-align'])
-
-# Other compiler options to play with.
-#
-#	env.Append(CCFLAGS = ['-pedantic'])
-#	env.Append(CCFLAGS = ['-ansi'])
-#
-#	env.Append(CCFLAGS = ['-Wunreachable-code'])
-#	env.Append(CCFLAGS = ['-Wsign-promo'])
-#
-#	env.Append(CCFLAGS = ['-fno-nonansi-builtins'])
-#	env.Append(CCFLAGS = ['-fvisibility-inlines-hidden'])
-#	env.Append(CCFLAGS = ['-fno-default-inline'])
-#
-#	It is doubtful that these would ever be used.
-#
-#	env.Append(CCFLAGS = ['-Wstack-protector'])
-#	env.Append(CCFLAGS = ['-fstack-protector-all'])
-
-# C++ specific warnings.
-#
-#	env.Append(CXXFLAGS = ['-Wshadow'])
-#	env.Append(CXXFLAGS = ['-Wold-style-cast'])
-#	env.Append(CXXFLAGS = ['-Wabi'])
-#	env.Append(CXXFLAGS = ['-Weffc++'])
-#	env.Append(CXXFLAGS = ['-Wstrict-null-sentinel'])
-#	env.Append(CXXFLAGS = ['-Woverloaded-virtual'])
+    # Other compiler options to play with.
+    #
+    #env.Append(CCFLAGS = ['-pedantic'])
+    #env.Append(CCFLAGS = ['-ansi'])
+    #
+    #env.Append(CCFLAGS = ['-Wunreachable-code'])
+    #env.Append(CCFLAGS = ['-Wsign-promo'])
+    #
+    #env.Append(CCFLAGS = ['-fno-nonansi-builtins'])
+    #env.Append(CCFLAGS = ['-fvisibility-inlines-hidden'])
+	#env.Append(CCFLAGS = ['-fno-default-inline'])
+	#
+	#It is doubtful that these would ever be used.
+	#
+	#env.Append(CCFLAGS = ['-Wstack-protector'])
+	#env.Append(CCFLAGS = ['-fstack-protector-all'])
+	#
+	# C++ specific warnings.
+	#
+	#	env.Append(CXXFLAGS = ['-Wshadow'])
+	#	env.Append(CXXFLAGS = ['-Wold-style-cast'])
+	#	env.Append(CXXFLAGS = ['-Wabi'])
+	#	env.Append(CXXFLAGS = ['-Weffc++'])
+	#	env.Append(CXXFLAGS = ['-Wstrict-null-sentinel'])
+	#	env.Append(CXXFLAGS = ['-Woverloaded-virtual'])
 	
 else:
 	env.Append(CXXFLAGS = ['-DNDEBUG'])
