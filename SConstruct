@@ -44,7 +44,6 @@ opts.AddOptions(
 	('BINDIR', 'path for binary files (default is $PREFIX/bin)', '/bin'),
 	('LIBDIR', 'path for library files (default is $PREFIX/lib', '/lib'),
 	BoolOption('DEBUG', 'Debug version (useful for developers only)', 1),
-	BoolOption('DEBUG_EXTRA', 'Include extra debugging information in debugging output (useful for developers only)', 1),
 )
 
 ###############################
@@ -155,9 +154,6 @@ if env['DEBUG']:
 #	env.Append(CXXFLAGS = ['-Weffc++'])
 #	env.Append(CXXFLAGS = ['-Wstrict-null-sentinel'])
 #	env.Append(CXXFLAGS = ['-Woverloaded-virtual'])
-
-	if not env['DEBUG_EXTRA']:
-		env.Append(CXXFLAGS = ['-DNDEBUG_EXTRA'])
 	
 else:
 	env.Append(CXXFLAGS = ['-DNDEBUG'])
