@@ -111,12 +111,6 @@ for pkg, version in deps.iteritems():
 
 env.Append(LIBS = ['boost_filesystem', 'boost_serialization', 'boost_signals'])
 
-env.Append(CCFLAGS = '-DHAVE_INTTYPES')
-env.Append(CCFLAGS = '-DHAVE_RINT')
-env.Append(CCFLAGS = '-DHAVE_STRING_H')
-env.Append(CCFLAGS = '-DNO_POSIX_MEMALIGN')
-env.Append(CCFLAGS = '-DHAVE_UNISTD_H')
-
 env = conf.Finish()
 
 env.Append(CPPPATH = [ '#src' ])
