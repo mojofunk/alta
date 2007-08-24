@@ -1,7 +1,4 @@
 
-#include <cformat.hpp>
-#include <mojo.hpp>
-
 #include <gtk/gtk.h>
 
 #include <ui/application.hpp>

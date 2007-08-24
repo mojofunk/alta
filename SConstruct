@@ -78,53 +78,47 @@ deps = \
 
 pkgconfig.CheckDependencies ( env, deps )
 
-pkgconfig.ParseDependencies ( env, deps )
-
 # err actually check for these.
-
-env.Append(LIBS = ['boost_filesystem', 'boost_serialization', 'boost_signals'])
+#env.Append(LIBS = ['boost_filesystem', 'boost_serialization', 'boost_signals'])
 
 env.Append(CPPPATH = [ '#src' ])
-env.Append(CPPPATH = [ '#src/libgleam' ])
-env.Append(CPPPATH = [ '#src/cformat' ])
-env.Append(CPPPATH = [ '#src/mojo' ])
-
 
 if env['DEBUG']:
-	env.Append(CCFLAGS = ['-g'])
-	env.Append(CCFLAGS = ['-Wextra'])
-	env.Append(CCFLAGS = ['-Wall'])
-	# it is too annoying without this to suppress unused parameters.
-	# at the moment. Note, must come after -Wall
-	env.Append(CCFLAGS = ['-Wno-unused-parameter'])
-	env.Append(CCFLAGS = ['-Wpointer-arith'])
-	env.Append(CCFLAGS = ['-Wconversion'])
-	env.Append(CCFLAGS = ['-Wcast-align'])
-    # Other compiler options to play with.
-    #
-    #env.Append(CCFLAGS = ['-pedantic'])
-    #env.Append(CCFLAGS = ['-ansi'])
-    #
-    #env.Append(CCFLAGS = ['-Wunreachable-code'])
-    #env.Append(CCFLAGS = ['-Wsign-promo'])
-    #
-    #env.Append(CCFLAGS = ['-fno-nonansi-builtins'])
-    #env.Append(CCFLAGS = ['-fvisibility-inlines-hidden'])
-	#env.Append(CCFLAGS = ['-fno-default-inline'])
-	#
-	#It is doubtful that these would ever be used.
-	#
-	#env.Append(CCFLAGS = ['-Wstack-protector'])
-	#env.Append(CCFLAGS = ['-fstack-protector-all'])
-	#
-	# C++ specific warnings.
-	#
-	#	env.Append(CXXFLAGS = ['-Wshadow'])
-	#	env.Append(CXXFLAGS = ['-Wold-style-cast'])
-	#	env.Append(CXXFLAGS = ['-Wabi'])
-	#	env.Append(CXXFLAGS = ['-Weffc++'])
-	#	env.Append(CXXFLAGS = ['-Wstrict-null-sentinel'])
-	#	env.Append(CXXFLAGS = ['-Woverloaded-virtual'])
+    env.Append(CCFLAGS = ['-g'])
+    env.Append(CCFLAGS = ['-Wextra'])
+    env.Append(CCFLAGS = ['-Wall'])
+
+# it is too annoying without this to suppress unused parameters.
+# at the moment. Note, must come after -Wall
+
+    env.Append(CCFLAGS = ['-Wno-unused-parameter'])
+    env.Append(CCFLAGS = ['-Wpointer-arith'])
+    env.Append(CCFLAGS = ['-Wconversion'])
+    env.Append(CCFLAGS = ['-Wcast-align'])
+
+#   env.Append(CCFLAGS = ['-pedantic'])
+#   env.Append(CCFLAGS = ['-ansi'])
+#
+#   env.Append(CCFLAGS = ['-Wsign-promo'])
+#   env.Append(CCFLAGS = ['-Wunreachable-code'])
+#
+#   env.Append(CCFLAGS = ['-fno-nonansi-builtins'])
+#   env.Append(CCFLAGS = ['-fvisibility-inlines-hidden'])
+#   env.Append(CCFLAGS = ['-fno-default-inline'])
+#
+#   It is doubtful that these would ever be used.
+#
+#   env.Append(CCFLAGS = ['-Wstack-protector'])
+#   env.Append(CCFLAGS = ['-fstack-protector-all'])
+#
+#   C++ specific warnings.
+#
+#   env.Append(CXXFLAGS = ['-Wshadow'])
+#   env.Append(CXXFLAGS = ['-Wold-style-cast'])
+#   env.Append(CXXFLAGS = ['-Wabi'])
+#   env.Append(CXXFLAGS = ['-Weffc++'])
+#   env.Append(CXXFLAGS = ['-Wstrict-null-sentinel'])
+#   env.Append(CXXFLAGS = ['-Woverloaded-virtual'])
 	
 else:
 	env.Append(CXXFLAGS = ['-DNDEBUG'])
@@ -179,6 +173,23 @@ env.Append( INCLUDE_DIR = "%s/include/%s/" % (env['INSTALL_PREFIX'], env['VERSIO
 # A better build system would take care of this crap.
 installpaths = [ env['INSTALL_BINDIR'], env['INSTALL_LIBDIR'], env['INCLUDE_DIR'] ]
 
+#####################
+#  Build Directory	#
+#####################
+
+if env['DEBUG']:
+	build_dir = os.path.join ('build', 'debug')
+else:
+	build_dir = os.path.join ('build', 'release')
+
+toplevel_build_dir = '#' + build_dir
+
+BuildDir(toplevel_build_dir, 'src', duplicate = 0 )
+
+# needed to link to the libraries built in the build directory
+env.Append ( LIBPATH = [ os.path.join ( toplevel_build_dir, 'mojo' ) ] )
+env.Append ( LIBPATH = [ os.path.join ( toplevel_build_dir, 'libgleam' ) ] )
+
 ###########################
 #  Configuration summary  #
 ###########################
@@ -232,18 +243,10 @@ subst_dict['%PREFIX%'] = env['PREFIX']
 # useful for pkg-config, but not used in my build
 subst_dict['%LIBDIR%'] = env['LIBDIR']
 
-#################
-#  Build rules	#
-#################
+subst_dict['%BUILD_DIR%'] = build_dir
 
-if env['DEBUG']:
-	BuildDir("#build/debug", 'src', duplicate = 0 )
-	buildDirectory = 'build/debug/'
-else:
-	BuildDir("#build/release", 'src', duplicate = 0 )
-	buildDirectory = 'build/release/'
-
-SConscript (buildDirectory + '/SConscript')
+# Build it
+SConscript ( os.path.join ( toplevel_build_dir, 'SConscript' ) )
 
 # Provide "install" target (ie. 'scons install')
 env.Alias('install', installpaths)
@@ -252,8 +255,6 @@ env.Alias('install', installpaths)
 #  Documentation  #
 ###################
 
-# I would prefer the name of the directory containing 
-# documentation to be docs or doc directory instead of DOCUMENTATION
 doxybuild = env.SubstInFile ( 'doc/doxygen/Doxyfile', 'doc/doxygen/Doxyfile.in', SUBST_DICT = subst_dict)
 
 Default(doxybuild)
@@ -262,3 +263,11 @@ doxygen_path = '(doxygen-generated-files)'
 
 env.DoxygenDoc(doxygen_path, 'doc/doxygen/Doxyfile')
 env.Alias('doc', doxygen_path)
+
+#############################################
+#  Subsitute build details into exec script #
+#############################################
+
+env_script = env.SubstInFile ( 'gmojo_env.sh', 'gmojo_env.sh.in', SUBST_DICT = subst_dict)
+
+Default(env_script)

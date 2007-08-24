@@ -1,0 +1,37 @@
+# vim: tabstop=4 expandtab shiftwidth=4
+
+import tools.pkgconfig as pkgconfig
+
+Import ('env')
+
+gleam_deps = \
+{
+    'glib-2.0'      : '2.10.1',
+    'gthread-2.0'   : '2.10.1',
+    'glibmm-2.4'    : '2.8.1'
+}
+
+gleam_env = env.Copy()
+
+pkgconfig.ParseDependencies ( gleam_env, gleam_deps )
+
+gleam_source_files = Split("""
+dispatcher.cpp
+manual_dispatcher.cpp
+periodic_signal.cpp
+periodic_signals.cpp
+semaphore.cpp
+terminate_process.cpp
+filesystem_paths.cpp
+""")
+
+gleam_posix_source_files = Split("""
+posix_signals.cpp
+""")
+
+if env['PLATFORM'] == 'posix':
+	gleam_source_files += gleam_posix_source_files
+
+libgleam = gleam_env.SharedLibrary ( 'gleam', gleam_source_files )
+
+Default (libgleam)

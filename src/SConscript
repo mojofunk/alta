@@ -1,77 +1,11 @@
 # -*- python -*-
 
-import os
-import os.path
-import glob
+SConscript ( 'afl/SConscript' )
 
-Import('env')
+SConscript ( 'libgleam/SConscript' )
 
-libgleam_source_files = Split("""
-libgleam/dispatcher.cpp
-libgleam/manual_dispatcher.cpp
-libgleam/periodic_signal.cpp
-libgleam/periodic_signals.cpp
-libgleam/semaphore.cpp
-libgleam/terminate_process.cpp
-libgleam/filesystem_paths.cpp
-""")
+SConscript ( 'booty/SConscript' )
 
-libgleam_posix_source_files = Split("""
-libgleam/posix_signals.cpp
-""")
+SConscript ( 'mojo/SConscript' )
 
-if env['PLATFORM'] == 'posix':
-	libgleam_source_files += libgleam_posix_source_files
-
-booty_source_files = Split("""
-booty/file_utils.cpp
-booty/search_path.cpp
-""")
-
-mojo_source_files = Split("""
-mojo/audio_track.cpp
-mojo/directory_names.cpp
-mojo/project.cpp
-mojo/project_directory.cpp
-mojo/mojo_project_format.cpp
-""")
-
-gtk_source_files = Split("""
-ui/gtk/window.cpp
-""")
-
-goo_source_files = Split("""
-ui/goo/canvas.cpp
-""")
-
-gmojo_source_files = Split("""
-ui/application.cpp
-ui/application_action_group.cpp
-ui/application_actions.cpp
-ui/track_view.cpp
-ui/edit_window.cpp
-ui/edit_window_menu_action_group.cpp
-ui/edit_window_menu_ui_definition.cpp
-ui/project_action_group.cpp
-ui/project_actions.cpp
-ui/project_view.cpp
-ui/main.cpp
-ui/window_title.cpp
-ui/dialogs/audio_file_import_dialog.cpp
-ui/dialogs/new_audio_track_dialog.cpp
-ui/signal_handler.cpp
-""")
-
-all_source_files = \
-libgleam_source_files + \
-booty_source_files + \
-mojo_source_files + \
-gtk_source_files + \
-goo_source_files + \
-gmojo_source_files
-
-gmojo = env.Program( env['VERSIONED_NAME'], all_source_files)
-
-Default(gmojo)
-
-env.Install(env['BINDIR'], gmojo)
+SConscript ( 'ui/SConscript' )

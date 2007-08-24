@@ -5,8 +5,6 @@
 namespace mojo {
 
 Project::Project()
-	:
-		m_project_file()
 {
 
 }
