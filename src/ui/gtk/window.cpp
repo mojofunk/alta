@@ -3,20 +3,6 @@
 
 namespace gtk {
 
-	Window::Window ()
-		:
-			m_window (gtk_window_new (GTK_WINDOW_TOPLEVEL))
-	{
-		g_signal_connect (G_OBJECT (m_window), "delete-event",
-				G_CALLBACK (Window::window_delete_event_handler), this);
-
-	}
-
-	Window::~Window ()
-	{
-		gtk_widget_destroy (GTK_WIDGET (m_window));
-	}
-
 	gboolean Window::window_delete_event_handler (GtkWidget* widget,
 			GdkEvent* event, gpointer data )
 	{
@@ -25,11 +11,7 @@ namespace gtk {
 		return window->delete_event_handler (widget, event);
 	}
 
-	bool Window::delete_event_handler (GtkWidget* widget, GdkEvent* event)
-	{
-		g_assert (widget == m_window);
-
-		return m_signal_delete_event ();
-	}
+	Window::connection_t Window::on_delete_event (const delete_signal_t::slot_type& handler)
+	{ return m_signal_delete_event.connect(handler); }
 
 } // namespace gtk

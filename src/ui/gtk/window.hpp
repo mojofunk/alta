@@ -21,22 +21,29 @@ public:
 
 public:
 
-	Window ();
+	Window ()
+		: m_window (gtk_window_new (GTK_WINDOW_TOPLEVEL))
+	{
+		g_signal_connect (G_OBJECT (m_window), "delete-event",
+				G_CALLBACK (Window::window_delete_event_handler), this);
+	}
 
-	virtual ~Window ();
+	virtual ~Window () { gtk_widget_destroy (GTK_WIDGET (m_window)); }
 
 public:
 
-	connection_t
-		on_delete_event (const delete_signal_t::slot_type& handler)
-		{ return m_signal_delete_event.connect(handler); }
+	connection_t on_delete_event (const delete_signal_t::slot_type& handler);
 
 private:
 
 	static gboolean window_delete_event_handler (GtkWidget*, GdkEvent*,
 				gpointer edit_window);
 
-	bool delete_event_handler (GtkWidget*, GdkEvent*);
+	bool delete_event_handler (GtkWidget* widget, GdkEvent* event)
+	{
+		g_assert (widget == m_window);
+		return m_signal_delete_event ();
+	}
 
 protected:
 	
