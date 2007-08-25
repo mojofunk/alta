@@ -9,7 +9,7 @@
 <xsl:import href="/usr/share/sgml/docbook/xsl-stylesheets/xhtml/chunk-code.xsl"/>
 <xsl:import href="/usr/share/sgml/docbook/xsl-stylesheets/xhtml/manifest.xsl"/>
 
-<xsl:param name="html.stylesheet" select="'dev_guide.css'"/>
+<xsl:param name="html.stylesheet" select="'common.css'"/>
 <xsl:param name="html.stylesheet.type" select="'text/css'"/>
 <xsl:param name="html.cleanup" select="1"/>
 <xsl:param name="html.ext" select="'.html'"/>
