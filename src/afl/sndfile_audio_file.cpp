@@ -1,5 +1,6 @@
 
 #include <afl/sndfile_audio_file.hpp>
+#include <afl/sndfile_audio_file_format.hpp>
 
 namespace afl {
 
@@ -11,6 +12,12 @@ SndfileAudioFile::SndfileAudioFile()
 SndfileAudioFile::~SndfileAudioFile()
 {
 
+}
+
+AudioFileFormat*
+SndfileAudioFile::format()
+{
+	return m_format;
 }
 
 count_t

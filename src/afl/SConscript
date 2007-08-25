@@ -13,6 +13,7 @@ pkgconfig.ParseDependencies ( sndfile_env, sndfile_deps )
 afl_sndfile_source_files = Split("""
 sndfile_audio_file.cpp
 sndfile_audio_file_factory.cpp
+sndfile_audio_file_format.cpp
 """)
 
 libafl_sndfile = sndfile_env.SharedLibrary ( 'afl_sndfile', afl_sndfile_source_files )

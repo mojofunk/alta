@@ -8,11 +8,11 @@ namespace afl {
 
 class SndfileAudioFileFactory : public AudioFileFactory
 {
-	public:
+public:
 
-		virtual ~SndfileAudioFileFactory();
+	virtual ~SndfileAudioFileFactory();
 
-		virtual AudioFile * create();
+	virtual AudioFile * create();
 
 };
 

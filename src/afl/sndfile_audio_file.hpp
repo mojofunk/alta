@@ -5,25 +5,32 @@
 #include <sndfile.h>
 
 #include <afl/audio_file.hpp>
+#include <afl/audio_file_format.hpp>
 
 namespace afl {
 
+class SndfileAudioFileFormat;
+
 class SndfileAudioFile : public AudioFile
 {
-	public:
+public:
 
-		SndfileAudioFile();
+	SndfileAudioFile();
 
-        virtual ~SndfileAudioFile();
+	virtual ~SndfileAudioFile();
 
-        virtual count_t read_frames (float* ptr, count_t frame_count);
+	virtual AudioFileFormat* format();
 
-        virtual count_t write_frames (float* ptr, count_t frame_count);
+	virtual count_t read_frames (float* ptr, count_t frame_count);
 
-	private:
+	virtual count_t write_frames (float* ptr, count_t frame_count);
 
-		SNDFILE* m_sf;
-		SF_INFO m_info;
+private:
+
+	SNDFILE* m_sf;
+	SF_INFO m_info;
+
+	SndfileAudioFileFormat* m_format;
 };
 
 } // namespace afl
