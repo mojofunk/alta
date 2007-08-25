@@ -16,15 +16,15 @@
       Canvas : GooCanvas/future Gtk+ canvas.
     </para>
 
-	<para>
-		Phat?
-	</para>
+    <para>
+      Phat?
+    </para>
   </section>
 
   <section id="serialization-deps">
     <title>Serialization Dependencies</title>
     <para>
-		None, use serialization modules
+      None, use serialization modules
     </para>
   </section>
 

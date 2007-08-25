@@ -1,13 +1,3 @@
-for methods in gleam:: that create directories etc. add an argument to take a mode
-and have it default to gleam::default_file_mode or whatever.
-
-Change logx so it doesn't depend on glib. glib logging causes an extra set of
-locking to take place. glib logging can't easily be made lock-free. There are
-no real advantages to providing a glib logging backend that I can think of.
-
-In mojo::user::paths don't create the directory when returning the search path.
-don't return search path, just a string.
-
 explore using boost::thread instead of glib/mm threads in libgleam or possibly
 a compile time selection.
 

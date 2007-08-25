@@ -113,12 +113,13 @@
           </varlistentry>
 
           <varlistentry>
-            <term>Able to be moved</term>
+            <term>Relocatable</term>
             <listitem>
               <para>
                 The project file must be able to be moved and the project
-                should still open. Which indicates a path to the root
-                directory of project should be stored in project file.
+                should still open successfully. Which indicates a path to
+                the root directory of project should be stored in project
+                file.
               </para>
             </listitem>
           </varlistentry>
@@ -126,15 +127,50 @@
       </section>
 
       <section id="audio-data">
-        <title>Audio Data</title>
+        <title>Audio Data Formats</title>
         <para></para>
 
         <variablelist>
-          <title>Audio Data Requirements</title>
           <varlistentry>
-            <term>Formats</term>
+            <term>Supported Formats</term>
             <listitem>
-              <para></para>
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    WAV
+                  </para>
+                </listitem>
+
+                <listitem>
+                  <para>
+                    WAV64
+                  </para>
+                </listitem>
+
+                <listitem>
+                  <para>
+                    Broadcast WAV
+                  </para>
+                </listitem>
+
+                <listitem>
+                  <para>
+                    AIFF
+                  </para>
+                </listitem>
+
+                <listitem>
+                  <para>
+                    OGG
+                  </para>
+                </listitem>
+
+                <listitem>
+                  <para>
+                    MP3
+                  </para>
+                </listitem>
+              </itemizedlist>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -164,7 +200,8 @@
   <section id="requirements-version-0.1.0">
     <title>Requirements Version 0.1.0</title>
     <para>
-      The first version will have extremely limited functionality.
+      The first minor version must be able to create and save a project,
+      import and playback audio data.
     </para>
 
     <itemizedlist>
@@ -196,6 +233,76 @@
       <listitem>
         <para>
           Must display audio files in an audio track in the edit window.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Must be able to playback audio tracks.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Must be able to control the volume of individual tracks tracks.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Must be able to move audio events to new positions on a tracks
+          timeline
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Must be able to copy an audio event to the same or different track
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section id="requirements-version-0.2.0">
+    <title>Requirements Version 0.2.0</title>
+    <para>
+      Support for non-destructive spliting and joining of audio events
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          Must be able to split an audio event into two distinct audio
+          events.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Must be able to join two audio events into an audio part.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section id="requirements-version-0.3.0">
+    <title>Requirements Version 0.3.0</title>
+    <para>
+		Support for non-destructive spliting and joining of audio events. This will
+		mean introducting Audio parts.
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          Must be able to split an audio event into two distinct audio
+          events.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Must be able to join two audio events into an audio part.
         </para>
       </listitem>
     </itemizedlist>
