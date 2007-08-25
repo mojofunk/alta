@@ -19,6 +19,9 @@ public:
 
 	virtual count_t write_frames (float* ptr, count_t frame_count) = 0;
 
+	virtual samplerate_t samplerate() const = 0;
+
+	virtual channel_count_t channels() const = 0;
 };
 
 } // namespace afl

@@ -25,12 +25,17 @@ public:
 
 	virtual count_t write_frames (float* ptr, count_t frame_count);
 
+	virtual samplerate_t samplerate() const;
+
+	virtual channel_count_t channels() const;
+
 private:
 
 	SNDFILE* m_sf;
 	SF_INFO m_info;
 
 	SndfileAudioFileFormat* m_format;
+
 };
 
 } // namespace afl

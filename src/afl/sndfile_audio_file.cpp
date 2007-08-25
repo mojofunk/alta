@@ -32,4 +32,16 @@ SndfileAudioFile::write_frames(float* ptr, count_t frame_count)
 	return sf_writef_float(m_sf, ptr, frame_count);
 }
 
+samplerate_t
+SndfileAudioFile::samplerate() const
+{
+	return m_info.samplerate;
+}
+
+channel_count_t
+SndfileAudioFile::channels() const
+{
+	return m_info.channels;
+}
+
 } // namespace afl
