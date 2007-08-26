@@ -12,6 +12,8 @@ public:
 
 	virtual ~SndfileAudioFileFactory();
 
+	virtual string name () const;
+
 	virtual AudioFile * create();
 
 };

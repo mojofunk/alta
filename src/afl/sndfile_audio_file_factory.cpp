@@ -12,6 +12,12 @@ SndfileAudioFileFactory::~SndfileAudioFileFactory()
 
 }
 
+string
+SndfileAudioFileFactory::name() const
+{
+	return "libsndfile";
+}
+
 AudioFile*
 SndfileAudioFileFactory::create()
 {
