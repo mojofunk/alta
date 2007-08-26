@@ -1,6 +1,6 @@
 
-#ifndef MOJO_PROJECT_HPP
-#define MOJO_PROJECT_HPP
+#ifndef MOJO_PROJECT_INCLUDED
+#define MOJO_PROJECT_INCLUDED
 
 #include <string>
 
@@ -25,6 +25,7 @@ class Project : public Object
 {
 public:
 
+	// typedefs
 	typedef boost::shared_ptr<Project>    ptr;
 	typedef boost::weak_ptr<Project>      weak_ptr;
 
@@ -34,6 +35,7 @@ public:
 
 public:
 
+	// constructors
     Project ();
 
     ~Project();
@@ -60,7 +62,6 @@ public:
 			const fs::path& directory,
 			const fs::path& project_name);
 
-
 	const fs::path&
 		project_file () const { return m_project_file; }
 
@@ -83,10 +84,9 @@ public:
 	const AudioTrackList&
 		audio_tracks () const { return m_audio_tracks; }
 
-	//void add_audio_file (const fs::path& audio_file_path);
-
 public:
 
+	// signals
 	// return connection?
 	void on_close (const close_signal_t::slot_type& slot)
 	{ m_signal_close.connect(slot); }
@@ -116,7 +116,7 @@ private:
 
 private:
 
-	// signals
+	// signal members
 	boost::signal<void ()> m_signal_name_change;
 
 	boost::signal<bool ()> m_signal_close;

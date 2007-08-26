@@ -21,7 +21,6 @@ main(int argc, char* argv[])
 
 	gtk_init(&argc, &argv);
 
-
 	afl::factory_func_t factory_func = 0;
 
 	GModule* module = NULL;

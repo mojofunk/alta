@@ -18,6 +18,7 @@ mojo_env.Append(LIBS = ['boost_filesystem', 'boost_serialization', 'boost_signal
 #pkgconfig.ParseDependencies ( mojo_env, mojo_deps )
 
 mojo_source_files = Split("""
+application.cpp
 audio_track.cpp
 directory_names.cpp
 filesystem_paths.cpp
