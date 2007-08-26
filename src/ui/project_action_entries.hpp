@@ -20,7 +20,6 @@ const GtkActionEntry project_action_entries[] =
 
 	{ "CreateAudioTrack", GTK_STOCK_NEW, NULL, "<control>A",
 		N_("Create a new audio track"), G_CALLBACK (create_audio_track) },
-
 };
 
 } // namespace gmojo
