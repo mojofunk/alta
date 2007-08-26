@@ -17,10 +17,11 @@ pkgconfig.ParseDependencies ( gleam_env, gleam_deps )
 
 gleam_source_files = Split("""
 dispatcher.cpp
+filesystem_paths.cpp
 manual_dispatcher.cpp
 semaphore.cpp
 terminate_process.cpp
-filesystem_paths.cpp
+utils.cpp
 """)
 
 gleam_posix_source_files = Split("""

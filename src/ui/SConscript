@@ -12,7 +12,7 @@ gmojo_deps = \
 
 gmojo_env = env.Copy()
 
-gmojo_env.Append(LIBS = ['boost_signals', 'mojo', 'gleam'])
+gmojo_env.Append(LIBS = ['boost_signals', 'mojo', 'gleam', 'booty'])
 
 pkgconfig.ParseDependencies ( gmojo_env, gmojo_deps )
 

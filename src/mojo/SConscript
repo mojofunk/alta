@@ -13,13 +13,14 @@ mojo_deps = \
 
 mojo_env = env.Copy()
 
-mojo_env.Append(LIBS = ['boost_filesystem', 'boost_serialization', 'boost_signals'])
+mojo_env.Append(LIBS = ['boost_filesystem', 'boost_serialization', 'boost_signals', 'booty'] )
 
-pkgconfig.ParseDependencies ( mojo_env, mojo_deps )
+#pkgconfig.ParseDependencies ( mojo_env, mojo_deps )
 
 mojo_source_files = Split("""
 audio_track.cpp
 directory_names.cpp
+filesystem_paths.cpp
 project.cpp
 project_directory.cpp
 mojo_project_format.cpp
