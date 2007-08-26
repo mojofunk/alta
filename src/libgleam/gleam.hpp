@@ -11,6 +11,5 @@
 #include <libgleam/posix_signals.hpp>
 #include <libgleam/semaphore.hpp>
 #include <libgleam/terminate_process.hpp>
-#include <libgleam/tokenize.hpp>
 
 #endif // GLEAM_GLEAM_INCLUDED
