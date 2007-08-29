@@ -2,10 +2,9 @@
 #ifndef GMOJO_EDIT_WINDOW_INCLUDED
 #define GMOJO_EDIT_WINDOW_INCLUDED
 
-#include <mojo/project.hpp>
+#include <mojo/project_ptr.hpp>
 
 #include <ui/gtk/window.hpp>
-
 #include <ui/track_view.hpp>
 
 namespace gmojo {
@@ -14,7 +13,7 @@ class EditWindow : public gtk::Window
 {
 public:
 
-	EditWindow(mojo::Project::ptr project);
+	EditWindow(mojo::project_ptr project);
 
 	~EditWindow();
 
@@ -32,7 +31,7 @@ private:
 
 private:
 
-	mojo::Project::ptr m_project;
+	mojo::project_ptr m_project;
 
 	// gobjects
 	GtkUIManager* m_ui_manager;

@@ -25,10 +25,6 @@ class Project : public Object
 {
 public:
 
-	// typedefs
-	typedef boost::shared_ptr<Project>    ptr;
-	typedef boost::weak_ptr<Project>      weak_ptr;
-
 	typedef std::list<AudioTrack::ptr>    AudioTrackList;
 
 	typedef boost::signal<bool ()>        close_signal_t;

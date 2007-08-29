@@ -1,12 +1,14 @@
 
 #include <boost/bind.hpp>
 
+#include <mojo/project.hpp>
+
 #include <ui/project_view.hpp>
 #include <ui/edit_window.hpp>
 
 namespace gmojo {
 
-ProjectView::ProjectView(mojo::Project::ptr project)
+ProjectView::ProjectView(mojo::project_ptr project)
 	:
 		m_project(project),
 		m_edit_window(new EditWindow(project))

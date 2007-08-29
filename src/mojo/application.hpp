@@ -4,8 +4,17 @@
 
 #include <boost/shared_ptr.hpp>
 
+#include <mojo/project_ptr.hpp>
+
 namespace mojo {
 
+/**
+ * I'm not sure what this class should be called but it
+ * is intended to hold all the resources that are unique
+ * to each process and as such is a singleton. Things like
+ * the thread management, audio drivers, plugin management,
+ * preferences etc.
+ */
 class Application
 {
 public:
@@ -20,6 +29,14 @@ public:
 	static boost::shared_ptr<Application> create (int argc, char *argv[]);
 
 	static Application& instance() { return *sm_app; }
+
+public:
+
+	// methods
+	/**
+	 * Only one project can be active per process.
+	 */
+	void set_active_project (project_ptr);
 
 private:
 

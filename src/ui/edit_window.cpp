@@ -1,4 +1,6 @@
 
+#include <mojo/project.hpp>
+
 #include <ui/edit_window.hpp>
 
 #include <ui/edit_window_menu_action_group.hpp>
@@ -9,7 +11,7 @@
 
 namespace gmojo {
 
-EditWindow::EditWindow(mojo::Project::ptr project)
+EditWindow::EditWindow(mojo::project_ptr project)
 	:
 		m_project(project),
 		m_ui_manager(gtk_ui_manager_new ()),

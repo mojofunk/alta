@@ -6,7 +6,7 @@
 
 #include <gtk/gtk.h>
 
-#include <mojo/project.hpp>
+#include <mojo/project_ptr.hpp>
 
 #include <ui/track.hpp>
 #include <ui/track_canvas.hpp>
@@ -24,7 +24,7 @@ public:
 	 * added signal so it can create a new TrackView for
 	 * any tracks that are added to the project.
 	 */
-	TrackView (mojo::Project::ptr project);
+	TrackView (mojo::project_ptr project);
 
 	~TrackView ();
 
@@ -32,7 +32,7 @@ public:
 
 private:
 
-	mojo::Project::ptr m_project;
+	mojo::project_ptr m_project;
 
 	GtkWidget* m_scrolled_window;
 	GtkWidget* m_label;

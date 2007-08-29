@@ -1,6 +1,8 @@
 
 #include <mojo/application.hpp>
 
+#include <mojo/project.hpp>
+
 namespace mojo {
 
 Application* Application::sm_app;
@@ -24,6 +26,12 @@ Application::Application (int argc, char *argv[])
 }
 
 Application::~Application()
+{
+
+}
+
+void
+Application::set_active_project (project_ptr proj)
 {
 
 }

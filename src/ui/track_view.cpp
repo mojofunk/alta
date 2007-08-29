@@ -1,9 +1,11 @@
 
+//#include <mojo/project.hpp>
+
 #include <ui/track_view.hpp>
 
 namespace gmojo {
 
-TrackView::TrackView(mojo::Project::ptr project)
+TrackView::TrackView(mojo::project_ptr project)
 	:
 		m_project(project),
 		m_scrolled_window(gtk_scrolled_window_new (NULL, NULL)),

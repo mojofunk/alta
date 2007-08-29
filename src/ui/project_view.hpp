@@ -4,7 +4,8 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include <mojo/project.hpp>
+#include <mojo/object.hpp>
+#include <mojo/project_ptr.hpp>
 
 #include <ui/gtk/window.hpp>
 
@@ -25,7 +26,7 @@ public:
 
 public:
 
-    ProjectView (mojo::Project::ptr project);
+    ProjectView (mojo::project_ptr project);
 
     ~ProjectView ();
 
@@ -39,7 +40,7 @@ private:
 
 private:
 
-	mojo::Project::ptr m_project;
+	mojo::project_ptr m_project;
 
 	// per project windows
 

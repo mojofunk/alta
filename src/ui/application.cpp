@@ -1,5 +1,8 @@
 #include <boost/bind.hpp>
 
+#include <mojo/project.hpp>
+#include <mojo/project_ptr.hpp>
+
 #include <ui/application.hpp>
 #include <ui/project_view.hpp>
 
@@ -49,7 +52,7 @@ Application::quit()
 void
 Application::new_project()
 {
-	mojo::Project::ptr new_project(new mojo::Project());
+	mojo::project_ptr new_project(new mojo::Project());
 
 	ProjectView::ptr pview(new ProjectView (new_project));
 
