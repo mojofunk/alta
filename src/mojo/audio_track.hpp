@@ -20,16 +20,11 @@ namespace mojo {
  *
  * An AudioTrack doesn't contain:
  *
- * The state of the connections to and from 
- * the track.
+ * - the state of the connections to and from the track.
+ * - reference to any buffers, they are passed in for processing
  */
 class AudioTrack : public Object
 {
-public:
-
-	typedef boost::shared_ptr<AudioTrack>    ptr;
-	typedef boost::weak_ptr<AudioTrack>      weak_ptr;
-
 public:
 
 	AudioTrack ();

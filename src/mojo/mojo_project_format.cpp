@@ -4,7 +4,11 @@
 #include <boost/archive/xml_iarchive.hpp>
 #include <boost/archive/xml_oarchive.hpp>
 
+// project.hpp and audio_track.hpp need to be included so that
+// the serialize template works, which sucks and needs to change
 #include <mojo/project.hpp>
+#include <mojo/audio_track.hpp>
+
 #include <mojo/mojo_project_format.hpp>
 
 namespace mojo {

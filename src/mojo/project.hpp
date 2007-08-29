@@ -14,7 +14,7 @@
 #include <booty/filesystem.hpp>
 
 #include <mojo/object.hpp>
-#include <mojo/audio_track.hpp>
+#include <mojo/audio_track_ptr.hpp>
 #include <mojo/project_format_ptr.hpp>
 
 namespace mojo {
@@ -25,7 +25,7 @@ class Project : public Object
 {
 public:
 
-	typedef std::list<AudioTrack::ptr>    AudioTrackList;
+	typedef std::list<audio_track_ptr>    AudioTrackList;
 
 	typedef boost::signal<bool ()>        close_signal_t;
 
@@ -38,6 +38,7 @@ public:
 
 public:
 
+	// methods
 	/**
 	 * This will save the file using the current
 	 * name + ProjectFormat::extension using the
@@ -72,8 +73,6 @@ public:
 	 */
 	void close ();
 	
-public:
-
 	void create_audio_track ();
 
 	const AudioTrackList&
@@ -86,7 +85,7 @@ public:
 	void on_close (const close_signal_t::slot_type& slot)
 	{ m_signal_close.connect(slot); }
 
-	boost::signal<void (AudioTrack::ptr)>&
+	boost::signal<void (audio_track_ptr)>&
 		signal_new_audio_track () { return m_signal_new_audio_track; }
 
 private:
@@ -116,7 +115,7 @@ private:
 
 	boost::signal<bool ()> m_signal_close;
 
-	boost::signal<void (AudioTrack::ptr)> m_signal_new_audio_track;
+	boost::signal<void (audio_track_ptr)> m_signal_new_audio_track;
 
 };
 

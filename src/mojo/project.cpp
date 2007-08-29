@@ -1,5 +1,6 @@
 
 #include <mojo/project.hpp>
+#include <mojo/audio_track.hpp>
 #include <mojo/project_format.hpp>
 
 namespace mojo {
@@ -62,7 +63,7 @@ Project::close ()
 void
 Project::create_audio_track ()
 {
-	AudioTrack::ptr new_track (new AudioTrack());
+	audio_track_ptr new_track (new AudioTrack());
 
 	m_audio_tracks.push_back (new_track);
 
