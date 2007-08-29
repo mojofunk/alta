@@ -15,7 +15,7 @@
 
 #include <mojo/object.hpp>
 #include <mojo/audio_track.hpp>
-#include <mojo/project_format.hpp>
+#include <mojo/project_format_ptr.hpp>
 
 namespace mojo {
 
@@ -54,15 +54,14 @@ public:
 	 * The project format will then be used by
 	 * further calls to save ()
 	 */
-	void save_as (ProjectFormat::ptr format,
+	void save_as (project_format_ptr format,
 			const fs::path& directory,
 			const fs::path& project_name);
 
 	const fs::path&
 		project_file () const { return m_project_file; }
 
-	ProjectFormat::ptr
-		format () const { return m_format; }
+	project_format_ptr format () const { return m_format; }
 
 	/**
 	 * @return true if project was closed
@@ -108,7 +107,7 @@ private:
 
 	AudioTrackList m_audio_tracks;
 
-	ProjectFormat::ptr m_format;
+	project_format_ptr m_format;
 
 private:
 

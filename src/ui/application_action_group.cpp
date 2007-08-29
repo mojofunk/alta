@@ -11,13 +11,6 @@ application_action_group_new(Application* app)
 {
 	GtkActionGroup* action_group = gtk_action_group_new (application_action_group_name);
 	
-	if(!action_group)
-	{
-#ifdef GMOJO_DEBUG
-		LOG_GMOJO_CRITICAL;
-#endif
-	}
-	
 	//gtk_action_group_set_translation_domain (action_group, NULL);
 
 	gtk_action_group_add_actions (action_group,

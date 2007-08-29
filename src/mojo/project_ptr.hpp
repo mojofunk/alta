@@ -1,6 +1,6 @@
 
-#ifndef MOJO_PROJECT_PTR_FWD_INCLUDED
-#define MOJO_PROJECT_PTR_FWD_INCLUDED
+#ifndef MOJO_PROJECT_PTR_INCLUDED
+#define MOJO_PROJECT_PTR_INCLUDED
 
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>

@@ -9,7 +9,7 @@
 
 namespace mojo {
 
-Project*
+project_ptr
 MojoProjectFormat::open_project (const fs::path& project_file)
 {
 	Project* project = new Project;
@@ -23,7 +23,7 @@ MojoProjectFormat::open_project (const fs::path& project_file)
 	// read class state from archive
 	ia >> BOOST_SERIALIZATION_NVP(project);
 
-	return project;
+	return project_ptr(project);
 }
 
 void

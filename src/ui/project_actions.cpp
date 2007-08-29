@@ -12,7 +12,9 @@ void
 save_project (GtkAction*, mojo::Project* project)
 {
 
-	mojo::ProjectFormat::ptr format = project->format ();
+	// don't rely on this, just try to save and catch
+	// no_format_exception or something and call save_project_as
+	mojo::project_format_ptr format = project->format ();
 
 	if(format)
 	{
@@ -23,22 +25,19 @@ save_project (GtkAction*, mojo::Project* project)
 		catch(...)
 		{
 
-#ifdef GMOJO_DEBUG
-		LOG_GMOJO_CRITICAL;
-#endif
-
 		}
 
 		return;
 	}
-	// else save_as
+	
+	// else call gmojo::save_project_as
 
 	// must get a directory to save/move project to
 	// a ProjectFormat and a project file name
 
 	const fs::path dir("./");
 
-	mojo::MojoProjectFormat::ptr mojo_format(new mojo::MojoProjectFormat);
+	mojo::project_format_ptr mojo_format(new mojo::MojoProjectFormat);
 
 	try
 	{
@@ -47,28 +46,18 @@ save_project (GtkAction*, mojo::Project* project)
 	catch(...)
 	{
 
-#ifdef GMOJO_DEBUG
-		LOG_GMOJO_CRITICAL;
-#endif
-
 	}
-
 }
 
 void
 close_project (GtkAction*, mojo::Project* project)
 {
 	project->close ();
-
 }
 
 void
 create_audio_track (GtkAction*, mojo::Project* project)
 {
-#ifdef GMOJO_DEBUG_EXTRA
-		LOG_GMOJO_DEBUG;
-#endif
-
 	NewAudioTrackDialog dialog;
 
 	NewAudioTrackDialog::Response response = dialog.run();
@@ -76,7 +65,6 @@ create_audio_track (GtkAction*, mojo::Project* project)
 	if (response == NewAudioTrackDialog::Cancel) return;
 
 	// new audio track dialog etc
-
 }
 
 }

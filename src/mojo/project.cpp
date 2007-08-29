@@ -35,7 +35,7 @@ Project::save ()
 }
 
 void
-Project::save_as (ProjectFormat::ptr format,
+Project::save_as (project_format_ptr format,
 		const fs::path& directory, const fs::path& name)
 {
 	m_format = format;

@@ -13,8 +13,7 @@ public:
 
 	//~MojoProjectFormat () { }
 
-	virtual Project*
-		open_project (const fs::path& project_file);
+	virtual project_ptr open_project (const fs::path& project_file);
 
 	virtual void
 		save_project (const Project& project,
