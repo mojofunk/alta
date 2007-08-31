@@ -6,6 +6,21 @@
 
 <section id="sn-coding-conventions">
   <title>Naming Conventions</title>
+  <section id="class-names">
+    <title>Class Names</title>
+    <para>
+      Class names should use UpperCamelCase
+    </para>
+  </section>
+
+  <section id="interface-names">
+    <title>Interface Names</title>
+    <para>
+      Interface names should be prefixed by a capital I, e.g IEvent,
+      IResource, IDocument etc.
+    </para>
+  </section>
+
   <section id="member-variable-names">
     <title>Member Variable Names</title>
     <para>
@@ -20,12 +35,12 @@
     </para>
 
     <para>
-      Static member variables are prefixed by <literal>sm_</literal>.
+      Static member variables are prefixed by <literal>s_</literal>.
     </para>
 
     <para>
-      This helps identify what the type of an variable is and it is less
-      ugly than just prefixing with <literal>_</literal>.
+      This helps identify what the scope of an variable is and it is less
+      ugly than just prefixing or postfixing with <literal>_</literal>.
     </para>
   </section>
 
@@ -33,13 +48,6 @@
     <title>Namespace Names</title>
     <para>
       namespace identifiers should be as short as possible and lower case.
-    </para>
-  </section>
-
-  <section id="class-names">
-    <title>Class Names</title>
-    <para>
-      Class names should use UpperCamelCase
     </para>
   </section>
 <!--
