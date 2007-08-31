@@ -178,26 +178,18 @@
       Eternity.
     </para>
 
-    <para>
-      A common approach is to use templates, the only issue is that the
-      serialization functions would then need to be defined in header files
-      and be available at build time. With the boost library this may be a
-      problem if an interface was needed for modules loaded at runtime to
-      save thier state but I think it would be fair to have a requirement
-      that either plugins save their own state and provide a means to
-      restore them(presets for LADSPA plugins for instance) or provide
-      enough access to internal data so that the state can be saved and
-      restored as part of the application data.
-    </para>
-
-    <para>
-      Requirements
-    </para>
-
     <itemizedlist>
+      <title>Requirements</title>
       <listitem>
         <para>
-          Must be well tested.
+          Support for different project formats must be implemented as
+          modules that can be loaded or unloaded as needed.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Must be well tested and maintained.
         </para>
       </listitem>
 
@@ -207,18 +199,6 @@
         </para>
       </listitem>
     </itemizedlist>
-
-    <variablelist>
-      <title>Choices</title>
-      <varlistentry>
-        <term>Boost</term>
-        <listitem>
-          <para>
-            requires RTTI
-          </para>
-        </listitem>
-      </varlistentry>
-    </variablelist>
   </section>
 
   <section id="filesystem-access">
