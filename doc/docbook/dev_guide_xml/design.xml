@@ -167,40 +167,8 @@
       environment then locking can be performed externally.
     </para>
   </section>
-
-  <section id="serialization">
-    <title>Serialization</title>
-    <para>
-      Unlike some other languages C++ doesn't have any built in support for
-      serializing data structures/classes. So there is the choice of writing
-      custom code or using an existing library. There are several
-      serialization libraries including boost::serialization, s11n,
-      Eternity.
-    </para>
-
-    <itemizedlist>
-      <title>Requirements</title>
-      <listitem>
-        <para>
-          Support for different project formats must be implemented as
-          modules that can be loaded or unloaded as needed.
-        </para>
-      </listitem>
-
-      <listitem>
-        <para>
-          Must be well tested and maintained.
-        </para>
-      </listitem>
-
-      <listitem>
-        <para>
-          Cross platform i.e. Support for gcc and VC++ compilers etc.
-        </para>
-      </listitem>
-    </itemizedlist>
-  </section>
-
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
+	  href="serialization.xml" />
   <section id="filesystem-access">
     <title>Filesystem Access</title>
     <para>
