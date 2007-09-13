@@ -1,0 +1,34 @@
+# vim: tabstop=4 expandtab shiftwidth=4
+
+import tools.pkgconfig as pkgconfig
+
+Import ('env')
+
+ark_deps = \
+{
+    'gmodule-2.0'      : '2.10.1',
+}
+
+ark_env = env.Copy()
+
+pkgconfig.ParseDependencies ( ark_env, ark_deps )
+
+ark_source_files = Split("""
+module.cpp
+""")
+
+libark = ark_env.SharedLibrary ( 'ark', ark_source_files )
+
+Default (libark)
+
+dummy_archive_env = env.Copy()
+
+#dummy_archive_env.Append(LIBS = ['boost_serialization'] )
+
+dummy_archive_source_files = Split("""
+dummy_archive/archive.cpp
+""")
+
+libdummy_archive = dummy_archive_env.SharedLibrary ( 'dummy_archive', dummy_archive_source_files )
+
+Default (libdummy_archive)

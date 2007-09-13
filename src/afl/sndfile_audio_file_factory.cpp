@@ -24,10 +24,9 @@ SndfileAudioFileFactory::create()
 	return new SndfileAudioFile;
 }
 
-extern "C" AFL_API void * factory(void)
+AFL_CAPI void * factory(void)
 {
 	return new SndfileAudioFileFactory;
-
 }
 
 } // namespace afl

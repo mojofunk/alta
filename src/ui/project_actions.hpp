@@ -4,9 +4,9 @@
 
 #include <gtk/gtkaction.h>
 
-#include <mojo/project.hpp>
-
 namespace gmojo {
+
+	class mojo::Project;
 
 	void save_project (GtkAction*, mojo::Project*);
 	

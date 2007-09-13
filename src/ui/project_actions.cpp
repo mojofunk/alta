@@ -1,6 +1,5 @@
 
-#include <mojo/project_format.hpp>
-#include <mojo/mojo_project_format.hpp>
+#include <mojo/project.hpp>
 
 #include <ui/project_actions.hpp>
 
@@ -12,29 +11,21 @@ void
 save_project (GtkAction*, mojo::Project* project)
 {
 
-	// don't rely on this, just try to save and catch
-	// no_format_exception or something and call save_project_as
-	mojo::project_format_ptr format = project->format ();
-
-	if(format)
+	try
 	{
-		try
-		{
-			project->save ();
-		}
-		catch(...)
-		{
-
-		}
-
-		return;
+		project->save ();
 	}
-	
+	catch(...)
+	{
+
+	}
+
 	// else call gmojo::save_project_as
 
 	// must get a directory to save/move project to
 	// a ProjectFormat and a project file name
 
+#if 0
 	const fs::path dir("./");
 
 	mojo::project_format_ptr mojo_format(new mojo::MojoProjectFormat);
@@ -47,6 +38,8 @@ save_project (GtkAction*, mojo::Project* project)
 	{
 
 	}
+#endif
+
 }
 
 void

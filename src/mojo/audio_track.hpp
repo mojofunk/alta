@@ -3,9 +3,6 @@
 
 //#include <boost/signal.hpp>
 
-#include <boost/serialization/nvp.hpp>
-#include <boost/serialization/string.hpp>
-
 #include <mojo/object.hpp>
 
 namespace mojo {
@@ -27,35 +24,45 @@ class AudioTrack : public Object
 {
 public:
 
+	// typedefs
+	typedef boost::signal<void ()>       name_change_signal_t;
+
+public:
+
+	// constructors
 	AudioTrack ();
-	
-	const std::string&
-		get_name () const { return m_name; }
+
+public:
+
+	std::string get_name () const;
+
+public:
 
 	void set_name (const std::string& name);
 
-	boost::signal<void ()>&
-		signal_name_change () { return m_signal_name_change; }
+	name_change_signal_t& signal_name_change ();
+	//{ return m_signal_name_change; }
 
 private:
 	
-	friend class boost::serialization::access;
-
-	template<class Archive>
-		void serialize (Archive & ar, const unsigned int version)
-		{
-			ar & BOOST_SERIALIZATION_NVP(m_name);
-		}
-
+	// friend class Session
+	//
+	// process (transport_info, buffers) const
+	
 private:
 
 	// member data
 	std::string m_name;
 
+	/**
+	 * references a BufferedAudioStream?
+	 */
+	// audio_stream_ptr
+
 private:
 
-	// signals
-	boost::signal<void ()> m_signal_name_change;
+	// signal members
+	name_change_signal_t         m_signal_name_change;
 
 };
 

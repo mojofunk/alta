@@ -3,31 +3,32 @@
 #define MOJO_PROJECT_INCLUDED
 
 #include <string>
+#include <vector>
 
 #include <boost/signal.hpp>
 
-#include <boost/serialization/nvp.hpp>
-#include <boost/serialization/string.hpp>
-#include <boost/serialization/list.hpp>
-#include <boost/serialization/shared_ptr.hpp>
-
 #include <booty/filesystem.hpp>
 
+#include <ark/archive_format.hpp>
+
 #include <mojo/object.hpp>
-#include <mojo/audio_track_ptr.hpp>
-#include <mojo/project_format_ptr.hpp>
 
 namespace mojo {
 
 using std::string;
+using std::vector;
 
 class Project : public Object
 {
 public:
 
-	typedef std::list<audio_track_ptr>    AudioTrackList;
+	// typedefs
+	typedef boost::signal<void ()>                      name_change_signal_t;
+	typedef boost::signal<bool ()>                      close_signal_t;
+	//typedef boost::signal<void (cpf::IAudioTrackPtr)>   new_track_signal_t;
 
-	typedef boost::signal<bool ()>        close_signal_t;
+	typedef boost::shared_ptr<ark::ArchiveFormat>       ArchiveFormatPtr;
+	typedef boost::weak_ptr<ark::ArchiveFormat>         ArchiveFormatWeakPtr;
 
 public:
 
@@ -35,6 +36,13 @@ public:
     Project ();
 
     ~Project();
+
+public:
+
+	// ark::Object interface
+	virtual void get_properties (ark::Properties& props) const;
+
+	virtual void set_properties (const ark::Properties& props);
 
 public:
 
@@ -55,14 +63,13 @@ public:
 	 * The project format will then be used by
 	 * further calls to save ()
 	 */
-	void save_as (project_format_ptr format,
+	void save_as (ArchiveFormatPtr format,
 			const fs::path& directory,
-			const fs::path& project_name);
+			const string& file_name);
 
-	const fs::path&
-		project_file () const { return m_project_file; }
+	const fs::path& file () const { return m_file_path; }
 
-	project_format_ptr format () const { return m_format; }
+	ArchiveFormatPtr format () const { return m_format; }
 
 	/**
 	 * @return true if project was closed
@@ -72,11 +79,8 @@ public:
 	 * destroy method will be executed
 	 */
 	void close ();
-	
-	void create_audio_track ();
 
-	const AudioTrackList&
-		audio_tracks () const { return m_audio_tracks; }
+	//void create_audio_track ();
 
 public:
 
@@ -85,37 +89,27 @@ public:
 	void on_close (const close_signal_t::slot_type& slot)
 	{ m_signal_close.connect(slot); }
 
-	boost::signal<void (audio_track_ptr)>&
-		signal_new_audio_track () { return m_signal_new_audio_track; }
-
-private:
-
-	// serialization
-	friend class boost::serialization::access;
-	
-	template<class Archive>
-		void serialize(Archive & ar, const unsigned int version)
-		{
-			ar & BOOST_SERIALIZATION_NVP(m_audio_tracks);
-		}
+	// can't return a signal
+	//new_track_signal_t& signal_new_audio_track () { return m_signal_new_audio_track; }
 
 private:
 
 	// member data
-	fs::path m_project_file;
+	fs::path                      m_file_path;
 
-	AudioTrackList m_audio_tracks;
+	std::string                   m_name;
 
-	project_format_ptr m_format;
+	// this needs to hold any track types
+	//TrackList                     m_tracks;
+
+	ArchiveFormatPtr              m_format;
 
 private:
 
 	// signal members
-	boost::signal<void ()> m_signal_name_change;
-
-	boost::signal<bool ()> m_signal_close;
-
-	boost::signal<void (audio_track_ptr)> m_signal_new_audio_track;
+	name_change_signal_t          m_signal_name_change;
+	close_signal_t                m_signal_close;
+	//new_track_signal_t            m_signal_new_audio_track;
 
 };
 

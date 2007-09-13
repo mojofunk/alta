@@ -30,10 +30,4 @@ Application::~Application()
 
 }
 
-void
-Application::set_active_project (project_ptr proj)
-{
-
-}
-
 } // namespace mojo

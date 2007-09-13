@@ -13,7 +13,7 @@ mojo_deps = \
 
 mojo_env = env.Copy()
 
-mojo_env.Append(LIBS = ['boost_filesystem', 'boost_serialization', 'boost_signals', 'booty'] )
+mojo_env.Append(LIBS = ['boost_filesystem', 'boost_signals', 'booty'] )
 
 #pkgconfig.ParseDependencies ( mojo_env, mojo_deps )
 
@@ -24,7 +24,6 @@ directory_names.cpp
 filesystem_paths.cpp
 project.cpp
 project_directory.cpp
-mojo_project_format.cpp
 """)
 
 libmojo = mojo_env.SharedLibrary ( 'mojo', mojo_source_files )

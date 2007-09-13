@@ -56,6 +56,7 @@ Application::new_project()
 
 	ProjectView::ptr pview(new ProjectView (new_project));
 
+#if 0
 	// a reference to the project is not held by this class
 	// so if the project is destroyed rely on the projectview's
 	// destroy signal
@@ -65,6 +66,8 @@ Application::new_project()
 			 ProjectView::weak_ptr(pview)
 			 )
 		);
+
+#endif
 
 	// check the return?
 	m_projects.insert(pview);

@@ -4,7 +4,6 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include <mojo/object.hpp>
 #include <mojo/project_ptr.hpp>
 
 #include <ui/gtk/window.hpp>
@@ -17,7 +16,7 @@ namespace gmojo {
    the project are created and accessed. It also 
    manages the top level windows for a project
 */
-class ProjectView : public mojo::Object
+class ProjectView
 {
 public:
 

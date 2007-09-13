@@ -1,7 +1,7 @@
 
-#include <mojo/project.hpp>
 #include <mojo/audio_track.hpp>
-#include <mojo/project_format.hpp>
+
+#include <mojo/project.hpp>
 
 namespace mojo {
 
@@ -16,6 +16,18 @@ Project::~Project()
 }
 
 void
+Project::get_properties (ark::Properties& props) const
+{
+
+}
+
+void
+Project::set_properties (const ark::Properties& props)
+{
+
+}
+
+void
 Project::save ()
 {
 
@@ -24,24 +36,15 @@ Project::save ()
 		throw;
 	}
 
-	try
-	{
-		m_format->save_project (*this, m_project_file);
-	}
-	catch (...)
-	{
-
-	}
-
 }
 
 void
-Project::save_as (project_format_ptr format,
-		const fs::path& directory, const fs::path& name)
+Project::save_as (ArchiveFormatPtr format,
+		const fs::path& directory, const string& name)
 {
 	m_format = format;
 
-	m_project_file = directory / name; // + format->extension ();
+	m_file_path = directory / (name + format->extension);
 
 	// move project files to directory etc
 
@@ -60,15 +63,12 @@ Project::close ()
 	}
 }
 
+#if 0
 void
 Project::create_audio_track ()
 {
-	audio_track_ptr new_track (new AudioTrack());
 
-	m_audio_tracks.push_back (new_track);
-
-	m_signal_new_audio_track (new_track);
 }
-
+#endif
 
 } // namespace mojo

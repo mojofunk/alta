@@ -47,7 +47,7 @@ ProjectView::on_project_signal_destroy ()
 
 	// The Application could destroy the ProjectView
 	// when the project is destroyed.
-	destroy ();
+	//destroy ();
 
 }
 

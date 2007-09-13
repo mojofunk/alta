@@ -18,4 +18,6 @@
 	#define AFL_API AFL_IMPORT
 #endif
 
+#define AFL_CAPI extern "C" AFL_API
+
 #endif

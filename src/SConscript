@@ -2,6 +2,8 @@
 
 SConscript ( 'afl/SConscript' )
 
+SConscript ( 'ark/SConscript' )
+
 SConscript ( 'libgleam/SConscript' )
 
 SConscript ( 'booty/SConscript' )
