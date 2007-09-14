@@ -34,9 +34,9 @@ public:
 	/**
 	 * Caller is responsible for deleting returned project
 	 */
-	ArchiveReader* new_reader (const ArchiveFormat& format);
+	ArchiveReader* new_reader ();
 
-	ArchiveWriter* new_writer (const ArchiveFormat& format);
+	ArchiveWriter* new_writer ();
 
 private:
 

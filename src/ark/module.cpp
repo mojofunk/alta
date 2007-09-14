@@ -17,17 +17,25 @@ Module::Module(const string& module_file_path)
 	} 
 
 	const string descriptor_name ("ark_descriptor");
-	
+
+	typedef Descriptor* (*descriptor_func_t) ();
+
+	descriptor_func_t desc_func;
+
 	if ( !g_module_symbol (m_module, descriptor_name.c_str(),
-				(gpointer*)&m_desc) || m_desc == NULL)
+				(gpointer*)&desc_func) || desc_func == NULL)
 	{
 		cerr << "error resolving" << endl;
 		throw;
 	}
+
+	m_desc = desc_func();
 }
 
 Module::~Module()
 {
+	delete m_desc;
+
 	g_module_close(m_module);
 }
 
@@ -35,17 +43,16 @@ ModuleInfo
 Module::get_info() const
 {
 	return m_desc->get_info();
-
 }
 
 ArchiveReader*
-Module::new_reader (const ArchiveFormat& format)
+Module::new_reader ()
 {
 	return m_desc->create_reader ();
 }
 
 ArchiveWriter*
-Module::new_writer (const ArchiveFormat& format)
+Module::new_writer ()
 {
 	return m_desc->create_writer ();
 }

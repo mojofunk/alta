@@ -23,8 +23,6 @@ public:
 
 	virtual void write (const string& file_path, const TypeNameRegistry& registry) = 0;
 
-protected:
-
 	virtual ~ArchiveWriter() { }
 
 };

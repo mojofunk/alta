@@ -22,6 +22,12 @@ class DummyArchive : public ArchiveReader, public ArchiveWriter
 {
 public:
 
+	DummyArchive();
+
+	virtual ~DummyArchive();
+
+public:
+
 	// ArchiveReader interface
 	virtual void read (const string& file_path, const TypeFactory& type_factory);
 

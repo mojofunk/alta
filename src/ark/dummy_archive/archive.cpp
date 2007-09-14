@@ -3,6 +3,10 @@
 
 #include "archive.hpp"
 
+#include <iostream>
+
+using namespace std;
+
 namespace ark {
 
 ArchiveWriter*
@@ -22,6 +26,17 @@ DummyDescriptor::get_info()
 {
 
 	return ModuleInfo("blah", "bloh", ArchiveFormat("", ""));
+}
+
+
+DummyArchive::DummyArchive()
+{
+	std::cerr << "DummyArchive()" << std::endl;
+}
+
+DummyArchive::~DummyArchive()
+{
+	std::cerr << "~DummyArchive()" << std::endl;
 }
 
 void

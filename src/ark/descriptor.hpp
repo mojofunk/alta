@@ -12,15 +12,16 @@ class Descriptor
 {
 public:
 
+	virtual ~Descriptor() { }
+
+public:
+
 	virtual ArchiveWriter* create_writer() = 0;
 
 	virtual ArchiveReader* create_reader() = 0;
 
 	virtual ModuleInfo get_info() = 0;
 
-protected:
-
-	virtual ~Descriptor() { }
 
 };
 

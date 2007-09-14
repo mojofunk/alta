@@ -30,7 +30,13 @@ main(int argc, char* argv[])
 
 	//gmojo_app->run();
 
-	ark::Module dummy_module ("./build/release/ark/libdummy_archive.so");
+	{
 
+		ark::Module dummy_module ("./build/release/ark/libdummy_archive.so");
+
+		boost::shared_ptr<ark::ArchiveWriter> writer(dummy_module.new_writer());
+
+	}
+	
     return EXIT_SUCCESS;
 }

@@ -22,8 +22,6 @@ public:
 
 	virtual Object* get_object (const string& name) = 0;
 
-protected:
-
 	virtual ~ArchiveReader() { }
 
 };
