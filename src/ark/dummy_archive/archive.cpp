@@ -24,7 +24,6 @@ DummyDescriptor::create_reader()
 ModuleInfo
 DummyDescriptor::get_info()
 {
-
 	return ModuleInfo("blah", "bloh", ArchiveFormat("", ""));
 }
 
@@ -45,22 +44,64 @@ DummyArchive::read (const string& file_path, const TypeFactory& type_factory)
 
 }
 
-Object*
+const Object*
 DummyArchive::get_object (const string& name)
 {
-
+	// XXX
+	return m_objects.find(name)->second;
 }
 
 
 void
-DummyArchive::add_object (const string& name, const Object&)
+DummyArchive::add_object (const string& name, const Object* obj)
 {
+	std::cerr << "DummyArchive::add_object " << name << std::endl;
+
+	m_objects.insert (std::make_pair (name, obj)); 
+}
+
+void
+print_properties (const Object* obj, const TypeNameRegistry& reg)
+{
+
+	Properties props;
+
+	obj->get_properties (props);
+
+	std::cerr << "Properties: ";
+
+	for (Properties::const_iterator i = props.begin(); i != props.end();)
+	{
+		std::cerr << "Name: " << i->name() << " ";
+		std::cerr << "Value: " << reg.type_name(i->value().type());
+
+		++i;
+
+		if (i != props.end())
+		{
+			std::cerr << ", ";
+		}
+
+	}
+
+	std::cerr << std::endl;
 
 }
 
 void
-DummyArchive::write (const string& file_path, const TypeNameRegistry& registry)
+DummyArchive::write (const string& file_path, const TypeNameRegistry& reg)
 {
+	std::cerr << "DummyArchive::write "  << file_path << std::endl;
+
+	for (ObjectMap::const_iterator i = m_objects.begin(); i != m_objects.end(); ++i)
+	{
+		std::cerr << "Name: " << i->first << std::endl;
+
+		print_properties (i->second, reg);
+
+	}
+
+
 
 }
 

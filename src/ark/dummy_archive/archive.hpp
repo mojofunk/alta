@@ -2,9 +2,14 @@
 #ifndef ARK_DUMMY_ARCHIVE_INCLUDED
 #define ARK_DUMMY_ARCHIVE_INCLUDED
 
+#include <map>
+
+
 #include <ark/descriptor.hpp>
 
 namespace ark {
+
+using std::map;
 
 class DummyDescriptor : public Descriptor
 {
@@ -31,14 +36,20 @@ public:
 	// ArchiveReader interface
 	virtual void read (const string& file_path, const TypeFactory& type_factory);
 
-	virtual Object* get_object (const string& name);
+	virtual const Object* get_object (const string& name);
 
 public:
 
 	// ArchiveWriter interface
-	virtual void add_object (const string& name, const Object&);
+	virtual void add_object (const string& name, const Object* );
 
 	virtual void write (const string& file_path, const TypeNameRegistry& registry);
+
+private:
+
+	typedef map<string, const Object*> ObjectMap;
+	
+	ObjectMap m_objects;
 
 };
 

@@ -7,5 +7,6 @@
 #include <mojo/filesystem_paths.hpp>
 #include <mojo/project_directory.hpp>
 #include <mojo/project.hpp>
+#include <mojo/type_name_registry.hpp>
 
 #endif // MOJO_MOJO_INCLUDED

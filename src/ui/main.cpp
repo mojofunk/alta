@@ -32,9 +32,17 @@ main(int argc, char* argv[])
 
 	{
 
-		ark::Module dummy_module ("./build/release/ark/libdummy_archive.so");
+		ark::Module dummy_module ("./build/debug/ark/libdummy_archive.so");
 
 		boost::shared_ptr<ark::ArchiveWriter> writer(dummy_module.new_writer());
+
+		boost::shared_ptr<mojo::Project> project(new mojo::Project);
+
+		writer->add_object ("project", project.get());
+
+		mojo::TypeNameRegistry reg;
+
+		writer->write ("text.archive", reg);
 
 	}
 	

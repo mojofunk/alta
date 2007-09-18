@@ -24,6 +24,7 @@ directory_names.cpp
 filesystem_paths.cpp
 project.cpp
 project_directory.cpp
+type_name_registry.cpp
 """)
 
 libmojo = mojo_env.SharedLibrary ( 'mojo', mojo_source_files )

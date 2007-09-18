@@ -18,6 +18,7 @@ Project::~Project()
 void
 Project::get_properties (ark::Properties& props) const
 {
+	props.insert (ark::Property ("name", m_name));
 
 }
 
