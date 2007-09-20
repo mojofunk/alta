@@ -36,20 +36,18 @@ public:
 	// ArchiveReader interface
 	virtual void read (const string& file_path, const TypeFactory& type_factory);
 
-	virtual const Object* get_object (const string& name);
+	virtual const Property get_property (const string& name);
 
 public:
 
 	// ArchiveWriter interface
-	virtual void add_object (const string& name, const Object* );
+	virtual void add_property (const Property& prop);
 
 	virtual void write (const string& file_path, const TypeNameRegistry& registry);
 
 private:
-
-	typedef map<string, const Object*> ObjectMap;
 	
-	ObjectMap m_objects;
+	Properties m_properties;
 
 };
 

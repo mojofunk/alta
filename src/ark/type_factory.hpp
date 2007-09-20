@@ -2,6 +2,8 @@
 #ifndef ARK_TYPE_FACTORY_INCLUDED
 #define ARK_TYPE_FACTORY_INCLUDED
 
+#include <ark/object.hpp>
+
 namespace ark {
 
 class TypeFactory

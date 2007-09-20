@@ -4,7 +4,6 @@
 
 #include <string>
 
-#include <ark/object.hpp>
 #include <ark/type_name_registry.hpp>
 
 namespace ark {
@@ -19,7 +18,7 @@ public:
 	/**
 	 * All top level objects must have a unique name
 	 */
-	virtual void add_object (const string& name, const Object*) = 0;
+	virtual void add_property (const Property& prop) = 0;
 
 	virtual void write (const string& file_path, const TypeNameRegistry& registry) = 0;
 

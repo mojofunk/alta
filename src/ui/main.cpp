@@ -38,7 +38,7 @@ main(int argc, char* argv[])
 
 		boost::shared_ptr<mojo::Project> project(new mojo::Project);
 
-		writer->add_object ("project", project.get());
+		writer->add_property(ark::Property("project", boost::any(project)));
 
 		mojo::TypeNameRegistry reg;
 

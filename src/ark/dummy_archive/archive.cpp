@@ -44,20 +44,20 @@ DummyArchive::read (const string& file_path, const TypeFactory& type_factory)
 
 }
 
-const Object*
-DummyArchive::get_object (const string& name)
+const Property
+DummyArchive::get_property (const string& name)
 {
 	// XXX
-	return m_objects.find(name)->second;
+	//return m_properties.find(name);
 }
 
 
 void
-DummyArchive::add_object (const string& name, const Object* obj)
+DummyArchive::add_property (const Property& prop)
 {
-	std::cerr << "DummyArchive::add_object " << name << std::endl;
+	std::cerr << "DummyArchive::add_property: " << prop.name() << std::endl;
 
-	m_objects.insert (std::make_pair (name, obj)); 
+	m_properties.insert (prop); 
 }
 
 void
@@ -73,7 +73,7 @@ print_properties (const Object* obj, const TypeNameRegistry& reg)
 	for (Properties::const_iterator i = props.begin(); i != props.end();)
 	{
 		std::cerr << "Name: " << i->name() << " ";
-		std::cerr << "Value: " << reg.type_name(i->value().type());
+		std::cerr << "Type: " << reg.type_name(i->value().type());
 
 		++i;
 
@@ -93,13 +93,18 @@ DummyArchive::write (const string& file_path, const TypeNameRegistry& reg)
 {
 	std::cerr << "DummyArchive::write "  << file_path << std::endl;
 
-	for (ObjectMap::const_iterator i = m_objects.begin(); i != m_objects.end(); ++i)
-	{
-		std::cerr << "Name: " << i->first << std::endl;
+	// recursively find all the Properties that are of type ark::Object
+	// and put them into a map<Object*, uint64_t> where each object is
+	// assigned a unique id.
 
-		print_properties (i->second, reg);
+	// check that the TypeNameRegistry has an name for each property type in
+	// the archive
 
-	}
+	// work out if all the types are supported by this archive.
+
+	// write all non ark::Object properties to the archive
+
+
 
 
 
