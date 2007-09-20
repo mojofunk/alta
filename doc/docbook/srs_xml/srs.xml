@@ -25,6 +25,13 @@
         should not have to name the project or specify any directories to
         save data to until the project is saved.
       </para>
+
+      <para>
+        The user must not have to configure their audio device so that the
+        project is played back at the correct/intended samplerate. Which
+        also means that they must not have to know what the correct or
+        intended samplerate is, it should just work.
+      </para>
     </section>
 
     <section id="project-formats">
@@ -187,7 +194,10 @@
 
     <section id="user-interface">
       <title>User Interface</title>
-      <para></para>
+      <para>
+        The user interface should try to be as similar as possible to Cubase
+        while following the Gnome HIG.
+      </para>
 
       <itemizedlist>
         <listitem>
@@ -225,7 +235,7 @@
 
       <listitem>
         <para>
-          Must be able to import audio files into the project.
+          Must be able to audition and import audio files into the project.
         </para>
       </listitem>
 
@@ -249,7 +259,26 @@
 
       <listitem>
         <para>
-          Must be able to control the volume of individual tracks tracks.
+          Must be able to control the volume of individual tracks.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+
+
+  <section id="requirements-version-0.2.0">
+    <title>Requirements Version 0.2.0</title>
+    <para>
+      Object Selection(Arrow) Tool. Implement the fundamental editing
+      operations supported by the Object Selection tool that apply to Audio
+      events.
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          Must be able to select Audio Event objects
         </para>
       </listitem>
 
@@ -263,30 +292,6 @@
       <listitem>
         <para>
           Must be able to copy an audio event to the same or different track
-        </para>
-      </listitem>
-    </itemizedlist>
-  </section>
-
-
-
-  <section id="requirements-version-0.2.0">
-    <title>Requirements Version 0.2.0</title>
-    <para>
-      Support for non-destructive spliting and joining of audio events
-    </para>
-
-    <itemizedlist>
-      <listitem>
-        <para>
-          Must be able to split an audio event into two distinct audio
-          events.
-        </para>
-      </listitem>
-
-      <listitem>
-        <para>
-          Must be able to join two audio events into an audio part.
         </para>
       </listitem>
     </itemizedlist>
