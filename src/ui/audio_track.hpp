@@ -7,18 +7,7 @@
 
 namespace gmojo {
 
-/**
- * Is TrackView an appropriate name? there could be an
- * argument for calling the widget that contains all the tracks
- * the TrackView.
- */
-
-/**
- * TrackView is an interface that all Track types
- * derive from. This is so the EditCanvas doesn't need to know
- * about specific track types.
- */
-class AudioTrackView : public TrackView
+class AudioTrack : public Track
 {
 public:
 
