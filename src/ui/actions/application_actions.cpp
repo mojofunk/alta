@@ -1,5 +1,5 @@
 
-#include <ui/application_actions.hpp>
+#include <ui/actions/application_actions.hpp>
 
 namespace gmojo {
 

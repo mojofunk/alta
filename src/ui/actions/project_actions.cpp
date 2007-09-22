@@ -1,7 +1,7 @@
 
 #include <mojo/project.hpp>
 
-#include <ui/project_actions.hpp>
+#include <ui/actions/project_actions.hpp>
 
 #include <ui/dialogs/new_audio_track_dialog.hpp>
 

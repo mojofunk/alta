@@ -1,6 +1,6 @@
 
-#include <ui/application_action_group.hpp>
-#include <ui/application_action_entries.hpp>
+#include <ui/actions/application_action_group.hpp>
+#include <ui/actions/application_action_entries.hpp>
 
 namespace gmojo {
 

@@ -1,6 +1,6 @@
 
-#include <ui/edit_window_menu_action_group.hpp>
-#include <ui/edit_window_menu_action_entries.hpp>
+#include <ui/actions/edit_window_menu_action_group.hpp>
+#include <ui/actions/edit_window_menu_action_entries.hpp>
 
 namespace gmojo {
 

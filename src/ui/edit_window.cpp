@@ -3,9 +3,9 @@
 
 #include <ui/edit_window.hpp>
 
-#include <ui/edit_window_menu_action_group.hpp>
-#include <ui/application_action_group.hpp>
-#include <ui/project_action_group.hpp>
+#include <ui/actions/edit_window_menu_action_group.hpp>
+#include <ui/actions/application_action_group.hpp>
+#include <ui/actions/project_action_group.hpp>
 
 #include <ui/edit_window_menu_ui_definition.hpp>
 

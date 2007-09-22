@@ -24,12 +24,13 @@ main(int argc, char* argv[])
 	gtk_init(&argc, &argv);
 
 	// need to initialize mojo::Application and show progress, scanning plugins etc.
-	//boost::shared_ptr<mojo::Application> mojo_app = mojo::Application::create(argc, argv);
+	boost::shared_ptr<mojo::Application> mojo_app = mojo::Application::create(argc, argv);
 
-	//boost::shared_ptr<Application> gmojo_app = Application::create(argc, argv);
+	boost::shared_ptr<Application> gmojo_app = Application::create(argc, argv);
 
-	//gmojo_app->run();
+	gmojo_app->run();
 
+#if 0
 	{
 
 		ark::Module dummy_module ("./build/debug/ark/libdummy_archive.so");
@@ -45,6 +46,7 @@ main(int argc, char* argv[])
 		writer->write ("text.archive", reg);
 
 	}
-	
+#endif
+
     return EXIT_SUCCESS;
 }

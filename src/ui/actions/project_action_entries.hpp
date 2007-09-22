@@ -6,7 +6,7 @@
 
 #include <gtk/gtk.h>
 
-#include <ui/project_actions.hpp>
+#include <ui/actions/project_actions.hpp>
 
 namespace gmojo {
 
