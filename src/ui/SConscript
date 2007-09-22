@@ -25,8 +25,8 @@ goo/canvas.cpp
 """)
 
 actions_source_files = Split("""
-actions/application_action_group.cpp
-actions/application_actions.cpp
+actions/app_action_group.cpp
+actions/app_actions.cpp
 actions/project_action_group.cpp
 actions/project_actions.cpp
 actions/edit_window_menu_action_group.cpp
@@ -38,7 +38,7 @@ dialogs/new_audio_track_dialog.cpp
 """)
 
 gmojo_source_files = Split("""
-application.cpp
+app.cpp
 track_view.cpp
 edit_window.cpp
 edit_window_menu_ui_definition.cpp

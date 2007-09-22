@@ -4,7 +4,7 @@
 #include <ui/edit_window.hpp>
 
 #include <ui/actions/edit_window_menu_action_group.hpp>
-#include <ui/actions/application_action_group.hpp>
+#include <ui/actions/app_action_group.hpp>
 #include <ui/actions/project_action_group.hpp>
 
 #include <ui/edit_window_menu_ui_definition.hpp>
@@ -51,7 +51,7 @@ EditWindow::add_action_groups_to_ui_manager ()
 	g_object_unref (action_group);
 	
 	// add application actions
-	action_group = application_action_group_new(&Application::instance());
+	action_group = app_action_group_new(&App::instance());
 	gtk_ui_manager_insert_action_group (m_ui_manager, action_group, 0);
 	g_object_unref (action_group);
 

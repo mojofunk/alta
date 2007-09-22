@@ -14,13 +14,13 @@ namespace gmojo {
 using std::set;
 using std::string;
 
-class Application
+class App
 {
 public:
 
-	static boost::shared_ptr<Application> create (int argc, char *argv[]);
+	static boost::shared_ptr<App> create (int argc, char *argv[]);
 
-	static Application& instance() { return *sm_app; }
+	static App& instance() { return *sm_app; }
 
 	/**
 	 * Start the event loop and Create a new
@@ -53,10 +53,10 @@ public:
     
 private:
 
-	static Application* sm_app;
+	static App* sm_app;
 
-    Application (int argc, char *argv[]);
-    ~Application();
+    App (int argc, char *argv[]);
+    ~App();
 
 	typedef set<ProjectView::ptr> Projects;
 
@@ -89,7 +89,7 @@ private:
 
 	struct deleter
 	{
-		void operator()(Application* app) { delete app; sm_app = 0; }
+		void operator()(App* app) { delete app; sm_app = 0; }
 	};
 
 };

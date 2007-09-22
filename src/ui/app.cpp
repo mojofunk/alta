@@ -3,38 +3,38 @@
 #include <mojo/project.hpp>
 #include <mojo/project_ptr.hpp>
 
-#include <ui/application.hpp>
+#include <ui/app.hpp>
 #include <ui/project_view.hpp>
 
 namespace gmojo {
 
-Application* Application::sm_app;
+App* App::sm_app;
 
-boost::shared_ptr<Application>
-Application::create (int argc, char *argv[])
+boost::shared_ptr<App>
+App::create (int argc, char *argv[])
 {
 	if(sm_app) throw;
 
 	// try/catch?
-	boost::shared_ptr<Application> ptr(new Application(argc, argv), Application::deleter());
+	boost::shared_ptr<App> ptr(new App(argc, argv), App::deleter());
 
 	sm_app = ptr.get();
 
 	return ptr;
 }
 
-Application::Application (int argc, char *argv[])
+App::App (int argc, char *argv[])
 {
 
 }
 
-Application::~Application()
+App::~App()
 {
 
 }
 
 void
-Application::run()
+App::run()
 {
 	new_project ();
 
@@ -42,7 +42,7 @@ Application::run()
 }
 
 void
-Application::quit()
+App::quit()
 {
 	m_projects.clear();
 
@@ -50,7 +50,7 @@ Application::quit()
 }
 
 void
-Application::new_project()
+App::new_project()
 {
 	mojo::project_ptr new_project(new mojo::Project());
 
@@ -62,7 +62,7 @@ Application::new_project()
 	// destroy signal
 	pview->on_destroy (
 		 boost::bind (
-			 &Application::on_projectview_signal_destroy, this,
+			 &App::on_projectview_signal_destroy, this,
 			 ProjectView::weak_ptr(pview)
 			 )
 		);
@@ -74,7 +74,7 @@ Application::new_project()
 }
 
 void
-Application::on_projectview_signal_destroy (ProjectView::weak_ptr projectview)
+App::on_projectview_signal_destroy (ProjectView::weak_ptr projectview)
 {
 	ProjectView::ptr pview(projectview.lock ());
 	
@@ -88,7 +88,7 @@ Application::on_projectview_signal_destroy (ProjectView::weak_ptr projectview)
 }
 
 void
-Application::open_project(const string& path_to_file)
+App::open_project(const string& path_to_file)
 {
     
     
