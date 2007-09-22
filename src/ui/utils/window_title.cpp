@@ -1,5 +1,5 @@
 
-#include <ui/window_title.hpp>
+#include <ui/utils/window_title.hpp>
 
 namespace {
 	

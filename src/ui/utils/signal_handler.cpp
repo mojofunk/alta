@@ -9,7 +9,7 @@
 #include <libgleam/terminate_process.hpp>
 #endif
 
-#include <ui/signal_handler.hpp>
+#include <ui/utils/signal_handler.hpp>
 
 namespace gmojo {
 

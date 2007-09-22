@@ -37,6 +37,11 @@ dialogs/audio_file_import_dialog.cpp
 dialogs/new_audio_track_dialog.cpp
 """)
 
+utils_source_files = Split("""
+utils/window_title.cpp
+utils/signal_handler.cpp
+""")
+
 gmojo_source_files = Split("""
 app.cpp
 track_view.cpp
@@ -44,8 +49,6 @@ edit_window.cpp
 edit_window_menu_ui_definition.cpp
 project_view.cpp
 main.cpp
-window_title.cpp
-signal_handler.cpp
 """)
 
 all_source_files = \
@@ -53,6 +56,7 @@ gtk_source_files + \
 goo_source_files + \
 actions_source_files + \
 dialogs_source_files + \
+utils_source_files + \
 gmojo_source_files
 
 gmojo = gmojo_env.Program( env['VERSIONED_NAME'], all_source_files)

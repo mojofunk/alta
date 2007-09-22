@@ -8,7 +8,7 @@
 #include <afl/audio_file_factory.hpp>
 
 #include <ui/app.hpp>
-#include <ui/signal_handler.hpp>
+#include <ui/utils/signal_handler.hpp>
 
 using namespace gmojo;
 
