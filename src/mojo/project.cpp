@@ -31,7 +31,6 @@ Project::set_properties (const ark::Properties& props)
 void
 Project::save ()
 {
-
 	if(!m_format)
 	{
 		throw;

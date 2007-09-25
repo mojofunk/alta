@@ -33,9 +33,9 @@ public:
 public:
 
 	// constructors
-    Project ();
+	Project ();
 
-    ~Project();
+	~Project();
 
 public:
 

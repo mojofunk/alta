@@ -25,7 +25,7 @@ TypeNameRegistry::type_name (const std::type_info& info) const
 		return i->second;
 	}
 
-	return "unknown type";
+	return "";
 }
 
 } // namespace mojo
