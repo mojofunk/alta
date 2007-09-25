@@ -12,6 +12,7 @@
 #include <ark/archive_format.hpp>
 
 #include <mojo/object.hpp>
+#include <mojo/audio_track_ptr.hpp>
 
 namespace mojo {
 
@@ -23,9 +24,9 @@ class Project : public Object
 public:
 
 	// typedefs
-	typedef boost::signal<void ()>                      name_change_signal_t;
-	typedef boost::signal<bool ()>                      close_signal_t;
-	//typedef boost::signal<void (cpf::IAudioTrackPtr)>   new_track_signal_t;
+	typedef boost::signal<void ()>                 name_change_signal_t;
+	typedef boost::signal<bool ()>                 close_signal_t;
+	typedef boost::signal<void (AudioTrackSPtr)>   new_track_signal_t;
 
 	typedef boost::shared_ptr<ark::ArchiveFormat>       ArchiveFormatPtr;
 	typedef boost::weak_ptr<ark::ArchiveFormat>         ArchiveFormatWeakPtr;
@@ -85,12 +86,12 @@ public:
 public:
 
 	// signals
-	// return connection?
+	// return xsignal::connection?
 	void on_close (const close_signal_t::slot_type& slot)
 	{ m_signal_close.connect(slot); }
 
-	// can't return a signal
-	//new_track_signal_t& signal_new_audio_track () { return m_signal_new_audio_track; }
+	void on_new_track (const new_track_signal_t::slot_type& slot)
+	{ m_signal_new_track.connect(slot); }
 
 private:
 
@@ -109,7 +110,7 @@ private:
 	// signal members
 	name_change_signal_t          m_signal_name_change;
 	close_signal_t                m_signal_close;
-	//new_track_signal_t            m_signal_new_audio_track;
+	new_track_signal_t            m_signal_new_track;
 
 };
 

@@ -9,8 +9,8 @@ namespace mojo {
 
 	class AudioTrack;
 
-	typedef boost::shared_ptr<AudioTrack>    audio_track_ptr;
-	typedef boost::weak_ptr<AudioTrack>      audio_track_wptr;
+	typedef boost::shared_ptr<AudioTrack>    AudioTrackSPtr;
+	typedef boost::weak_ptr<AudioTrack>      AudioTrackWPtr;
 
 } // namespace mojo
 
