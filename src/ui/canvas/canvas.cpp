@@ -1,6 +1,6 @@
 #include <goocanvas.h>
 
-#include <ui/goo/canvas.hpp>
+#include <ui/canvas/canvas.hpp>
 
 namespace goo {
 

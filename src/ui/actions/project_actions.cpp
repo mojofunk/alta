@@ -5,6 +5,8 @@
 
 #include <ui/dialogs/new_audio_track_dialog.hpp>
 
+#include <iostream>
+
 namespace gmojo {
 
 void
@@ -17,6 +19,7 @@ save_project (GtkAction*, mojo::Project* project)
 	}
 	catch(...)
 	{
+	    std::cerr << "blah" << std::endl;
 
 	}
 

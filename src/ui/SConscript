@@ -20,8 +20,8 @@ gtk_source_files = Split("""
 gtk/window.cpp
 """)
 
-goo_source_files = Split("""
-goo/canvas.cpp
+canvas_source_files = Split("""
+canvas/canvas.cpp
 """)
 
 actions_source_files = Split("""
@@ -53,7 +53,7 @@ main.cpp
 
 all_source_files = \
 gtk_source_files + \
-goo_source_files + \
+canvas_source_files + \
 actions_source_files + \
 dialogs_source_files + \
 utils_source_files + \

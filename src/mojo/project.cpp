@@ -33,7 +33,7 @@ Project::save ()
 {
 	if(!m_format)
 	{
-		throw;
+		throw 1;
 	}
 
 }
