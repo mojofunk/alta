@@ -25,9 +25,9 @@ public:
 
 public:
 
-    ProjectView (mojo::project_ptr project);
+	ProjectView (mojo::project_ptr project);
 
-    ~ProjectView ();
+	~ProjectView ();
 
 private:
 

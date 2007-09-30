@@ -26,21 +26,21 @@ public:
 	 * Start the event loop and Create a new
 	 * ProjectView
 	 */
-    void run();
-    
-    /**
-      must check the state of each open project,
-      if state is dirty then ask the user if they
-      want to save the project.
+	void run();
+
+	/**
+	  must check the state of each open project,
+	  if state is dirty then ask the user if they
+	  want to save the project.
 
 	  One of the options on the save dialog will be 
 	  cancel in which case the application will not
 	  quit, how to handle that?
-    */
-    void quit();
-    
-    /// Create a new ProjectView.
-    void new_project();
+	  */
+	void quit();
+
+	/// Create a new ProjectView.
+	void new_project();
 
 	/**
 	 * Create a new ProjectView if one doesn't 
@@ -55,8 +55,8 @@ private:
 
 	static App* sm_app;
 
-    App (int argc, char *argv[]);
-    ~App();
+	App (int argc, char *argv[]);
+	~App();
 
 	typedef set<ProjectView::ptr> Projects;
 
@@ -66,12 +66,12 @@ private:
 
 	void on_projectview_signal_destroy (ProjectView::weak_ptr);
 
-    /// project agnostic top level dialogs
+	/// project agnostic top level dialogs
 
-    // about dialog
-    // preferences dialog
+	// about dialog
+	// preferences dialog
 
-    // edit buffer cut/paste
+	// edit buffer cut/paste
 
 private:
 	
