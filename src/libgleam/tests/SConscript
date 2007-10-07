@@ -1,0 +1,13 @@
+# vim: tabstop=4 expandtab shiftwidth=4
+
+import tools.pkgconfig as pkgconfig
+
+Import ('env')
+
+gleam_test_env = env.Copy()
+
+gleam_test_env.Append(LIBS = [ 'boost_unit_test_framework', 'gleam' ])
+
+filesystem_paths_test = gleam_test_env.Program ( 'test_filesystem_paths', 'test_filesystem_paths.cpp' )
+
+Default (filesystem_paths_test)

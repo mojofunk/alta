@@ -34,3 +34,7 @@ if env['PLATFORM'] == 'posix':
 libgleam = gleam_env.SharedLibrary ( 'gleam', gleam_source_files )
 
 Default (libgleam)
+
+if env['BUILD_TESTS']:
+        SConscript  ( 'tests/SConscript' )
+

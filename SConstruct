@@ -43,6 +43,7 @@ opts.AddOptions(
 	('BINDIR', 'path for binary files (default is $PREFIX/bin)', '/bin'),
 	('LIBDIR', 'path for library files (default is $PREFIX/lib', '/lib'),
 	BoolOption('DEBUG', 'Debug version (useful for developers only)', 1),
+	BoolOption('BUILD_TESTS', 'Build test programs', 1),
 )
 
 ###############################
