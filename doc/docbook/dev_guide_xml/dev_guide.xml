@@ -17,5 +17,8 @@
 		href="construction.xml" />
 
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
+		href="testing.xml" />
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
 		href="reference_books.xml" />
 </book>

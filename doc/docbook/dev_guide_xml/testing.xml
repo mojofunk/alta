@@ -1,24 +1,100 @@
 <?xml version="1.0" standalone="no"?>
 
-<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
 
 ]>
 
-<section id="sn-testing">
+<chapter id="ch-testing">
   <title>Testing</title>
-  <para>
-    What test framework.
-  </para>
+  <section id="testing-types">
+    <title>Types of Testing</title>
+    <para></para>
 
-  <para>
-    code coverage.
-  </para>
+    <variablelist>
+      <title></title>
+      <varlistentry>
+        <term>Unit Testing</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
 
-  <para>
-    simulation of error conditions like OOM.
-  </para>
+      <varlistentry>
+        <term>Integration Testing</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>System Testing</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Performance Testing</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Scalability Testing</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Regression Testing</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Stress Testing</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Smoke Testing</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Recovery Testing</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Installation Testing</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section id="test-framework">
+    <title>Test Framework</title>
+    <para></para>
+  </section>
+
+  <section id="code-coverage">
+    <title>Code Coverage</title>
+    <para></para>
+  </section>
 <!--
 	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
 		href="Some_Subsection.xml" />
 	-->
-</section>
+</chapter>
