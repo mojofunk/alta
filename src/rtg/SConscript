@@ -1,0 +1,20 @@
+# vim: tabstop=4 expandtab shiftwidth=4
+
+import tools.pkgconfig as pkgconfig
+
+Import ('env')
+
+rtg_env = env.Copy()
+
+rtg_source_files = Split("""
+graph.cpp
+node.cpp
+""")
+
+librtg = rtg_env.SharedLibrary ( 'rtg', rtg_source_files )
+
+Default (librtg)
+
+if env['BUILD_TESTS']:
+        SConscript  ( 'tests/SConscript' )
+

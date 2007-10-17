@@ -4,6 +4,8 @@
 
 Import ('env')
 
+SConscript ( 'rtg/SConscript' )
+
 SConscript ( 'afl/SConscript' )
 
 SConscript ( 'ark/SConscript' )
