@@ -9,8 +9,6 @@
 
 #include <booty/filesystem.hpp>
 
-#include <ark/archive_format.hpp>
-
 #include <mojo/object.hpp>
 #include <mojo/audio_track_ptr.hpp>
 
@@ -27,9 +25,6 @@ public:
 	typedef boost::signal<void ()>                 name_change_signal_t;
 	typedef boost::signal<bool ()>                 close_signal_t;
 	typedef boost::signal<void (AudioTrackSPtr)>   new_track_signal_t;
-
-	typedef boost::shared_ptr<ark::ArchiveFormat>       ArchiveFormatPtr;
-	typedef boost::weak_ptr<ark::ArchiveFormat>         ArchiveFormatWeakPtr;
 
 public:
 
@@ -64,13 +59,10 @@ public:
 	 * The project format will then be used by
 	 * further calls to save ()
 	 */
-	void save_as (ArchiveFormatPtr format,
-			const fs::path& directory,
+	void save_as (const fs::path& directory,
 			const string& file_name);
 
 	const fs::path& file () const { return m_file_path; }
-
-	ArchiveFormatPtr format () const { return m_format; }
 
 	/**
 	 * @return true if project was closed
@@ -102,8 +94,6 @@ private:
 
 	// this needs to hold any track types
 	//TrackList                     m_tracks;
-
-	ArchiveFormatPtr              m_format;
 
 private:
 

@@ -31,20 +31,14 @@ Project::set_properties (const ark::Properties& props)
 void
 Project::save ()
 {
-	if(!m_format)
-	{
-		throw 1;
-	}
 
 }
 
 void
-Project::save_as (ArchiveFormatPtr format,
-		const fs::path& directory, const string& name)
+Project::save_as (const fs::path& directory, const string& name)
 {
-	m_format = format;
-
-	m_file_path = directory / (name + format->extension);
+	const string extension = "mojo";
+	m_file_path = directory / (name + extension);
 
 	// move project files to directory etc
 

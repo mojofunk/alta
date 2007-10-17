@@ -4,7 +4,7 @@
 
 #include <string>
 
-#include <ark/type_name_registry.hpp>
+#include <ark/property.hpp>
 
 namespace ark {
 
@@ -18,9 +18,9 @@ public:
 	/**
 	 * All top level objects must have a unique name
 	 */
-	virtual void add_property (const Property& prop) = 0;
+	virtual void set_property (const Property& prop) = 0;
 
-	virtual void write (const string& file_path, const TypeNameRegistry& registry) = 0;
+	virtual void write (const string& file_path) = 0;
 
 	virtual ~ArchiveWriter() { }
 

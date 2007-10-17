@@ -4,17 +4,10 @@ import tools.pkgconfig as pkgconfig
 
 Import ('env')
 
-ark_deps = \
-{
-    'gmodule-2.0'      : '2.10.1',
-}
-
 ark_env = env.Copy()
 
-pkgconfig.ParseDependencies ( ark_env, ark_deps )
-
 ark_source_files = Split("""
-module.cpp
+type_system.cpp
 """)
 
 libark = ark_env.SharedLibrary ( 'ark', ark_source_files )

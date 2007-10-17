@@ -2,28 +2,10 @@
 #ifndef ARK_DUMMY_ARCHIVE_INCLUDED
 #define ARK_DUMMY_ARCHIVE_INCLUDED
 
-#include <map>
+#include <ark/archive_reader.hpp>
+#include <ark/archive_writer.hpp>
 
-
-#include <ark/descriptor.hpp>
-
-namespace ark {
-
-using std::map;
-
-class DummyDescriptor : public Descriptor
-{
-public:
-
-	virtual ArchiveWriter* create_writer();
-	
-	virtual ArchiveReader* create_reader();
-
-	virtual ModuleInfo get_info();
-
-};
-
-class DummyArchive : public ArchiveReader, public ArchiveWriter
+class DummyArchive : public ark::ArchiveReader, public ark::ArchiveWriter
 {
 public:
 
@@ -34,22 +16,21 @@ public:
 public:
 
 	// ArchiveReader interface
-	virtual void read (const string& file_path, const TypeFactory& type_factory);
+	virtual void read (const std::string& file_path);
 
-	virtual const Property get_property (const string& name);
+	virtual const ark::Property get_property (const std::string& name);
 
 public:
 
 	// ArchiveWriter interface
-	virtual void add_property (const Property& prop);
+	virtual void set_property (const ark::Property& prop);
 
-	virtual void write (const string& file_path, const TypeNameRegistry& registry);
+	virtual void write (const std::string& file_path);
 
 private:
 	
-	Properties m_properties;
+	ark::Properties m_properties;
 
 };
 
-} // namespace ark
 #endif

@@ -1,32 +1,12 @@
 
-#include <ark/export.h>
-
-#include "archive.hpp"
+#include <ark/type_system.hpp>
 
 #include <iostream>
 
+#include "archive.hpp"
+
 using namespace std;
-
-namespace ark {
-
-ArchiveWriter*
-DummyDescriptor::create_writer()
-{
-	return new DummyArchive;
-}
-
-ArchiveReader*
-DummyDescriptor::create_reader()
-{
-	return new DummyArchive;
-}
-
-ModuleInfo
-DummyDescriptor::get_info()
-{
-	return ModuleInfo("blah", "bloh", ArchiveFormat("", ""));
-}
-
+using namespace ark;
 
 DummyArchive::DummyArchive()
 {
@@ -39,7 +19,7 @@ DummyArchive::~DummyArchive()
 }
 
 void
-DummyArchive::read (const string& file_path, const TypeFactory& type_factory)
+DummyArchive::read (const string& file_path)
 {
 
 }
@@ -53,15 +33,16 @@ DummyArchive::get_property (const string& name)
 
 
 void
-DummyArchive::add_property (const Property& prop)
+DummyArchive::set_property (const Property& prop)
 {
 	std::cerr << "DummyArchive::add_property: " << prop.name() << std::endl;
 
 	m_properties.insert (prop); 
 }
 
+#if 0
 void
-print_properties (const Object* obj, const TypeNameRegistry& reg)
+print_properties (const Object* obj)
 {
 
 	Properties props;
@@ -73,7 +54,7 @@ print_properties (const Object* obj, const TypeNameRegistry& reg)
 	for (Properties::const_iterator i = props.begin(); i != props.end();)
 	{
 		std::cerr << "Name: " << i->name() << " ";
-		std::cerr << "Type: " << reg.type_name(i->value().type());
+		std::cerr << "Type: " << get_type_name(i->value().type());
 
 		++i;
 
@@ -88,8 +69,10 @@ print_properties (const Object* obj, const TypeNameRegistry& reg)
 
 }
 
+#endif
+
 void
-DummyArchive::write (const string& file_path, const TypeNameRegistry& reg)
+DummyArchive::write (const string& file_path)
 {
 	std::cerr << "DummyArchive::write "  << file_path << std::endl;
 
@@ -109,11 +92,3 @@ DummyArchive::write (const string& file_path, const TypeNameRegistry& reg)
 
 
 }
-
-ARK_CAPI void * ark_descriptor ()
-{
-	return new DummyDescriptor;
-}
-
-
-} // namespace ark
