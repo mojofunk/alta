@@ -6,6 +6,7 @@ Import ('env')
 
 rtg_test_env = env.Copy()
 
+rtg_test_env.Append(CXXFLAGS = '-DBOOST_TEST_DYN_LINK')
 rtg_test_env.Append(LIBS = [ 'boost_unit_test_framework', 'rtg' ])
 
 graph_test = rtg_test_env.Program ( 'test_graph', 'test_graph.cpp' )

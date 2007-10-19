@@ -1,3 +1,4 @@
+# -*- python -*-
 # vim: tabstop=4 expandtab shiftwidth=4
 
 def CheckVersion(context, version):
@@ -18,10 +19,10 @@ def CheckDependencies(env, deps):
 
     for pkg, version in deps.iteritems():
         if not conf.CheckPackage( pkg, version ):
-            context.Message( '%s >= %s not found.' %(pkg, version) )
-            Exit(1)
+            return False
 
     env = conf.Finish()
+    return True
 
 def ParseDependencies(env, deps):
     for pkg,version in deps.iteritems():

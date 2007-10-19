@@ -78,7 +78,10 @@ deps = \
     'sndfile'              : '1.0'
 }
 
-pkgconfig.CheckDependencies ( env, deps )
+if not pkgconfig.CheckDependencies ( env, deps ):
+        Exit(1)
+
+          
 
 # err actually check for these.
 #env.Append(LIBS = ['boost_filesystem', 'boost_serialization', 'boost_signals'])

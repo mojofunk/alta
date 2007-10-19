@@ -6,6 +6,7 @@ Import ('env')
 
 gleam_test_env = env.Copy()
 
+gleam_test_env.Append(CXXFLAGS = '-DBOOST_TEST_DYN_LINK')
 gleam_test_env.Append(LIBS = [ 'boost_unit_test_framework', 'gleam' ])
 
 filesystem_paths_test = gleam_test_env.Program ( 'test_filesystem_paths', 'test_filesystem_paths.cpp' )

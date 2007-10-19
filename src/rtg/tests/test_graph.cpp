@@ -1,3 +1,4 @@
+#define BOOST_TEST_MODULE graph
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
@@ -27,11 +28,10 @@ graph_contains_node (Node*)
 {
 
 
-
+	return true;
 }
 
-void
-test_graph_api()
+BOOST_AUTO_TEST_CASE( test_graph_api )
 {
 	Graph g;
 	
@@ -48,14 +48,4 @@ test_graph_api()
 
 	g.connect(p1,p2);
 
-}
-
-test_suite*
-init_unit_test_suite( int argc, char* argv[] )
-{
-	test_suite* test = BOOST_TEST_SUITE( "rtg::Graph" );
-
-	test->add( BOOST_TEST_CASE( &test_graph_api ) );
-
-	return test;
 }

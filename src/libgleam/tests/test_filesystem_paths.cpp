@@ -1,3 +1,5 @@
+#define BOOST_TEST_MODULE filesystem_paths
+
 #include <algorithm>
 
 #include <boost/test/unit_test.hpp>
@@ -18,35 +20,20 @@ log_paths(const vector<string>& paths)
 	    }
 }
 
-void
-test_data_search_path()
+BOOST_AUTO_TEST_CASE( test_data_search_path )
 {
 	vector<string> data_paths = gleam::get_system_data_search_path();
 
 	BOOST_CHECK ( !data_paths.empty() );
 
 	log_paths ( data_paths );
-
 }
 
-void
-test_config_search_path()
+BOOST_AUTO_TEST_CASE( test_config_search_path )
 {
 	vector<string> config_paths = gleam::get_system_config_search_path();
 
 	BOOST_CHECK ( !config_paths.empty() );
 
 	log_paths ( config_paths );
-
-}
-
-test_suite*
-init_unit_test_suite( int argc, char* argv[] )
-{
-	test_suite* test = BOOST_TEST_SUITE( "Filesystem Paths" );
-
-	test->add( BOOST_TEST_CASE( &test_data_search_path ) );
-	test->add( BOOST_TEST_CASE( &test_config_search_path ) );
-
-	return test;
 }
