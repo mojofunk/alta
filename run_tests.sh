@@ -6,8 +6,12 @@
 
 RTG_TEST_DIR=$BUILD_DIR/rtg/tests
 
+echo "Running test cases for rtg"
+
 $RTG_TEST_DIR/test_graph "$@"
 
 GLEAM_TEST_DIR=$BUILD_DIR/libgleam/tests
+
+echo "Running test cases for gleam"
 
 $GLEAM_TEST_DIR/test_filesystem_paths "$@"
