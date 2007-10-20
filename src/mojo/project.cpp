@@ -16,19 +16,6 @@ Project::~Project()
 }
 
 void
-Project::get_properties (ark::Properties& props) const
-{
-	props.insert (ark::Property ("name", m_name));
-
-}
-
-void
-Project::set_properties (const ark::Properties& props)
-{
-
-}
-
-void
 Project::save ()
 {
 

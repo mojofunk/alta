@@ -8,36 +8,25 @@
 using namespace std;
 using namespace ark;
 
-DummyArchive::DummyArchive()
-{
-	std::cerr << "DummyArchive()" << std::endl;
-}
-
-DummyArchive::~DummyArchive()
-{
-	std::cerr << "~DummyArchive()" << std::endl;
-}
-
 void
 DummyArchive::read (const string& file_path)
 {
 
 }
 
-const Property
-DummyArchive::get_property (const string& name)
+void
+DummyArchive::get_property (const string& name, boost::any& value)
 {
-	// XXX
-	//return m_properties.find(name);
+	Properties::const_iterator i = m_properties.find(name);
+
+	if(i != m_properties.end()) value = i->second;
 }
 
 
 void
-DummyArchive::set_property (const Property& prop)
+DummyArchive::set_property (const string& name, const boost::any& value)
 {
-	std::cerr << "DummyArchive::add_property: " << prop.name() << std::endl;
-
-	m_properties.insert (prop); 
+	m_properties.insert (make_pair (name, value)); 
 }
 
 #if 0

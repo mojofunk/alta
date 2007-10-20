@@ -35,13 +35,6 @@ public:
 
 public:
 
-	// ark::Object interface
-	virtual void get_properties (ark::Properties& props) const;
-
-	virtual void set_properties (const ark::Properties& props);
-
-public:
-
 	// methods
 	/**
 	 * This will save the file using the current

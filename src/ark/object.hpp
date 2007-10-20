@@ -2,7 +2,8 @@
 #ifndef ARK_OBJECT_INCLUDED
 #define ARK_OBJECT_INCLUDED
 
-#include <ark/property.hpp>
+#include <string>
+#include <boost/any.hpp>
 
 namespace ark {
 
@@ -13,11 +14,9 @@ class Object
 {
 public:
 
-	virtual void get_properties (Properties& properties) const = 0;
+	virtual void get_property (const std::string& name, boost::any& value) const = 0;
 
-	virtual void set_properties (const Properties& properties) = 0;
-
-	// notify signal ??
+	virtual void set_property (const std::string& name, const boost::any& value) = 0;
 
 protected:
 

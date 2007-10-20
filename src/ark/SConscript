@@ -25,3 +25,6 @@ dummy_archive/archive.cpp
 libdummy_archive = dummy_archive_env.SharedLibrary ( 'dummy_archive', dummy_archive_source_files )
 
 Default (libdummy_archive)
+
+if env['BUILD_TESTS']:
+        SConscript  ( 'tests/SConscript' )

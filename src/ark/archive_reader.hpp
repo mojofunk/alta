@@ -4,7 +4,7 @@
 
 #include <string>
 
-#include <ark/property.hpp>
+#include <boost/any.hpp>
 
 namespace ark {
 
@@ -18,7 +18,7 @@ public:
 	// read from archive
 	virtual void read (const std::string& file_path) = 0;
 
-	virtual const Property get_property (const std::string& name) = 0;
+	virtual void get_property (const std::string& name, boost::any& value) = 0;
 
 	virtual ~ArchiveReader() { }
 

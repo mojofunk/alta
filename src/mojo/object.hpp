@@ -1,14 +1,12 @@
 #ifndef MOJO_OBJECT_INCLUDED
 #define MOJO_OBJECT_INCLUDED
 
-#include <ark/object.hpp>
-
 #include <boost/noncopyable.hpp>
 #include <boost/signal.hpp>
 
 namespace mojo {
 
-class Object : public ark::Object
+class Object
 {
 public:
 
@@ -44,12 +42,6 @@ public:
 	 */
 	void on_destroy (const destroy_signal_t::slot_type& handler)
 	{ m_signal_destroy.connect(handler);}
-
-public:
-
-	virtual void get_properties (ark::Properties& props) const = 0;
-
-	virtual void set_properties (const ark::Properties& props) = 0;
 
 protected:
 	

@@ -4,7 +4,7 @@
 
 #include <string>
 
-#include <ark/property.hpp>
+#include <boost/any.hpp>
 
 namespace ark {
 
@@ -18,9 +18,9 @@ public:
 	/**
 	 * All top level objects must have a unique name
 	 */
-	virtual void set_property (const Property& prop) = 0;
+	virtual void set_property (const std::string& name, const boost::any& value) = 0;
 
-	virtual void write (const string& file_path) = 0;
+	virtual void write (const std::string& file_path) = 0;
 
 	virtual ~ArchiveWriter() { }
 

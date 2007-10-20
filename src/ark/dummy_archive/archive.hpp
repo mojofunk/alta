@@ -5,31 +5,30 @@
 #include <ark/archive_reader.hpp>
 #include <ark/archive_writer.hpp>
 
+#include <map>
+
+using std::map;
+
 class DummyArchive : public ark::ArchiveReader, public ark::ArchiveWriter
 {
-public:
-
-	DummyArchive();
-
-	virtual ~DummyArchive();
-
 public:
 
 	// ArchiveReader interface
 	virtual void read (const std::string& file_path);
 
-	virtual const ark::Property get_property (const std::string& name);
+	virtual void get_property (const std::string& name, boost::any& value);
 
 public:
 
 	// ArchiveWriter interface
-	virtual void set_property (const ark::Property& prop);
+	virtual void set_property (const std::string& name, const boost::any& value);
 
 	virtual void write (const std::string& file_path);
 
 private:
-	
-	ark::Properties m_properties;
+
+	typedef map<std::string, boost::any> Properties;
+	Properties m_properties;
 
 };
 
