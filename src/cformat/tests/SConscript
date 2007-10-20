@@ -1,0 +1,15 @@
+# -*- python -*-
+# vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4
+
+import tools.pkgconfig as pkgconfig
+
+Import ('env')
+
+cformat_test_env = env.Copy()
+
+cformat_test_env.Append(CXXFLAGS = '-DBOOST_TEST_DYN_LINK')
+cformat_test_env.Append(LIBS = [ 'boost_unit_test_framework' ])
+
+cformat_test = cformat_test_env.Program ( 'test_cformat', 'test_cformat.cpp' )
+
+Default (cformat_test)

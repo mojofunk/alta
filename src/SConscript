@@ -1,19 +1,21 @@
 # -*- python -*-
 #
-# vim: tabstop=4 expandtab shiftwidth=4
+# vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4 
+
+import os
 
 Import ('env')
 
-SConscript ( 'rtg/SConscript' )
+dirs = [
+    'rtg',
+    'afl',
+    'cformat',
+    'ark',
+    'libgleam',
+    'booty',
+    'mojo',
+    'ui'
+    ]
 
-SConscript ( 'afl/SConscript' )
-
-SConscript ( 'ark/SConscript' )
-
-SConscript ( 'libgleam/SConscript' )
-
-SConscript ( 'booty/SConscript' )
-
-SConscript ( 'mojo/SConscript' )
-
-SConscript ( 'ui/SConscript' )
+for dir in dirs:
+        SConscript( os.path.join( dir, 'SConscript' ) )

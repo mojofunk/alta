@@ -1,0 +1,18 @@
+# -*- python -*-
+# vim: tabstop=4 expandtab shiftwidth=4
+
+import tools.pkgconfig as pkgconfig
+
+Import ('env')
+
+cformat_env = env.Copy()
+
+cformat_source_files = Split("""
+""")
+
+#libcformat = cformat_env.SharedLibrary ( 'cformat', cformat_source_files )
+
+#Default (libcformat)
+
+if env['BUILD_TESTS']:
+        SConscript  ( 'tests/SConscript' )
