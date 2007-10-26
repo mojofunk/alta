@@ -4,7 +4,7 @@
 
 . gmojo_env.sh
 
-for dir in "rtg" "ark" "libgleam";
+for dir in "rtg" "cformat" "ark" "libgleam";
 do
 	echo "Running test cases for $dir"
 

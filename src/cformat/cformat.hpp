@@ -5,7 +5,6 @@
 #include <cformat/locale_guard.hpp>
 #include <cformat/printf_format.hpp>
 #include <cformat/scanf_format.hpp>
-#include <cformat/string_to_value.hpp>
-#include <cformat/value_to_string.hpp>
+#include <cformat/convert.hpp>
 
 #endif // CFORMAT_CFORMAT_INCLUDED
