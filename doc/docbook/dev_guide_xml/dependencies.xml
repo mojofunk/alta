@@ -9,6 +9,14 @@
   <section id="gui-dependencies">
     <title>GUI</title>
     <para>
+      The dependencies of the GUI must be kept to a minimum. Application
+      logic must not force the GUI to have additional dependencies. The GUI
+      should depend on a library that contains the application logic and
+      hides all implementation details and extra dependencies from the GUI
+      application.
+    </para>
+
+    <para>
       Widget toolkit : Gtk+, libglade(or Gtkbuilder)
     </para>
 
