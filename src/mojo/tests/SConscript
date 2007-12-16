@@ -1,0 +1,15 @@
+# -*- python -*-
+# vim: tabstop=4 expandtab shiftwidth=4
+
+import tools.pkgconfig as pkgconfig
+
+Import ('env')
+
+s11n_env = env.Copy()
+
+s11n_env.Append(CXXFLAGS = '-DBOOST_TEST_DYN_LINK')
+s11n_env.Append(LIBS = [ 'boost_unit_test_framework', 'mojo', 'booty', 'gleam' ])
+
+s11n_test = s11n_env.Program ( 'test_s11n', 'test_s11n.cpp' )
+
+Default (s11n_test)

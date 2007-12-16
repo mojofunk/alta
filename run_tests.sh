@@ -9,6 +9,7 @@ test_dirs=(
 	"cformat"
 	"ark"
 	"libgleam"
+	"mojo"
 	)
 
 for dir in ${test_dirs[*]};
