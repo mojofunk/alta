@@ -18,6 +18,7 @@ public:
 	/**
 	 * All top level objects must have a unique name
 	 */
+	// return error to indicate unsupported type?
 	virtual void set_property (const std::string& name, const boost::any& value) = 0;
 
 	virtual void write (const std::string& file_path) = 0;

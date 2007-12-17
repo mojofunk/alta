@@ -8,8 +8,17 @@ Import ('env')
 ark_test_env = env.Copy()
 
 ark_test_env.Append(CXXFLAGS = '-DBOOST_TEST_DYN_LINK')
-ark_test_env.Append(LIBS = [ 'boost_unit_test_framework', 'ark', 'dummy_archive' ])
+ark_test_env.Append(LIBS = [ 'boost_unit_test_framework', 'ark' ])
 
-dummy_archive_test = ark_test_env.Program ( 'test_dummy_archive', 'test_dummy_archive.cpp' )
+ark_test = ark_test_env.Program ( 'test_ark', 'test_ark.cpp' )
+
+Default (ark_test)
+
+ark_dummy_test_env = env.Copy()
+
+ark_dummy_test_env.Append(CXXFLAGS = '-DBOOST_TEST_DYN_LINK')
+ark_dummy_test_env.Append(LIBS = [ 'boost_unit_test_framework', 'ark', 'dummy_archive' ])
+
+dummy_archive_test = ark_dummy_test_env.Program ( 'test_dummy_archive', 'test_dummy_archive.cpp' )
 
 Default (dummy_archive_test)

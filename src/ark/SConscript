@@ -16,8 +16,6 @@ Default (libark)
 
 dummy_archive_env = env.Copy()
 
-#dummy_archive_env.Append(LIBS = ['boost_serialization'] )
-
 dummy_archive_source_files = Split("""
 dummy_archive/archive.cpp
 """)
