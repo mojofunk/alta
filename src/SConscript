@@ -10,7 +10,6 @@ dirs = [
     'cformat',
     'ark',
     'libgleam',
-    'booty',
     'mojo',
     'ui'
     ]

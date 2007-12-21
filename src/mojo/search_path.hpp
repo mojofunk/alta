@@ -1,13 +1,13 @@
 
-#ifndef BOOTY_SEARCH_PATH_INCLUDED
-#define BOOTY_SEARCH_PATH_INCLUDED
+#ifndef MOJO_SEARCH_PATH_INCLUDED
+#define MOJO_SEARCH_PATH_INCLUDED
 
 #include <string>
 #include <vector>
 
-#include <booty/filesystem.hpp>
+#include <mojo/filesystem.hpp>
 
-namespace booty {
+namespace mojo {
 
 using std::string;
 using std::vector;
@@ -140,6 +140,6 @@ protected:
 
 };
 
-} // namespace booty
+} // namespace mojo
 
 #endif

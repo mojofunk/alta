@@ -1,5 +1,5 @@
-#ifndef BOOTY_PROJECT_FILESYSTEM_INCLUDED
-#define BOOTY_PROJECT_FILESYSTEM_INCLUDED
+#ifndef MOJO_FILESYSTEM_INCLUDED
+#define MOJO_FILESYSTEM_INCLUDED
 
 #include <boost/filesystem/path.hpp>
 //#include <boost/filesystem/operations.hpp>

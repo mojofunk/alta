@@ -13,7 +13,7 @@ mojo_deps = \
 
 mojo_env = env.Copy()
 
-mojo_env.Append(LIBS = ['boost_filesystem', 'boost_signals', 'booty', 'gleam' ] )
+mojo_env.Append(LIBS = ['boost_filesystem', 'boost_signals', 'gleam' ] )
 
 #pkgconfig.ParseDependencies ( mojo_env, mojo_deps )
 
@@ -23,8 +23,10 @@ audio_track.cpp
 audio_sequence.cpp
 directory_names.cpp
 filesystem_paths.cpp
+file_utils.cpp
 project.cpp
 project_directory.cpp
+search_path.cpp
 """)
 
 libmojo = mojo_env.SharedLibrary ( 'mojo', mojo_source_files )

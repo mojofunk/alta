@@ -7,10 +7,9 @@
 
 #include <boost/signal.hpp>
 
-#include <booty/filesystem.hpp>
-
 #include <mojo/object.hpp>
 #include <mojo/audio_track_ptr.hpp>
+#include <mojo/filesystem.hpp>
 
 namespace mojo {
 

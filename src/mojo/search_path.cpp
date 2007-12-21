@@ -1,7 +1,7 @@
 
 #include <boost/tokenizer.hpp>
 
-#include <booty/search_path.hpp>
+#include <mojo/search_path.hpp>
 
 namespace {
 
@@ -13,8 +13,7 @@ const char * const path_delimiter = ":";
 
 }
 
-namespace booty {
-
+namespace mojo {
 
 SearchPath::SearchPath ()
 {
@@ -138,4 +137,4 @@ SearchPath::operator/ (const string& subdir)
 	return add_subdirectory_to_paths (subdir);
 }
 
-} // namespace booty
+} // namespace mojo

@@ -1,14 +1,14 @@
 
-#ifndef BOOTY_FILE_UTILS_INCLUDED
-#define BOOTY_FILE_UTILS_INCLUDED
+#ifndef MOJO_FILE_UTILS_INCLUDED
+#define MOJO_FILE_UTILS_INCLUDED
 
 #include <vector>
 #include <string>
 //#include <cstddef> // for std::size_t
 
-#include <booty/filesystem.hpp>
+#include <mojo/filesystem.hpp>
 
-namespace booty {
+namespace mojo {
 
 using std::vector;
 using std::string;
@@ -34,6 +34,6 @@ find_matching_files (const fs::path& directory_path,
  */
 const fs::path get_non_existent_file_path (const fs::path& file_path);
 
-} // namespace booty
+} // namespace mojo
 
-#endif // BOOTY_FILE_UTILS_INCLUDED
+#endif // MOJO_FILE_UTILS_INCLUDED

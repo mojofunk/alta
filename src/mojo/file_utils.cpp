@@ -1,8 +1,8 @@
 #include <sstream>
 
-#include <booty/file_utils.hpp>
+#include <mojo/file_utils.hpp>
 
-namespace booty {
+namespace mojo {
 
 std::size_t
 find_matching_files (const vector<fs::path>& paths,
@@ -82,4 +82,5 @@ get_non_existent_file_path (const fs::path& desired_file_path)
 	
 	return final_path;
 }
-} // namespace booty
+
+} // namespace mojo

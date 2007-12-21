@@ -18,4 +18,4 @@ mojo_search_path()
 	return SearchPath( gleam::getenv ("MOJO_PATH") );
 }
 
-}
+} // namespace mojo
