@@ -1,15 +1,15 @@
 
-#ifndef ARK_DUMMY_ARCHIVE_INCLUDED
-#define ARK_DUMMY_ARCHIVE_INCLUDED
+#ifndef MOJO_DUMMY_ARCHIVE_INCLUDED
+#define MOJO_DUMMY_ARCHIVE_INCLUDED
 
-#include <ark/archive_reader.hpp>
-#include <ark/archive_writer.hpp>
+#include <mojo/archive_reader.hpp>
+#include <mojo/archive_writer.hpp>
 
 #include <map>
 
 using std::map;
 
-class DummyArchive : public ark::ArchiveReader, public ark::ArchiveWriter
+class DummyArchive : public mojo::ArchiveReader, public mojo::ArchiveWriter
 {
 public:
 

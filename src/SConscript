@@ -7,7 +7,6 @@ import os
 dirs = [
     'rtg',
     'cformat',
-    'ark',
     'libgleam',
     'mojo',
     'ui'

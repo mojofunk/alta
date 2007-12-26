@@ -14,6 +14,10 @@ public:
 
 public:
 
+	virtual void get_property (const std::string& name, boost::any& value) const = 0;
+
+	virtual void set_property (const std::string& name, const boost::any& value) = 0;
+
 	/**
 	 * Destroy the object instance, this will cause 
 	 * the slots registered with on_signal_destroy to be
@@ -46,6 +50,8 @@ public:
 protected:
 	
 	destroy_signal_t m_signal_destroy;
+
+	virtual ~Object() { }
 
 };
 

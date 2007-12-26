@@ -1,12 +1,12 @@
 
-#ifndef ARK_ARCHIVE_WRITER_INCLUDED
-#define ARK_ARCHIVE_WRITER_INCLUDED
+#ifndef MOJO_ARCHIVE_WRITER_INCLUDED
+#define MOJO_ARCHIVE_WRITER_INCLUDED
 
 #include <string>
 
 #include <boost/any.hpp>
 
-namespace ark {
+namespace mojo {
 
 /**
  *
@@ -27,6 +27,6 @@ public:
 
 };
 
-} // namespace ark
+} // namespace mojo
 
 #endif

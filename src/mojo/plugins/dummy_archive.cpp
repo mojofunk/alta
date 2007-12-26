@@ -1,12 +1,12 @@
 
-#include <ark/type_system.hpp>
+#include <mojo/type_system.hpp>
 
 #include <iostream>
 
-#include "archive.hpp"
+#include "dummy_archive.hpp"
 
 using namespace std;
-using namespace ark;
+using namespace mojo;
 
 void
 DummyArchive::read (const string& file_path)
@@ -65,7 +65,7 @@ DummyArchive::write (const string& file_path)
 {
 	std::cerr << "DummyArchive::write "  << file_path << std::endl;
 
-	// recursively find all the Properties that are of type ark::Object
+	// recursively find all the Properties that are of type mojo::Object
 	// and put them into a map<Object*, uint64_t> where each object is
 	// assigned a unique id.
 
@@ -74,7 +74,7 @@ DummyArchive::write (const string& file_path)
 
 	// work out if all the types are supported by this archive.
 
-	// write all non ark::Object properties to the archive
+	// write all non mojo::Object properties to the archive
 
 
 

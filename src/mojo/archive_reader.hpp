@@ -1,12 +1,12 @@
 
-#ifndef ARK_ARCHIVE_READER_INCLUDED
-#define ARK_ARCHIVE_READER_INCLUDED
+#ifndef MOJO_ARCHIVE_READER_INCLUDED
+#define MOJO_ARCHIVE_READER_INCLUDED
 
 #include <string>
 
 #include <boost/any.hpp>
 
-namespace ark {
+namespace mojo {
 
 /**
  *
@@ -24,6 +24,6 @@ public:
 
 };
 
-} // namespace ark
+} // namespace mojo
 
 #endif

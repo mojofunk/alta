@@ -1,14 +1,14 @@
 
 
-#ifndef ARK_TYPE_SYSTEM_INCLUDED
-#define ARK_TYPE_SYSTEM_INCLUDED
+#ifndef MOJO_TYPE_SYSTEM_INCLUDED
+#define MOJO_TYPE_SYSTEM_INCLUDED
 
 #include <string>
 #include <typeinfo>
 
 #include <boost/any.hpp>
 
-namespace ark {
+namespace mojo {
 
 	void type_system_init ();
 

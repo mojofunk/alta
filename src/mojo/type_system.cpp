@@ -1,7 +1,7 @@
 
 #include <map>
 
-#include <ark/type_system.hpp>
+#include <mojo/type_system.hpp>
 
 using std::map;
 using std::string;
@@ -22,7 +22,7 @@ TypeNameMap* s_type_names = 0;
 
 }
 
-namespace ark {
+namespace mojo {
 
 void
 type_system_init()

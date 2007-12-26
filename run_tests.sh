@@ -7,7 +7,6 @@
 test_dirs=(
 	"rtg"
 	"cformat"
-	"ark"
 	"libgleam"
 	"mojo"
 	)

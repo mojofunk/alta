@@ -13,3 +13,21 @@ s11n_env.Append(LIBS = [ 'boost_unit_test_framework', 'mojo', 'gleam' ])
 s11n_test = s11n_env.Program ( 'test_s11n', 'test_s11n.cpp' )
 
 Default (s11n_test)
+
+type_system_test_env = env.Copy()
+
+type_system_test_env.Append(CXXFLAGS = '-DBOOST_TEST_DYN_LINK')
+type_system_test_env.Append(LIBS = [ 'boost_unit_test_framework', 'mojo', 'gleam' ])
+
+type_system_test = type_system_test_env.Program ( 'test_type_system', 'test_type_system.cpp' )
+
+Default (type_system_test)
+
+dummy_archive_test_env = env.Copy()
+
+dummy_archive_test_env.Append(CXXFLAGS = '-DBOOST_TEST_DYN_LINK')
+dummy_archive_test_env.Append(LIBS = [ 'boost_unit_test_framework', 'mojo', 'dummy_archive', 'gleam'])
+
+dummy_archive_test = dummy_archive_test_env.Program ( 'test_dummy_archive', 'test_dummy_archive.cpp' )
+
+Default (dummy_archive_test)
