@@ -1,7 +1,7 @@
 
-#include <rtg/node.hpp>
+#include <mojo/node.hpp>
 
-namespace rtg {
+namespace mojo {
 
 bool
 Node::is_source () const

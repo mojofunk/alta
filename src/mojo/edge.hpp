@@ -1,7 +1,7 @@
-#ifndef RTG_GRAPH_INCLUDED
-#define RTG_GRAPH_INCLUDED
+#ifndef MOJO_GRAPH_INCLUDED
+#define MOJO_GRAPH_INCLUDED
 
-namespace rtg {
+namespace mojo {
 
 class Node;
 
@@ -20,6 +20,6 @@ private:
 
 }
 
-} // namespace rtg
+} // namespace mojo
 
 #endif

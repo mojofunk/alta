@@ -5,29 +5,26 @@ import tools.pkgconfig as pkgconfig
 
 Import ('env')
 
-s11n_env = env.Copy()
+mojo_test_env = env.Copy()
+mojo_test_env.Append(CXXFLAGS = '-DBOOST_TEST_DYN_LINK')
+mojo_test_env.Append(LIBS = [ 'boost_unit_test_framework', 'mojo', 'gleam' ])
 
-s11n_env.Append(CXXFLAGS = '-DBOOST_TEST_DYN_LINK')
-s11n_env.Append(LIBS = [ 'boost_unit_test_framework', 'mojo', 'gleam' ])
-
-s11n_test = s11n_env.Program ( 'test_s11n', 'test_s11n.cpp' )
+s11n_test = mojo_test_env.Program ( 'test_s11n', 'test_s11n.cpp' )
 
 Default (s11n_test)
 
-type_system_test_env = env.Copy()
-
-type_system_test_env.Append(CXXFLAGS = '-DBOOST_TEST_DYN_LINK')
-type_system_test_env.Append(LIBS = [ 'boost_unit_test_framework', 'mojo', 'gleam' ])
-
-type_system_test = type_system_test_env.Program ( 'test_type_system', 'test_type_system.cpp' )
+type_system_test = mojo_test_env.Program ( 'test_type_system', 'test_type_system.cpp' )
 
 Default (type_system_test)
 
-dummy_archive_test_env = env.Copy()
+dummy_archive_test_env = mojo_test_env.Copy()
 
-dummy_archive_test_env.Append(CXXFLAGS = '-DBOOST_TEST_DYN_LINK')
-dummy_archive_test_env.Append(LIBS = [ 'boost_unit_test_framework', 'mojo', 'dummy_archive', 'gleam'])
+dummy_archive_test_env.Append(LIBS = [ 'dummy_archive' ])
 
 dummy_archive_test = dummy_archive_test_env.Program ( 'test_dummy_archive', 'test_dummy_archive.cpp' )
 
 Default (dummy_archive_test)
+
+graph_test = mojo_test_env.Program ( 'test_graph', 'test_graph.cpp' )
+
+Default (graph_test)

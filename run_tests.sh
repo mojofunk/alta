@@ -5,7 +5,6 @@
 . gmojo_env.sh
 
 test_dirs=(
-	"rtg"
 	"cformat"
 	"libgleam"
 	"mojo"

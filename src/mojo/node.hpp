@@ -1,9 +1,9 @@
-#ifndef RTG_NODE_INCLUDED
-#define RTG_NODE_INCLUDED
+#ifndef MOJO_NODE_INCLUDED
+#define MOJO_NODE_INCLUDED
 
 #include <set>
 
-namespace rtg {
+namespace mojo {
 
 using std::set;
 
@@ -33,6 +33,6 @@ private:
 
 };
 
-} // namespace rtg
+} // namespace mojo
 
 #endif

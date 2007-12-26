@@ -1,7 +1,7 @@
 
-#include <rtg/graph.hpp>
+#include <mojo/graph.hpp>
 
-namespace rtg {
+namespace mojo {
 
 void
 Graph::insert(Node* node)
@@ -36,4 +36,4 @@ Graph::get_nodes () const
 	return m_nodes;
 }
 
-} // namespace rtg
+} // namespace mojo

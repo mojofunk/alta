@@ -3,12 +3,12 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
 
-#include <rtg/graph.hpp>
-#include <rtg/node.hpp>
+#include <mojo/graph.hpp>
+#include <mojo/node.hpp>
 
 using namespace boost::unit_test;
 using namespace std;
-using namespace rtg;
+using namespace mojo;
 
 struct Processor : public Node
 {

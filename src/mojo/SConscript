@@ -24,6 +24,7 @@ audio_sequence.cpp
 directory_names.cpp
 filesystem_paths.cpp
 file_utils.cpp
+graph.cpp
 project.cpp
 project_directory.cpp
 search_path.cpp
