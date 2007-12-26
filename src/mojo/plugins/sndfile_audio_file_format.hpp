@@ -1,10 +1,10 @@
 
-#ifndef AFL_SNDFILE_AUDIO_FILE_FORMAT_INCLUDED
-#define AFL_SNDFILE_AUDIO_FILE_FORMAT_INCLUDED
+#ifndef MOJO_SNDFILE_AUDIO_FILE_FORMAT_INCLUDED
+#define MOJO_SNDFILE_AUDIO_FILE_FORMAT_INCLUDED
 
-#include <afl/audio_file_format.hpp>
+#include <mojo/audio_file_format.hpp>
 
-namespace afl {
+namespace mojo {
 
 class SndfileAudioFileFormat : public AudioFileFormat
 {
@@ -22,6 +22,6 @@ private:
 
 };
 
-} // namespace afl
+} // namespace mojo
 
 #endif

@@ -6,7 +6,6 @@ import os
 
 dirs = [
     'rtg',
-    'afl',
     'cformat',
     'ark',
     'libgleam',

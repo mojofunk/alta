@@ -1,7 +1,7 @@
 
-#include <afl/sndfile_audio_file_format.hpp>
+#include "sndfile_audio_file_format.hpp"
 
-namespace afl {
+namespace mojo {
 
 SndfileAudioFileFormat::SndfileAudioFileFormat(int sndfile_format)
 	:
@@ -18,4 +18,4 @@ string extension()
 	return "";
 }
 
-} // namespace afl
+} // namespace mojo

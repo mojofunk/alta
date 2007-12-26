@@ -1,10 +1,10 @@
 
-#ifndef AFL_AUDIO_FILE_FORMAT_INCLUDED
-#define AFL_AUDIO_FILE_FORMAT_INCLUDED
+#ifndef MOJO_AUDIO_FILE_FORMAT_INCLUDED
+#define MOJO_AUDIO_FILE_FORMAT_INCLUDED
 
 #include <string>
 
-namespace afl {
+namespace mojo {
 
 using std::string;
 
@@ -20,6 +20,6 @@ public:
 
 };
 
-} // namespace afl
+} // namespace mojo
 
 #endif

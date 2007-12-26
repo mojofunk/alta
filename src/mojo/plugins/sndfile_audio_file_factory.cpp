@@ -1,10 +1,10 @@
 
-#include <afl/sndfile_audio_file_factory.hpp>
-#include <afl/sndfile_audio_file.hpp>
+#include "sndfile_audio_file_factory.hpp"
+#include "sndfile_audio_file.hpp"
 
-#include <afl/export.h>
+#include <mojo/export.h>
 
-namespace afl {
+namespace mojo {
 
 SndfileAudioFileFactory::~SndfileAudioFileFactory()
 {
@@ -24,9 +24,9 @@ SndfileAudioFileFactory::create()
 	return new SndfileAudioFile;
 }
 
-AFL_CAPI void * factory(void)
+MOJO_CAPI void * factory(void)
 {
 	return new SndfileAudioFileFactory;
 }
 
-} // namespace afl
+} // namespace mojo

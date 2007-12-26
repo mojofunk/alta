@@ -1,12 +1,12 @@
 
-#ifndef AFL_AUDIO_FILE_FACTORY_INCLUDED
-#define AFL_AUDIO_FILE_FACTORY_INCLUDED
+#ifndef MOJO_AUDIO_FILE_FACTORY_INCLUDED
+#define MOJO_AUDIO_FILE_FACTORY_INCLUDED
 
 #include <string>
 
-#include <afl/audio_file.hpp>
+#include <mojo/audio_file.hpp>
 
-namespace afl {
+namespace mojo {
 
 using std::string;
 
@@ -24,6 +24,6 @@ public:
 
 typedef void * (*factory_func_t) (void);
 
-} // namespace afl
+} // namespace mojo
 
 #endif

@@ -1,8 +1,8 @@
 
-#include <afl/sndfile_audio_file.hpp>
-#include <afl/sndfile_audio_file_format.hpp>
+#include "sndfile_audio_file.hpp"
+#include "sndfile_audio_file_format.hpp"
 
-namespace afl {
+namespace mojo {
 
 SndfileAudioFile::SndfileAudioFile()
 {
@@ -44,4 +44,4 @@ SndfileAudioFile::channels() const
 	return m_info.channels;
 }
 
-} // namespace afl
+} // namespace mojo

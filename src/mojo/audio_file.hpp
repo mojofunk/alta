@@ -1,11 +1,11 @@
 
-#ifndef AFL_AUDIO_FILE_INCLUDED
-#define AFL_AUDIO_FILE_INCLUDED
+#ifndef MOJO_AUDIO_FILE_INCLUDED
+#define MOJO_AUDIO_FILE_INCLUDED
 
-#include <afl/types.hpp>
-#include <afl/audio_file_format.hpp>
+#include <mojo/types.hpp>
+#include <mojo/audio_file_format.hpp>
 
-namespace afl {
+namespace mojo {
 
 class AudioFile
 {
@@ -24,6 +24,6 @@ public:
 	virtual channel_count_t channels() const = 0;
 };
 
-} // namespace afl
+} // namespace mojo
 
 #endif
