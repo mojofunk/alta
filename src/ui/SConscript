@@ -61,6 +61,6 @@ gmojo_source_files
 
 gmojo = gmojo_env.Program( env['VERSIONED_NAME'], all_source_files)
 
-Default(gmojo)
+#Default(gmojo)
 
 env.Install(env['BINDIR'], gmojo)
