@@ -36,12 +36,7 @@ Project::save_as (const fs::path& directory, const string& name)
 void
 Project::close ()
 {
-	bool close = m_signal_close ();
 
-	if(close)
-	{
-		destroy ();
-	}
 }
 
 #if 0

@@ -1,8 +1,6 @@
 #ifndef MOJO_AUDIO_TRACK_INCLUDED
 #define MOJO_AUDIO_TRACK_INCLUDED
 
-//#include <boost/signal.hpp>
-
 #include <mojo/object.hpp>
 
 namespace mojo {
@@ -24,11 +22,6 @@ class AudioTrack : public Object
 {
 public:
 
-	// typedefs
-	typedef boost::signal<void ()>       name_change_signal_t;
-
-public:
-
 	// constructors
 	AudioTrack ();
 
@@ -39,9 +32,6 @@ public:
 public:
 
 	void set_name (const std::string& name);
-
-	name_change_signal_t& signal_name_change ();
-	//{ return m_signal_name_change; }
 
 private:
 	
@@ -58,11 +48,6 @@ private:
 	 * references a BufferedAudioStream?
 	 */
 	// audio_stream_ptr
-
-private:
-
-	// signal members
-	name_change_signal_t         m_signal_name_change;
 
 };
 
