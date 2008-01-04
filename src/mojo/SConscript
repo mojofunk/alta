@@ -7,6 +7,7 @@ Import ('env')
 mojo_deps = \
 {
 #    'glib-2.0'      : '2.10.1',
+    'gmodule-2.0'   : '2.10.1'
 #    'gthread-2.0'   : '2.10.1',
 #    'glibmm-2.4'    : '2.8.1'
 }
@@ -15,7 +16,7 @@ mojo_env = env.Copy()
 
 mojo_env.Append(LIBS = ['boost_filesystem', 'boost_signals', 'gleam' ] )
 
-#pkgconfig.ParseDependencies ( mojo_env, mojo_deps )
+pkgconfig.ParseDependencies ( mojo_env, mojo_deps )
 
 mojo_source_files = Split("""
 application.cpp
@@ -25,6 +26,7 @@ directory_names.cpp
 filesystem_paths.cpp
 file_utils.cpp
 graph.cpp
+plugin_utils.cpp
 project.cpp
 project_directory.cpp
 search_path.cpp

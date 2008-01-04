@@ -76,8 +76,4 @@ DummyArchive::write (const string& file_path)
 
 	// write all non mojo::Object properties to the archive
 
-
-
-
-
 }

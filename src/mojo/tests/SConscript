@@ -28,3 +28,7 @@ Default (dummy_archive_test)
 graph_test = mojo_test_env.Program ( 'test_graph', 'test_graph.cpp' )
 
 Default (graph_test)
+
+plugin_utils_test = mojo_test_env.Program ( 'test_plugin_utils', 'test_plugin_utils.cpp' )
+
+Default (plugin_utils_test)
