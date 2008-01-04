@@ -202,6 +202,7 @@ env.Append ( LIBPATH = [ os.path.join ( toplevel_build_dir, 'booty' ) ] )
 env.Append ( LIBPATH = [ os.path.join ( toplevel_build_dir, 'ark' ) ] )
 env.Append ( LIBPATH = [ os.path.join ( toplevel_build_dir, 'mojo' ) ] )
 env.Append ( LIBPATH = [ os.path.join ( toplevel_build_dir, 'mojo', 'plugins' ) ] )
+env.Append ( LIBPATH = [ os.path.join ( toplevel_build_dir, 'mojo', 'plugins', 'dummy_archive' ) ] )
 env.Append ( LIBPATH = [ os.path.join ( toplevel_build_dir, 'libgleam' ) ] )
 
 ###########################

@@ -20,15 +20,4 @@ sndfile_audio_file = sndfile_env.SharedLibrary ( 'sndfile_audio_file', sndfile_s
 
 Default (sndfile_audio_file)
 
-dummy_archive_env = env.Copy()
-
-#mojo_env.Append(LIBS = [ 'mojo' ] )
-
-dummy_archive_source_files = Split("""
-dummy_archive.cpp
-dummy_archive_plugin.cpp
-""")
-
-dummy_archive = dummy_archive_env.SharedLibrary ( 'dummy_archive', dummy_archive_source_files )
-
-Default (dummy_archive)
+SConscript  ( 'dummy_archive/SConscript' )

@@ -17,14 +17,6 @@ type_system_test = mojo_test_env.Program ( 'test_type_system', 'test_type_system
 
 Default (type_system_test)
 
-dummy_archive_test_env = mojo_test_env.Copy()
-
-dummy_archive_test_env.Append(LIBS = [ 'dummy_archive' ])
-
-dummy_archive_test = dummy_archive_test_env.Program ( 'test_dummy_archive', 'test_dummy_archive.cpp' )
-
-Default (dummy_archive_test)
-
 graph_test = mojo_test_env.Program ( 'test_graph', 'test_graph.cpp' )
 
 Default (graph_test)
