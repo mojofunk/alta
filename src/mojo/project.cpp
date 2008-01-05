@@ -45,12 +45,6 @@ Project::save_as (const fs::path& directory, const string& name)
 
 }
 
-void
-Project::close ()
-{
-
-}
-
 #if 0
 void
 Project::create_audio_track ()

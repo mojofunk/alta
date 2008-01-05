@@ -42,26 +42,13 @@ public:
 	void save ();
 
 	/**
-	 * Save the project using the project format
-	 * to a specific directory.
-	 *
-	 * The project format will then be used by
-	 * further calls to save ()
+	 * Save the project to the specified directory
 	 */
 	void save_as (const fs::path& directory,
 			const string& file_name);
 
 	const fs::path& file () const { return m_file_path; }
-
-	/**
-	 * @return true if project was closed
-	 * close will cause the signal_close
-	 * to be emitted. If the return value
-	 * of the signal is false then the 
-	 * destroy method will be executed
-	 */
-	void close ();
-
+	
 	//void create_audio_track ();
 
 private:
