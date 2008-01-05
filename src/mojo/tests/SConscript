@@ -24,3 +24,7 @@ Default (graph_test)
 plugin_utils_test = mojo_test_env.Program ( 'test_plugin_utils', 'test_plugin_utils.cpp' )
 
 Default (plugin_utils_test)
+
+project_test = mojo_test_env.Program ( 'test_project', 'test_project.cpp' )
+
+Default (project_test)

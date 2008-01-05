@@ -14,6 +14,18 @@ Project::~Project()
 {
 
 }
+	
+void
+Project::get_property (const std::string& name, boost::any& value) const
+{
+
+}
+
+void
+Project::set_property (const std::string& name, const boost::any& value)
+{
+
+}
 
 void
 Project::save ()
