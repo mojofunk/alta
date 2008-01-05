@@ -13,10 +13,9 @@ dummy_archive = dummy_archive_env.SharedLibrary ( 'dummy_archive', dummy_archive
 
 Default (dummy_archive)
 
-test_env = env.Copy()
-test_env.Append(CXXFLAGS = '-DBOOST_TEST_DYN_LINK')
-test_env.Append(LIBS = [ 'boost_unit_test_framework', 'mojo', 'gleam', 'dummy_archive' ])
-
-test = test_env.Program ( 'test_dummy_archive', 'test_dummy_archive.cpp' )
-
-Default (test)
+if env['BUILD_TESTS']:
+        test_env = env.Copy()
+        test_env.Append(CXXFLAGS = '-DBOOST_TEST_DYN_LINK')
+        test_env.Append(LIBS = [ 'boost_unit_test_framework', 'mojo', 'gleam', 'dummy_archive' ])
+        test = test_env.Program ( 'test_dummy_archive', 'test_dummy_archive.cpp' )
+        Default (test)
