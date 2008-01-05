@@ -197,13 +197,9 @@ toplevel_build_dir = '#' + build_dir
 BuildDir(toplevel_build_dir, 'src', duplicate = 0 )
 
 # needed to link to the libraries built in the build directory
-env.Append ( LIBPATH = [ os.path.join ( toplevel_build_dir, 'rtg' ) ] )
-env.Append ( LIBPATH = [ os.path.join ( toplevel_build_dir, 'booty' ) ] )
-env.Append ( LIBPATH = [ os.path.join ( toplevel_build_dir, 'ark' ) ] )
-env.Append ( LIBPATH = [ os.path.join ( toplevel_build_dir, 'mojo' ) ] )
-env.Append ( LIBPATH = [ os.path.join ( toplevel_build_dir, 'mojo', 'plugins' ) ] )
-env.Append ( LIBPATH = [ os.path.join ( toplevel_build_dir, 'mojo', 'plugins', 'dummy_archive' ) ] )
 env.Append ( LIBPATH = [ os.path.join ( toplevel_build_dir, 'libgleam' ) ] )
+env.Append ( LIBPATH = [ os.path.join ( toplevel_build_dir, 'mojo' ) ] )
+env.Append ( LIBPATH = [ os.path.join ( toplevel_build_dir, 'plugins', 'dummy_archive' ) ] )
 
 ###########################
 #  Configuration summary  #

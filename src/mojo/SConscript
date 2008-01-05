@@ -37,7 +37,5 @@ libmojo = mojo_env.SharedLibrary ( 'mojo', mojo_source_files )
 
 Default (libmojo)
 
-SConscript  ( 'plugins/SConscript' )
-
 if env['BUILD_TESTS']:
         SConscript  ( 'tests/SConscript' )
