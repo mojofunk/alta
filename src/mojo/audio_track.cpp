@@ -10,6 +10,18 @@ AudioTrack::AudioTrack()
 
 }
 
+void
+AudioTrack::get_property (const std::string& name, boost::any& value) const
+{
+
+}
+
+void
+AudioTrack::set_property (const std::string& name, const boost::any& value)
+{
+
+}
+
 std::string
 AudioTrack::get_name() const
 {

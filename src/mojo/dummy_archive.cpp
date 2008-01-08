@@ -3,10 +3,11 @@
 
 #include <iostream>
 
-#include "dummy_archive.hpp"
+#include <mojo/dummy_archive.hpp>
+
+namespace mojo {
 
 using namespace std;
-using namespace mojo;
 
 void
 DummyArchive::read (const string& file_path)
@@ -77,3 +78,5 @@ DummyArchive::write (const string& file_path)
 	// write all non mojo::Object properties to the archive
 
 }
+
+} // namespace mojo

@@ -5,7 +5,6 @@ import tools.pkgconfig as pkgconfig
 import os
 
 dirs = [
-    'dummy_archive',
     'sndfile',
     ]
 

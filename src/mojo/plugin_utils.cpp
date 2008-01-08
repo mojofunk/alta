@@ -89,13 +89,13 @@ _close_plugin (mojo::Plugin* plug)
 namespace mojo {
 
 Plugin*
-open_plugin (const std::string& plugin_path)
+open_plugin (const fs::path& plugin_path)
 {
-	Plugin* plug = _find_open_plugin(plugin_path);
+	Plugin* plug = _find_open_plugin(plugin_path.string());
 
 	if (plug == 0)
 	{
-		plug = _open_plugin(plugin_path);
+		plug = _open_plugin(plugin_path.string());
 	}	
 
 	return plug;
@@ -105,6 +105,12 @@ bool
 close_plugin (Plugin* plug)
 {
 	return _close_plugin(plug);
+}
+
+bool
+is_plugin_file (const fs::path& filepath)
+{
+	return (fs::extension (filepath) == G_MODULE_SUFFIX);
 }
 
 } // namespace mojo

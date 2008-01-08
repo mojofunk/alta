@@ -14,15 +14,15 @@ using namespace mojo;
 BOOST_AUTO_TEST_CASE( plugin_test )
 {
 	// XXX needs to be portable, integrated with build etc
-	Plugin* plug = open_plugin("build/debug/plugins/dummy_archive/libdummy_archive.so");
+	Plugin* plug = open_plugin("build/debug/plugins/sndfile/libsndfile_audio_file.so");
 
 	BOOST_REQUIRE(plug);
 	
 	BOOST_CHECK_EQUAL(plug->get_author(), "Tim Mayberry");
-	BOOST_CHECK_EQUAL(plug->get_description(), "This is a Dummy Plugin for test purposes");
+	BOOST_CHECK_EQUAL(plug->get_description(), "libsndfile plugin");
 	BOOST_CHECK_EQUAL(plug->get_version(), "0.0.1");
 
-	Plugin* plug_same = open_plugin("build/debug/plugins/dummy_archive/libdummy_archive.so");
+	Plugin* plug_same = open_plugin("build/debug/plugins/sndfile/libsndfile_audio_file.so");
 
 	// same instance should be returned
 	BOOST_CHECK_EQUAL(plug, plug_same);

@@ -27,6 +27,14 @@ public:
 
 public:
 
+	virtual void get_property (const std::string& name,
+			boost::any& value) const;
+
+	virtual void set_property (const std::string& name,
+			const boost::any& value);
+
+public:
+
 	std::string get_name () const;
 
 public:

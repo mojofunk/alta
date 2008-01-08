@@ -4,6 +4,7 @@
 
 #include <string>
 #include <vector>
+#include <set>
 
 #include <mojo/object.hpp>
 #include <mojo/audio_track_ptr.hpp>
@@ -13,13 +14,20 @@ namespace mojo {
 
 using std::string;
 using std::vector;
+using std::set;
 
 class Project : public Object
 {
 public:
+	typedef set<AudioTrackSPtr> TrackList;
 
-	// constructors
-	Project ();
+public:
+
+	// new project constructor
+	Project();
+
+	// existing project constructor
+	Project(const fs::path& project_file);
 
 	~Project();
 
@@ -48,7 +56,9 @@ public:
 			const string& file_name);
 
 	const fs::path& file () const { return m_file_path; }
-	
+
+	bool add_audio_track (AudioTrackSPtr audio_track);
+
 	//void create_audio_track ();
 
 private:
@@ -59,7 +69,7 @@ private:
 	std::string                   m_name;
 
 	// this needs to hold any track types
-	//TrackList                     m_tracks;
+	TrackList                     m_tracks;
 
 };
 

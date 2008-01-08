@@ -9,8 +9,8 @@ namespace mojo {
 
 	class Project;
 
-	typedef boost::shared_ptr<Project>    project_ptr;
-	typedef boost::weak_ptr<Project>      project_wptr;
+	typedef boost::shared_ptr<Project>    ProjectSPtr;
+	typedef boost::weak_ptr<Project>      ProjectWPtr;
 
 } // namespace mojo
 
