@@ -43,10 +43,8 @@ Project::save ()
 void
 Project::save_as (const fs::path& directory, const string& name)
 {
-	const string extension = "mojo";
-	m_file_path = directory / name;
-
-	fs::change_extension(m_file_path, extension);
+	const string extension = ".mojo";
+	m_file_path = directory / (name + extension);
 
 	// move project files to directory etc
 
