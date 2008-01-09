@@ -23,20 +23,20 @@ BOOST_AUTO_TEST_CASE( mojo_test_type_system )
 
 	ApplicationSPtr app = Application::create (argc, argv);
 
-	BOOST_CHECK(mojo::get_type_name (typeid(int)) == int_type_name);
-	BOOST_CHECK(mojo::get_type_name (typeid(float)) == float_type_name);
-	BOOST_CHECK(mojo::get_type_name (typeid(std::string)) == string_type_name);
+	BOOST_CHECK(TypeSystem::get_type_name (typeid(int)) == int_type_name);
+	BOOST_CHECK(TypeSystem::get_type_name (typeid(float)) == float_type_name);
+	BOOST_CHECK(TypeSystem::get_type_name (typeid(std::string)) == string_type_name);
 
-	BOOST_CHECK_NO_THROW(int i = boost::any_cast<int>(create_type(int_type_name)));
-	BOOST_CHECK_NO_THROW(float f = boost::any_cast<float>(create_type(float_type_name)));
-	BOOST_CHECK_NO_THROW(string s = boost::any_cast<string>(create_type(string_type_name)));
+	BOOST_CHECK_NO_THROW(int i = boost::any_cast<int>(TypeSystem::create_type(int_type_name)));
+	BOOST_CHECK_NO_THROW(float f = boost::any_cast<float>(TypeSystem::create_type(float_type_name)));
+	BOOST_CHECK_NO_THROW(string s = boost::any_cast<string>(TypeSystem::create_type(string_type_name)));
 
 	AudioTrackSPtr at;
 
-	BOOST_CHECK_NO_THROW(at = boost::any_cast<AudioTrackSPtr>(create_type(audio_track_type_name)));
+	BOOST_CHECK_NO_THROW(at = boost::any_cast<AudioTrackSPtr>(TypeSystem::create_type(audio_track_type_name)));
 	BOOST_REQUIRE(at);
 	BOOST_TEST_MESSAGE(at->get_name());
 
-	BOOST_CHECK(mojo::get_type_name (typeid(AudioTrackSPtr)) == audio_track_type_name);
+	BOOST_CHECK(TypeSystem::get_type_name (typeid(AudioTrackSPtr)) == audio_track_type_name);
 
 }

@@ -4,7 +4,7 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include <mojo/project_ptr.hpp>
+#include <mojo/type_system_ptr.hpp>
 
 namespace mojo {
 
@@ -33,6 +33,8 @@ private:
 	// member data
 	static Application* sm_app;
 
+	TypeSystemSPtr m_type_system;
+
 private:
 	
 	// constructors
@@ -47,7 +49,8 @@ private:
 
 	struct deleter
 	{
-		void operator()(Application* app) { delete app; sm_app = 0; }
+		void operator()(Application* app)
+		{ delete app; sm_app = 0; }
 	};
 
 };
