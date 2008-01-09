@@ -1,19 +1,19 @@
 
-#ifndef MOJO_TYPE_TEMPLATE_INCLUDED
-#define MOJO_TYPE_TEMPLATE_INCLUDED
+#ifndef MOJO_TEMPLATE_TYPE_FACTORY_INCLUDED
+#define MOJO_TEMPLATE_TYPE_FACTORY_INCLUDED
 
 #include <boost/shared_ptr.hpp>
 
-#include <mojo/type.hpp>
+#include <mojo/type_factory.hpp>
 
 namespace mojo {
 
 template <class T>
-class TypeTemplate : public Type
+class TemplateTypeFactory : public TypeFactory
 {
 public:
 
-	TypeTemplate (const std::string& type_name)
+	TemplateTypeFactory (const std::string& type_name)
 		: m_type_name(type_name) { }
 
 	virtual std::string type_name () const { return m_type_name; }
@@ -36,11 +36,11 @@ private:
 };
 
 template <class T>
-class TypeTemplate<boost::shared_ptr<T> > : public Type
+class TemplateTypeFactory<boost::shared_ptr<T> > : public TypeFactory
 {
 public:
 
-	TypeTemplate (const std::string& type_name)
+	TemplateTypeFactory (const std::string& type_name)
 		: m_type_name(type_name) { }
 
 	virtual std::string type_name () const { return m_type_name; }
@@ -52,7 +52,7 @@ public:
 
 	virtual const std::type_info& type_info () const
 	{
-		return typeid(T);
+		return typeid(boost::shared_ptr<T>);
 	}
 
 private:

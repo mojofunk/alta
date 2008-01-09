@@ -1,6 +1,6 @@
 
-#ifndef MOJO_TYPE_INCLUDED
-#define MOJO_TYPE_INCLUDED
+#ifndef MOJO_TYPE_FACTORY_INCLUDED
+#define MOJO_TYPE_FACTORY_INCLUDED
 
 #include <string>
 #include <typeinfo>
@@ -9,7 +9,7 @@
 
 namespace mojo {
 
-class Type
+class TypeFactory
 {
 public:
 
@@ -21,7 +21,7 @@ public:
 
 protected:
 
-	virtual ~Type() { }
+	virtual ~TypeFactory() { }
 };
 
 } // namespace mojo

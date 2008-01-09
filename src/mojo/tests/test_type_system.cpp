@@ -34,8 +34,9 @@ BOOST_AUTO_TEST_CASE( mojo_test_type_system )
 	AudioTrackSPtr at;
 
 	BOOST_CHECK_NO_THROW(at = boost::any_cast<AudioTrackSPtr>(create_type(audio_track_type_name)));
-
 	BOOST_REQUIRE(at);
-
 	BOOST_TEST_MESSAGE(at->get_name());
+
+	BOOST_CHECK(mojo::get_type_name (typeid(AudioTrackSPtr)) == audio_track_type_name);
+
 }

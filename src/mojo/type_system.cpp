@@ -6,7 +6,7 @@
 
 #include <mojo/type_system.hpp>
 
-#include <mojo/type.hpp>
+#include <mojo/type_factory.hpp>
 
 using std::map;
 using std::set;
@@ -26,7 +26,7 @@ typedef map<const std::type_info*, string, TypeInfoComp> TypeNameMap;
 
 TypeNameMap* s_type_names = 0;
 
-typedef set<mojo::TypeSPtr> Types;
+typedef set<mojo::TypeFactorySPtr> Types;
 
 Types* s_types = 0;
 
@@ -52,7 +52,7 @@ type_system_init()
 }
 
 void
-register_type (TypeSPtr type)
+register_type (TypeFactorySPtr type)
 {
 	register_type_name (type->type_info(), type->type_name());
 

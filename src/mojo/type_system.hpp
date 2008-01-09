@@ -7,13 +7,13 @@
 
 #include <boost/any.hpp>
 
-#include <mojo/type_ptr.hpp>
+#include <mojo/type_factory_ptr.hpp>
 
 namespace mojo {
 
 	void type_system_init ();
 
-	void register_type (TypeSPtr type);
+	void register_type (TypeFactorySPtr type);
 	
 	/**
 	 * because std::type_info.name() is not portable between compilers
