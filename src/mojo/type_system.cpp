@@ -38,8 +38,6 @@ register_type_name (const std::type_info& info,
 		const std::string& type_name)
 {
 	s_type_names->insert(std::make_pair (&info, type_name));
-
-
 }
 
 const string

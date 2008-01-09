@@ -2,6 +2,8 @@
 #include <mojo/application.hpp>
 
 #include <mojo/project.hpp>
+#include <mojo/type_system.hpp>
+#include <mojo/register_types.hpp>
 
 namespace mojo {
 
@@ -22,7 +24,8 @@ Application::create (int argc, char *argv[])
 
 Application::Application (int argc, char *argv[])
 {
-
+	type_system_init();
+	register_types();
 }
 
 Application::~Application()

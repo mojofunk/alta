@@ -31,7 +31,9 @@ graph.cpp
 plugin_utils.cpp
 project.cpp
 project_directory.cpp
+register_types.cpp
 search_path.cpp
+type_names.cpp
 type_system.cpp
 xml_archive.cpp
 """)
