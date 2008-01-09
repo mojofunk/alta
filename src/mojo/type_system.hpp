@@ -24,6 +24,9 @@ namespace mojo {
 
 	void register_type_factory (type_factory_func_t func,
 			const std::string& type_name);
+
+	boost::any create_type (const std::string& type_name);
+
 }
 
 #endif

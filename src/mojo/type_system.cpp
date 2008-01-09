@@ -1,5 +1,6 @@
 
 #include <map>
+#include <cassert>
 
 #include <mojo/type_system.hpp>
 
@@ -20,6 +21,10 @@ typedef map<const std::type_info*, string, TypeInfoComp> TypeNameMap;
 
 TypeNameMap* s_type_names = 0;
 
+typedef map<string, mojo::type_factory_func_t> TypeFactoryMap;
+
+TypeFactoryMap* s_type_factories = 0;
+
 }
 
 namespace mojo {
@@ -27,10 +32,11 @@ namespace mojo {
 void
 type_system_init()
 {
-	if (!s_type_names)
-	{
-		s_type_names = new TypeNameMap;
-	}
+	assert(!s_type_names);
+	assert(!s_type_factories);
+
+	s_type_names = new TypeNameMap;
+	s_type_factories = new TypeFactoryMap;
 }
 
 void
@@ -51,6 +57,26 @@ get_type_name (const std::type_info& info)
 	}
 
 	return "";
+}
+
+void
+register_type_factory (type_factory_func_t func,
+			const std::string& type_name)
+{
+	s_type_factories->insert(std::make_pair (type_name, func));
+}
+
+boost::any
+create_type (const std::string& type_name)
+{
+	TypeFactoryMap::const_iterator i = s_type_factories->find(type_name);
+	
+	if (i != s_type_factories->end())
+	{
+		return i->second();
+	}
+
+	return boost::any();
 }
 
 }
