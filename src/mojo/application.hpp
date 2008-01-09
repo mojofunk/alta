@@ -8,6 +8,11 @@
 
 namespace mojo {
 
+class Application;
+
+typedef boost::shared_ptr<Application>    ApplicationSPtr;
+typedef boost::weak_ptr<Application>      ApplicationWPtr;
+
 /**
  * I'm not sure what this class should be called but it
  * is intended to hold all the resources that are unique
@@ -18,14 +23,8 @@ class Application
 {
 public:
 
-	// typedefs
-	typedef boost::shared_ptr<Application>    ptr;
-	typedef boost::weak_ptr<Application>      weak_ptr;
-
-public:
-
 	// singleton constructor
-	static boost::shared_ptr<Application> create (int argc, char *argv[]);
+	static ApplicationSPtr create (int argc, char *argv[]);
 
 	static Application& instance() { return *sm_app; }
 
@@ -37,8 +36,8 @@ private:
 private:
 	
 	// constructors
-    Application (int argc, char *argv[]);
-    ~Application();
+	Application (int argc, char *argv[]);
+	~Application();
 
 private:
 

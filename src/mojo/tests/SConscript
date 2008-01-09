@@ -28,3 +28,7 @@ Default (plugin_utils_test)
 project_test = mojo_test_env.Program ( 'test_project', 'test_project.cpp' )
 
 Default (project_test)
+
+app_test = mojo_test_env.Program ( 'test_application', 'test_application.cpp' )
+
+Default (app_test)
