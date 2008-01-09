@@ -89,7 +89,7 @@ TypeSystem::get_type_name (const std::type_info& info)
 		return i->second;
 	}
 
-	return "";
+	return "unknown";
 }
 
 boost::any

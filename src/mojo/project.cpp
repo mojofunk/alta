@@ -21,7 +21,20 @@ Project::~Project()
 void
 Project::get_property (const std::string& name, boost::any& value) const
 {
+	if (name == "tracks") {
+		value = m_tracks;
+	}
 
+}
+
+std::vector<std::string>
+Project::get_property_names () const
+{
+	std::vector<std::string> property_names;
+
+	property_names.push_back ("tracks");
+
+	return property_names;
 }
 
 void
@@ -36,6 +49,7 @@ Project::save ()
 	ArchiveSPtr archive = create_mojo_archive(); 
 
 	// add properties to the archive
+	archive->set_property("tracks", m_tracks);
 
 	archive->write (m_file_path.string());
 }
@@ -49,7 +63,6 @@ Project::save_as (const fs::path& directory, const string& name)
 	// move project files to directory etc
 
 	save ();
-
 }
 
 bool

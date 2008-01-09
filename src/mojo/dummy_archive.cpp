@@ -66,6 +66,14 @@ DummyArchive::write (const string& file_path)
 {
 	std::cerr << "DummyArchive::write "  << file_path << std::endl;
 
+	for (Properties::const_iterator i = m_properties.begin();
+			i != m_properties.end(); ++i)
+	{
+		std::cerr << "Property: " << i->first
+			<< " Type: " << TypeSystem::get_type_name(i->second.type())
+			<< std::endl;
+	}
+
 	// recursively find all the Properties that are of type mojo::Object
 	// and put them into a map<Object*, uint64_t> where each object is
 	// assigned a unique id.

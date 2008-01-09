@@ -5,6 +5,7 @@
 #include <boost/test/unit_test_log.hpp>
 //#include <boost/test/test_tools.hpp>
 
+#include <mojo/application.hpp>
 #include <mojo/project.hpp>
 #include <mojo/project_ptr.hpp>
 #include <mojo/audio_track.hpp>
@@ -17,11 +18,16 @@ const string project_filename = "project1";
 
 BOOST_AUTO_TEST_CASE( save_open_project_test )
 {
-	ProjectSPtr proj = ProjectSPtr(new Project);
+	int argc = framework::master_test_suite().argc;
+	char** argv = framework::master_test_suite().argv;
+
+	ApplicationSPtr app = Application::create (argc, argv);
+
+	ProjectSPtr proj(new Project);
 	BOOST_REQUIRE(proj);
 
 	// create AudioTrack and add to project
-	AudioTrackSPtr track1 = AudioTrackSPtr(new AudioTrack);
+	AudioTrackSPtr track1(new AudioTrack);
 	BOOST_REQUIRE(track1);
 
 	BOOST_CHECK(proj->add_audio_track(track1));

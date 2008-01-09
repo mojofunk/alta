@@ -22,6 +22,16 @@ AudioTrack::set_property (const std::string& name, const boost::any& value)
 
 }
 
+std::vector<std::string>
+AudioTrack::get_property_names () const
+{
+	std::vector<std::string> property_names;
+
+	property_names.push_back ("name");
+
+	return property_names;
+}
+
 std::string
 AudioTrack::get_name() const
 {
