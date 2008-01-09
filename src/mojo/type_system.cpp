@@ -1,10 +1,15 @@
 
 #include <map>
+#include <set>
+
 #include <cassert>
 
 #include <mojo/type_system.hpp>
 
+#include <mojo/type.hpp>
+
 using std::map;
+using std::set;
 using std::string;
 
 namespace {
@@ -21,9 +26,16 @@ typedef map<const std::type_info*, string, TypeInfoComp> TypeNameMap;
 
 TypeNameMap* s_type_names = 0;
 
-typedef map<string, mojo::type_factory_func_t> TypeFactoryMap;
+typedef set<mojo::TypeSPtr> Types;
 
-TypeFactoryMap* s_type_factories = 0;
+Types* s_types = 0;
+
+void
+register_type_name (const std::type_info& info,
+		const std::string& type_name)
+{
+	s_type_names->insert(std::make_pair (&info, type_name));
+}
 
 }
 
@@ -33,17 +45,18 @@ void
 type_system_init()
 {
 	assert(!s_type_names);
-	assert(!s_type_factories);
+	assert(!s_types);
 
 	s_type_names = new TypeNameMap;
-	s_type_factories = new TypeFactoryMap;
+	s_types = new Types;
 }
 
 void
-register_type_name (const std::type_info& info,
-		const std::string& type_name)
+register_type (TypeSPtr type)
 {
-	s_type_names->insert(std::make_pair (&info, type_name));
+	register_type_name (type->type_info(), type->type_name());
+
+	s_types->insert(type);
 }
 
 const string
@@ -59,21 +72,14 @@ get_type_name (const std::type_info& info)
 	return "";
 }
 
-void
-register_type_factory (type_factory_func_t func,
-			const std::string& type_name)
-{
-	s_type_factories->insert(std::make_pair (type_name, func));
-}
 
 boost::any
 create_type (const std::string& type_name)
 {
-	TypeFactoryMap::const_iterator i = s_type_factories->find(type_name);
-	
-	if (i != s_type_factories->end())
+	for (Types::const_iterator i = s_types->begin();
+			i != s_types->end(); ++i)
 	{
-		return i->second();
+		if ((*i)->type_name() == type_name) return (*i)->create();
 	}
 
 	return boost::any();

@@ -7,23 +7,19 @@
 
 #include <boost/any.hpp>
 
+#include <mojo/type_ptr.hpp>
+
 namespace mojo {
 
 	void type_system_init ();
 
-	void register_type_name (const std::type_info& info,
-			const std::string& type_name);
+	void register_type (TypeSPtr type);
 	
 	/**
 	 * because std::type_info.name() is not portable between compilers
 	 * etc, use a standard mapping of names to types.
 	 */
 	const std::string get_type_name (const std::type_info& info);
-
-	typedef boost::any (*type_factory_func_t) ();
-
-	void register_type_factory (type_factory_func_t func,
-			const std::string& type_name);
 
 	boost::any create_type (const std::string& type_name);
 
