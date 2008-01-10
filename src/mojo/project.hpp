@@ -30,6 +30,8 @@ public:
 
 public:
 
+	AudioTrackSPtr new_audio_track (const std::string& name = "");
+
 	// methods
 	/**
 	 * This will save the file using the current
@@ -47,10 +49,6 @@ public:
 			const string& file_name);
 
 	const fs::path& file () const { return m_file_path; }
-
-	bool add_audio_track (AudioTrackSPtr audio_track);
-
-	//void create_audio_track ();
 
 private:
 

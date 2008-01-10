@@ -25,19 +25,13 @@ BOOST_AUTO_TEST_CASE( save_open_project_test )
 
 	ProjectSPtr proj(new Project);
 	BOOST_REQUIRE(proj);
-
-	// create AudioTrack and add to project
-	AudioTrackSPtr track1(new AudioTrack);
-	BOOST_REQUIRE(track1);
-
-	BOOST_CHECK(proj->add_audio_track(track1));
-	BOOST_CHECK(!proj->add_audio_track(track1));
-
-	// should be in a separate test case
-	const string track_name = "Bass Guitar";
-
-	track1->set_name(track_name);
-	BOOST_CHECK_EQUAL(track1->get_name(), track_name);
+	
+	BOOST_REQUIRE(proj->new_audio_track("Kick Drum"));
+	BOOST_REQUIRE(proj->new_audio_track("High Hats"));
+	BOOST_REQUIRE(proj->new_audio_track("Snare"));
+	BOOST_REQUIRE(proj->new_audio_track("Bass Guitar"));
+	BOOST_REQUIRE(proj->new_audio_track("Guitar"));
+	BOOST_REQUIRE(proj->new_audio_track("Keyboard"));
 
 	// don't need to set project directory to save as no media
 	// has been recorded or imported etc.

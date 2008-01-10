@@ -19,6 +19,15 @@ Project::~Project()
 
 }
 
+AudioTrackSPtr
+Project::new_audio_track (const std::string& name)
+{
+	AudioTrackSPtr track(new AudioTrack);
+	track->set_name (name);
+	m_tracks.insert(track);
+	return track;
+}
+
 void
 Project::save ()
 {
@@ -39,12 +48,6 @@ Project::save_as (const fs::path& directory, const string& name)
 	// move project files to directory etc
 
 	save ();
-}
-
-bool
-Project::add_audio_track (AudioTrackSPtr track)
-{
-	return m_tracks.insert(track).second;
 }
 
 } // namespace mojo
