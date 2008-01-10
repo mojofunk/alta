@@ -13,6 +13,10 @@ AudioTrack::AudioTrack()
 void
 AudioTrack::get_property (const std::string& name, boost::any& value) const
 {
+	if (name == "name")
+	{
+		value = m_name;
+	}
 
 }
 

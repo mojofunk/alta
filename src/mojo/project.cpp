@@ -3,6 +3,7 @@
 #include <mojo/archive.hpp>
 
 #include <mojo/audio_track.hpp>
+#include <mojo/object_collection.hpp>
 
 #include <mojo/project.hpp>
 
@@ -17,31 +18,6 @@ Project::~Project()
 {
 
 }
-	
-void
-Project::get_property (const std::string& name, boost::any& value) const
-{
-	if (name == "tracks") {
-		value = m_tracks;
-	}
-
-}
-
-std::vector<std::string>
-Project::get_property_names () const
-{
-	std::vector<std::string> property_names;
-
-	property_names.push_back ("tracks");
-
-	return property_names;
-}
-
-void
-Project::set_property (const std::string& name, const boost::any& value)
-{
-
-}
 
 void
 Project::save ()
@@ -49,7 +25,7 @@ Project::save ()
 	ArchiveSPtr archive = create_mojo_archive(); 
 
 	// add properties to the archive
-	archive->set_property("tracks", m_tracks);
+	archive->set_property("tracks", ObjectCollection(m_tracks));
 
 	archive->write (m_file_path.string());
 }

@@ -21,6 +21,7 @@ namespace mojo {
  * type name can then be used to create instances of that class
  * when the archive is read from disk.
  *
+ * Archive needs to be more explicit in what types are supported
  */
 class Archive
 {

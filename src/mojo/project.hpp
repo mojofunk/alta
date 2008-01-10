@@ -3,20 +3,17 @@
 #define MOJO_PROJECT_INCLUDED
 
 #include <string>
-#include <vector>
 #include <set>
 
-#include <mojo/object.hpp>
 #include <mojo/audio_track_ptr.hpp>
 #include <mojo/filesystem.hpp>
 
 namespace mojo {
 
 using std::string;
-using std::vector;
 using std::set;
 
-class Project : public Object
+class Project
 {
 public:
 	typedef set<AudioTrackSPtr> TrackList;
@@ -32,14 +29,6 @@ public:
 	~Project();
 
 public:
-
-	virtual void get_property (const std::string& name,
-			boost::any& value) const;
-
-	virtual std::vector<std::string> get_property_names () const;
-
-	virtual void set_property (const std::string& name,
-			const boost::any& value);
 
 	// methods
 	/**

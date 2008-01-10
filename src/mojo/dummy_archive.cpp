@@ -1,5 +1,7 @@
 
 #include <mojo/type_system.hpp>
+#include <mojo/object.hpp>
+#include <mojo/object_collection.hpp>
 
 #include <iostream>
 
@@ -30,25 +32,30 @@ DummyArchive::set_property (const string& name, const boost::any& value)
 	m_properties.insert (make_pair (name, value)); 
 }
 
-#if 0
 void
-print_properties (const Object* obj)
+print_object_properties(const ObjectSPtr& obj)
 {
+	const string type_name = TypeSystem::get_type_name(typeid(*obj));
 
-	Properties props;
+	std::cerr << " type: " << type_name;
 
-	obj->get_properties (props);
+	vector<string> prop_names = obj->get_property_names ();
 
-	std::cerr << "Properties: ";
+	std::cerr << " Properties: ";
 
-	for (Properties::const_iterator i = props.begin(); i != props.end();)
+	for (vector<string>::const_iterator i = prop_names.begin();
+			i != prop_names.end();)
 	{
-		std::cerr << "Name: " << i->name() << " ";
-		std::cerr << "Type: " << get_type_name(i->value().type());
+		boost::any prop;
+		obj->get_property(*i, prop);
+		string type_name = TypeSystem::get_type_name(prop.type());
+
+		std::cerr << "Name: " << *i << " ";
+		std::cerr << "Type: " << type_name;
 
 		++i;
 
-		if (i != props.end())
+		if (i != prop_names.end())
 		{
 			std::cerr << ", ";
 		}
@@ -56,10 +63,17 @@ print_properties (const Object* obj)
 	}
 
 	std::cerr << std::endl;
-
 }
 
-#endif
+void
+print_object_collection(const ObjectCollection& col)
+{
+	for (ObjectCollection::const_iterator i = col.begin();
+			i != col.end(); ++i)
+	{
+		print_object_properties (*i);
+	}
+}
 
 void
 DummyArchive::write (const string& file_path)
@@ -72,6 +86,11 @@ DummyArchive::write (const string& file_path)
 		std::cerr << "Property: " << i->first
 			<< " Type: " << TypeSystem::get_type_name(i->second.type())
 			<< std::endl;
+
+		ObjectCollection collection = boost::any_cast<ObjectCollection>(i->second);
+	
+		print_object_collection (collection);
+
 	}
 
 	// recursively find all the Properties that are of type mojo::Object
