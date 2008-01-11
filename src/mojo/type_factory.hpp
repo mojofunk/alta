@@ -15,6 +15,8 @@ public:
 
 	virtual std::string type_name() const = 0;
 
+	/// create always returns a pointer to a newly
+	/// allocated type. 
 	virtual boost::any create() const = 0;
 
 	virtual const std::type_info& type_info() const = 0;
