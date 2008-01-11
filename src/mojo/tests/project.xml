@@ -1,0 +1,57 @@
+<project>
+	<objectcollection name="tracks">
+		<objectref id="2"/>
+		<objectref id="6"/>
+	</objectcollection>
+
+	<objects>
+		<group type="audiotrack">
+			<audiotrack id="2">
+				<string name="name" value="Bass Guitar"/>
+				<objectref name="seq" id="3"/>
+				<bool name="record" value="1"/>
+			</audiotrack>
+		</group>
+		<group type="miditrack">
+			<miditrack id="6">
+				<string name="name" value="Keyboard"/>
+				<objectref name="seq" id="5"/>
+				<bool name="record" value="0"/>
+			</miditrack>
+		</group>
+		<group type="seq">
+			<seq id="3">
+				<objectcollection name="events">
+					<objectref id="4"/>
+					<objectref id="5"/>
+				</objectcollection>
+			</seq>
+			<seq id="5">
+				<objectcollection name="events">
+					<objectref id="10"/>
+					<objectref id="11"/>
+				</objectcollection>
+			</seq>
+		</group>
+		<group type="audioevent">
+			<audioevent id="4">
+				<uint64_t name="position" value="4096"/>
+				<uint64_t name="duration" value="8192"/>
+			</audioevent>
+			<audioevent id="5">
+				<uint64_t name="position" value="4096"/>
+				<uint64_t name="duration" value="8192"/>
+			</audioevent>
+		</group>
+		<group type="midievent">
+			<midievent id="10">
+				<uint64_t name="position" value="4096"/>
+				<uint64_t name="duration" value="8192"/>
+			</midievent>
+			<midievent id="11">
+				<uint64_t name="position" value="4096"/>
+				<uint64_t name="duration" value="8192"/>
+			</midievent>
+		</group>
+	</objects>
+</project>
