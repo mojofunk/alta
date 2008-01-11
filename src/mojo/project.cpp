@@ -3,6 +3,7 @@
 #include <mojo/archive.hpp>
 
 #include <mojo/audio_track.hpp>
+#include <mojo/midi_track.hpp>
 #include <mojo/object_collection.hpp>
 
 #include <mojo/project.hpp>
@@ -23,6 +24,15 @@ AudioTrackSPtr
 Project::new_audio_track (const std::string& name)
 {
 	AudioTrackSPtr track(new AudioTrack);
+	track->set_name (name);
+	m_tracks.insert(track);
+	return track;
+}
+
+MidiTrackSPtr
+Project::new_midi_track (const std::string& name)
+{
+	MidiTrackSPtr track(new MidiTrack);
 	track->set_name (name);
 	m_tracks.insert(track);
 	return track;

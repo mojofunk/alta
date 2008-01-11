@@ -5,7 +5,10 @@
 #include <string>
 #include <set>
 
+#include <mojo/track_ptr.hpp>
 #include <mojo/audio_track_ptr.hpp>
+#include <mojo/midi_track_ptr.hpp>
+
 #include <mojo/filesystem.hpp>
 
 namespace mojo {
@@ -16,7 +19,7 @@ using std::set;
 class Project
 {
 public:
-	typedef set<AudioTrackSPtr> TrackList;
+	typedef set<TrackSPtr> TrackList;
 
 public:
 
@@ -31,6 +34,8 @@ public:
 public:
 
 	AudioTrackSPtr new_audio_track (const std::string& name = "");
+
+	MidiTrackSPtr new_midi_track (const std::string& name = "");
 
 	// methods
 	/**

@@ -14,6 +14,7 @@ extern const char * const collection_type_name;
 
 // classes
 extern const char * const audio_track_type_name;
+extern const char * const midi_track_type_name;
 
 
 }

@@ -28,11 +28,13 @@ dummy_archive.cpp
 filesystem_paths.cpp
 file_utils.cpp
 graph.cpp
+midi_track.cpp
 plugin_utils.cpp
 project.cpp
 project_directory.cpp
 register_types.cpp
 search_path.cpp
+track.cpp
 type_names.cpp
 type_system.cpp
 xml_archive.cpp

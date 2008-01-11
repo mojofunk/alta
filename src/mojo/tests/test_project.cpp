@@ -32,6 +32,10 @@ BOOST_AUTO_TEST_CASE( save_open_project_test )
 	BOOST_REQUIRE(proj->new_audio_track("Bass Guitar"));
 	BOOST_REQUIRE(proj->new_audio_track("Guitar"));
 	BOOST_REQUIRE(proj->new_audio_track("Keyboard"));
+	
+	BOOST_REQUIRE(proj->new_midi_track("Synth Pad"));
+	BOOST_REQUIRE(proj->new_midi_track("Drum Fill"));
+	BOOST_REQUIRE(proj->new_midi_track("Horn"));
 
 	// don't need to set project directory to save as no media
 	// has been recorded or imported etc.

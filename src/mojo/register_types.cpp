@@ -9,7 +9,7 @@
 #include <mojo/object_collection.hpp>
 
 #include <mojo/audio_track.hpp>
-#include <mojo/audio_track_ptr.hpp>
+#include <mojo/midi_track.hpp>
 
 namespace mojo {
 
@@ -23,6 +23,7 @@ register_types()
 	TypeSystem::register_type (TypeFactorySPtr(new TemplateTypeFactory<ObjectCollection>(collection_type_name)));
 
 	TypeSystem::register_type (TypeFactorySPtr(new TemplateTypeFactory<AudioTrack>(audio_track_type_name)));
+	TypeSystem::register_type (TypeFactorySPtr(new TemplateTypeFactory<MidiTrack>(midi_track_type_name)));
 
 }
 

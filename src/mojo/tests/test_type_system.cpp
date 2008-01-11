@@ -7,7 +7,7 @@
 
 #include <mojo/application.hpp>
 #include <mojo/audio_track.hpp>
-#include <mojo/audio_track_ptr.hpp>
+#include <mojo/midi_track.hpp>
 
 #include <mojo/type_system.hpp>
 #include <mojo/type_names.hpp>
@@ -45,9 +45,11 @@ BOOST_AUTO_TEST_CASE( mojo_test_type_system )
 	BOOST_CHECK(test_type_name<float>(float_type_name));
 	BOOST_CHECK(test_type_name<string>(string_type_name));
 	BOOST_CHECK(test_type_name<AudioTrack>(audio_track_type_name));
+	BOOST_CHECK(test_type_name<MidiTrack>(midi_track_type_name));
 
 	BOOST_CHECK_NO_THROW(test_type_factory<int>(int_type_name));
 	BOOST_CHECK_NO_THROW(test_type_factory<float>(float_type_name));
 	BOOST_CHECK_NO_THROW(test_type_factory<string>(string_type_name));
 	BOOST_CHECK_NO_THROW(test_type_factory<AudioTrack>(audio_track_type_name));
+	BOOST_CHECK_NO_THROW(test_type_factory<MidiTrack>(midi_track_type_name));
 }
