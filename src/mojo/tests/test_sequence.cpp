@@ -5,17 +5,18 @@
 //#include <boost/test/test_tools.hpp>
 
 #include <mojo/audio_sequence.hpp>
+#include <mojo/audio_event.hpp>
 
 using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
 
-BOOST_AUTO_TEST_CASE( audio_sequence_s11n )
+BOOST_AUTO_TEST_CASE( audio_sequence )
 {
 	AudioSequence seq;
 
-	AudioEventSPtr aevent1(new AudioEvent);
+	AudioEventSPtr ae1(new AudioEvent);
 
-	seq.add (aevent1);
+	seq.add (ae1);
 
 }
