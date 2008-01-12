@@ -39,7 +39,7 @@ private:
 
 private:
 
-	static const std::string property_audio_events;
+	static const std::string s_property_audio_events;
 
 };
 

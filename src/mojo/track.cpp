@@ -3,6 +3,8 @@
 
 namespace mojo {
 
+std::string Track::s_property_name = "name";
+
 Track::Track()
 	:
 		m_name("unnamed")
@@ -13,7 +15,7 @@ Track::Track()
 void
 Track::get_property (const std::string& name, boost::any& value) const
 {
-	if (name == "name")
+	if (name == s_property_name)
 	{
 		value = m_name;
 	}
@@ -30,7 +32,7 @@ Track::get_property_names () const
 {
 	std::vector<std::string> property_names;
 
-	property_names.push_back ("name");
+	property_names.push_back (s_property_name);
 
 	return property_names;
 }

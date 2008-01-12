@@ -2,7 +2,7 @@
 
 namespace mojo {
 
-const std::string AudioSequence::property_audio_events = "audio-events";
+const std::string AudioSequence::s_property_audio_events = "audio-events";
 
 AudioSequence::AudioSequence ()
 {
@@ -12,7 +12,7 @@ AudioSequence::AudioSequence ()
 void
 AudioSequence::get_property (const std::string& name, boost::any& value) const
 {
-	if (name == property_audio_events) {
+	if (name == s_property_audio_events) {
 		value = m_audio_events;
 	}
 }
@@ -28,7 +28,7 @@ AudioSequence::get_property_names () const
 {
 	std::vector<std::string> property_names;
 
-	property_names.push_back (property_audio_events);
+	property_names.push_back (s_property_audio_events);
 
 	return property_names;
 }
