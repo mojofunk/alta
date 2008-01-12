@@ -25,6 +25,7 @@ audio_track.cpp
 audio_sequence.cpp
 directory_names.cpp
 dummy_archive.cpp
+event.cpp
 filesystem_paths.cpp
 file_utils.cpp
 graph.cpp
