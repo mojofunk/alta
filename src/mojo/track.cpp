@@ -3,7 +3,7 @@
 
 namespace mojo {
 
-std::string Track::s_property_name = "name";
+const char * const Track::s_property_name = "name";
 
 Track::Track()
 	:

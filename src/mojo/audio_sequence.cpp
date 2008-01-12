@@ -2,7 +2,7 @@
 
 namespace mojo {
 
-const std::string AudioSequence::s_property_audio_events = "audio-events";
+const char * const AudioSequence::s_property_audio_events = "audio-events";
 
 AudioSequence::AudioSequence ()
 {

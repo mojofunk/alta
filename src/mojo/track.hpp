@@ -38,7 +38,7 @@ private:
 
 private:
 
-	static std::string s_property_name;
+	static const char * const s_property_name;
 };
 
 } // namespace mojo
