@@ -1,4 +1,4 @@
-#define BOOST_TEST_MODULE mojo_s11n
+#define BOOST_TEST_MODULE mojo_sequence
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
