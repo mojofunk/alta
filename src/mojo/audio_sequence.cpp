@@ -33,17 +33,16 @@ AudioSequence::get_property_names () const
 	return property_names;
 }
 
-bool
-AudioSequence::add (AudioEventSPtr ae)
+std::pair<AudioSequence::iterator, bool>
+AudioSequence::insert (AudioEventSPtr ae)
 {
-	return m_audio_events.insert(ae).second;
+	return m_audio_events.insert (ae);
 }
 
-void
-AudioSequence::remove (AudioEventSPtr ae)
+AudioSequence::size_type
+AudioSequence::erase (AudioEventSPtr ae)
 {
-	
-
+	return m_audio_events.erase (ae);
 }
 
 } // namespace mojo
