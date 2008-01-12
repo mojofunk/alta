@@ -21,6 +21,7 @@ pkgconfig.ParseDependencies ( mojo_env, mojo_deps )
 mojo_source_files = Split("""
 application.cpp
 archive_utils.cpp
+audio_event.cpp
 audio_track.cpp
 audio_sequence.cpp
 directory_names.cpp
