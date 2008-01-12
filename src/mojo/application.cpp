@@ -7,17 +7,17 @@
 
 namespace mojo {
 
-Application* Application::sm_app;
+Application* Application::s_app;
 
 ApplicationSPtr
 Application::create (int argc, char *argv[])
 {
-	if(sm_app) throw;
+	if(s_app) throw;
 
 	// try/catch?
 	ApplicationSPtr ptr(new Application(argc, argv), Application::deleter());
 
-	sm_app = ptr.get();
+	s_app = ptr.get();
 
 	return ptr;
 }

@@ -26,12 +26,12 @@ public:
 	// singleton constructor
 	static ApplicationSPtr create (int argc, char *argv[]);
 
-	static Application& instance() { return *sm_app; }
+	static Application& instance() { return *s_app; }
 
 private:
 
 	// member data
-	static Application* sm_app;
+	static Application* s_app;
 
 	TypeSystemSPtr m_type_system;
 
@@ -50,7 +50,7 @@ private:
 	struct deleter
 	{
 		void operator()(Application* app)
-		{ delete app; sm_app = 0; }
+		{ delete app; s_app = 0; }
 	};
 
 };
