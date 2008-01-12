@@ -12,5 +12,6 @@ const char * const collection_type_name = "collection";
 const char * const audio_track_type_name = "audiotrack";
 const char * const midi_track_type_name = "miditrack";
 const char * const audio_sequence_type_name = "audiosequence";
+const char * const audio_event_type_name = "audioevent";
 
 }

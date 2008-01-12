@@ -11,6 +11,7 @@
 #include <mojo/audio_track.hpp>
 #include <mojo/midi_track.hpp>
 #include <mojo/audio_sequence.hpp>
+#include <mojo/audio_event.hpp>
 
 namespace mojo {
 
@@ -26,6 +27,7 @@ register_types()
 	TypeSystem::register_type (TypeFactorySPtr(new TemplateTypeFactory<AudioTrack>(audio_track_type_name)));
 	TypeSystem::register_type (TypeFactorySPtr(new TemplateTypeFactory<MidiTrack>(midi_track_type_name)));
 	TypeSystem::register_type (TypeFactorySPtr(new TemplateTypeFactory<AudioSequence>(audio_sequence_type_name)));
+	TypeSystem::register_type (TypeFactorySPtr(new TemplateTypeFactory<AudioEvent>(audio_event_type_name)));
 }
 
 }
