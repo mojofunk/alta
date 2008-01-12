@@ -39,7 +39,7 @@ Project::new_midi_track (const std::string& name)
 }
 
 void
-Project::save ()
+Project::save () const
 {
 	ArchiveSPtr archive = create_mojo_archive(); 
 

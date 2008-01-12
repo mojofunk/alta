@@ -45,7 +45,7 @@ public:
 	 * ProjectFormat then an exception will be 
 	 * thrown or some indication of error.
 	 */
-	void save ();
+	void save () const;
 
 	/**
 	 * Save the project to the specified directory
