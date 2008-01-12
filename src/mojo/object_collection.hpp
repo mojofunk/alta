@@ -12,8 +12,9 @@ class ObjectCollection
 {
 public:
 
-	typedef std::list<ObjectSPtr>::iterator        iterator;
-	typedef std::list<ObjectSPtr>::const_iterator  const_iterator;
+	typedef std::list<ObjectSPtr>          container_t;
+	typedef container_t::iterator          iterator;
+	typedef container_t::const_iterator    const_iterator;
 
 public:
 
@@ -35,7 +36,7 @@ public:
 
 protected:
 
-	std::list<ObjectSPtr> m_list;
+	container_t      m_list;
 
 };
 
