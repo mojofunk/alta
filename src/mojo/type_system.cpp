@@ -41,16 +41,16 @@ register_type_name (const std::type_info& info,
 
 namespace mojo {
 
-TypeSystem* TypeSystem::sm_type_system = 0;
+TypeSystem* TypeSystem::s_type_system = 0;
 
 TypeSystemSPtr
 TypeSystem::create ()
 {
-	assert(!sm_type_system);
+	assert(!s_type_system);
 
-	sm_type_system = new TypeSystem;
+	s_type_system = new TypeSystem;
 
-	return TypeSystemSPtr(sm_type_system, TypeSystem::deleter());
+	return TypeSystemSPtr(s_type_system, TypeSystem::deleter());
 }
 
 TypeSystem::TypeSystem ()

@@ -40,7 +40,7 @@ private:
 
 private:
 
-	static TypeSystem* sm_type_system;
+	static TypeSystem* s_type_system;
 
 private:
 
@@ -50,7 +50,7 @@ private:
 	struct deleter
 	{
 		void operator()(TypeSystem* type_system)
-		{ delete type_system; sm_type_system = 0; }
+		{ delete type_system; s_type_system = 0; }
 	};
 };
 
