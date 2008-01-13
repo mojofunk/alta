@@ -4,38 +4,57 @@
 #include <boost/test/unit_test_log.hpp>
 //#include <boost/test/test_tools.hpp>
 
-#include "dummy_archive.hpp"
+#include <mojo/application.hpp>
+#include <mojo/dummy_archive.hpp>
 
 using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
 
 template <class T>
-void
-test_type(DummyArchive& archive, const string& name, const T& value)
+std::pair<string, T>
+create_property(const string& name, const T& value)
 {
-	// add property to archive
-	archive.set_property(name, value);
-
-	boost::any any_value;
-
-	// check that it was added properly 
-	archive.get_property(name, any_value);
-
-	BOOST_CHECK(!any_value.empty());
 	
-	BOOST_CHECK(any_value.type() == typeid(T));
+	return make_property<string, T>(name, value);
+	
+}
 
-	T same_value = boost::any_cast<T>(any_value);
+template <class T>
+void
+check_property (const Properties& props, const string& property_name, const T& expected_value)
+{
+	Properties::const_iterator i;
+	BOOST_REQUIRE((i = props.find (property_name)) != props.end());
 
-	BOOST_CHECK_EQUAL(value, same_value);
+	T prop_value; 
+
+	BOOST_CHECK_NO_THROW(prop_value = boost::any_cast<T>(i->second));
+
+	BOOST_CHECK_EQUAL(prop_value, expected_value);
 }
 
 BOOST_AUTO_TEST_CASE( dummy_archive_test )
 {
-	DummyArchive archive;
+	int argc = framework::master_test_suite().argc;
+	char** argv = framework::master_test_suite().argv;
 
-	test_type<string>(archive, "string", "test-string");
-	test_type<int>(archive, "int", 123);
-	test_type<float>(archive, "float", 1.23f);
+	ApplicationSPtr app = Application::create (argc, argv);
+
+	DummyArchive archive;
+	Properties props;
+
+	BOOST_CHECK(props.insert (create_property<string>("name", "timbyr")).second);
+	BOOST_CHECK(props.insert (create_property<int32_t>("age", 12)).second);
+	BOOST_CHECK(props.insert (create_property<float>("avgloc", 10.23f)).second);
+
+	BOOST_CHECK_NO_THROW(archive.write ("dummy", props));
+
+	props.clear();
+
+	BOOST_CHECK_NO_THROW(archive.read ("dummy", props));
+
+	check_property<std::string>(props, "name", "timbyr");
+	check_property<int32_t>(props, "age", 12);
+	check_property<float>(props, "avgloc", 10.23f);
 }

@@ -42,3 +42,7 @@ Default (project_test)
 app_test = mojo_test_env.Program ( 'test_application', 'test_application.cpp' )
 
 Default (app_test)
+
+dummy_archive_test = mojo_test_env.Program ( 'test_dummy_archive', 'test_dummy_archive.cpp' )
+
+Default (dummy_archive_test)
