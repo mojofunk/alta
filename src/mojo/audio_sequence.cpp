@@ -13,27 +13,15 @@ AudioSequence::AudioSequence ()
 }
 
 void
-AudioSequence::get_property (const std::string& name, boost::any& value) const
+AudioSequence::get_properties (Properties& props) const
 {
-	if (name == s_property_audio_events) {
-		value = ObjectCollection(m_audio_events);
-	}
+	props.insert (make_property (s_property_audio_events, ObjectCollection(m_audio_events)));
 }
 
 void
-AudioSequence::set_property (const std::string& name, const boost::any& value)
+AudioSequence::set_properties (const Properties& props)
 {
 
-}
-
-std::vector<std::string>
-AudioSequence::get_property_names () const
-{
-	std::vector<std::string> property_names;
-
-	property_names.push_back (s_property_audio_events);
-
-	return property_names;
 }
 
 std::pair<AudioSequence::iterator, bool>

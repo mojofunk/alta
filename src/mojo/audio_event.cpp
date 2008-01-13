@@ -13,21 +13,15 @@ AudioEvent::AudioEvent (const count_t& pos, const count_t& dur)
 }
 
 void
-AudioEvent::get_property (const std::string& name, boost::any& value) const
+AudioEvent::get_properties (Properties& props) const
 {
-	Event::get_property (name, value);
+	Event::get_properties (props);
 }
 
 void
-AudioEvent::set_property (const std::string& name, const boost::any& value)
+AudioEvent::set_properties (const Properties& props)
 {
 
-}
-
-std::vector<std::string>
-AudioEvent::get_property_names () const
-{
-	return Event::get_property_names();
 }
 
 } // namespace mojo

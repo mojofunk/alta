@@ -15,31 +15,19 @@ AudioTrack::AudioTrack()
 }
 
 void
-AudioTrack::get_property (const std::string& name, boost::any& value) const
+AudioTrack::get_properties (Properties& props) const
 {
-	Track::get_property (name, value);
+	Track::get_properties (props);
 
-	if (name == s_property_audio_sequence)
-	{
-		value = ObjectSPtr(m_audio_sequence);
-		return;
-	}
+	props.insert (make_property (s_property_audio_sequence, ObjectSPtr(m_audio_sequence)));
 }
 
 void
-AudioTrack::set_property (const std::string& name, const boost::any& value)
+AudioTrack::set_properties (const Properties& props)
 {
-	Track::set_property (name, value);
+	Track::set_properties (props);
 
-}
-
-std::vector<std::string>
-AudioTrack::get_property_names () const
-{
-	std::vector<std::string> names = Track::get_property_names ();
-	names.push_back ( s_property_audio_sequence );
-
-	return names;
+	// XXX
 }
 
 AudioSequenceSPtr

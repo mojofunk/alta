@@ -44,19 +44,18 @@ DummyArchive::print_object(const ObjectSPtr& obj)
 
 	std::cerr << " Type: " << type_name << " ";
 
-	vector<string> prop_names = obj->get_property_names ();
+	Properties props;
 
-	for (vector<string>::const_iterator i = prop_names.begin();
-			i != prop_names.end();)
+	obj->get_properties (props);
+
+	for (Properties::const_iterator i = props.begin();
+			i != props.end();)
 	{
-		boost::any prop;
-		obj->get_property(*i, prop);
-
-		print_property (*i, prop);
+		print_property (i->first, i->second);
 
 		++i;
 
-		if (i != prop_names.end())
+		if (i != props.end())
 		{
 			std::cerr << ", ";
 		}

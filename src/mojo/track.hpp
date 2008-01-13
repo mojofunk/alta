@@ -15,13 +15,9 @@ public:
 
 public:
 
-	virtual void get_property (const std::string& name,
-			boost::any& value) const;
+	virtual void get_properties (Properties& props) const;
 
-	virtual std::vector<std::string> get_property_names () const;
-
-	virtual void set_property (const std::string& name,
-			const boost::any& value);
+	virtual void set_properties (const Properties& props);
 
 public:
 

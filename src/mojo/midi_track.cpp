@@ -9,22 +9,19 @@ MidiTrack::MidiTrack()
 }
 
 void
-MidiTrack::get_property (const std::string& name, boost::any& value) const
+MidiTrack::get_properties (Properties& props) const
 {
-	return Track::get_property (name, value);
+	Track::get_properties (props);
+
+	//props.insert (make_property (s_property_midi_sequence, ObjectSPtr(m_midi_sequence)));
 }
 
 void
-MidiTrack::set_property (const std::string& name, const boost::any& value)
+MidiTrack::set_properties (const Properties& props)
 {
-	Track::set_property (name, value);
+	Track::set_properties (props);
 
-}
-
-std::vector<std::string>
-MidiTrack::get_property_names () const
-{
-	return Track::get_property_names();
+	// XXX
 }
 
 } // namespace mojo
