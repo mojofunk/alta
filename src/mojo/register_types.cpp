@@ -23,6 +23,7 @@ register_types()
 	TypeSystem::register_type (TypeFactorySPtr(new TemplateTypeFactory<std::string>(string_type_name)));
 
 	TypeSystem::register_type (TypeFactorySPtr(new TemplateTypeFactory<ObjectCollection>(collection_type_name)));
+	TypeSystem::register_type (TypeFactorySPtr(new TemplateTypeFactory<ObjectSPtr>(object_ref_type_name)));
 
 	TypeSystem::register_type (TypeFactorySPtr(new TemplateTypeFactory<AudioTrack>(audio_track_type_name)));
 	TypeSystem::register_type (TypeFactorySPtr(new TemplateTypeFactory<MidiTrack>(midi_track_type_name)));

@@ -2,6 +2,7 @@
 #define MOJO_AUDIO_TRACK_INCLUDED
 
 #include <mojo/track.hpp>
+#include <mojo/audio_sequence_ptr.hpp>
 
 namespace mojo {
 
@@ -35,6 +36,14 @@ public:
 	virtual void set_property (const std::string& name,
 			const boost::any& value);
 
+private:
+
+	AudioSequenceSPtr m_audio_sequence;
+
+private:
+
+	static const char* const s_property_audio_sequence;
+	
 };
 
 } // namespace mojo

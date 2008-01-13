@@ -95,6 +95,10 @@ DummyArchive::print_property (const string& name, const boost::any& any_type)
 	{
 		print_string(boost::any_cast<std::string>(any_type));
 	}
+	else if(any_type.type() == typeid(ObjectSPtr))
+	{
+		print_object(boost::any_cast<ObjectSPtr>(any_type));
+	}
 }
 
 void
