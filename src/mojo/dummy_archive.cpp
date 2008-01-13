@@ -16,26 +16,10 @@ namespace mojo {
 using namespace std;
 
 void
-DummyArchive::read (const string& file_path)
+DummyArchive::read (const string& file_path, Properties& props)
 {
 
 }
-
-void
-DummyArchive::get_property (const string& name, boost::any& value)
-{
-	Properties::const_iterator i = m_properties.find(name);
-
-	if(i != m_properties.end()) value = i->second;
-}
-
-
-void
-DummyArchive::set_property (const string& name, const boost::any& value)
-{
-	m_properties.insert (make_pair (name, value)); 
-}
-
 
 void
 DummyArchive::print_object(const ObjectSPtr& obj)
@@ -106,18 +90,24 @@ DummyArchive::print_property (const string& name, const boost::any& any_type)
 	{
 		std::cerr << cformat::convert<std::string>(boost::any_cast<int64_t>(any_type));
 	}
+	else if(any_type.type() == typeid(int32_t))
+	{
+		std::cerr << cformat::convert<std::string>(boost::any_cast<int32_t>(any_type));
+	}
+	else if(any_type.type() == typeid(float))
+	{
+		std::cerr << cformat::convert<std::string>(boost::any_cast<float>(any_type));
+	}
 }
 
 void
-DummyArchive::write (const string& file_path)
+DummyArchive::write (const string& file_path, const Properties& props)
 {
 	std::cerr << "DummyArchive::write "  << file_path << std::endl; 
-	for (Properties::const_iterator i = m_properties.begin();
-			i != m_properties.end(); ++i)
+	for (Properties::const_iterator i = props.begin();
+			i != props.end(); ++i)
 	{
-		std::cerr << "Property: " << i->first;
 		print_property (i->first, i->second);
-		std::cerr << std::endl;
 	}
 
 	// recursively find all the Properties that are of type mojo::Object

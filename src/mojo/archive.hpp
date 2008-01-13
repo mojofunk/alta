@@ -4,7 +4,7 @@
 
 #include <string>
 
-#include <boost/any.hpp>
+#include <mojo/properties.hpp>
 
 namespace mojo {
 
@@ -29,20 +29,9 @@ public:
 
 	virtual ~Archive() { }
 
-	/**
-	 * All top level objects must have a unique name
-	 */
-	// return error to indicate unsupported type?
-	virtual void set_property (const std::string& name,
-			const boost::any& value) = 0;
-
-	virtual void write (const std::string& file_path) = 0;
+	virtual void write (const std::string& file_path, const Properties& props) = 0;
 	
-	// read from archive
-	virtual void read (const std::string& file_path) = 0;
-
-	virtual void get_property (const std::string& name,
-			boost::any& value) = 0;
+	virtual void read (const std::string& file_path, Properties& props) = 0;
 
 };
 

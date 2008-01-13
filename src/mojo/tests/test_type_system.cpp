@@ -43,7 +43,8 @@ BOOST_AUTO_TEST_CASE( mojo_test_type_system )
 
 	ApplicationSPtr app = Application::create (argc, argv);
 
-	BOOST_CHECK(test_type_name<int>(int_type_name));
+	BOOST_CHECK(test_type_name<int32_t>(int32_type_name));
+	BOOST_CHECK(test_type_name<int64_t>(int64_type_name));
 	BOOST_CHECK(test_type_name<float>(float_type_name));
 	BOOST_CHECK(test_type_name<string>(string_type_name));
 	BOOST_CHECK(test_type_name<AudioTrack>(audio_track_type_name));
@@ -51,7 +52,8 @@ BOOST_AUTO_TEST_CASE( mojo_test_type_system )
 	BOOST_CHECK(test_type_name<AudioSequence>(audio_sequence_type_name));
 	BOOST_CHECK(test_type_name<AudioEvent>(audio_event_type_name));
 
-	BOOST_CHECK_NO_THROW(test_type_factory<int>(int_type_name));
+	BOOST_CHECK_NO_THROW(test_type_factory<int32_t>(int32_type_name));
+	BOOST_CHECK_NO_THROW(test_type_factory<int64_t>(int64_type_name));
 	BOOST_CHECK_NO_THROW(test_type_factory<float>(float_type_name));
 	BOOST_CHECK_NO_THROW(test_type_factory<string>(string_type_name));
 	BOOST_CHECK_NO_THROW(test_type_factory<AudioTrack>(audio_track_type_name));

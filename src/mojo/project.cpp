@@ -10,12 +10,26 @@
 
 namespace mojo {
 
+const char * const Project::s_property_tracks = "tracks";
+
 Project::Project()
 {
 
 }
 
 Project::~Project()
+{
+
+}
+
+void
+Project::get_properties (Properties& props) const
+{
+	props.insert (make_property (s_property_tracks, ObjectCollection(m_tracks)));
+}
+
+void
+Project::set_properties (const Properties& props)
 {
 
 }
@@ -43,10 +57,10 @@ Project::save () const
 {
 	ArchiveSPtr archive = create_mojo_archive(); 
 
-	// add properties to the archive
-	archive->set_property("tracks", ObjectCollection(m_tracks));
+	Properties props;
+	get_properties(props);
 
-	archive->write (m_file_path.string());
+	archive->write (m_file_path.string(), props);
 }
 
 void

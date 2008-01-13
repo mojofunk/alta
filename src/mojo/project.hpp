@@ -5,6 +5,7 @@
 #include <string>
 #include <set>
 
+#include <mojo/object.hpp>
 #include <mojo/track_ptr.hpp>
 #include <mojo/audio_track_ptr.hpp>
 #include <mojo/midi_track_ptr.hpp>
@@ -16,7 +17,7 @@ namespace mojo {
 using std::string;
 using std::set;
 
-class Project
+class Project : Object
 {
 public:
 
@@ -31,6 +32,13 @@ public:
 	Project(const fs::path& project_file);
 
 	~Project();
+
+public:
+
+	// Object interface
+	virtual void get_properties (Properties& props) const;
+
+	virtual void set_properties (const Properties& props);
 
 public:
 
@@ -67,6 +75,10 @@ private:
 
 	// this needs to hold any track types
 	track_container_t             m_tracks;
+
+private:
+	
+	static const char* const s_property_tracks;
 
 };
 

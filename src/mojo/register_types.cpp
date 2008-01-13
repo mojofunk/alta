@@ -18,7 +18,7 @@ namespace mojo {
 void
 register_types()
 {
-	TypeSystem::register_type (TypeFactorySPtr(new TemplateTypeFactory<int>(int_type_name)));
+	TypeSystem::register_type (TypeFactorySPtr(new TemplateTypeFactory<int32_t>(int32_type_name)));
 	TypeSystem::register_type (TypeFactorySPtr(new TemplateTypeFactory<int64_t>(int64_type_name)));
 	TypeSystem::register_type (TypeFactorySPtr(new TemplateTypeFactory<float>(float_type_name)));
 	TypeSystem::register_type (TypeFactorySPtr(new TemplateTypeFactory<std::string>(string_type_name)));
