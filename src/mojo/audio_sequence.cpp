@@ -1,4 +1,7 @@
 #include <mojo/audio_sequence.hpp>
+#include <mojo/object_collection.hpp>
+
+#include <mojo/audio_event.hpp>
 
 namespace mojo {
 
@@ -13,7 +16,7 @@ void
 AudioSequence::get_property (const std::string& name, boost::any& value) const
 {
 	if (name == s_property_audio_events) {
-		value = m_audio_events;
+		value = ObjectCollection(m_audio_events);
 	}
 }
 
