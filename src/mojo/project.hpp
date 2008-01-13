@@ -19,7 +19,8 @@ using std::set;
 class Project
 {
 public:
-	typedef set<TrackSPtr> TrackList;
+
+	typedef set<TrackSPtr> track_container_t;
 
 public:
 
@@ -55,6 +56,8 @@ public:
 
 	const fs::path& file () const { return m_file_path; }
 
+	track_container_t get_tracks () const { return m_tracks; }
+
 private:
 
 	// member data
@@ -63,7 +66,7 @@ private:
 	std::string                   m_name;
 
 	// this needs to hold any track types
-	TrackList                     m_tracks;
+	track_container_t             m_tracks;
 
 };
 

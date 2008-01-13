@@ -5,9 +5,19 @@ import tools.pkgconfig as pkgconfig
 
 Import ('env')
 
+test_deps = \
+{
+    'glib-2.0'      : '2.10.1'
+#    'gmodule-2.0'   : '2.10.1'
+#    'gthread-2.0'   : '2.10.1',
+#    'glibmm-2.4'    : '2.8.1'
+}
+
 mojo_test_env = env.Copy()
 mojo_test_env.Append(CXXFLAGS = '-DBOOST_TEST_DYN_LINK')
 mojo_test_env.Append(LIBS = [ 'boost_unit_test_framework', 'mojo', 'gleam' ])
+
+pkgconfig.ParseDependencies ( mojo_test_env, test_deps )
 
 sequence_test = mojo_test_env.Program ( 'test_sequence', 'test_sequence.cpp' )
 

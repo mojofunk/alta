@@ -3,6 +3,15 @@
 
 namespace mojo {
 
+AudioEvent::AudioEvent () : Event() { }
+
+AudioEvent::AudioEvent (const count_t& pos, const count_t& dur)
+	:
+		Event(pos, dur)
+{
+
+}
+
 void
 AudioEvent::get_property (const std::string& name, boost::any& value) const
 {

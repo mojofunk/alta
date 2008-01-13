@@ -8,6 +8,11 @@ namespace mojo {
 class AudioEvent : public Event
 {
 public:
+	AudioEvent();
+
+	AudioEvent(const count_t& pos, const count_t& dur);
+
+public:
 
 	// Object interface
 	virtual void get_property (const std::string& name,

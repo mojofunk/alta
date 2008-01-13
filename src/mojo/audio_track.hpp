@@ -36,6 +36,10 @@ public:
 	virtual void set_property (const std::string& name,
 			const boost::any& value);
 
+public:
+
+	AudioSequenceSPtr get_audio_sequence ();
+
 private:
 
 	AudioSequenceSPtr m_audio_sequence;

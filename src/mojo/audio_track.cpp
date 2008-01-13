@@ -42,4 +42,10 @@ AudioTrack::get_property_names () const
 	return names;
 }
 
+AudioSequenceSPtr
+AudioTrack::get_audio_sequence ()
+{
+	return m_audio_sequence;
+}
+
 } // namespace mojo

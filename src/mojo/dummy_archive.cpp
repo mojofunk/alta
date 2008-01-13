@@ -1,4 +1,8 @@
 
+#include <cformat/cformat.hpp>
+
+//#include <mojo/types.hpp>
+
 #include <mojo/type_system.hpp>
 #include <mojo/object.hpp>
 #include <mojo/object_collection.hpp>
@@ -98,6 +102,10 @@ DummyArchive::print_property (const string& name, const boost::any& any_type)
 	else if(any_type.type() == typeid(ObjectSPtr))
 	{
 		print_object(boost::any_cast<ObjectSPtr>(any_type));
+	}
+	else if(any_type.type() == typeid(int64_t))
+	{
+		std::cerr << cformat::convert<std::string>(boost::any_cast<int64_t>(any_type));
 	}
 }
 

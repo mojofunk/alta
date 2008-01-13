@@ -10,6 +10,12 @@ class Event : public Object
 {
 public:
 
+	Event();
+
+	Event(const count_t& pos, const count_t& dur);
+
+public:
+
 	// Object interface
 	virtual void get_property (const std::string& name,
 			boost::any& value) const;
