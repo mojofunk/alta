@@ -43,6 +43,6 @@ app_test = mojo_test_env.Program ( 'test_application', 'test_application.cpp' )
 
 Default (app_test)
 
-dummy_archive_test = mojo_test_env.Program ( 'test_dummy_archive', 'test_dummy_archive.cpp' )
+archive_test = mojo_test_env.Program ( 'test_archive', 'test_archive.cpp' )
 
-Default (dummy_archive_test)
+Default (archive_test)
