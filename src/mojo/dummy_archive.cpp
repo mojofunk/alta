@@ -8,6 +8,7 @@
 #include <mojo/object_collection.hpp>
 
 #include <iostream>
+#include <fstream>
 
 #include <mojo/dummy_archive.hpp>
 
@@ -22,11 +23,11 @@ DummyArchive::read (const string& file_path, Properties& props)
 }
 
 void
-DummyArchive::print_object(const ObjectSPtr& obj)
+DummyArchive::write_object(std::ostream& os, const ObjectSPtr& obj)
 {
 	const string type_name = TypeSystem::get_type_name(typeid(*obj));
 
-	std::cerr << " Type: " << type_name << " ";
+	os << " Type: " << type_name << " ";
 
 	Properties props;
 
@@ -35,79 +36,72 @@ DummyArchive::print_object(const ObjectSPtr& obj)
 	for (Properties::const_iterator i = props.begin();
 			i != props.end();)
 	{
-		print_property (i->first, i->second);
+		write_property (os, i->first, i->second);
 
 		++i;
 
 		if (i != props.end())
 		{
-			std::cerr << ", ";
+			os << ", ";
 		}
 
 	}
 
-	std::cerr << std::endl;
+	os << std::endl;
 }
 
 void
-DummyArchive::print_object_collection(const ObjectCollection& col)
+DummyArchive::write_object_collection(std::ostream& os, const ObjectCollection& col)
 {
 	for (ObjectCollection::const_iterator i = col.begin();
 			i != col.end(); ++i)
 	{
-		print_object (*i);
+		write_object (os, *i);
 	}
 }
 
 void
-DummyArchive::print_string (const std::string& s)
-{
-	std::cerr << s;
-}
-
-void
-DummyArchive::print_property (const string& name, const boost::any& any_type)
+DummyArchive::write_property (std::ostream& os, const string& name, const boost::any& any_type)
 {
 	string type_name = TypeSystem::get_type_name(any_type.type());
 
-		std::cerr << "Name: " << name
-			<< " Type: " << type_name
-			<< " Value: ";
+	os << "Name: " << name << " Type: " << type_name << " Value: ";
 
 	if(any_type.type() == typeid(ObjectCollection))
 	{
-		print_object_collection(boost::any_cast<ObjectCollection>(any_type));
+		write_object_collection(os, boost::any_cast<ObjectCollection>(any_type));
 	}
 	else if(any_type.type() == typeid(std::string))
 	{
-		print_string(boost::any_cast<std::string>(any_type));
+		os << boost::any_cast<std::string>(any_type);
 	}
 	else if(any_type.type() == typeid(ObjectSPtr))
 	{
-		print_object(boost::any_cast<ObjectSPtr>(any_type));
+		write_object(os, boost::any_cast<ObjectSPtr>(any_type));
 	}
 	else if(any_type.type() == typeid(int64_t))
 	{
-		std::cerr << cformat::convert<std::string>(boost::any_cast<int64_t>(any_type));
+		os << cformat::convert<std::string>(boost::any_cast<int64_t>(any_type));
 	}
 	else if(any_type.type() == typeid(int32_t))
 	{
-		std::cerr << cformat::convert<std::string>(boost::any_cast<int32_t>(any_type));
+		os << cformat::convert<std::string>(boost::any_cast<int32_t>(any_type));
 	}
 	else if(any_type.type() == typeid(float))
 	{
-		std::cerr << cformat::convert<std::string>(boost::any_cast<float>(any_type));
+		os << cformat::convert<std::string>(boost::any_cast<float>(any_type));
 	}
 }
 
 void
 DummyArchive::write (const string& file_path, const Properties& props)
 {
-	std::cerr << "DummyArchive::write "  << file_path << std::endl; 
+	std::ofstream output_file (file_path.c_str());
+
 	for (Properties::const_iterator i = props.begin();
 			i != props.end(); ++i)
 	{
-		print_property (i->first, i->second);
+		write_property (output_file, i->first, i->second);
 	}
 
 	// recursively find all the Properties that are of type mojo::Object

@@ -8,6 +8,10 @@
 #include <mojo/dummy_archive.hpp>
 #include <mojo/xml_archive.hpp>
 
+#include <cformat/cformat.hpp>
+
+#include <glib.h>
+
 using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
@@ -73,8 +77,11 @@ BOOST_AUTO_TEST_CASE( dummy_archive_test )
 	ApplicationSPtr app = Application::create (argc, argv);
 
 	DummyArchive archive;
+	
+	string file_extension = cformat::convert<string>(g_random_int());
+	string file_name = "dummy.txt." + file_extension;
 
-	test_archive (archive, "dummy.txt");
+	test_archive (archive, file_name);
 }
 
 BOOST_AUTO_TEST_CASE( xml_archive_test )
@@ -86,5 +93,8 @@ BOOST_AUTO_TEST_CASE( xml_archive_test )
 
 	XMLArchive archive;
 
-	test_archive (archive, "archive.xml");
+	string file_extension = cformat::convert<string>(g_random_int());
+	string file_name = "archive.xml." + file_extension;
+
+	test_archive (archive, file_name);
 }

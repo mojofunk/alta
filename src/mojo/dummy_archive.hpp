@@ -19,10 +19,9 @@ public:
 
 private:
 
-	void print_object (const ObjectSPtr&);
-	void print_object_collection (const ObjectCollection&);
-	void print_string (const std::string&);
-	void print_property (const std::string& name, const boost::any&);
+	void write_object (std::ostream& os, const ObjectSPtr&);
+	void write_object_collection (std::ostream& os, const ObjectCollection&);
+	void write_property (std::ostream& os, const std::string& name, const boost::any&);
 
 };
 
