@@ -6,6 +6,7 @@
 
 #include <mojo/application.hpp>
 #include <mojo/dummy_archive.hpp>
+#include <mojo/xml_archive.hpp>
 
 using namespace boost::unit_test;
 using namespace std;
@@ -74,4 +75,16 @@ BOOST_AUTO_TEST_CASE( dummy_archive_test )
 	DummyArchive archive;
 
 	test_archive (archive, "dummy.txt");
+}
+
+BOOST_AUTO_TEST_CASE( xml_archive_test )
+{
+	int argc = framework::master_test_suite().argc;
+	char** argv = framework::master_test_suite().argv;
+
+	ApplicationSPtr app = Application::create (argc, argv);
+
+	XMLArchive archive;
+
+	test_archive (archive, "archive.xml");
 }

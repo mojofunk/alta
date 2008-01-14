@@ -4,28 +4,13 @@
 namespace mojo {
 
 void
-XMLArchive::set_property (const std::string& name,
-		const boost::any& value)
-{
-
-
-}
-
-void
-XMLArchive::write (const std::string& file_path)
+XMLArchive::write (const std::string& file_path, const Properties& props)
 {
 
 }
 
 void
-XMLArchive::read (const std::string& file_path)
-{
-
-}
-
-void
-XMLArchive::get_property (const std::string& name,
-		boost::any& value)
+XMLArchive::read (const std::string& file_path, Properties& props)
 {
 
 }

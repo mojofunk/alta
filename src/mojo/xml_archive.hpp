@@ -31,15 +31,10 @@ class XMLArchive : public Archive
 {
 public:
 
-	virtual void set_property (const std::string& name,
-			const boost::any& value);
-
-	virtual void write (const std::string& file_path);
+	virtual void write (const std::string& file_path, const Properties& props);
 	
-	virtual void read (const std::string& file_path);
+	virtual void read (const std::string& file_path, Properties& props);
 
-	virtual void get_property (const std::string& name,
-			boost::any& value);
 };
 
 } // namespace mojo
