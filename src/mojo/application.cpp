@@ -10,7 +10,7 @@ namespace mojo {
 Application* Application::s_app;
 
 ApplicationSPtr
-Application::create (int argc, char *argv[])
+Application::init (int argc, char *argv[])
 {
 	if(s_app) throw;
 

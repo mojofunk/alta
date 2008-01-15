@@ -19,7 +19,7 @@ BOOST_AUTO_TEST_CASE( test_application )
 	char** argv = framework::master_test_suite().argv;
 
 	{
-		ApplicationSPtr app = Application::create (argc, argv);
+		ApplicationSPtr app = Application::init (argc, argv);
 
 		BOOST_REQUIRE(app);
 		BOOST_REQUIRE(&Application::instance());

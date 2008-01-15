@@ -24,7 +24,7 @@ class Application
 public:
 
 	// singleton constructor
-	static ApplicationSPtr create (int argc, char *argv[]);
+	static ApplicationSPtr init (int argc, char *argv[]);
 
 	static Application& instance() { return *s_app; }
 

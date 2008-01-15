@@ -48,7 +48,7 @@ BOOST_AUTO_TEST_CASE( save_open_project_test )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	ApplicationSPtr app = Application::create (argc, argv);
+	ApplicationSPtr app = Application::init (argc, argv);
 
 	ProjectSPtr proj(new Project);
 	BOOST_REQUIRE(proj);

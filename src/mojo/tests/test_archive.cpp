@@ -74,7 +74,7 @@ BOOST_AUTO_TEST_CASE( dummy_archive_test )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	ApplicationSPtr app = Application::create (argc, argv);
+	ApplicationSPtr app = Application::init (argc, argv);
 
 	DummyArchive archive;
 	
@@ -89,7 +89,7 @@ BOOST_AUTO_TEST_CASE( xml_archive_test )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	ApplicationSPtr app = Application::create (argc, argv);
+	ApplicationSPtr app = Application::init (argc, argv);
 
 	XMLArchive archive;
 
