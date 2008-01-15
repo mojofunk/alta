@@ -22,9 +22,5 @@ BOOST_AUTO_TEST_CASE( test_application )
 		ApplicationSPtr app = Application::init (argc, argv);
 
 		BOOST_REQUIRE(app);
-		BOOST_REQUIRE(&Application::instance());
 	}
-
-	// make sure application instance is invalidated
-	BOOST_REQUIRE(!&Application::instance());
 }
