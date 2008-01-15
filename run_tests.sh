@@ -4,7 +4,7 @@
 
 . gmojo_env.sh
 
-for file in `find build -name 'test_*' -type f -perm /u+x`;
+for file in `find $BUILD_DIR -name 'test_*' -type f -perm /u+x`;
 do
 	echo "Running test....$file"
 	$file "$@";
