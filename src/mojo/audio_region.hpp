@@ -4,6 +4,7 @@
 
 #include <mojo/types.hpp>
 #include <mojo/object.hpp>
+#include <mojo/audio_clip_ptr.hpp>
 
 namespace mojo {
 
@@ -30,12 +31,15 @@ public:
 
 private:
 
+	AudioClipSPtr                 m_audio_clip;
+
 	count_t	                      m_offset;
 	count_t                       m_duration;
 
 private:
 
 	// property names
+	static const char * const s_property_audio_clip;
 	static const char * const s_property_offset;
 	static const char * const s_property_duration;
 };
