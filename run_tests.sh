@@ -7,5 +7,5 @@
 for file in `find $BUILD_DIR -name 'test_*' -type f -perm /u+x`;
 do
 	echo "Running test....$file"
-	$file "$@";
+	valgrind -v --track-fds=yes --leak-check=full --log-file=$file $file "$@";
 done;
