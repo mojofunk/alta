@@ -9,13 +9,21 @@ namespace mojo {
 fs::path
 user_config_directory()
 {
-	return fs::path(gleam::get_user_config_directory()) / "mojo";
+	return fs::path(gleam::get_user_config_directory ()) / "mojo";
 }
 
 SearchPath
 mojo_search_path()
 {
-	return SearchPath( gleam::getenv ("MOJO_PATH") );
+	return SearchPath(gleam::getenv ("MOJO_PATH"));
+}
+
+SearchPath
+system_config_search_path()
+{
+	SearchPath sp(gleam::get_system_config_directories ());
+	sp / "mojo";
+	return sp;
 }
 
 } // namespace mojo

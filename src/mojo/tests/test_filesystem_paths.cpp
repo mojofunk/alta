@@ -21,10 +21,22 @@ BOOST_AUTO_TEST_CASE( user_config_dir_test )
 
 BOOST_AUTO_TEST_CASE( mojo_search_path_test )
 {
-	SearchPath mojo = mojo_search_path();
+	SearchPath mojo_sp = mojo_search_path();
 
-	for (SearchPath::iterator i = mojo.begin();
-			i != mojo.end(); ++i)
+	for (SearchPath::iterator i = mojo_sp.begin();
+			i != mojo_sp.end(); ++i)
+	{
+		BOOST_REQUIRE(!i->empty());
+		BOOST_TEST_MESSAGE(*i);
+	}
+}
+
+BOOST_AUTO_TEST_CASE( system_config_search_path_test )
+{
+	SearchPath sys_sp = system_config_search_path();
+
+	for (SearchPath::iterator i = sys_sp.begin();
+			i != sys_sp.end(); ++i)
 	{
 		BOOST_REQUIRE(!i->empty());
 		BOOST_TEST_MESSAGE(*i);
