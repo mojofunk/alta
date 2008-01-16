@@ -9,6 +9,12 @@ namespace gleam {
 using std::vector;
 using std::string;
 
+string
+get_user_config_directory ();
+
+string
+get_user_data_directory ();
+
 vector<string>
 get_system_data_search_path();
 

@@ -15,9 +15,27 @@ void
 log_paths(const vector<string>& paths)
 {
 	for (vector<string>::const_iterator i = paths.begin(); i != paths.end(); ++i)
-	    {
+	{
 		BOOST_MESSAGE( *i );
-	    }
+	}
+}
+
+BOOST_AUTO_TEST_CASE( test_user_config_dir )
+{
+	const string user_config_dir = gleam::get_user_config_directory();
+
+	BOOST_CHECK(!user_config_dir.empty());
+
+	BOOST_TEST_MESSAGE(user_config_dir);
+}
+
+BOOST_AUTO_TEST_CASE( test_user_data_dir )
+{
+	const string user_data_dir = gleam::get_user_data_directory();
+
+	BOOST_CHECK(!user_data_dir.empty());
+
+	BOOST_TEST_MESSAGE(user_data_dir);
 }
 
 BOOST_AUTO_TEST_CASE( test_data_search_path )

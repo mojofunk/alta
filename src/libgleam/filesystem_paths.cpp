@@ -4,6 +4,18 @@
 
 namespace gleam {
 
+string
+get_user_config_directory ()
+{
+	return g_get_user_config_dir();
+}
+
+string
+get_user_data_directory ()
+{
+	return g_get_user_data_dir();
+}
+
 vector<string>
 get_system_data_search_path()
 {
