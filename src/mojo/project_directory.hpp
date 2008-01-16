@@ -18,7 +18,7 @@ public:
 	/**
 	 * @param project_path An absolute path to a project directory.
 	 */
-	ProjectDirectory (const string& project_path);
+	ProjectDirectory (const fs::path& project_path);
 
 	/**
 	 * @return the absolute path to the root directory of the project

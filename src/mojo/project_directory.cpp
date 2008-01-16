@@ -4,7 +4,7 @@
 
 namespace mojo {
 
-ProjectDirectory::ProjectDirectory (const string& project_path)
+ProjectDirectory::ProjectDirectory (const fs::path& project_path)
 	: m_root_path(project_path)
 {
 
