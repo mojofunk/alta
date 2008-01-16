@@ -1,6 +1,7 @@
 
 #include <mojo/filesystem_paths.hpp>
 
+#include <libgleam/filesystem_paths.hpp>
 #include <libgleam/utils.hpp>
 
 namespace mojo {
@@ -8,8 +9,7 @@ namespace mojo {
 fs::path
 user_config_directory()
 {
-
-	return fs::path();
+	return fs::path(gleam::get_user_config_directory()) / "mojo";
 }
 
 SearchPath
