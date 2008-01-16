@@ -13,6 +13,7 @@
 #include <mojo/audio_clip.hpp>
 #include <mojo/audio_clip_ptr.hpp>
 #include <mojo/audio_file_ptr.hpp>
+#include <mojo/project_directory.hpp>
 
 using namespace boost::unit_test;
 using namespace mojo;
@@ -26,9 +27,11 @@ BOOST_AUTO_TEST_CASE( audio_clip )
 
 	// given a file path create an AudioFile
 
-	const fs::path path("share/test_files/mono-5sec-piano.wav");
+	ProjectDirectory pdir("./share/projects/motronic");
+
+	const fs::path file_path(pdir.audiofiles_path () / "notify.wav");
 	
-	AudioFileSPtr audiofile = Application::open_audiofile (path);
+	AudioFileSPtr audiofile = Application::open_audiofile (file_path);
 
 	BOOST_REQUIRE(audiofile);
 	
