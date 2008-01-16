@@ -50,3 +50,7 @@ Default (archive_test)
 audio_clip_test = mojo_test_env.Program ( 'test_audio_clip', 'test_audio_clip.cpp' )
 
 Default (audio_clip_test)
+
+filesystem_path_test = mojo_test_env.Program ( 'test_filesystem_paths', 'test_filesystem_paths.cpp' )
+
+Default (filesystem_path_test)

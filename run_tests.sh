@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# --log_level=test_suite
+# --log_level=test_suite, all, message, warning, nothing
 
 . gmojo_env.sh
 
