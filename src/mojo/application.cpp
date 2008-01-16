@@ -24,7 +24,7 @@ Application::init (int argc, char *argv[])
 
 Application::Application (int argc, char *argv[])
 	:
-		m_type_system(TypeSystem::create())
+		m_type_system(TypeSystem::init())
 {
 	register_types();
 }

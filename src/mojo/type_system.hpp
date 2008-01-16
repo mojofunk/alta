@@ -20,7 +20,7 @@ class TypeSystem
 {
 public:
 
-	static TypeSystemSPtr create ();
+	static TypeSystemSPtr init ();
 
 	static void register_type (TypeFactorySPtr type);
 	

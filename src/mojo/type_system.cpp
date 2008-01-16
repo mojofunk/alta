@@ -44,7 +44,7 @@ namespace mojo {
 TypeSystem* TypeSystem::s_type_system = 0;
 
 TypeSystemSPtr
-TypeSystem::create ()
+TypeSystem::init ()
 {
 	assert(!s_type_system);
 
