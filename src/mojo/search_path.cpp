@@ -40,7 +40,7 @@ SearchPath::SearchPath (const string& path)
 
 SearchPath::SearchPath (const vector<fs::path>& paths)
 {
-	add_directories (paths);
+	std::copy (paths.begin(), paths.end(), std::back_inserter(m_dirs));
 }
 
 SearchPath::SearchPath (const vector<string>& paths)
