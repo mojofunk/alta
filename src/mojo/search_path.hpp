@@ -141,8 +141,6 @@ public:
 protected:
 
 	void add_directory (const fs::path& directory_path);
-
-	void add_directories (const vector<fs::path>& paths);
 	
 	vector<fs::path> m_dirs;
 

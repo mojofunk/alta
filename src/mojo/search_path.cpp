@@ -61,14 +61,6 @@ SearchPath::add_directory (const fs::path& directory_path)
 	m_dirs.push_back(directory_path);
 }
 
-void
-SearchPath::add_directories (const vector<fs::path>& paths)
-{
-	for(vector<fs::path>::const_iterator i = paths.begin(); i != paths.end(); ++i) {
-		add_directory (*i);
-	}
-}
-
 const string
 SearchPath::to_string () const
 {
