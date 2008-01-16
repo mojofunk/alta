@@ -43,9 +43,17 @@ public:
 	 * Initialize SearchPath from a vector of paths that may or may
 	 * not exist.
 	 *
-	 * @param path A path string.
+	 * @param path A vector of paths.
 	 */
 	SearchPath (const vector<fs::path>& paths);
+
+	/**
+	 * Initialize SearchPath from a vector of paths that may or may
+	 * not exist.
+	 *
+	 * @param path A vector of paths.
+	 */
+	SearchPath (const vector<string>& paths);
 
 	/**
 	 * The copy constructor does what you would expect and copies the

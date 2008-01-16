@@ -43,6 +43,11 @@ SearchPath::SearchPath (const vector<fs::path>& paths)
 	add_directories (paths);
 }
 
+SearchPath::SearchPath (const vector<string>& paths)
+{
+	std::copy (paths.begin(), paths.end(), std::back_inserter(m_dirs));
+}
+
 SearchPath::SearchPath (const SearchPath& other)
 	: m_dirs(other.m_dirs)
 {
