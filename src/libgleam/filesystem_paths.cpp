@@ -17,7 +17,7 @@ get_user_data_directory ()
 }
 
 vector<string>
-get_system_data_search_path()
+get_system_data_directories ()
 {
 	vector<string> tmp;
 	const char * const * dirs;
@@ -34,7 +34,7 @@ get_system_data_search_path()
 }
 
 vector<string>
-get_system_config_search_path()
+get_system_config_directories ()
 {
 	vector<string> tmp;
 	const char * const * dirs;

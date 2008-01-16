@@ -16,10 +16,10 @@ string
 get_user_data_directory ();
 
 vector<string>
-get_system_data_search_path();
+get_system_data_directories();
 
 vector<string>
-get_system_config_search_path();
+get_system_config_directories();
 
 } // namespace gleam
 

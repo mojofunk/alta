@@ -40,7 +40,7 @@ BOOST_AUTO_TEST_CASE( test_user_data_dir )
 
 BOOST_AUTO_TEST_CASE( test_data_search_path )
 {
-	vector<string> data_paths = gleam::get_system_data_search_path();
+	vector<string> data_paths = gleam::get_system_data_directories();
 
 	BOOST_CHECK ( !data_paths.empty() );
 
@@ -49,7 +49,7 @@ BOOST_AUTO_TEST_CASE( test_data_search_path )
 
 BOOST_AUTO_TEST_CASE( test_config_search_path )
 {
-	vector<string> config_paths = gleam::get_system_config_search_path();
+	vector<string> config_paths = gleam::get_system_config_directories();
 
 	BOOST_CHECK ( !config_paths.empty() );
 
