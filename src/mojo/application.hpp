@@ -5,6 +5,8 @@
 #include <boost/shared_ptr.hpp>
 
 #include <mojo/type_system_ptr.hpp>
+#include <mojo/audio_file_ptr.hpp>
+#include <mojo/filesystem.hpp>
 
 namespace mojo {
 
@@ -26,6 +28,8 @@ public:
 	// singleton constructor
 	static ApplicationSPtr init (int argc, char *argv[]);
 
+	static AudioFileSPtr open_audiofile (const fs::path& p);
+	
 private:
 
 	// member data

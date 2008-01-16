@@ -34,4 +34,14 @@ Application::~Application()
 
 }
 
+AudioFileSPtr
+Application::open_audiofile (const fs::path& p)
+{
+	// get all the AudioFilePlugin's that are loaded
+	
+	// for each plugin try to create an AudioFile instance
+	// from the path
+	return AudioFileSPtr();
+}
+
 } // namespace mojo

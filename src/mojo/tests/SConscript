@@ -46,3 +46,7 @@ Default (app_test)
 archive_test = mojo_test_env.Program ( 'test_archive', 'test_archive.cpp' )
 
 Default (archive_test)
+
+audio_clip_test = mojo_test_env.Program ( 'test_audio_clip', 'test_audio_clip.cpp' )
+
+Default (audio_clip_test)
