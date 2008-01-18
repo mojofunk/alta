@@ -13,6 +13,8 @@ namespace mojo {
 
 	SearchPath system_config_search_path();
 
+	SearchPath plugin_search_path();
+
 } // namespace mojo
 
 #endif

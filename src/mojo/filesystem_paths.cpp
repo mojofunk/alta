@@ -26,4 +26,10 @@ system_config_search_path()
 	return sp;
 }
 
+SearchPath
+plugin_search_path ()
+{
+	return mojo_search_path ();
+}
+
 } // namespace mojo
