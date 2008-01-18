@@ -14,6 +14,9 @@ class AudioFilePlugin : public Plugin
 {
 public:
 
+	AudioFilePlugin();
+	~AudioFilePlugin();
+
 	virtual AudioFile * create() = 0;
 
 };
