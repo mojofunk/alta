@@ -105,15 +105,15 @@ get_plugin_paths (const paths_t& dirs)
 	return plugin_paths;
 }
 
-plugins_t
+PluginSet
 discover_plugins (const SearchPath& sp)
 {
 	paths_t plugin_paths(get_plugin_paths (sp.get_directories ()));
-	plugins_t plugins;
+	PluginSet plugins;
 	
 	std::transform (plugin_paths.begin(),
 			plugin_paths.end(),
-			std::insert_iterator<plugins_t>(plugins, plugins.begin()),
+			std::insert_iterator<PluginSet>(plugins, plugins.begin()),
 			open_plugin);
 
 	return plugins;

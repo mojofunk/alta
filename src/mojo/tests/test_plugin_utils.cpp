@@ -81,7 +81,7 @@ test_plugin (const PluginSPtr& plug)
 
 BOOST_AUTO_TEST_CASE( discover_plugins_test )
 {
-	plugins_t plugins = discover_plugins (plugin_search_path ());
+	PluginSet plugins = discover_plugins (plugin_search_path ());
 
 	for_each (plugins.begin(), plugins.end(), test_plugin);
 }
