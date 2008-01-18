@@ -2,109 +2,90 @@
 
 #include <map>
 
+#include <mojo/plugin.hpp>
+
 #include <mojo/plugin_utils.hpp>
 
 #include <iostream>
 
 using namespace std;
 
-typedef std::pair<mojo::Plugin*, GModule*> PluginPair;
-
-typedef std::map<std::string, PluginPair> Plugins;
+typedef std::map<mojo::Plugin*, GModule*> PluginMap;
 
 namespace {
 
-Plugins* plugin_map = 0;
+PluginMap* plugin_map = 0;
 
-mojo::Plugin*
-_find_open_plugin (const std::string& path)
+void
+_close_plugin (mojo::Plugin* plug)
 {
-	if (plugin_map == 0)
-	{
-		plugin_map = new Plugins;
-	}
+	PluginMap::iterator i = plugin_map->find (plug);
+	GModule* m = i->second;
 
-	Plugins::const_iterator i = plugin_map->find(path);
+	if (i == plugin_map->end()) return;
 
-	if (i != plugin_map->end())
+	// The plugin was allocated in a dynamically opened module
+	// so the memory has to be deleted while the module is open.
+	// and possibly from within the dll on windows?
+	plugin_map->erase(i);
+	delete plug;
+
+	if (g_module_close (m) != TRUE)
 	{
-		return i->second.first;
+		cerr << "Unable to close module" << endl;
 	}
-	return 0;
 }
 
-mojo::Plugin*
+mojo::PluginSPtr
 _open_plugin (const std::string& plugin_path)
 {
 	GModule* module = NULL;
 	mojo::plugin_func_t plugin_func = 0;
-	mojo::Plugin* plug;
 
 	module = g_module_open(plugin_path.c_str(), G_MODULE_BIND_LAZY);
 
-	if (!module)
+	if (module == NULL)
 	{
 		cerr << "module == NULL:" << g_module_error() << endl;
-		return 0;
+		return mojo::PluginSPtr();
 	} 
 
-	if (!g_module_symbol(module, "mojo_plugin_factory", (gpointer*)&plugin_func))
+	if (g_module_symbol(module, "mojo_plugin_factory",
+				(gpointer*)&plugin_func) == FALSE)
 	{
-		cerr << "g_module" << endl;
-		return 0;
+		cerr << "Could not resolve symbol while opening plugin" << endl;
+		return mojo::PluginSPtr();
 	}
 
 	if (plugin_func == NULL)
 	{
 		cerr << "factory_func == NULL" << endl;
-		return 0;
+		return mojo::PluginSPtr();
 	}
 
-	plug = static_cast<mojo::Plugin*>(plugin_func());
+	mojo::Plugin* p = static_cast<mojo::Plugin*>(plugin_func());
 
-	plugin_map->insert (std::make_pair(plugin_path, std::make_pair(plug, module)));
+	mojo::PluginSPtr plug(p, _close_plugin);
+
+	// XXX check
+	plugin_map->insert (std::make_pair(p, module));
 
 	return plug;
-}
-
-bool
-_close_plugin (mojo::Plugin* plug)
-{
-	for (Plugins::iterator i = plugin_map->begin();
-			i != plugin_map->end(); ++i)
-	{
-		if (i->second.first == plug)
-		{
-			// have to call delete from within dll on windows?
-			delete i->second.first;
-			plugin_map->erase(i);
-			return true;
-		}
-	}
-	return false;
 }
 
 } // unnamed namespace
 
 namespace mojo {
 
-Plugin*
+PluginSPtr
 open_plugin (const fs::path& plugin_path)
 {
-	Plugin* plug = _find_open_plugin(plugin_path.string());
-
-	if (plug == 0)
+	if (plugin_map == 0)
 	{
-		plug = _open_plugin(plugin_path.string());
-	}	
+		plugin_map = new PluginMap;
+	}
 
-	return plug;
-}
-
-bool
-close_plugin (Plugin* plug)
-{
-	return _close_plugin(plug);
+	return _open_plugin(plugin_path.string());
 }
 
 bool
