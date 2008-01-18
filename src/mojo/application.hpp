@@ -7,6 +7,7 @@
 #include <mojo/type_system_ptr.hpp>
 #include <mojo/audio_file_ptr.hpp>
 #include <mojo/filesystem.hpp>
+#include <mojo/plugin_set.hpp>
 
 namespace mojo {
 
@@ -29,13 +30,17 @@ public:
 	static ApplicationSPtr init (int argc, char *argv[]);
 
 	static AudioFileSPtr open_audiofile (const fs::path& p);
-	
+
+	static PluginSet get_plugins ();
+
 private:
 
 	// member data
-	static Application* s_app;
+	static Application*     s_app;
 
-	TypeSystemSPtr m_type_system;
+	TypeSystemSPtr          m_type_system;
+
+	PluginSet               m_plugins;
 
 private:
 	
