@@ -12,22 +12,21 @@ using namespace std;
 using namespace mojo;
 
 void
+test_path (const fs::path& p)
+{
+	BOOST_REQUIRE(!p.empty());
+	BOOST_TEST_MESSAGE(p);
+}
+
+void
 test_search_path (const SearchPath& sp)
 {
-	for (SearchPath::const_iterator i = sp.begin();
-			i != sp.end(); ++i)
-	{
-		BOOST_REQUIRE(!i->empty());
-		BOOST_TEST_MESSAGE(*i);
-	}
+	for_each (sp.begin(), sp.end(), test_path);
 }
 
 BOOST_AUTO_TEST_CASE( user_config_dir_test )
 {
-	fs::path user_dir = user_config_directory();
-
-	BOOST_REQUIRE(!user_dir.empty());
-	BOOST_TEST_MESSAGE(user_dir);
+	test_path (user_config_directory ());
 }
 
 BOOST_AUTO_TEST_CASE( mojo_search_path_test )
