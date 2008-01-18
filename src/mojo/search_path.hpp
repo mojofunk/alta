@@ -105,6 +105,11 @@ public:
 	 */
 	const string to_string () const;
 
+	/**
+	 * @return The vector of directory paths in the search path
+	 */
+	vector<fs::path> get_directories () const { return m_dirs; }
+
 	SearchPath& operator= (const SearchPath& path);
 
 	/**
