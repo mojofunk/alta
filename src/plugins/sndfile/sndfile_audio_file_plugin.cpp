@@ -25,7 +25,7 @@ SndfileAudioFilePlugin::get_version()
 }
 
 AudioFile*
-SndfileAudioFilePlugin::create()
+SndfileAudioFilePlugin::open (const std::string& path)
 {
 	return new SndfileAudioFile;
 }

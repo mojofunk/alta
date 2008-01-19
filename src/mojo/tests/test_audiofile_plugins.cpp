@@ -30,7 +30,7 @@ test_audiofile_plugin (AudioFilePluginSPtr plug)
 	BOOST_TEST_MESSAGE(plug->get_description());
 	BOOST_TEST_MESSAGE(plug->get_version());
 
-	AudioFile* af = plug->create();
+	AudioFile* af = plug->open("./share/projects/motronic/notify.wav");
 
 	BOOST_REQUIRE(af);
 

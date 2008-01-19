@@ -17,7 +17,10 @@ public:
 	AudioFilePlugin();
 	~AudioFilePlugin();
 
-	virtual AudioFile * create() = 0;
+	/**
+	 * return new AudioFile or 0 on failure
+	 */
+	virtual AudioFile * open (const std::string& path) = 0;
 
 };
 
