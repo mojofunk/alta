@@ -12,13 +12,15 @@ class AudioFileFormat
 {
 public:
 
-	AudioFileFormat();
-
 	virtual ~AudioFileFormat();
 
 	virtual string name() const = 0;
 
 	virtual string extension() const = 0;
+
+protected:
+
+	AudioFileFormat();
 
 };
 

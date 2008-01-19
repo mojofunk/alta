@@ -11,8 +11,6 @@ class AudioFile
 {
 public:
 
-	AudioFile();
-	
 	virtual ~AudioFile();
 
 	virtual AudioFileFormat* format() = 0;
@@ -24,6 +22,11 @@ public:
 	virtual samplerate_t samplerate() const = 0;
 
 	virtual channel_count_t channels() const = 0;
+
+protected:
+
+	AudioFile();
+
 };
 
 } // namespace mojo
