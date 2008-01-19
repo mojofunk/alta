@@ -5,6 +5,7 @@
 namespace mojo {
 
 SndfileAudioFile::SndfileAudioFile()
+	: m_format(new SndfileAudioFileFormat(0))
 {
 
 }

@@ -8,14 +8,16 @@ SndfileAudioFileFormat::SndfileAudioFileFormat(int sndfile_format)
 		m_format(sndfile_format)
 	{ }
 
-string name()
+string
+SndfileAudioFileFormat::name() const
 {
-	return "";
+	return "none";
 }
 
-string extension()
+string
+SndfileAudioFileFormat::extension() const
 {
-	return "";
+	return ".none";
 }
 
 } // namespace mojo
