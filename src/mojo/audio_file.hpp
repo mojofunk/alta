@@ -11,7 +11,9 @@ class AudioFile
 {
 public:
 
-	virtual ~AudioFile() { }
+	AudioFile();
+	
+	virtual ~AudioFile();
 
 	virtual AudioFileFormat* format() = 0;
 

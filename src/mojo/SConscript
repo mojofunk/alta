@@ -23,6 +23,8 @@ application.cpp
 archive_utils.cpp
 audio_clip.cpp
 audio_event.cpp
+audio_file.cpp
+audio_file_format.cpp
 audio_file_plugin.cpp
 audio_region.cpp
 audio_region_event.cpp
