@@ -8,6 +8,7 @@
 #include <mojo/audio_file_ptr.hpp>
 #include <mojo/filesystem.hpp>
 #include <mojo/plugin_set.hpp>
+#include <mojo/audio_file_plugin_set.hpp>
 
 namespace mojo {
 
@@ -32,6 +33,8 @@ public:
 	static AudioFileSPtr open_audiofile (const fs::path& p);
 
 	static PluginSet get_plugins ();
+
+	static AudioFilePluginSet get_audiofile_plugins ();
 
 private:
 

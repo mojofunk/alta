@@ -6,6 +6,7 @@
 #include <mojo/register_types.hpp>
 #include <mojo/filesystem_paths.hpp>
 #include <mojo/plugin_utils.hpp>
+#include <mojo/audio_file_plugin.hpp>
 
 namespace mojo {
 
@@ -51,6 +52,22 @@ PluginSet
 Application::get_plugins ()
 {
 	return s_app->m_plugins;
+}
+
+AudioFilePluginSet
+Application::get_audiofile_plugins ()
+{
+	AudioFilePluginSet audiofile_plugins;
+
+	for (PluginSet::iterator i = s_app->m_plugins.begin();
+			i != s_app->m_plugins.end(); ++i)
+	{
+		AudioFilePluginSPtr p = boost::dynamic_pointer_cast<AudioFilePlugin>(*i);
+
+		if (p) audiofile_plugins.insert (p);
+	}
+
+	return audiofile_plugins;
 }
 
 } // namespace mojo
