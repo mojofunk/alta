@@ -25,7 +25,7 @@ typedef boost::weak_ptr<Application>      ApplicationWPtr;
  */
 class Application
 {
-public:
+public: // methods
 
 	// singleton constructor
 	static ApplicationSPtr init (int argc, char *argv[]);
@@ -36,24 +36,21 @@ public:
 
 	static AudioFilePluginSet get_audiofile_plugins ();
 
-private:
+private: // member data
 
-	// member data
 	static Application*     s_app;
 
 	TypeSystemSPtr          m_type_system;
 
 	PluginSet               m_plugins;
 
-private:
+private: // constructors
 	
-	// constructors
 	Application (int argc, char *argv[]);
 	~Application();
 
-private:
+private: // private deleter for shared_ptr
 
-	// private deleter for shared_ptr
 	struct deleter;
 	friend struct deleter;
 

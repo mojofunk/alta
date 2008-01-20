@@ -8,7 +8,12 @@ namespace mojo {
 
 class SndfileAudioFilePlugin : public AudioFilePlugin
 {
-public:
+public: // constructors
+
+	SndfileAudioFilePlugin();
+	~SndfileAudioFilePlugin();
+
+public: // Plugin interface
 
 	virtual std::string get_author();
 
@@ -16,7 +21,15 @@ public:
 
 	virtual std::string get_version();
 
+public: // AudioFilePlugin interface
+	
+	virtual Formats get_readable_formats () const;
+	
 	virtual AudioFile * open(const std::string& path);
+
+private: // member data
+
+	Formats m_readable_formats;
 
 };
 

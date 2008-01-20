@@ -8,6 +8,16 @@
 
 namespace mojo {
 
+SndfileAudioFilePlugin::SndfileAudioFilePlugin()
+{
+
+}
+
+SndfileAudioFilePlugin::~SndfileAudioFilePlugin()
+{
+
+}
+
 std::string
 SndfileAudioFilePlugin::get_author()
 {
@@ -40,6 +50,12 @@ SndfileAudioFilePlugin::open (const std::string& path)
 		std::cerr << e.what() << std::endl;
 	}
 	return audio_file;
+}
+
+AudioFilePlugin::Formats
+SndfileAudioFilePlugin::get_readable_formats () const
+{
+	return m_readable_formats;
 }
 
 MOJO_CAPI void * mojo_plugin_factory(void)
