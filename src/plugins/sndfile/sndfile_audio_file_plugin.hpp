@@ -31,6 +31,12 @@ private: // member data
 
 	Formats m_readable_formats;
 
+private: // member functions
+
+	static void get_readable_formats (Formats&);
+
+	static void delete_formats (Formats&);
+
 };
 
 }

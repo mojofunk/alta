@@ -54,6 +54,8 @@ test_audiofile_plugin (AudioFilePluginSPtr plug)
 	AudioFilePlugin::Formats formats(plug->get_readable_formats());
 
 	BOOST_CHECK(!formats.empty());
+
+	for_each (formats.begin(), formats.end(), test_audiofile_format);
 }
 
 BOOST_AUTO_TEST_CASE( audiofile_plugin_test )
@@ -69,6 +71,4 @@ BOOST_AUTO_TEST_CASE( audiofile_plugin_test )
 	BOOST_CHECK(!plugins.empty());
 
 	for_each (plugins.begin(), plugins.end(), test_audiofile_plugin);
-
-
 }
