@@ -7,15 +7,24 @@
 #include <mojo/audio_file.hpp>
 #include <mojo/audio_file_format.hpp>
 
+#include <stdexcept>
+
 namespace mojo {
 
 class SndfileAudioFileFormat;
+
+class SndfileException : public std::runtime_error
+{
+public:
+	SndfileException (const string& what)
+		: std::runtime_error (what) { }
+};
 
 class SndfileAudioFile : public AudioFile
 {
 public:
 
-	SndfileAudioFile();
+	SndfileAudioFile(const string& path);
 
 	virtual ~SndfileAudioFile();
 
@@ -30,6 +39,8 @@ public:
 	virtual channel_count_t channels() const;
 
 private:
+
+	const string m_path;
 
 	SNDFILE* m_sf;
 	SF_INFO m_info;

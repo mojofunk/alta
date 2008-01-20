@@ -41,6 +41,9 @@ test_audiofile_plugin (AudioFilePluginSPtr plug)
 	BOOST_TEST_MESSAGE(format->name());
 	BOOST_TEST_MESSAGE(format->extension());
 
+	BOOST_CHECK_EQUAL(af->samplerate(), 22050U);
+	BOOST_CHECK_EQUAL(af->channels(), 2U);
+
 	delete af;
 }
 

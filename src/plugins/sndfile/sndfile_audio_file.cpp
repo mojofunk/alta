@@ -4,10 +4,18 @@
 
 namespace mojo {
 
-SndfileAudioFile::SndfileAudioFile()
-	: m_format(new SndfileAudioFileFormat(0))
+SndfileAudioFile::SndfileAudioFile(const string& path)
+	:
+		m_path(path),
+		m_sf(0),
+		m_format(0)
 {
+	m_sf = sf_open (path.c_str(), SFM_RDWR, &m_info);
 
+	if (m_sf == NULL)
+		throw SndfileException (sf_strerror (m_sf));
+
+	m_format = new SndfileAudioFileFormat(m_info.format);
 }
 
 SndfileAudioFile::~SndfileAudioFile()

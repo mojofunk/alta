@@ -4,6 +4,8 @@
 
 #include <mojo/export.h>
 
+#include <iostream>
+
 namespace mojo {
 
 std::string
@@ -27,7 +29,17 @@ SndfileAudioFilePlugin::get_version()
 AudioFile*
 SndfileAudioFilePlugin::open (const std::string& path)
 {
-	return new SndfileAudioFile;
+	SndfileAudioFile* audio_file = 0;
+
+	try
+	{
+		audio_file = new SndfileAudioFile(path);
+	}
+	catch(const SndfileException& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	return audio_file;
 }
 
 MOJO_CAPI void * mojo_plugin_factory(void)

@@ -45,6 +45,17 @@ Application::open_audiofile (const fs::path& p)
 	
 	// for each plugin try to create an AudioFile instance
 	// from the path
+
+	AudioFilePluginSet plugins = get_audiofile_plugins ();
+
+	for (AudioFilePluginSet::const_iterator i = plugins.begin();
+			i != plugins.end(); ++i)
+	{
+		AudioFile* af = (*i)->open (p.string());
+
+		if (af) return AudioFileSPtr(af);
+	}
+
 	return AudioFileSPtr();
 }
 
