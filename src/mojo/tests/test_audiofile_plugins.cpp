@@ -13,13 +13,19 @@
 #include <mojo/plugin_ptr.hpp>
 #include <mojo/audio_file_plugin.hpp>
 #include <mojo/audio_file_plugin_ptr.hpp>
-//#include <mojo/filesystem_paths.hpp>
-
-//#include <mojo/plugin_utils.hpp>
 
 using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
+
+void
+test_audiofile_format (AudioFileFormat* format)
+{
+	BOOST_REQUIRE(format);
+
+	BOOST_TEST_MESSAGE(format->name());
+	BOOST_TEST_MESSAGE(format->extension());
+}
 
 void
 test_audiofile_plugin (AudioFilePluginSPtr plug)
@@ -30,21 +36,14 @@ test_audiofile_plugin (AudioFilePluginSPtr plug)
 	BOOST_TEST_MESSAGE(plug->get_description());
 	BOOST_TEST_MESSAGE(plug->get_version());
 
-	AudioFile* af = plug->open("share/projects/motronic/audiofiles/notify.wav");
+	AudioFileSPtr af(plug->open("share/projects/motronic/audiofiles/notify.wav"));
 
 	BOOST_REQUIRE(af);
 
-	AudioFileFormat* format = af->format();
-
-	BOOST_REQUIRE(format);
-
-	BOOST_TEST_MESSAGE(format->name());
-	BOOST_TEST_MESSAGE(format->extension());
+	test_audiofile_format (af->format());
 
 	BOOST_CHECK_EQUAL(af->samplerate(), 22050U);
 	BOOST_CHECK_EQUAL(af->channels(), 2U);
-
-	delete af;
 }
 
 BOOST_AUTO_TEST_CASE( audiofile_plugin_test )
