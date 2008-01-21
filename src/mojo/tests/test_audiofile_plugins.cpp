@@ -28,6 +28,25 @@ test_audiofile_format (AudioFileFormat* format)
 }
 
 void
+test_read_audiofile (AudioFileSPtr af)
+{
+	const unsigned int frame_count = 4096U;
+	const unsigned int buffer_size = frame_count * af->channels();
+
+	BOOST_TEST_MESSAGE("Buffer size = " << buffer_size);
+
+	float* buffer = new float[buffer_size];
+
+	BOOST_REQUIRE(buffer);
+
+	count_t frames_read = af->read_frames (buffer, frame_count);
+
+	BOOST_CHECK_EQUAL(frames_read, frame_count);
+
+	delete [] buffer;
+}
+
+void
 test_open_existing_file (AudioFilePluginSPtr plug)
 {
 	AudioFileSPtr af(plug->open("share/projects/motronic/audiofiles/notify.wav"));
@@ -38,6 +57,8 @@ test_open_existing_file (AudioFilePluginSPtr plug)
 	BOOST_CHECK_EQUAL(af->channels(), 2U);
 
 	test_audiofile_format (af->format());
+
+	test_read_audiofile (af);
 }
 
 void
