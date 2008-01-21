@@ -62,3 +62,7 @@ Default (project_directory_test)
 audiofile_plugins_test = mojo_test_env.Program ( 'test_audiofile_plugins', 'test_audiofile_plugins.cpp' )
 
 Default (audiofile_plugins_test)
+
+file_utils_test = mojo_test_env.Program ( 'test_file_utils', 'test_file_utils.cpp' )
+
+Default (file_utils_test)
