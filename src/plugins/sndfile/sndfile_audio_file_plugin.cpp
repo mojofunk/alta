@@ -13,12 +13,13 @@ namespace mojo {
 SndfileAudioFilePlugin::SndfileAudioFilePlugin ()
 {
 	get_readable_formats (m_readable_formats);
-
+	get_writable_formats (m_writable_formats);
 }
 
 SndfileAudioFilePlugin::~SndfileAudioFilePlugin ()
 {
 	delete_formats (m_readable_formats);
+	delete_formats (m_writable_formats);
 }
 
 void
@@ -56,6 +57,12 @@ SndfileAudioFilePlugin::get_readable_formats (Formats& formats)
 			}
 		}
 	}
+}
+
+void
+SndfileAudioFilePlugin::get_writable_formats (Formats& formats)
+{
+	formats.push_back (new SndfileAudioFileFormat(SF_FORMAT_WAV|SF_FORMAT_FLOAT));
 }
 
 static void
@@ -102,10 +109,25 @@ SndfileAudioFilePlugin::open (const std::string& path)
 	return audio_file;
 }
 
+AudioFile*
+SndfileAudioFilePlugin::open (const std::string& path,
+		AudioFileFormat* format,
+		samplerate_t rate,
+		channel_count_t channels)
+{
+	return 0;
+}
+
 AudioFilePlugin::Formats
 SndfileAudioFilePlugin::get_readable_formats () const
 {
 	return m_readable_formats;
+}
+
+AudioFilePlugin::Formats
+SndfileAudioFilePlugin::get_writable_formats () const
+{
+	return m_writable_formats;
 }
 
 MOJO_CAPI void * mojo_plugin_factory(void)

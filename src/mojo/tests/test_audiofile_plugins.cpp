@@ -28,7 +28,7 @@ test_audiofile_format (AudioFileFormat* format)
 }
 
 void
-test_open_file (AudioFilePluginSPtr plug)
+test_open_existing_file (AudioFilePluginSPtr plug)
 {
 	AudioFileSPtr af(plug->open("share/projects/motronic/audiofiles/notify.wav"));
 
@@ -41,6 +41,14 @@ test_open_file (AudioFilePluginSPtr plug)
 }
 
 void
+test_formats (const AudioFilePlugin::Formats& formats)
+{
+	BOOST_CHECK(!formats.empty());
+
+	for_each (formats.begin(), formats.end(), test_audiofile_format);
+}
+
+void
 test_audiofile_plugin (AudioFilePluginSPtr plug)
 {
 	BOOST_REQUIRE(plug);
@@ -49,13 +57,11 @@ test_audiofile_plugin (AudioFilePluginSPtr plug)
 	BOOST_TEST_MESSAGE(plug->get_description());
 	BOOST_TEST_MESSAGE(plug->get_version());
 
-	test_open_file (plug);
+	test_open_existing_file (plug);
 
-	AudioFilePlugin::Formats formats(plug->get_readable_formats());
+	test_formats (plug->get_readable_formats ());
 
-	BOOST_CHECK(!formats.empty());
-
-	for_each (formats.begin(), formats.end(), test_audiofile_format);
+	test_formats (plug->get_writable_formats ());
 }
 
 BOOST_AUTO_TEST_CASE( audiofile_plugin_test )
