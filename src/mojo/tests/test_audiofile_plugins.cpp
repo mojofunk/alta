@@ -8,6 +8,8 @@
 // for command line args
 #include <boost/test/framework.hpp>
 
+#include <boost/format.hpp>
+
 #include <mojo/application.hpp>
 #include <mojo/plugin.hpp>
 #include <mojo/plugin_ptr.hpp>
@@ -17,6 +19,8 @@
 using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
+
+#define fmt boost::format
 
 void
 test_audiofile_format (AudioFileFormat* format)
@@ -33,15 +37,28 @@ test_read_audiofile (AudioFileSPtr af)
 	const unsigned int frame_count = 4096U;
 	const unsigned int buffer_size = frame_count * af->channels();
 
-	BOOST_TEST_MESSAGE("Buffer size = " << buffer_size);
+	BOOST_TEST_MESSAGE(fmt("Using buffer size: %1% ") % buffer_size);
 
 	float* buffer = new float[buffer_size];
 
 	BOOST_REQUIRE(buffer);
 
-	count_t frames_read = af->read_frames (buffer, frame_count);
+	// seek to start of audio data
+	BOOST_CHECK_EQUAL(af->seek(0), 0);
 
-	BOOST_CHECK_EQUAL(frames_read, frame_count);
+	count_t frames_read = 0;
+	count_t total_frames = af->frames();
+	
+	while (frames_read < total_frames)
+	{
+		frames_read += af->read_frames (buffer, frame_count);
+
+		BOOST_TEST_MESSAGE(fmt("Frames read: %1%") % frames_read);
+
+		BOOST_CHECK_EQUAL(af->seek (frames_read), frames_read);
+	}
+
+	BOOST_CHECK_EQUAL(frames_read, total_frames);
 
 	delete [] buffer;
 }
@@ -55,6 +72,7 @@ test_open_existing_file (AudioFilePluginSPtr plug)
 
 	BOOST_CHECK_EQUAL(af->samplerate(), 22050U);
 	BOOST_CHECK_EQUAL(af->channels(), 2U);
+	BOOST_CHECK_EQUAL(af->frames(), 29835U);
 
 	test_audiofile_format (af->format());
 

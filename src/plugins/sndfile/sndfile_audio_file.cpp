@@ -30,15 +30,34 @@ SndfileAudioFile::format()
 }
 
 count_t
-SndfileAudioFile::read_frames(float* ptr, count_t frame_count)
+SndfileAudioFile::read_frames (float* buf, count_t frame_count)
 {
-	return sf_readf_float(m_sf, ptr, frame_count);
+	return sf_readf_float(m_sf, buf, frame_count);
 }
 
 count_t
-SndfileAudioFile::write_frames(float* ptr, count_t frame_count)
+SndfileAudioFile::write_frames (float* buf, count_t frame_count)
 {
-	return sf_writef_float(m_sf, ptr, frame_count);
+	return sf_writef_float(m_sf, buf, frame_count);
+}
+
+count_t
+SndfileAudioFile::seek (count_t frame_offset)
+{
+	return sf_seek (m_sf, frame_offset, SEEK_SET);
+}
+
+count_t
+SndfileAudioFile::frames () const
+{
+	// read current frame offset
+	sf_count_t frame_pos = sf_seek (m_sf, 0, SEEK_CUR);
+	// seek to end
+	sf_count_t frames = sf_seek (m_sf, 0, SEEK_END);
+	// restore previous offset
+	sf_seek (m_sf, frame_pos, SEEK_SET);
+
+	return frames;
 }
 
 samplerate_t

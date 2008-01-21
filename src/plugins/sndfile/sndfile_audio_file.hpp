@@ -30,9 +30,13 @@ public:
 
 	virtual AudioFileFormat* format();
 
-	virtual count_t read_frames (float* ptr, count_t frame_count);
+	virtual count_t read_frames (float* buf, count_t frame_count);
 
-	virtual count_t write_frames (float* ptr, count_t frame_count);
+	virtual count_t write_frames (float* buf, count_t frame_count);
+
+	virtual count_t seek (count_t frame_offset);
+
+	virtual count_t frames () const;
 
 	virtual samplerate_t samplerate() const;
 
