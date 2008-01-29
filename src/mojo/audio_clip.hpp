@@ -4,6 +4,7 @@
 
 #include <mojo/types.hpp>
 #include <mojo/object.hpp>
+#include <mojo/filesystem.hpp>
 
 namespace mojo {
 
@@ -13,14 +14,32 @@ namespace mojo {
  * To support non-destructive editing of the audio file,
  * any processing of the original file results in a new
  * file being created.
+ *
+ * The AudioClip hides that it can be comprized of multiple
+ * files.
+ *
+ * An AudioClip does not contain references to AudioFile instances
+ * for each file that it references as that could mean exhausting
+ * the number of open file descriptors available to the process.
+ *
+ * Processes such as Stretching, Shrinking and Pitch shifting 
+ * an AudioClip should use original audio sources rather than
+ * using previously processed audio to create new audio
+ * sources.
+ *
+ * How to write to AudioClip in buffer size chunks and
+ * signal that a write has been completed?
  */
 class AudioClip : public Object
 {
 public:
 
-	AudioClip ();
+	/**
+	 * Create a new AudioClip from an existing audiofile
+	 */
+	AudioClip (const fs::path& audiofile);
 
-	//AudioClip ();
+	AudioClip ();
 
 public:
 
@@ -28,6 +47,10 @@ public:
 	virtual void get_properties (Properties& props) const;
 
 	virtual void set_properties (const Properties& props);
+
+private:
+
+	fs::path m_audiofile;
 
 };
 
