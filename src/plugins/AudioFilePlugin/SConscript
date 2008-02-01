@@ -5,7 +5,7 @@ import tools.pkgconfig as pkgconfig
 import os
 
 dirs = [
-    'AudioFilePlugin',
+    'sndfile',
     ]
 
 for dir in dirs:

@@ -17,7 +17,7 @@ using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
 
-const char* const plugin_path = "build/debug/plugins/sndfile/libsndfile_audio_file.so";
+const char* const plugin_path = "build/debug/plugins/AudioFilePlugin/sndfile/libsndfile_audio_file.so";
 	
 BOOST_AUTO_TEST_CASE( open_plugin_test )
 {
