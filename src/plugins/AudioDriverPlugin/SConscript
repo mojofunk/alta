@@ -1,0 +1,11 @@
+# vim: tabstop=4 expandtab shiftwidth=4
+
+import tools.pkgconfig as pkgconfig
+
+import os
+
+dirs = [
+    ]
+
+for dir in dirs:
+        SConscript( os.path.join( dir, 'SConscript' ) )
