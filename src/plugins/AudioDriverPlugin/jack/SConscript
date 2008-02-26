@@ -1,0 +1,19 @@
+# vim: tabstop=4 expandtab shiftwidth=4
+
+import tools.pkgconfig as pkgconfig
+
+Import ('env')
+
+jack_deps = { 'jack' : '0.103.0' }
+
+jack_env = env.Copy()
+
+pkgconfig.ParseDependencies ( jack_env, jack_deps )
+
+jack_source_files = Split("""
+jack_audio_driver_plugin.cpp
+""")
+
+jack_audio_driver = jack_env.SharedLibrary ( 'jack_audio_driver', jack_source_files )
+
+Default (jack_audio_driver)

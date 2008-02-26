@@ -6,6 +6,7 @@ import os
 
 dirs = [
     'AudioFilePlugin',
+    'AudioDriverPlugin'
     ]
 
 for dir in dirs:

@@ -5,6 +5,7 @@ import tools.pkgconfig as pkgconfig
 import os
 
 dirs = [
+    'jack'
     ]
 
 for dir in dirs:
