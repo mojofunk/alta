@@ -32,6 +32,7 @@ test_filesystem_paths
 test_project_directory
 test_audiofile_plugins
 test_file_utils
+test_audio_driver_plugins
 '''.split()
 
 for test in tests:

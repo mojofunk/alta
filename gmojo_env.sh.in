@@ -1,7 +1,9 @@
 
 BUILD_DIR=%BUILD_DIR%
 
-MOJO_PATH=$BUILD_DIR/plugins/AudioFilePlugin/sndfile
+MOJO_PATH=\
+$BUILD_DIR/plugins/AudioFilePlugin/sndfile:\
+$BUILD_DIR/plugins/AudioDriverPlugin/jack
 
 export MOJO_PATH
 

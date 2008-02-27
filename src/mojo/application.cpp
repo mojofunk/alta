@@ -7,6 +7,7 @@
 #include <mojo/filesystem_paths.hpp>
 #include <mojo/plugin_utils.hpp>
 #include <mojo/audio_file_plugin.hpp>
+#include <mojo/audio_driver_plugin.hpp>
 
 namespace mojo {
 
@@ -79,6 +80,22 @@ Application::get_audiofile_plugins ()
 	}
 
 	return audiofile_plugins;
+}
+
+AudioDriverPluginSet
+Application::get_audio_driver_plugins ()
+{
+	AudioDriverPluginSet audio_driver_plugins;
+
+	for (PluginSet::iterator i = s_app->m_plugins.begin();
+			i != s_app->m_plugins.end(); ++i)
+	{
+		AudioDriverPluginSPtr p = boost::dynamic_pointer_cast<AudioDriverPlugin>(*i);
+
+		if (p) audio_driver_plugins.insert (p);
+	}
+
+	return audio_driver_plugins;
 }
 
 } // namespace mojo
