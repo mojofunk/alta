@@ -19,50 +19,21 @@ mojo_test_env.Append(LIBS = [ 'boost_unit_test_framework', 'mojo', 'gleam' ])
 
 pkgconfig.ParseDependencies ( mojo_test_env, test_deps )
 
-sequence_test = mojo_test_env.Program ( 'test_sequence', 'test_sequence.cpp' )
+tests='''
+test_sequence
+test_type_system
+test_graph
+test_plugin_utils
+test_project
+test_application
+test_archive
+test_audio_clip
+test_filesystem_paths
+test_project_directory
+test_audiofile_plugins
+test_file_utils
+'''.split()
 
-Default (sequence_test)
-
-type_system_test = mojo_test_env.Program ( 'test_type_system', 'test_type_system.cpp' )
-
-Default (type_system_test)
-
-graph_test = mojo_test_env.Program ( 'test_graph', 'test_graph.cpp' )
-
-Default (graph_test)
-
-plugin_utils_test = mojo_test_env.Program ( 'test_plugin_utils', 'test_plugin_utils.cpp' )
-
-Default (plugin_utils_test)
-
-project_test = mojo_test_env.Program ( 'test_project', 'test_project.cpp' )
-
-Default (project_test)
-
-app_test = mojo_test_env.Program ( 'test_application', 'test_application.cpp' )
-
-Default (app_test)
-
-archive_test = mojo_test_env.Program ( 'test_archive', 'test_archive.cpp' )
-
-Default (archive_test)
-
-audio_clip_test = mojo_test_env.Program ( 'test_audio_clip', 'test_audio_clip.cpp' )
-
-Default (audio_clip_test)
-
-filesystem_path_test = mojo_test_env.Program ( 'test_filesystem_paths', 'test_filesystem_paths.cpp' )
-
-Default (filesystem_path_test)
-
-project_directory_test = mojo_test_env.Program ( 'test_project_directory', 'test_project_directory.cpp' )
-
-Default (project_directory_test)
-
-audiofile_plugins_test = mojo_test_env.Program ( 'test_audiofile_plugins', 'test_audiofile_plugins.cpp' )
-
-Default (audiofile_plugins_test)
-
-file_utils_test = mojo_test_env.Program ( 'test_file_utils', 'test_file_utils.cpp' )
-
-Default (file_utils_test)
+for test in tests:
+        test_program = mojo_test_env.Program ( test, test+'.cpp' )
+        Default (test_program)
