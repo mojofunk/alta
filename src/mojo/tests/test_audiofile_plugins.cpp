@@ -1,5 +1,5 @@
 
-#define BOOST_TEST_MODULE mojo_plugin_utils
+#define BOOST_TEST_MODULE mojo_audiofile_plugins
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
