@@ -14,7 +14,7 @@ class AudioDriverPlugin : public Plugin
 {
 public: // typedefs
 
-	typedef std::set<AudioDevice*> AudioDevices;
+	typedef std::set<AudioDevice*> Devices;
 
 public: // ctors
 
@@ -22,7 +22,7 @@ public: // ctors
 
 public: // interface
 
-	virtual AudioDevices get_devices () const = 0;
+	virtual Devices get_devices () const = 0;
 
 protected: // ctors
 

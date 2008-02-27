@@ -19,6 +19,12 @@ using namespace std;
 using namespace mojo;
 
 void
+test_device (AudioDevice* dev)
+{
+	BOOST_REQUIRE(dev);
+}
+
+void
 test_audio_driver_plugin (AudioDriverPluginSPtr plug)
 {
 	BOOST_REQUIRE(plug);
@@ -27,6 +33,11 @@ test_audio_driver_plugin (AudioDriverPluginSPtr plug)
 	BOOST_TEST_MESSAGE(plug->get_description());
 	BOOST_TEST_MESSAGE(plug->get_version());
 
+	AudioDriverPlugin::Devices devices = plug->get_devices();
+
+	BOOST_CHECK(!devices.empty());
+
+	for_each (devices.begin(), devices.end(), test_device);
 }
 
 BOOST_AUTO_TEST_CASE( audio_driver_plugin_test )

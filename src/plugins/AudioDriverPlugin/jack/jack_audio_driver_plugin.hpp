@@ -23,7 +23,7 @@ public: // Plugin interface
 
 public: // AudioDriverPlugin interface
 
-	AudioDevices get_devices () const;
+	Devices get_devices () const;
 
 private: // member data
 

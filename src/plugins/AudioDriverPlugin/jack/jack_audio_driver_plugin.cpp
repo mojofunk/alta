@@ -31,10 +31,10 @@ JACKAudioDriverPlugin::get_version()
 	return "0.0.1";
 }
 
-AudioDriverPlugin::AudioDevices
+AudioDriverPlugin::Devices
 JACKAudioDriverPlugin::get_devices () const
 {
-	return AudioDevices();
+	return Devices();
 }
 
 MOJO_CAPI void * mojo_plugin_factory(void)
