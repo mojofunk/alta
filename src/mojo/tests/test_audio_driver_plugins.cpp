@@ -18,10 +18,24 @@ using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
 
+int
+callback (count_t frames)
+{
+	return AudioDevice::CONTINUE;
+}
+
 void
 test_device (AudioDevice* dev)
 {
 	BOOST_REQUIRE(dev);
+
+	AudioDevice::error_t err = dev->open (callback, 44100);
+
+	BOOST_CHECK(err != AudioDevice::NO_ERROR);
+
+	err = dev->close ();
+
+	BOOST_CHECK(err != AudioDevice::NO_ERROR);
 }
 
 void
