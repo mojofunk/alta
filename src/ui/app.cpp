@@ -10,6 +10,8 @@ namespace gmojo {
 
 App* App::sm_app;
 
+App::Projects App::m_projects;
+
 boost::shared_ptr<App>
 App::create (int argc, char *argv[])
 {
@@ -99,17 +101,17 @@ App::close_project(mojo::Project* p)
 {
 	// ask about saving etc.
 
-	for(Projects::iterator i = App::instance().m_projects.begin();
-			i != App::instance().m_projects.end(); ++i)
+	for(Projects::iterator i = m_projects.begin();
+			i != m_projects.end(); ++i)
 	{
 		if (p == (*i)->get_project().get())
 		{
-			App::instance().m_projects.erase(i);
+			m_projects.erase(i);
 		}
 
 		if (App::instance().m_projects.empty ())
 		{
-			App::instance().quit();
+			quit();
 		}
 	}
 }

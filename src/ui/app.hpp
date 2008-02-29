@@ -26,7 +26,7 @@ public:
 	 * Start the event loop and Create a new
 	 * ProjectView
 	 */
-	void run();
+	static void run();
 
 	/**
 	  must check the state of each open project,
@@ -37,10 +37,10 @@ public:
 	  cancel in which case the application will not
 	  quit, how to handle that?
 	  */
-	void quit();
+	static void quit();
 
 	/// Create a new ProjectView.
-	void new_project();
+	static void new_project();
 
 	/**
 	 * Create a new ProjectView if one doesn't 
@@ -49,7 +49,7 @@ public:
 	 * If it does exist bring the ProjectView into into 
 	 * focus.
 	 */
-	void open_project(const string& path_to_file);
+	static void open_project(const string& path_to_file);
 
 	static void close_project(mojo::Project* p);
 
@@ -62,7 +62,7 @@ private:
 
 	typedef set<ProjectView::ptr> Projects;
 
-	Projects m_projects;
+	static Projects m_projects;
 
 private:
 
