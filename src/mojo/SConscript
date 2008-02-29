@@ -14,7 +14,7 @@ mojo_deps = \
 
 mojo_env = env.Copy()
 
-mojo_env.Append(LIBS = ['boost_filesystem', 'boost_signals', 'gleam' ] )
+mojo_env.Append(LIBS = ['boost_filesystem', 'gleam' ] )
 
 pkgconfig.ParseDependencies ( mojo_env, mojo_deps )
 
