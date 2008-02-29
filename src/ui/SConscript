@@ -12,7 +12,7 @@ gmojo_deps = \
 
 gmojo_env = env.Copy()
 
-gmojo_env.Append(LIBS = ['boost_signals', 'mojo', 'gleam', 'ark'])
+gmojo_env.Append(LIBS = ['boost_signals', 'mojo', 'gleam' ])
 
 pkgconfig.ParseDependencies ( gmojo_env, gmojo_deps )
 
@@ -61,6 +61,6 @@ gmojo_source_files
 
 gmojo = gmojo_env.Program( env['VERSIONED_NAME'], all_source_files)
 
-#Default(gmojo)
+Default(gmojo)
 
 env.Install(env['BINDIR'], gmojo)

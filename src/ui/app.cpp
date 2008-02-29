@@ -52,7 +52,7 @@ App::quit()
 void
 App::new_project()
 {
-	mojo::project_ptr new_project(new mojo::Project());
+	mojo::ProjectSPtr new_project(new mojo::Project());
 
 	ProjectView::ptr pview(new ProjectView (new_project));
 
@@ -94,5 +94,24 @@ App::open_project(const string& path_to_file)
     
 }
 
+void
+App::close_project(mojo::Project* p)
+{
+	// ask about saving etc.
+
+	for(Projects::iterator i = App::instance().m_projects.begin();
+			i != App::instance().m_projects.end(); ++i)
+	{
+		if (p == (*i)->get_project().get())
+		{
+			App::instance().m_projects.erase(i);
+		}
+
+		if (App::instance().m_projects.empty ())
+		{
+			App::instance().quit();
+		}
+	}
+}
 
 } // namespace gmojo

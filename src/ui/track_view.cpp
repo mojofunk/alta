@@ -5,7 +5,7 @@
 
 namespace gmojo {
 
-TrackView::TrackView(mojo::project_ptr project)
+TrackView::TrackView(mojo::ProjectSPtr project)
 	:
 		m_project(project),
 		m_scrolled_window(gtk_scrolled_window_new (NULL, NULL)),

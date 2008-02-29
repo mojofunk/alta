@@ -50,7 +50,9 @@ public:
 	 * focus.
 	 */
 	void open_project(const string& path_to_file);
-    
+
+	static void close_project(mojo::Project* p);
+
 private:
 
 	static App* sm_app;

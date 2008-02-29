@@ -11,7 +11,7 @@
 
 namespace gmojo {
 
-EditWindow::EditWindow(mojo::project_ptr project)
+EditWindow::EditWindow(mojo::ProjectSPtr project)
 	:
 		m_project(project),
 		m_ui_manager(gtk_ui_manager_new ()),

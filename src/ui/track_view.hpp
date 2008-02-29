@@ -24,7 +24,7 @@ public:
 	 * added signal so it can create a new TrackView for
 	 * any tracks that are added to the project.
 	 */
-	TrackView (mojo::project_ptr project);
+	TrackView (mojo::ProjectSPtr project);
 
 	~TrackView ();
 
@@ -32,7 +32,7 @@ public:
 
 private:
 
-	mojo::project_ptr m_project;
+	mojo::ProjectSPtr m_project;
 
 	GtkWidget* m_scrolled_window;
 	GtkWidget* m_label;

@@ -1,6 +1,8 @@
 
 #include <mojo/project.hpp>
 
+#include <ui/app.hpp>
+
 #include <ui/actions/project_actions.hpp>
 
 #include <ui/dialogs/new_audio_track_dialog.hpp>
@@ -48,7 +50,7 @@ save_project (GtkAction*, mojo::Project* project)
 void
 close_project (GtkAction*, mojo::Project* project)
 {
-	project->close ();
+	App::close_project (project);
 }
 
 void

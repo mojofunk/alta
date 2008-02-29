@@ -13,7 +13,7 @@ class EditWindow : public gtk::Window
 {
 public:
 
-	EditWindow(mojo::project_ptr project);
+	EditWindow(mojo::ProjectSPtr project);
 
 	~EditWindow();
 
@@ -31,7 +31,7 @@ private:
 
 private:
 
-	mojo::project_ptr m_project;
+	mojo::ProjectSPtr m_project;
 
 	// gobjects
 	GtkUIManager* m_ui_manager;

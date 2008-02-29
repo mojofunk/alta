@@ -25,9 +25,11 @@ public:
 
 public:
 
-	ProjectView (mojo::project_ptr project);
+	ProjectView (mojo::ProjectSPtr project);
 
 	~ProjectView ();
+
+	mojo::ProjectSPtr get_project () { return m_project; }
 
 private:
 
@@ -37,9 +39,10 @@ private:
 
 	bool on_edit_window_delete_event ();
 
+
 private:
 
-	mojo::project_ptr m_project;
+	mojo::ProjectSPtr m_project;
 
 	// per project windows
 
