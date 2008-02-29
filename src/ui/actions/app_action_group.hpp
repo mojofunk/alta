@@ -18,7 +18,7 @@ namespace gmojo {
 	 *
 	 * The caller holds the only reference to the action group.
 	 */
-	GtkActionGroup* app_action_group_new(App*);
+	GtkActionGroup* app_action_group_new();
 
 } // namespace gmojo
 

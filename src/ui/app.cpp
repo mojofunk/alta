@@ -109,7 +109,7 @@ App::close_project(mojo::Project* p)
 			m_projects.erase(i);
 		}
 
-		if (App::instance().m_projects.empty ())
+		if (m_projects.empty ())
 		{
 			quit();
 		}

@@ -5,12 +5,12 @@ namespace gmojo {
 
 void new_project(GtkAction* action, App* app)
 {
-	app->new_project();
+	App::new_project();
 }
 
 void quit(GtkAction* action, App* app)
 {
-	app->quit();
+	App::quit();
 }
 
 } // namespace gmojo

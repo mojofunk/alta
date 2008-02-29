@@ -20,8 +20,6 @@ public:
 
 	static boost::shared_ptr<App> create (int argc, char *argv[]);
 
-	static App& instance() { return *sm_app; }
-
 	/**
 	 * Start the event loop and Create a new
 	 * ProjectView

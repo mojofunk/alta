@@ -51,7 +51,7 @@ EditWindow::add_action_groups_to_ui_manager ()
 	g_object_unref (action_group);
 	
 	// add application actions
-	action_group = app_action_group_new(&App::instance());
+	action_group = app_action_group_new();
 	gtk_ui_manager_insert_action_group (m_ui_manager, action_group, 0);
 	g_object_unref (action_group);
 
