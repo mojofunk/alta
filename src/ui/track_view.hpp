@@ -10,7 +10,7 @@
 
 #include <ui/gtk/widget.hpp>
 
-#include <ui/track.hpp>
+#include <ui/track_ptr.hpp>
 #include <ui/track_canvas.hpp>
 
 namespace gmojo {
@@ -42,7 +42,7 @@ private:
 
 	TrackCanvas m_canvas;
 
-	typedef std::list<boost::shared_ptr<Track> > TrackList;
+	typedef std::list<TrackSPtr> TrackList;
 
 	TrackList m_track_list;
 
