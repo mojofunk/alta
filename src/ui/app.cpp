@@ -58,35 +58,8 @@ App::new_project()
 
 	ProjectView::ptr pview(new ProjectView (new_project));
 
-#if 0
-	// a reference to the project is not held by this class
-	// so if the project is destroyed rely on the projectview's
-	// destroy signal
-	pview->on_destroy (
-		 boost::bind (
-			 &App::on_projectview_signal_destroy, this,
-			 ProjectView::weak_ptr(pview)
-			 )
-		);
-
-#endif
-
 	// check the return?
 	m_projects.insert(pview);
-}
-
-void
-App::on_projectview_signal_destroy (ProjectView::weak_ptr projectview)
-{
-	ProjectView::ptr pview(projectview.lock ());
-	
-	// check
-	m_projects.erase(pview);
-
-	if(m_projects.empty ())
-	{
-		quit();
-	}
 }
 
 void

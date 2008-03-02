@@ -69,8 +69,6 @@ private:
 
 private:
 
-	void on_projectview_signal_destroy (ProjectView::weak_ptr);
-
 	/// project agnostic top level dialogs
 
 	// about dialog
