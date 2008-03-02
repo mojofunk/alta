@@ -20,7 +20,7 @@ main(int argc, char* argv[])
 	gtk_init(&argc, &argv);
 
 	// need to initialize mojo::App and show progress, scanning plugins etc.
-	boost::shared_ptr<mojo::Application> mojo_app = mojo::Application::init(argc, argv);
+	mojo::ApplicationSPtr mojo_app = mojo::Application::init(argc, argv);
 
 	boost::shared_ptr<App> gmojo_app = App::init(argc, argv);
 
