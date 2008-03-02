@@ -4,14 +4,12 @@
 
 #include <list>
 
-#include <gtk/gtk.h>
-
 #include <mojo/project_ptr.hpp>
 
 #include <ui/gtk/widget.hpp>
+#include <ui/gtk/widget_ptr.hpp>
 
 #include <ui/track_ptr.hpp>
-#include <ui/track_canvas.hpp>
 
 namespace gmojo {
 
@@ -40,7 +38,7 @@ private:
 	GtkWidget* m_label;
 	GtkWidget* m_hpaned;
 
-	TrackCanvas m_canvas;
+	gtk::WidgetSPtr m_canvas;
 
 	typedef std::list<TrackSPtr> TrackList;
 

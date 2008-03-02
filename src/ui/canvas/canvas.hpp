@@ -2,24 +2,24 @@
 #ifndef GMOJO_GOO_CANVAS_INCLUDED
 #define GMOJO_GOO_CANVAS_INCLUDED
 
-#include <gtk/gtkwidget.h>
+#include <ui/gtk/widget.hpp>
 
 namespace goo {
 
-class Canvas {
+class Canvas : public gtk::Widget
+{
 public:
 
 	Canvas ();
 
 	virtual ~Canvas ();
 
-	GtkWidget* widget ()
+	GtkWidget* get_widget () const
 	{ return m_canvas; }
 
 protected:
 
 	GtkWidget* m_canvas;
-
 
 };
 
