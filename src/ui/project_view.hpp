@@ -33,8 +33,6 @@ public:
 
 private:
 
-	void on_project_signal_destroy ();
-
 	bool on_edit_window_delete_event ();
 
 
