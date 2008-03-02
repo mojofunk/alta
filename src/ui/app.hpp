@@ -18,7 +18,7 @@ class App
 {
 public:
 
-	static boost::shared_ptr<App> create (int argc, char *argv[]);
+	static boost::shared_ptr<App> init (int argc, char *argv[]);
 
 	/**
 	 * Start the event loop and Create a new

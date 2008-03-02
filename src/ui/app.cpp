@@ -13,7 +13,7 @@ App* App::sm_app;
 App::Projects App::m_projects;
 
 boost::shared_ptr<App>
-App::create (int argc, char *argv[])
+App::init (int argc, char *argv[])
 {
 	if(sm_app) throw;
 
