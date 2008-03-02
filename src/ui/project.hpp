@@ -2,8 +2,6 @@
 #ifndef GMOJO_PROJECT_INCLUDED
 #define GMOJO_PROJECT_INCLUDED
 
-#include <boost/shared_ptr.hpp>
-
 #include <mojo/project_ptr.hpp>
 
 #include <ui/gtk/window_ptr.hpp>
