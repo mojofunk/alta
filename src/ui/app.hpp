@@ -14,11 +14,16 @@ namespace gmojo {
 using std::set;
 using std::string;
 
+class App;
+
+typedef boost::shared_ptr<App>    AppSPtr;
+typedef boost::weak_ptr<App>      AppWPtr;
+
 class App
 {
 public:
 
-	static boost::shared_ptr<App> init (int argc, char *argv[]);
+	static AppSPtr init (int argc, char *argv[]);
 
 	/**
 	 * Start the event loop and Create a new

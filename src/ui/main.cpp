@@ -22,7 +22,7 @@ main(int argc, char* argv[])
 	// need to initialize mojo::App and show progress, scanning plugins etc.
 	mojo::AppSPtr mojo_app = mojo::App::init(argc, argv);
 
-	boost::shared_ptr<App> gmojo_app = App::init(argc, argv);
+	AppSPtr gmojo_app = App::init(argc, argv);
 
 	gmojo_app->run();
 
