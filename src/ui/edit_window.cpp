@@ -3,6 +3,8 @@
 
 #include <ui/edit_window.hpp>
 
+#include <ui/track_view.hpp>
+
 #include <ui/actions/edit_window_menu_action_group.hpp>
 #include <ui/actions/app_action_group.hpp>
 #include <ui/actions/project_action_group.hpp>
@@ -17,7 +19,7 @@ EditWindow::EditWindow(mojo::ProjectSPtr project)
 		m_ui_manager(gtk_ui_manager_new ()),
 		m_main_vbox(gtk_vbox_new (false, 0)),
 		m_menu_bar(0),
-		m_track_view(project)
+		m_track_view(new TrackView(project))
 {
 	add_action_groups_to_ui_manager ();
 
@@ -104,7 +106,7 @@ EditWindow::pack_widgets()
 						false, false, 0);
 	
 	gtk_box_pack_start (GTK_BOX (m_main_vbox),
-						m_track_view.widget(),
+						m_track_view->get_widget(),
 						true, true, 0);
 
 	// pack main vbox in window

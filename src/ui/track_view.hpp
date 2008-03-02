@@ -8,12 +8,14 @@
 
 #include <mojo/project_ptr.hpp>
 
+#include <ui/gtk/widget.hpp>
+
 #include <ui/track.hpp>
 #include <ui/track_canvas.hpp>
 
 namespace gmojo {
 
-class TrackView
+class TrackView : public gtk::Widget
 {
 public:
 
@@ -28,7 +30,7 @@ public:
 
 	~TrackView ();
 
-	GtkWidget* widget() const { return m_hpaned;}
+	GtkWidget* get_widget() const { return m_hpaned;}
 
 private:
 

@@ -5,7 +5,7 @@
 #include <mojo/project_ptr.hpp>
 
 #include <ui/gtk/window.hpp>
-#include <ui/track_view.hpp>
+#include <ui/gtk/widget_ptr.hpp>
 
 namespace gmojo {
 
@@ -39,7 +39,7 @@ private:
 	GtkWidget* m_main_vbox;
 	GtkWidget* m_menu_bar;
 
-	TrackView m_track_view;
+	gtk::WidgetSPtr m_track_view;
 
 };
 
