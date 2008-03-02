@@ -9,7 +9,7 @@
 #include <boost/test/framework.hpp>
 
 #include <mojo/filesystem.hpp>
-#include <mojo/application.hpp>
+#include <mojo/app.hpp>
 #include <mojo/audio_clip.hpp>
 #include <mojo/audio_clip_ptr.hpp>
 #include <mojo/audio_file_ptr.hpp>
@@ -23,7 +23,7 @@ BOOST_AUTO_TEST_CASE( audio_clip )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	ApplicationSPtr app = Application::init (argc, argv);
+	AppSPtr app = App::init (argc, argv);
 
 	// given a file path create an AudioFile
 
@@ -31,7 +31,7 @@ BOOST_AUTO_TEST_CASE( audio_clip )
 
 	const fs::path file_path(pdir.audiofiles_path () / "notify.wav");
 	
-	AudioFileSPtr audiofile = Application::open_audiofile (file_path);
+	AudioFileSPtr audiofile = App::open_audiofile (file_path);
 
 	BOOST_REQUIRE(audiofile);
 	
@@ -40,8 +40,4 @@ BOOST_AUTO_TEST_CASE( audio_clip )
 
 	// The AudioClip has the same properties as the
 	// AudioFile, file format, channel format, samplerate, length
-	
-	
-
-
 }

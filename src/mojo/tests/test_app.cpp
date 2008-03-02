@@ -1,5 +1,5 @@
 
-#define BOOST_TEST_MODULE mojo_application
+#define BOOST_TEST_MODULE mojo_app
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
@@ -7,7 +7,7 @@
 // for command line args
 #include <boost/test/framework.hpp>
 
-#include <mojo/application.hpp>
+#include <mojo/app.hpp>
 #include <mojo/plugin.hpp>
 
 using namespace boost::unit_test;
@@ -20,7 +20,7 @@ BOOST_AUTO_TEST_CASE( test_init )
 	char** argv = framework::master_test_suite().argv;
 
 	{
-		ApplicationSPtr app = Application::init (argc, argv);
+		AppSPtr app = App::init (argc, argv);
 
 		BOOST_REQUIRE(app);
 	}
@@ -41,7 +41,7 @@ BOOST_AUTO_TEST_CASE( test_get_plugins )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	ApplicationSPtr app = Application::init (argc, argv);
+	AppSPtr app = App::init (argc, argv);
 
 	BOOST_REQUIRE(app);
 

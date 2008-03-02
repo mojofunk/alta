@@ -8,7 +8,7 @@
 // for command line args
 #include <boost/test/framework.hpp>
 
-#include <mojo/application.hpp>
+#include <mojo/app.hpp>
 #include <mojo/plugin.hpp>
 #include <mojo/plugin_ptr.hpp>
 #include <mojo/audio_driver_plugin.hpp>
@@ -59,10 +59,10 @@ BOOST_AUTO_TEST_CASE( audio_driver_plugin_test )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	ApplicationSPtr app = Application::init (argc, argv);
+	AppSPtr app = App::init (argc, argv);
 	BOOST_REQUIRE(app);
 
-	AudioDriverPluginSet plugins = Application::get_audio_driver_plugins();
+	AudioDriverPluginSet plugins = App::get_audio_driver_plugins();
 
 	BOOST_CHECK(!plugins.empty());
 

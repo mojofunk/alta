@@ -4,7 +4,7 @@
 #include <boost/test/unit_test_log.hpp>
 //#include <boost/test/test_tools.hpp>
 
-#include <mojo/application.hpp>
+#include <mojo/app.hpp>
 #include <mojo/dummy_archive.hpp>
 #include <mojo/xml_archive.hpp>
 
@@ -74,7 +74,7 @@ BOOST_AUTO_TEST_CASE( dummy_archive_test )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	ApplicationSPtr app = Application::init (argc, argv);
+	AppSPtr app = App::init (argc, argv);
 
 	DummyArchive archive;
 	
@@ -89,7 +89,7 @@ BOOST_AUTO_TEST_CASE( xml_archive_test )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	ApplicationSPtr app = Application::init (argc, argv);
+	AppSPtr app = App::init (argc, argv);
 
 	XMLArchive archive;
 

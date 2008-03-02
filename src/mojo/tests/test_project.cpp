@@ -5,7 +5,7 @@
 #include <boost/test/unit_test_log.hpp>
 //#include <boost/test/test_tools.hpp>
 
-#include <mojo/application.hpp>
+#include <mojo/app.hpp>
 #include <mojo/project.hpp>
 #include <mojo/project_ptr.hpp>
 #include <mojo/audio_track.hpp>
@@ -48,7 +48,7 @@ BOOST_AUTO_TEST_CASE( save_open_project_test )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	ApplicationSPtr app = Application::init (argc, argv);
+	AppSPtr app = App::init (argc, argv);
 
 	ProjectSPtr proj(new Project);
 	BOOST_REQUIRE(proj);

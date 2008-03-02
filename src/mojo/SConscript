@@ -19,7 +19,7 @@ mojo_env.Append(LIBS = ['boost_filesystem', 'gleam' ] )
 pkgconfig.ParseDependencies ( mojo_env, mojo_deps )
 
 mojo_source_files = Split("""
-application.cpp
+app.cpp
 archive_utils.cpp
 audio_clip.cpp
 audio_driver_plugin.cpp

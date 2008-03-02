@@ -1,5 +1,5 @@
 
-#include <mojo/application.hpp>
+#include <mojo/app.hpp>
 
 #include <mojo/project.hpp>
 #include <mojo/type_system.hpp>
@@ -11,22 +11,22 @@
 
 namespace mojo {
 
-Application* Application::s_app;
+App* App::s_app;
 
-ApplicationSPtr
-Application::init (int argc, char *argv[])
+AppSPtr
+App::init (int argc, char *argv[])
 {
 	if(s_app) throw;
 
 	// try/catch?
-	ApplicationSPtr ptr(new Application(argc, argv), Application::deleter());
+	AppSPtr ptr(new App(argc, argv), App::deleter());
 
 	s_app = ptr.get();
 
 	return ptr;
 }
 
-Application::Application (int argc, char *argv[])
+App::App (int argc, char *argv[])
 	:
 		m_type_system(TypeSystem::init ()),
 		m_plugins(discover_plugins (plugin_search_path ()))
@@ -34,13 +34,13 @@ Application::Application (int argc, char *argv[])
 	register_types();
 }
 
-Application::~Application()
+App::~App()
 {
 
 }
 
 AudioFileSPtr
-Application::open_audiofile (const fs::path& p)
+App::open_audiofile (const fs::path& p)
 {
 	// get all the AudioFilePlugin's that are loaded
 	
@@ -61,13 +61,13 @@ Application::open_audiofile (const fs::path& p)
 }
 
 PluginSet
-Application::get_plugins ()
+App::get_plugins ()
 {
 	return s_app->m_plugins;
 }
 
 AudioFilePluginSet
-Application::get_audiofile_plugins ()
+App::get_audiofile_plugins ()
 {
 	AudioFilePluginSet audiofile_plugins;
 
@@ -83,7 +83,7 @@ Application::get_audiofile_plugins ()
 }
 
 AudioDriverPluginSet
-Application::get_audio_driver_plugins ()
+App::get_audio_driver_plugins ()
 {
 	AudioDriverPluginSet audio_driver_plugins;
 

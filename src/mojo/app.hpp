@@ -1,6 +1,6 @@
 
-#ifndef MOJO_APPLICATION_INCLUDED
-#define MOJO_APPLICATION_INCLUDED
+#ifndef MOJO_APP_INCLUDED
+#define MOJO_APP_INCLUDED
 
 #include <boost/shared_ptr.hpp>
 
@@ -13,10 +13,10 @@
 
 namespace mojo {
 
-class Application;
+class App;
 
-typedef boost::shared_ptr<Application>    ApplicationSPtr;
-typedef boost::weak_ptr<Application>      ApplicationWPtr;
+typedef boost::shared_ptr<App>    AppSPtr;
+typedef boost::weak_ptr<App>      AppWPtr;
 
 /**
  * I'm not sure what this class should be called but it
@@ -24,12 +24,12 @@ typedef boost::weak_ptr<Application>      ApplicationWPtr;
  * to each process and as such is a singleton. Things like
  * the audio drivers, plugin management and preferences etc.
  */
-class Application
+class App
 {
 public: // methods
 
 	// singleton constructor
-	static ApplicationSPtr init (int argc, char *argv[]);
+	static AppSPtr init (int argc, char *argv[]);
 
 	static AudioFileSPtr open_audiofile (const fs::path& p);
 
@@ -41,7 +41,7 @@ public: // methods
 
 private: // member data
 
-	static Application*     s_app;
+	static App*     s_app;
 
 	TypeSystemSPtr          m_type_system;
 
@@ -49,8 +49,8 @@ private: // member data
 
 private: // constructors
 	
-	Application (int argc, char *argv[]);
-	~Application();
+	App (int argc, char *argv[]);
+	~App();
 
 private: // private deleter for shared_ptr
 
@@ -59,7 +59,7 @@ private: // private deleter for shared_ptr
 
 	struct deleter
 	{
-		void operator()(Application* app)
+		void operator()(App* app)
 		{ delete app; s_app = 0; }
 	};
 

@@ -10,7 +10,7 @@
 
 #include <boost/format.hpp>
 
-#include <mojo/application.hpp>
+#include <mojo/app.hpp>
 #include <mojo/plugin.hpp>
 #include <mojo/plugin_ptr.hpp>
 #include <mojo/audio_file_plugin.hpp>
@@ -108,10 +108,10 @@ BOOST_AUTO_TEST_CASE( audiofile_plugin_test )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	ApplicationSPtr app = Application::init (argc, argv);
+	AppSPtr app = App::init (argc, argv);
 	BOOST_REQUIRE(app);
 
-	AudioFilePluginSet plugins = Application::get_audiofile_plugins();
+	AudioFilePluginSet plugins = App::get_audiofile_plugins();
 
 	BOOST_CHECK(!plugins.empty());
 
