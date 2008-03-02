@@ -4,7 +4,6 @@
 
 #include <gtk/gtk.h>
 
-#include <boost/shared_ptr.hpp>
 #include <boost/signal.hpp>
 
 namespace gtk
@@ -13,8 +12,6 @@ namespace gtk
 class Window
 {
 public:
-
-	typedef boost::shared_ptr<Window> ptr;
 
 	typedef boost::signal<bool ()> delete_signal_t;
 	typedef boost::signals::connection  connection_t;

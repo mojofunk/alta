@@ -6,7 +6,7 @@
 
 #include <mojo/project_ptr.hpp>
 
-#include <ui/gtk/window.hpp>
+#include <ui/gtk/window_ptr.hpp>
 
 namespace gmojo {
 
@@ -36,7 +36,7 @@ private:
 
 	// per project windows
 
-	gtk::Window::ptr m_edit_window;
+	gtk::WindowSPtr m_edit_window;
 
 };
 
