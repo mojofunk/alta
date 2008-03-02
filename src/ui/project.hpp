@@ -20,11 +20,6 @@ class Project
 {
 public:
 
-	typedef boost::shared_ptr<Project> ptr;
-	typedef boost::weak_ptr<Project> weak_ptr;
-
-public:
-
 	Project (mojo::ProjectSPtr project);
 
 	~Project ();

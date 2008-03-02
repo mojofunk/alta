@@ -7,7 +7,11 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include <ui/project.hpp>
+#include <ui/project_ptr.hpp>
+
+namespace mojo {
+	class Project;
+}
 
 namespace gmojo {
 
@@ -63,7 +67,7 @@ private:
 	App (int argc, char *argv[]);
 	~App();
 
-	typedef set<Project::ptr> Projects;
+	typedef set<ProjectSPtr> Projects;
 
 	static Projects m_projects;
 

@@ -56,10 +56,8 @@ App::new_project()
 {
 	mojo::ProjectSPtr new_project(new mojo::Project());
 
-	Project::ptr pview(new Project (new_project));
-
 	// check the return?
-	m_projects.insert(pview);
+	m_projects.insert(ProjectSPtr(new Project (new_project)));
 }
 
 void
