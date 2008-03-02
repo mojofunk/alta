@@ -4,7 +4,7 @@
 #include <mojo/project_ptr.hpp>
 
 #include <ui/app.hpp>
-#include <ui/project_view.hpp>
+#include <ui/project.hpp>
 
 namespace gmojo {
 
@@ -56,7 +56,7 @@ App::new_project()
 {
 	mojo::ProjectSPtr new_project(new mojo::Project());
 
-	ProjectView::ptr pview(new ProjectView (new_project));
+	Project::ptr pview(new Project (new_project));
 
 	// check the return?
 	m_projects.insert(pview);

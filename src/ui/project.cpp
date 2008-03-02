@@ -4,28 +4,28 @@
 #include <mojo/project.hpp>
 
 #include <ui/app.hpp>
-#include <ui/project_view.hpp>
+#include <ui/project.hpp>
 #include <ui/edit_window.hpp>
 
 namespace gmojo {
 
-ProjectView::ProjectView(mojo::ProjectSPtr project)
+Project::Project(mojo::ProjectSPtr project)
 	:
 		m_project(project),
 		m_edit_window(new EditWindow(project))
 {
 	m_edit_window->on_delete_event (
-		 boost::bind (&ProjectView::on_edit_window_delete_event, this)
+		 boost::bind (&Project::on_edit_window_delete_event, this)
 		);
 }
 
-ProjectView::~ProjectView()
+Project::~Project()
 {
 
 }
 
 bool
-ProjectView::on_edit_window_delete_event ()
+Project::on_edit_window_delete_event ()
 {
 	// disconnect signals connected to the EditWindow
 	// although it doesn't really matter in this case

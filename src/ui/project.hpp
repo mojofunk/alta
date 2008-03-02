@@ -1,6 +1,6 @@
 
-#ifndef GMOJO_PROJECT_VIEW_INCLUDED
-#define GMOJO_PROJECT_VIEW_INCLUDED
+#ifndef GMOJO_PROJECT_INCLUDED
+#define GMOJO_PROJECT_INCLUDED
 
 #include <boost/shared_ptr.hpp>
 
@@ -16,25 +16,24 @@ namespace gmojo {
    the project are created and accessed. It also 
    manages the top level windows for a project
 */
-class ProjectView
+class Project
 {
 public:
 
-	typedef boost::shared_ptr<ProjectView> ptr;
-	typedef boost::weak_ptr<ProjectView> weak_ptr;
+	typedef boost::shared_ptr<Project> ptr;
+	typedef boost::weak_ptr<Project> weak_ptr;
 
 public:
 
-	ProjectView (mojo::ProjectSPtr project);
+	Project (mojo::ProjectSPtr project);
 
-	~ProjectView ();
+	~Project ();
 
 	mojo::ProjectSPtr get_project () { return m_project; }
 
 private:
 
 	bool on_edit_window_delete_event ();
-
 
 private:
 

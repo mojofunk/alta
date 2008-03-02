@@ -47,7 +47,7 @@ app.cpp
 track_view.cpp
 edit_window.cpp
 edit_window_menu_ui_definition.cpp
-project_view.cpp
+project.cpp
 main.cpp
 """)
 

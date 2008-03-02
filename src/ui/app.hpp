@@ -7,7 +7,7 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include <ui/project_view.hpp>
+#include <ui/project.hpp>
 
 namespace gmojo {
 
@@ -27,7 +27,7 @@ public:
 
 	/**
 	 * Start the event loop and Create a new
-	 * ProjectView
+	 * Project
 	 */
 	static void run();
 
@@ -42,14 +42,14 @@ public:
 	  */
 	static void quit();
 
-	/// Create a new ProjectView.
+	/// Create a new Project.
 	static void new_project();
 
 	/**
-	 * Create a new ProjectView if one doesn't 
+	 * Create a new Project if one doesn't 
 	 * already exist for that project.
 	 *
-	 * If it does exist bring the ProjectView into into 
+	 * If it does exist bring the Project into into 
 	 * focus.
 	 */
 	static void open_project(const string& path_to_file);
@@ -63,7 +63,7 @@ private:
 	App (int argc, char *argv[]);
 	~App();
 
-	typedef set<ProjectView::ptr> Projects;
+	typedef set<Project::ptr> Projects;
 
 	static Projects m_projects;
 
