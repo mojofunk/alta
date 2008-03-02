@@ -1,3 +1,5 @@
+#include <gtk/gtk.h>
+
 #include <boost/bind.hpp>
 
 #include <mojo/project.hpp>
@@ -16,6 +18,8 @@ AppSPtr
 App::init (int argc, char *argv[])
 {
 	if(sm_app) throw;
+
+	gtk_init(&argc, &argv);
 
 	// try/catch?
 	boost::shared_ptr<App> ptr(new App(argc, argv), App::deleter());

@@ -1,6 +1,4 @@
 
-#include <gtk/gtk.h>
-
 #include <mojo/mojo.hpp>
 
 #include <ui/app.hpp>
@@ -16,8 +14,6 @@ int
 main(int argc, char* argv[])
 {
 	SignalHandler	signal_handler;
-
-	gtk_init(&argc, &argv);
 
 	// need to initialize mojo::App and show progress, scanning plugins etc.
 	mojo::AppSPtr mojo_app = mojo::App::init(argc, argv);
