@@ -7,6 +7,8 @@
 #include <ui/project.hpp>
 #include <ui/edit_window.hpp>
 
+#include <ui/dialogs/new_audio_track_dialog.hpp>
+
 namespace gmojo {
 
 Project::Project()
@@ -28,6 +30,17 @@ void
 Project::save ()
 {
 
+
+}
+
+void
+Project::create_audio_track ()
+{
+	NewAudioTrackDialog dialog;
+
+	NewAudioTrackDialog::Response response = dialog.run();
+
+	if (response == NewAudioTrackDialog::Cancel) return;
 
 }
 

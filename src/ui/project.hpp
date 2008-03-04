@@ -26,6 +26,11 @@ public:
 
 	void save ();
 
+	void create_audio_track ();
+
+public:
+
+
 private:
 
 	bool on_edit_window_delete_event ();
