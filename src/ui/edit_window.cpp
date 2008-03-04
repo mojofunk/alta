@@ -1,6 +1,4 @@
 
-#include <mojo/project.hpp>
-
 #include <ui/edit_window.hpp>
 
 #include <ui/track_view.hpp>
@@ -13,7 +11,7 @@
 
 namespace gmojo {
 
-EditWindow::EditWindow(mojo::ProjectSPtr project)
+EditWindow::EditWindow(Project* project)
 	:
 		m_project(project),
 		m_ui_manager(gtk_ui_manager_new ()),
@@ -58,7 +56,7 @@ EditWindow::add_action_groups_to_ui_manager ()
 	g_object_unref (action_group);
 
 	// add project actions
-	action_group = project_action_group_new(m_project.get());
+	action_group = project_action_group_new(m_project);
 	gtk_ui_manager_insert_action_group (m_ui_manager, action_group, 0);
 	g_object_unref (action_group);
 
@@ -102,12 +100,12 @@ EditWindow::pack_widgets()
 {
 	// pack main vbox
 	gtk_box_pack_start (GTK_BOX (m_main_vbox),
-						m_menu_bar,
-						false, false, 0);
-	
+			m_menu_bar,
+			false, false, 0);
+
 	gtk_box_pack_start (GTK_BOX (m_main_vbox),
-						m_track_view->get_widget(),
-						true, true, 0);
+			m_track_view->get_widget(),
+			true, true, 0);
 
 	// pack main vbox in window
 	gtk_container_add (GTK_CONTAINER (m_window), m_main_vbox);

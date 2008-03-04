@@ -72,22 +72,18 @@ App::open_project(const string& path_to_file)
 }
 
 void
-App::close_project(mojo::Project* p)
+App::close_project(Project* p)
 {
 	// ask about saving etc.
 
 	for(Projects::iterator i = m_projects.begin();
 			i != m_projects.end(); ++i)
 	{
-		if (p == (*i)->get_project().get())
-		{
-			m_projects.erase(i);
-		}
+		if (p == i->get())
+			m_projects.erase(i); 
 
 		if (m_projects.empty ())
-		{
 			quit();
-		}
 	}
 }
 

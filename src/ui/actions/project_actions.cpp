@@ -1,5 +1,5 @@
 
-#include <mojo/project.hpp>
+#include <ui/project.hpp>
 
 #include <ui/app.hpp>
 
@@ -12,50 +12,22 @@
 namespace gmojo {
 
 void
-save_project (GtkAction*, mojo::Project* project)
+save_project (GtkAction*, Project* project)
 {
-
-	try
-	{
-		project->save ();
-	}
-	catch(...)
-	{
-	    std::cerr << "blah" << std::endl;
-
-	}
-
-	// else call gmojo::save_project_as
-
-	// must get a directory to save/move project to
-	// a ProjectFormat and a project file name
-
-#if 0
-	const fs::path dir("./");
-
-	mojo::project_format_ptr mojo_format(new mojo::MojoProjectFormat);
-
-	try
-	{
-		project->save_as (mojo_format, dir, "Untitled");
-	}
-	catch(...)
-	{
-
-	}
-#endif
-
+	project->save ();
 }
 
 void
-close_project (GtkAction*, mojo::Project* project)
+close_project (GtkAction*, Project* project)
 {
 	App::close_project (project);
 }
 
 void
-create_audio_track (GtkAction*, mojo::Project* project)
+create_audio_track (GtkAction*, Project* project)
 {
+	// project->create_audio_track ();
+	
 	NewAudioTrackDialog dialog;
 
 	NewAudioTrackDialog::Response response = dialog.run();

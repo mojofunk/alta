@@ -9,10 +9,6 @@
 
 #include <ui/project_ptr.hpp>
 
-namespace mojo {
-	class Project;
-}
-
 namespace gmojo {
 
 using std::set;
@@ -58,7 +54,7 @@ public:
 	 */
 	static void open_project(const string& path_to_file);
 
-	static void close_project(mojo::Project* p);
+	static void close_project(Project* p);
 
 private:
 
@@ -83,11 +79,6 @@ private:
 private:
 	
 	// GtkToolTips?
-
-	/**
-	 * for recieving async events from the mojo::project
-	 */
-	// glib::bus
 
 private:
 

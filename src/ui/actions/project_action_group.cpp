@@ -7,7 +7,7 @@ namespace gmojo {
 const char* const project_action_group_name = "ProjectActions";
 
 GtkActionGroup*
-project_action_group_new(mojo::Project* project)
+project_action_group_new(Project* project)
 {
 	GtkActionGroup* action_group = gtk_action_group_new (project_action_group_name);
 	

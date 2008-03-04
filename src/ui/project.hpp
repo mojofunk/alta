@@ -22,7 +22,11 @@ public:
 
 	~Project ();
 
+public:
+
 	mojo::ProjectSPtr get_project () { return m_project; }
+
+	void save ();
 
 private:
 

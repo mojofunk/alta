@@ -6,13 +6,13 @@
 
 namespace gmojo {
 
-	class mojo::Project;
+class Project;
 
-	void save_project (GtkAction*, mojo::Project*);
-	
-	void close_project (GtkAction*, mojo::Project*);
+void save_project (GtkAction*, Project*);
 
-	void create_audio_track (GtkAction*, mojo::Project*);
+void close_project (GtkAction*, Project*);
+
+void create_audio_track (GtkAction*, Project*);
 
 } // namespace gmojo
 

@@ -1,11 +1,13 @@
 
 #include <ui/track_view.hpp>
 
+#include <ui/project.hpp>
+
 #include <ui/canvas/canvas.hpp>
 
 namespace gmojo {
 
-TrackView::TrackView(mojo::ProjectSPtr project)
+TrackView::TrackView(Project* project)
 	:
 		m_project(project),
 		m_scrolled_window(gtk_scrolled_window_new (NULL, NULL)),

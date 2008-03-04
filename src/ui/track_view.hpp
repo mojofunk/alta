@@ -4,14 +4,14 @@
 
 #include <list>
 
-#include <mojo/project_ptr.hpp>
-
 #include <ui/gtk/widget.hpp>
 #include <ui/gtk/widget_ptr.hpp>
 
 #include <ui/track_ptr.hpp>
 
 namespace gmojo {
+
+class Project;
 
 class TrackView : public gtk::Widget
 {
@@ -24,7 +24,7 @@ public:
 	 * added signal so it can create a new TrackView for
 	 * any tracks that are added to the project.
 	 */
-	TrackView (mojo::ProjectSPtr project);
+	TrackView (Project* project);
 
 	~TrackView ();
 
@@ -32,7 +32,7 @@ public:
 
 private:
 
-	mojo::ProjectSPtr m_project;
+	Project* m_project;
 
 	GtkWidget* m_scrolled_window;
 	GtkWidget* m_label;
