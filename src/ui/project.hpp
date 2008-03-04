@@ -2,8 +2,6 @@
 #ifndef GMOJO_PROJECT_INCLUDED
 #define GMOJO_PROJECT_INCLUDED
 
-#include <mojo/project_ptr.hpp>
-
 #include <ui/gtk/window_ptr.hpp>
 
 namespace gmojo {
@@ -36,8 +34,6 @@ private:
 	bool on_edit_window_delete_event ();
 
 private:
-
-	mojo::ProjectSPtr m_project;
 
 	// per project windows
 

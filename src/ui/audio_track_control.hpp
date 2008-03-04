@@ -12,8 +12,6 @@ class AudioTrackControl : TrackControl
 {
 public:
 
-	//AudioTrackControl(mojo::AudioTrack audio_track);
-
 	/**
 	 * The widget that gets packed into the TrackControlList
 	 */

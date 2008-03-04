@@ -1,8 +1,6 @@
 
 #include <boost/bind.hpp>
 
-#include <mojo/project.hpp>
-
 #include <ui/app.hpp>
 #include <ui/project.hpp>
 #include <ui/edit_window.hpp>
@@ -13,7 +11,6 @@ namespace gmojo {
 
 Project::Project()
 	:
-		m_project(new mojo::Project),
 		m_edit_window(new EditWindow(this))
 {
 	m_edit_window->on_delete_event (
