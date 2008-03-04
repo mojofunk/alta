@@ -28,7 +28,7 @@ namespace mojo {
  *
  * What might be much easier is if the processing occured in a non-RT
  * thread or threads and the RT thread just copies data between buffers
- * but that would mean introducing some latency.
+ * but that would mean introducing some control latency.
  * 
  * What about an approach where if an object is modified a new state based
  * on the current state is created and then put into a queue for the
@@ -56,13 +56,46 @@ namespace mojo {
  *
  *  - processes state change events.
  *
+ * A project is considered to be in an "Offline" state
+ * when it is not part of a session.
+ *
+ * A project must be able to be edited "Offline"
+ *
+ * When a project is "Offline" it can be edited directly
+ * in the current thread.
+ *
+ * When a Project is part of a Session then all modifications
+ * to the project must be performed in a single thread.
+ *
+ * A Project can be modified while the transport is 
+ * in a rolling state.
+ *
+ * Saving a Project requires that the Project is read-only
+ * while it is being saved.
+ *
  */
 class Session
 {
 public:
 
-	// the session takes ownership of the session
-	Session(Project* p);
+	Session();
+
+public:
+
+	/**
+	 * When setting the project for the session
+	 * if the native samplerate of the project
+	 * and the rate of the AudioDevice are different
+	 * then the audio device is re-opened to match
+	 * the native rate.
+	 */
+	void set_project (ProjectSPtr proj);
+
+	ProjectSPtr get_project () const;
+
+	void set_audio_device (AudioDevice* dev);
+
+	AudioDevice* get_audio_device () const;
 
 private:
 
