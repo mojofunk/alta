@@ -18,7 +18,7 @@ class Project
 {
 public:
 
-	Project (mojo::ProjectSPtr project);
+	Project ();
 
 	~Project ();
 

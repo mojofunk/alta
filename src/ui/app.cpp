@@ -2,9 +2,6 @@
 
 #include <boost/bind.hpp>
 
-#include <mojo/project.hpp>
-#include <mojo/project_ptr.hpp>
-
 #include <ui/app.hpp>
 #include <ui/project.hpp>
 
@@ -58,10 +55,8 @@ App::quit()
 void
 App::new_project()
 {
-	mojo::ProjectSPtr new_project(new mojo::Project());
-
 	// check the return?
-	m_projects.insert(ProjectSPtr(new Project (new_project)));
+	m_projects.insert(ProjectSPtr(new Project));
 }
 
 void

@@ -9,9 +9,9 @@
 
 namespace gmojo {
 
-Project::Project(mojo::ProjectSPtr project)
+Project::Project()
 	:
-		m_project(project),
+		m_project(new mojo::Project),
 		m_edit_window(new EditWindow(this))
 {
 	m_edit_window->on_delete_event (
