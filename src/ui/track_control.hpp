@@ -2,22 +2,17 @@
 #ifndef GMOJO_TRACK_CONTROL_INCLUDED
 #define GMOJO_TRACK_CONTROL_INCLUDED
 
-#include <boost/noncopyable.hpp>
-
-#include <gtk/gtk.h>
+#include <ui/gtk/widget.hpp>
 
 namespace gmojo {
 
-class TrackControl : boost::noncopyable
+class TrackControl : public gtk::Widget
 {
 public:
 
 	virtual ~TrackControl();
 
-	/**
-	 * The widget that gets packed into the TrackControlList
-	 */
-	virtual GtkWidget* widget() = 0;
+	virtual GtkWidget* get_widget() = 0;
 
 };
 

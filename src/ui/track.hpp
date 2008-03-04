@@ -2,9 +2,7 @@
 #ifndef GMOJO_TRACK_INCLUDED
 #define GMOJO_TRACK_INCLUDED
 
-#include <boost/noncopyable.hpp>
-
-#include <ui/track_control.hpp>
+#include <ui/gtk/widget.hpp>
 
 namespace gmojo {
 
@@ -13,18 +11,18 @@ namespace gmojo {
  * This is so the TrackView doesn't need to know about specific 
  * track types.
  */
-class Track : boost::noncopyable
+class Track
 {
 public:
 
-	virtual ~Track();
+	virtual ~Track() { }
 
 	/**
 	 * TrackControl an widget that gets packed into the 
 	 * TrackControlList widget, different track types create 
 	 * custom TrackControl derived widgets.
 	 */
-	virtual TrackControl* track_control() = 0;
+	virtual gtk::Widget* track_control() = 0;
 
 };
 

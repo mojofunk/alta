@@ -2,7 +2,13 @@
 #ifndef GMOJO_PROJECT_INCLUDED
 #define GMOJO_PROJECT_INCLUDED
 
+#include <set>
+
+#include <boost/signal.hpp>
+
 #include <ui/gtk/window_ptr.hpp>
+
+#include <ui/track_ptr.hpp>
 
 namespace gmojo {
 
@@ -14,6 +20,10 @@ namespace gmojo {
 */
 class Project
 {
+public:
+
+	typedef boost::signal<void (Track*)> track_signal_t;
+
 public:
 
 	Project ();
@@ -28,6 +38,7 @@ public:
 
 public:
 
+	track_signal_t& track_added_signal () { return m_signal_track_added; }
 
 private:
 
@@ -38,6 +49,17 @@ private:
 	// per project windows
 
 	gtk::WindowSPtr m_edit_window;
+
+private: // signals
+
+	track_signal_t m_signal_track_added;
+	track_signal_t m_signal_track_removed;
+
+private:
+
+	typedef std::set<TrackSPtr> track_container_t;
+
+	track_container_t m_tracks;
 
 };
 

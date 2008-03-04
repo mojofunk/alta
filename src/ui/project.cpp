@@ -4,6 +4,7 @@
 #include <ui/app.hpp>
 #include <ui/project.hpp>
 #include <ui/edit_window.hpp>
+#include <ui/audio_track.hpp>
 
 #include <ui/dialogs/new_audio_track_dialog.hpp>
 
@@ -39,6 +40,11 @@ Project::create_audio_track ()
 
 	if (response == NewAudioTrackDialog::Cancel) return;
 
+	AudioTrack* at = new AudioTrack();
+
+	m_tracks.insert(TrackSPtr(at));
+
+	m_signal_track_added (at);
 }
 
 bool

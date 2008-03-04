@@ -2,20 +2,18 @@
 #ifndef GMOJO_AUDIO_TRACK_CONTROL_INCLUDED
 #define GMOJO_AUDIO_TRACK_CONTROL_INCLUDED
 
-#include <gtk/gtk.h>
-
 #include <ui/track_control.hpp>
 
 namespace gmojo {
 
-class AudioTrackControl : TrackControl
+class AudioTrackControl : public TrackControl
 {
 public:
 
 	/**
 	 * The widget that gets packed into the TrackControlList
 	 */
-	virtual GtkWidget* widget() { return m_base_widget; }
+	virtual GtkWidget* get_widget() { return m_base_widget; }
 
 private:
 

@@ -7,11 +7,10 @@
 #include <ui/gtk/widget.hpp>
 #include <ui/gtk/widget_ptr.hpp>
 
-#include <ui/track_ptr.hpp>
-
 namespace gmojo {
 
 class Project;
+class Track;
 
 class TrackView : public gtk::Widget
 {
@@ -32,6 +31,10 @@ public:
 
 private:
 
+	void on_track_added (Track* track);
+
+private:
+
 	Project* m_project;
 
 	GtkWidget* m_scrolled_window;
@@ -40,10 +43,9 @@ private:
 
 	gtk::WidgetSPtr m_canvas;
 
-	typedef std::list<TrackSPtr> TrackList;
+	typedef std::list<Track*> track_container_t;
 
-	TrackList m_track_list;
-
+	track_container_t m_tracks; 
 };
 
 } // namespace gmojo

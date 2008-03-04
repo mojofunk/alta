@@ -2,6 +2,7 @@
 #include <ui/track_view.hpp>
 
 #include <ui/project.hpp>
+#include <ui/track.hpp>
 
 #include <ui/canvas/canvas.hpp>
 
@@ -32,6 +33,12 @@ TrackView::TrackView(Project* project)
 TrackView::~TrackView()
 {
 
+}
+
+void
+TrackView::on_track_added (Track* track)
+{
+	m_tracks.push_back (track);
 }
 
 } // namespace gmojo

@@ -9,6 +9,9 @@ namespace gmojo {
 
 class Project;
 
+/**
+ * does the EditWindow need to keep a reference to the project?
+ */
 class EditWindow : public gtk::Window
 {
 public:
