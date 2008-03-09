@@ -4,7 +4,8 @@
 namespace gmojo {
 
 AudioTrackViewItem::AudioTrackViewItem (AudioTrack* at)
-	: m_audio_track(at)
+	:
+		m_audio_track(at)
 {
 
 }

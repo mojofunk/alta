@@ -5,7 +5,8 @@
 namespace goo {
 
 Canvas::Canvas ()
-	: m_canvas(goo_canvas_new ())
+	:
+		m_canvas(goo_canvas_new ())
 {
 
 }

@@ -11,7 +11,8 @@ const char* const title_separator = " - ";
 namespace gmojo {
 
 WindowTitle::WindowTitle(const string& title)
-	: m_title(title)
+	:
+		m_title(title)
 {
 
 }

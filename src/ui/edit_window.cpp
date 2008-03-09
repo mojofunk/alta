@@ -12,11 +12,12 @@
 namespace gmojo {
 
 EditWindow::EditWindow(Project* project)
-	: m_project(project)
-	  , m_ui_manager(gtk_ui_manager_new ())
-	  , m_main_vbox(gtk_vbox_new (false, 0))
-	  , m_menu_bar(0)
-	  , m_track_view(new TrackView(project))
+	:
+		m_project(project)
+		, m_ui_manager(gtk_ui_manager_new ())
+		, m_main_vbox(gtk_vbox_new (false, 0))
+		, m_menu_bar(0)
+		, m_track_view(new TrackView(project))
 {
 	add_action_groups_to_ui_manager ();
 

@@ -12,11 +12,12 @@
 namespace gmojo {
 
 TrackView::TrackView(Project* project)
-	: m_project(project)
-	  , m_scrolled_window(gtk_scrolled_window_new (NULL, NULL))
-	  , m_label(gtk_label_new("Track Control List"))
-	  , m_hpaned(gtk_hpaned_new ())
-	  , m_canvas(new goo::Canvas())
+	:
+		m_project(project)
+		, m_scrolled_window(gtk_scrolled_window_new (NULL, NULL))
+		, m_label(gtk_label_new("Track Control List"))
+		, m_hpaned(gtk_hpaned_new ())
+		, m_canvas(new goo::Canvas())
 {
 	gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (m_scrolled_window),
 			GTK_SHADOW_IN);
