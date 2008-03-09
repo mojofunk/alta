@@ -49,7 +49,8 @@ SearchPath::SearchPath (const vector<string>& paths)
 }
 
 SearchPath::SearchPath (const SearchPath& other)
-	: m_dirs(other.m_dirs)
+	:
+		m_dirs(other.m_dirs)
 {
 
 }

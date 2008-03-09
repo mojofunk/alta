@@ -28,8 +28,8 @@ App::init (int argc, char *argv[])
 
 App::App (int argc, char *argv[])
 	:
-		m_type_system(TypeSystem::init ()),
-		m_plugins(discover_plugins (plugin_search_path ()))
+	m_type_system(TypeSystem::init ())
+	, m_plugins(discover_plugins (plugin_search_path ()))
 {
 	register_types();
 }
