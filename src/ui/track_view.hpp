@@ -7,22 +7,28 @@
 #include <ui/gtk/widget.hpp>
 #include <ui/gtk/widget_ptr.hpp>
 
+#include <ui/track_view_item.hpp>
+
 namespace gmojo {
 
 class Project;
 class Track;
 
+/**
+ * It maintains the height by sharing a GtkAdjustment between the
+ * TrackControls and the TrackCanvasItem...? or the TrackViewItem
+ * class contains the TrackControl and TrackCanvasItem for a Track
+ * calling TrackViewItem::set_height resizes the TrackControl
+ * and TrackCanvasItem
+ *
+ * The position of a Track should be able to be changed by the 
+ * TrackControlList and the TrackCanvas having a reference to the
+ * same TrackOrder class.
+ */
 class TrackView : public gtk::Widget
 {
 public:
 
-	/**
-	 * EditCanvas needs to iterate through the tracks in 
-	 * the project and create a new TrackView for each 
-	 * track type. It also needs to connect to the track 
-	 * added signal so it can create a new TrackView for
-	 * any tracks that are added to the project.
-	 */
 	TrackView (Project* project);
 
 	~TrackView ();
@@ -31,7 +37,11 @@ public:
 
 private:
 
-	void on_track_added (Track* track);
+	void on_track_added (Track*);
+
+	void on_track_removed (Track*);
+
+	static TrackViewItem* create_track_view_item (Track*);
 
 private:
 
@@ -43,9 +53,9 @@ private:
 
 	gtk::WidgetSPtr m_canvas;
 
-	typedef std::list<Track*> track_container_t;
+	typedef std::list<TrackViewItem*> track_view_items_t;
 
-	track_container_t m_tracks; 
+	track_view_items_t m_track_views; 
 };
 
 } // namespace gmojo
