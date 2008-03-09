@@ -20,6 +20,22 @@
       function or method name and the starting bracket.
     </para>
   </section>
+
+  <section id="constructor-init-list">
+    <title>Constructor Initialization List</title>
+    <para>
+      Each member initialization should occur on a new line and each
+      line(apart from the first) should start with a comma. This means that
+      adding or removing a class member will only cause a one line change.
+    </para>
+<!-- example
+	  Foo::Foo ()
+		: m_one(1)
+		, m_two(2)
+		, m_three(3)
+	  { }
+	  -->
+  </section>
 <!--
 	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
 		href="Some_Subsection.xml" />
