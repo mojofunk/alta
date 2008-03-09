@@ -9,8 +9,28 @@
   <section id="indentation">
     <title>Indentation</title>
     <para>
-      Tabs are used for indentation.
+      Tabs are to be used for indentation.
     </para>
+  </section>
+
+  <section id="namespaces">
+    <title>Namespaces</title>
+    <para>
+      Classes inside namespaces should not use any indentation and the
+      namespace name should be added in a single line comment after the
+      closing bracket(on the same line).
+    </para>
+<programlisting>
+namespace  foo {
+
+class Widget
+{
+public:
+	Widget ();
+};
+
+} // namespace foo
+    </programlisting>
   </section>
 
   <section id="function-calls">
