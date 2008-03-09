@@ -25,16 +25,19 @@
     <title>Constructor Initialization List</title>
     <para>
       Each member initialization should occur on a new line and each
-      line(apart from the first) should start with a comma. This means that
-      adding or removing a class member will only cause a one line change.
+      line(apart from the first) should start with a comma. The colon after
+      the class constructor declaration should be on a line by itself. If
+      this style is followed adding or removing a class member will only
+      cause a one line change.
     </para>
-<!-- example
-	  Foo::Foo ()
-		: m_one(1)
-		, m_two(2)
-		, m_three(3)
-	  { }
-	  -->
+<programlisting>
+	Foo::Foo ()
+		:
+			m_one(1)
+			, m_two(2)
+			, m_three(3)
+	{ }
+    </programlisting>
   </section>
 <!--
 	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
