@@ -13,14 +13,6 @@
     </para>
   </section>
 
-  <section id="interface-names">
-    <title>Interface Names</title>
-    <para>
-      Interface names should be prefixed by a capital I, e.g IEvent,
-      IResource, IDocument etc.
-    </para>
-  </section>
-
   <section id="member-variable-names">
     <title>Member Variable Names</title>
     <para>
