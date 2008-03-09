@@ -11,8 +11,7 @@
 namespace gmojo {
 
 Project::Project()
-	:
-		m_edit_window(new EditWindow(this))
+	: m_edit_window(new EditWindow(this))
 {
 	m_edit_window->on_delete_event (
 		 boost::bind (&Project::on_edit_window_delete_event, this)
