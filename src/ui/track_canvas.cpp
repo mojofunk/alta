@@ -1,13 +1,18 @@
+#include <goocanvas.h>
 
 #include <ui/track_canvas.hpp>
-
-#include <ui/canvas/canvas.hpp>
 
 namespace gmojo {
 
 TrackCanvas::TrackCanvas ()
 	:
-		m_canvas(new goo::Canvas)
+		m_canvas(goo_canvas_new ())
+{
+
+
+}
+
+TrackCanvas::~TrackCanvas ()
 {
 
 

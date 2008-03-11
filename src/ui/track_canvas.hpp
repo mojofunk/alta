@@ -23,14 +23,16 @@ public:
 
 	TrackCanvas ();
 
+	~TrackCanvas ();
+
 public: // gtk::Widget interface
 
 	GtkWidget* get_widget () const
-	{ return m_canvas->get_widget (); }
+	{ return m_canvas; }
 
 private:
 
-	gtk::WidgetSPtr m_canvas;
+	GtkWidget* m_canvas;
 
 	// list of TrackCanvasItems
 
