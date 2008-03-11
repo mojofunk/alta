@@ -42,6 +42,7 @@ gmojo_source_files = Split("""
 app.cpp
 audio_track_control.cpp
 audio_track_view_item.cpp
+canvas_item.cpp
 track_canvas.cpp
 track_view.cpp
 track_view_item.cpp

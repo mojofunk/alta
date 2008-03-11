@@ -5,6 +5,8 @@
 #include <ui/gtk/widget.hpp>
 #include <ui/gtk/widget_ptr.hpp>
 
+#include <ui/canvas_item.hpp>
+
 namespace gmojo {
 
 /**
@@ -33,6 +35,9 @@ public: // gtk::Widget interface
 private:
 
 	GtkWidget* m_canvas;
+
+	CanvasItem* m_root_item;
+
 
 	// list of TrackCanvasItems
 
