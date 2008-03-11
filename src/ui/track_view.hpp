@@ -48,8 +48,8 @@ private:
 	Project* m_project;
 
 	GtkWidget* m_scrolled_window;
-	GtkWidget* m_label;
 	GtkWidget* m_hpaned;
+	GtkWidget* m_track_control_vbox;
 
 	gtk::WidgetSPtr m_canvas;
 

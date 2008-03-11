@@ -44,6 +44,7 @@ utils/signal_handler.cpp
 
 gmojo_source_files = Split("""
 app.cpp
+audio_track_control.cpp
 audio_track_view_item.cpp
 track_canvas.cpp
 track_view.cpp
@@ -51,6 +52,7 @@ track_view_item.cpp
 edit_window.cpp
 edit_window_menu_ui_definition.cpp
 project.cpp
+project_view.cpp
 main.cpp
 """)
 

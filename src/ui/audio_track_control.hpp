@@ -4,27 +4,31 @@
 
 #include <ui/track_control.hpp>
 
+#include <ui/gtk/widget_ptr.hpp>
+
 namespace gmojo {
+
+class AudioTrack;
 
 class AudioTrackControl : public TrackControl
 {
 public:
 
-	/**
-	 * The widget that gets packed into the TrackControlList
-	 */
-	virtual GtkWidget* get_widget() { return m_base_widget; }
+	AudioTrackControl (AudioTrack*);
+
+public:
+
+	virtual GtkWidget* get_widget() const
+	{ return m_label; }
 
 private:
 
-	/**
-	 * Ideally the widgets that make up the audio track controls
-	 * would be loaded from a glade file.
-	 */
-	GtkWidget* m_base_widget;
+	AudioTrack* m_audio_track;
+
+	GtkWidget* m_label;
 
 };
 
 } // namespace gmojo
 
-#endif // GMOJO_AUDIO_TRACK_CONTROL_INCLUDED
+#endif

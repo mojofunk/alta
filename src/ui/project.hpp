@@ -6,8 +6,6 @@
 
 #include <boost/signal.hpp>
 
-#include <ui/gtk/window_ptr.hpp>
-
 #include <ui/track_ptr.hpp>
 
 namespace gmojo {
@@ -38,17 +36,11 @@ public:
 
 public:
 
-	track_signal_t& track_added_signal () { return m_signal_track_added; }
+	track_signal_t& track_added_signal ()
+	{ return m_signal_track_added; }
 
-private:
-
-	bool on_edit_window_delete_event ();
-
-private:
-
-	// per project windows
-
-	gtk::WindowSPtr m_edit_window;
+	track_signal_t& track_removed_signal ()
+	{ return m_signal_track_removed; }
 
 private: // signals
 

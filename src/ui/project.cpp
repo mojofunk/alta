@@ -1,6 +1,4 @@
 
-#include <boost/bind.hpp>
-
 #include <ui/app.hpp>
 #include <ui/project.hpp>
 #include <ui/edit_window.hpp>
@@ -11,12 +9,8 @@
 namespace gmojo {
 
 Project::Project()
-	:
-		m_edit_window(new EditWindow(this))
 {
-	m_edit_window->on_delete_event (
-		 boost::bind (&Project::on_edit_window_delete_event, this)
-		);
+
 }
 
 Project::~Project()
@@ -38,24 +32,15 @@ Project::create_audio_track ()
 
 	NewAudioTrackDialog::Response response = dialog.run();
 
-	if (response == NewAudioTrackDialog::Cancel) return;
+	//if (response == NewAudioTrackDialog::Cancel) return;
 
-	AudioTrack* at = new AudioTrack();
+	TrackSPtr at(new AudioTrack);
 
-	m_tracks.insert(TrackSPtr(at));
-
-	m_signal_track_added (at);
-}
-
-bool
-Project::on_edit_window_delete_event ()
-{
-	// disconnect signals connected to the EditWindow
-	// although it doesn't really matter in this case
-
-	App::close_project (this);
-	
-	return true;
+	if (at)
+	{
+		m_tracks.insert(at);
+		m_signal_track_added (at.get());
+	}
 }
 
 } // namespace gmojo

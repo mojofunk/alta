@@ -14,7 +14,6 @@ class Window
 public:
 
 	typedef boost::signal<bool ()> delete_signal_t;
-	typedef boost::signals::connection  connection_t;
 
 public:
 
@@ -29,7 +28,8 @@ public:
 
 public:
 
-	connection_t on_delete_event (const delete_signal_t::slot_type& handler);
+	delete_signal_t& delete_event_signal ()
+	{ return m_signal_delete_event; }
 
 private:
 

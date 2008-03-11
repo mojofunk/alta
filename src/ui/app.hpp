@@ -2,17 +2,15 @@
 #ifndef GMOJO_APPLICATION_INCLUDED
 #define GMOJO_APPLICATION_INCLUDED
 
-#include <set>
+#include <map>
 #include <string>
 
 #include <boost/shared_ptr.hpp>
 
 #include <ui/project_ptr.hpp>
+#include <ui/project_view_ptr.hpp>
 
 namespace gmojo {
-
-using std::set;
-using std::string;
 
 class App;
 
@@ -52,7 +50,7 @@ public:
 	 * If it does exist bring the Project into into 
 	 * focus.
 	 */
-	static void open_project(const string& path_to_file);
+	static void open_project(const std::string& path_to_file);
 
 	static void close_project(Project* p);
 
@@ -63,7 +61,7 @@ private:
 	App (int argc, char *argv[]);
 	~App();
 
-	typedef set<ProjectSPtr> Projects;
+	typedef std::map<ProjectSPtr, ProjectViewSPtr> Projects;
 
 	static Projects m_projects;
 

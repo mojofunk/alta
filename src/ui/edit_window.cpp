@@ -1,4 +1,6 @@
 
+#include <boost/bind.hpp>
+
 #include <ui/edit_window.hpp>
 
 #include <ui/track_view.hpp>
@@ -28,6 +30,8 @@ EditWindow::EditWindow(Project* project)
 	pack_widgets ();
 
 	setup_window ();
+
+	delete_event_signal().connect (boost::bind (&EditWindow::on_delete_event, this));
 }
 
 EditWindow::~EditWindow()
@@ -35,6 +39,12 @@ EditWindow::~EditWindow()
 	g_object_unref (m_ui_manager);
 }
 
+bool
+EditWindow::on_delete_event ()
+{
+	App::close_project (m_project);
+	return true;
+}
 
 bool
 EditWindow::add_action_groups_to_ui_manager ()

@@ -32,6 +32,8 @@ private:
 	
 	void setup_window ();
 
+	bool on_delete_event ();
+
 private:
 
 	Project* m_project;

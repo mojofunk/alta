@@ -10,12 +10,12 @@ class TrackControl : public gtk::Widget
 {
 public:
 
-	virtual ~TrackControl();
+	virtual ~TrackControl() { }
 
-	virtual GtkWidget* get_widget() = 0;
+	virtual GtkWidget* get_widget() const = 0;
 
 };
 
 } // namespace gmojo
 
-#endif // GMOJO_TRACK_CONTROL_INCLUDED
+#endif

@@ -3,7 +3,9 @@
 #include <boost/bind.hpp>
 
 #include <ui/app.hpp>
+
 #include <ui/project.hpp>
+#include <ui/project_view.hpp>
 
 namespace gmojo {
 
@@ -55,12 +57,16 @@ App::quit()
 void
 App::new_project()
 {
-	// check the return?
-	m_projects.insert(ProjectSPtr(new Project));
+	ProjectSPtr project(new Project);
+
+	ProjectViewSPtr project_view(new ProjectView (project.get()));
+
+	m_projects.insert(std::make_pair(project, project_view));
+
 }
 
 void
-App::open_project(const string& path_to_file)
+App::open_project(const std::string& path_to_file)
 {
     
     
@@ -74,7 +80,7 @@ App::close_project(Project* p)
 	for(Projects::iterator i = m_projects.begin();
 			i != m_projects.end(); ++i)
 	{
-		if (p == i->get())
+		if (p == i->first.get())
 			m_projects.erase(i); 
 
 		if (m_projects.empty ())
