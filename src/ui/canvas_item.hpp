@@ -27,9 +27,14 @@ public:
 	static gboolean button_press_event_handler (GooCanvasItem*,
 			GooCanvasItem*, GdkEventButton*, gpointer);
 
+	static gboolean button_release_event_handler (GooCanvasItem*,
+			GooCanvasItem*, GdkEventButton*, gpointer);
+
 public:
 
 	bool on_button_press_event (GdkEventButton*);
+
+	bool on_button_release_event (GdkEventButton*);
 
 private:
 
