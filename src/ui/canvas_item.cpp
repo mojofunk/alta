@@ -1,6 +1,6 @@
 #include <ui/canvas_item.hpp>
 
-#include <iostream>
+#include <ui/track_canvas.hpp>
 
 namespace gmojo {
 
@@ -32,7 +32,7 @@ CanvasItem::button_press_event_handler (GooCanvasItem* item,
 {
 	CanvasItem* canvas_item = static_cast<CanvasItem*>(data);
 
-	return canvas_item->on_button_press_event (event);
+	return canvas_item->get_track_canvas()->on_button_press_event (canvas_item, event);
 }
 
 gboolean
@@ -42,7 +42,7 @@ CanvasItem::button_release_event_handler (GooCanvasItem* item,
 {
 	CanvasItem* canvas_item = static_cast<CanvasItem*>(data);
 
-	return canvas_item->on_button_release_event (event);
+	return canvas_item->get_track_canvas()->on_button_release_event (canvas_item, event);
 }
 
 gboolean
@@ -52,31 +52,7 @@ CanvasItem::motion_notify_event_handler (GooCanvasItem* item,
 {
 	CanvasItem* canvas_item = static_cast<CanvasItem*>(data);
 
-	return canvas_item->on_motion_notify_event (event);
-}
-
-bool
-CanvasItem::on_button_press_event (GdkEventButton* event)
-{
-	std::cerr << "button press" << std::endl;
-
-	return true;
-}
-
-bool
-CanvasItem::on_button_release_event (GdkEventButton* event)
-{
-	std::cerr << "button release" << std::endl;
-
-	return true;
-}
-
-bool
-CanvasItem::on_motion_notify_event (GdkEventMotion* event)
-{
-	std::cerr << "motion" << std::endl;
-
-	return true;
+	return canvas_item->get_track_canvas()->on_motion_notify_event (canvas_item, event);
 }
 
 } // namespace gmojo

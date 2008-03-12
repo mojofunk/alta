@@ -4,6 +4,8 @@
 
 #include <ui/canvas_group.hpp>
 
+#include <iostream>
+
 namespace gmojo {
 
 TrackCanvas::TrackCanvas ()
@@ -22,6 +24,27 @@ TrackCanvas::~TrackCanvas ()
 {
 
 
+}
+
+bool
+TrackCanvas::on_button_press_event (CanvasItem*, GdkEventButton*)
+{
+	std::cerr << "button press" << std::endl;
+	return true;
+}
+
+bool
+TrackCanvas::on_button_release_event (CanvasItem*, GdkEventButton*)
+{
+	std::cerr << "button release" << std::endl;
+	return true;
+}
+
+bool
+TrackCanvas::on_motion_notify_event (CanvasItem*, GdkEventMotion*)
+{
+	std::cerr << "motion" << std::endl;
+	return true;
 }
 
 } // namespace gmojo

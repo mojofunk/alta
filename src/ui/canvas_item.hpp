@@ -19,8 +19,11 @@ protected:
 
 public:
 
-	virtual GooCanvasItem* get_canvas_item ()
+	virtual GooCanvasItem* get_canvas_item () const
 	{ return m_item; }
+
+	TrackCanvas* get_track_canvas () const
+	{ return m_track_canvas; }
 
 public: // static event handlers
 
@@ -32,14 +35,6 @@ public: // static event handlers
 
 	static gboolean motion_notify_event_handler (GooCanvasItem*,
 			GooCanvasItem*, GdkEventMotion*, gpointer);
-
-public: // virtual event handlers
-
-	virtual bool on_button_press_event (GdkEventButton*);
-
-	virtual bool on_button_release_event (GdkEventButton*);
-
-	virtual bool on_motion_notify_event (GdkEventMotion*);
 
 private: // member data
 

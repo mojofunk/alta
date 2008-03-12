@@ -32,6 +32,14 @@ public: // gtk::Widget interface
 	GtkWidget* get_widget () const
 	{ return m_canvas; }
 
+public:
+
+	bool on_button_press_event (CanvasItem*, GdkEventButton*);
+
+	bool on_button_release_event (CanvasItem*, GdkEventButton*);
+
+	bool on_motion_notify_event (CanvasItem*, GdkEventMotion*);
+
 private:
 
 	GtkWidget* m_canvas;
@@ -43,7 +51,6 @@ private:
 
 
 };
-
 
 }
 
