@@ -22,7 +22,7 @@ public:
 	virtual GooCanvasItem* get_canvas_item ()
 	{ return m_item; }
 
-public:
+public: // static event handlers
 
 	static gboolean button_press_event_handler (GooCanvasItem*,
 			GooCanvasItem*, GdkEventButton*, gpointer);
@@ -33,7 +33,7 @@ public:
 	static gboolean motion_notify_event_handler (GooCanvasItem*,
 			GooCanvasItem*, GdkEventMotion*, gpointer);
 
-public:
+public: // virtual event handlers
 
 	virtual bool on_button_press_event (GdkEventButton*);
 
@@ -41,7 +41,7 @@ public:
 
 	virtual bool on_motion_notify_event (GdkEventMotion*);
 
-private:
+private: // member data
 
 	GooCanvasItem* m_item;
 
