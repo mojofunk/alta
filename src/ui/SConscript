@@ -33,6 +33,10 @@ dialogs/audio_file_import_dialog.cpp
 dialogs/new_audio_track_dialog.cpp
 """)
 
+tools_source_files = Split("""
+tools/object_selection_tool.cpp
+""")
+
 utils_source_files = Split("""
 utils/window_title.cpp
 utils/signal_handler.cpp
@@ -57,6 +61,7 @@ all_source_files = \
 gtk_source_files + \
 actions_source_files + \
 dialogs_source_files + \
+tools_source_files + \
 utils_source_files + \
 gmojo_source_files
 
