@@ -30,11 +30,16 @@ public:
 	static gboolean button_release_event_handler (GooCanvasItem*,
 			GooCanvasItem*, GdkEventButton*, gpointer);
 
+	static gboolean motion_notify_event_handler (GooCanvasItem*,
+			GooCanvasItem*, GdkEventMotion*, gpointer);
+
 public:
 
-	bool on_button_press_event (GdkEventButton*);
+	virtual bool on_button_press_event (GdkEventButton*);
 
-	bool on_button_release_event (GdkEventButton*);
+	virtual bool on_button_release_event (GdkEventButton*);
+
+	virtual bool on_motion_notify_event (GdkEventMotion*);
 
 private:
 
