@@ -4,8 +4,6 @@
 
 #include <gtk/gtk.h>
 
-#include <boost/signal.hpp>
-
 namespace gtk
 {
 
