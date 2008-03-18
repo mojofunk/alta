@@ -16,9 +16,11 @@ public: // Tool interface
 	
 	const std::string get_name() const;
 
-	virtual void on_button_press (TrackCanvas*, CanvasItem*, GdkEventButton*);
+	virtual bool on_button_press (TrackCanvas*, CanvasItem*, GdkEventButton*);
 	
-	virtual void on_button_release (TrackCanvas*, CanvasItem*, GdkEventButton*);
+	virtual bool on_button_release (TrackCanvas*, CanvasItem*, GdkEventButton*);
+
+	virtual bool on_motion (TrackCanvas*, CanvasItem*, GdkEventMotion*);
 
 };
 

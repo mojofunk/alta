@@ -31,11 +31,11 @@ public:
 
 	virtual const std::string get_name() const = 0;
 
-	virtual void on_button_press (TrackCanvas*, CanvasItem*, GdkEventButton*) = 0;
+	virtual bool on_button_press (TrackCanvas*, CanvasItem*, GdkEventButton*) = 0;
 	
-	virtual void on_button_release (TrackCanvas*, CanvasItem*, GdkEventButton*) = 0;
+	virtual bool on_button_release (TrackCanvas*, CanvasItem*, GdkEventButton*) = 0;
 
-	//virtual void on_motion () = 0;
+	virtual bool on_motion (TrackCanvas*, CanvasItem*, GdkEventMotion*) = 0;
 
 	//virtual bool on_key_press () = 0;
 

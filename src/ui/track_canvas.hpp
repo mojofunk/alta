@@ -9,12 +9,10 @@
 
 namespace gmojo {
 
+class Tool;
+
 /**
- * The TrackCanvas should not depend on the TrackCanvasTool
- * Interface. One option would be to transform canvas api specific
- * events into generic events that are emitted by the TrackCanvas
- * so that classes outside of the TrackCanvas don't depend 
- * on the canvas implementation.
+ * TrackCanvas should only depend on the Tool Interface.
  *
  * Does the TrackCanvas need to handle any events itself? 
  *
@@ -46,6 +44,7 @@ private:
 
 	CanvasItem* m_root_item;
 
+	Tool* m_tool;
 
 	// list of TrackCanvasItems
 

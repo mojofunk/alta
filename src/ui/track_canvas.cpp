@@ -4,7 +4,7 @@
 
 #include <ui/canvas_group.hpp>
 
-#include <iostream>
+#include <ui/tools/object_selection_tool.hpp>
 
 namespace gmojo {
 
@@ -12,6 +12,7 @@ TrackCanvas::TrackCanvas ()
 	:
 		m_canvas(goo_canvas_new ())
 		, m_root_item(0)
+		, m_tool(new ObjectSelectionTool) // leak
 {
 	m_root_item = new CanvasGroup (this);
 
@@ -27,23 +28,21 @@ TrackCanvas::~TrackCanvas ()
 }
 
 bool
-TrackCanvas::on_button_press_event (CanvasItem*, GdkEventButton*)
+TrackCanvas::on_button_press_event (CanvasItem* i, GdkEventButton* ev)
 {
-	std::cerr << "button press" << std::endl;
-	return true;
+	return m_tool->on_button_press (this, i, ev);
 }
 
 bool
-TrackCanvas::on_button_release_event (CanvasItem*, GdkEventButton*)
+TrackCanvas::on_button_release_event (CanvasItem* i, GdkEventButton* ev)
 {
-	std::cerr << "button release" << std::endl;
-	return true;
+	return m_tool->on_button_release (this, i, ev);
 }
 
 bool
-TrackCanvas::on_motion_notify_event (CanvasItem*, GdkEventMotion*)
+TrackCanvas::on_motion_notify_event (CanvasItem* i, GdkEventMotion* ev)
 {
-	std::cerr << "motion" << std::endl;
+	return m_tool->on_motion (this, i, ev);
 	return true;
 }
 
