@@ -20,7 +20,7 @@ EditWindow::EditWindow(Project* project)
 		, m_menu_bar(0)
 		, m_track_view(new TrackView(project))
 {
-  add_action_groups_to_ui_manager ();
+	add_action_groups_to_ui_manager ();
 
 	merge_ui_definitions ();
 
@@ -30,8 +30,8 @@ EditWindow::EditWindow(Project* project)
 
 	setup_window ();
 
-  g_signal_connect (G_OBJECT (m_window), "delete-event",
-      G_CALLBACK (EditWindow::delete_event_handler), this);
+	g_signal_connect (G_OBJECT (m_window), "delete-event",
+			G_CALLBACK (EditWindow::delete_event_handler), this);
 }
 
 EditWindow::~EditWindow()
