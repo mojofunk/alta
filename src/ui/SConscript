@@ -16,10 +16,6 @@ gmojo_env.Append(LIBS = ['boost_signals', 'mojo', 'gleam' ])
 
 pkgconfig.ParseDependencies ( gmojo_env, gmojo_deps )
 
-gtk_source_files = Split("""
-gtk/window.cpp
-""")
-
 actions_source_files = Split("""
 actions/app_action_group.cpp
 actions/app_actions.cpp
@@ -58,7 +54,6 @@ main.cpp
 """)
 
 all_source_files = \
-gtk_source_files + \
 actions_source_files + \
 dialogs_source_files + \
 tools_source_files + \

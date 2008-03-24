@@ -1,6 +1,4 @@
 
-#include <boost/bind.hpp>
-
 #include <ui/edit_window.hpp>
 
 #include <ui/track_view.hpp>
@@ -16,12 +14,13 @@ namespace gmojo {
 EditWindow::EditWindow(Project* project)
 	:
 		m_project(project)
+		, m_window (gtk_window_new (GTK_WINDOW_TOPLEVEL))
 		, m_ui_manager(gtk_ui_manager_new ())
 		, m_main_vbox(gtk_vbox_new (false, 0))
 		, m_menu_bar(0)
 		, m_track_view(new TrackView(project))
 {
-	add_action_groups_to_ui_manager ();
+  add_action_groups_to_ui_manager ();
 
 	merge_ui_definitions ();
 
@@ -31,12 +30,22 @@ EditWindow::EditWindow(Project* project)
 
 	setup_window ();
 
-	delete_event_signal().connect (boost::bind (&EditWindow::on_delete_event, this));
+  g_signal_connect (G_OBJECT (m_window), "delete-event",
+      G_CALLBACK (EditWindow::delete_event_handler), this);
 }
 
 EditWindow::~EditWindow()
 {
+	gtk_widget_destroy (GTK_WIDGET (m_window));
 	g_object_unref (m_ui_manager);
+}
+
+gboolean
+EditWindow::delete_event_handler (GtkWidget* widget,
+		GdkEvent* event, gpointer data )
+{
+	EditWindow* window = static_cast<EditWindow*>(data);
+	return window->on_delete_event ();
 }
 
 bool
