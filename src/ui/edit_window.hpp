@@ -2,8 +2,8 @@
 #ifndef GMOJO_EDIT_WINDOW_INCLUDED
 #define GMOJO_EDIT_WINDOW_INCLUDED
 
-#include <ui/gtk/widget.hpp>
-#include <ui/gtk/widget_ptr.hpp>
+#include <ui/widget.hpp>
+#include <ui/widget_ptr.hpp>
 
 namespace gmojo {
 
@@ -12,7 +12,7 @@ class Project;
 /**
  * does the EditWindow need to keep a reference to the project?
  */
-class EditWindow : public gtk::Widget
+class EditWindow : public Widget
 {
 public:
 
@@ -56,7 +56,7 @@ private:
 	GtkWidget* m_main_vbox;
 	GtkWidget* m_menu_bar;
 
-	gtk::WidgetSPtr m_track_view;
+	WidgetSPtr m_track_view;
 
 };
 

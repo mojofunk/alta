@@ -2,7 +2,7 @@
 #ifndef GMOJO_PROJECT_VIEW_INCLUDED
 #define GMOJO_PROJECT_VIEW_INCLUDED
 
-#include <ui/gtk/widget_ptr.hpp>
+#include <ui/widget_ptr.hpp>
 
 namespace gmojo {
 
@@ -16,7 +16,7 @@ public:
 
 private: // per project windowss
 	
-	gtk::WidgetSPtr m_edit_window;
+	WidgetSPtr m_edit_window;
 
 };
 

@@ -2,8 +2,7 @@
 #ifndef GMOJO_TRACK_CANVAS_INCLUDED
 #define GMOJO_TRACK_CANVAS_INCLUDED
 
-#include <ui/gtk/widget.hpp>
-#include <ui/gtk/widget_ptr.hpp>
+#include <ui/widget.hpp>
 
 #include <ui/canvas_item.hpp>
 
@@ -17,7 +16,7 @@ class Tool;
  * Does the TrackCanvas need to handle any events itself? 
  *
  */
-class TrackCanvas : public gtk::Widget
+class TrackCanvas : public Widget
 {
 public:
 
@@ -47,7 +46,6 @@ private:
 	Tool* m_tool;
 
 	// list of TrackCanvasItems
-
 
 };
 

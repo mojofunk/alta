@@ -4,8 +4,8 @@
 
 #include <list>
 
-#include <ui/gtk/widget.hpp>
-#include <ui/gtk/widget_ptr.hpp>
+#include <ui/widget.hpp>
+#include <ui/widget_ptr.hpp>
 
 #include <ui/track_view_item.hpp>
 
@@ -25,7 +25,7 @@ class Track;
  * TrackControlList and the TrackCanvas having a reference to the
  * same TrackOrder class.
  */
-class TrackView : public gtk::Widget
+class TrackView : public Widget
 {
 public:
 
@@ -51,7 +51,7 @@ private:
 	GtkWidget* m_hpaned;
 	GtkWidget* m_track_control_vbox;
 
-	gtk::WidgetSPtr m_canvas;
+	WidgetSPtr m_canvas;
 
 	typedef std::list<TrackViewItem*> track_view_items_t;
 

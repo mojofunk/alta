@@ -1,10 +1,10 @@
 
-#ifndef GMOJO_GTK_WIDGET_INCLUDED
-#define GMOJO_GTK_WIDGET_INCLUDED
+#ifndef GMOJO_WIDGET_INCLUDED
+#define GMOJO_WIDGET_INCLUDED
 
 #include <gtk/gtk.h>
 
-namespace gtk
+namespace gmojo
 {
 
 class Widget
@@ -19,6 +19,6 @@ public: // interface
 
 };
 
-} // namespace gtk
+} // namespace gmojo
 
 #endif

@@ -4,8 +4,6 @@
 
 #include <ui/track_control.hpp>
 
-#include <ui/gtk/widget_ptr.hpp>
-
 namespace gmojo {
 
 class AudioTrack;

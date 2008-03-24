@@ -2,11 +2,11 @@
 #ifndef GMOJO_TRACK_CONTROL_INCLUDED
 #define GMOJO_TRACK_CONTROL_INCLUDED
 
-#include <ui/gtk/widget.hpp>
+#include <ui/widget.hpp>
 
 namespace gmojo {
 
-class TrackControl : public gtk::Widget
+class TrackControl : public Widget
 {
 public:
 
