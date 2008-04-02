@@ -52,6 +52,7 @@ edit_window_menu_ui_definition.cpp
 project.cpp
 project_view.cpp
 main.cpp
+status_bar.cpp
 """)
 
 all_source_files = \

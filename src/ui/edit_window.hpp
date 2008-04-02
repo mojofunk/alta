@@ -14,18 +14,18 @@ class Project;
  */
 class EditWindow : public Widget
 {
-public:
+public: // constructors
 
 	EditWindow(Project* project);
 
 	~EditWindow();
 
-public:
+public: // widget interface
 
 	virtual GtkWidget* get_widget () const
 	{ return m_window; }
 
-private:
+private: // methods 
 
 	bool add_action_groups_to_ui_manager ();
 
@@ -44,11 +44,9 @@ private: // event handlers
 
 	bool on_delete_event ();
 
-private:
+private: // member data
 
 	Project* m_project;
-
-	// gobjects
 
 	GtkWidget* m_window;
 	GtkUIManager* m_ui_manager;
@@ -58,6 +56,7 @@ private:
 	
 	WidgetSPtr m_transport_toolbar;
 	WidgetSPtr m_track_view;
+	WidgetSPtr m_status_bar;
 
 };
 

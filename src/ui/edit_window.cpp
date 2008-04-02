@@ -3,6 +3,7 @@
 
 #include <ui/track_view.hpp>
 #include <ui/transport_toolbar.hpp>
+#include <ui/status_bar.hpp>
 
 #include <ui/actions/edit_window_menu_action_group.hpp>
 #include <ui/actions/app_action_group.hpp>
@@ -21,6 +22,7 @@ EditWindow::EditWindow(Project* project)
 		, m_menu_bar(0)
 		, m_transport_toolbar(new TransportToolbar)
 		, m_track_view(new TrackView(project))
+		, m_status_bar(new StatusBar)
 {
 	add_action_groups_to_ui_manager ();
 
@@ -131,6 +133,10 @@ EditWindow::pack_widgets()
 	gtk_box_pack_start (GTK_BOX (m_main_vbox),
 			m_track_view->get_widget (),
 			true, true, 0);
+
+	gtk_box_pack_start (GTK_BOX (m_main_vbox),
+			m_status_bar->get_widget (),
+			false, false, 0);
 
 	// pack main vbox in window
 	gtk_container_add (GTK_CONTAINER (m_window), m_main_vbox);

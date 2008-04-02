@@ -34,7 +34,6 @@ TransportToolbar::TransportToolbar ()
 			G_CALLBACK (TransportToolbar::button_toggled), this);
 	g_signal_connect (m_play_button, "toggled",
 			G_CALLBACK (TransportToolbar::button_toggled), this);
-
 }
 
 void
