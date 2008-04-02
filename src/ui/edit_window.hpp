@@ -55,7 +55,8 @@ private:
 
 	GtkWidget* m_main_vbox;
 	GtkWidget* m_menu_bar;
-
+	
+	WidgetSPtr m_transport_toolbar;
 	WidgetSPtr m_track_view;
 
 };

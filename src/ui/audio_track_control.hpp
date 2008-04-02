@@ -10,16 +10,16 @@ class AudioTrack;
 
 class AudioTrackControl : public TrackControl
 {
-public:
+public: // constructors
 
 	AudioTrackControl (AudioTrack*);
 
-public:
+public: // widget interface
 
 	virtual GtkWidget* get_widget() const
 	{ return m_hbox; }
 
-private:
+private: // member data
 
 	AudioTrack* m_audio_track;
 

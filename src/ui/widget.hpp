@@ -4,8 +4,7 @@
 
 #include <gtk/gtk.h>
 
-namespace gmojo
-{
+namespace gmojo {
 
 class Widget
 {

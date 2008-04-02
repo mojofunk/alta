@@ -46,6 +46,7 @@ canvas_item.cpp
 track_canvas.cpp
 track_view.cpp
 track_view_item.cpp
+transport_toolbar.cpp
 edit_window.cpp
 edit_window_menu_ui_definition.cpp
 project.cpp
