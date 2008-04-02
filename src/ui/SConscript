@@ -43,12 +43,12 @@ app.cpp
 audio_track_control.cpp
 audio_track_view_item.cpp
 canvas_item.cpp
+filesystem_paths.cpp
 track_canvas.cpp
 track_view.cpp
 track_view_item.cpp
 transport_toolbar.cpp
 edit_window.cpp
-edit_window_menu_ui_definition.cpp
 project.cpp
 project_view.cpp
 main.cpp

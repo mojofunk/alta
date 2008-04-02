@@ -9,7 +9,7 @@
 #include <ui/actions/app_action_group.hpp>
 #include <ui/actions/project_action_group.hpp>
 
-#include <ui/edit_window_menu_ui_definition.hpp>
+#include <ui/filesystem_paths.hpp>
 
 namespace gmojo {
 
@@ -86,36 +86,26 @@ EditWindow::add_action_groups_to_ui_manager ()
 	return true;
 }
 
-bool
+void
 EditWindow::merge_ui_definitions ()
 {
 	guint merge_id = 0;
 	GError * error = NULL;
+	fs::path menu_file = get_ui_definition_directory () / "edit-menu.xml";
 
-	merge_id = gtk_ui_manager_add_ui_from_string (m_ui_manager,
-			edit_window_menu_ui_definition, -1, &error);
+	merge_id = gtk_ui_manager_add_ui_from_file (m_ui_manager,
+			menu_file.string().c_str(), &error);
 
-	if (merge_id == 0) {
-
-		g_error_free(error);
-	
-		return false;
+	if (merge_id == 0) { 
+	   	g_error_free(error); 
 	}
-
-	return true;
 }
 
-bool
+void
 EditWindow::create_menu_bar()
 {
-
 	m_menu_bar = gtk_ui_manager_get_widget(m_ui_manager, "/MainMenuBar");
-	
-	if(!m_menu_bar)
-	{
-		return false;
-	}
-	return true;
+	// assert
 }
 
 void

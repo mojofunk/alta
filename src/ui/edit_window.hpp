@@ -29,9 +29,9 @@ private: // methods
 
 	bool add_action_groups_to_ui_manager ();
 
-	bool merge_ui_definitions ();
+	void merge_ui_definitions ();
 
-	bool create_menu_bar ();
+	void create_menu_bar ();
 
 	void pack_widgets();
 	
