@@ -6,9 +6,8 @@
 
 namespace gleam {
 
-	using std::string;
+std::string getenv (const std::string& name);
 
-	string getenv(const string& name);
 }
 
 #endif
