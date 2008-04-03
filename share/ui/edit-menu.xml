@@ -4,7 +4,6 @@
 			<menuitem action="project-new"/>
 			<menuitem action="project-save"/>
 			<menuitem action="project-close"/>
-			<menuitem action="project-new-audio-track"/>
 			<menu action="import-menu" name="ImportMenu" >
 				<menuitem action="project-new-audio-track" />
 			</menu>
@@ -12,10 +11,9 @@
 		</menu>
 		<menu action="edit-menu" name="Edit" >
 		</menu>
-		<!--
 		<menu action="project-menu" name="Project">
+			<menuitem action="project-new-audio-track"/>
 		</menu>
-		-->
 		<menu action="view-menu" name="View" >
 		</menu>
 		<menu action="help-menu" name="Help" >
