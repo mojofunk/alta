@@ -12,10 +12,10 @@ namespace gmojo {
 
 const GtkActionEntry app_action_entries[] = 
 {
-	{ "NewProject", GTK_STOCK_NEW, NULL, "<control>N",
+	{ "project-new", GTK_STOCK_NEW, NULL, "<control>N",
 		N_("Create a new project"), G_CALLBACK (new_project) },
 
-	{ "Quit", GTK_STOCK_QUIT, NULL, "<control>Q",
+	{ "quit", GTK_STOCK_QUIT, NULL, "<control>Q",
 		N_("Quit the program"), G_CALLBACK (quit) }
 
 };

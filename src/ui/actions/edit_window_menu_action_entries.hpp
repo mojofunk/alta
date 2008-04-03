@@ -10,12 +10,12 @@ namespace gmojo {
 
 const GtkActionEntry edit_window_menu_action_entries[] = 
 {
-	{ "File", NULL, N_("_File"), NULL, NULL, NULL },
-	{ "Edit", NULL, N_("_Edit"), NULL, NULL, NULL },
-	{ "View", NULL, N_("_View"), NULL, NULL, NULL },
-	{ "Help", NULL, N_("_Help"), NULL, NULL, NULL },
+	{ "file-menu", NULL, N_("_File"), NULL, NULL, NULL },
+	{ "edit-menu", NULL, N_("_Edit"), NULL, NULL, NULL },
+	{ "view-menu", NULL, N_("_View"), NULL, NULL, NULL },
+	{ "help-menu", NULL, N_("_Help"), NULL, NULL, NULL },
 
-	{ "Import", NULL, N_("_Import"), NULL, NULL, NULL }
+	{ "import-menu", NULL, N_("_Import"), NULL, NULL, NULL }
 };
 
 } // namespace gmojo

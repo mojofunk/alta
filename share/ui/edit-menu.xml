@@ -1,20 +1,24 @@
 <ui>
 	<menubar name="MainMenuBar">
-		<menu name="FileMenu" action="File">
-			<menuitem name="NewProjectMenu" action="NewProject" />
-			<menuitem name="SaveProjectMenu" action="SaveProject" />
-			<menuitem name="CloseProjectMenu" action="CloseProject" />
-			<menuitem name="CreateAudioTrackMenu" action="CreateAudioTrack" />
-			<menu name="ImportMenu" action="Import">
-				<menuitem name="CreateAudioTrackMenu" action="CreateAudioTrack" />
+		<menu action="file-menu" name="File">
+			<menuitem action="project-new"/>
+			<menuitem action="project-save"/>
+			<menuitem action="project-close"/>
+			<menuitem action="project-new-audio-track"/>
+			<menu action="import-menu" name="ImportMenu" >
+				<menuitem action="project-new-audio-track" />
 			</menu>
-			<menuitem name="QuitProjectMenu" action="Quit" />
+			<menuitem action="quit" />
 		</menu>
-		<menu name="EditMenu" action="Edit">
+		<menu action="edit-menu" name="Edit" >
 		</menu>
-		<menu name="ViewMenu" action="View">
+		<!--
+		<menu action="project-menu" name="Project">
 		</menu>
-		<menu name="HelpMenu" action="Help">
+		-->
+		<menu action="view-menu" name="View" >
+		</menu>
+		<menu action="help-menu" name="Help" >
 		</menu>
 	</menubar>
 </ui>
