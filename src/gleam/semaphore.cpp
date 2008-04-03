@@ -1,5 +1,5 @@
 
-#include <libgleam/semaphore.hpp>
+#include <gleam/semaphore.hpp>
 
 namespace gleam {
 

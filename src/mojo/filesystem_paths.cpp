@@ -1,8 +1,8 @@
 
 #include <mojo/filesystem_paths.hpp>
 
-#include <libgleam/filesystem_paths.hpp>
-#include <libgleam/utils.hpp>
+#include <gleam/filesystem_paths.hpp>
+#include <gleam/utils.hpp>
 
 namespace mojo {
 

@@ -4,7 +4,7 @@
 
 #include <glibmm/thread.h>
 
-#include <libgleam/atomic_counter.hpp>
+#include <gleam/atomic_counter.hpp>
 
 namespace gleam {
 

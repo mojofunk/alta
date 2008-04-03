@@ -1,6 +1,6 @@
 #include <glib.h>
 
-#include <libgleam/filesystem_paths.hpp>
+#include <gleam/filesystem_paths.hpp>
 
 namespace gleam {
 

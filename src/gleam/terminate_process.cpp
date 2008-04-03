@@ -1,7 +1,7 @@
 
 #include <glib.h>
 
-#include <libgleam/terminate_process.hpp>
+#include <gleam/terminate_process.hpp>
 
 #ifdef G_OS_WIN32
 #include <windows.h>

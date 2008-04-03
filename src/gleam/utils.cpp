@@ -1,7 +1,7 @@
 
 #include <glib.h>
 
-#include <libgleam/utils.hpp>
+#include <gleam/utils.hpp>
 
 namespace gleam {
 

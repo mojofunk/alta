@@ -19,7 +19,7 @@
 
 #include <glib.h>
 
-#include <libgleam/dispatcher.hpp>
+#include <gleam/dispatcher.hpp>
 
 namespace gleam {
 

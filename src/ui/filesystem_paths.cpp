@@ -1,7 +1,7 @@
 
 #include <ui/filesystem_paths.hpp>
 
-#include <libgleam/utils.hpp>
+#include <gleam/utils.hpp>
 
 namespace gmojo {
 

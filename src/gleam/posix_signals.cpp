@@ -21,7 +21,7 @@
 
 #include <glib.h>
 
-#include <libgleam/posix_signals.hpp>
+#include <gleam/posix_signals.hpp>
 
 namespace {
 

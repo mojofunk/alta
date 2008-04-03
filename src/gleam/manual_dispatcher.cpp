@@ -1,7 +1,7 @@
 
 #include <glib.h>
 
-#include <libgleam/manual_dispatcher.hpp>
+#include <gleam/manual_dispatcher.hpp>
 
 namespace gleam {
 

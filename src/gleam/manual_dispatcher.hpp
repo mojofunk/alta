@@ -20,8 +20,8 @@
 #ifndef GLEAM_MANUAL_DISPATCHER_INCLUDED
 #define GLEAM_MANUAL_DISPATCHER_INCLUDED
 
-#include <libgleam/dispatcher.hpp>
-#include <libgleam/semaphore.hpp>
+#include <gleam/dispatcher.hpp>
+#include <gleam/semaphore.hpp>
 
 namespace gleam {
 

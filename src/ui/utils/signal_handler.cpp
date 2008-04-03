@@ -1,12 +1,12 @@
 #include <glib.h>
 
 #ifdef G_OS_UNIX
-#include <libgleam/posix_signals.hpp>
+#include <gleam/posix_signals.hpp>
 #endif
 
 #ifdef G_OS_WIN32
 #include <cstdlib>
-#include <libgleam/terminate_process.hpp>
+#include <gleam/terminate_process.hpp>
 #endif
 
 #include <ui/utils/signal_handler.hpp>
