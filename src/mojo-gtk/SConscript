@@ -1,0 +1,30 @@
+# vim: tabstop=4 expandtab shiftwidth=4
+
+import tools.pkgconfig as pkgconfig
+
+Import ('env')
+
+mojo_gtk_deps = \
+{
+    'gtk+-2.0'             : '2.12',
+    'goocanvas'            : '0.6',
+}
+
+mojo_gtk_env = env.Copy()
+
+pkgconfig.ParseDependencies ( mojo_gtk_env, mojo_gtk_deps )
+
+mojo_gtk_source_files = Split("""
+mojo.c
+""")
+
+all_source_files = \
+mojo_gtk_source_files
+
+#mojo_gtk_env.Append (CCFLAGS = ['-export_dynamic', '-dynamic'])
+
+mojo_gtk = mojo_gtk_env.Program( "mojo", all_source_files)
+
+Default(mojo_gtk)
+
+env.Install(env['BINDIR'], mojo_gtk)

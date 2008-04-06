@@ -9,7 +9,8 @@ dirs = [
     'gleam',
     'mojo',
     'plugins',
-    'ui'
+    'ui',
+    'mojo-gtk'
     ]
 
 for dir in dirs:
