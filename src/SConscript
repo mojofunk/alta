@@ -10,7 +10,8 @@ dirs = [
     'mojo',
     'plugins',
     'ui',
-    'mojo-gtk'
+    'mojo-gtk',
+    'mojo-gtkmm'
     ]
 
 for dir in dirs:

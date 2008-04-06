@@ -1,0 +1,30 @@
+# vim: tabstop=4 expandtab shiftwidth=4
+
+import tools.pkgconfig as pkgconfig
+
+Import ('env')
+
+mojo_gtkmm_deps = \
+{
+    'gtkmm-2.4'             : '2.12.1',
+    'goocanvasmm-1.0'       : '0.4'
+}
+
+mojo_gtkmm_env = env.Copy()
+
+#mojo_gtkmm_env.Append(LIBS = ['boost_signals', 'mojo', 'gleam' ])
+
+pkgconfig.ParseDependencies ( mojo_gtkmm_env, mojo_gtkmm_deps )
+
+mojo_gtkmm_source_files = Split("""
+mojo.cpp
+""")
+
+all_source_files = \
+mojo_gtkmm_source_files
+
+mojo_gtkmm = mojo_gtkmm_env.Program( env['VERSIONED_NAME'] + '-gtkmm', all_source_files)
+
+Default(mojo_gtkmm)
+
+env.Install(env['BINDIR'], mojo_gtkmm)
