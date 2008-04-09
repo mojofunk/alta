@@ -17,7 +17,11 @@ mojo_gtkmm_env = env.Copy()
 pkgconfig.ParseDependencies ( mojo_gtkmm_env, mojo_gtkmm_deps )
 
 mojo_gtkmm_source_files = Split("""
+app.cpp
 mojo.cpp
+project.cpp
+project_windows.cpp
+edit_window.cpp
 """)
 
 all_source_files = \

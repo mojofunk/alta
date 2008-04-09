@@ -1,48 +1,54 @@
 <?xml version="1.0"?>
-<!--Generated with glade3 3.4.1 on Sat Apr  5 15:54:15 2008 -->
+<!--Generated with glade3 3.4.3 on Wed Apr  9 22:22:48 2008 -->
 <interface>
   <object class="GtkUIManager" id="uimanager1">
     <child>
       <object class="GtkActionGroup" id="actiongroup1">
         <child>
-          <object class="GtkAction" id="menuitem1">
-            <property name="name">menuitem1</property>
+          <object class="GtkAction" id="file-menuitem">
+            <property name="name">file-menuitem</property>
             <property name="label">_File</property>
           </object>
         </child>
         <child>
-          <object class="GtkAction" id="imagemenuitem1">
+          <object class="GtkAction" id="new-project-menuitem">
             <property name="stock_id">gtk-new</property>
-            <property name="name">imagemenuitem1</property>
+            <property name="name">new-project-menuitem</property>
           </object>
         </child>
         <child>
-          <object class="GtkAction" id="imagemenuitem2">
+          <object class="GtkAction" id="open-project-menuitem">
             <property name="stock_id">gtk-open</property>
-            <property name="name">imagemenuitem2</property>
+            <property name="name">open-project-menuitem</property>
           </object>
         </child>
         <child>
-          <object class="GtkAction" id="imagemenuitem3">
+          <object class="GtkAction" id="save-project-menuitem">
             <property name="stock_id">gtk-save</property>
-            <property name="name">imagemenuitem3</property>
+            <property name="name">save-project-menuitem</property>
           </object>
         </child>
         <child>
-          <object class="GtkAction" id="imagemenuitem4">
+          <object class="GtkAction" id="save-as-menuitem">
             <property name="stock_id">gtk-save-as</property>
-            <property name="name">imagemenuitem4</property>
+            <property name="name">save-as-menuitem</property>
           </object>
         </child>
         <child>
-          <object class="GtkAction" id="quit">
+          <object class="GtkAction" id="close-project-menuitem">
+            <property name="stock_id">gtk-close</property>
+            <property name="name">close-project-menuitem</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="quit-menuitem">
             <property name="stock_id">gtk-quit</property>
-            <property name="name">quit</property>
+            <property name="name">quit-menuitem</property>
           </object>
         </child>
         <child>
-          <object class="GtkAction" id="menuitem2">
-            <property name="name">menuitem2</property>
+          <object class="GtkAction" id="edit-menuitem">
+            <property name="name">edit-menuitem</property>
             <property name="label">_Edit</property>
           </object>
         </child>
@@ -71,14 +77,20 @@
           </object>
         </child>
         <child>
-          <object class="GtkAction" id="menuitem3">
-            <property name="name">menuitem3</property>
+          <object class="GtkAction" id="view-menuitem">
+            <property name="name">view-menuitem</property>
             <property name="label">_View</property>
           </object>
         </child>
         <child>
-          <object class="GtkAction" id="menuitem4">
-            <property name="name">menuitem4</property>
+          <object class="GtkToggleAction" id="fullscreen-menuitem">
+            <property name="name">fullscreen-menuitem</property>
+            <property name="label">FullScreen</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="help-menuitem">
+            <property name="name">help-menuitem</property>
             <property name="label">_Help</property>
           </object>
         </child>
@@ -92,28 +104,32 @@
     </child>
     <ui>
       <menubar name="menubar1">
-        <menu action="menuitem1">
-          <menuitem action="imagemenuitem1"/>
-          <menuitem action="imagemenuitem2"/>
-          <menuitem action="imagemenuitem3"/>
-          <menuitem action="imagemenuitem4"/>
+        <menu action="file-menuitem">
+          <menuitem action="new-project-menuitem"/>
+          <menuitem action="open-project-menuitem"/>
           <separator/>
-          <menuitem action="quit"/>
+          <menuitem action="save-project-menuitem"/>
+          <menuitem action="save-as-menuitem"/>
+          <separator/>
+          <menuitem action="close-project-menuitem"/>
+          <menuitem action="quit-menuitem"/>
         </menu>
-        <menu action="menuitem2">
+        <menu action="edit-menuitem">
           <menuitem action="imagemenuitem6"/>
           <menuitem action="imagemenuitem7"/>
           <menuitem action="imagemenuitem8"/>
           <menuitem action="imagemenuitem9"/>
         </menu>
-        <menuitem action="menuitem3"/>
-        <menu action="menuitem4">
+        <menu action="view-menuitem">
+          <menuitem action="fullscreen-menuitem"/>
+        </menu>
+        <menu action="help-menuitem">
           <menuitem action="imagemenuitem10"/>
         </menu>
       </menubar>
     </ui>
   </object>
-  <object class="GtkWindow" id="window1">
+  <object class="GtkWindow" id="editwindow">
     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
     <child>
       <object class="GtkVBox" id="vbox1">

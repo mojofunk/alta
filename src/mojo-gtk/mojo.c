@@ -66,7 +66,7 @@ main(int argc, char *argv[])
 
 	window = GTK_WIDGET (gtk_builder_get_object (builder, "window1"));
 
-	action = GTK_ACTION (gtk_builder_get_object (builder, "quit"));
+	action = GTK_ACTION (gtk_builder_get_object (builder, "quit-menuitem"));
 
 	g_signal_connect (G_OBJECT (action), "activate", G_CALLBACK
 			(on_quit_activate), NULL);
