@@ -2,11 +2,7 @@
 #ifndef UI_EDIT_WINDOW
 #define UI_EDIT_WINDOW
 
-#include <gtk/gtk.h>
-
-namespace Gtk {
-	class Window;
-}
+#include "types.hpp"
 
 namespace ui {
 
@@ -24,12 +20,15 @@ private:
 
 	bool on_delete_event (GdkEventAny*);
 
+	void on_fullscreen_toggled ();
+
 private:
 
 	Project* m_project;
 
-	Gtk::Window* m_window;
+	BuilderPtr m_builder;
 
+	Gtk::Window* m_window;
 };
 
 } // namespace ui

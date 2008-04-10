@@ -18,4 +18,4 @@ Project::save ()
 	cout << "Project::save called" << endl;
 }
 
-}
+} // namespace ui

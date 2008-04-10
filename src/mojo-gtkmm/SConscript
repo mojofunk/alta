@@ -22,6 +22,7 @@ mojo.cpp
 project.cpp
 project_windows.cpp
 edit_window.cpp
+utils.cpp
 """)
 
 all_source_files = \
