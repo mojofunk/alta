@@ -82,6 +82,12 @@ if not pkgconfig.CheckDependencies ( env, deps ):
         Exit(1)
 
           
+conf = env.Configure ()
+
+if conf.CheckFunc('posix_memalign'):
+    env.Append(CCFLAGS='-DHAVE_POSIX_MEMALIGN')
+
+env = conf.Finish()
 
 # err actually check for these.
 #env.Append(LIBS = ['boost_filesystem', 'boost_serialization', 'boost_signals'])

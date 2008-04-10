@@ -43,6 +43,7 @@ plugin_utils.cpp
 project.cpp
 project_directory.cpp
 register_types.cpp
+sample_block.cpp
 search_path.cpp
 track.cpp
 type_names.cpp
