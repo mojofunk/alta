@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!--Generated with glade3 3.4.3 on Wed Apr  9 22:22:48 2008 -->
+<!--Generated with glade3 3.4.3 on Thu Apr 10 21:48:58 2008 -->
 <interface>
   <object class="GtkUIManager" id="uimanager1">
     <child>
@@ -35,6 +35,18 @@
           </object>
         </child>
         <child>
+          <object class="GtkAction" id="import-menuitem">
+            <property name="name">import-menuitem</property>
+            <property name="label">Import</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="import-audiofile-menuitem">
+            <property name="name">import-audiofile-menuitem</property>
+            <property name="label">Audio File...</property>
+          </object>
+        </child>
+        <child>
           <object class="GtkAction" id="close-project-menuitem">
             <property name="stock_id">gtk-close</property>
             <property name="name">close-project-menuitem</property>
@@ -50,6 +62,18 @@
           <object class="GtkAction" id="edit-menuitem">
             <property name="name">edit-menuitem</property>
             <property name="label">_Edit</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="undo-menuitem">
+            <property name="stock_id">gtk-undo</property>
+            <property name="name">undo-menuitem</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="menuitem2">
+            <property name="stock_id">gtk-redo</property>
+            <property name="name">menuitem2</property>
           </object>
         </child>
         <child>
@@ -110,11 +134,17 @@
           <separator/>
           <menuitem action="save-project-menuitem"/>
           <menuitem action="save-as-menuitem"/>
+          <menu action="import-menuitem">
+            <menuitem action="import-audiofile-menuitem"/>
+          </menu>
           <separator/>
           <menuitem action="close-project-menuitem"/>
           <menuitem action="quit-menuitem"/>
         </menu>
         <menu action="edit-menuitem">
+          <menuitem action="undo-menuitem"/>
+          <menuitem action="menuitem2"/>
+          <separator/>
           <menuitem action="imagemenuitem6"/>
           <menuitem action="imagemenuitem7"/>
           <menuitem action="imagemenuitem8"/>
