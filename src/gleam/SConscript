@@ -16,11 +16,14 @@ gleam_env = env.Clone()
 pkgconfig.ParseDependencies ( gleam_env, gleam_deps )
 
 gleam_source_files = Split("""
+blink_timer.cpp
 dispatcher.cpp
 filesystem_paths.cpp
 manual_dispatcher.cpp
 semaphore.cpp
+standard_timer.cpp
 terminate_process.cpp
+timer.cpp
 utils.cpp
 """)
 
