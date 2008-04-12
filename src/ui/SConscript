@@ -10,7 +10,7 @@ gmojo_deps = \
     'goocanvas'            : '0.6',
 }
 
-gmojo_env = env.Copy()
+gmojo_env = env.Clone()
 
 gmojo_env.Append(LIBS = ['boost_signals', 'mojo', 'gleam' ])
 

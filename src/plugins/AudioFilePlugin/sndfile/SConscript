@@ -6,7 +6,7 @@ Import ('env')
 
 sndfile_deps = { 'sndfile' : '1.0' }
 
-sndfile_env = env.Copy()
+sndfile_env = env.Clone()
 
 pkgconfig.ParseDependencies ( sndfile_env, sndfile_deps )
 

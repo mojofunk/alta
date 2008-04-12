@@ -12,7 +12,7 @@ mojo_deps = \
 #    'glibmm-2.4'    : '2.8.1'
 }
 
-mojo_env = env.Copy()
+mojo_env = env.Clone()
 
 mojo_env.Append(LIBS = ['boost_filesystem', 'gleam' ] )
 

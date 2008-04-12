@@ -6,7 +6,7 @@ Import ('env')
 
 jack_deps = { 'jack' : '0.103.0' }
 
-jack_env = env.Copy()
+jack_env = env.Clone()
 
 pkgconfig.ParseDependencies ( jack_env, jack_deps )
 

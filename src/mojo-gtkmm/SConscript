@@ -10,7 +10,7 @@ mojo_gtkmm_deps = \
     'goocanvasmm-1.0'       : '0.4'
 }
 
-mojo_gtkmm_env = env.Copy()
+mojo_gtkmm_env = env.Clone()
 
 #mojo_gtkmm_env.Append(LIBS = ['boost_signals', 'mojo', 'gleam' ])
 

@@ -10,7 +10,7 @@ mojo_gtk_deps = \
     'goocanvas'            : '0.6'
 }
 
-mojo_gtk_env = env.Copy()
+mojo_gtk_env = env.Clone()
 
 pkgconfig.ParseDependencies ( mojo_gtk_env, mojo_gtk_deps )
 

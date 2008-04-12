@@ -5,7 +5,7 @@ import tools.pkgconfig as pkgconfig
 
 Import ('env')
 
-cformat_env = env.Copy()
+cformat_env = env.Clone()
 
 cformat_source_files = Split("""
 """)

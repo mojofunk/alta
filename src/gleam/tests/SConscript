@@ -4,7 +4,7 @@ import tools.pkgconfig as pkgconfig
 
 Import ('env')
 
-gleam_test_env = env.Copy()
+gleam_test_env = env.Clone()
 
 gleam_test_env.Append(CXXFLAGS = '-DBOOST_TEST_DYN_LINK')
 gleam_test_env.Append(LIBS = [ 'boost_unit_test_framework', 'gleam' ])
