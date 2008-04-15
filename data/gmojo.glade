@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.3 on Thu Apr 10 21:48:58 2008 -->
+<!--Generated with glade3 3.4.3 on Sun Apr 13 12:36:15 2008 -->
 <glade-interface>
   <widget class="GtkWindow" id="editwindow">
     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
@@ -180,6 +180,250 @@
                         <property name="label" translatable="yes">gtk-delete</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                        <child>
+                          <widget class="GtkMenu" id="menu6">
+                            <property name="visible">True</property>
+                          </widget>
+                        </child>
+                      </widget>
+                    </child>
+                  </widget>
+                </child>
+              </widget>
+            </child>
+            <child>
+              <widget class="GtkMenuItem" id="project-menuitem">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">_Project</property>
+                <property name="use_underline">True</property>
+                <child>
+                  <widget class="GtkMenu" id="menu7">
+                    <property name="visible">True</property>
+                    <child>
+                      <widget class="GtkMenuItem" id="add-track-menuitem">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Add Track</property>
+                        <property name="use_underline">True</property>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkMenuItem" id="duplicate-track-menuitem">
+                        <property name="visible">True</property>
+                        <property name="tooltip" translatable="yes">Create a copy of the Selected Track</property>
+                        <property name="label" translatable="yes">Duplicate Track</property>
+                        <property name="use_underline">True</property>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkMenuItem" id="remove-selected-tracks-menuitem">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Remove Selected Tracks</property>
+                        <property name="use_underline">True</property>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkMenuItem" id="remove-empty-tracks-menuitem">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Remove Empty Tracks</property>
+                        <property name="use_underline">True</property>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkMenuItem" id="project-setup-menuitem">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Project Setup</property>
+                        <property name="use_underline">True</property>
+                      </widget>
+                    </child>
+                  </widget>
+                </child>
+              </widget>
+            </child>
+            <child>
+              <widget class="GtkMenuItem" id="audio-menuitem">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">_Audio</property>
+                <property name="use_underline">True</property>
+                <child>
+                  <widget class="GtkMenu" id="menu8">
+                    <property name="visible">True</property>
+                    <child>
+                      <widget class="GtkMenuItem" id="process-menuitem">
+                        <property name="visible">True</property>
+                        <property name="tooltip" translatable="yes">Apply audio processing to selected events</property>
+                        <property name="label" translatable="yes">Process</property>
+                        <property name="use_underline">True</property>
+                        <child>
+                          <widget class="GtkMenu" id="menu9">
+                            <property name="visible">True</property>
+                            <child>
+                              <widget class="GtkMenuItem" id="envelope-menuitem">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Envelope</property>
+                                <property name="use_underline">True</property>
+                              </widget>
+                            </child>
+                            <child>
+                              <widget class="GtkMenuItem" id="fade-in-out-menuitem">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Fade In/Out</property>
+                                <property name="use_underline">True</property>
+                              </widget>
+                            </child>
+                            <child>
+                              <widget class="GtkMenuItem" id="gain-menuitem">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Gain</property>
+                                <property name="use_underline">True</property>
+                              </widget>
+                            </child>
+                            <child>
+                              <widget class="GtkMenuItem" id="noise-gate-menuitem">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Noise Gate</property>
+                                <property name="use_underline">True</property>
+                              </widget>
+                            </child>
+                            <child>
+                              <widget class="GtkMenuItem" id="normalise-menuitem">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Normalise</property>
+                                <property name="use_underline">True</property>
+                              </widget>
+                            </child>
+                            <child>
+                              <widget class="GtkMenuItem" id="phase-reverse-menuitem">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Phase Reverse</property>
+                                <property name="use_underline">True</property>
+                              </widget>
+                            </child>
+                            <child>
+                              <widget class="GtkMenuItem" id="pitch-shift-menuitem">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Pitch Shift</property>
+                                <property name="use_underline">True</property>
+                              </widget>
+                            </child>
+                            <child>
+                              <widget class="GtkMenuItem" id="remove-dc-offset-menuitem">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Remove DC Offset</property>
+                                <property name="use_underline">True</property>
+                              </widget>
+                            </child>
+                            <child>
+                              <widget class="GtkMenuItem" id="resample-menuitem">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Resample</property>
+                                <property name="use_underline">True</property>
+                              </widget>
+                            </child>
+                            <child>
+                              <widget class="GtkMenuItem" id="reverse-menuitem">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Reverse</property>
+                                <property name="use_underline">True</property>
+                              </widget>
+                            </child>
+                            <child>
+                              <widget class="GtkMenuItem" id="silence-menuitem">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Silence</property>
+                                <property name="use_underline">True</property>
+                              </widget>
+                            </child>
+                            <child>
+                              <widget class="GtkMenuItem" id="stereo-flip-menuitem">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Stereo Flip</property>
+                                <property name="use_underline">True</property>
+                              </widget>
+                            </child>
+                            <child>
+                              <widget class="GtkMenuItem" id="time-stretch-menuitem">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Time Stretch</property>
+                                <property name="use_underline">True</property>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkMenuItem" id="plugins-menuitem">
+                        <property name="visible">True</property>
+                        <property name="tooltip" translatable="yes">Apply effects processing to selected events</property>
+                        <property name="label" translatable="yes">Plugins</property>
+                        <property name="use_underline">True</property>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkMenuItem" id="events-to-part-menuitem">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Events to Part</property>
+                        <property name="use_underline">True</property>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkMenuItem" id="menuitem3">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Dissolve Part</property>
+                        <property name="use_underline">True</property>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkMenuItem" id="snap-point-to-cursor-menuitem">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Snap Point to Cursor</property>
+                        <property name="use_underline">True</property>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkMenuItem" id="bounce-selection-menuitem">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Bounce Selection</property>
+                        <property name="use_underline">True</property>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkMenuItem" id="find-selected-in-pool">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Find Selected in Pool</property>
+                        <property name="use_underline">True</property>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkMenuItem" id="crossfade-menuitem">
+                        <property name="visible">True</property>
+                        <property name="tooltip" translatable="yes">Create a crossfade between two selected audio events</property>
+                        <property name="label" translatable="yes">Crossfade</property>
+                        <property name="use_underline">True</property>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkMenuItem" id="remove-fades-menuitem">
+                        <property name="visible">True</property>
+                        <property name="tooltip" translatable="yes">Remove any fades or crossfades from selected event</property>
+                        <property name="label" translatable="yes">Remove Fades</property>
+                        <property name="use_underline">True</property>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkMenuItem" id="menuitem4">
+                        <property name="visible">True</property>
+                        <property name="tooltip" translatable="yes">Open Fade dialog for a selected event</property>
+                        <property name="label" translatable="yes">Open Fade Editor</property>
+                        <property name="use_underline">True</property>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkMenuItem" id="menuitem5">
+                        <property name="visible">True</property>
+                        <property name="tooltip" translatable="yes">Remove volume envelope from selected events</property>
+                        <property name="label" translatable="yes">Remove Volume Curve</property>
+                        <property name="use_underline">True</property>
                       </widget>
                     </child>
                   </widget>

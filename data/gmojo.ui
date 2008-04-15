@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!--Generated with glade3 3.4.3 on Thu Apr 10 21:48:58 2008 -->
+<!--Generated with glade3 3.4.3 on Sun Apr 13 12:36:15 2008 -->
 <interface>
   <object class="GtkUIManager" id="uimanager1">
     <child>
@@ -101,6 +101,192 @@
           </object>
         </child>
         <child>
+          <object class="GtkAction" id="project-menuitem">
+            <property name="name">project-menuitem</property>
+            <property name="label">_Project</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="add-track-menuitem">
+            <property name="name">add-track-menuitem</property>
+            <property name="label">Add Track</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="duplicate-track-menuitem">
+            <property name="name">duplicate-track-menuitem</property>
+            <property name="label">Duplicate Track</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="remove-selected-tracks-menuitem">
+            <property name="name">remove-selected-tracks-menuitem</property>
+            <property name="label">Remove Selected Tracks</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="remove-empty-tracks-menuitem">
+            <property name="name">remove-empty-tracks-menuitem</property>
+            <property name="label">Remove Empty Tracks</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="project-setup-menuitem">
+            <property name="name">project-setup-menuitem</property>
+            <property name="label">Project Setup</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="audio-menuitem">
+            <property name="name">audio-menuitem</property>
+            <property name="label">_Audio</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="process-menuitem">
+            <property name="name">process-menuitem</property>
+            <property name="label">Process</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="envelope-menuitem">
+            <property name="name">envelope-menuitem</property>
+            <property name="label">Envelope</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="fade-in-out-menuitem">
+            <property name="name">fade-in-out-menuitem</property>
+            <property name="label">Fade In/Out</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="gain-menuitem">
+            <property name="name">gain-menuitem</property>
+            <property name="label">Gain</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="noise-gate-menuitem">
+            <property name="name">noise-gate-menuitem</property>
+            <property name="label">Noise Gate</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="normalise-menuitem">
+            <property name="name">normalise-menuitem</property>
+            <property name="label">Normalise</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="phase-reverse-menuitem">
+            <property name="name">phase-reverse-menuitem</property>
+            <property name="label">Phase Reverse</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="pitch-shift-menuitem">
+            <property name="name">pitch-shift-menuitem</property>
+            <property name="label">Pitch Shift</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="remove-dc-offset-menuitem">
+            <property name="name">remove-dc-offset-menuitem</property>
+            <property name="label">Remove DC Offset</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="resample-menuitem">
+            <property name="name">resample-menuitem</property>
+            <property name="label">Resample</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="reverse-menuitem">
+            <property name="name">reverse-menuitem</property>
+            <property name="label">Reverse</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="silence-menuitem">
+            <property name="name">silence-menuitem</property>
+            <property name="label">Silence</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="stereo-flip-menuitem">
+            <property name="name">stereo-flip-menuitem</property>
+            <property name="label">Stereo Flip</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="time-stretch-menuitem">
+            <property name="name">time-stretch-menuitem</property>
+            <property name="label">Time Stretch</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="plugins-menuitem">
+            <property name="name">plugins-menuitem</property>
+            <property name="label">Plugins</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="events-to-part-menuitem">
+            <property name="name">events-to-part-menuitem</property>
+            <property name="label">Events to Part</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="menuitem3">
+            <property name="name">menuitem3</property>
+            <property name="label">Dissolve Part</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="snap-point-to-cursor-menuitem">
+            <property name="name">snap-point-to-cursor-menuitem</property>
+            <property name="label">Snap Point to Cursor</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="bounce-selection-menuitem">
+            <property name="name">bounce-selection-menuitem</property>
+            <property name="label">Bounce Selection</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="find-selected-in-pool">
+            <property name="name">find-selected-in-pool</property>
+            <property name="label">Find Selected in Pool</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="crossfade-menuitem">
+            <property name="name">crossfade-menuitem</property>
+            <property name="label">Crossfade</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="remove-fades-menuitem">
+            <property name="name">remove-fades-menuitem</property>
+            <property name="label">Remove Fades</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="menuitem4">
+            <property name="name">menuitem4</property>
+            <property name="label">Open Fade Editor</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="menuitem5">
+            <property name="name">menuitem5</property>
+            <property name="label">Remove Volume Curve</property>
+          </object>
+        </child>
+        <child>
           <object class="GtkAction" id="view-menuitem">
             <property name="name">view-menuitem</property>
             <property name="label">_View</property>
@@ -148,7 +334,41 @@
           <menuitem action="imagemenuitem6"/>
           <menuitem action="imagemenuitem7"/>
           <menuitem action="imagemenuitem8"/>
-          <menuitem action="imagemenuitem9"/>
+          <menu action="imagemenuitem9"/>
+        </menu>
+        <menu action="project-menuitem">
+          <menuitem action="add-track-menuitem"/>
+          <menuitem action="duplicate-track-menuitem"/>
+          <menuitem action="remove-selected-tracks-menuitem"/>
+          <menuitem action="remove-empty-tracks-menuitem"/>
+          <menuitem action="project-setup-menuitem"/>
+        </menu>
+        <menu action="audio-menuitem">
+          <menu action="process-menuitem">
+            <menuitem action="envelope-menuitem"/>
+            <menuitem action="fade-in-out-menuitem"/>
+            <menuitem action="gain-menuitem"/>
+            <menuitem action="noise-gate-menuitem"/>
+            <menuitem action="normalise-menuitem"/>
+            <menuitem action="phase-reverse-menuitem"/>
+            <menuitem action="pitch-shift-menuitem"/>
+            <menuitem action="remove-dc-offset-menuitem"/>
+            <menuitem action="resample-menuitem"/>
+            <menuitem action="reverse-menuitem"/>
+            <menuitem action="silence-menuitem"/>
+            <menuitem action="stereo-flip-menuitem"/>
+            <menuitem action="time-stretch-menuitem"/>
+          </menu>
+          <menuitem action="plugins-menuitem"/>
+          <menuitem action="events-to-part-menuitem"/>
+          <menuitem action="menuitem3"/>
+          <menuitem action="snap-point-to-cursor-menuitem"/>
+          <menuitem action="bounce-selection-menuitem"/>
+          <menuitem action="find-selected-in-pool"/>
+          <menuitem action="crossfade-menuitem"/>
+          <menuitem action="remove-fades-menuitem"/>
+          <menuitem action="menuitem4"/>
+          <menuitem action="menuitem5"/>
         </menu>
         <menu action="view-menuitem">
           <menuitem action="fullscreen-menuitem"/>
