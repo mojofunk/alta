@@ -5,6 +5,9 @@
 
 #include <mojo/export.h>
 
+#include <cstring>
+#include <algorithm>
+
 #include <iostream>
 using namespace std;
 
@@ -71,7 +74,7 @@ delete_format (AudioFileFormat* f) { delete f; }
 void
 SndfileAudioFilePlugin::delete_formats (AudioFilePlugin::Formats& formats)
 {
-	for_each (formats.begin(), formats.end(), delete_format);
+	std::for_each (formats.begin(), formats.end(), delete_format);
 	formats.clear();
 }
 

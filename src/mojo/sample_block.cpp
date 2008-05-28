@@ -1,4 +1,7 @@
 
+#include <cstring>
+#include <cstdlib>
+
 #include <mojo/sample_block.hpp>
 
 namespace {

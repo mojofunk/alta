@@ -1,4 +1,5 @@
 #include <sstream>
+#include <limits>
 
 #include <mojo/file_utils.hpp>
 
