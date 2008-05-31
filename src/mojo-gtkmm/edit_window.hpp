@@ -18,6 +18,13 @@ public:
 
 private:
 
+	void connect_file_menu_actions ();
+
+	void connect_project_menu_actions ();
+
+
+private:
+
 	bool on_delete_event (GdkEventAny*);
 
 	void on_fullscreen_toggled ();

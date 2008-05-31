@@ -1,5 +1,6 @@
 
 #include "project.hpp"
+#include "audio_track.hpp"
 
 #include <iostream>
 
@@ -16,6 +17,12 @@ void
 Project::save ()
 {
 	cout << "Project::save called" << endl;
+}
+
+void
+Project::create_audio_track ()
+{
+	cout << "Project::create_audio_track called" << endl;
 }
 
 } // namespace ui

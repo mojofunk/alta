@@ -15,6 +15,22 @@ EditWindow::EditWindow (Project* proj)
 
 	m_builder->get_widget ("editwindow", m_window);
 
+	connect_file_menu_actions ();
+
+	connect_project_menu_actions ();
+
+	connect_toggleaction (m_builder, "fullscreen-menuitem", 
+	   	sigc::mem_fun (this, &EditWindow::on_fullscreen_toggled));
+
+	m_window->signal_delete_event().connect
+		(sigc::mem_fun (this, &EditWindow::on_delete_event));
+
+	m_window->show_all ();
+}
+
+void
+EditWindow::connect_file_menu_actions ()
+{
 	connect_action (m_builder, "new-project-menuitem",
 		   	sigc::ptr_fun (App::new_project));
 
@@ -29,14 +45,13 @@ EditWindow::EditWindow (Project* proj)
 
 	connect_action (m_builder, "quit-menuitem",
 		   	sigc::ptr_fun (App::quit));
+}
 
-	connect_toggleaction (m_builder, "fullscreen-menuitem", 
-	   	sigc::mem_fun (this, &EditWindow::on_fullscreen_toggled));
-
-	m_window->signal_delete_event().connect
-		(sigc::mem_fun (this, &EditWindow::on_delete_event));
-
-	m_window->show_all ();
+void
+EditWindow::connect_project_menu_actions ()
+{
+	connect_action (m_builder, "add-audio-track-menuitem",
+		   	sigc::mem_fun (m_project, &Project::create_audio_track));
 }
 
 EditWindow::~EditWindow ()

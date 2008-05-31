@@ -107,9 +107,9 @@
           </object>
         </child>
         <child>
-          <object class="GtkAction" id="add-track-menuitem">
-            <property name="name">add-track-menuitem</property>
-            <property name="label">Add Track</property>
+          <object class="GtkAction" id="add-audio-track-menuitem">
+            <property name="name">add-audio-track-menuitem</property>
+            <property name="label">Add Audio Track</property>
           </object>
         </child>
         <child>
@@ -337,7 +337,7 @@
           <menu action="imagemenuitem9"/>
         </menu>
         <menu action="project-menuitem">
-          <menuitem action="add-track-menuitem"/>
+          <menuitem action="add-audio-track-menuitem"/>
           <menuitem action="duplicate-track-menuitem"/>
           <menuitem action="remove-selected-tracks-menuitem"/>
           <menuitem action="remove-empty-tracks-menuitem"/>
