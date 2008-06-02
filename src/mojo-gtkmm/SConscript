@@ -18,10 +18,13 @@ pkgconfig.ParseDependencies ( mojo_gtkmm_env, mojo_gtkmm_deps )
 
 mojo_gtkmm_source_files = Split("""
 app.cpp
+default_transport_toolbar.cpp
+edit_window.cpp
 mojo.cpp
 project.cpp
 project_windows.cpp
-edit_window.cpp
+transport_toolbar_factory.cpp
+transport_toolbar.cpp
 utils.cpp
 """)
 

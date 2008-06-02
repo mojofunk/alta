@@ -7,6 +7,7 @@
 namespace ui {
 
 class Project;
+class TransportToolbar;
 
 class EditWindow
 {
@@ -36,6 +37,9 @@ private:
 	BuilderPtr m_builder;
 
 	Gtk::Window* m_window;
+
+	TransportToolbar* m_transport_toolbar;
+
 };
 
 } // namespace ui

@@ -3,11 +3,13 @@
 #include "app.hpp"
 #include "edit_window.hpp"
 #include "utils.hpp"
+#include "transport_toolbar_factory.hpp"
 
 namespace ui {
 
 EditWindow::EditWindow (Project* proj)
 	: m_project(proj)
+	, m_transport_toolbar (Gtk::manage (TransportToolbarFactory::create (proj)))
 {
 	const std::string ui_file = "data/gmojo.ui";
 
