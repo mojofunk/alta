@@ -23,6 +23,8 @@ EditWindow::EditWindow (Project* proj)
 
 	connect_view_menu_actions ();
 
+	pack_transport ();
+
 	m_window->signal_delete_event().connect
 		(sigc::mem_fun (this, &EditWindow::on_delete_event));
 
@@ -60,6 +62,17 @@ EditWindow::connect_view_menu_actions ()
 {
 	connect_toggleaction (m_builder, "fullscreen-menuitem", 
 	   	sigc::mem_fun (this, &EditWindow::on_fullscreen_toggled));
+}
+
+void
+EditWindow::pack_transport ()
+{
+	Gtk::VBox* vbox1 = 0;
+
+	m_builder->get_widget ("vbox1", vbox1);
+
+	vbox1->pack_start (*m_transport_toolbar, false, false);
+	vbox1->reorder_child (*m_transport_toolbar, 1);
 }
 
 EditWindow::~EditWindow ()

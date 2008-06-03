@@ -6,8 +6,8 @@ namespace ui {
 
 struct ProjectData
 {
-
-
+	bool playing;
+	bool looping;
 };
 
 } // namespace ui

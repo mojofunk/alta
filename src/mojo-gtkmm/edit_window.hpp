@@ -25,6 +25,8 @@ private:
 
 	void connect_view_menu_actions ();
 
+	void pack_transport ();
+
 private:
 
 	bool on_delete_event (GdkEventAny*);
