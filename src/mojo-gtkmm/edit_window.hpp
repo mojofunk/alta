@@ -23,6 +23,7 @@ private:
 
 	void connect_project_menu_actions ();
 
+	void connect_view_menu_actions ();
 
 private:
 
