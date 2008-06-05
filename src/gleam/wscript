@@ -1,0 +1,24 @@
+#! /usr/bin/env python
+# encoding: utf-8
+# Tim Mayberry, 2008
+
+posix_files='''
+posix_signals.cpp
+'''
+
+def init():
+	pass
+
+def configure(conf):
+	pass
+
+def build(bld):
+	obj = bld.create_obj('cpp', 'shlib')
+	exclude_files=posix_files
+	obj.find_sources_in_dirs('.', excludes=exclude_files)
+	obj.includes ='. ..'
+	obj.uselib ='GLIBMM'
+	obj.target = 'gleam'
+	obj.name = 'GLEAM'
+
+	bld.add_subdirs('tests')

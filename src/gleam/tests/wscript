@@ -1,0 +1,16 @@
+#! /usr/bin/env python
+# encoding: utf-8
+# Tim Mayberry, 2008
+
+tests='''
+test_filesystem_paths
+'''.split()
+
+def build(bld):
+	for test in tests:
+		obj = bld.create_obj('cpp', 'program')
+		obj.source = test + '.cpp'
+		obj.includes ='. ../..'
+		obj.uselib = 'BOOST_TEST'
+		obj.uselib_local ='GLEAM'
+		obj.target = test

@@ -1,0 +1,34 @@
+#! /usr/bin/env python
+# encoding: utf-8
+# Tim Mayberry, 2008
+
+tests='''
+test_sequence
+test_type_system
+test_graph
+test_plugin_utils
+test_project
+test_app
+test_archive
+test_audio_clip
+test_filesystem_paths
+test_project_directory
+test_audiofile_plugins
+test_file_utils
+test_audio_driver_plugins
+'''.split()
+
+def init():
+	pass
+
+def configure(conf):
+	print "configure mojo tests"
+
+def build(bld):
+	for test in tests:
+		obj = bld.create_obj('cpp', 'program')
+		obj.source = test + '.cpp'
+		obj.includes ='. ../..'
+		obj.uselib = 'BOOST_TEST'
+		obj.uselib_local ='MOJO'
+		obj.target = test
