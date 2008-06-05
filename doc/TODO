@@ -1,13 +1,120 @@
-explore using boost::thread instead of glib/mm threads in libgleam or possibly
-a compile time selection.
+LIBMOJO
 
-Break build system up so that testing for dependencies does not have to be done
-each time.
+Make a generic plugin infrastructure for libmojo, plugins may include
 
-Add a build script for building unit tests, which implies breaking the existing
-build script up somewhat into:
+AudioFile plugins:
+	SndfileAudioFilePlugin
+	MadAudioFilePlugin
+	CoreaudioAudioFilePlugin
 
-check dependencies
-configure
-build
-check/test
+AudioEffectPlugin:
+	LADSPAEffectPlugin
+	LV2EffectPlugin
+	VSTEffectPlugin
+	DXEffectPlugin
+
+InstrumentPlugin:
+	VSTInstrumentPlugin
+	DXInstrumentPlugin
+
+AudioDriverPlugin:
+	JACKAudioDriverPlugin
+	ALSAAudioDriverPlugin
+	PulseAudioDriverPlugin
+	PortAudioDriverPlugin
+	VSTAudioDriverPlugin
+
+AudioResamplerPlugin:
+	SRCResamplerPlugin
+	SpeexResamplerPlugin
+
+ProjectImportPlugin
+	ArdourImportPlugin
+	AAFImportPlugin
+
+ProjectExportPlugin
+	ArdourExportPlugin
+	AAFExportPlugin
+
+Try having only one instance of a Plugin class per module, change
+the module function to mojo_plugin_init () that allocates Plugin
+class(if init hasn't already been called) and returns a pointer to
+it, also add a mojo_plugin_fini () function to deallocate any
+resources allocated by init for proper shutdown.
+
+libmojo must expose a way to discover new plugins
+
+plugins should only have to link to a small core library if at all
+
+Should all platform dependent code be in a base library
+which plugins can link to? possibly in libgleam
+
+Each project format should be contained in a plugin
+
+Add ability to run test cases by name
+
+SMPTE
+
+smpte::time interface with implementations for each time type
+vs
+one class with enum for each type(4)
+
+The later may be slightly slower due to branching.
+
+conversion to/from ltc/vitc/mtc.
+
+RT GRAPH
+
+The graph must be directed and acyclic
+
+graph processing must be able to support rt safe processing
+
+There must be able to be more than one graph per process
+
+A graph contains a number of nodes
+
+The graph cannot have parallel edges between nodes
+
+Can a graph contain isolated nodes(no edges)?
+
+A source node is a node with no incoming edges
+
+A sink node is a node with no outgoing edges
+
+A processing node is a node with incoming and outgoing edges
+
+Must be able to add and remove edges.
+
+The source nodes in the graph are processed first as they are
+the source of the data and the edges are followed to process the
+rest of the nodes.
+
+The graph must be able to be processed in parallel.
+
+Would breadth first processing be more cache friendly?
+
+The API must expose a way to set how many threads are used to process
+the graph.
+
+get_max_thread_count
+
+get_thread_count
+set_thread_count
+
+// optional
+get_optimal_thread_count
+
+The test suite must be able to measure total process time
+
+The test suite must be able to measure thread context switching time.
+
+The test suite must be able to test the effect cache size has on processing
+performance.
+
+TESTS
+
+Create a complex new project using all data types, save, close and restore.
+
+
+
+
