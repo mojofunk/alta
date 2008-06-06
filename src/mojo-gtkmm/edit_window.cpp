@@ -4,12 +4,14 @@
 #include "edit_window.hpp"
 #include "utils.hpp"
 #include "transport_toolbar_factory.hpp"
+#include "track_view_factory.hpp"
 
 namespace ui {
 
 EditWindow::EditWindow (Project* proj)
 	: m_project(proj)
 	, m_transport_toolbar (Gtk::manage (TransportToolbarFactory::create (proj)))
+	, m_track_view (Gtk::manage (TrackViewFactory::create (proj)))
 {
 	const std::string ui_file = "data/gmojo.ui";
 
@@ -73,6 +75,10 @@ EditWindow::pack_transport ()
 
 	vbox1->pack_start (*m_transport_toolbar, false, false);
 	vbox1->reorder_child (*m_transport_toolbar, 1);
+
+	vbox1->pack_start (*m_track_view, false, false);
+	vbox1->reorder_child (*m_track_view, 2);
+
 }
 
 EditWindow::~EditWindow ()

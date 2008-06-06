@@ -8,6 +8,7 @@ namespace ui {
 
 class Project;
 class TransportToolbar;
+class TrackView;
 
 class EditWindow
 {
@@ -42,6 +43,8 @@ private:
 	Gtk::Window* m_window;
 
 	TransportToolbar* m_transport_toolbar;
+
+	TrackView* m_track_view;
 
 };
 
