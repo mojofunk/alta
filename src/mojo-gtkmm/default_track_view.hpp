@@ -16,6 +16,10 @@ public:
 
 private:
 
+	virtual void on_track_added (Track*);
+
+	virtual void on_track_removed (Track*);
+
 private:
 
 	Gtk::HPaned m_hpaned;

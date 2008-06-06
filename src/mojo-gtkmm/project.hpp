@@ -37,8 +37,11 @@ public: // methods
 
 public: // signal accessors
 
-	track_signal_t& track_added_signal ()
+	track_signal_t& signal_track_added ()
 	{ return m_signal_track_added; }
+
+	track_signal_t& signal_track_removed ()
+	{ return m_signal_track_removed; }
 
 	transport_changed_signal_t& transport_changed_signal ()
 	{ return m_signal_transport_changed; }
@@ -46,6 +49,8 @@ public: // signal accessors
 private: // signals
 
 	track_signal_t m_signal_track_added;
+	track_signal_t m_signal_track_removed;
+
 	transport_changed_signal_t m_signal_transport_changed;
 
 private: // data

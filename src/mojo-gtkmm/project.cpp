@@ -5,9 +5,7 @@
 
 #include "audio_track.hpp"
 
-#include <iostream>
-
-using namespace std;
+#include "log.hpp"
 
 namespace ui {
 
@@ -25,13 +23,21 @@ Project::~Project ()
 void
 Project::save ()
 {
-	cout << "Project::save called" << endl;
+	LOG;
 }
 
 void
 Project::create_audio_track ()
 {
-	cout << "Project::create_audio_track called" << endl;
+	LOG;
+
+	TrackSPtr track (new AudioTrack);
+
+	if (track)
+	{
+		m_data->tracks.insert (track);
+		m_signal_track_added (track.get());
+	}
 }
 
 void
