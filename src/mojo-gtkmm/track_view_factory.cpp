@@ -1,4 +1,3 @@
-
 #include "track_view_factory.hpp"
 
 #include "track_view.hpp"

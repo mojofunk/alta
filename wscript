@@ -31,6 +31,7 @@ def _check_deps(conf):
 	conf.check_pkg('libxml-2.0', destvar='LIBXML', vnum='2.6.0', mandatory=True)
 	conf.check_pkg('glibmm-2.4', destvar='GLIBMM', vnum='2.8.0', mandatory=True)
 	conf.check_pkg('gtkmm-2.4', destvar='GTKMM', vnum='2.8.0', mandatory=True)
+	conf.check_pkg('goocanvasmm-1.0', destvar='GOOCANVASMM', vnum='0.4.0', mandatory=True)
 	#conf.check_pkg('libSoundTouch', destvar='SOUNDTOUCH', vnum='1.3.1', mandatory=True)
 	#conf.check_pkg('samplerate', destvar='SAMPLERATE', vnum='0.1.0', mandatory=True)
 	#conf.check_pkg('raptor', destvar='RAPTOR', vnum='1.4.2', mandatory=True)

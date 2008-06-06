@@ -24,6 +24,8 @@ edit_window.cpp
 mojo.cpp
 project.cpp
 project_windows.cpp
+track_canvas.cpp
+track_canvas_factory.cpp
 track_view_factory.cpp
 track_view.cpp
 track_view_item.cpp

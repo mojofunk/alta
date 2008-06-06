@@ -1,7 +1,8 @@
 
 #include "track_view.hpp"
 
-#include "track_view_data.hpp"
+#include "track_canvas_factory.hpp"
+
 #include "track_view_item_factory.hpp"
 #include "project.hpp"
 
@@ -10,20 +11,23 @@
 namespace ui {
 
 TrackView::TrackView(Project* p)
-	: m_data (new TrackViewData)
+	: m_project(p)
+	, m_canvas(TrackCanvasFactory::create (p))
 {
-	m_data->project = p;
-
-	m_data->project->signal_track_added().connect ( sigc::mem_fun
+	m_project->signal_track_added().connect ( sigc::mem_fun
 		       	(this, &TrackView::on_track_added));
 
-	m_data->project->signal_track_removed().connect ( sigc::mem_fun
+	m_project->signal_track_removed().connect ( sigc::mem_fun
 		       	(this, &TrackView::on_track_removed));
+
+	m_scrolled_window.add (*m_canvas);
+
+	pack2 (m_scrolled_window);
 }
 
 TrackView::~TrackView ()
 {
-	delete m_data;
+
 }
 
 void
@@ -35,7 +39,7 @@ TrackView::on_track_added (Track* track)
 
 	if (tvi)
 	{
-		m_data->track_view_items.push_back (tvi);
+		m_track_view_items.push_back (tvi);
 	}
 }
 

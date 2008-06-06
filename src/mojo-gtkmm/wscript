@@ -12,7 +12,7 @@ def build(bld):
 	obj = bld.create_obj('cpp', 'program')
 	obj.find_sources_in_dirs('.')
 	#obj.includes ='.'
-	obj.uselib ='GTKMM'
+	obj.uselib ='GTKMM GOOCANVASMM'
 	#obj.uselib_local ='MOJO'
 	obj.target = 'mojo-gtkmm'
 	#obj.name = 'MOJO-GTKMM'
