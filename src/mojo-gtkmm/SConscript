@@ -18,14 +18,16 @@ pkgconfig.ParseDependencies ( mojo_gtkmm_env, mojo_gtkmm_deps )
 
 mojo_gtkmm_source_files = Split("""
 app.cpp
+audio_track_view_item.cpp
 default_transport_toolbar.cpp
-default_track_view.cpp
 edit_window.cpp
 mojo.cpp
 project.cpp
 project_windows.cpp
 track_view_factory.cpp
 track_view.cpp
+track_view_item.cpp
+track_view_item_factory.cpp
 transport_toolbar_factory.cpp
 transport_toolbar.cpp
 utils.cpp

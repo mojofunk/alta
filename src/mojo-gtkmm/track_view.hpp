@@ -2,36 +2,31 @@
 #ifndef UI_TRACK_VIEW
 #define UI_TRACK_VIEW
 
-#include <gtkmm/box.h>
+#include <gtkmm/paned.h>
 
 namespace ui {
 
 class Project;
 class Track;
+class TrackViewData;
 
-class TrackView : public Gtk::HBox
+class TrackView : public Gtk::HPaned
 {
 public: // constructors
 
 	TrackView (Project* p);
 
-	virtual ~TrackView ();
+	~TrackView ();
 
-protected: // interface
+private: // signal handlers
 
-	virtual void on_track_added (Track*) = 0;
+	void on_track_added (Track*);
 
-	virtual void on_track_removed (Track*) = 0;
+	void on_track_removed (Track*);
 
-protected: // members
+private: // member data
 
-	Project* m_project;
-
-private: // callbacks
-
-	void on_track_added_handler (Track*);
-
-	void on_track_removed_handler (Track*);
+	TrackViewData* m_data;
 
 };
 
