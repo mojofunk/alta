@@ -20,9 +20,7 @@ TrackView::TrackView(Project* p)
 	m_project->signal_track_removed().connect ( sigc::mem_fun
 		       	(this, &TrackView::on_track_removed));
 
-	m_scrolled_window.add (*m_canvas);
-
-	pack2 (m_scrolled_window);
+	pack2 (*m_canvas);
 }
 
 TrackView::~TrackView ()

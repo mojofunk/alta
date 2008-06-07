@@ -76,7 +76,7 @@ EditWindow::pack_transport ()
 	vbox1->pack_start (*m_transport_toolbar, false, false);
 	vbox1->reorder_child (*m_transport_toolbar, 1);
 
-	vbox1->pack_start (*m_track_view, false, false);
+	vbox1->pack_start (*m_track_view, true, true);
 	vbox1->reorder_child (*m_track_view, 2);
 
 }

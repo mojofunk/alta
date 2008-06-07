@@ -5,7 +5,6 @@
 #include <list>
 
 #include <gtkmm/paned.h>
-#include <gtkmm/scrolledwindow.h>
 
 #include <boost/shared_ptr.hpp>
 
@@ -41,8 +40,6 @@ private: // member data
 	Project*                m_project;
 
 	TrackCanvasPtr          m_canvas;
-
-	Gtk::ScrolledWindow     m_scrolled_window;
 	
 	TrackViewItemList       m_track_view_items;
 
