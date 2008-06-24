@@ -16,6 +16,10 @@ public:
 
 	virtual void set_height (double height);
 
+	virtual TrackListItem* get_track_list_item ();
+
+	virtual TrackCanvasItem* get_track_canvas_item ();
+
 private:
 
 	AudioTrack* m_audio_track;

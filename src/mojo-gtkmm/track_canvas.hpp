@@ -14,6 +14,9 @@ public:
 
 	TrackCanvas ();
 
+public:
+
+
 private:
 
 	Goocanvas::Canvas m_canvas;

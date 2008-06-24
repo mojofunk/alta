@@ -13,6 +13,7 @@ namespace ui {
 class Project;
 class Track;
 class TrackCanvas;
+class TrackList;
 class TrackViewItem;
 
 class TrackView : public Gtk::HPaned
@@ -22,6 +23,7 @@ public: // typedefs
 	typedef boost::shared_ptr<TrackViewItem> TrackViewItemSPtr;
 	typedef std::list<TrackViewItemSPtr>     TrackViewItemList;
 	typedef boost::shared_ptr<TrackCanvas>   TrackCanvasPtr;
+	typedef boost::shared_ptr<TrackList>     TrackListPtr;
 
 public: // constructors
 
@@ -40,6 +42,8 @@ private: // member data
 	Project*                m_project;
 
 	TrackCanvasPtr          m_canvas;
+
+	TrackListPtr            m_track_list;
 	
 	TrackViewItemList       m_track_view_items;
 

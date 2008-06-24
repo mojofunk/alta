@@ -4,8 +4,8 @@
 
 namespace ui {
 
-//class TrackControl;
-//class TrackCanvasItem;
+class TrackListItem;
+class TrackCanvasItem;
 
 class TrackViewItem
 {
@@ -15,9 +15,9 @@ public:
 
 	virtual void set_height (double height) = 0;
 
-	//virtual TrackControl* get_track_control () = 0;
+	virtual TrackListItem* get_track_list_item () = 0;
 
-	//virtual TrackCanvasItem* get_track_canvas_item () = 0;
+	virtual TrackCanvasItem* get_track_canvas_item () = 0;
 
 };
 

@@ -18,4 +18,17 @@ AudioTrackViewItem::set_height (double height)
 
 }
 
+TrackListItem*
+AudioTrackViewItem::get_track_list_item ()
+{
+	return 0;
+
+}
+
+TrackCanvasItem*
+AudioTrackViewItem::get_track_canvas_item ()
+{
+	return 0;
+}
+
 } // namespace ui
