@@ -12,7 +12,7 @@ mojo_gtkmm_deps = \
 
 mojo_gtkmm_env = env.Clone()
 
-#mojo_gtkmm_env.Append(LIBS = ['boost_signals', 'mojo', 'gleam' ])
+mojo_gtkmm_env.Append(LIBS = ['gleam'])
 
 pkgconfig.ParseDependencies ( mojo_gtkmm_env, mojo_gtkmm_deps )
 
@@ -24,6 +24,7 @@ edit_window.cpp
 mojo.cpp
 project.cpp
 project_windows.cpp
+timers.cpp
 track_canvas.cpp
 track_canvas_factory.cpp
 track_list.cpp
