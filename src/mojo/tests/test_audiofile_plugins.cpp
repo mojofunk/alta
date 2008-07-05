@@ -10,11 +10,10 @@
 
 #include <boost/format.hpp>
 
+#include <mojo/forward.hpp>
 #include <mojo/app.hpp>
 #include <mojo/plugin.hpp>
-#include <mojo/plugin_ptr.hpp>
 #include <mojo/audio_file_plugin.hpp>
-#include <mojo/audio_file_plugin_ptr.hpp>
 
 using namespace boost::unit_test;
 using namespace std;

@@ -25,6 +25,7 @@ test_type_system
 test_graph
 test_plugin_utils
 test_project
+test_audition
 test_app
 test_archive
 test_audio_clip

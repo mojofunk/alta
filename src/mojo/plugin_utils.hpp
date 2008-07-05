@@ -4,7 +4,7 @@
 
 #include <set>
 
-#include <mojo/plugin_ptr.hpp>
+#include <mojo/forward.hpp>
 #include <mojo/filesystem.hpp>
 #include <mojo/search_path.hpp>
 #include <mojo/plugin_set.hpp>

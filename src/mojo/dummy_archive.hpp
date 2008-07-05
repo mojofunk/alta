@@ -2,8 +2,8 @@
 #ifndef MOJO_DUMMY_ARCHIVE_INCLUDED
 #define MOJO_DUMMY_ARCHIVE_INCLUDED
 
+#include <mojo/forward.hpp>
 #include <mojo/archive.hpp>
-#include <mojo/object_ptr.hpp>
 
 namespace mojo {
 

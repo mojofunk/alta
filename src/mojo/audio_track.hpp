@@ -1,8 +1,8 @@
 #ifndef MOJO_AUDIO_TRACK_INCLUDED
 #define MOJO_AUDIO_TRACK_INCLUDED
 
+#include <mojo/forward.hpp>
 #include <mojo/track.hpp>
-#include <mojo/audio_sequence_ptr.hpp>
 
 namespace mojo {
 

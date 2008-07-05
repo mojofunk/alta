@@ -2,21 +2,13 @@
 #ifndef MOJO_APP_INCLUDED
 #define MOJO_APP_INCLUDED
 
-#include <boost/shared_ptr.hpp>
-
-#include <mojo/type_system_ptr.hpp>
-#include <mojo/audio_file_ptr.hpp>
+#include <mojo/forward.hpp>
 #include <mojo/filesystem.hpp>
 #include <mojo/plugin_set.hpp>
 #include <mojo/audio_file_plugin_set.hpp>
 #include <mojo/audio_driver_plugin_set.hpp>
 
 namespace mojo {
-
-class App;
-
-typedef boost::shared_ptr<App>    AppSPtr;
-typedef boost::weak_ptr<App>      AppWPtr;
 
 /**
  * I'm not sure what this class should be called but it

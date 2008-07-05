@@ -8,11 +8,10 @@
 // for command line args
 #include <boost/test/framework.hpp>
 
+#include <mojo/forward.hpp>
 #include <mojo/filesystem.hpp>
 #include <mojo/app.hpp>
 #include <mojo/audio_clip.hpp>
-#include <mojo/audio_clip_ptr.hpp>
-#include <mojo/audio_file_ptr.hpp>
 #include <mojo/project_directory.hpp>
 
 using namespace boost::unit_test;

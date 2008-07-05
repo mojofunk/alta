@@ -4,8 +4,8 @@
 
 #include <string>
 
+#include <mojo/forward.hpp>
 #include <mojo/plugin.hpp>
-#include <mojo/project_ptr.hpp>
 
 namespace mojo {
 

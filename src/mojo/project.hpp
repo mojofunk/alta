@@ -5,11 +5,8 @@
 #include <string>
 #include <set>
 
+#include <mojo/forward.hpp>
 #include <mojo/object.hpp>
-#include <mojo/track_ptr.hpp>
-#include <mojo/audio_track_ptr.hpp>
-#include <mojo/midi_track_ptr.hpp>
-
 #include <mojo/filesystem.hpp>
 
 namespace mojo {

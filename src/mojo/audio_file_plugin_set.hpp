@@ -4,7 +4,7 @@
 
 #include <set>
 
-#include <mojo/audio_file_plugin_ptr.hpp>
+#include <mojo/forward.hpp>
 
 namespace mojo {
 

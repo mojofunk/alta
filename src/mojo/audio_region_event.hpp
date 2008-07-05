@@ -2,8 +2,8 @@
 #ifndef MOJO_AUDIO_REGION_EVENT_INCLUDED
 #define MOJO_AUDIO_REGION_EVENT_INCLUDED
 
+#include <mojo/forward.hpp>
 #include <mojo/audio_event.hpp>
-#include <mojo/audio_region_ptr.hpp>
 
 namespace mojo {
 

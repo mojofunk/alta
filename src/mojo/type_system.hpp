@@ -6,15 +6,10 @@
 #include <typeinfo>
 
 #include <boost/any.hpp>
-#include <boost/shared_ptr.hpp>
 
-#include <mojo/type_factory_ptr.hpp>
+#include <mojo/forward.hpp>
 
 namespace mojo {
-
-class TypeSystem;
-
-typedef boost::shared_ptr<TypeSystem>    TypeSystemSPtr;
 
 class TypeSystem
 {

@@ -2,7 +2,11 @@
 #ifndef MOJO_SESSION_INCLUDED
 #define MOJO_SESSION_INCLUDED
 
+#include <mojo/forward.hpp>
+
 namespace mojo {
+
+class AudioDevice;
 
 /**
  * A session processes a project to make noise :)
@@ -102,7 +106,7 @@ private:
 	// transport_ptr
 	
 	// project_ptr
-}
+};
 
 } // namespace mojo
 

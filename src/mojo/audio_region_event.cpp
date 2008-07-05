@@ -1,6 +1,6 @@
 
+#include <mojo/forward.hpp>
 #include <mojo/audio_region.hpp>
-#include <mojo/object_ptr.hpp>
 
 #include <mojo/audio_region_event.hpp>
 

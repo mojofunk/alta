@@ -2,7 +2,7 @@
 #ifndef MOJO_ARCHIVE_UTILS_INCLUDED
 #define MOJO_ARCHIVE_UTILS_INCLUDED
 
-#include <mojo/archive_ptr.hpp>
+#include <mojo/forward.hpp>
 
 namespace mojo {
 

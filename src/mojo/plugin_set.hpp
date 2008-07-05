@@ -4,7 +4,7 @@
 
 #include <set>
 
-#include <mojo/plugin_ptr.hpp>
+#include <mojo/forward.hpp>
 
 namespace mojo {
 

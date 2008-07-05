@@ -4,7 +4,7 @@
 
 #include <list>
 
-#include <mojo/object_ptr.hpp>
+#include <mojo/forward.hpp>
 
 namespace mojo {
 

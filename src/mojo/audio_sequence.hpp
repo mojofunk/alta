@@ -1,8 +1,8 @@
 #ifndef MOJO_AUDIO_SEQUENCE_INCLUDED
 #define MOJO_AUDIO_SEQUENCE_INCLUDED
 
+#include <mojo/forward.hpp>
 #include <mojo/object.hpp>
-#include <mojo/audio_event_ptr.hpp>
 
 #include <set>
 

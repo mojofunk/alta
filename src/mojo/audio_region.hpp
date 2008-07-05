@@ -2,9 +2,9 @@
 #ifndef MOJO_AUDIO_REGION_INCLUDED
 #define MOJO_AUDIO_REGION_INCLUDED
 
+#include <mojo/forward.hpp>
 #include <mojo/types.hpp>
 #include <mojo/object.hpp>
-#include <mojo/audio_clip_ptr.hpp>
 
 namespace mojo {
 
