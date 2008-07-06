@@ -1,0 +1,60 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+
+<!ENTITY % BOOK_ENTITIES SYSTEM "./entities.ent">
+
+%BOOK_ENTITIES;
+
+]>
+
+<section id="sn-compatability">
+  <title>Compatibility</title>
+  <para>
+    The application must support reading and writing of several formats for
+    interoperability between different applications.
+  </para>
+
+  <para>
+    It must support exporting to a format that is application agnostic and
+    has no significant barriers to usage in other applications such as AAF.
+  </para>
+
+  <para>
+    The application must be able to convert a project from one format to any
+    other format with as little information loss as possible.
+  </para>
+
+  <itemizedlist>
+    <title>Import/Export Project Formats</title>
+    <listitem>
+      <para>
+        AAF format
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        Ardour format
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        Traverso format
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        QTractor format
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        Rosegarden format
+      </para>
+    </listitem>
+  </itemizedlist>
+</section>

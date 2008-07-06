@@ -1,0 +1,53 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+
+<!ENTITY % BOOK_ENTITIES SYSTEM "./entities.ent">
+
+%BOOK_ENTITIES;
+
+]>
+
+<section id="project-format">
+  <title>Project Format</title>
+  <para>
+    A project format is all the files and directories that make up the
+    representation of a Project on disk.
+  </para>
+
+  <para>
+    The native project format consists of a project file and all the data
+    referenced by that file in one of several project directories.
+  </para>
+
+  <section id="project-file">
+    <title>The Project File</title>
+    <para>
+      The project the file contains data aswell as references to the audio
+      data on disk.
+    </para>
+
+    <variablelist>
+      <title>Project File Requirements</title>
+      <varlistentry>
+        <term>Human Readable</term>
+        <listitem>
+          <para>
+            A project file should be human readable. why?
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Relocatable</term>
+        <listitem>
+          <para>
+            The project file must be able to be moved and the project should
+            still open successfully. Which indicates a path to the root
+            directory of project should be stored in project file.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+</section>

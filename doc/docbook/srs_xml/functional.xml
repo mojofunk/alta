@@ -9,202 +9,96 @@
 ]>
 
 <chapter id="ch-functional">
-    <title>Functional Requirements</title>
+  <title>Functional Requirements</title>
+  <para>
+    A listing of functional software requirements for &GMOJO_APP;
+  </para>
+
+  <section id="application-usage-requirements">
+    <title>Application Usage Requirments</title>
     <para>
-      A listing of functional software requirements for &GMOJO_APP;
+      The application must be able to create a new project without any input
+      from the user at the creation time. For instance the user should not
+      have to name the project or specify any directories to save data to
+      until the project is saved.
     </para>
 
-    <section id="application-usage-requirements">
-      <title>Application Usage Requirments</title>
-      <para>
-        The application must be able to create a new project without any
-        input from the user at the creation time. For instance the user
-        should not have to name the project or specify any directories to
-        save data to until the project is saved.
-      </para>
+    <para>
+      The user must not have to configure their audio device so that the
+      project is played back at the correct/intended samplerate. Which also
+      means that they must not have to know what the correct or intended
+      samplerate is, it should just work.
+    </para>
+  </section>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
+		href="project_format.xml" />
+  <section id="audio-data">
+    <title>Audio Data Formats</title>
+    <para></para>
 
-      <para>
-        The user must not have to configure their audio device so that the
-        project is played back at the correct/intended samplerate. Which
-        also means that they must not have to know what the correct or
-        intended samplerate is, it should just work.
-      </para>
-    </section>
-
-    <section id="project-formats">
-      <title>Project Formats</title>
-      <para>
-        A project format is all the files and directories that make up the
-        representation of a Project on disk.
-      </para>
-
-      <para>
-        The application must support reading and writing of several formats
-        for interoperability between different applications.
-      </para>
-
-      <para>
-        It must support exporting to a format that is application agnostic
-        and has no significant barriers to usage in other applications such
-        as AAF.
-      </para>
-
-      <para>
-        The application must be able to convert a project from one format to
-        any other format with as little information loss as possible.
-      </para>
-
-      <itemizedlist>
-        <title>Possible Project Formats</title>
+    <variablelist>
+      <varlistentry>
+        <term>Supported Formats</term>
         <listitem>
-          <para>
-            Native format
-          </para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                WAV
+              </para>
+            </listitem>
+
+            <listitem>
+              <para>
+                WAV64
+              </para>
+            </listitem>
+
+            <listitem>
+              <para>
+                Broadcast WAV
+              </para>
+            </listitem>
+
+            <listitem>
+              <para>
+                AIFF
+              </para>
+            </listitem>
+
+            <listitem>
+              <para>
+                OGG
+              </para>
+            </listitem>
+
+            <listitem>
+              <para>
+                MP3
+              </para>
+            </listitem>
+          </itemizedlist>
         </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
+		href="compatibility.xml" />
+  <section id="user-interface">
+    <title>User Interface</title>
+    <para>
+      The user interface should try to be as similar as possible to Cubase
+      while following the Gnome HIG.
+    </para>
 
-        <listitem>
-          <para>
-            AAF format
-          </para>
-        </listitem>
-
-        <listitem>
-          <para>
-            Ardour format
-          </para>
-        </listitem>
-
-        <listitem>
-          <para>
-            Traverso format
-          </para>
-        </listitem>
-
-        <listitem>
-          <para>
-            QTractor format
-          </para>
-        </listitem>
-
-        <listitem>
-          <para>
-            Rosegarden format
-          </para>
-        </listitem>
-      </itemizedlist>
-    </section>
-
-    <section id="native-project-format">
-      <title>Native Project Format</title>
-      <para>
-        The native project format consists of a project file and all the
-        data referenced by that file in one of several project directories.
-      </para>
-
-      <section id="project-file">
-        <title>The Project File</title>
+    <itemizedlist>
+      <listitem>
         <para>
-          The project the file contains data aswell as references to the
-          audio data on disk.
+          The minimum size of every window must be less than 1024x768
+          pixels.
         </para>
-
-        <variablelist>
-          <title>Project File Requirements</title>
-          <varlistentry>
-            <term>Human Readable</term>
-            <listitem>
-              <para>
-                A project file should be human readable. why?
-              </para>
-            </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term>Relocatable</term>
-            <listitem>
-              <para>
-                The project file must be able to be moved and the project
-                should still open successfully. Which indicates a path to
-                the root directory of project should be stored in project
-                file.
-              </para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </section>
-
-      <section id="audio-data">
-        <title>Audio Data Formats</title>
-        <para></para>
-
-        <variablelist>
-          <varlistentry>
-            <term>Supported Formats</term>
-            <listitem>
-              <itemizedlist>
-                <listitem>
-                  <para>
-                    WAV
-                  </para>
-                </listitem>
-
-                <listitem>
-                  <para>
-                    WAV64
-                  </para>
-                </listitem>
-
-                <listitem>
-                  <para>
-                    Broadcast WAV
-                  </para>
-                </listitem>
-
-                <listitem>
-                  <para>
-                    AIFF
-                  </para>
-                </listitem>
-
-                <listitem>
-                  <para>
-                    OGG
-                  </para>
-                </listitem>
-
-                <listitem>
-                  <para>
-                    MP3
-                  </para>
-                </listitem>
-              </itemizedlist>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </section>
-    </section>
-
-    <section id="compatibility">
-      <title>Compatibility</title>
-      <para></para>
-    </section>
-
-    <section id="user-interface">
-      <title>User Interface</title>
-      <para>
-        The user interface should try to be as similar as possible to Cubase
-        while following the Gnome HIG.
-      </para>
-
-      <itemizedlist>
-        <listitem>
-          <para>
-            The minimum size of every window must be less than 1024x768
-            pixels.
-          </para>
-        </listitem>
-      </itemizedlist>
-    </section>
+      </listitem>
+    </itemizedlist>
+  </section>
 <!--
 	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
 		href="Some_Subsection.xml" />
