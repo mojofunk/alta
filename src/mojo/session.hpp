@@ -101,6 +101,8 @@ public:
 
 	AudioDevice* get_audio_device () const;
 
+	// Access to auditioning functions
+	
 private:
 
 	// transport_ptr

@@ -12,6 +12,20 @@ using namespace mojo;
 
 BOOST_AUTO_TEST_CASE( audition_test )
 {
-
-
+	/*
+	 * A Session is needed to audition an audio file
+	 *
+	 * Auditioning can occur while the transport is rolling
+	 * or stopped.
+	 *
+	 * The volume of auditioning must be able to be controlled.
+	 *
+	 * Several audio files can be auditioned simultaneously.
+	 *
+	 * Each audition request must be able to be:
+	 *	cancelled
+	 *	playback stopped/started
+	 *	repositioned
+	 *
+	 */
 }
