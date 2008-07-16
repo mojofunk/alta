@@ -1,57 +1,68 @@
 LIBMOJO
 
-Make a generic plugin infrastructure for libmojo, plugins may include
+Make a generic module infrastructure for libmojo, modules may include
 
-AudioFile plugins:
-	SndfileAudioFilePlugin
-	MadAudioFilePlugin
-	CoreaudioAudioFilePlugin
+AudioFile modules:
+	SndfileAudioFileModule
+	MadAudioFileModule
+	CoreaudioAudioFileModule
 
-AudioEffectPlugin:
-	LADSPAEffectPlugin
-	LV2EffectPlugin
-	VSTEffectPlugin
-	DXEffectPlugin
+AudioEffectModule:
+	LADSPAEffectModule
+	LV2EffectModule
+	VSTEffectModule
+	DXEffectModule
 
-InstrumentPlugin:
-	VSTInstrumentPlugin
-	DXInstrumentPlugin
+InstrumentModule:
+	VSTInstrumentModule
+	DXInstrumentModule
 
-AudioDriverPlugin:
-	JACKAudioDriverPlugin
-	ALSAAudioDriverPlugin
-	PulseAudioDriverPlugin
-	PortAudioDriverPlugin
-	VSTAudioDriverPlugin
+AudioDriverModule:
+	JACKAudioDriverModule
+	ALSAAudioDriverModule
+	PulseAudioDriverModule
+	PortAudioDriverModule
+	VSTAudioDriverModule
 
-AudioResamplerPlugin:
-	SRCResamplerPlugin
-	SpeexResamplerPlugin
+AudioResamplerModule:
+	SRCResamplerModule
+	SpeexResamplerModule
 
-ProjectImportPlugin
-	ArdourImportPlugin
-	AAFImportPlugin
+ProjectImportModule
+	ArdourImportModule
+	AAFImportModule
 
-ProjectExportPlugin
-	ArdourExportPlugin
-	AAFExportPlugin
+ProjectExportModule
+	ArdourExportModule
+	AAFExportModule
 
-Try having only one instance of a Plugin class per module, change
-the module function to mojo_plugin_init () that allocates Plugin
+Try having only one instance of a Module class per module, change
+the module function to mojo_module_init () that allocates Module
 class(if init hasn't already been called) and returns a pointer to
-it, also add a mojo_plugin_fini () function to deallocate any
+it, also add a mojo_module_fini () function to deallocate any
 resources allocated by init for proper shutdown.
 
-libmojo must expose a way to discover new plugins
+libmojo must expose a way to discover new modules
 
-plugins should only have to link to a small core library if at all
+modules should only have to link to a small core library if at all
 
 Should all platform dependent code be in a base library
-which plugins can link to? possibly in libgleam
+which modules can link to? possibly in libgleam
 
-Each project format should be contained in a plugin
+Each project format should be contained in a module
+
+Move module access methods in mojo::App into separate headers
+
+Write template function for casting modules to derived types
+
+Make a ArchiveModule class and move DummyArchive and XMLArchive into
+the core modules
+
+TESTS
 
 Add ability to run test cases by name
+
+Create a complex new project using all data types, save, close and restore.
 
 SMPTE
 
@@ -110,11 +121,4 @@ The test suite must be able to measure thread context switching time.
 
 The test suite must be able to test the effect cache size has on processing
 performance.
-
-TESTS
-
-Create a complex new project using all data types, save, close and restore.
-
-
-
 
