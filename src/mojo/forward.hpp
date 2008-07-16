@@ -22,25 +22,25 @@ namespace mojo {
 	typedef boost::shared_ptr<AudioClip>    AudioClipSPtr;
 	typedef boost::weak_ptr<AudioClip>      AudioClipWPtr;
 
-	class AudioDriverPlugin;
+	class AudioDriverModule;
 
-	typedef boost::shared_ptr<AudioDriverPlugin>    AudioDriverPluginSPtr;
-	typedef boost::weak_ptr<AudioDriverPlugin>      AudioDriverPluginWPtr;
+	typedef boost::shared_ptr<AudioDriverModule>    AudioDriverModuleSPtr;
+	typedef boost::weak_ptr<AudioDriverModule>      AudioDriverModuleWPtr;
 
-	class AudioEffectPlugin;
+	class AudioEffectModule;
 
-	typedef boost::shared_ptr<AudioEffectPlugin>    AudioEffectPluginSPtr;
-	typedef boost::weak_ptr<AudioEffectPlugin>      AudioEffectPluginWPtr;
+	typedef boost::shared_ptr<AudioEffectModule>    AudioEffectModuleSPtr;
+	typedef boost::weak_ptr<AudioEffectModule>      AudioEffectModuleWPtr;
 
 	class AudioEvent;
 
 	typedef boost::shared_ptr<AudioEvent>    AudioEventSPtr;
 	typedef boost::weak_ptr<AudioEvent>      AudioEventWPtr;
 
-	class AudioFilePlugin;
+	class AudioFileModule;
 
-	typedef boost::shared_ptr<AudioFilePlugin>    AudioFilePluginSPtr;
-	typedef boost::weak_ptr<AudioFilePlugin>      AudioFilePluginWPtr;
+	typedef boost::shared_ptr<AudioFileModule>    AudioFileModuleSPtr;
+	typedef boost::weak_ptr<AudioFileModule>      AudioFileModuleWPtr;
 
 	class AudioFile;
 
@@ -72,10 +72,10 @@ namespace mojo {
 	typedef boost::shared_ptr<Object>    ObjectSPtr;
 	typedef boost::weak_ptr<Object>      ObjectWPtr;
 	
-	class Plugin;
+	class Module;
 
-	typedef boost::shared_ptr<Plugin>    PluginSPtr;
-	typedef boost::weak_ptr<Plugin>      PluginWPtr;
+	typedef boost::shared_ptr<Module>    ModuleSPtr;
+	typedef boost::weak_ptr<Module>      ModuleWPtr;
 
 	class Project;
 

@@ -9,23 +9,23 @@
 
 #include <mojo/forward.hpp>
 #include <mojo/app.hpp>
-#include <mojo/audio_effect_plugin.hpp>
+#include <mojo/audio_effect_module.hpp>
 
 using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
 
 void
-test_audio_effect_plugin (AudioEffectPluginSPtr plug)
+test_audio_effect_module (AudioEffectModuleSPtr mod)
 {
-	BOOST_REQUIRE(plug);
+	BOOST_REQUIRE(mod);
 
-	BOOST_TEST_MESSAGE(plug->get_author());
-	BOOST_TEST_MESSAGE(plug->get_description());
-	BOOST_TEST_MESSAGE(plug->get_version());
+	BOOST_TEST_MESSAGE(mod->get_author());
+	BOOST_TEST_MESSAGE(mod->get_description());
+	BOOST_TEST_MESSAGE(mod->get_version());
 }
 
-BOOST_AUTO_TEST_CASE( test_audio_effect_plugins )
+BOOST_AUTO_TEST_CASE( test_audio_effect_modules )
 {
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
@@ -33,9 +33,9 @@ BOOST_AUTO_TEST_CASE( test_audio_effect_plugins )
 	AppSPtr app = App::init (argc, argv);
 	BOOST_REQUIRE(app);
 
-	AudioEffectPluginSet plugins = App::get_audio_effect_plugins ();
+	AudioEffectModuleSet modules = App::get_audio_effect_modules ();
 
-	BOOST_CHECK(!plugins.empty());
+	BOOST_CHECK(!modules.empty());
 
-	for_each (plugins.begin(), plugins.end(), test_audio_effect_plugin);
+	for_each (modules.begin(), modules.end(), test_audio_effect_module);
 }

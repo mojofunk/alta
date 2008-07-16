@@ -39,7 +39,7 @@ BOOST_AUTO_TEST_CASE( system_config_search_path_test )
 	test_search_path (system_config_search_path ());
 }
 
-BOOST_AUTO_TEST_CASE( plugin_search_path_test )
+BOOST_AUTO_TEST_CASE( module_search_path_test )
 {
-	test_search_path (plugin_search_path ());
+	test_search_path (module_search_path ());
 }

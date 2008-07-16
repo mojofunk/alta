@@ -1,5 +1,5 @@
 
-#include "sndfile_audio_file_plugin.hpp"
+#include "sndfile_audio_file_module.hpp"
 #include "sndfile_audio_file.hpp"
 #include "sndfile_audio_file_format.hpp"
 
@@ -13,20 +13,20 @@ using namespace std;
 
 namespace mojo {
 
-SndfileAudioFilePlugin::SndfileAudioFilePlugin ()
+SndfileAudioFileModule::SndfileAudioFileModule ()
 {
 	get_readable_formats (m_readable_formats);
 	get_writable_formats (m_writable_formats);
 }
 
-SndfileAudioFilePlugin::~SndfileAudioFilePlugin ()
+SndfileAudioFileModule::~SndfileAudioFileModule ()
 {
 	delete_formats (m_readable_formats);
 	delete_formats (m_writable_formats);
 }
 
 void
-SndfileAudioFilePlugin::get_readable_formats (Formats& formats)
+SndfileAudioFileModule::get_readable_formats (Formats& formats)
 {
 	SF_FORMAT_INFO          info;
 	SF_INFO                 sfinfo ;
@@ -63,7 +63,7 @@ SndfileAudioFilePlugin::get_readable_formats (Formats& formats)
 }
 
 void
-SndfileAudioFilePlugin::get_writable_formats (Formats& formats)
+SndfileAudioFileModule::get_writable_formats (Formats& formats)
 {
 	formats.push_back (new SndfileAudioFileFormat(SF_FORMAT_WAV|SF_FORMAT_FLOAT));
 }
@@ -72,32 +72,32 @@ static void
 delete_format (AudioFileFormat* f) { delete f; }
 
 void
-SndfileAudioFilePlugin::delete_formats (AudioFilePlugin::Formats& formats)
+SndfileAudioFileModule::delete_formats (AudioFileModule::Formats& formats)
 {
 	std::for_each (formats.begin(), formats.end(), delete_format);
 	formats.clear();
 }
 
 std::string
-SndfileAudioFilePlugin::get_author()
+SndfileAudioFileModule::get_author()
 {
 	return "Tim Mayberry";
 }
 
 std::string
-SndfileAudioFilePlugin::get_description()
+SndfileAudioFileModule::get_description()
 {
-	return "libsndfile plugin";
+	return "libsndfile module";
 }
 
 std::string
-SndfileAudioFilePlugin::get_version()
+SndfileAudioFileModule::get_version()
 {
 	return "0.0.1";
 }
 
 AudioFile*
-SndfileAudioFilePlugin::open (const std::string& path)
+SndfileAudioFileModule::open (const std::string& path)
 {
 	SndfileAudioFile* audio_file = 0;
 
@@ -113,7 +113,7 @@ SndfileAudioFilePlugin::open (const std::string& path)
 }
 
 AudioFile*
-SndfileAudioFilePlugin::open (const std::string& path,
+SndfileAudioFileModule::open (const std::string& path,
 		AudioFileFormat* format,
 		samplerate_t rate,
 		channel_count_t channels)
@@ -121,21 +121,21 @@ SndfileAudioFilePlugin::open (const std::string& path,
 	return 0;
 }
 
-AudioFilePlugin::Formats
-SndfileAudioFilePlugin::get_readable_formats () const
+AudioFileModule::Formats
+SndfileAudioFileModule::get_readable_formats () const
 {
 	return m_readable_formats;
 }
 
-AudioFilePlugin::Formats
-SndfileAudioFilePlugin::get_writable_formats () const
+AudioFileModule::Formats
+SndfileAudioFileModule::get_writable_formats () const
 {
 	return m_writable_formats;
 }
 
-MOJO_CAPI void * mojo_plugin_factory(void)
+MOJO_CAPI void * mojo_module_factory(void)
 {
-	return new SndfileAudioFilePlugin;
+	return new SndfileAudioFileModule;
 }
 
 } // namespace mojo

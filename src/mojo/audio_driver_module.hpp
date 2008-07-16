@@ -1,16 +1,16 @@
 
-#ifndef MOJO_AUDIO_DRIVER_PLUGIN_INCLUDED
-#define MOJO_AUDIO_DRIVER_PLUGIN_INCLUDED
+#ifndef MOJO_AUDIO_DRIVER_MODULE
+#define MOJO_AUDIO_DRIVER_MODULE
 
 #include <set>
 
-#include <mojo/plugin.hpp>
+#include <mojo/module.hpp>
 
 #include <mojo/audio_device.hpp>
 
 namespace mojo {
 
-class AudioDriverPlugin : public Plugin
+class AudioDriverModule : public Module
 {
 public: // typedefs
 
@@ -18,7 +18,7 @@ public: // typedefs
 
 public: // ctors
 
-	virtual ~AudioDriverPlugin();
+	virtual ~AudioDriverModule ();
 
 public: // interface
 
@@ -26,7 +26,7 @@ public: // interface
 
 protected: // ctors
 
-	AudioDriverPlugin();
+	AudioDriverModule ();
 
 };
 

@@ -27,7 +27,7 @@ system_config_search_path()
 }
 
 SearchPath
-plugin_search_path ()
+module_search_path ()
 {
 	return mojo_search_path ();
 }

@@ -4,10 +4,10 @@
 
 #include <mojo/forward.hpp>
 #include <mojo/filesystem.hpp>
-#include <mojo/plugin_set.hpp>
-#include <mojo/audio_file_plugin_set.hpp>
-#include <mojo/audio_driver_plugin_set.hpp>
-#include <mojo/audio_effect_plugin_set.hpp>
+#include <mojo/module_set.hpp>
+#include <mojo/audio_file_module_set.hpp>
+#include <mojo/audio_driver_module_set.hpp>
+#include <mojo/audio_effect_module_set.hpp>
 
 namespace mojo {
 
@@ -15,7 +15,7 @@ namespace mojo {
  * I'm not sure what this class should be called but it
  * is intended to hold all the resources that are unique
  * to each process and as such is a singleton. Things like
- * the audio drivers, plugin management and preferences etc.
+ * the audio drivers, module management and preferences etc.
  */
 class App
 {
@@ -26,13 +26,13 @@ public: // methods
 
 	static AudioFileSPtr open_audiofile (const fs::path& p);
 
-	static PluginSet get_plugins ();
+	static ModuleSet get_modules ();
 
-	static AudioFilePluginSet get_audiofile_plugins ();
+	static AudioFileModuleSet get_audiofile_modules ();
 
-	static AudioDriverPluginSet get_audio_driver_plugins ();
+	static AudioDriverModuleSet get_audio_driver_modules ();
 
-	static AudioEffectPluginSet get_audio_effect_plugins ();
+	static AudioEffectModuleSet get_audio_effect_modules ();
 
 private: // member data
 
@@ -40,7 +40,7 @@ private: // member data
 
 	TypeSystemSPtr          m_type_system;
 
-	PluginSet               m_plugins;
+	ModuleSet               m_modules;
 
 private: // constructors
 	

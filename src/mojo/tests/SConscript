@@ -23,7 +23,7 @@ tests='''
 test_sequence
 test_type_system
 test_graph
-test_plugin_utils
+test_module_utils
 test_project
 test_audition
 test_app
@@ -32,9 +32,9 @@ test_audio_clip
 test_audio_effect
 test_filesystem_paths
 test_project_directory
-test_audiofile_plugins
+test_audiofile_modules
 test_file_utils
-test_audio_driver_plugins
+test_audio_driver_modules
 '''.split()
 
 for test in tests:

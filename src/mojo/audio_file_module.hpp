@@ -1,18 +1,18 @@
 
-#ifndef MOJO_AUDIO_FILE_PLUGIN_INCLUDED
-#define MOJO_AUDIO_FILE_PLUGIN_INCLUDED
+#ifndef MOJO_AUDIO_FILE_MODULE
+#define MOJO_AUDIO_FILE_MODULE
 
 #include <vector>
 #include <string>
 
-#include <mojo/plugin.hpp>
+#include <mojo/module.hpp>
 
 #include <mojo/audio_file.hpp>
 #include <mojo/audio_file_format.hpp>
 
 namespace mojo {
 
-class AudioFilePlugin : public Plugin
+class AudioFileModule : public Module
 {
 public: // typedefs
 
@@ -20,7 +20,7 @@ public: // typedefs
 
 public: // constructors
 
-	~AudioFilePlugin();
+	~AudioFileModule();
 
 public: // interface
 
@@ -52,7 +52,7 @@ public: // interface
 
 protected: // constructors
 
-	AudioFilePlugin();
+	AudioFileModule();
 
 };
 

@@ -8,7 +8,7 @@ dirs = [
     'cformat',
     'gleam',
     'mojo',
-    'plugins',
+    'modules',
     'ui',
     'mojo-gtk',
     'mojo-gtkmm'

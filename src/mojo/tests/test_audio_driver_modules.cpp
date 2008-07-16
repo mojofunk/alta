@@ -1,5 +1,5 @@
 
-#define BOOST_TEST_MODULE mojo_audio_driver_plugin
+#define BOOST_TEST_MODULE mojo_audio_driver_module
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
@@ -10,8 +10,8 @@
 
 #include <mojo/forward.hpp>
 #include <mojo/app.hpp>
-#include <mojo/plugin.hpp>
-#include <mojo/audio_driver_plugin.hpp>
+#include <mojo/module.hpp>
+#include <mojo/audio_driver_module.hpp>
 
 using namespace boost::unit_test;
 using namespace std;
@@ -38,22 +38,22 @@ test_device (AudioDevice* dev)
 }
 
 void
-test_audio_driver_plugin (AudioDriverPluginSPtr plug)
+test_audio_driver_module (AudioDriverModuleSPtr mod)
 {
-	BOOST_REQUIRE(plug);
+	BOOST_REQUIRE(mod);
 
-	BOOST_TEST_MESSAGE(plug->get_author());
-	BOOST_TEST_MESSAGE(plug->get_description());
-	BOOST_TEST_MESSAGE(plug->get_version());
+	BOOST_TEST_MESSAGE(mod->get_author());
+	BOOST_TEST_MESSAGE(mod->get_description());
+	BOOST_TEST_MESSAGE(mod->get_version());
 
-	AudioDriverPlugin::Devices devices = plug->get_devices();
+	AudioDriverModule::Devices devices = mod->get_devices();
 
 	BOOST_CHECK(!devices.empty());
 
 	for_each (devices.begin(), devices.end(), test_device);
 }
 
-BOOST_AUTO_TEST_CASE( audio_driver_plugin_test )
+BOOST_AUTO_TEST_CASE( audio_driver_module_test )
 {
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
@@ -61,9 +61,9 @@ BOOST_AUTO_TEST_CASE( audio_driver_plugin_test )
 	AppSPtr app = App::init (argc, argv);
 	BOOST_REQUIRE(app);
 
-	AudioDriverPluginSet plugins = App::get_audio_driver_plugins();
+	AudioDriverModuleSet modules = App::get_audio_driver_modules();
 
-	BOOST_CHECK(!plugins.empty());
+	BOOST_CHECK(!modules.empty());
 
-	for_each (plugins.begin(), plugins.end(), test_audio_driver_plugin);
+	for_each (modules.begin(), modules.end(), test_audio_driver_module);
 }

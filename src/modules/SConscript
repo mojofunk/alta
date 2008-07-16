@@ -5,8 +5,8 @@ import tools.pkgconfig as pkgconfig
 import os
 
 dirs = [
-    'AudioFilePlugin',
-    'AudioDriverPlugin'
+    'AudioFileModule',
+    'AudioDriverModule'
     ]
 
 for dir in dirs:

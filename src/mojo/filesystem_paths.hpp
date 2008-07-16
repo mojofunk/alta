@@ -1,6 +1,6 @@
 
-#ifndef MOJO_FILESYSTEM_PATHS_INCLUDED
-#define MOJO_FILESYSTEM_PATHS_INCLUDED
+#ifndef MOJO_FILESYSTEM_PATHS
+#define MOJO_FILESYSTEM_PATHS
 
 #include <mojo/filesystem.hpp>
 #include <mojo/search_path.hpp>
@@ -13,7 +13,7 @@ namespace mojo {
 
 	SearchPath system_config_search_path();
 
-	SearchPath plugin_search_path();
+	SearchPath module_search_path();
 
 } // namespace mojo
 

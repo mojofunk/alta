@@ -5,10 +5,10 @@
 #include <mojo/type_system.hpp>
 #include <mojo/register_types.hpp>
 #include <mojo/filesystem_paths.hpp>
-#include <mojo/plugin_utils.hpp>
-#include <mojo/audio_file_plugin.hpp>
-#include <mojo/audio_driver_plugin.hpp>
-#include <mojo/audio_effect_plugin.hpp>
+#include <mojo/module_utils.hpp>
+#include <mojo/audio_file_module.hpp>
+#include <mojo/audio_driver_module.hpp>
+#include <mojo/audio_effect_module.hpp>
 
 namespace mojo {
 
@@ -30,7 +30,7 @@ App::init (int argc, char *argv[])
 App::App (int argc, char *argv[])
 	:
 	m_type_system(TypeSystem::init ())
-	, m_plugins(discover_plugins (plugin_search_path ()))
+	, m_modules(discover_modules (module_search_path ()))
 {
 	register_types();
 }
@@ -43,15 +43,15 @@ App::~App()
 AudioFileSPtr
 App::open_audiofile (const fs::path& p)
 {
-	// get all the AudioFilePlugin's that are loaded
+	// get all the AudioFileModule's that are loaded
 	
-	// for each plugin try to create an AudioFile instance
+	// for each module try to create an AudioFile instance
 	// from the path
 
-	AudioFilePluginSet plugins = get_audiofile_plugins ();
+	AudioFileModuleSet modules = get_audiofile_modules ();
 
-	for (AudioFilePluginSet::const_iterator i = plugins.begin();
-			i != plugins.end(); ++i)
+	for (AudioFileModuleSet::const_iterator i = modules.begin();
+			i != modules.end(); ++i)
 	{
 		AudioFile* af = (*i)->open (p.string());
 
@@ -61,58 +61,58 @@ App::open_audiofile (const fs::path& p)
 	return AudioFileSPtr();
 }
 
-PluginSet
-App::get_plugins ()
+ModuleSet
+App::get_modules ()
 {
-	return s_app->m_plugins;
+	return s_app->m_modules;
 }
 
-AudioFilePluginSet
-App::get_audiofile_plugins ()
+AudioFileModuleSet
+App::get_audiofile_modules ()
 {
-	AudioFilePluginSet audiofile_plugins;
+	AudioFileModuleSet audiofile_modules;
 
-	for (PluginSet::iterator i = s_app->m_plugins.begin();
-			i != s_app->m_plugins.end(); ++i)
+	for (ModuleSet::iterator i = s_app->m_modules.begin();
+			i != s_app->m_modules.end(); ++i)
 	{
-		AudioFilePluginSPtr p = boost::dynamic_pointer_cast<AudioFilePlugin>(*i);
+		AudioFileModuleSPtr p = boost::dynamic_pointer_cast<AudioFileModule>(*i);
 
-		if (p) audiofile_plugins.insert (p);
+		if (p) audiofile_modules.insert (p);
 	}
 
-	return audiofile_plugins;
+	return audiofile_modules;
 }
 
-AudioDriverPluginSet
-App::get_audio_driver_plugins ()
+AudioDriverModuleSet
+App::get_audio_driver_modules ()
 {
-	AudioDriverPluginSet audio_driver_plugins;
+	AudioDriverModuleSet audio_driver_modules;
 
-	for (PluginSet::iterator i = s_app->m_plugins.begin();
-			i != s_app->m_plugins.end(); ++i)
+	for (ModuleSet::iterator i = s_app->m_modules.begin();
+			i != s_app->m_modules.end(); ++i)
 	{
-		AudioDriverPluginSPtr p = boost::dynamic_pointer_cast<AudioDriverPlugin>(*i);
+		AudioDriverModuleSPtr p = boost::dynamic_pointer_cast<AudioDriverModule>(*i);
 
-		if (p) audio_driver_plugins.insert (p);
+		if (p) audio_driver_modules.insert (p);
 	}
 
-	return audio_driver_plugins;
+	return audio_driver_modules;
 }
 
-AudioEffectPluginSet
-App::get_audio_effect_plugins ()
+AudioEffectModuleSet
+App::get_audio_effect_modules ()
 {
-	AudioEffectPluginSet audio_effect_plugins;
+	AudioEffectModuleSet audio_effect_modules;
 
-	for (PluginSet::iterator i = s_app->m_plugins.begin();
-			i != s_app->m_plugins.end(); ++i)
+	for (ModuleSet::iterator i = s_app->m_modules.begin();
+			i != s_app->m_modules.end(); ++i)
 	{
-		AudioEffectPluginSPtr p = boost::dynamic_pointer_cast<AudioEffectPlugin>(*i);
+		AudioEffectModuleSPtr p = boost::dynamic_pointer_cast<AudioEffectModule>(*i);
 
-		if (p) audio_effect_plugins.insert (p);
+		if (p) audio_effect_modules.insert (p);
 	}
 
-	return audio_effect_plugins;
+	return audio_effect_modules;
 }
 
 } // namespace mojo

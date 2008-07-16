@@ -8,7 +8,7 @@
 #include <boost/test/framework.hpp>
 
 #include <mojo/app.hpp>
-#include <mojo/plugin.hpp>
+#include <mojo/module.hpp>
 
 using namespace boost::unit_test;
 using namespace std;
@@ -27,16 +27,16 @@ BOOST_AUTO_TEST_CASE( test_init )
 }
 
 void
-test_plugin (const PluginSPtr& plug)
+test_module (const ModuleSPtr& mod)
 {
-	BOOST_REQUIRE(plug);
+	BOOST_REQUIRE(mod);
 
-	BOOST_TEST_MESSAGE(plug->get_author());
-	BOOST_TEST_MESSAGE(plug->get_description());
-	BOOST_TEST_MESSAGE(plug->get_version());
+	BOOST_TEST_MESSAGE(mod->get_author());
+	BOOST_TEST_MESSAGE(mod->get_description());
+	BOOST_TEST_MESSAGE(mod->get_version());
 }
 
-BOOST_AUTO_TEST_CASE( test_get_plugins )
+BOOST_AUTO_TEST_CASE( test_get_modules )
 {
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
@@ -45,8 +45,8 @@ BOOST_AUTO_TEST_CASE( test_get_plugins )
 
 	BOOST_REQUIRE(app);
 
-	PluginSet plugins = app->get_plugins();
+	ModuleSet modules = app->get_modules();
 
-	for_each (plugins.begin(), plugins.end(), test_plugin);
+	for_each (modules.begin(), modules.end(), test_module);
 
 }

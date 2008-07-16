@@ -6,18 +6,18 @@ GMOJO_PATH=share
 export GMOJO_PATH
 
 MOJO_PATH=\
-$BUILD_DIR/plugins/AudioFilePlugin/sndfile:\
-$BUILD_DIR/plugins/AudioDriverPlugin/jack
+$BUILD_DIR/modules/AudioFileModule/sndfile:\
+$BUILD_DIR/modules/AudioDriverModule/jack
 
 export MOJO_PATH
 
 GLEAM_LIBRARY_PATH=$BUILD_DIR/gleam
 MOJO_LIBRARY_PATH=$BUILD_DIR/mojo
-MOJO_PLUGIN_LIBRARY_PATH=$BUILD_DIR/plugins
+MOJO_MODULE_LIBRARY_PATH=$BUILD_DIR/modules
 
 export LD_LIBRARY_PATH=\
 $GLEAM_LIBRARY_PATH:\
 $MOJO_LIBRARY_PATH:\
-$MOJO_PLUGIN_LIBRARY_PATH:\
+$MOJO_MODULE_LIBRARY_PATH:\
 
 export EXECUTABLE="%BUILD_DIR%/ui/%VERSIONED_NAME%"

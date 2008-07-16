@@ -1,19 +1,19 @@
 
-#ifndef MOJO_SNDFILE_AUDIO_FILE_PLUGIN_INCLUDED
-#define MOJO_SNDFILE_AUDIO_FILE_PLUGIN_INCLUDED
+#ifndef MOJO_SNDFILE_AUDIO_FILE_MODULE
+#define MOJO_SNDFILE_AUDIO_FILE_MODULE
 
-#include <mojo/audio_file_plugin.hpp>
+#include <mojo/audio_file_module.hpp>
 
 namespace mojo {
 
-class SndfileAudioFilePlugin : public AudioFilePlugin
+class SndfileAudioFileModule : public AudioFileModule
 {
 public: // constructors
 
-	SndfileAudioFilePlugin();
-	~SndfileAudioFilePlugin();
+	SndfileAudioFileModule();
+	~SndfileAudioFileModule();
 
-public: // Plugin interface
+public: // Module interface
 
 	virtual std::string get_author();
 
@@ -21,7 +21,7 @@ public: // Plugin interface
 
 	virtual std::string get_version();
 
-public: // AudioFilePlugin interface
+public: // AudioFileModule interface
 	
 	virtual Formats get_readable_formats () const;
 

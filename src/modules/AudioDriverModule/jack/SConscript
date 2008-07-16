@@ -11,7 +11,7 @@ jack_env = env.Clone()
 pkgconfig.ParseDependencies ( jack_env, jack_deps )
 
 jack_source_files = Split("""
-jack_audio_driver_plugin.cpp
+jack_audio_driver_module.cpp
 """)
 
 jack_audio_driver = jack_env.SharedLibrary ( 'jack_audio_driver', jack_source_files )

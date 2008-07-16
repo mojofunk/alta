@@ -1,5 +1,5 @@
 
-#define BOOST_TEST_MODULE mojo_audiofile_plugins
+#define BOOST_TEST_MODULE mojo_audiofile_modules
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
@@ -12,8 +12,8 @@
 
 #include <mojo/forward.hpp>
 #include <mojo/app.hpp>
-#include <mojo/plugin.hpp>
-#include <mojo/audio_file_plugin.hpp>
+#include <mojo/module.hpp>
+#include <mojo/audio_file_module.hpp>
 
 using namespace boost::unit_test;
 using namespace std;
@@ -63,9 +63,9 @@ test_read_audiofile (AudioFileSPtr af)
 }
 
 void
-test_open_existing_file (AudioFilePluginSPtr plug)
+test_open_existing_file (AudioFileModuleSPtr mod)
 {
-	AudioFileSPtr af(plug->open("share/projects/motronic/audiofiles/notify.wav"));
+	AudioFileSPtr af(mod->open("share/projects/motronic/audiofiles/notify.wav"));
 
 	BOOST_REQUIRE(af);
 
@@ -79,7 +79,7 @@ test_open_existing_file (AudioFilePluginSPtr plug)
 }
 
 void
-test_formats (const AudioFilePlugin::Formats& formats)
+test_formats (const AudioFileModule::Formats& formats)
 {
 	BOOST_CHECK(!formats.empty());
 
@@ -87,22 +87,22 @@ test_formats (const AudioFilePlugin::Formats& formats)
 }
 
 void
-test_audiofile_plugin (AudioFilePluginSPtr plug)
+test_audiofile_module (AudioFileModuleSPtr mod)
 {
-	BOOST_REQUIRE(plug);
+	BOOST_REQUIRE(mod);
 
-	BOOST_TEST_MESSAGE(plug->get_author());
-	BOOST_TEST_MESSAGE(plug->get_description());
-	BOOST_TEST_MESSAGE(plug->get_version());
+	BOOST_TEST_MESSAGE(mod->get_author());
+	BOOST_TEST_MESSAGE(mod->get_description());
+	BOOST_TEST_MESSAGE(mod->get_version());
 
-	test_open_existing_file (plug);
+	test_open_existing_file (mod);
 
-	test_formats (plug->get_readable_formats ());
+	test_formats (mod->get_readable_formats ());
 
-	test_formats (plug->get_writable_formats ());
+	test_formats (mod->get_writable_formats ());
 }
 
-BOOST_AUTO_TEST_CASE( audiofile_plugin_test )
+BOOST_AUTO_TEST_CASE( audiofile_module_test )
 {
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
@@ -110,9 +110,9 @@ BOOST_AUTO_TEST_CASE( audiofile_plugin_test )
 	AppSPtr app = App::init (argc, argv);
 	BOOST_REQUIRE(app);
 
-	AudioFilePluginSet plugins = App::get_audiofile_plugins();
+	AudioFileModuleSet modules = App::get_audiofile_modules();
 
-	BOOST_CHECK(!plugins.empty());
+	BOOST_CHECK(!modules.empty());
 
-	for_each (plugins.begin(), plugins.end(), test_audiofile_plugin);
+	for_each (modules.begin(), modules.end(), test_audiofile_module);
 }
