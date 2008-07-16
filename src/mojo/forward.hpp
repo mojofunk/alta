@@ -27,6 +27,11 @@ namespace mojo {
 	typedef boost::shared_ptr<AudioDriverPlugin>    AudioDriverPluginSPtr;
 	typedef boost::weak_ptr<AudioDriverPlugin>      AudioDriverPluginWPtr;
 
+	class AudioEffectPlugin;
+
+	typedef boost::shared_ptr<AudioEffectPlugin>    AudioEffectPluginSPtr;
+	typedef boost::weak_ptr<AudioEffectPlugin>      AudioEffectPluginWPtr;
+
 	class AudioEvent;
 
 	typedef boost::shared_ptr<AudioEvent>    AudioEventSPtr;

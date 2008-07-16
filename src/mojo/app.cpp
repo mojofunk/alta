@@ -8,6 +8,7 @@
 #include <mojo/plugin_utils.hpp>
 #include <mojo/audio_file_plugin.hpp>
 #include <mojo/audio_driver_plugin.hpp>
+#include <mojo/audio_effect_plugin.hpp>
 
 namespace mojo {
 
@@ -96,6 +97,22 @@ App::get_audio_driver_plugins ()
 	}
 
 	return audio_driver_plugins;
+}
+
+AudioEffectPluginSet
+App::get_audio_effect_plugins ()
+{
+	AudioEffectPluginSet audio_effect_plugins;
+
+	for (PluginSet::iterator i = s_app->m_plugins.begin();
+			i != s_app->m_plugins.end(); ++i)
+	{
+		AudioEffectPluginSPtr p = boost::dynamic_pointer_cast<AudioEffectPlugin>(*i);
+
+		if (p) audio_effect_plugins.insert (p);
+	}
+
+	return audio_effect_plugins;
 }
 
 } // namespace mojo

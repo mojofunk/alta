@@ -7,6 +7,7 @@
 #include <mojo/plugin_set.hpp>
 #include <mojo/audio_file_plugin_set.hpp>
 #include <mojo/audio_driver_plugin_set.hpp>
+#include <mojo/audio_effect_plugin_set.hpp>
 
 namespace mojo {
 
@@ -30,6 +31,8 @@ public: // methods
 	static AudioFilePluginSet get_audiofile_plugins ();
 
 	static AudioDriverPluginSet get_audio_driver_plugins ();
+
+	static AudioEffectPluginSet get_audio_effect_plugins ();
 
 private: // member data
 

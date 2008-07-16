@@ -29,6 +29,7 @@ test_audition
 test_app
 test_archive
 test_audio_clip
+test_audio_effect
 test_filesystem_paths
 test_project_directory
 test_audiofile_plugins
