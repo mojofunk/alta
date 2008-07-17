@@ -67,52 +67,40 @@ App::get_modules ()
 	return s_app->m_modules;
 }
 
+template<class T>
+std::set<boost::shared_ptr<T> >
+get_modules_of_type (const ModuleSet& modules)
+{
+	typedef boost::shared_ptr<T> module_type;
+	typedef std::set<module_type> set_type;
+
+	set_type mods;
+
+	for (ModuleSet::iterator i = modules.begin();
+			i != modules.end(); ++i)
+	{
+		module_type p = boost::dynamic_pointer_cast<T>(*i);
+		if (p) mods.insert (p);
+	}
+	return mods;
+}
+
 AudioFileModuleSet
 App::get_audiofile_modules ()
 {
-	AudioFileModuleSet audiofile_modules;
-
-	for (ModuleSet::iterator i = s_app->m_modules.begin();
-			i != s_app->m_modules.end(); ++i)
-	{
-		AudioFileModuleSPtr p = boost::dynamic_pointer_cast<AudioFileModule>(*i);
-
-		if (p) audiofile_modules.insert (p);
-	}
-
-	return audiofile_modules;
+	return get_modules_of_type<AudioFileModule> (get_modules());
 }
 
 AudioDriverModuleSet
 App::get_audio_driver_modules ()
 {
-	AudioDriverModuleSet audio_driver_modules;
-
-	for (ModuleSet::iterator i = s_app->m_modules.begin();
-			i != s_app->m_modules.end(); ++i)
-	{
-		AudioDriverModuleSPtr p = boost::dynamic_pointer_cast<AudioDriverModule>(*i);
-
-		if (p) audio_driver_modules.insert (p);
-	}
-
-	return audio_driver_modules;
+	return get_modules_of_type<AudioDriverModule> (get_modules());
 }
 
 AudioEffectModuleSet
 App::get_audio_effect_modules ()
 {
-	AudioEffectModuleSet audio_effect_modules;
-
-	for (ModuleSet::iterator i = s_app->m_modules.begin();
-			i != s_app->m_modules.end(); ++i)
-	{
-		AudioEffectModuleSPtr p = boost::dynamic_pointer_cast<AudioEffectModule>(*i);
-
-		if (p) audio_effect_modules.insert (p);
-	}
-
-	return audio_effect_modules;
+	return get_modules_of_type<AudioEffectModule> (get_modules());
 }
 
 } // namespace mojo
