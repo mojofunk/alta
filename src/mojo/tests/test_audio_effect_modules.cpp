@@ -23,6 +23,12 @@ test_audio_effect_module (AudioEffectModuleSPtr mod)
 	BOOST_TEST_MESSAGE(mod->get_author());
 	BOOST_TEST_MESSAGE(mod->get_description());
 	BOOST_TEST_MESSAGE(mod->get_version());
+
+	AudioEffect* ae = mod->open ("fail");
+
+	BOOST_CHECK(!ae);
+
+	mod->close (ae);
 }
 
 BOOST_AUTO_TEST_CASE( test_audio_effect_modules )

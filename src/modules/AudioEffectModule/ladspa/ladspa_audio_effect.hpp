@@ -10,11 +10,15 @@ namespace mojo {
 
 class LADSPAAudioEffect : public AudioEffect
 {
-public:
+public: // ctors
 
-	LADSPAAudioEffect ();
+	LADSPAAudioEffect (const std::string& path);
 
 	virtual ~LADSPAAudioEffect ();
+
+public: // AudioEffect interface
+
+	virtual void get_parameters (ParameterList& params) const;
 
 };
 

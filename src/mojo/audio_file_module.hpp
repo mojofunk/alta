@@ -50,6 +50,10 @@ public: // interface
 			samplerate_t rate,
 			channel_count_t channels) = 0;
 
+	/**
+	 * There should be a close method
+	 */
+
 protected: // constructors
 
 	AudioFileModule();

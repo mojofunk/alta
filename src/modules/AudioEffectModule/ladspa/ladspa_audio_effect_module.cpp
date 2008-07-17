@@ -1,5 +1,6 @@
 
 #include "ladspa_audio_effect_module.hpp"
+#include "ladspa_audio_effect.hpp"
 
 #include <mojo/export.h>
 
@@ -25,6 +26,18 @@ std::string
 LADSPAAudioEffectModule::get_version()
 {
 	return "0.0.1";
+}
+
+AudioEffect*
+LADSPAAudioEffectModule::open (const std::string& path)
+{
+	return new LADSPAAudioEffect (path);
+}
+
+void
+LADSPAAudioEffectModule::close (AudioEffect* ae)
+{
+	delete ae;
 }
 
 MOJO_CAPI void * mojo_module_factory(void)

@@ -6,6 +6,8 @@
 
 namespace mojo {
 
+class AudioEffect;
+
 /**
  * The AudioEffectModule interface enables support
  * for different plugin AudioEffect API's such as VST, LADSPA,
@@ -13,7 +15,7 @@ namespace mojo {
  */
 class AudioEffectModule : public Module
 {
-public:
+public: // ctors
 
 	virtual ~AudioEffectModule ();
 
@@ -21,6 +23,14 @@ protected:
 
 	AudioEffectModule ();
 
+public: // Interface
+
+	/**
+	 * return new AudioEffect or 0 on failure
+	 */
+	virtual AudioEffect* open (const std::string& path) = 0;
+
+	virtual void close (AudioEffect* ae) = 0; 
 };
 
 } // namespace mojo

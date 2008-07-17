@@ -11,6 +11,7 @@ class LADSPAAudioEffectModule : public AudioEffectModule
 public: // constructors
 
 	LADSPAAudioEffectModule();
+
 	~LADSPAAudioEffectModule();
 
 public: // Module interface
@@ -22,6 +23,10 @@ public: // Module interface
 	virtual std::string get_version();
 
 public: // AudioEffectModule interface
+
+	virtual AudioEffect* open (const std::string& path);
+
+	virtual void close (AudioEffect* ae); 
 
 };
 
