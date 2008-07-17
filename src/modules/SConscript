@@ -6,7 +6,8 @@ import os
 
 dirs = [
     'AudioFileModule',
-    'AudioDriverModule'
+    'AudioDriverModule',
+    'AudioEffectModule'
     ]
 
 for dir in dirs:

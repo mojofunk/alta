@@ -5,6 +5,7 @@ import tools.pkgconfig as pkgconfig
 import os
 
 dirs = [
+    'ladspa'  
     ]
 
 for dir in dirs:

@@ -1,0 +1,16 @@
+# vim: tabstop=4 expandtab shiftwidth=4
+
+import tools.pkgconfig as pkgconfig
+
+Import ('env')
+
+ladspa_env = env.Clone()
+
+ladspa_source_files = Split("""
+ladspa_audio_effect.cpp
+ladspa_audio_effect_module.cpp
+""")
+
+ladspa_audio_effect = ladspa_env.SharedLibrary ( 'ladspa_audio_effect', ladspa_source_files )
+
+Default (ladspa_audio_effect)

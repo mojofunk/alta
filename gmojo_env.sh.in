@@ -7,7 +7,9 @@ export GMOJO_PATH
 
 MOJO_PATH=\
 $BUILD_DIR/modules/AudioFileModule/sndfile:\
-$BUILD_DIR/modules/AudioDriverModule/jack
+$BUILD_DIR/modules/AudioDriverModule/jack:\
+$BUILD_DIR/modules/AudioEffectModule/ladspa
+
 
 export MOJO_PATH
 
