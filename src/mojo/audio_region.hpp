@@ -1,10 +1,11 @@
 
-#ifndef MOJO_AUDIO_REGION_INCLUDED
-#define MOJO_AUDIO_REGION_INCLUDED
+#ifndef MOJO_AUDIO_REGION
+#define MOJO_AUDIO_REGION
 
 #include <mojo/forward.hpp>
-#include <mojo/types.hpp>
 #include <mojo/object.hpp>
+#include <mojo/typedefs.hpp>
+#include <mojo/types.hpp>
 
 namespace mojo {
 

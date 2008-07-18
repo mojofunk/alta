@@ -2,12 +2,11 @@
 #ifndef MOJO_DUMMY_ARCHIVE
 #define MOJO_DUMMY_ARCHIVE
 
-#include <mojo/forward.hpp>
 #include <mojo/archive.hpp>
+#include <mojo/forward.hpp>
+#include <mojo/typedefs.hpp>
 
 namespace mojo {
-
-class ObjectCollection;
 
 class DummyArchive : public Archive
 {

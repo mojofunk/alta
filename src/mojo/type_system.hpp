@@ -1,6 +1,6 @@
 
-#ifndef MOJO_TYPE_SYSTEM_INCLUDED
-#define MOJO_TYPE_SYSTEM_INCLUDED
+#ifndef MOJO_TYPE_SYSTEM
+#define MOJO_TYPE_SYSTEM
 
 #include <string>
 #include <typeinfo>
@@ -8,6 +8,7 @@
 #include <boost/any.hpp>
 
 #include <mojo/forward.hpp>
+#include <mojo/typedefs.hpp>
 
 namespace mojo {
 
@@ -49,6 +50,6 @@ private:
 	};
 };
 
-}
+} // namespace mojo
 
 #endif

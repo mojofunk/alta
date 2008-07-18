@@ -3,6 +3,7 @@
 #define MOJO_SESSION_INCLUDED
 
 #include <mojo/forward.hpp>
+#include <mojo/typedefs.hpp>
 
 namespace mojo {
 

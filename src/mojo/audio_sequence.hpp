@@ -3,6 +3,7 @@
 
 #include <mojo/forward.hpp>
 #include <mojo/object.hpp>
+#include <mojo/typedefs.hpp>
 
 #include <set>
 
