@@ -1,12 +1,13 @@
-#define BOOST_TEST_MODULE mojo_archive
+#define BOOST_TEST_MODULE mojo_archive_modules
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
 //#include <boost/test/test_tools.hpp>
 
 #include <mojo/app.hpp>
-#include <mojo/dummy_archive.hpp>
-#include <mojo/xml_archive.hpp>
+#include <mojo/properties.hpp>
+#include <mojo/archive.hpp>
+#include <mojo/archive_module.hpp>
 
 #include <cformat/cformat.hpp>
 
@@ -54,47 +55,40 @@ check_some_properties (Properties& props)
 }
 
 void
-test_archive (Archive& archive, const string& filename)
+test_archive (ArchiveSPtr archive, const string& filename)
 {
 	Properties props;
 
 	insert_some_properties (props);
 
-	BOOST_CHECK_NO_THROW(archive.write (filename, props));
+	BOOST_CHECK_NO_THROW(archive->write (filename, props));
 
 	props.clear();
 
-	BOOST_CHECK_NO_THROW(archive.read (filename, props));
+	BOOST_CHECK_NO_THROW(archive->read (filename, props));
 
 	check_some_properties (props);
 }
 
-BOOST_AUTO_TEST_CASE( dummy_archive_test )
+BOOST_AUTO_TEST_CASE( archive_module_test )
 {
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
 	AppSPtr app = App::init (argc, argv);
 
-	DummyArchive archive;
-	
-	string file_extension = cformat::convert<string>(g_random_int());
-	string file_name = "dummy.txt." + file_extension;
+	ArchiveModuleSet modules = App::get_archive_modules ();
 
-	test_archive (archive, file_name);
-}
+	BOOST_CHECK (!modules.empty());
 
-BOOST_AUTO_TEST_CASE( xml_archive_test )
-{
-	int argc = framework::master_test_suite().argc;
-	char** argv = framework::master_test_suite().argv;
+	for (ArchiveModuleSet::iterator i = modules.begin ();
+			i != modules.end(); ++i)
+	{
+		string file_extension = cformat::convert<string>(g_random_int());
+		string file_name = string((typeid (*i).name())) + "." + file_extension;
 
-	AppSPtr app = App::init (argc, argv);
+		ArchiveSPtr archive((*i)->create_archive ());
 
-	XMLArchive archive;
-
-	string file_extension = cformat::convert<string>(g_random_int());
-	string file_name = "archive.xml." + file_extension;
-
-	test_archive (archive, file_name);
+		test_archive (archive, file_name);
+	}
 }

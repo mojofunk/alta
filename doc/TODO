@@ -53,8 +53,6 @@ Each project format should be contained in a module
 
 Move module access methods in mojo::App into separate headers
 
-Write template function for casting modules to derived types
-
 Make a ArchiveModule class and move DummyArchive and XMLArchive into
 the core modules
 

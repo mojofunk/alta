@@ -20,7 +20,8 @@ pkgconfig.ParseDependencies ( mojo_env, mojo_deps )
 
 mojo_source_files = Split("""
 app.cpp
-archive_utils.cpp
+archive.cpp
+archive_module.cpp
 audio_clip.cpp
 audio_driver_module.cpp
 audio_effect.cpp
@@ -35,7 +36,6 @@ audio_region_event.cpp
 audio_track.cpp
 audio_sequence.cpp
 directory_names.cpp
-dummy_archive.cpp
 event.cpp
 filesystem_paths.cpp
 file_utils.cpp
@@ -51,7 +51,6 @@ search_path.cpp
 track.cpp
 type_names.cpp
 type_system.cpp
-xml_archive.cpp
 """)
 
 libmojo = mojo_env.SharedLibrary ( 'mojo', mojo_source_files )

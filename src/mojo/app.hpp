@@ -8,6 +8,7 @@
 #include <mojo/audio_file_module_set.hpp>
 #include <mojo/audio_driver_module_set.hpp>
 #include <mojo/audio_effect_module_set.hpp>
+#include <mojo/archive_module_set.hpp>
 
 namespace mojo {
 
@@ -33,6 +34,10 @@ public: // methods
 	static AudioDriverModuleSet get_audio_driver_modules ();
 
 	static AudioEffectModuleSet get_audio_effect_modules ();
+
+	static ArchiveModuleSet get_archive_modules ();
+
+	static ArchiveSPtr create_archive ();
 
 private: // member data
 

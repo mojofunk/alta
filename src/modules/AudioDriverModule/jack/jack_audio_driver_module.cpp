@@ -5,13 +5,9 @@
 
 namespace mojo {
 
-JACKAudioDriverModule::JACKAudioDriverModule ()
-{
-}
+JACKAudioDriverModule::JACKAudioDriverModule () { }
 
-JACKAudioDriverModule::~JACKAudioDriverModule ()
-{
-}
+JACKAudioDriverModule::~JACKAudioDriverModule () { }
 
 std::string
 JACKAudioDriverModule::get_author()

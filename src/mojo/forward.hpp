@@ -17,6 +17,11 @@ namespace mojo {
 	typedef boost::shared_ptr<Archive>    ArchiveSPtr;
 	typedef boost::weak_ptr<Archive>      ArchiveWPtr;
 
+	class ArchiveModule;
+
+	typedef boost::shared_ptr<ArchiveModule>    ArchiveModuleSPtr;
+	typedef boost::weak_ptr<ArchiveModule>      ArchiveModuleWPtr;
+
 	class AudioClip;
 
 	typedef boost::shared_ptr<AudioClip>    AudioClipSPtr;

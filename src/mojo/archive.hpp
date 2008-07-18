@@ -1,6 +1,6 @@
 
-#ifndef MOJO_ARCHIVE_INCLUDED
-#define MOJO_ARCHIVE_INCLUDED
+#ifndef MOJO_ARCHIVE
+#define MOJO_ARCHIVE
 
 #include <string>
 
@@ -25,9 +25,11 @@ namespace mojo {
  */
 class Archive
 {
-public:
+public: // ctors
 
-	virtual ~Archive() { }
+	virtual ~Archive();
+
+public: // Interface
 
 	virtual void write (const std::string& file_path, const Properties& props) = 0;
 	

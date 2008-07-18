@@ -1,6 +1,6 @@
 
-#ifndef MOJO_XML_ARCHIVE_INCLUDED
-#define MOJO_XML_ARCHIVE_INCLUDED
+#ifndef MOJO_XML_ARCHIVE
+#define MOJO_XML_ARCHIVE
 
 #include <mojo/archive.hpp>
 

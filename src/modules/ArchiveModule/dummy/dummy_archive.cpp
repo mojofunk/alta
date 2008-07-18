@@ -10,7 +10,7 @@
 #include <iostream>
 #include <fstream>
 
-#include <mojo/dummy_archive.hpp>
+#include "dummy_archive.hpp"
 
 namespace mojo {
 

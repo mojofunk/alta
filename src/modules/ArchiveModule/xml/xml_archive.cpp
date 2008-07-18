@@ -1,5 +1,5 @@
 
-#include <mojo/xml_archive.hpp>
+#include "xml_archive.hpp"
 
 namespace mojo {
 

@@ -1,5 +1,5 @@
 
-#include <mojo/archive_utils.hpp>
+#include <mojo/app.hpp> // ??
 #include <mojo/archive.hpp>
 
 #include <mojo/audio_track.hpp>
@@ -55,7 +55,7 @@ Project::new_midi_track (const std::string& name)
 void
 Project::save () const
 {
-	ArchiveSPtr archive = create_mojo_archive(); 
+	ArchiveSPtr archive = App::create_archive (); 
 
 	Properties props;
 	get_properties(props);

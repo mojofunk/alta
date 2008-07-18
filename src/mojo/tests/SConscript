@@ -27,12 +27,12 @@ test_module_utils
 test_project
 test_audition
 test_app
-test_archive
 test_audio_clip
 test_filesystem_paths
 test_project_directory
-test_audiofile_modules
 test_file_utils
+test_archive_modules
+test_audiofile_modules
 test_audio_driver_modules
 test_audio_effect_modules
 '''.split()

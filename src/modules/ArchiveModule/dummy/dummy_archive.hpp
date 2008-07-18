@@ -1,6 +1,6 @@
 
-#ifndef MOJO_DUMMY_ARCHIVE_INCLUDED
-#define MOJO_DUMMY_ARCHIVE_INCLUDED
+#ifndef MOJO_DUMMY_ARCHIVE
+#define MOJO_DUMMY_ARCHIVE
 
 #include <mojo/forward.hpp>
 #include <mojo/archive.hpp>
@@ -11,7 +11,7 @@ class ObjectCollection;
 
 class DummyArchive : public Archive
 {
-public:
+public: // Archive interface
 
 	virtual void write (const std::string& file_path, const Properties& props);
 	

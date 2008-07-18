@@ -9,6 +9,8 @@
 #include <mojo/audio_file_module.hpp>
 #include <mojo/audio_driver_module.hpp>
 #include <mojo/audio_effect_module.hpp>
+#include <mojo/archive.hpp>
+#include <mojo/archive_module.hpp>
 
 namespace mojo {
 
@@ -43,11 +45,6 @@ App::~App()
 AudioFileSPtr
 App::open_audiofile (const fs::path& p)
 {
-	// get all the AudioFileModule's that are loaded
-	
-	// for each module try to create an AudioFile instance
-	// from the path
-
 	AudioFileModuleSet modules = get_audiofile_modules ();
 
 	for (AudioFileModuleSet::const_iterator i = modules.begin();
@@ -67,24 +64,6 @@ App::get_modules ()
 	return s_app->m_modules;
 }
 
-template<class T>
-std::set<boost::shared_ptr<T> >
-get_modules_of_type (const ModuleSet& modules)
-{
-	typedef boost::shared_ptr<T> module_type;
-	typedef std::set<module_type> set_type;
-
-	set_type mods;
-
-	for (ModuleSet::iterator i = modules.begin();
-			i != modules.end(); ++i)
-	{
-		module_type p = boost::dynamic_pointer_cast<T>(*i);
-		if (p) mods.insert (p);
-	}
-	return mods;
-}
-
 AudioFileModuleSet
 App::get_audiofile_modules ()
 {
@@ -101,6 +80,25 @@ AudioEffectModuleSet
 App::get_audio_effect_modules ()
 {
 	return get_modules_of_type<AudioEffectModule> (get_modules());
+}
+
+ArchiveModuleSet
+App::get_archive_modules ()
+{
+	return get_modules_of_type<ArchiveModule> (get_modules());
+}
+
+ArchiveSPtr
+App::create_archive ()
+{
+	ArchiveModuleSet modules = get_archive_modules (); 
+
+	if (!modules.empty())
+	{
+		ArchiveModuleSPtr mod = *modules.begin(); 
+		return ArchiveSPtr(mod->create_archive ()); 
+	}
+	return ArchiveSPtr();
 }
 
 } // namespace mojo

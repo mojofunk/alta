@@ -1,0 +1,16 @@
+# vim: tabstop=4 expandtab shiftwidth=4
+
+import tools.pkgconfig as pkgconfig
+
+Import ('env')
+
+dummy_env = env.Clone()
+
+dummy_source_files = Split("""
+dummy_archive.cpp
+dummy_archive_module.cpp
+""")
+
+dummy_archive = dummy_env.SharedLibrary ( 'dummy_archive', dummy_source_files )
+
+Default (dummy_archive)
