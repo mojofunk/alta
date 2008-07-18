@@ -3,7 +3,6 @@
 #define MOJO_MODULE_UTILS
 
 #include <mojo/filesystem.hpp>
-#include <mojo/forward.hpp>
 #include <mojo/search_path.hpp>
 #include <mojo/typedefs.hpp>
 

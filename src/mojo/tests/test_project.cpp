@@ -5,7 +5,6 @@
 #include <boost/test/unit_test_log.hpp>
 //#include <boost/test/test_tools.hpp>
 
-#include <mojo/forward.hpp>
 #include <mojo/app.hpp>
 #include <mojo/project.hpp>
 #include <mojo/audio_track.hpp>

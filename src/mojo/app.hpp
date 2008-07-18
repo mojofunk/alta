@@ -3,7 +3,6 @@
 #define MOJO_APP
 
 #include <mojo/filesystem.hpp>
-#include <mojo/forward.hpp>
 #include <mojo/typedefs.hpp>
 
 namespace mojo {

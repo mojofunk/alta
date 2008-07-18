@@ -1,7 +1,6 @@
-#ifndef MOJO_AUDIO_SEQUENCE_INCLUDED
-#define MOJO_AUDIO_SEQUENCE_INCLUDED
+#ifndef MOJO_AUDIO_SEQUENCE
+#define MOJO_AUDIO_SEQUENCE
 
-#include <mojo/forward.hpp>
 #include <mojo/object.hpp>
 #include <mojo/typedefs.hpp>
 
@@ -48,6 +47,6 @@ private:
 
 };
 
-}
+} // namespace mojo
 
 #endif

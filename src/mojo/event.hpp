@@ -34,6 +34,6 @@ private:
 
 };
 
-}
+} // namespace mojo
 
 #endif

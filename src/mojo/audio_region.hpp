@@ -2,7 +2,6 @@
 #ifndef MOJO_AUDIO_REGION
 #define MOJO_AUDIO_REGION
 
-#include <mojo/forward.hpp>
 #include <mojo/object.hpp>
 #include <mojo/typedefs.hpp>
 #include <mojo/types.hpp>

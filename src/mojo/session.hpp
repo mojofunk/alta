@@ -1,13 +1,10 @@
 
-#ifndef MOJO_SESSION_INCLUDED
-#define MOJO_SESSION_INCLUDED
+#ifndef MOJO_SESSION
+#define MOJO_SESSION
 
-#include <mojo/forward.hpp>
 #include <mojo/typedefs.hpp>
 
 namespace mojo {
-
-class AudioDevice;
 
 /**
  * A session processes a project to make noise :)

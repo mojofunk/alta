@@ -8,6 +8,7 @@ class App;
 class Archive;
 class ArchiveModule;
 class AudioClip;
+class AudioDevice;
 class AudioDriverModule;
 class AudioEffectModule;
 class AudioEvent;

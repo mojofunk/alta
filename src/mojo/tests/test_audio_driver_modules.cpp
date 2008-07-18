@@ -8,9 +8,7 @@
 // for command line args
 #include <boost/test/framework.hpp>
 
-#include <mojo/forward.hpp>
 #include <mojo/app.hpp>
-#include <mojo/module.hpp>
 #include <mojo/audio_driver_module.hpp>
 
 using namespace boost::unit_test;

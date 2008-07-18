@@ -10,9 +10,7 @@
 
 #include <boost/format.hpp>
 
-#include <mojo/forward.hpp>
 #include <mojo/app.hpp>
-#include <mojo/module.hpp>
 #include <mojo/audio_file_module.hpp>
 
 using namespace boost::unit_test;

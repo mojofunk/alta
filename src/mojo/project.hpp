@@ -1,11 +1,10 @@
 
-#ifndef MOJO_PROJECT_INCLUDED
-#define MOJO_PROJECT_INCLUDED
+#ifndef MOJO_PROJECT
+#define MOJO_PROJECT
 
 #include <string>
 #include <set>
 
-#include <mojo/forward.hpp>
 #include <mojo/object.hpp>
 #include <mojo/filesystem.hpp>
 

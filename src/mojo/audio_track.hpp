@@ -1,7 +1,6 @@
 #ifndef MOJO_AUDIO_TRACK
 #define MOJO_AUDIO_TRACK
 
-#include <mojo/forward.hpp>
 #include <mojo/track.hpp>
 #include <mojo/typedefs.hpp>
 

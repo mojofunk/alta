@@ -4,7 +4,6 @@
 
 #include <list>
 
-#include <mojo/forward.hpp>
 #include <mojo/typedefs.hpp>
 
 namespace mojo {
