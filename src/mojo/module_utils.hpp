@@ -2,10 +2,10 @@
 #ifndef MOJO_MODULE_UTILS
 #define MOJO_MODULE_UTILS
 
-#include <mojo/forward.hpp>
 #include <mojo/filesystem.hpp>
+#include <mojo/forward.hpp>
 #include <mojo/search_path.hpp>
-#include <mojo/module_set.hpp>
+#include <mojo/typedefs.hpp>
 
 namespace mojo {
 

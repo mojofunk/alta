@@ -1,14 +1,10 @@
 
-#ifndef MOJO_APP_INCLUDED
-#define MOJO_APP_INCLUDED
+#ifndef MOJO_APP
+#define MOJO_APP
 
-#include <mojo/forward.hpp>
 #include <mojo/filesystem.hpp>
-#include <mojo/module_set.hpp>
-#include <mojo/audio_file_module_set.hpp>
-#include <mojo/audio_driver_module_set.hpp>
-#include <mojo/audio_effect_module_set.hpp>
-#include <mojo/archive_module_set.hpp>
+#include <mojo/forward.hpp>
+#include <mojo/typedefs.hpp>
 
 namespace mojo {
 

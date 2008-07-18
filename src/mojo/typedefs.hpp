@@ -2,6 +2,8 @@
 #ifndef MOJO_TYPEDEFS
 #define MOJO_TYPEDEFS
 
+#include <set>
+
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
 
@@ -66,6 +68,15 @@ typedef boost::weak_ptr<TypeFactory>      TypeFactoryWPtr;
 typedef boost::shared_ptr<TypeSystem>    TypeSystemSPtr;
 typedef boost::weak_ptr<TypeSystem>      TypeSystemWPtr;
 
+typedef std::set<ArchiveModuleSPtr>         ArchiveModuleSet;
+typedef std::set<AudioDriverModuleSPtr>     AudioDriverModuleSet;
+typedef std::set<AudioEffectModuleSPtr>     AudioEffectModuleSet;
+typedef std::set<AudioFileModuleSPtr>       AudioFileModuleSet;
+typedef std::set<ModuleSPtr>                ModuleSet;
+
 } // namespace mojo
+
+
+
 
 #endif
