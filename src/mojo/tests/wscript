@@ -6,16 +6,17 @@ tests='''
 test_sequence
 test_type_system
 test_graph
-test_plugin_utils
+test_module_utils
 test_project
 test_app
-test_archive
 test_audio_clip
 test_filesystem_paths
 test_project_directory
-test_audiofile_plugins
 test_file_utils
-test_audio_driver_plugins
+test_archive_modules
+test_audiofile_modules
+test_audio_driver_modules
+test_audio_effect_modules
 '''.split()
 
 def init():
