@@ -10,16 +10,10 @@ DummyArchiveModule::DummyArchiveModule () { }
 
 DummyArchiveModule::~DummyArchiveModule () { }
 	
-Archive*
+ArchiveSPtr
 DummyArchiveModule::create_archive ()
 {
-	return new DummyArchive;
-}
-
-void
-DummyArchiveModule::destroy_archive (Archive* ar)
-{
-	delete ar;
+	return ArchiveSPtr(new DummyArchive);
 }
 
 std::string

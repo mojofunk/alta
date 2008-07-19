@@ -10,16 +10,10 @@ XMLArchiveModule::XMLArchiveModule () { }
 
 XMLArchiveModule::~XMLArchiveModule () { }
 	
-Archive*
+ArchiveSPtr
 XMLArchiveModule::create_archive ()
 {
-	return new XMLArchive;
-}
-
-void
-XMLArchiveModule::destroy_archive (Archive* ar)
-{
-	delete ar;
+	return ArchiveSPtr(new XMLArchive);
 }
 
 std::string

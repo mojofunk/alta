@@ -26,9 +26,7 @@ public: // ArchiveModule Interface
 	/**
 	 * return new Archive or 0 on failure
 	 */
-	virtual Archive* create_archive ();
-
-	virtual void destroy_archive (Archive* ar); 
+	virtual ArchiveSPtr create_archive ();
 
 };
 

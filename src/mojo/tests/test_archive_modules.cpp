@@ -87,7 +87,7 @@ BOOST_AUTO_TEST_CASE( archive_module_test )
 		string file_extension = cformat::convert<string>(g_random_int());
 		string file_name = string((typeid (*i).name())) + "." + file_extension;
 
-		ArchiveSPtr archive((*i)->create_archive ());
+		ArchiveSPtr archive = (*i)->create_archive ();
 
 		test_archive (archive, file_name);
 	}
