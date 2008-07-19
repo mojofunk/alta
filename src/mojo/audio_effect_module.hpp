@@ -2,11 +2,10 @@
 #ifndef MOJO_AUDIO_EFFECT_MODULE
 #define MOJO_AUDIO_EFFECT_MODULE
 
+#include <mojo/typedefs.hpp>
 #include <mojo/module.hpp>
 
 namespace mojo {
-
-class AudioEffect;
 
 /**
  * The AudioEffectModule interface enables support
@@ -28,9 +27,8 @@ public: // Interface
 	/**
 	 * return new AudioEffect or 0 on failure
 	 */
-	virtual AudioEffect* open (const std::string& path) = 0;
+	virtual AudioEffectSPtr open (const std::string& path) = 0;
 
-	virtual void close (AudioEffect* ae) = 0; 
 };
 
 } // namespace mojo

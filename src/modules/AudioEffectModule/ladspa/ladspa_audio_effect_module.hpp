@@ -24,9 +24,7 @@ public: // Module interface
 
 public: // AudioEffectModule interface
 
-	virtual AudioEffect* open (const std::string& path);
-
-	virtual void close (AudioEffect* ae); 
+	virtual AudioEffectSPtr open (const std::string& path);
 
 };
 

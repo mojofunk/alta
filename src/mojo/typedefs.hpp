@@ -26,6 +26,9 @@ typedef boost::weak_ptr<AudioClip>      AudioClipWPtr;
 typedef boost::shared_ptr<AudioDriverModule>    AudioDriverModuleSPtr;
 typedef boost::weak_ptr<AudioDriverModule>      AudioDriverModuleWPtr;
 
+typedef boost::shared_ptr<AudioEffect>    AudioEffectSPtr;
+typedef boost::weak_ptr<AudioEffect>      AudioEffectWPtr;
+
 typedef boost::shared_ptr<AudioEffectModule>    AudioEffectModuleSPtr;
 typedef boost::weak_ptr<AudioEffectModule>      AudioEffectModuleWPtr;
 

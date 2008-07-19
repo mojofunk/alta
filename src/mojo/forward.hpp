@@ -10,6 +10,7 @@ class ArchiveModule;
 class AudioClip;
 class AudioDevice;
 class AudioDriverModule;
+class AudioEffect;
 class AudioEffectModule;
 class AudioEvent;
 class AudioFileModule;
