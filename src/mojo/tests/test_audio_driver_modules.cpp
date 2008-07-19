@@ -9,6 +9,7 @@
 #include <boost/test/framework.hpp>
 
 #include <mojo/app.hpp>
+#include <mojo/audio_device.hpp>
 #include <mojo/audio_driver_module.hpp>
 
 using namespace boost::unit_test;
@@ -44,7 +45,7 @@ test_audio_driver_module (AudioDriverModuleSPtr mod)
 	BOOST_TEST_MESSAGE(mod->get_description());
 	BOOST_TEST_MESSAGE(mod->get_version());
 
-	AudioDriverModule::Devices devices = mod->get_devices();
+	AudioDeviceSet devices = mod->get_devices();
 
 	BOOST_CHECK(!devices.empty());
 

@@ -74,6 +74,8 @@ typedef std::set<AudioEffectModuleSPtr>     AudioEffectModuleSet;
 typedef std::set<AudioFileModuleSPtr>       AudioFileModuleSet;
 typedef std::set<ModuleSPtr>                ModuleSet;
 
+typedef std::set<AudioDevice*>              AudioDeviceSet;
+
 } // namespace mojo
 
 
