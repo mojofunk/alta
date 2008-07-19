@@ -23,7 +23,7 @@ callback (count_t frames)
 }
 
 void
-test_device (AudioDevice* dev)
+test_device (AudioDeviceSPtr dev)
 {
 	BOOST_REQUIRE(dev);
 
