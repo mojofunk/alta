@@ -11,6 +11,8 @@
 #include <boost/format.hpp>
 
 #include <mojo/app.hpp>
+#include <mojo/audio_file.hpp>
+#include <mojo/audio_file_format.hpp>
 #include <mojo/audio_file_module.hpp>
 
 using namespace boost::unit_test;
@@ -20,7 +22,7 @@ using namespace mojo;
 #define fmt boost::format
 
 void
-test_audiofile_format (AudioFileFormat* format)
+test_audiofile_format (AudioFileFormatSPtr format)
 {
 	BOOST_REQUIRE(format);
 
@@ -63,7 +65,7 @@ test_read_audiofile (AudioFileSPtr af)
 void
 test_open_existing_file (AudioFileModuleSPtr mod)
 {
-	AudioFileSPtr af(mod->open("share/projects/motronic/audiofiles/notify.wav"));
+	AudioFileSPtr af = mod->open("share/projects/motronic/audiofiles/notify.wav");
 
 	BOOST_REQUIRE(af);
 
@@ -77,7 +79,7 @@ test_open_existing_file (AudioFileModuleSPtr mod)
 }
 
 void
-test_formats (const AudioFileModule::Formats& formats)
+test_formats (const AudioFileFormatSet& formats)
 {
 	BOOST_CHECK(!formats.empty());
 

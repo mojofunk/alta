@@ -13,6 +13,7 @@ class AudioDriverModule;
 class AudioEffect;
 class AudioEffectModule;
 class AudioEvent;
+class AudioFileFormat;
 class AudioFileModule;
 class AudioFile;
 class AudioRegion;

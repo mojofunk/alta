@@ -23,30 +23,28 @@ public: // Module interface
 
 public: // AudioFileModule interface
 	
-	virtual Formats get_readable_formats () const;
+	virtual AudioFileFormatSet get_readable_formats () const;
 
-	virtual Formats get_writable_formats () const;
+	virtual AudioFileFormatSet get_writable_formats () const;
 	
-	virtual AudioFile * open(const std::string& path);
+	virtual AudioFileSPtr open(const std::string& path);
 
-	virtual AudioFile * open(const std::string& path,
-			AudioFileFormat* format,
+	virtual AudioFileSPtr open(const std::string& path,
+			AudioFileFormatSPtr format,
 			samplerate_t rate,
 			channel_count_t channels);
 
 private: // member data
 
-	Formats m_readable_formats;
+	AudioFileFormatSet m_readable_formats;
 
-	Formats m_writable_formats;
+	AudioFileFormatSet m_writable_formats;
 
 private: // member functions
 
-	static void get_readable_formats (Formats&);
+	static void get_readable_formats (AudioFileFormatSet&);
 
-	static void get_writable_formats (Formats&);
-
-	static void delete_formats (Formats&);
+	static void get_writable_formats (AudioFileFormatSet&);
 
 };
 

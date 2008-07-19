@@ -50,9 +50,9 @@ App::open_audiofile (const fs::path& p)
 	for (AudioFileModuleSet::const_iterator i = modules.begin();
 			i != modules.end(); ++i)
 	{
-		AudioFile* af = (*i)->open (p.string());
+		AudioFileSPtr af = (*i)->open (p.string());
 
-		if (af) return AudioFileSPtr(af);
+		if (af) return af;
 	}
 
 	return AudioFileSPtr();

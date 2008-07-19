@@ -2,8 +2,8 @@
 #ifndef MOJO_AUDIO_EFFECT_MODULE
 #define MOJO_AUDIO_EFFECT_MODULE
 
-#include <mojo/typedefs.hpp>
 #include <mojo/module.hpp>
+#include <mojo/typedefs.hpp>
 
 namespace mojo {
 

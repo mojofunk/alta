@@ -19,14 +19,10 @@ SndfileAudioFileModule::SndfileAudioFileModule ()
 	get_writable_formats (m_writable_formats);
 }
 
-SndfileAudioFileModule::~SndfileAudioFileModule ()
-{
-	delete_formats (m_readable_formats);
-	delete_formats (m_writable_formats);
-}
+SndfileAudioFileModule::~SndfileAudioFileModule () { }
 
 void
-SndfileAudioFileModule::get_readable_formats (Formats& formats)
+SndfileAudioFileModule::get_readable_formats (AudioFileFormatSet& formats)
 {
 	SF_FORMAT_INFO          info;
 	SF_INFO                 sfinfo ;
@@ -55,27 +51,17 @@ SndfileAudioFileModule::get_readable_formats (Formats& formats)
 
 			if (sf_format_check (&sfinfo))
 			{
-				SndfileAudioFileFormat* f = new SndfileAudioFileFormat(sfinfo.format);
-				formats.push_back (f);
+				AudioFileFormatSPtr f(new SndfileAudioFileFormat(sfinfo.format));
+				formats.insert (f);
 			}
 		}
 	}
 }
 
 void
-SndfileAudioFileModule::get_writable_formats (Formats& formats)
+SndfileAudioFileModule::get_writable_formats (AudioFileFormatSet& formats)
 {
-	formats.push_back (new SndfileAudioFileFormat(SF_FORMAT_WAV|SF_FORMAT_FLOAT));
-}
-
-static void
-delete_format (AudioFileFormat* f) { delete f; }
-
-void
-SndfileAudioFileModule::delete_formats (AudioFileModule::Formats& formats)
-{
-	std::for_each (formats.begin(), formats.end(), delete_format);
-	formats.clear();
+	formats.insert (AudioFileFormatSPtr(new SndfileAudioFileFormat(SF_FORMAT_WAV|SF_FORMAT_FLOAT)));
 }
 
 std::string
@@ -96,14 +82,14 @@ SndfileAudioFileModule::get_version()
 	return "0.0.1";
 }
 
-AudioFile*
+AudioFileSPtr
 SndfileAudioFileModule::open (const std::string& path)
 {
-	SndfileAudioFile* audio_file = 0;
+	AudioFileSPtr audio_file;
 
 	try
 	{
-		audio_file = new SndfileAudioFile(path);
+		audio_file = AudioFileSPtr(new SndfileAudioFile(path));
 	}
 	catch(const SndfileException& e)
 	{
@@ -112,22 +98,22 @@ SndfileAudioFileModule::open (const std::string& path)
 	return audio_file;
 }
 
-AudioFile*
+AudioFileSPtr
 SndfileAudioFileModule::open (const std::string& path,
-		AudioFileFormat* format,
+		AudioFileFormatSPtr format,
 		samplerate_t rate,
 		channel_count_t channels)
 {
-	return 0;
+	return AudioFileSPtr();
 }
 
-AudioFileModule::Formats
+AudioFileFormatSet
 SndfileAudioFileModule::get_readable_formats () const
 {
 	return m_readable_formats;
 }
 
-AudioFileModule::Formats
+AudioFileFormatSet
 SndfileAudioFileModule::get_writable_formats () const
 {
 	return m_writable_formats;
