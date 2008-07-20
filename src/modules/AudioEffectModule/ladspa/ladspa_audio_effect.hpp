@@ -4,6 +4,7 @@
 
 //#include <ladspa.h>
 
+#include <mojo/filesystem.hpp>
 #include <mojo/audio_effect.hpp>
 
 namespace mojo {
@@ -12,7 +13,7 @@ class LADSPAAudioEffect : public AudioEffect
 {
 public: // ctors
 
-	LADSPAAudioEffect (const std::string& path);
+	LADSPAAudioEffect (const fs::path& path);
 
 	virtual ~LADSPAAudioEffect ();
 

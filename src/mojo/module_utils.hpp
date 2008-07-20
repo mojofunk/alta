@@ -8,8 +8,6 @@
 
 namespace mojo {
 
-typedef std::vector<fs::path> paths_t;
-
 // need a way to automatically close module
 ModuleSPtr open_module (const fs::path& filepath);
 

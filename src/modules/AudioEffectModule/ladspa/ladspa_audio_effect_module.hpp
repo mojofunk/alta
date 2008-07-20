@@ -24,7 +24,15 @@ public: // Module interface
 
 public: // AudioEffectModule interface
 
-	virtual AudioEffectSPtr open (const std::string& path);
+	virtual AudioEffectSPtr open (const fs::path& path);
+
+	virtual void get_plugin_paths (paths_t& paths);
+
+	virtual void set_plugin_paths (const paths_t& paths);
+
+	virtual void get_preset_paths (paths_t& paths);
+
+	virtual void set_preset_paths (const paths_t& paths);
 
 };
 

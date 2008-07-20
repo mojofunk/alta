@@ -3,7 +3,7 @@
 
 namespace mojo {
 
-LADSPAAudioEffect::LADSPAAudioEffect (const std::string& path) { }
+LADSPAAudioEffect::LADSPAAudioEffect (const fs::path& path) { }
 
 LADSPAAudioEffect::~LADSPAAudioEffect() { }
 

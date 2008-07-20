@@ -29,9 +29,33 @@ LADSPAAudioEffectModule::get_version()
 }
 
 AudioEffectSPtr
-LADSPAAudioEffectModule::open (const std::string& path)
+LADSPAAudioEffectModule::open (const fs::path& path)
 {
 	return AudioEffectSPtr(new LADSPAAudioEffect (path));
+}
+
+void
+LADSPAAudioEffectModule::get_plugin_paths (paths_t& paths)
+{
+
+}
+
+void
+LADSPAAudioEffectModule::set_plugin_paths (const paths_t& paths)
+{
+
+}
+
+void
+LADSPAAudioEffectModule::get_preset_paths (paths_t& paths)
+{
+
+}
+
+void
+LADSPAAudioEffectModule::set_preset_paths (const paths_t& paths)
+{
+
 }
 
 MOJO_CAPI void * mojo_module_factory(void)
