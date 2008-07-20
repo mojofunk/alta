@@ -19,7 +19,7 @@ public: // ctors
 
 public: // AudioEffect interface
 
-	virtual void get_parameters (ParameterList& params) const;
+	virtual void get_parameters (AudioEffectParameterSet& params) const;
 
 };
 

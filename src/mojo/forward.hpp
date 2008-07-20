@@ -12,6 +12,7 @@ class AudioDevice;
 class AudioDriverModule;
 class AudioEffect;
 class AudioEffectModule;
+class AudioEffectParameter;
 class AudioEvent;
 class AudioFileFormat;
 class AudioFileModule;

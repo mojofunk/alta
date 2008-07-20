@@ -36,6 +36,9 @@ typedef boost::weak_ptr<AudioEffect>      AudioEffectWPtr;
 typedef boost::shared_ptr<AudioEffectModule>    AudioEffectModuleSPtr;
 typedef boost::weak_ptr<AudioEffectModule>      AudioEffectModuleWPtr;
 
+typedef boost::shared_ptr<AudioEffectParameter>    AudioEffectParameterSPtr;
+typedef boost::weak_ptr<AudioEffectParameter>      AudioEffectParameterWPtr;
+
 typedef boost::shared_ptr<AudioEvent>    AudioEventSPtr;
 typedef boost::weak_ptr<AudioEvent>      AudioEventWPtr;
 
@@ -87,6 +90,8 @@ typedef std::set<ModuleSPtr>                ModuleSet;
 typedef std::set<AudioDeviceSPtr>           AudioDeviceSet;
 
 typedef std::set<AudioFileFormatSPtr>       AudioFileFormatSet;
+
+typedef std::set<AudioEffectParameterSPtr>  AudioEffectParameterSet;
 
 } // namespace mojo
 

@@ -8,7 +8,7 @@ LADSPAAudioEffect::LADSPAAudioEffect (const fs::path& path) { }
 LADSPAAudioEffect::~LADSPAAudioEffect() { }
 
 void
-LADSPAAudioEffect::get_parameters (ParameterList& params) const
+LADSPAAudioEffect::get_parameters (AudioEffectParameterSet& params) const
 {
 
 }

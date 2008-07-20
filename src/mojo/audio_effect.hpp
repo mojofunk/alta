@@ -1,14 +1,10 @@
 
-#ifndef MOJO_AUDIO_EFFECT_INCLUDED
-#define MOJO_AUDIO_EFFECT_INCLUDED
+#ifndef MOJO_AUDIO_EFFECT
+#define MOJO_AUDIO_EFFECT
 
-#include <vector>
-
-#include <mojo/audio_effect_parameter.hpp>
+#include <mojo/typedefs.hpp>
 
 namespace mojo {
-
-typedef std::vector<AudioEffectParameter*> ParameterList;
 
 class AudioEffect
 {
@@ -18,7 +14,7 @@ public: // constructors
 
 public: // AudioEffect interface
 
-	virtual void get_parameters (ParameterList& params) const = 0;
+	virtual void get_parameters (AudioEffectParameterSet& params) const = 0;
 
 };
 
