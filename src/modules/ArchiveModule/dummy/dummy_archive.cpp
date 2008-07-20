@@ -17,7 +17,7 @@ namespace mojo {
 using namespace std;
 
 void
-DummyArchive::read (const string& file_path, Properties& props)
+DummyArchive::read (const fs::path& file_path, Properties& props)
 {
 
 }
@@ -94,9 +94,9 @@ DummyArchive::write_property (std::ostream& os, const string& name, const boost:
 }
 
 void
-DummyArchive::write (const string& file_path, const Properties& props)
+DummyArchive::write (const fs::path& file_path, const Properties& props)
 {
-	std::ofstream output_file (file_path.c_str());
+	std::ofstream output_file (file_path.string().c_str());
 
 	for (Properties::const_iterator i = props.begin();
 			i != props.end(); ++i)

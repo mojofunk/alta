@@ -2,8 +2,7 @@
 #ifndef MOJO_ARCHIVE
 #define MOJO_ARCHIVE
 
-#include <string>
-
+#include <mojo/filesystem.hpp>
 #include <mojo/properties.hpp>
 
 namespace mojo {
@@ -31,9 +30,9 @@ public: // ctors
 
 public: // Interface
 
-	virtual void write (const std::string& file_path, const Properties& props) = 0;
+	virtual void write (const fs::path& file_path, const Properties& props) = 0;
 	
-	virtual void read (const std::string& file_path, Properties& props) = 0;
+	virtual void read (const fs::path& file_path, Properties& props) = 0;
 
 };
 

@@ -60,7 +60,7 @@ Project::save () const
 	Properties props;
 	get_properties(props);
 
-	archive->write (m_file_path.string(), props);
+	archive->write (m_file_path, props);
 }
 
 void

@@ -12,9 +12,9 @@ class DummyArchive : public Archive
 {
 public: // Archive interface
 
-	virtual void write (const std::string& file_path, const Properties& props);
+	virtual void write (const fs::path& file_path, const Properties& props);
 	
-	virtual void read (const std::string& file_path, Properties& props);
+	virtual void read (const fs::path& file_path, Properties& props);
 
 private:
 
