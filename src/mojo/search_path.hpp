@@ -1,16 +1,12 @@
 
-#ifndef MOJO_SEARCH_PATH_INCLUDED
-#define MOJO_SEARCH_PATH_INCLUDED
+#ifndef MOJO_SEARCH_PATH
+#define MOJO_SEARCH_PATH
 
 #include <string>
-#include <vector>
 
 #include <mojo/filesystem.hpp>
 
 namespace mojo {
-
-using std::string;
-using std::vector;
 
 /**
  * @class The SearchPath class is a helper class for getting a 
@@ -21,8 +17,8 @@ using std::vector;
 class SearchPath {
 public:
 
-	typedef std::vector<fs::path>::iterator         iterator;
-	typedef std::vector<fs::path>::const_iterator   const_iterator;
+	typedef paths_t::iterator         iterator;
+	typedef paths_t::const_iterator   const_iterator;
 
 public:
 
@@ -37,7 +33,7 @@ public:
 	 * 
 	 * @param search_path A path string.
 	 */
-	SearchPath (const string& search_path);
+	SearchPath (const std::string& search_path);
 
 	/**
 	 * Initialize SearchPath from a vector of paths that may or may
@@ -45,7 +41,7 @@ public:
 	 *
 	 * @param path A vector of paths.
 	 */
-	SearchPath (const vector<fs::path>& paths);
+	SearchPath (const paths_t& paths);
 
 	/**
 	 * Initialize SearchPath from a vector of paths that may or may
@@ -53,7 +49,7 @@ public:
 	 *
 	 * @param path A vector of paths.
 	 */
-	SearchPath (const vector<string>& paths);
+	SearchPath (const std::vector<std::string>& paths);
 
 	/**
 	 * The copy constructor does what you would expect and copies the
@@ -103,12 +99,12 @@ public:
 	 * method is indicitive that I don't think it should be used
 	 * that often.
 	 */
-	const string to_string () const;
+	const std::string to_string () const;
 
 	/**
 	 * @return The vector of directory paths in the search path
 	 */
-	vector<fs::path> get_directories () const { return m_dirs; }
+	paths_t get_directories () const { return m_dirs; }
 
 	SearchPath& operator= (const SearchPath& path);
 
@@ -135,19 +131,19 @@ public:
 	/**
 	 * Add a sub-directory to each path in the search path.
 	 */
-	SearchPath& add_subdirectory_to_paths (const string& subdir);
+	SearchPath& add_subdirectory_to_paths (const std::string& subdir);
 
 	/**
 	 * Add a sub-directory to each path in the search path.
 	 * @see add_subdirectory_to_paths
 	 */
-	SearchPath& operator/ (const string& subdir);
+	SearchPath& operator/ (const std::string& subdir);
 
 protected:
 
 	void add_directory (const fs::path& directory_path);
 	
-	vector<fs::path> m_dirs;
+	paths_t m_dirs;
 
 };
 

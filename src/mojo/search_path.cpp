@@ -20,7 +20,7 @@ SearchPath::SearchPath ()
 
 }
 
-SearchPath::SearchPath (const string& path)
+SearchPath::SearchPath (const std::string& path)
 {
 	typedef boost::tokenizer<boost::char_separator<char> > tokenizer;
 
@@ -38,12 +38,12 @@ SearchPath::SearchPath (const string& path)
 	}
 }
 
-SearchPath::SearchPath (const vector<fs::path>& paths)
+SearchPath::SearchPath (const paths_t& paths)
 {
 	std::copy (paths.begin(), paths.end(), std::back_inserter(m_dirs));
 }
 
-SearchPath::SearchPath (const vector<string>& paths)
+SearchPath::SearchPath (const std::vector<std::string>& paths)
 {
 	std::copy (paths.begin(), paths.end(), std::back_inserter(m_dirs));
 }
@@ -62,12 +62,12 @@ SearchPath::add_directory (const fs::path& directory_path)
 	m_dirs.push_back(directory_path);
 }
 
-const string
+const std::string
 SearchPath::to_string () const
 {
-	string path;
+	std::string path;
 
-	for (vector<fs::path>::const_iterator i = m_dirs.begin(); i != m_dirs.end(); ++i) {
+	for (const_iterator i = m_dirs.begin(); i != m_dirs.end(); ++i) {
 		path += (*i).string();
 		path += path_delimiter;
 	}
@@ -114,12 +114,12 @@ SearchPath::operator+ (const SearchPath& spath)
 }
 
 SearchPath&
-SearchPath::add_subdirectory_to_paths (const string& subdir)
+SearchPath::add_subdirectory_to_paths (const std::string& subdir)
 {
-	vector<fs::path> tmp;
-	string directory_path;
+	paths_t tmp;
+	std::string directory_path;
 
-	for (vector<fs::path>::iterator i = m_dirs.begin(); i != m_dirs.end(); ++i)
+	for (iterator i = m_dirs.begin(); i != m_dirs.end(); ++i)
 	{
 		// should these new paths just be added to the end of 
 		// the search path rather than replace?
@@ -130,7 +130,7 @@ SearchPath::add_subdirectory_to_paths (const string& subdir)
 }
 	
 SearchPath&
-SearchPath::operator/ (const string& subdir)
+SearchPath::operator/ (const std::string& subdir)
 {
 	return add_subdirectory_to_paths (subdir);
 }
