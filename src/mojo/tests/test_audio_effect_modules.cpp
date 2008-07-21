@@ -22,11 +22,11 @@ test_audio_effect_module (AudioEffectModuleSPtr mod)
 	BOOST_TEST_MESSAGE(mod->get_author());
 	BOOST_TEST_MESSAGE(mod->get_description());
 	BOOST_TEST_MESSAGE(mod->get_version());
+	BOOST_TEST_MESSAGE(mod->get_plugin_api_name ());
 
-	std::string api_name;
-	mod->get_plugin_api_name (api_name);
+	paths_t plugin_dirs = mod->get_plugin_directory_paths ();
 
-	BOOST_TEST_MESSAGE(api_name);
+	BOOST_CHECK(!plugin_dirs.empty());
 
 	AudioEffectSPtr ae = mod->open ("fail");
 

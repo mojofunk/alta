@@ -30,16 +30,21 @@ public: // Interface
 	 */
 	virtual AudioEffectSPtr open (const fs::path& path) = 0;
 
-	virtual void get_plugin_paths (paths_t& paths) = 0;
+	virtual paths_t get_plugin_directory_paths () const = 0;
 
-	virtual void set_plugin_paths (const paths_t& paths) = 0;
+	virtual void set_plugin_directory_paths (const paths_t& paths) = 0;
 
-	virtual void get_preset_paths (paths_t& paths) = 0;
+	virtual paths_t get_preset_directory_paths () const = 0;
 
-	virtual void set_preset_paths (const paths_t& paths) = 0;
+	virtual void set_preset_directory_paths (const paths_t& paths) = 0;
 
-	virtual void get_plugin_api_name (std::string& name) = 0;
+	/**
+	 * Returns paths to possible plugins found in the directories
+	 * returned by get_plugin_directory_paths
+	 */
+	virtual paths_t get_plugin_paths () = 0;
 
+	virtual std::string get_plugin_api_name () const = 0;
 };
 
 } // namespace mojo

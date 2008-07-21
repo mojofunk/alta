@@ -34,34 +34,40 @@ LADSPAAudioEffectModule::open (const fs::path& path)
 	return AudioEffectSPtr(new LADSPAAudioEffect (path));
 }
 
+paths_t
+LADSPAAudioEffectModule::get_plugin_directory_paths () const
+{
+	return paths_t();
+}
+
 void
-LADSPAAudioEffectModule::get_plugin_paths (paths_t& paths)
+LADSPAAudioEffectModule::set_plugin_directory_paths (const paths_t& paths)
 {
 
 }
 
+paths_t
+LADSPAAudioEffectModule::get_preset_directory_paths () const
+{
+	return paths_t();
+}
+
 void
-LADSPAAudioEffectModule::set_plugin_paths (const paths_t& paths)
+LADSPAAudioEffectModule::set_preset_directory_paths (const paths_t& paths)
 {
 
 }
 
-void
-LADSPAAudioEffectModule::get_preset_paths (paths_t& paths)
+paths_t
+LADSPAAudioEffectModule::get_plugin_paths ()
 {
-
+	return paths_t();
 }
 
-void
-LADSPAAudioEffectModule::set_preset_paths (const paths_t& paths)
+std::string
+LADSPAAudioEffectModule::get_plugin_api_name () const
 {
-
-}
-
-void
-LADSPAAudioEffectModule::get_plugin_api_name (std::string& api_name)
-{
-	api_name = "LADSPA";
+	return "LADSPA";
 }
 
 MOJO_CAPI void * mojo_module_factory(void)
