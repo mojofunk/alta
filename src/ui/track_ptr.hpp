@@ -1,6 +1,6 @@
 
-#ifndef GMOJO_TRACK_PTR_INCLUDED
-#define GMOJO_TRACK_PTR_INCLUDED
+#ifndef GMOJO_TRACK_PTR
+#define GMOJO_TRACK_PTR
 
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>

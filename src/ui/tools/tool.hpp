@@ -1,6 +1,6 @@
 
-#ifndef GMOJO_TOOL_INCLUDED
-#define GMOJO_TOOL_INCLUDED
+#ifndef GMOJO_TOOL
+#define GMOJO_TOOL
 
 #include <string>
 

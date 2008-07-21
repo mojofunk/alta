@@ -1,6 +1,6 @@
 
-#ifndef MOJO_TYPE_FACTORY_INCLUDED
-#define MOJO_TYPE_FACTORY_INCLUDED
+#ifndef MOJO_TYPE_FACTORY
+#define MOJO_TYPE_FACTORY
 
 #include <string>
 #include <typeinfo>

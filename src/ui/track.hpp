@@ -1,6 +1,6 @@
 
-#ifndef GMOJO_TRACK_INCLUDED
-#define GMOJO_TRACK_INCLUDED
+#ifndef GMOJO_TRACK
+#define GMOJO_TRACK
 
 namespace gmojo {
 
@@ -14,4 +14,4 @@ public:
 
 } // namespace gmojo
 
-#endif // GMOJO_TRACK_INCLUDED
+#endif // GMOJO_TRACK

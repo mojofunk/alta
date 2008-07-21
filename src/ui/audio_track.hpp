@@ -1,6 +1,6 @@
 
-#ifndef GMOJO_AUDIO_TRACK_INCLUDED
-#define GMOJO_AUDIO_TRACK_INCLUDED
+#ifndef GMOJO_AUDIO_TRACK
+#define GMOJO_AUDIO_TRACK
 
 #include <ui/track.hpp>
 
@@ -14,4 +14,4 @@ public:
 
 } // namespace gmojo
 
-#endif // GMOJO_AUDIO_TRACK_VIEW_INCLUDED
+#endif // GMOJO_AUDIO_TRACK_VIEW

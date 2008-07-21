@@ -1,6 +1,6 @@
 
-#ifndef MOJO_RESOURCE_INCLUDED
-#define MOJO_RESOURCE_INCLUDED
+#ifndef MOJO_RESOURCE
+#define MOJO_RESOURCE
 
 #include <inttypes.h>
 

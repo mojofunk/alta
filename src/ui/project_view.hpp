@@ -1,6 +1,6 @@
 
-#ifndef GMOJO_PROJECT_VIEW_INCLUDED
-#define GMOJO_PROJECT_VIEW_INCLUDED
+#ifndef GMOJO_PROJECT_VIEW
+#define GMOJO_PROJECT_VIEW
 
 #include <ui/widget_ptr.hpp>
 

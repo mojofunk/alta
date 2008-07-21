@@ -1,6 +1,6 @@
 
-#ifndef GLEAM_BLINK_TIMER_INCLUDED
-#define GLEAM_BLINK_TIMER_INCLUDED
+#ifndef GLEAM_BLINK_TIMER
+#define GLEAM_BLINK_TIMER
 
 #include <gleam/timer.hpp>
 

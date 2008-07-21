@@ -1,6 +1,6 @@
 
-#ifndef GMOJO_GTK_WIDGET_PTR_INCLUDED
-#define GMOJO_GTK_WIDGET_PTR_INCLUDED
+#ifndef GMOJO_GTK_WIDGET_PTR
+#define GMOJO_GTK_WIDGET_PTR
 
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>

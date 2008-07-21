@@ -1,6 +1,6 @@
 
-#ifndef GMOJO_STATUS_BAR_INCLUDED
-#define GMOJO_STATUS_BAR_INCLUDED
+#ifndef GMOJO_STATUS_BAR
+#define GMOJO_STATUS_BAR
 
 #include <ui/widget.hpp>
 

@@ -1,6 +1,6 @@
 
-#ifndef MOJO_PROJECT_DIRECTORY_INCLUDED
-#define MOJO_PROJECT_DIRECTORY_INCLUDED
+#ifndef MOJO_PROJECT_DIRECTORY
+#define MOJO_PROJECT_DIRECTORY
 
 #include <string>
 #include <vector>

@@ -1,6 +1,6 @@
 
-#ifndef UI_APP_INCLUDED
-#define UI_APP_INCLUDED
+#ifndef UI_APP
+#define UI_APP
 
 namespace ui {
 

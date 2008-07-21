@@ -1,5 +1,5 @@
-#ifndef CFORMAT_SCANF_FORMAT_INCLUDED
-#define CFORMAT_SCANF_FORMAT_INCLUDED
+#ifndef CFORMAT_SCANF_FORMAT
+#define CFORMAT_SCANF_FORMAT
 
 #ifndef __STDC_FORMAT_MACROS
 #define __STDC_FORMAT_MACROS 1
@@ -88,4 +88,4 @@ scanf_format (const double&)
 
 } // namespace cformat
 
-#endif // CFORMAT_SCANF_FORMAT_INCLUDED
+#endif // CFORMAT_SCANF_FORMAT

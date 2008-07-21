@@ -17,8 +17,8 @@
    MA  02110-1301, USA.
 */
 
-#ifndef GLEAM_POSIX_SIGNALS_INCLUDED
-#define GLEAM_POSIX_SIGNALS_INCLUDED
+#ifndef GLEAM_POSIX_SIGNALS
+#define GLEAM_POSIX_SIGNALS
 
 #include <signal.h>
 
@@ -44,4 +44,4 @@ namespace gleam {
 
 } // namespace gleam
 
-#endif // GLEAM_POSIX_SIGNALS_INCLUDED
+#endif // GLEAM_POSIX_SIGNALS

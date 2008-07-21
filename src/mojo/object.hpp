@@ -1,5 +1,5 @@
-#ifndef MOJO_OBJECT_INCLUDED
-#define MOJO_OBJECT_INCLUDED
+#ifndef MOJO_OBJECT
+#define MOJO_OBJECT
 
 #include <string>
 

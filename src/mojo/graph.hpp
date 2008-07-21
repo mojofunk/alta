@@ -1,5 +1,5 @@
-#ifndef MOJO_GRAPH_INCLUDED
-#define MOJO_GRAPH_INCLUDED
+#ifndef MOJO_GRAPH
+#define MOJO_GRAPH
 
 #include <set>
 

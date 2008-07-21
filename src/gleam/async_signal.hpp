@@ -1,6 +1,6 @@
 
-#ifndef GLEAM_ASYNC_SIGNAL_INCLUDED
-#define GLEAM_ASYNC_SIGNAL_INCLUDED
+#ifndef GLEAM_ASYNC_SIGNAL
+#define GLEAM_ASYNC_SIGNAL
 
 #include <queue>
 
@@ -92,4 +92,4 @@ AsyncSignal<T>::dispatch_handler()
 
 } // namespace gleam
 
-#endif // GLEAM_ASYNC_SIGNAL_INCLUDED
+#endif // GLEAM_ASYNC_SIGNAL

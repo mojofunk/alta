@@ -1,5 +1,5 @@
-#ifndef GLEAM_ATOMIC_PTR_INCLUDED
-#define GLEAM_ATOMIC_PTR_INCLUDED
+#ifndef GLEAM_ATOMIC_PTR
+#define GLEAM_ATOMIC_PTR
 
 #include <glib.h>
 
@@ -66,4 +66,4 @@ private:
 
 } // namespace gleam
 
-#endif // GLEAM_ATOMIC_PTR_INCLUDED
+#endif // GLEAM_ATOMIC_PTR

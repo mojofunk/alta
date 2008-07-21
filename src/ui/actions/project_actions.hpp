@@ -1,6 +1,6 @@
 
-#ifndef GMOJO_PROJECT_ACTIONS_INCLUDED
-#define GMOJO_PROJECT_ACTIONS_INCLUDED
+#ifndef GMOJO_PROJECT_ACTIONS
+#define GMOJO_PROJECT_ACTIONS
 
 #include <gtk/gtkaction.h>
 

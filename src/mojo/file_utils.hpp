@@ -1,6 +1,6 @@
 
-#ifndef MOJO_FILE_UTILS_INCLUDED
-#define MOJO_FILE_UTILS_INCLUDED
+#ifndef MOJO_FILE_UTILS
+#define MOJO_FILE_UTILS
 
 #include <vector>
 #include <string>
@@ -36,4 +36,4 @@ const fs::path get_non_existent_file_path (const fs::path& file_path);
 
 } // namespace mojo
 
-#endif // MOJO_FILE_UTILS_INCLUDED
+#endif // MOJO_FILE_UTILS

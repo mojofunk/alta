@@ -1,5 +1,5 @@
-#ifndef GLEAM_GLEAM_INCLUDED
-#define GLEAM_GLEAM_INCLUDED
+#ifndef GLEAM_GLEAM
+#define GLEAM_GLEAM
 
 #include <gleam/async_signal.hpp>
 #include <gleam/atomic_counter.hpp>
@@ -10,4 +10,4 @@
 #include <gleam/semaphore.hpp>
 #include <gleam/terminate_process.hpp>
 
-#endif // GLEAM_GLEAM_INCLUDED
+#endif // GLEAM_GLEAM

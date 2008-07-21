@@ -1,6 +1,6 @@
 
-#ifndef MOJO_AUDIO_DEVICE_INCLUDED
-#define MOJO_AUDIO_DEVICE_INCLUDED
+#ifndef MOJO_AUDIO_DEVICE
+#define MOJO_AUDIO_DEVICE
 
 #include <mojo/types.hpp>
 

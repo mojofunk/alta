@@ -1,6 +1,6 @@
 
-#ifndef GLEAM_UTILS_INCLUDED
-#define GLEAM_UTILS_INCLUDED
+#ifndef GLEAM_UTILS
+#define GLEAM_UTILS
 
 #include <string>
 

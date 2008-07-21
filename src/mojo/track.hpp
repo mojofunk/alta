@@ -1,6 +1,6 @@
 
-#ifndef MOJO_TRACK_INCLUDED
-#define MOJO_TRACK_INCLUDED
+#ifndef MOJO_TRACK
+#define MOJO_TRACK
 
 #include <mojo/object.hpp>
 

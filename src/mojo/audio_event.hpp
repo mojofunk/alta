@@ -1,5 +1,5 @@
-#ifndef MOJO_AUDIO_EVENT_INCLUDED
-#define MOJO_AUDIO_EVENT_INCLUDED
+#ifndef MOJO_AUDIO_EVENT
+#define MOJO_AUDIO_EVENT
 
 #include <mojo/event.hpp>
 

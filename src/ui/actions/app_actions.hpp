@@ -1,6 +1,6 @@
 
-#ifndef GMOJO_APP_ACTIONS_INCLUDED
-#define GMOJO_APP_ACTIONS_INCLUDED
+#ifndef GMOJO_APP_ACTIONS
+#define GMOJO_APP_ACTIONS
 
 #include <gtk/gtkaction.h>
 

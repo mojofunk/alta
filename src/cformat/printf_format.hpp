@@ -1,5 +1,5 @@
-#ifndef CFORMAT_PRINTF_FORMAT_INCLUDED
-#define CFORMAT_PRINTF_FORMAT_INCLUDED
+#ifndef CFORMAT_PRINTF_FORMAT
+#define CFORMAT_PRINTF_FORMAT
 
 #ifndef __STDC_FORMAT_MACROS
 #define __STDC_FORMAT_MACROS 1
@@ -90,4 +90,4 @@ printf_format (const double&)
 
 } // namespace cformat
 
-#endif // CFORMAT_PRINTF_FORMAT_INCLUDED
+#endif // CFORMAT_PRINTF_FORMAT

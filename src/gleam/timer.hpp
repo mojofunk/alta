@@ -1,6 +1,6 @@
 
-#ifndef GLEAM_TIMER_INCLUDED
-#define GLEAM_TIMER_INCLUDED
+#ifndef GLEAM_TIMER
+#define GLEAM_TIMER
 
 #include <sigc++/trackable.h>
 #include <sigc++/signal.h>

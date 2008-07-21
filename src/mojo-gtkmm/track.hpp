@@ -1,6 +1,6 @@
 
-#ifndef UI_TRACK_INCLUDED
-#define UI_TRACK_INCLUDED
+#ifndef UI_TRACK
+#define UI_TRACK
 
 #include <sigc++/trackable.h>
 

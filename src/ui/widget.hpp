@@ -1,6 +1,6 @@
 
-#ifndef GMOJO_WIDGET_INCLUDED
-#define GMOJO_WIDGET_INCLUDED
+#ifndef GMOJO_WIDGET
+#define GMOJO_WIDGET
 
 #include <gtk/gtk.h>
 

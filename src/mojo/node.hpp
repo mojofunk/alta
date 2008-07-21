@@ -1,5 +1,5 @@
-#ifndef MOJO_NODE_INCLUDED
-#define MOJO_NODE_INCLUDED
+#ifndef MOJO_NODE
+#define MOJO_NODE
 
 #include <set>
 

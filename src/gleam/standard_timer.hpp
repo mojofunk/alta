@@ -1,6 +1,6 @@
 
-#ifndef GLEAM_STANDARD_TIMER_INCLUDED
-#define GLEAM_STANDARD_TIMER_INCLUDED
+#ifndef GLEAM_STANDARD_TIMER
+#define GLEAM_STANDARD_TIMER
 
 #include <gleam/timer.hpp>
 

@@ -17,8 +17,8 @@
    MA  02110-1301, USA.
 */
 
-#ifndef GLEAM_MANUAL_DISPATCHER_INCLUDED
-#define GLEAM_MANUAL_DISPATCHER_INCLUDED
+#ifndef GLEAM_MANUAL_DISPATCHER
+#define GLEAM_MANUAL_DISPATCHER
 
 #include <gleam/dispatcher.hpp>
 #include <gleam/semaphore.hpp>
@@ -61,4 +61,4 @@ private:
 
 } // namespace gleam
 
-#endif // GLEAM_MANUAL_DISPATCHER_INCLUDED
+#endif // GLEAM_MANUAL_DISPATCHER

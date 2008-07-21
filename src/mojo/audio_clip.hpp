@@ -1,6 +1,6 @@
 
-#ifndef MOJO_AUDIO_CLIP_INCLUDED
-#define MOJO_AUDIO_CLIP_INCLUDED
+#ifndef MOJO_AUDIO_CLIP
+#define MOJO_AUDIO_CLIP
 
 #include <mojo/types.hpp>
 #include <mojo/object.hpp>

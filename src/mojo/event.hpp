@@ -1,5 +1,5 @@
-#ifndef MOJO_EVENT_INCLUDED
-#define MOJO_EVENT_INCLUDED
+#ifndef MOJO_EVENT
+#define MOJO_EVENT
 
 #include <mojo/types.hpp>
 #include <mojo/object.hpp>

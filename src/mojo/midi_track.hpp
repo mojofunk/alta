@@ -1,5 +1,5 @@
-#ifndef MOJO_MIDI_TRACK_INCLUDED
-#define MOJO_MIDI_TRACK_INCLUDED
+#ifndef MOJO_MIDI_TRACK
+#define MOJO_MIDI_TRACK
 
 #include <mojo/track.hpp>
 

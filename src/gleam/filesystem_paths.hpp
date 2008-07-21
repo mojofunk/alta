@@ -1,5 +1,5 @@
-#ifndef GLEAM_SYSTEM_SEARCH_PATHS_INCLUDED
-#define GLEAM_SYSTEM_SEARCH_PATHS_INCLUDED
+#ifndef GLEAM_SYSTEM_SEARCH_PATHS
+#define GLEAM_SYSTEM_SEARCH_PATHS
 
 #include <vector>
 #include <string>
@@ -23,4 +23,4 @@ get_system_config_directories();
 
 } // namespace gleam
 
-#endif // GLEAM_SYSTEM_SEARCH_PATHS_INCLUDED
+#endif // GLEAM_SYSTEM_SEARCH_PATHS

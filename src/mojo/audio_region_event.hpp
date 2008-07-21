@@ -1,6 +1,6 @@
 
-#ifndef MOJO_AUDIO_REGION_EVENT_INCLUDED
-#define MOJO_AUDIO_REGION_EVENT_INCLUDED
+#ifndef MOJO_AUDIO_REGION_EVENT
+#define MOJO_AUDIO_REGION_EVENT
 
 #include <mojo/audio_event.hpp>
 

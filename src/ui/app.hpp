@@ -1,6 +1,6 @@
 
-#ifndef GMOJO_APPLICATION_INCLUDED
-#define GMOJO_APPLICATION_INCLUDED
+#ifndef GMOJO_APPLICATION
+#define GMOJO_APPLICATION
 
 #include <map>
 #include <string>
@@ -92,4 +92,4 @@ private:
 
 } // namespace gmojo
 
-#endif // GMOJO_APPLICATION_INCLUDED
+#endif // GMOJO_APPLICATION

@@ -1,5 +1,5 @@
-#ifndef MOJO_FILESYSTEM_INCLUDED
-#define MOJO_FILESYSTEM_INCLUDED
+#ifndef MOJO_FILESYSTEM
+#define MOJO_FILESYSTEM
 
 #include <boost/filesystem.hpp>
 

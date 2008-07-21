@@ -1,6 +1,6 @@
 
-#ifndef GMOJO_EDIT_WINDOW_INCLUDED
-#define GMOJO_EDIT_WINDOW_INCLUDED
+#ifndef GMOJO_EDIT_WINDOW
+#define GMOJO_EDIT_WINDOW
 
 #include <ui/widget.hpp>
 #include <ui/widget_ptr.hpp>
@@ -62,4 +62,4 @@ private: // member data
 
 } // namespace gmojo
 
-#endif // GMOJO_EDIT_WINDOW_INCLUDED
+#endif // GMOJO_EDIT_WINDOW

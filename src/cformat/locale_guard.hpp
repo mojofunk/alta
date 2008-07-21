@@ -1,6 +1,6 @@
 
-#ifndef CFORMAT_LOCALE_GUARD_INCLUDED
-#define CFORMAT_LOCALE_GUARD_INCLUDED
+#ifndef CFORMAT_LOCALE_GUARD
+#define CFORMAT_LOCALE_GUARD
 
 #include <clocale>
 #include <cstring>
@@ -57,4 +57,4 @@ struct NumericGuard : public LocaleGuard {
 
 } // namespace cformat
 
-#endif // CFORMAT_LOCALE_GUARD_INCLUDED
+#endif // CFORMAT_LOCALE_GUARD

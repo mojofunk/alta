@@ -1,6 +1,6 @@
 
-#ifndef MOJO_TYPE_NAMES_INCLUDED
-#define MOJO_TYPE_NAMES_INCLUDED
+#ifndef MOJO_TYPE_NAMES
+#define MOJO_TYPE_NAMES
 
 namespace mojo {
 

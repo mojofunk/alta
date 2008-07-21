@@ -1,6 +1,6 @@
 
-#ifndef GLEAM_SEMAPHORE_INCLUDED
-#define GLEAM_SEMAPHORE_INCLUDED
+#ifndef GLEAM_SEMAPHORE
+#define GLEAM_SEMAPHORE
 
 #include <glibmm/thread.h>
 
@@ -56,4 +56,4 @@ private:
 
 } // namespace gleam
 
-#endif // GLEAM_SEMAPHORE_INCLUDED
+#endif // GLEAM_SEMAPHORE

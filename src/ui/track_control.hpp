@@ -1,6 +1,6 @@
 
-#ifndef GMOJO_TRACK_CONTROL_INCLUDED
-#define GMOJO_TRACK_CONTROL_INCLUDED
+#ifndef GMOJO_TRACK_CONTROL
+#define GMOJO_TRACK_CONTROL
 
 #include <ui/widget.hpp>
 

@@ -1,6 +1,6 @@
 
-#ifndef GMOJO_TRACK_CANVAS_INCLUDED
-#define GMOJO_TRACK_CANVAS_INCLUDED
+#ifndef GMOJO_TRACK_CANVAS
+#define GMOJO_TRACK_CANVAS
 
 #include <ui/widget.hpp>
 

@@ -1,6 +1,6 @@
 
-#ifndef UI_PROJECT_INCLUDED
-#define UI_PROJECT_INCLUDED
+#ifndef UI_PROJECT
+#define UI_PROJECT
 
 #include <sigc++/trackable.h>
 #include <sigc++/signal.h>

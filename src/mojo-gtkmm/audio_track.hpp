@@ -1,6 +1,6 @@
 
-#ifndef UI_AUDIO_TRACK_INCLUDED
-#define UI_AUDIO_TRACK_INCLUDED
+#ifndef UI_AUDIO_TRACK
+#define UI_AUDIO_TRACK
 
 #include <sigc++/trackable.h>
 

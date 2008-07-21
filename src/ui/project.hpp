@@ -1,6 +1,6 @@
 
-#ifndef GMOJO_PROJECT_INCLUDED
-#define GMOJO_PROJECT_INCLUDED
+#ifndef GMOJO_PROJECT
+#define GMOJO_PROJECT
 
 #include <set>
 
@@ -57,4 +57,4 @@ private:
 
 } // namespace gmojo
 
-#endif // GMOJO_PROJECT_VIEW_INCLUDED
+#endif // GMOJO_PROJECT_VIEW

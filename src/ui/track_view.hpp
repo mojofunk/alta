@@ -1,6 +1,6 @@
 
-#ifndef GMOJO_TRACKVIEW_INCLUDED
-#define GMOJO_TRACKVIEW_INCLUDED
+#ifndef GMOJO_TRACKVIEW
+#define GMOJO_TRACKVIEW
 
 #include <list>
 

@@ -1,5 +1,5 @@
-#ifndef GMOJO_SIGNAL_HANDLER_INCLUDED
-#define GMOJO_SIGNAL_HANDLER_INCLUDED
+#ifndef GMOJO_SIGNAL_HANDLER
+#define GMOJO_SIGNAL_HANDLER
 
 namespace gmojo {
 
@@ -13,4 +13,4 @@ public:
 
 } // namespace gmojo
 
-#endif // GMOJO_SIGNAL_HANDLER_INCLUDED
+#endif // GMOJO_SIGNAL_HANDLER

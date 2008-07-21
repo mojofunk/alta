@@ -1,5 +1,5 @@
-#ifndef GLEAM_ATOMIC_COUNTER_INCLUDED
-#define GLEAM_ATOMIC_COUNTER_INCLUDED
+#ifndef GLEAM_ATOMIC_COUNTER
+#define GLEAM_ATOMIC_COUNTER
 
 #include <glib.h>
 
@@ -81,4 +81,4 @@ private:
 
 } // namespace gleam
 
-#endif // GLEAM_ATOMIC_COUNTER_INCLUDED
+#endif // GLEAM_ATOMIC_COUNTER

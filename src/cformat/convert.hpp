@@ -1,5 +1,5 @@
-#ifndef CFORMAT_CONVERT_INCLUDED
-#define CFORMAT_CONVERT_INCLUDED
+#ifndef CFORMAT_CONVERT
+#define CFORMAT_CONVERT
 
 #include <cformat/interpreter.hpp>
 
@@ -25,4 +25,4 @@ convert (const SourceType& value)
 
 } // namespace cformat
 
-#endif // CFORMAT_CONVERT_INCLUDED
+#endif // CFORMAT_CONVERT

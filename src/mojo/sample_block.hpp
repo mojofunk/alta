@@ -1,6 +1,6 @@
 
-#ifndef MOJO_SAMPLE_BLOCK_INCLUDED
-#define MOJO_SAMPLE_BLOCK_INCLUDED
+#ifndef MOJO_SAMPLE_BLOCK
+#define MOJO_SAMPLE_BLOCK
 
 #include <vector>
 

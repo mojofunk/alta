@@ -1,6 +1,6 @@
 
-#ifndef UI_PROJECT_DATA_INCLUDED
-#define UI_PROJECT_DATA_INCLUDED
+#ifndef UI_PROJECT_DATA
+#define UI_PROJECT_DATA
 
 #include <set>
 

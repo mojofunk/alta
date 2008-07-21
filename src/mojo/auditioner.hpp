@@ -1,6 +1,6 @@
 
-#ifndef MOJO_AUDITIONER_INCLUDED
-#define MOJO_AUDITIONER_INCLUDED
+#ifndef MOJO_AUDITIONER
+#define MOJO_AUDITIONER
 
 namespace mojo {
 

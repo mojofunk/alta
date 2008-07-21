@@ -1,6 +1,6 @@
 
-#ifndef GLEAM_DISPATCHER_INCLUDED
-#define GLEAM_DISPATCHER_INCLUDED
+#ifndef GLEAM_DISPATCHER
+#define GLEAM_DISPATCHER
 
 #include <glibmm/thread.h>
 #include <glibmm/refptr.h>
@@ -97,4 +97,4 @@ private:
 
 } // namespace gleam
 
-#endif // GLEAM_DISPATCHER_INCLUDED
+#endif // GLEAM_DISPATCHER

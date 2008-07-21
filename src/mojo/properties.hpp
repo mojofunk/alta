@@ -1,6 +1,6 @@
 
-#ifndef MOJO_PROPERTIES_INCLUDED
-#define MOJO_PROPERTIES_INCLUDED
+#ifndef MOJO_PROPERTIES
+#define MOJO_PROPERTIES
 
 #include <string>
 #include <map>

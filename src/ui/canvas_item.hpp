@@ -1,6 +1,6 @@
 
-#ifndef GMOJO_CANVAS_ITEM_INCLUDED
-#define GMOJO_CANVAS_ITEM_INCLUDED
+#ifndef GMOJO_CANVAS_ITEM
+#define GMOJO_CANVAS_ITEM
 
 #include <goocanvas.h>
 

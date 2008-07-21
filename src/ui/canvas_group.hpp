@@ -1,6 +1,6 @@
 
-#ifndef GMOJO_CANVAS_GROUP_INCLUDED
-#define GMOJO_CANVAS_GROUP_INCLUDED
+#ifndef GMOJO_CANVAS_GROUP
+#define GMOJO_CANVAS_GROUP
 
 #include <ui/canvas_item.hpp>
 

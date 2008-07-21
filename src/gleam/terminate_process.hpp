@@ -1,6 +1,6 @@
 
-#ifndef GLEAM_TERMINATE_PROCESS_INCLUDED
-#define GLEAM_TERMINATE_PROCESS_INCLUDED
+#ifndef GLEAM_TERMINATE_PROCESS
+#define GLEAM_TERMINATE_PROCESS
 
 namespace gleam {
 
@@ -12,4 +12,4 @@ void terminate_process(int status);
 
 } // namespace gleam
 
-#endif // GLEAM_TERMINATE_PROCESS_INCLUDED
+#endif // GLEAM_TERMINATE_PROCESS

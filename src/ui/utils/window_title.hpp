@@ -1,5 +1,5 @@
-#ifndef GMOJO_WINDOW_TITLE_INCLUDED
-#define GMOJO_WINDOW_TITLE_INCLUDED
+#ifndef GMOJO_WINDOW_TITLE
+#define GMOJO_WINDOW_TITLE
 
 #include <string>
 
@@ -41,4 +41,4 @@ private:
 
 } // gmojo
 
-#endif // GMOJO_WINDOW_TITLE_INCLUDED
+#endif // GMOJO_WINDOW_TITLE
