@@ -58,6 +58,12 @@ LADSPAAudioEffectModule::set_preset_paths (const paths_t& paths)
 
 }
 
+void
+LADSPAAudioEffectModule::get_plugin_api_name (std::string& api_name)
+{
+	api_name = "LADSPA";
+}
+
 MOJO_CAPI void * mojo_module_factory(void)
 {
 	return new LADSPAAudioEffectModule;

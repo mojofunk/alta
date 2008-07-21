@@ -23,9 +23,17 @@ test_audio_effect_module (AudioEffectModuleSPtr mod)
 	BOOST_TEST_MESSAGE(mod->get_description());
 	BOOST_TEST_MESSAGE(mod->get_version());
 
+	std::string api_name;
+	mod->get_plugin_api_name (api_name);
+
+	BOOST_TEST_MESSAGE(api_name);
+
 	AudioEffectSPtr ae = mod->open ("fail");
 
 	BOOST_CHECK(!ae);
+
+	if(!ae) return;
+
 }
 
 BOOST_AUTO_TEST_CASE( test_audio_effect_modules )

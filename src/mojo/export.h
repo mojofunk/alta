@@ -1,6 +1,6 @@
 
-#ifndef MOJO_EXPORT
-#define MOJO_EXPORT
+#ifndef MOJO_EXPORT_H
+#define MOJO_EXPORT_H
 
 #ifdef _MSC_VER
 	#define MOJO_EXPORT __declspec(dllexport)

@@ -38,6 +38,8 @@ public: // Interface
 
 	virtual void set_preset_paths (const paths_t& paths) = 0;
 
+	virtual void get_plugin_api_name (std::string& name) = 0;
+
 };
 
 } // namespace mojo

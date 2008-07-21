@@ -34,6 +34,7 @@ public: // AudioEffectModule interface
 
 	virtual void set_preset_paths (const paths_t& paths);
 
+	virtual void get_plugin_api_name (std::string& name);
 };
 
 } // namespace mojo
