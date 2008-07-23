@@ -15,6 +15,13 @@ using namespace std;
 using namespace mojo;
 
 void
+test_path (const fs::path& path)
+{
+	BOOST_REQUIRE(!path.empty());
+	BOOST_TEST_MESSAGE(path.string());
+}
+
+void
 test_audio_effect_module (AudioEffectModuleSPtr mod)
 {
 	BOOST_REQUIRE(mod);
@@ -27,6 +34,12 @@ test_audio_effect_module (AudioEffectModuleSPtr mod)
 	paths_t plugin_dirs = mod->get_plugin_directory_paths ();
 
 	BOOST_CHECK(!plugin_dirs.empty());
+
+	for_each (plugin_dirs.begin(), plugin_dirs.end(), test_path);
+
+	paths_t plugin_paths = mod->get_plugin_paths ();
+
+	for_each (plugin_paths.begin(), plugin_paths.end(), test_path);
 
 	AudioEffectSPtr ae = mod->open ("fail");
 

@@ -3,10 +3,17 @@
 #include "ladspa_audio_effect.hpp"
 
 #include <mojo/export.h>
+#include <mojo/module_utils.hpp>
 
 namespace mojo {
 
-LADSPAAudioEffectModule::LADSPAAudioEffectModule () { }
+LADSPAAudioEffectModule::LADSPAAudioEffectModule ()
+{
+	m_plugin_dirs.push_back ("/usr/local/lib64/ladspa");
+	m_plugin_dirs.push_back ("/usr/local/lib/ladspa");
+	m_plugin_dirs.push_back ("/usr/lib64/ladspa");
+	m_plugin_dirs.push_back ("/usr/lib/ladspa");
+}
 
 LADSPAAudioEffectModule::~LADSPAAudioEffectModule () { }
 
@@ -37,7 +44,7 @@ LADSPAAudioEffectModule::open (const fs::path& path)
 paths_t
 LADSPAAudioEffectModule::get_plugin_directory_paths () const
 {
-	return paths_t();
+	return m_plugin_dirs;
 }
 
 void
@@ -61,7 +68,7 @@ LADSPAAudioEffectModule::set_preset_directory_paths (const paths_t& paths)
 paths_t
 LADSPAAudioEffectModule::get_plugin_paths ()
 {
-	return paths_t();
+	return get_module_paths(m_plugin_dirs);
 }
 
 std::string
