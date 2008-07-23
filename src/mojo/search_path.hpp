@@ -104,7 +104,7 @@ public:
 	/**
 	 * @return The vector of directory paths in the search path
 	 */
-	paths_t get_directories () const { return m_dirs; }
+	paths_t get_paths () const { return m_dirs; }
 
 	SearchPath& operator= (const SearchPath& path);
 
