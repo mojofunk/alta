@@ -50,22 +50,6 @@ test_path (const fs::path& p)
 	BOOST_TEST_MESSAGE(p);
 }
 
-BOOST_AUTO_TEST_CASE( is_module_file_test )
-{
-	BOOST_REQUIRE(is_module_file (module_path));
-}
-
-BOOST_AUTO_TEST_CASE( module_paths_test )
-{
-	paths_t dirs = module_search_path().get_directories();
-
-	for_each (dirs.begin(), dirs.end(), test_path);
-
-	paths_t module_files = get_module_paths (dirs);
-
-	for_each (module_files.begin(), module_files.end(), test_path);
-}
-
 void
 test_module (const ModuleSPtr& mod)
 {

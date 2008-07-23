@@ -3,7 +3,8 @@
 #include "ladspa_audio_effect.hpp"
 
 #include <mojo/export.h>
-#include <mojo/module_utils.hpp>
+#include <mojo/file_utils.hpp>
+#include <mojo/library.hpp>
 
 namespace mojo {
 
@@ -68,7 +69,9 @@ LADSPAAudioEffectModule::set_preset_directory_paths (const paths_t& paths)
 paths_t
 LADSPAAudioEffectModule::get_plugin_paths ()
 {
-	return get_module_paths(m_plugin_dirs);
+	paths_t paths;
+	find_matching_files (m_plugin_dirs, is_library, paths);
+	return paths;
 }
 
 std::string

@@ -43,6 +43,7 @@ glib_library.cpp
 graph.cpp
 library.cpp
 midi_track.cpp
+module.cpp
 module_utils.cpp
 project.cpp
 project_directory.cpp

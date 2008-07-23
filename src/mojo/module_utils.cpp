@@ -34,26 +34,13 @@ open_module (const fs::path& module_path)
 	return mojo::ModuleSPtr(p);
 }
 
-bool
-is_module_file (const fs::path& filepath)
-{
-	return is_library (filepath);
-}
-
-paths_t
-get_module_paths (const paths_t& dirs)
-{
-	paths_t module_paths;
-
-	find_matching_files (dirs, is_module_file, module_paths); 
-
-	return module_paths;
-}
-
 ModuleSet
 discover_modules (const SearchPath& sp)
 {
-	paths_t module_paths(get_module_paths (sp.get_directories ()));
+	paths_t module_paths;
+	
+	find_matching_files (sp.get_paths (), is_library, module_paths);
+
 	ModuleSet modules;
 	
 	std::transform (module_paths.begin(),

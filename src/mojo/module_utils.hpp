@@ -8,12 +8,7 @@
 
 namespace mojo {
 
-// need a way to automatically close module
 ModuleSPtr open_module (const fs::path& filepath);
-
-bool is_module_file (const fs::path& filepath);
-
-paths_t get_module_paths (const paths_t& directories);
 
 ModuleSet discover_modules (const SearchPath& sp);
 
