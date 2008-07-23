@@ -20,6 +20,7 @@ class AudioFile;
 class AudioRegion;
 class AudioSequence;
 class AudioTrack;
+class Library;
 class MidiTrack;
 class Module;
 class Object;

@@ -39,7 +39,9 @@ directory_names.cpp
 event.cpp
 filesystem_paths.cpp
 file_utils.cpp
+glib_library.cpp
 graph.cpp
+library.cpp
 midi_track.cpp
 module_utils.cpp
 project.cpp

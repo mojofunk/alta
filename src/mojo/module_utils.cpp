@@ -1,61 +1,26 @@
-#include <gmodule.h>
-
-#include <map>
-
 #include <mojo/module.hpp>
 #include <mojo/file_utils.hpp>
 
 #include <mojo/module_utils.hpp>
 
+#include <mojo/library.hpp>
+
 #include <iostream>
 
 using namespace std;
 
-typedef std::map<mojo::Module*, GModule*> ModuleMap;
+namespace mojo {
 
-namespace {
-
-ModuleMap* module_map = 0;
-
-void
-_close_module (mojo::Module* module)
+ModuleSPtr
+open_module (const fs::path& module_path)
 {
-	ModuleMap::iterator i = module_map->find (module);
-	GModule* m = i->second;
-
-	if (i == module_map->end()) return;
-
-	// The module was allocated in a dynamically opened module
-	// so the memory has to be deleted while the module is open.
-	// and possibly from within the dll on windows?
-	module_map->erase(i);
-	delete module;
-
-	if (g_module_close (m) != TRUE)
-	{
-		cerr << "Unable to close module" << endl;
-	}
-}
-
-mojo::ModuleSPtr
-_open_module (const std::string& module_path)
-{
-	GModule* module = NULL;
 	mojo::module_func_t module_func = 0;
 
-	module = g_module_open(module_path.c_str(), G_MODULE_BIND_LAZY);
+	mojo::LibrarySPtr lib = create_library (module_path);
 
-	if (module == NULL)
+	if (lib)
 	{
-		cerr << "module == NULL:" << g_module_error() << endl;
-		return mojo::ModuleSPtr();
-	} 
-
-	if (g_module_symbol(module, "mojo_module_factory",
-				(gpointer*)&module_func) == FALSE)
-	{
-		cerr << "Could not resolve symbol while opening module" << endl;
-		return mojo::ModuleSPtr();
+		module_func = (mojo::module_func_t)lib->resolve ("mojo_module_factory");
 	}
 
 	if (module_func == NULL)
@@ -66,33 +31,13 @@ _open_module (const std::string& module_path)
 
 	mojo::Module* p = static_cast<mojo::Module*>(module_func());
 
-	mojo::ModuleSPtr mod(p, _close_module);
-
-	// XXX check
-	module_map->insert (std::make_pair(p, module));
-
-	return mod;
-}
-
-} // unnamed namespace
-
-namespace mojo {
-
-ModuleSPtr
-open_module (const fs::path& module_path)
-{
-	if (module_map == 0)
-	{
-		module_map = new ModuleMap;
-	}
-
-	return _open_module(module_path.string());
+	return mojo::ModuleSPtr(p);
 }
 
 bool
 is_module_file (const fs::path& filepath)
 {
-	return (fs::extension (filepath) == "." G_MODULE_SUFFIX);
+	return is_library (filepath);
 }
 
 paths_t

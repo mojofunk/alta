@@ -60,6 +60,9 @@ typedef boost::weak_ptr<AudioSequence>      AudioSequenceWPtr;
 typedef boost::shared_ptr<AudioTrack>    AudioTrackSPtr;
 typedef boost::weak_ptr<AudioTrack>      AudioTrackWPtr;
 
+typedef boost::shared_ptr<Library>    LibrarySPtr;
+typedef boost::weak_ptr<Library>      LibraryWPtr;
+
 typedef boost::shared_ptr<MidiTrack>    MidiTrackSPtr;
 typedef boost::weak_ptr<MidiTrack>      MidiTrackWPtr;
 
