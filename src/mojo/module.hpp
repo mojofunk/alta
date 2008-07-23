@@ -13,9 +13,11 @@ namespace mojo {
  */
 class Module
 {
-public:
+public: // Constructors
 
-	virtual ~Module() { }
+	virtual ~Module();
+
+public: // Module Interface
 
 	virtual std::string get_author () = 0;
 
