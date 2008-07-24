@@ -5,31 +5,26 @@
 
 #include <mojo/library.hpp>
 
-#include <iostream>
-
-using namespace std;
-
 namespace mojo {
 
 ModuleSPtr
 open_module (const fs::path& module_path)
 {
-	mojo::module_func_t module_func = 0;
+	Module::factory_func_t factory = 0;
 
 	mojo::LibrarySPtr lib = create_library (module_path);
 
 	if (lib)
 	{
-		module_func = (mojo::module_func_t)lib->resolve ("mojo_module_factory");
+		factory = (Module::factory_func_t)lib->resolve ("mojo_module_factory");
 	}
 
-	if (module_func == NULL)
+	if (factory == NULL)
 	{
-		cerr << "factory_func == NULL" << endl;
 		return mojo::ModuleSPtr();
 	}
 
-	mojo::Module* p = static_cast<mojo::Module*>(module_func());
+	mojo::Module* p = static_cast<mojo::Module*>(factory());
 
 	return mojo::ModuleSPtr(p);
 }

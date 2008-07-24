@@ -13,6 +13,10 @@ namespace mojo {
  */
 class Module
 {
+public: // typedefs
+
+	typedef void * (*factory_func_t) (void);
+
 public: // Constructors
 
 	virtual ~Module();
@@ -26,8 +30,6 @@ public: // Module Interface
 	virtual std::string get_version () = 0;
 
 };
-
-typedef void * (*module_func_t) (void);
 
 } // namespace mojo
 
