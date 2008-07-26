@@ -25,6 +25,7 @@ archive_module.cpp
 audio_clip.cpp
 audio_driver_module.cpp
 audio_effect.cpp
+audio_effect_info.cpp
 audio_effect_parameter.cpp
 audio_effect_module.cpp
 audio_event.cpp

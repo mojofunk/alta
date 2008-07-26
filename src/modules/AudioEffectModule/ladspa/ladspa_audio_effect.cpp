@@ -1,14 +1,16 @@
 #include "ladspa_audio_effect.hpp"
+#include "ladspa_audio_effect_info.hpp"
 
 #include <mojo/library.hpp>
 
 namespace mojo {
 
-LADSPAAudioEffect::LADSPAAudioEffect (const fs::path& path, uint32_t index)
-	: m_library(create_library (path))
+LADSPAAudioEffect::LADSPAAudioEffect (LADSPAAudioEffectInfoSPtr info)
+	: m_library(create_library (info->get_path()))
 	, m_descriptor(NULL)
 {
 	LADSPA_Descriptor_Function ladspa_func = NULL;
+
 	if (m_library)
 	{
 		ladspa_func = (LADSPA_Descriptor_Function)m_library->resolve("ladspa_descriptor");
@@ -19,7 +21,12 @@ LADSPAAudioEffect::LADSPAAudioEffect (const fs::path& path, uint32_t index)
 		throw;
 	}
 
-	m_descriptor = ladspa_func(index);
+	m_descriptor = ladspa_func(info->get_index());
+
+	if ((m_descriptor) == NULL)
+	{
+		throw;
+	}
 }
 
 LADSPAAudioEffect::~LADSPAAudioEffect() { }

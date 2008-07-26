@@ -7,13 +7,15 @@
 #include <mojo/filesystem.hpp>
 #include <mojo/audio_effect.hpp>
 
+#include "ladspa_typedefs.hpp"
+
 namespace mojo {
 
 class LADSPAAudioEffect : public AudioEffect
 {
 public: // ctors
 
-	LADSPAAudioEffect (const fs::path& path, uint32_t index);
+	LADSPAAudioEffect (LADSPAAudioEffectInfoSPtr info);
 
 	virtual ~LADSPAAudioEffect ();
 

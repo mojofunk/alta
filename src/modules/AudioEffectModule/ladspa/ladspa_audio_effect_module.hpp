@@ -26,7 +26,7 @@ public: // Module interface
 
 public: // AudioEffectModule interface
 
-	virtual AudioEffectSPtr open (const fs::path& path);
+	virtual AudioEffectSPtr open (AudioEffectInfoSPtr info);
 
 	virtual paths_t get_plugin_directory_paths () const;
 
@@ -36,7 +36,7 @@ public: // AudioEffectModule interface
 
 	virtual void set_preset_directory_paths (const paths_t& paths);
 
-	virtual paths_t get_plugin_paths ();
+	virtual AudioEffectInfoSet get_plugin_info ();
 
 	virtual std::string get_plugin_api_name () const;
 

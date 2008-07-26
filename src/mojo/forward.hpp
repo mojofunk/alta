@@ -11,6 +11,7 @@ class AudioClip;
 class AudioDevice;
 class AudioDriverModule;
 class AudioEffect;
+class AudioEffectInfo;
 class AudioEffectModule;
 class AudioEffectParameter;
 class AudioEvent;

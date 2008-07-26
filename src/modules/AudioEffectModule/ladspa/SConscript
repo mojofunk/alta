@@ -8,6 +8,7 @@ ladspa_env = env.Clone()
 
 ladspa_source_files = Split("""
 ladspa_audio_effect.cpp
+ladspa_audio_effect_info.cpp
 ladspa_audio_effect_module.cpp
 """)
 

@@ -1,6 +1,8 @@
 
 #include "ladspa_audio_effect_module.hpp"
 #include "ladspa_audio_effect.hpp"
+#include "ladspa_audio_effect_info.hpp"
+#include "ladspa_typedefs.hpp"
 
 #include <mojo/export.h>
 #include <mojo/file_utils.hpp>
@@ -37,13 +39,16 @@ LADSPAAudioEffectModule::get_version()
 }
 
 AudioEffectSPtr
-LADSPAAudioEffectModule::open (const fs::path& path)
+LADSPAAudioEffectModule::open (AudioEffectInfoSPtr info)
 {
+	LADSPAAudioEffectInfoSPtr ladspa_info = boost::dynamic_pointer_cast<LADSPAAudioEffectInfo>(info);
 	AudioEffectSPtr aeffect;
+
+	if (!ladspa_info) return aeffect;
 
 	try
 	{
-		aeffect = AudioEffectSPtr(new LADSPAAudioEffect (path, 0));
+		aeffect = AudioEffectSPtr(new LADSPAAudioEffect (ladspa_info));
 	}
 	catch (...)
 	{
@@ -76,12 +81,46 @@ LADSPAAudioEffectModule::set_preset_directory_paths (const paths_t& paths)
 
 }
 
-paths_t
-LADSPAAudioEffectModule::get_plugin_paths ()
+void
+get_info (const fs::path& path, AudioEffectInfoSet& info_set)
+{
+	LADSPA_Descriptor_Function ladspa_func = NULL;
+	
+	LibrarySPtr lib = create_library (path);
+
+	if (!lib) return;
+		
+	ladspa_func = (LADSPA_Descriptor_Function)lib->resolve("ladspa_descriptor");
+
+	const LADSPA_Descriptor* descriptor = NULL;
+	
+	for (uint32_t index = 0;
+		       	(descriptor = ladspa_func(index));
+		       	++index)
+	{
+		AudioEffectInfoSPtr info(new LADSPAAudioEffectInfo(path, index));
+		if (info)
+		{
+			info_set.insert (info);
+		}
+	}
+}
+
+AudioEffectInfoSet
+LADSPAAudioEffectModule::get_plugin_info ()
 {
 	paths_t paths;
 	find_matching_files (m_plugin_dirs, is_library, paths);
-	return paths;
+
+	AudioEffectInfoSet info_set;
+
+	for (paths_t::const_iterator i = paths.begin ();
+			i != paths.end(); ++i)
+	{
+		get_info (*i, info_set);
+	}
+	
+	return info_set;
 }
 
 std::string
