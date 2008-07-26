@@ -39,7 +39,17 @@ LADSPAAudioEffectModule::get_version()
 AudioEffectSPtr
 LADSPAAudioEffectModule::open (const fs::path& path)
 {
-	return AudioEffectSPtr(new LADSPAAudioEffect (path));
+	AudioEffectSPtr aeffect;
+
+	try
+	{
+		aeffect = AudioEffectSPtr(new LADSPAAudioEffect (path, 0));
+	}
+	catch (...)
+	{
+		//  
+	}
+	return aeffect;
 }
 
 paths_t

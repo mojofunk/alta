@@ -12,7 +12,7 @@ open_module (const fs::path& module_path)
 {
 	Module::factory_func_t factory = 0;
 
-	mojo::LibrarySPtr lib = create_library (module_path);
+	LibrarySPtr lib = create_library (module_path);
 
 	if (lib)
 	{

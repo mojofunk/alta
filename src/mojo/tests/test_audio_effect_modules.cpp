@@ -8,6 +8,7 @@
 #include <boost/test/framework.hpp>
 
 #include <mojo/app.hpp>
+#include <mojo/audio_effect.hpp>
 #include <mojo/audio_effect_module.hpp>
 
 using namespace boost::unit_test;
@@ -19,6 +20,17 @@ test_path (const fs::path& path)
 {
 	BOOST_REQUIRE(!path.empty());
 	BOOST_TEST_MESSAGE(path.string());
+}
+
+void
+test_audio_effect (AudioEffectSPtr aeffect)
+{
+	BOOST_CHECK(aeffect);
+
+	if(aeffect)
+	{
+		BOOST_TEST_MESSAGE(aeffect->get_name());
+	}
 }
 
 void
@@ -41,12 +53,12 @@ test_audio_effect_module (AudioEffectModuleSPtr mod)
 
 	for_each (plugin_paths.begin(), plugin_paths.end(), test_path);
 
-	AudioEffectSPtr ae = mod->open ("fail");
-
-	BOOST_CHECK(!ae);
-
-	if(!ae) return;
-
+	for (paths_t::const_iterator i = plugin_paths.begin ();
+		       	i != plugin_paths.end(); ++i)
+	{
+		AudioEffectSPtr ae = mod->open (*i); 
+		test_audio_effect(ae);
+	}
 }
 
 BOOST_AUTO_TEST_CASE( test_audio_effect_modules )
