@@ -4,7 +4,14 @@
 
 . gmojo_env.sh
 
-for file in `find $BUILD_DIR -name 'test_*' -type f -perm /u+x`;
+TESTS='test_*'
+
+if [ -n "$1" ]
+then
+	TESTS="test_*$1*"
+fi
+
+for file in `find $BUILD_DIR -name "$TESTS" -type f -perm /u+x`;
 do
 	echo "Running test....$file"
 	G_DEBUG=gc-friendly G_SLICE=always-malloc valgrind -v --track-fds=yes --leak-check=full --log-file=$file.%p $file "$@";
