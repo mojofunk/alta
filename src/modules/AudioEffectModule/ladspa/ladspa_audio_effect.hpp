@@ -6,6 +6,7 @@
 
 #include <mojo/filesystem.hpp>
 #include <mojo/audio_effect.hpp>
+#include <mojo/types.hpp>
 
 #include "ladspa_typedefs.hpp"
 
@@ -15,7 +16,7 @@ class LADSPAAudioEffect : public AudioEffect
 {
 public: // ctors
 
-	LADSPAAudioEffect (LADSPAAudioEffectInfoSPtr info);
+	LADSPAAudioEffect (LADSPAAudioEffectInfoSPtr info, samplerate_t);
 
 	virtual ~LADSPAAudioEffect ();
 
@@ -32,6 +33,8 @@ private:
 	const LADSPA_Descriptor* m_descriptor;
 
 	AudioEffectInfoSPtr m_info;
+
+	LADSPA_Handle m_handle;
 
 };
 

@@ -39,7 +39,7 @@ LADSPAAudioEffectModule::get_version()
 }
 
 AudioEffectSPtr
-LADSPAAudioEffectModule::open (AudioEffectInfoSPtr info)
+LADSPAAudioEffectModule::open (AudioEffectInfoSPtr info, samplerate_t rate)
 {
 	LADSPAAudioEffectInfoSPtr ladspa_info = boost::dynamic_pointer_cast<LADSPAAudioEffectInfo>(info);
 	AudioEffectSPtr aeffect;
@@ -48,7 +48,7 @@ LADSPAAudioEffectModule::open (AudioEffectInfoSPtr info)
 
 	try
 	{
-		aeffect = AudioEffectSPtr(new LADSPAAudioEffect (ladspa_info));
+		aeffect = AudioEffectSPtr(new LADSPAAudioEffect (ladspa_info, rate));
 	}
 	catch (...)
 	{

@@ -5,6 +5,7 @@
 #include <mojo/module.hpp>
 #include <mojo/filesystem.hpp>
 #include <mojo/typedefs.hpp>
+#include <mojo/types.hpp>
 
 namespace mojo {
 
@@ -25,7 +26,7 @@ protected:
 
 public: // Interface
 
-	virtual AudioEffectSPtr open (AudioEffectInfoSPtr) = 0;
+	virtual AudioEffectSPtr open (AudioEffectInfoSPtr, samplerate_t) = 0;
 
 	virtual paths_t get_plugin_directory_paths () const = 0;
 

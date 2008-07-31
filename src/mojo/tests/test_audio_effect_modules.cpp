@@ -61,7 +61,7 @@ test_audio_effect_module (AudioEffectModuleSPtr mod)
 	for (AudioEffectInfoSet::const_iterator i = info.begin ();
 		       	i != info.end(); ++i)
 	{
-		AudioEffectSPtr ae = mod->open (*i); 
+		AudioEffectSPtr ae = mod->open (*i, 44100); 
 		test_audio_effect(ae);
 	}
 }
