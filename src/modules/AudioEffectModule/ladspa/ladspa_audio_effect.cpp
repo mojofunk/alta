@@ -8,6 +8,7 @@ namespace mojo {
 LADSPAAudioEffect::LADSPAAudioEffect (LADSPAAudioEffectInfoSPtr info)
 	: m_library(create_library (info->get_path()))
 	, m_descriptor(NULL)
+	, m_info(info)
 {
 	LADSPA_Descriptor_Function ladspa_func = NULL;
 
@@ -31,10 +32,10 @@ LADSPAAudioEffect::LADSPAAudioEffect (LADSPAAudioEffectInfoSPtr info)
 
 LADSPAAudioEffect::~LADSPAAudioEffect() { }
 
-std::string
-LADSPAAudioEffect::get_name () const
+AudioEffectInfoSPtr
+LADSPAAudioEffect::get_info () const
 {
-	return m_descriptor->Name;
+	return m_info;
 }
 
 void

@@ -35,7 +35,7 @@ void
 test_audio_effect (AudioEffectSPtr aeffect)
 {
 	BOOST_REQUIRE(aeffect);
-	BOOST_TEST_MESSAGE(aeffect->get_name());
+	test_info (aeffect->get_info ());
 }
 
 void

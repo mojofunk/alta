@@ -21,7 +21,7 @@ public: // ctors
 
 public: // AudioEffect interface
 
-	virtual std::string get_name () const;
+	virtual AudioEffectInfoSPtr get_info () const;
 
 	virtual void get_parameters (AudioEffectParameterSet& params) const;
 
@@ -30,6 +30,8 @@ private:
 	LibrarySPtr m_library;
 
 	const LADSPA_Descriptor* m_descriptor;
+
+	AudioEffectInfoSPtr m_info;
 
 };
 

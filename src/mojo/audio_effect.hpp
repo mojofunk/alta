@@ -14,7 +14,7 @@ public: // constructors
 
 public: // AudioEffect interface
 
-	virtual std::string get_name () const = 0;
+	virtual AudioEffectInfoSPtr get_info () const = 0;
 
 	virtual void get_parameters (AudioEffectParameterSet& params) const = 0;
 
