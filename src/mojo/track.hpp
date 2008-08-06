@@ -13,7 +13,7 @@ public:
 	// constructors
 	Track ();
 
-public:
+public: // Object Interface
 
 	virtual void get_properties (Properties& props) const;
 

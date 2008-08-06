@@ -10,6 +10,7 @@
 #include <mojo/app.hpp>
 #include <mojo/audio_effect.hpp>
 #include <mojo/audio_effect_info.hpp>
+#include <mojo/audio_effect_parameter_info.hpp>
 #include <mojo/audio_effect_module.hpp>
 
 using namespace boost::unit_test;
@@ -32,10 +33,29 @@ test_info (AudioEffectInfoSPtr info)
 }
 
 void
+test_parameter_info (const AudioEffectParameterInfo& info)
+{
+	BOOST_MESSAGE(info.name);
+	BOOST_MESSAGE(info.min_value);
+	BOOST_MESSAGE(info.max_value);
+	BOOST_MESSAGE(info.default_value);
+}
+
+void
 test_audio_effect (AudioEffectSPtr aeffect)
 {
 	BOOST_REQUIRE(aeffect);
 	test_info (aeffect->get_info ());
+
+	AudioEffect::ParameterList params = aeffect->get_parameter_list();
+
+	for (AudioEffect::ParameterList::const_iterator i = params.begin();
+			i != params.end(); ++i)
+	{
+		AudioEffectParameterInfo info;
+		aeffect->get_parameter_info (*i, info);
+		test_parameter_info (info);
+	}
 }
 
 void

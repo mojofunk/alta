@@ -6,7 +6,7 @@
 
 TESTS='test_*'
 
-if [ -n "$1" ]
+if [ -n "$1" ] && [ "$1" != "all" ]
 then
 	TESTS="test_*$1*"
 fi

@@ -10,8 +10,7 @@ namespace mojo {
  * An AudioTrack can contain:
  *
  * A sequence of audio events
- * A number of channels
- * A format type mono/stereo/etc
+ * A number of input and output Busses(with varying formats)
  * A Panner?
  *
  * An AudioTrack doesn't contain:
