@@ -10,10 +10,10 @@
 
 #include <mojo/type_names.hpp>
 
-#include <mojo/audio_track.hpp>
-#include <mojo/midi_track.hpp>
-#include <mojo/audio_sequence.hpp>
-#include <mojo/audio_event.hpp>
+#include <mojo/objects/audio_track.hpp>
+#include <mojo/objects/midi_track.hpp>
+#include <mojo/objects/audio_sequence.hpp>
+#include <mojo/objects/audio_event.hpp>
 
 using namespace boost::unit_test;
 using namespace std;

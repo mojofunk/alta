@@ -1,8 +1,8 @@
 
-#include <mojo/audio_track.hpp>
-#include <mojo/midi_track.hpp>
-#include <mojo/object_collection.hpp>
-#include <mojo/project.hpp>
+#include "audio_track.hpp"
+#include "midi_track.hpp"
+#include "object_collection.hpp"
+#include "project.hpp"
 
 namespace mojo {
 

@@ -6,10 +6,11 @@
 //#include <boost/test/test_tools.hpp>
 
 #include <mojo/app.hpp>
-#include <mojo/project.hpp>
-#include <mojo/audio_track.hpp>
-#include <mojo/audio_sequence.hpp>
-#include <mojo/audio_event.hpp>
+
+#include <mojo/objects/project.hpp>
+#include <mojo/objects/audio_track.hpp>
+#include <mojo/objects/audio_sequence.hpp>
+#include <mojo/objects/audio_event.hpp>
 
 #include <glib.h>
 

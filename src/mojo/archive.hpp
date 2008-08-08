@@ -3,7 +3,7 @@
 #define MOJO_ARCHIVE
 
 #include <mojo/filesystem.hpp>
-#include <mojo/properties.hpp>
+#include <mojo/objects/properties.hpp>
 
 namespace mojo {
 

@@ -5,7 +5,6 @@
 //#include <boost/test/test_tools.hpp>
 
 #include <mojo/app.hpp>
-#include <mojo/properties.hpp>
 #include <mojo/archive.hpp>
 #include <mojo/archive_module.hpp>
 

@@ -21,9 +21,6 @@ typedef boost::weak_ptr<Archive>      ArchiveWPtr;
 typedef boost::shared_ptr<ArchiveModule>    ArchiveModuleSPtr;
 typedef boost::weak_ptr<ArchiveModule>      ArchiveModuleWPtr;
 
-typedef boost::shared_ptr<AudioClip>    AudioClipSPtr;
-typedef boost::weak_ptr<AudioClip>      AudioClipWPtr;
-
 typedef boost::shared_ptr<AudioDevice>    AudioDeviceSPtr;
 typedef boost::weak_ptr<AudioDevice>      AudioDeviceWPtr;
 
@@ -42,9 +39,6 @@ typedef boost::weak_ptr<AudioEffectModule>      AudioEffectModuleWPtr;
 typedef boost::shared_ptr<AudioEffectParameterInfo>    AudioEffectParameterInfoSPtr;
 typedef boost::weak_ptr<AudioEffectParameterInfo>      AudioEffectParameterInfoWPtr;
 
-typedef boost::shared_ptr<AudioEvent>    AudioEventSPtr;
-typedef boost::weak_ptr<AudioEvent>      AudioEventWPtr;
-
 typedef boost::shared_ptr<AudioFileModule>    AudioFileModuleSPtr;
 typedef boost::weak_ptr<AudioFileModule>      AudioFileModuleWPtr;
 
@@ -54,33 +48,12 @@ typedef boost::weak_ptr<AudioFile>      AudioFileWPtr;
 typedef boost::shared_ptr<AudioFileFormat>    AudioFileFormatSPtr;
 typedef boost::weak_ptr<AudioFileFormat>      AudioFileFormatWPtr;
 
-typedef boost::shared_ptr<AudioRegion>    AudioRegionSPtr;
-typedef boost::weak_ptr<AudioRegion>      AudioRegionWPtr;
-
-typedef boost::shared_ptr<AudioSequence>    AudioSequenceSPtr;
-typedef boost::weak_ptr<AudioSequence>      AudioSequenceWPtr;
-
-typedef boost::shared_ptr<AudioTrack>    AudioTrackSPtr;
-typedef boost::weak_ptr<AudioTrack>      AudioTrackWPtr;
-
 typedef boost::shared_ptr<Library>    LibrarySPtr;
 typedef boost::weak_ptr<Library>      LibraryWPtr;
 
-typedef boost::shared_ptr<MidiTrack>    MidiTrackSPtr;
-typedef boost::weak_ptr<MidiTrack>      MidiTrackWPtr;
-
 typedef boost::shared_ptr<Module>    ModuleSPtr;
 typedef boost::weak_ptr<Module>      ModuleWPtr;
-
-typedef boost::shared_ptr<Object>    ObjectSPtr;
-typedef boost::weak_ptr<Object>      ObjectWPtr;
-
-typedef boost::shared_ptr<Project>    ProjectSPtr;
-typedef boost::weak_ptr<Project>      ProjectWPtr;
 	
-typedef boost::shared_ptr<Track>    TrackSPtr;
-typedef boost::weak_ptr<Track>      TrackWPtr;
-
 typedef boost::shared_ptr<TypeFactory>    TypeFactorySPtr;
 typedef boost::weak_ptr<TypeFactory>      TypeFactoryWPtr; 
 

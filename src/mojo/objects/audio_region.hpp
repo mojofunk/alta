@@ -2,9 +2,10 @@
 #ifndef MOJO_AUDIO_REGION
 #define MOJO_AUDIO_REGION
 
-#include <mojo/object.hpp>
-#include <mojo/typedefs.hpp>
 #include <mojo/types.hpp>
+
+#include <mojo/objects/object.hpp>
+#include <mojo/objects/typedefs.hpp>
 
 namespace mojo {
 

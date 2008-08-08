@@ -4,8 +4,8 @@
 #include <boost/test/unit_test_log.hpp>
 //#include <boost/test/test_tools.hpp>
 
-#include <mojo/audio_sequence.hpp>
-#include <mojo/audio_event.hpp>
+#include <mojo/objects/audio_sequence.hpp>
+#include <mojo/objects/audio_event.hpp>
 
 using namespace boost::unit_test;
 using namespace std;

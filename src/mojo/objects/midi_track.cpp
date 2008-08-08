@@ -1,5 +1,5 @@
 
-#include <mojo/midi_track.hpp>
+#include "midi_track.hpp"
 
 namespace mojo {
 

@@ -1,5 +1,5 @@
 
-#include <mojo/event.hpp>
+#include "event.hpp"
 
 namespace mojo {
 

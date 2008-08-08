@@ -1,7 +1,6 @@
 
-#include <mojo/audio_region.hpp>
-
-#include <mojo/audio_region_event.hpp>
+#include "audio_region.hpp"
+#include "audio_region_event.hpp"
 
 namespace mojo {
 

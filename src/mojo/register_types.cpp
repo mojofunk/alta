@@ -7,12 +7,11 @@
 #include <mojo/register_types.hpp>
 #include <mojo/type_names.hpp>
 
-#include <mojo/object_collection.hpp>
-
-#include <mojo/audio_track.hpp>
-#include <mojo/midi_track.hpp>
-#include <mojo/audio_sequence.hpp>
-#include <mojo/audio_event.hpp>
+#include <mojo/objects/object_collection.hpp>
+#include <mojo/objects/audio_track.hpp>
+#include <mojo/objects/midi_track.hpp>
+#include <mojo/objects/audio_sequence.hpp>
+#include <mojo/objects/audio_event.hpp>
 
 namespace mojo {
 

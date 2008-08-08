@@ -3,8 +3,7 @@
 #define MOJO_DUMMY_ARCHIVE
 
 #include <mojo/archive.hpp>
-#include <mojo/forward.hpp>
-#include <mojo/typedefs.hpp>
+#include <mojo/objects/typedefs.hpp>
 
 namespace mojo {
 

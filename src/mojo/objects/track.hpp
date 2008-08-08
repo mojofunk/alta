@@ -2,7 +2,7 @@
 #ifndef MOJO_TRACK
 #define MOJO_TRACK
 
-#include <mojo/object.hpp>
+#include <mojo/objects/object.hpp>
 
 namespace mojo {
 

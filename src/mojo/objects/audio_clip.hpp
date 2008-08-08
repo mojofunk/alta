@@ -3,8 +3,9 @@
 #define MOJO_AUDIO_CLIP
 
 #include <mojo/types.hpp>
-#include <mojo/object.hpp>
 #include <mojo/filesystem.hpp>
+
+#include <mojo/objects/object.hpp>
 
 namespace mojo {
 

@@ -1,7 +1,6 @@
-#include <mojo/audio_sequence.hpp>
-#include <mojo/object_collection.hpp>
-
-#include <mojo/audio_event.hpp>
+#include "audio_sequence.hpp"
+#include "object_collection.hpp"
+#include "audio_event.hpp"
 
 namespace mojo {
 

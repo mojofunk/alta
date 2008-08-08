@@ -7,27 +7,17 @@ namespace mojo {
 class App;
 class Archive;
 class ArchiveModule;
-class AudioClip;
 class AudioDevice;
 class AudioDriverModule;
 class AudioEffect;
 class AudioEffectInfo;
 class AudioEffectModule;
 class AudioEffectParameterInfo;
-class AudioEvent;
 class AudioFileFormat;
 class AudioFileModule;
 class AudioFile;
-class AudioRegion;
-class AudioSequence;
-class AudioTrack;
 class Library;
-class MidiTrack;
 class Module;
-class Object;
-class ObjectCollection;
-class Project;
-class Track;
 class TypeFactory;
 class TypeSystem;
 

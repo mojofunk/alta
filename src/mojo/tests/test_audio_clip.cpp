@@ -10,8 +10,9 @@
 
 #include <mojo/filesystem.hpp>
 #include <mojo/app.hpp>
-#include <mojo/audio_clip.hpp>
 #include <mojo/project_directory.hpp>
+
+#include <mojo/objects/audio_clip.hpp>
 
 using namespace boost::unit_test;
 using namespace mojo;

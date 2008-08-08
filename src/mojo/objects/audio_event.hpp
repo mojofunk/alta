@@ -1,16 +1,17 @@
-#ifndef MOJO_MIDI_TRACK
-#define MOJO_MIDI_TRACK
+#ifndef MOJO_AUDIO_EVENT
+#define MOJO_AUDIO_EVENT
 
-#include <mojo/track.hpp>
+#include <mojo/objects/event.hpp>
 
 namespace mojo {
 
-class MidiTrack : public Track
+class AudioEvent : public Event
 {
 public:
 
-	// constructors
-	MidiTrack ();
+	AudioEvent();
+
+	AudioEvent(const count_t& pos, const count_t& dur);
 
 public:
 
@@ -21,6 +22,6 @@ public:
 
 };
 
-} // namespace mojo
+}
 
 #endif

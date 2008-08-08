@@ -2,7 +2,8 @@
 #define MOJO_EVENT
 
 #include <mojo/types.hpp>
-#include <mojo/object.hpp>
+
+#include <mojo/objects/object.hpp>
 
 namespace mojo {
 

@@ -91,9 +91,9 @@ public:
 	 * then the audio device is re-opened to match
 	 * the native rate.
 	 */
-	void set_project (ProjectSPtr proj);
+	//void set_project (ProjectSPtr proj);
 
-	ProjectSPtr get_project () const;
+	//ProjectSPtr get_project () const;
 
 	void set_audio_device (AudioDevice* dev);
 

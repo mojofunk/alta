@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include <mojo/properties.hpp>
+#include <mojo/objects/properties.hpp>
 
 namespace mojo {
 

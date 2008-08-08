@@ -1,8 +1,8 @@
 #ifndef MOJO_AUDIO_SEQUENCE
 #define MOJO_AUDIO_SEQUENCE
 
-#include <mojo/object.hpp>
-#include <mojo/typedefs.hpp>
+#include <mojo/objects/typedefs.hpp>
+#include <mojo/objects/object.hpp>
 
 #include <set>
 

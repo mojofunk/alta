@@ -1,6 +1,6 @@
 
-#include <mojo/audio_track.hpp>
-#include <mojo/audio_sequence.hpp>
+#include "audio_track.hpp"
+#include "audio_sequence.hpp"
 
 namespace mojo {
 

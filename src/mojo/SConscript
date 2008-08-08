@@ -22,44 +22,48 @@ mojo_typesystem_files = Split("""
 typesystem/type_system.cpp
 """)
 
+mojo_objects_files = Split("""
+objects/audio_clip.cpp
+objects/audio_event.cpp
+objects/audio_region.cpp
+objects/audio_region_event.cpp
+objects/audio_sequence.cpp
+objects/audio_track.cpp
+objects/event.cpp
+objects/midi_track.cpp
+objects/project.cpp
+objects/track.cpp
+""")
+
 mojo_source_files = Split("""
 app.cpp
 archive.cpp
 archive_module.cpp
-audio_clip.cpp
 audio_driver_module.cpp
 audio_effect.cpp
 audio_effect_info.cpp
 audio_effect_module.cpp
-audio_event.cpp
 audio_file.cpp
 audio_file_format.cpp
 audio_file_module.cpp
-audio_region.cpp
-audio_region_event.cpp
-audio_track.cpp
-audio_sequence.cpp
 directory_names.cpp
-event.cpp
 filesystem_paths.cpp
 file_utils.cpp
 glib_library.cpp
 graph.cpp
 library.cpp
-midi_track.cpp
 module.cpp
 module_utils.cpp
-project.cpp
 project_directory.cpp
 register_types.cpp
 resource.cpp
 sample_block.cpp
 search_path.cpp
-track.cpp
 type_names.cpp
 """)
 
 mojo_source_files += mojo_typesystem_files
+mojo_source_files += mojo_objects_files
 
 libmojo = mojo_env.SharedLibrary ( 'mojo', mojo_source_files )
 
