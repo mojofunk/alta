@@ -1,6 +1,6 @@
-#include <mojo/library.hpp>
+#include <mojo/utils/library.hpp>
 
-#include <mojo/glib_library.hpp>
+#include <mojo/utils/glib_library.hpp> // this smells
 
 namespace mojo {
 

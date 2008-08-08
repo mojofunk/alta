@@ -1,9 +1,9 @@
 #include <mojo/module.hpp>
-#include <mojo/file_utils.hpp>
 
-#include <mojo/module_utils.hpp>
+#include <mojo/utils/file_utils.hpp>
+#include <mojo/utils/library.hpp>
 
-#include <mojo/library.hpp>
+#include "module_utils.hpp"
 
 namespace mojo {
 

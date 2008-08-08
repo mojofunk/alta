@@ -1,7 +1,8 @@
 #include "ladspa_audio_effect.hpp"
 #include "ladspa_audio_effect_info.hpp"
 
-#include <mojo/library.hpp>
+#include <mojo/utils/library.hpp>
+
 #include <mojo/audio_effect_parameter_info.hpp>
 
 namespace mojo {

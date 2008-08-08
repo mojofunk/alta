@@ -3,9 +3,9 @@
 
 #include <mojo/typesystem/type_system.hpp>
 
+#include <mojo/module_utils.hpp>
 #include <mojo/register_types.hpp>
 #include <mojo/filesystem_paths.hpp>
-#include <mojo/module_utils.hpp>
 #include <mojo/audio_file_module.hpp>
 #include <mojo/audio_driver_module.hpp>
 #include <mojo/audio_effect_module.hpp>

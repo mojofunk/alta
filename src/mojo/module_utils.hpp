@@ -3,7 +3,8 @@
 #define MOJO_MODULE_UTILS
 
 #include <mojo/filesystem.hpp>
-#include <mojo/search_path.hpp>
+
+#include <mojo/utils/search_path.hpp>
 #include <mojo/typedefs.hpp>
 
 namespace mojo {

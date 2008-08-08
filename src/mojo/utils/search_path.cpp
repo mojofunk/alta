@@ -1,7 +1,7 @@
 
 #include <boost/tokenizer.hpp>
 
-#include <mojo/search_path.hpp>
+#include <mojo/utils/search_path.hpp>
 
 namespace {
 

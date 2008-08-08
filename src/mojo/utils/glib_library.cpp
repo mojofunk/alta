@@ -1,5 +1,5 @@
 
-#include <mojo/glib_library.hpp>
+#include "glib_library.hpp"
 
 namespace mojo {
 
