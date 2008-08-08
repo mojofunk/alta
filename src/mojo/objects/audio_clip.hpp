@@ -2,8 +2,8 @@
 #ifndef MOJO_AUDIO_CLIP
 #define MOJO_AUDIO_CLIP
 
-#include <mojo/types.hpp>
-#include <mojo/filesystem.hpp>
+#include <mojo/core/types.hpp>
+#include <mojo/core/filesystem.hpp>
 
 #include <mojo/objects/object.hpp>
 

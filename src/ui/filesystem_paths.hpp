@@ -1,8 +1,8 @@
 
-#ifndef GMOJO_AUDIO_TRACK
-#define GMOJO_AUDIO_TRACK
+#ifndef GMOJO_FILESYSTEM_PATHS
+#define GMOJO_FILESYSTEM_PATHS
 
-#include <mojo/filesystem.hpp>
+#include <mojo/core/filesystem.hpp>
 
 namespace gmojo {
 

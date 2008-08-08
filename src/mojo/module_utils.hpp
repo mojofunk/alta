@@ -2,9 +2,9 @@
 #ifndef MOJO_MODULE_UTILS
 #define MOJO_MODULE_UTILS
 
-#include <mojo/filesystem.hpp>
-
+#include <mojo/core/filesystem.hpp>
 #include <mojo/utils/search_path.hpp>
+
 #include <mojo/typedefs.hpp>
 
 namespace mojo {

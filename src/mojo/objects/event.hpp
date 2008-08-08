@@ -1,7 +1,7 @@
 #ifndef MOJO_EVENT
 #define MOJO_EVENT
 
-#include <mojo/types.hpp>
+#include <mojo/core/types.hpp>
 
 #include <mojo/objects/object.hpp>
 

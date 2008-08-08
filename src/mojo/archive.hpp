@@ -2,7 +2,7 @@
 #ifndef MOJO_ARCHIVE
 #define MOJO_ARCHIVE
 
-#include <mojo/filesystem.hpp>
+#include <mojo/core/filesystem.hpp>
 #include <mojo/objects/properties.hpp>
 
 namespace mojo {

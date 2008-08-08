@@ -2,9 +2,9 @@
 #ifndef MOJO_APP
 #define MOJO_APP
 
-#include <mojo/filesystem.hpp>
 #include <mojo/typedefs.hpp>
 
+#include <mojo/core/filesystem.hpp>
 #include <mojo/typesystem/typedefs.hpp>
 
 namespace mojo {

@@ -4,9 +4,10 @@
 
 #include <ladspa.h>
 
-#include <mojo/filesystem.hpp>
+#include <mojo/core/filesystem.hpp>
+#include <mojo/core/types.hpp>
+
 #include <mojo/audio_effect.hpp>
-#include <mojo/types.hpp>
 
 #include "ladspa_typedefs.hpp"
 

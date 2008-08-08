@@ -2,7 +2,7 @@
 #ifndef MOJO_AUDIO_DEVICE
 #define MOJO_AUDIO_DEVICE
 
-#include <mojo/types.hpp>
+#include <mojo/core/types.hpp>
 
 namespace mojo {
 

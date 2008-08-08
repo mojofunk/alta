@@ -5,7 +5,7 @@
 #include <string>
 #include <set>
 
-#include <mojo/filesystem.hpp>
+#include <mojo/core/filesystem.hpp>
 
 #include <mojo/objects/typedefs.hpp>
 #include <mojo/objects/object.hpp>
