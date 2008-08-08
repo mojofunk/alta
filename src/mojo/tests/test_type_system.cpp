@@ -6,7 +6,8 @@
 //#include <boost/test/test_tools.hpp>
 
 #include <mojo/app.hpp>
-#include <mojo/type_system.hpp>
+#include <mojo/typesystem/type_system.hpp>
+
 #include <mojo/type_names.hpp>
 
 #include <mojo/audio_track.hpp>

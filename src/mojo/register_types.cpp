@@ -1,10 +1,11 @@
 
 #include <typeinfo>
 
+#include <mojo/typesystem/type_system.hpp>
+#include <mojo/typesystem/template_type_factory.hpp>
+
 #include <mojo/register_types.hpp>
-#include <mojo/type_system.hpp>
 #include <mojo/type_names.hpp>
-#include <mojo/template_type_factory.hpp>
 
 #include <mojo/object_collection.hpp>
 

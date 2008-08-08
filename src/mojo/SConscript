@@ -18,6 +18,10 @@ mojo_env.Append(LIBS = ['boost_filesystem', 'gleam' ] )
 
 pkgconfig.ParseDependencies ( mojo_env, mojo_deps )
 
+mojo_typesystem_files = Split("""
+typesystem/type_system.cpp
+""")
+
 mojo_source_files = Split("""
 app.cpp
 archive.cpp
@@ -53,8 +57,9 @@ sample_block.cpp
 search_path.cpp
 track.cpp
 type_names.cpp
-type_system.cpp
 """)
+
+mojo_source_files += mojo_typesystem_files
 
 libmojo = mojo_env.SharedLibrary ( 'mojo', mojo_source_files )
 

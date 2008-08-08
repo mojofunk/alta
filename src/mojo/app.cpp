@@ -1,8 +1,9 @@
 
 #include <mojo/app.hpp>
 
+#include <mojo/typesystem/type_system.hpp>
+
 #include <mojo/project.hpp>
-#include <mojo/type_system.hpp>
 #include <mojo/register_types.hpp>
 #include <mojo/filesystem_paths.hpp>
 #include <mojo/module_utils.hpp>

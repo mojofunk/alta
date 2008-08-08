@@ -77,12 +77,4 @@ BOOST_AUTO_TEST_CASE( save_open_project_test )
 			add_random_events (audio_track->get_audio_sequence ());
 		}
 	}
-
-	// don't need to set project directory to save as no media
-	// has been recorded or imported etc.
-
-	// try to save project using project filename in current directory  
-
-	BOOST_CHECK_NO_THROW(proj->save_as("", project_filename));
-
 }

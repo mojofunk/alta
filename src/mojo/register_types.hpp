@@ -4,7 +4,7 @@
 
 namespace mojo {
 
-	void register_types();
+void register_types();
 
 } // namespace mojo
 

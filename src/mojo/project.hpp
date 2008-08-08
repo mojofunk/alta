@@ -13,66 +13,49 @@ namespace mojo {
 using std::string;
 using std::set;
 
+/**
+ * The bus names that represent physical inputs and outputs
+ * won't change when the project moves between systems with
+ * different hardware devices. The names associated with the
+ * hardware devices will change but they should be stored with
+ * the project so that for the common case where the project
+ * being reloaded on the system that it was last 
+ * configured/used on all the connections will be automatic.
+ *
+ * The Project class contains the tracks and other data needed
+ * to reconstruct a project. The additional methods to 
+ * get/set_properties should be for convenience.
+ *
+ * The Project class is not tied to any on disk format
+ *
+ *
+ */
 class Project : Object
 {
-public:
+public: // typedefs
 
 	typedef set<TrackSPtr> track_container_t;
 
-public:
+public: // Object interface
 
-	// new project constructor
-	Project();
-
-	// existing project constructor
-	Project(const fs::path& project_file);
-
-	~Project();
-
-public:
-
-	// Object interface
 	virtual void get_properties (Properties& props) const;
 
 	virtual void set_properties (const Properties& props);
 
-public:
+public: // convenience methodks
 
 	AudioTrackSPtr new_audio_track (const std::string& name = "");
 
 	MidiTrackSPtr new_midi_track (const std::string& name = "");
 
-	// methods
-	/**
-	 * This will save the file using the current
-	 * name + ProjectFormat::extension using the
-	 * current ProjectFormat. If there is no
-	 * ProjectFormat then an exception will be 
-	 * thrown or some indication of error.
-	 */
-	void save () const;
-
-	/**
-	 * Save the project to the specified directory
-	 */
-	void save_as (const fs::path& directory,
-			const string& file_name);
-
-	const fs::path& file () const { return m_file_path; }
-
 	track_container_t get_tracks () const { return m_tracks; }
 
-private:
-
-	// member data
-	fs::path                      m_file_path;
+private: // member data
 
 	std::string                   m_name;
-
-	// this needs to hold any track types
 	track_container_t             m_tracks;
 
-private:
+private: // property names
 	
 	static const char* const s_property_tracks;
 

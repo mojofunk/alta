@@ -2,7 +2,7 @@
 #ifndef MOJO_TEMPLATE_TYPE_FACTORY
 #define MOJO_TEMPLATE_TYPE_FACTORY
 
-#include <mojo/type_factory.hpp>
+#include <mojo/typesystem/type_factory.hpp>
 
 namespace mojo {
 
@@ -32,6 +32,6 @@ private:
 
 };
 
-}
+} // namespace mojo
 
 #endif

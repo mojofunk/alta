@@ -5,6 +5,8 @@
 #include <mojo/filesystem.hpp>
 #include <mojo/typedefs.hpp>
 
+#include <mojo/typesystem/typedefs.hpp>
+
 namespace mojo {
 
 /**
