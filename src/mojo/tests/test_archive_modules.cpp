@@ -2,13 +2,9 @@
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
-//#include <boost/test/test_tools.hpp>
-
-#include <mojo/app/app.hpp>
-#include <mojo/archive.hpp>
-#include <mojo/archive_module.hpp>
 
 #include <cformat/cformat.hpp>
+#include <mojo/mojo.hpp>
 
 #include <glib.h>
 

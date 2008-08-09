@@ -8,10 +8,7 @@
 // for command line args
 #include <boost/test/framework.hpp>
 
-#include <mojo/app/app.hpp>
-
-#include <mojo/audio_device.hpp>
-#include <mojo/audio_driver_module.hpp>
+#include <mojo/mojo.hpp>
 
 using namespace boost::unit_test;
 using namespace std;

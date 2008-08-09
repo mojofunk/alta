@@ -3,15 +3,11 @@
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
-//#include <boost/test/test_tools.hpp>
 
 // for command line args
 #include <boost/test/framework.hpp>
 
-#include <mojo/app/app.hpp>
-#include <mojo/project_directory.hpp>
-
-#include <mojo/objects/audio_clip.hpp>
+#include <mojo/mojo.hpp>
 
 using namespace boost::unit_test;
 using namespace mojo;

@@ -2,10 +2,8 @@
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
-//#include <boost/test/test_tools.hpp>
 
-#include <mojo/objects/audio_sequence.hpp>
-#include <mojo/objects/audio_event.hpp>
+#include <mojo/mojo.hpp>
 
 using namespace boost::unit_test;
 using namespace std;
@@ -19,5 +17,4 @@ BOOST_AUTO_TEST_CASE( audio_sequence )
 
 	BOOST_CHECK(seq.insert (ae1).second);
 	BOOST_CHECK(seq.erase (ae1) == 1);
-
 }

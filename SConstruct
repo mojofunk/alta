@@ -204,7 +204,6 @@ BuildDir(toplevel_build_dir, 'src', duplicate = 0 )
 
 # needed to link to the libraries built in the build directory
 env.Append ( LIBPATH = [ os.path.join ( toplevel_build_dir, 'gleam' ) ] )
-env.Append ( LIBPATH = [ os.path.join ( toplevel_build_dir, 'mojo', 'typesystem' ) ] )
 env.Append ( LIBPATH = [ os.path.join ( toplevel_build_dir, 'mojo' ) ] )
 env.Append ( LIBPATH = [ os.path.join ( toplevel_build_dir, 'plugins', 'dummy_archive' ) ] )
 

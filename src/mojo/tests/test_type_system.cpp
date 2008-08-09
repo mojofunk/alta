@@ -4,15 +4,7 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
 
-#include <mojo/typesystem/type_system.hpp>
-
-#include <mojo/app/type_names.hpp>
-#include <mojo/app/app.hpp>
-
-#include <mojo/objects/audio_track.hpp>
-#include <mojo/objects/midi_track.hpp>
-#include <mojo/objects/audio_sequence.hpp>
-#include <mojo/objects/audio_event.hpp>
+#include <mojo/mojo.hpp>
 
 using namespace boost::unit_test;
 using namespace std;
