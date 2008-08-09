@@ -3,7 +3,8 @@
 #define MOJO_LIBRARY
 
 #include <mojo/core/filesystem.hpp>
-#include <mojo/typedefs.hpp>
+
+#include "typedefs.hpp"
 
 namespace mojo {
 

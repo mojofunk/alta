@@ -2,7 +2,7 @@
 #ifndef JACK_AUDIO_DRIVER_MODULE
 #define JACK_AUDIO_DRIVER_MODULE
 
-#include <mojo/audio_driver_module.hpp>
+#include <mojo/mojo.hpp>
 
 namespace mojo {
 

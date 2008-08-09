@@ -1,6 +1,4 @@
 
-#include <mojo/export.h>
-
 #include "dummy_archive.hpp"
 #include "dummy_archive_module.hpp"
 

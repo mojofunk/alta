@@ -7,22 +7,22 @@
 #include <mojo/app/type_names.hpp>
 
 #include <mojo/core/filesystem.hpp>
+#include <mojo/core/export.h>
 #include <mojo/core/types.hpp>
+#include <mojo/core/archive.hpp>
+#include <mojo/core/archive_module.hpp>
+#include <mojo/core/audio_device.hpp>
+#include <mojo/core/audio_driver_module.hpp>
+#include <mojo/core/audio_effect.hpp> 
+#include <mojo/core/audio_effect_info.hpp> 
+#include <mojo/core/audio_effect_parameter_info.hpp> 
+#include <mojo/core/audio_effect_module.hpp> 
+#include <mojo/core/audio_file.hpp>
+#include <mojo/core/audio_file_format.hpp>
+#include <mojo/core/audio_file_module.hpp>
+#include <mojo/core/typedefs.hpp>
+#include <mojo/core/module.hpp>
 
-#include <mojo/archive.hpp>
-#include <mojo/archive_module.hpp>
-#include <mojo/audio_device.hpp>
-#include <mojo/audio_driver_module.hpp>
-#include <mojo/audio_effect.hpp> 
-#include <mojo/audio_effect_info.hpp> 
-#include <mojo/audio_effect_parameter_info.hpp> 
-#include <mojo/audio_effect_module.hpp> 
-#include <mojo/audio_file.hpp>
-#include <mojo/audio_file_format.hpp>
-#include <mojo/audio_file_module.hpp>
-
-#include <mojo/typedefs.hpp>
-#include <mojo/module.hpp>
 #include <mojo/directory_names.hpp>
 #include <mojo/filesystem_paths.hpp>
 #include <mojo/project_directory.hpp>

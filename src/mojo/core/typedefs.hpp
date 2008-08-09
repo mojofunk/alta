@@ -8,12 +8,9 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
 
-#include <mojo/forward.hpp>
+#include "forward.hpp"
 
 namespace mojo {
-
-typedef boost::shared_ptr<App>    AppSPtr;
-typedef boost::weak_ptr<App>      AppWPtr;
 
 typedef boost::shared_ptr<Archive>    ArchiveSPtr;
 typedef boost::weak_ptr<Archive>      ArchiveWPtr;
@@ -48,18 +45,9 @@ typedef boost::weak_ptr<AudioFile>      AudioFileWPtr;
 typedef boost::shared_ptr<AudioFileFormat>    AudioFileFormatSPtr;
 typedef boost::weak_ptr<AudioFileFormat>      AudioFileFormatWPtr;
 
-typedef boost::shared_ptr<Library>    LibrarySPtr;
-typedef boost::weak_ptr<Library>      LibraryWPtr;
-
 typedef boost::shared_ptr<Module>    ModuleSPtr;
 typedef boost::weak_ptr<Module>      ModuleWPtr;
 	
-typedef boost::shared_ptr<TypeFactory>    TypeFactorySPtr;
-typedef boost::weak_ptr<TypeFactory>      TypeFactoryWPtr; 
-
-typedef boost::shared_ptr<TypeSystem>    TypeSystemSPtr;
-typedef boost::weak_ptr<TypeSystem>      TypeSystemWPtr;
-
 typedef std::set<ArchiveModuleSPtr>         ArchiveModuleSet;
 typedef std::set<AudioDriverModuleSPtr>     AudioDriverModuleSet;
 typedef std::set<AudioEffectModuleSPtr>     AudioEffectModuleSet;
@@ -73,8 +61,5 @@ typedef std::set<AudioFileFormatSPtr>       AudioFileFormatSet;
 typedef std::set<AudioEffectInfoSPtr>       AudioEffectInfoSet;
 
 } // namespace mojo
-
-
-
 
 #endif

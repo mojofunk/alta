@@ -1,6 +1,6 @@
 
-#ifndef MOJO_FORWARD
-#define MOJO_FORWARD
+#ifndef MOJO_CORE_FORWARD
+#define MOJO_CORE_FORWARD
 
 namespace mojo {
 

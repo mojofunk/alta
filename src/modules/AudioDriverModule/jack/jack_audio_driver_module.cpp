@@ -1,8 +1,6 @@
 
 #include "jack_audio_driver_module.hpp"
 
-#include <mojo/export.h>
-
 namespace mojo {
 
 JACKAudioDriverModule::JACKAudioDriverModule () { }

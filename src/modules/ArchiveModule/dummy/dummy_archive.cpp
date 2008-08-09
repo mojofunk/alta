@@ -1,13 +1,6 @@
 
 #include <cformat/cformat.hpp>
 
-//#include <mojo/types.hpp>
-
-#include <mojo/typesystem/type_system.hpp>
-
-#include <mojo/objects/object.hpp>
-#include <mojo/objects/object_collection.hpp>
-
 #include <iostream>
 #include <fstream>
 

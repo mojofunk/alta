@@ -3,9 +3,9 @@
 #define MOJO_MODULE_UTILS
 
 #include <mojo/core/filesystem.hpp>
-#include <mojo/utils/search_path.hpp>
+#include <mojo/core/typedefs.hpp>
 
-#include <mojo/typedefs.hpp>
+#include <mojo/utils/search_path.hpp>
 
 namespace mojo {
 

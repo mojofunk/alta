@@ -4,7 +4,7 @@
 
 #include <sndfile.h>
 
-#include <mojo/audio_file.hpp>
+#include <mojo/mojo.hpp>
 
 #include <stdexcept>
 

@@ -1,13 +1,13 @@
 
-
 #include <mojo/typesystem/type_system.hpp>
 
+#include <mojo/core/audio_file_module.hpp>
+#include <mojo/core/audio_driver_module.hpp>
+#include <mojo/core/audio_effect_module.hpp>
+#include <mojo/core/archive.hpp>
+#include <mojo/core/archive_module.hpp>
+
 #include <mojo/filesystem_paths.hpp>
-#include <mojo/audio_file_module.hpp>
-#include <mojo/audio_driver_module.hpp>
-#include <mojo/audio_effect_module.hpp>
-#include <mojo/archive.hpp>
-#include <mojo/archive_module.hpp>
 
 #include "app.hpp"
 #include "module_utils.hpp"

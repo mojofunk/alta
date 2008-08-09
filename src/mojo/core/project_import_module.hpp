@@ -4,7 +4,7 @@
 
 #include <string>
 
-#include <mojo/module.hpp>
+#include "module.hpp"
 
 namespace mojo {
 

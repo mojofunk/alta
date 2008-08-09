@@ -1,5 +1,5 @@
 
-#include <mojo/audio_file_module.hpp>
+#include "audio_file_module.hpp"
 
 namespace mojo {
 

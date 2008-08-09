@@ -2,7 +2,7 @@
 #ifndef MOJO_SNDFILE_AUDIO_FILE_FORMAT
 #define MOJO_SNDFILE_AUDIO_FILE_FORMAT
 
-#include <mojo/audio_file_format.hpp>
+#include <mojo/mojo.hpp>
 
 namespace mojo {
 

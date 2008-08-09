@@ -2,6 +2,8 @@
 #ifndef JACK_AUDIO_DEVICE
 #define JACK_AUDIO_DEVICE
 
+#include <mojo/mojo.hpp>
+
 namespace mojo {
 
 class JackAudioDevice : public AudioDevice

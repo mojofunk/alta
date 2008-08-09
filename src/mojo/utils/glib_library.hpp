@@ -4,7 +4,7 @@
 
 #include <gmodule.h>
 
-#include <mojo/utils/library.hpp>
+#include "library.hpp"
 
 namespace mojo {
 

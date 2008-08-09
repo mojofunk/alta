@@ -1,4 +1,4 @@
-#include <mojo/module.hpp>
+#include <mojo/core/module.hpp>
 
 #include <mojo/utils/file_utils.hpp>
 #include <mojo/utils/library.hpp>

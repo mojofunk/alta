@@ -1,6 +1,4 @@
 
-#include <mojo/export.h>
-
 #include "xml_archive.hpp"
 #include "xml_archive_module.hpp"
 

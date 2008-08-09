@@ -6,7 +6,7 @@
 
 #include <limits>
 
-#include <mojo/utils/resource.hpp>
+#include "resource.hpp"
 
 namespace mojo {
 

@@ -2,8 +2,6 @@
 #ifndef MOJO_LADSPA_TYPEDEFS
 #define MOJO_LADSPA_TYPEDEFS
 
-#include <mojo/typedefs.hpp>
-
 #include "ladspa_forward.hpp"
 
 namespace mojo {

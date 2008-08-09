@@ -50,20 +50,23 @@ app/register_types.cpp
 app/module_utils.cpp
 """)
 
+mojo_core_files = Split("""
+core/archive.cpp
+core/archive_module.cpp
+core/audio_driver_module.cpp
+core/audio_effect.cpp
+core/audio_effect_info.cpp
+core/audio_effect_module.cpp
+core/audio_file.cpp
+core/audio_file_format.cpp
+core/audio_file_module.cpp
+core/module.cpp
+""")
+
 mojo_source_files = Split("""
-archive.cpp
-archive_module.cpp
-audio_driver_module.cpp
-audio_effect.cpp
-audio_effect_info.cpp
-audio_effect_module.cpp
-audio_file.cpp
-audio_file_format.cpp
-audio_file_module.cpp
 directory_names.cpp
 filesystem_paths.cpp
 graph.cpp
-module.cpp
 project_directory.cpp
 sample_block.cpp
 """)
@@ -72,6 +75,7 @@ mojo_source_files += mojo_typesystem_files
 mojo_source_files += mojo_utils_files
 mojo_source_files += mojo_objects_files
 mojo_source_files += mojo_app_files
+mojo_source_files += mojo_core_files
 
 libmojo = mojo_env.SharedLibrary ( 'mojo', mojo_source_files )
 
