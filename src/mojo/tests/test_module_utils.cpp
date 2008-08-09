@@ -8,7 +8,7 @@
 #include <mojo/audio_file_module.hpp>
 #include <mojo/filesystem_paths.hpp>
 
-#include <mojo/module_utils.hpp>
+#include <mojo/app/module_utils.hpp>
 
 using namespace boost::unit_test;
 using namespace std;

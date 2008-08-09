@@ -8,7 +8,7 @@
 // for command line args
 #include <boost/test/framework.hpp>
 
-#include <mojo/app.hpp>
+#include <mojo/app/app.hpp>
 #include <mojo/project_directory.hpp>
 
 #include <mojo/objects/audio_clip.hpp>

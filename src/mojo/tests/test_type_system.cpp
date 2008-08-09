@@ -3,12 +3,11 @@
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
-//#include <boost/test/test_tools.hpp>
 
-#include <mojo/app.hpp>
 #include <mojo/typesystem/type_system.hpp>
 
-#include <mojo/type_names.hpp>
+#include <mojo/app/type_names.hpp>
+#include <mojo/app/app.hpp>
 
 #include <mojo/objects/audio_track.hpp>
 #include <mojo/objects/midi_track.hpp>

@@ -1,17 +1,15 @@
 
-#include <typeinfo>
-
 #include <mojo/typesystem/type_system.hpp>
 #include <mojo/typesystem/template_type_factory.hpp>
-
-#include <mojo/register_types.hpp>
-#include <mojo/type_names.hpp>
 
 #include <mojo/objects/object_collection.hpp>
 #include <mojo/objects/audio_track.hpp>
 #include <mojo/objects/midi_track.hpp>
 #include <mojo/objects/audio_sequence.hpp>
 #include <mojo/objects/audio_event.hpp>
+
+#include "register_types.hpp"
+#include "type_names.hpp"
 
 namespace mojo {
 
@@ -32,4 +30,4 @@ register_types()
 	TypeSystem::register_type (TypeFactorySPtr(new TemplateTypeFactory<AudioEvent>(audio_event_type_name)));
 }
 
-}
+} // namespace mojo

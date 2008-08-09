@@ -1,16 +1,17 @@
 
-#include <mojo/app.hpp>
 
 #include <mojo/typesystem/type_system.hpp>
 
-#include <mojo/module_utils.hpp>
-#include <mojo/register_types.hpp>
 #include <mojo/filesystem_paths.hpp>
 #include <mojo/audio_file_module.hpp>
 #include <mojo/audio_driver_module.hpp>
 #include <mojo/audio_effect_module.hpp>
 #include <mojo/archive.hpp>
 #include <mojo/archive_module.hpp>
+
+#include "app.hpp"
+#include "module_utils.hpp"
+#include "register_types.hpp"
 
 namespace mojo {
 

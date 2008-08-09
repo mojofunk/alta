@@ -43,8 +43,14 @@ objects/project.cpp
 objects/track.cpp
 """)
 
+mojo_app_files = Split("""
+app/app.cpp
+app/type_names.cpp
+app/register_types.cpp
+app/module_utils.cpp
+""")
+
 mojo_source_files = Split("""
-app.cpp
 archive.cpp
 archive_module.cpp
 audio_driver_module.cpp
@@ -58,16 +64,14 @@ directory_names.cpp
 filesystem_paths.cpp
 graph.cpp
 module.cpp
-module_utils.cpp
 project_directory.cpp
-register_types.cpp
 sample_block.cpp
-type_names.cpp
 """)
 
 mojo_source_files += mojo_typesystem_files
 mojo_source_files += mojo_utils_files
 mojo_source_files += mojo_objects_files
+mojo_source_files += mojo_app_files
 
 libmojo = mojo_env.SharedLibrary ( 'mojo', mojo_source_files )
 
