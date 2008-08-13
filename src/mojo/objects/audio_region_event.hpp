@@ -2,9 +2,8 @@
 #ifndef MOJO_AUDIO_REGION_EVENT
 #define MOJO_AUDIO_REGION_EVENT
 
-#include <mojo/objects/typedefs.hpp>
-
-#include <mojo/objects/audio_event.hpp>
+#include "typedefs.hpp"
+#include "audio_event.hpp"
 
 namespace mojo {
 

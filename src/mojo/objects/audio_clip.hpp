@@ -2,10 +2,7 @@
 #ifndef MOJO_AUDIO_CLIP
 #define MOJO_AUDIO_CLIP
 
-#include <mojo/core/types.hpp>
-#include <mojo/core/filesystem.hpp>
-
-#include <mojo/objects/object.hpp>
+#include "object.hpp"
 
 namespace mojo {
 
@@ -38,7 +35,7 @@ public:
 	/**
 	 * Create a new AudioClip from an existing audiofile
 	 */
-	AudioClip (const fs::path& audiofile);
+	AudioClip (const std::string& audiofile);
 
 	AudioClip ();
 
@@ -51,7 +48,7 @@ public:
 
 private:
 
-	fs::path m_audiofile;
+	std::string m_audiofile;
 
 };
 

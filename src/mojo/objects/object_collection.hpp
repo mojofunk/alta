@@ -4,7 +4,7 @@
 
 #include <list>
 
-#include <mojo/objects/typedefs.hpp>
+#include "typedefs.hpp"
 
 namespace mojo {
 

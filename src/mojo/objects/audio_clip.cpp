@@ -3,7 +3,7 @@
 
 namespace mojo {
 
-AudioClip::AudioClip (const fs::path& audiofile)
+AudioClip::AudioClip (const std::string& audiofile)
 	:
 		m_audiofile(audiofile)
 {

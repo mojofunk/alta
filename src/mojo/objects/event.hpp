@@ -3,7 +3,7 @@
 
 #include <mojo/core/types.hpp>
 
-#include <mojo/objects/object.hpp>
+#include "object.hpp"
 
 namespace mojo {
 

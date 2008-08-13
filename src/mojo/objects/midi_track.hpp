@@ -1,7 +1,7 @@
 #ifndef MOJO_MIDI_TRACK
 #define MOJO_MIDI_TRACK
 
-#include <mojo/objects/track.hpp>
+#include "track.hpp"
 
 namespace mojo {
 

@@ -1,9 +1,7 @@
 #ifndef MOJO_OBJECT
 #define MOJO_OBJECT
 
-#include <string>
-
-#include <mojo/objects/properties.hpp>
+#include "properties.hpp"
 
 namespace mojo {
 
@@ -21,6 +19,6 @@ protected:
 
 };
 
-}
+} // namespace mojo
 
 #endif

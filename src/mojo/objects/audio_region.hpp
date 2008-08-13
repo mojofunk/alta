@@ -4,8 +4,8 @@
 
 #include <mojo/core/types.hpp>
 
-#include <mojo/objects/object.hpp>
-#include <mojo/objects/typedefs.hpp>
+#include "object.hpp"
+#include "typedefs.hpp"
 
 namespace mojo {
 

@@ -1,8 +1,8 @@
 #ifndef MOJO_AUDIO_TRACK
 #define MOJO_AUDIO_TRACK
 
-#include <mojo/objects/track.hpp>
-#include <mojo/objects/typedefs.hpp>
+#include "track.hpp"
+#include "typedefs.hpp"
 
 namespace mojo {
 
