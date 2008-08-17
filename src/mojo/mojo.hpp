@@ -27,8 +27,8 @@
 #include <mojo/filesystem_paths.hpp>
 #include <mojo/project_directory.hpp>
 
-#include <mojo/graph.hpp>
-#include <mojo/node.hpp>
+#include <mojo/rtg/graph.hpp>
+#include <mojo/rtg/node.hpp>
 
 #include <mojo/objects/audio_clip.hpp>
 #include <mojo/objects/audio_event.hpp>

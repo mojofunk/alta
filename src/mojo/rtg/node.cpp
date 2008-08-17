@@ -1,5 +1,5 @@
 
-#include <mojo/node.hpp>
+#include "node.hpp"
 
 namespace mojo {
 

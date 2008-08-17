@@ -63,10 +63,13 @@ core/audio_file_module.cpp
 core/module.cpp
 """)
 
+mojo_rtg_files = Split("""
+rtg/graph.cpp
+""")
+
 mojo_source_files = Split("""
 directory_names.cpp
 filesystem_paths.cpp
-graph.cpp
 project_directory.cpp
 sample_block.cpp
 """)
@@ -75,6 +78,7 @@ mojo_source_files += mojo_typesystem_files
 mojo_source_files += mojo_utils_files
 mojo_source_files += mojo_objects_files
 mojo_source_files += mojo_app_files
+mojo_source_files += mojo_rtg_files
 mojo_source_files += mojo_core_files
 
 libmojo = mojo_env.SharedLibrary ( 'mojo', mojo_source_files )

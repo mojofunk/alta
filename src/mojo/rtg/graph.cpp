@@ -1,5 +1,5 @@
 
-#include <mojo/graph.hpp>
+#include "graph.hpp"
 
 namespace mojo {
 
