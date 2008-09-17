@@ -19,14 +19,14 @@ BOOST_AUTO_TEST_CASE( test_init )
 	char** argv = framework::master_test_suite().argv;
 
 	{
-		AppSPtr app = App::init (argc, argv);
+		AppSP app = App::init (argc, argv);
 
 		BOOST_REQUIRE(app);
 	}
 }
 
 void
-test_module (const ModuleSPtr& mod)
+test_module (const ModuleSP& mod)
 {
 	BOOST_REQUIRE(mod);
 
@@ -40,11 +40,11 @@ BOOST_AUTO_TEST_CASE( test_get_modules )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	AppSPtr app = App::init (argc, argv);
+	AppSP app = App::init (argc, argv);
 
 	BOOST_REQUIRE(app);
 
-	ModuleSet modules = app->get_modules();
+	ModuleSPSet modules = app->get_modules();
 
 	for_each (modules.begin(), modules.end(), test_module);
 

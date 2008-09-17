@@ -16,7 +16,7 @@ public: // Archive interface
 
 private:
 
-	void write_object (std::ostream& os, const ObjectSPtr&);
+	void write_object (std::ostream& os, const ObjectSP&);
 	void write_object_collection (std::ostream& os, const ObjectCollection&);
 	void write_property (std::ostream& os, const std::string& name, const boost::any&);
 

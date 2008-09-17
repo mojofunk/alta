@@ -33,7 +33,7 @@ BOOST_AUTO_TEST_CASE( mojo_test_type_system )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	AppSPtr app = App::init (argc, argv);
+	AppSP app = App::init (argc, argv);
 
 	BOOST_CHECK(test_type_name<int32_t>(int32_type_name));
 	BOOST_CHECK(test_type_name<int64_t>(int64_type_name));

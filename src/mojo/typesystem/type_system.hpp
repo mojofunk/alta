@@ -15,9 +15,9 @@ class TypeSystem
 {
 public:
 
-	static TypeSystemSPtr init ();
+	static TypeSystemSP init ();
 
-	static void register_type (TypeFactorySPtr type);
+	static void register_type (TypeFactorySP type);
 	
 	/**
 	 * because std::type_info.name() is not portable between compilers

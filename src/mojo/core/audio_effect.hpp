@@ -18,7 +18,7 @@ public: // constructors
 
 public: // AudioEffect interface
 
-	virtual AudioEffectInfoSPtr get_info () const = 0;
+	virtual AudioEffectInfoSP get_info () const = 0;
 
 	//virtual uint32_t get_input_count () const = 0;
 

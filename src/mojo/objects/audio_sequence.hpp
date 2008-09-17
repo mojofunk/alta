@@ -12,7 +12,7 @@ class AudioSequence : public Object
 {
 public:
 
-	typedef std::set<AudioEventSPtr>       container_t;
+	typedef std::set<AudioEventSP>       container_t;
 	typedef container_t::iterator          iterator;
 	typedef container_t::const_iterator    const_iterator;
 	typedef container_t::size_type         size_type;
@@ -32,9 +32,9 @@ public:
 public:
 
 	// methods
-	std::pair<iterator, bool> insert (AudioEventSPtr ae);
+	std::pair<iterator, bool> insert (AudioEventSP ae);
 
-	size_type erase (AudioEventSPtr ae);
+	size_type erase (AudioEventSP ae);
 
 private:
 

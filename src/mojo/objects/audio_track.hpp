@@ -34,11 +34,11 @@ public:
 
 public:
 
-	AudioSequenceSPtr get_audio_sequence ();
+	AudioSequenceSP get_audio_sequence ();
 
 private:
 
-	AudioSequenceSPtr m_audio_sequence;
+	AudioSequenceSP m_audio_sequence;
 
 private:
 

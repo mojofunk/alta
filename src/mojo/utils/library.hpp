@@ -29,7 +29,7 @@ public:
 
 };
 
-LibrarySPtr create_library (const fs::path& filepath);
+LibrarySP create_library (const fs::path& filepath);
 
 bool is_library (const fs::path& filepath);
 

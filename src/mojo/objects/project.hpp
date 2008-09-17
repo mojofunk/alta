@@ -34,7 +34,7 @@ class Project : Object
 {
 public: // typedefs
 
-	typedef set<TrackSPtr> track_container_t;
+	typedef set<TrackSP> track_container_t;
 
 public: // Object interface
 
@@ -44,9 +44,9 @@ public: // Object interface
 
 public: // convenience methodks
 
-	AudioTrackSPtr new_audio_track (const std::string& name = "");
+	AudioTrackSP new_audio_track (const std::string& name = "");
 
-	MidiTrackSPtr new_midi_track (const std::string& name = "");
+	MidiTrackSP new_midi_track (const std::string& name = "");
 
 	track_container_t get_tracks () const { return m_tracks; }
 

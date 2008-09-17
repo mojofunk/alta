@@ -5,7 +5,7 @@
 
 namespace mojo {
 
-LADSPAAudioEffect::LADSPAAudioEffect (LADSPAAudioEffectInfoSPtr info,
+LADSPAAudioEffect::LADSPAAudioEffect (LADSPAAudioEffectInfoSP info,
 	       	samplerate_t rate)
 	: m_library(create_library (info->get_path()))
 	, m_descriptor(NULL)
@@ -52,7 +52,7 @@ LADSPAAudioEffect::LADSPAAudioEffect (LADSPAAudioEffectInfoSPtr info,
 
 LADSPAAudioEffect::~LADSPAAudioEffect() { }
 
-AudioEffectInfoSPtr
+AudioEffectInfoSP
 LADSPAAudioEffect::get_info () const
 {
 	return m_info;

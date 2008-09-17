@@ -8,10 +8,10 @@ XMLArchiveModule::XMLArchiveModule () { }
 
 XMLArchiveModule::~XMLArchiveModule () { }
 	
-ArchiveSPtr
+ArchiveSP
 XMLArchiveModule::create_archive ()
 {
-	return ArchiveSPtr(new XMLArchive);
+	return ArchiveSP(new XMLArchive);
 }
 
 std::string

@@ -15,7 +15,7 @@ using namespace mojo;
 const string project_filename = "project1";
 
 void
-add_random_events (AudioSequenceSPtr aseq)
+add_random_events (AudioSequenceSP aseq)
 {
 	int min_event_count = 1;
 	int max_event_count = 100;
@@ -29,7 +29,7 @@ add_random_events (AudioSequenceSPtr aseq)
 		int event_position = g_random_int_range (1, 16777216);
 		int event_duration = g_random_int_range (min_event_duration, max_event_duration);
 
-		AudioEventSPtr new_event(new AudioEvent(event_position, event_duration));
+		AudioEventSP new_event(new AudioEvent(event_position, event_duration));
 
 		BOOST_REQUIRE(new_event);
 
@@ -39,7 +39,7 @@ add_random_events (AudioSequenceSPtr aseq)
 
 BOOST_AUTO_TEST_CASE( save_open_project_test )
 {
-	ProjectSPtr proj(new Project);
+	ProjectSP proj(new Project);
 	BOOST_REQUIRE(proj);
 	
 	BOOST_REQUIRE(proj->new_audio_track("Kick Drum"));
@@ -60,7 +60,7 @@ BOOST_AUTO_TEST_CASE( save_open_project_test )
 	for (Project::track_container_t::iterator i = tracks.begin();
 			i != tracks.end(); ++i)
 	{
-		AudioTrackSPtr audio_track = boost::dynamic_pointer_cast<AudioTrack>(*i);
+		AudioTrackSP audio_track = boost::dynamic_pointer_cast<AudioTrack>(*i);
 
 		if (audio_track)
 		{

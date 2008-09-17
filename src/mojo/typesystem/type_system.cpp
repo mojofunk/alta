@@ -26,7 +26,7 @@ typedef map<const std::type_info*, string, TypeInfoComp> TypeNameMap;
 
 TypeNameMap* s_type_names = 0;
 
-typedef set<mojo::TypeFactorySPtr> Types;
+typedef set<mojo::TypeFactorySP> Types;
 
 Types* s_types = 0;
 
@@ -43,14 +43,14 @@ namespace mojo {
 
 TypeSystem* TypeSystem::s_type_system = 0;
 
-TypeSystemSPtr
+TypeSystemSP
 TypeSystem::init ()
 {
 	assert(!s_type_system);
 
 	s_type_system = new TypeSystem;
 
-	return TypeSystemSPtr(s_type_system, TypeSystem::deleter());
+	return TypeSystemSP(s_type_system, TypeSystem::deleter());
 }
 
 TypeSystem::TypeSystem ()
@@ -72,7 +72,7 @@ TypeSystem::~TypeSystem ()
 }
 
 void
-TypeSystem::register_type (TypeFactorySPtr type)
+TypeSystem::register_type (TypeFactorySP type)
 {
 	register_type_name (type->type_info(), type->type_name());
 

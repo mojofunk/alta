@@ -21,7 +21,7 @@ callback (count_t frames)
 }
 
 void
-test_device (AudioDeviceSPtr dev)
+test_device (AudioDeviceSP dev)
 {
 	BOOST_REQUIRE(dev);
 
@@ -35,7 +35,7 @@ test_device (AudioDeviceSPtr dev)
 }
 
 void
-test_audio_driver_module (AudioDriverModuleSPtr mod)
+test_audio_driver_module (AudioDriverModuleSP mod)
 {
 	BOOST_REQUIRE(mod);
 
@@ -43,7 +43,7 @@ test_audio_driver_module (AudioDriverModuleSPtr mod)
 	BOOST_TEST_MESSAGE(mod->get_description());
 	BOOST_TEST_MESSAGE(mod->get_version());
 
-	AudioDeviceSet devices = mod->get_devices();
+	AudioDeviceSPSet devices = mod->get_devices();
 
 	BOOST_CHECK(!devices.empty());
 
@@ -55,10 +55,10 @@ BOOST_AUTO_TEST_CASE( audio_driver_module_test )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	AppSPtr app = App::init (argc, argv);
+	AppSP app = App::init (argc, argv);
 	BOOST_REQUIRE(app);
 
-	AudioDriverModuleSet modules = App::get_audio_driver_modules();
+	AudioDriverModuleSPSet modules = App::get_audio_driver_modules();
 
 	BOOST_CHECK(!modules.empty());
 

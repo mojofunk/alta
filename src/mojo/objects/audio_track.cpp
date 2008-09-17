@@ -18,7 +18,7 @@ AudioTrack::get_properties (Properties& props) const
 {
 	Track::get_properties (props);
 
-	props.insert (make_property (s_property_audio_sequence, ObjectSPtr(m_audio_sequence)));
+	props.insert (make_property (s_property_audio_sequence, ObjectSP(m_audio_sequence)));
 }
 
 void
@@ -29,7 +29,7 @@ AudioTrack::set_properties (const Properties& props)
 	// XXX
 }
 
-AudioSequenceSPtr
+AudioSequenceSP
 AudioTrack::get_audio_sequence ()
 {
 	return m_audio_sequence;

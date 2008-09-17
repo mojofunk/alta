@@ -25,10 +25,10 @@ JACKAudioDriverModule::get_version()
 	return "0.0.1";
 }
 
-AudioDeviceSet
+AudioDeviceSPSet
 JACKAudioDriverModule::get_devices () const
 {
-	return AudioDeviceSet();
+	return AudioDeviceSPSet();
 }
 
 MOJO_CAPI void * mojo_module_factory(void)

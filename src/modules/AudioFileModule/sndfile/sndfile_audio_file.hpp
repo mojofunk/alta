@@ -25,7 +25,7 @@ public:
 
 	virtual ~SndfileAudioFile();
 
-	virtual AudioFileFormatSPtr format();
+	virtual AudioFileFormatSP format();
 
 	virtual count_t read_frames (float* buf, count_t frame_count);
 
@@ -46,7 +46,7 @@ private:
 	SNDFILE* m_sf;
 	SF_INFO m_info;
 
-	AudioFileFormatSPtr m_format;
+	AudioFileFormatSP m_format;
 
 };
 

@@ -13,7 +13,7 @@ SndfileAudioFile::SndfileAudioFile(const string& path)
 	if (m_sf == NULL)
 		throw SndfileException (sf_strerror (m_sf));
 
-	m_format = AudioFileFormatSPtr(new SndfileAudioFileFormat(m_info.format));
+	m_format = AudioFileFormatSP(new SndfileAudioFileFormat(m_info.format));
 }
 
 SndfileAudioFile::~SndfileAudioFile()
@@ -21,7 +21,7 @@ SndfileAudioFile::~SndfileAudioFile()
 
 }
 
-AudioFileFormatSPtr
+AudioFileFormatSP
 SndfileAudioFile::format()
 {
 	return m_format;

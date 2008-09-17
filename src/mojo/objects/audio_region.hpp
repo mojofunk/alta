@@ -26,13 +26,13 @@ public:
 
 public:
 
-	//AudioClipSPtr get_clip ();
+	//AudioClipSP get_clip ();
 	
-	//void set_clip (AudioClipSPtr ac);
+	//void set_clip (AudioClipSP ac);
 
 private:
 
-	AudioClipSPtr                 m_audio_clip;
+	AudioClipSP                 m_audio_clip;
 
 	count_t	                      m_offset;
 	count_t                       m_duration;

@@ -50,7 +50,7 @@ check_some_properties (Properties& props)
 }
 
 void
-test_archive (ArchiveSPtr archive, const string& filename)
+test_archive (ArchiveSP archive, const string& filename)
 {
 	Properties props;
 
@@ -70,19 +70,19 @@ BOOST_AUTO_TEST_CASE( archive_module_test )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	AppSPtr app = App::init (argc, argv);
+	AppSP app = App::init (argc, argv);
 
-	ArchiveModuleSet modules = App::get_archive_modules ();
+	ArchiveModuleSPSet modules = App::get_archive_modules ();
 
 	BOOST_CHECK (!modules.empty());
 
-	for (ArchiveModuleSet::iterator i = modules.begin ();
+	for (ArchiveModuleSPSet::iterator i = modules.begin ();
 			i != modules.end(); ++i)
 	{
 		string file_extension = cformat::convert<string>(g_random_int());
 		string file_name = string((typeid (*i).name())) + "." + file_extension;
 
-		ArchiveSPtr archive = (*i)->create_archive ();
+		ArchiveSP archive = (*i)->create_archive ();
 
 		test_archive (archive, file_name);
 	}

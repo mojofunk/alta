@@ -13,7 +13,7 @@ BOOST_AUTO_TEST_CASE( audio_sequence )
 {
 	AudioSequence seq;
 
-	AudioEventSPtr ae1(new AudioEvent);
+	AudioEventSP ae1(new AudioEvent);
 
 	BOOST_CHECK(seq.insert (ae1).second);
 	BOOST_CHECK(seq.erase (ae1) == 1);

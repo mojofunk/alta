@@ -15,7 +15,7 @@ const char* const module_path = "build/debug/modules/AudioFileModule/sndfile/lib
 BOOST_AUTO_TEST_CASE( open_module_test )
 {
 	// XXX path needs to be integrated with build etc
-	ModuleSPtr mod = open_module (module_path);
+	ModuleSP mod = open_module (module_path);
 
 	BOOST_REQUIRE(mod);
 
@@ -23,18 +23,18 @@ BOOST_AUTO_TEST_CASE( open_module_test )
 	BOOST_CHECK_EQUAL(mod->get_description(), "libsndfile module");
 	BOOST_CHECK_EQUAL(mod->get_version(), "0.0.1");
 
-	ModuleSPtr mod_same = open_module (module_path);
+	ModuleSP mod_same = open_module (module_path);
 
 	BOOST_CHECK(mod != mod_same);
 }
 
 BOOST_AUTO_TEST_CASE( module_typeinfo_test )
 {
-	ModuleSPtr mod = open_module (module_path);
+	ModuleSP mod = open_module (module_path);
 
 	BOOST_REQUIRE(mod);
 
-	AudioFileModuleSPtr audio_module = boost::dynamic_pointer_cast<AudioFileModule>(mod);
+	AudioFileModuleSP audio_module = boost::dynamic_pointer_cast<AudioFileModule>(mod);
 
 	BOOST_CHECK(audio_module);
 }
@@ -47,7 +47,7 @@ test_path (const fs::path& p)
 }
 
 void
-test_module (const ModuleSPtr& mod)
+test_module (const ModuleSP& mod)
 {
 	BOOST_REQUIRE(mod);
 
@@ -58,7 +58,7 @@ test_module (const ModuleSPtr& mod)
 
 BOOST_AUTO_TEST_CASE( discover_modules_test )
 {
-	ModuleSet modules = discover_modules (module_search_path ());
+	ModuleSPSet modules = discover_modules (module_search_path ());
 
 	for_each (modules.begin(), modules.end(), test_module);
 }

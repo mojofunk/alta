@@ -17,7 +17,7 @@ DummyArchive::read (const fs::path& file_path, Properties& props)
 }
 
 void
-DummyArchive::write_object(std::ostream& os, const ObjectSPtr& obj)
+DummyArchive::write_object(std::ostream& os, const ObjectSP& obj)
 {
 	const string type_name = TypeSystem::get_type_name(typeid(*obj));
 
@@ -69,9 +69,9 @@ DummyArchive::write_property (std::ostream& os, const string& name, const boost:
 	{
 		os << boost::any_cast<std::string>(any_type);
 	}
-	else if(any_type.type() == typeid(ObjectSPtr))
+	else if(any_type.type() == typeid(ObjectSP))
 	{
-		write_object(os, boost::any_cast<ObjectSPtr>(any_type));
+		write_object(os, boost::any_cast<ObjectSP>(any_type));
 	}
 	else if(any_type.type() == typeid(int64_t))
 	{

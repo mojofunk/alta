@@ -24,7 +24,7 @@ public: // ctors
 
 public: // interface
 
-	virtual AudioDeviceSet get_devices () const = 0;
+	virtual AudioDeviceSPSet get_devices () const = 0;
 
 protected: // ctors
 

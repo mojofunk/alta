@@ -14,13 +14,13 @@ class LADSPAAudioEffect : public AudioEffect
 {
 public: // ctors
 
-	LADSPAAudioEffect (LADSPAAudioEffectInfoSPtr info, samplerate_t);
+	LADSPAAudioEffect (LADSPAAudioEffectInfoSP info, samplerate_t);
 
 	virtual ~LADSPAAudioEffect ();
 
 public: // AudioEffect interface
 
-	virtual AudioEffectInfoSPtr get_info () const;
+	virtual AudioEffectInfoSP get_info () const;
 
 	virtual ParameterList get_parameter_list () const;
 
@@ -38,11 +38,11 @@ public: // AudioEffect interface
 
 private:
 
-	LibrarySPtr m_library;
+	LibrarySP m_library;
 
 	const LADSPA_Descriptor* m_descriptor;
 
-	AudioEffectInfoSPtr m_info;
+	AudioEffectInfoSP m_info;
 
 	LADSPA_Handle m_handle;
 

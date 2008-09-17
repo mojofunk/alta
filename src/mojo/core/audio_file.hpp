@@ -13,7 +13,7 @@ public:
 
 	virtual ~AudioFile();
 
-	virtual AudioFileFormatSPtr format() = 0;
+	virtual AudioFileFormatSP format() = 0;
 
 	virtual count_t read_frames (float* buf, count_t frame_count) = 0;
 

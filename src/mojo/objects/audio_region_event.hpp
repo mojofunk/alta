@@ -24,13 +24,13 @@ public:
 
 public:
 
-	//AudioRegionSPtr get_region ();
+	//AudioRegionSP get_region ();
 
-	//void set_region (AudioRegionSPtr ar);
+	//void set_region (AudioRegionSP ar);
 
 private:
 
-	AudioRegionSPtr  m_audio_region;
+	AudioRegionSP  m_audio_region;
 
 private:
 

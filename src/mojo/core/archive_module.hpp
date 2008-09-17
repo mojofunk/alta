@@ -18,7 +18,7 @@ public: // Interface
 	/**
 	 * return new Archive or 0 on failure
 	 */
-	virtual ArchiveSPtr create_archive () = 0;
+	virtual ArchiveSP create_archive () = 0;
 
 };
 

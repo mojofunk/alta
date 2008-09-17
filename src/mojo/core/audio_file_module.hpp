@@ -22,25 +22,25 @@ public: // interface
 	 * return The audio file formats that are readable
 	 * by the plugin
 	 */
-	virtual AudioFileFormatSet get_readable_formats () const = 0;
+	virtual AudioFileFormatSPSet get_readable_formats () const = 0;
 
 	/**
 	 * return The audio file formats that are writable
 	 * by the plugin
 	 */
-	virtual AudioFileFormatSet get_writable_formats () const = 0;
+	virtual AudioFileFormatSPSet get_writable_formats () const = 0;
 
 	/**
 	 * return new AudioFile or 0 on failure
 	 */
-	virtual AudioFileSPtr open (const std::string& path) = 0;
+	virtual AudioFileSP open (const std::string& path) = 0;
 
 	/**
 	 * return new AudioFile or 0 on failure
 	 * open new audiofile for writing
 	 */
-	virtual AudioFileSPtr open (const std::string& path,
-			AudioFileFormatSPtr format,
+	virtual AudioFileSP open (const std::string& path,
+			AudioFileFormatSP format,
 			samplerate_t rate,
 			channel_count_t channels) = 0;
 

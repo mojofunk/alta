@@ -13,7 +13,7 @@ MidiTrack::get_properties (Properties& props) const
 {
 	Track::get_properties (props);
 
-	//props.insert (make_property (s_property_midi_sequence, ObjectSPtr(m_midi_sequence)));
+	//props.insert (make_property (s_property_midi_sequence, ObjectSP(m_midi_sequence)));
 }
 
 void

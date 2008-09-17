@@ -24,13 +24,13 @@ AudioSequence::set_properties (const Properties& props)
 }
 
 std::pair<AudioSequence::iterator, bool>
-AudioSequence::insert (AudioEventSPtr ae)
+AudioSequence::insert (AudioEventSP ae)
 {
 	return m_audio_events.insert (ae);
 }
 
 AudioSequence::size_type
-AudioSequence::erase (AudioEventSPtr ae)
+AudioSequence::erase (AudioEventSP ae)
 {
 	return m_audio_events.erase (ae);
 }

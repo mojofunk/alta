@@ -17,13 +17,13 @@ namespace mojo {
 
 App* App::s_app;
 
-AppSPtr
+AppSP
 App::init (int argc, char *argv[])
 {
 	if(s_app) throw;
 
 	// try/catch?
-	AppSPtr ptr(new App(argc, argv), App::deleter());
+	AppSP ptr(new App(argc, argv), App::deleter());
 
 	s_app = ptr.get();
 
@@ -43,63 +43,63 @@ App::~App()
 
 }
 
-AudioFileSPtr
+AudioFileSP
 App::open_audiofile (const fs::path& p)
 {
-	AudioFileModuleSet modules = get_audiofile_modules ();
+	AudioFileModuleSPSet modules = get_audiofile_modules ();
 
-	for (AudioFileModuleSet::const_iterator i = modules.begin();
+	for (AudioFileModuleSPSet::const_iterator i = modules.begin();
 			i != modules.end(); ++i)
 	{
-		AudioFileSPtr af = (*i)->open (p.string());
+		AudioFileSP af = (*i)->open (p.string());
 
 		if (af) return af;
 	}
 
-	return AudioFileSPtr();
+	return AudioFileSP();
 }
 
-ModuleSet
+ModuleSPSet
 App::get_modules ()
 {
 	return s_app->m_modules;
 }
 
-AudioFileModuleSet
+AudioFileModuleSPSet
 App::get_audiofile_modules ()
 {
 	return get_modules_of_type<AudioFileModule> (get_modules());
 }
 
-AudioDriverModuleSet
+AudioDriverModuleSPSet
 App::get_audio_driver_modules ()
 {
 	return get_modules_of_type<AudioDriverModule> (get_modules());
 }
 
-AudioEffectModuleSet
+AudioEffectModuleSPSet
 App::get_audio_effect_modules ()
 {
 	return get_modules_of_type<AudioEffectModule> (get_modules());
 }
 
-ArchiveModuleSet
+ArchiveModuleSPSet
 App::get_archive_modules ()
 {
 	return get_modules_of_type<ArchiveModule> (get_modules());
 }
 
-ArchiveSPtr
+ArchiveSP
 App::create_archive ()
 {
-	ArchiveModuleSet modules = get_archive_modules (); 
+	ArchiveModuleSPSet modules = get_archive_modules (); 
 
 	if (!modules.empty())
 	{
-		ArchiveModuleSPtr mod = *modules.begin(); 
-		return ArchiveSPtr(mod->create_archive ()); 
+		ArchiveModuleSP mod = *modules.begin(); 
+		return ArchiveSP(mod->create_archive ()); 
 	}
-	return ArchiveSPtr();
+	return ArchiveSP();
 }
 
 } // namespace mojo

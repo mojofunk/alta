@@ -23,7 +23,7 @@ public: // Module interface
 
 public: // AudioDriverModule interface
 
-	AudioDeviceSet get_devices () const;
+	AudioDeviceSPSet get_devices () const;
 
 private: // member data
 

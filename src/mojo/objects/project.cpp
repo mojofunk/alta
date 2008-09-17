@@ -20,19 +20,19 @@ Project::set_properties (const Properties& props)
 
 }
 
-AudioTrackSPtr
+AudioTrackSP
 Project::new_audio_track (const std::string& name)
 {
-	AudioTrackSPtr track(new AudioTrack);
+	AudioTrackSP track(new AudioTrack);
 	track->set_name (name);
 	m_tracks.insert(track);
 	return track;
 }
 
-MidiTrackSPtr
+MidiTrackSP
 Project::new_midi_track (const std::string& name)
 {
-	MidiTrackSPtr track(new MidiTrack);
+	MidiTrackSP track(new MidiTrack);
 	track->set_name (name);
 	m_tracks.insert(track);
 	return track;

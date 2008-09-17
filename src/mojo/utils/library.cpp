@@ -6,16 +6,16 @@ namespace mojo {
 
 Library::~Library () { }
 
-LibrarySPtr
+LibrarySP
 create_library (const fs::path& filepath)
 {
-	return LibrarySPtr(new GlibLibrary (filepath));
+	return LibrarySP(new GlibLibrary (filepath));
 }
 
 bool
 is_library (const fs::path& filepath)
 {
-	LibrarySPtr tmp = create_library ("");
+	LibrarySP tmp = create_library ("");
 	return tmp->is_library (filepath); 
 }
 

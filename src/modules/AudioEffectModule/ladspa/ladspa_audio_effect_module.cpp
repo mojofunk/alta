@@ -36,17 +36,17 @@ LADSPAAudioEffectModule::get_version()
 	return "0.0.1";
 }
 
-AudioEffectSPtr
-LADSPAAudioEffectModule::open (AudioEffectInfoSPtr info, samplerate_t rate)
+AudioEffectSP
+LADSPAAudioEffectModule::open (AudioEffectInfoSP info, samplerate_t rate)
 {
-	LADSPAAudioEffectInfoSPtr ladspa_info = boost::dynamic_pointer_cast<LADSPAAudioEffectInfo>(info);
-	AudioEffectSPtr aeffect;
+	LADSPAAudioEffectInfoSP ladspa_info = boost::dynamic_pointer_cast<LADSPAAudioEffectInfo>(info);
+	AudioEffectSP aeffect;
 
 	if (!ladspa_info) return aeffect;
 
 	try
 	{
-		aeffect = AudioEffectSPtr(new LADSPAAudioEffect (ladspa_info, rate));
+		aeffect = AudioEffectSP(new LADSPAAudioEffect (ladspa_info, rate));
 	}
 	catch (...)
 	{
@@ -80,11 +80,11 @@ LADSPAAudioEffectModule::set_preset_directory_paths (const paths_t& paths)
 }
 
 void
-get_info (const fs::path& path, AudioEffectInfoSet& info_set)
+get_info (const fs::path& path, AudioEffectInfoSPSet& info_set)
 {
 	LADSPA_Descriptor_Function ladspa_func = NULL;
 	
-	LibrarySPtr lib = create_library (path);
+	LibrarySP lib = create_library (path);
 
 	if (!lib) return;
 		
@@ -96,7 +96,7 @@ get_info (const fs::path& path, AudioEffectInfoSet& info_set)
 		       	(descriptor = ladspa_func(index));
 		       	++index)
 	{
-		AudioEffectInfoSPtr info(new LADSPAAudioEffectInfo(path, index));
+		AudioEffectInfoSP info(new LADSPAAudioEffectInfo(path, index));
 		if (info)
 		{
 			info_set.insert (info);
@@ -104,13 +104,13 @@ get_info (const fs::path& path, AudioEffectInfoSet& info_set)
 	}
 }
 
-AudioEffectInfoSet
+AudioEffectInfoSPSet
 LADSPAAudioEffectModule::get_plugin_info ()
 {
 	paths_t paths;
 	find_matching_files (m_plugin_dirs, is_library, paths);
 
-	AudioEffectInfoSet info_set;
+	AudioEffectInfoSPSet info_set;
 
 	for (paths_t::const_iterator i = paths.begin ();
 			i != paths.end(); ++i)

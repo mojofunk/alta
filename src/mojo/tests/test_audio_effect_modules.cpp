@@ -21,7 +21,7 @@ test_path (const fs::path& path)
 }
 
 void
-test_info (AudioEffectInfoSPtr info)
+test_info (AudioEffectInfoSP info)
 {
 	BOOST_REQUIRE(info);
 	BOOST_MESSAGE(info->get_name ());
@@ -38,7 +38,7 @@ test_parameter_info (const AudioEffectParameterInfo& info)
 }
 
 void
-test_audio_effect (AudioEffectSPtr aeffect)
+test_audio_effect (AudioEffectSP aeffect)
 {
 	BOOST_REQUIRE(aeffect);
 	test_info (aeffect->get_info ());
@@ -55,7 +55,7 @@ test_audio_effect (AudioEffectSPtr aeffect)
 }
 
 void
-test_audio_effect_module (AudioEffectModuleSPtr mod)
+test_audio_effect_module (AudioEffectModuleSP mod)
 {
 	BOOST_REQUIRE(mod);
 
@@ -70,14 +70,14 @@ test_audio_effect_module (AudioEffectModuleSPtr mod)
 
 	for_each (plugin_dirs.begin(), plugin_dirs.end(), test_path);
 
-	AudioEffectInfoSet info = mod->get_plugin_info ();
+	AudioEffectInfoSPSet info = mod->get_plugin_info ();
 
 	for_each (info.begin(), info.end(), test_info);
 
-	for (AudioEffectInfoSet::const_iterator i = info.begin ();
+	for (AudioEffectInfoSPSet::const_iterator i = info.begin ();
 		       	i != info.end(); ++i)
 	{
-		AudioEffectSPtr ae = mod->open (*i, 44100); 
+		AudioEffectSP ae = mod->open (*i, 44100); 
 		test_audio_effect(ae);
 	}
 }
@@ -87,10 +87,10 @@ BOOST_AUTO_TEST_CASE( test_audio_effect_modules )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	AppSPtr app = App::init (argc, argv);
+	AppSP app = App::init (argc, argv);
 	BOOST_REQUIRE(app);
 
-	AudioEffectModuleSet modules = App::get_audio_effect_modules ();
+	AudioEffectModuleSPSet modules = App::get_audio_effect_modules ();
 
 	BOOST_CHECK(!modules.empty());
 

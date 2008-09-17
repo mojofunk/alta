@@ -1,0 +1,7 @@
+Unit tests
+
+
+Integration tests
+
+Test for xruns/soundcard sync
+Test for disk read/write speed. simulated recording 

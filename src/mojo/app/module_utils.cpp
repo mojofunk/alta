@@ -7,12 +7,12 @@
 
 namespace mojo {
 
-ModuleSPtr
+ModuleSP
 open_module (const fs::path& module_path)
 {
 	Module::factory_func_t factory = 0;
 
-	LibrarySPtr lib = create_library (module_path);
+	LibrarySP lib = create_library (module_path);
 
 	if (lib)
 	{
@@ -21,26 +21,26 @@ open_module (const fs::path& module_path)
 
 	if (factory == NULL)
 	{
-		return mojo::ModuleSPtr();
+		return mojo::ModuleSP();
 	}
 
 	mojo::Module* p = static_cast<mojo::Module*>(factory());
 
-	return mojo::ModuleSPtr(p);
+	return mojo::ModuleSP(p);
 }
 
-ModuleSet
+ModuleSPSet
 discover_modules (const SearchPath& sp)
 {
 	paths_t module_paths;
 	
 	find_matching_files (sp.get_paths (), is_library, module_paths);
 
-	ModuleSet modules;
+	ModuleSPSet modules;
 	
 	std::transform (module_paths.begin(),
 			module_paths.end(),
-			std::insert_iterator<ModuleSet>(modules, modules.begin()),
+			std::insert_iterator<ModuleSPSet>(modules, modules.begin()),
 			open_module);
 
 	return modules;

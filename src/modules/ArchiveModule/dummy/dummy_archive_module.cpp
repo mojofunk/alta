@@ -8,10 +8,10 @@ DummyArchiveModule::DummyArchiveModule () { }
 
 DummyArchiveModule::~DummyArchiveModule () { }
 	
-ArchiveSPtr
+ArchiveSP
 DummyArchiveModule::create_archive ()
 {
-	return ArchiveSPtr(new DummyArchive);
+	return ArchiveSP(new DummyArchive);
 }
 
 std::string

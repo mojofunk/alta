@@ -17,7 +17,7 @@ BOOST_AUTO_TEST_CASE( audio_clip )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	AppSPtr app = App::init (argc, argv);
+	AppSP app = App::init (argc, argv);
 
 	// given a file path create an AudioFile
 
@@ -25,12 +25,12 @@ BOOST_AUTO_TEST_CASE( audio_clip )
 
 	const fs::path file_path(pdir.audiofiles_path () / "notify.wav");
 	
-	AudioFileSPtr audiofile = App::open_audiofile (file_path);
+	AudioFileSP audiofile = App::open_audiofile (file_path);
 
 	BOOST_REQUIRE(audiofile);
 	
 	// create a new AudioClip
-	//AudioClipSPtr clip(new AudioClip(AudioFile));
+	//AudioClipSP clip(new AudioClip(AudioFile));
 
 	// The AudioClip has the same properties as the
 	// AudioFile, file format, channel format, samplerate, length

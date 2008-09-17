@@ -2,15 +2,13 @@
 #ifndef MOJO_UTILS_TYPEDEFS
 #define MOJO_UTILS_TYPEDEFS
 
-#include <boost/shared_ptr.hpp>
-#include <boost/weak_ptr.hpp>
+#include <mojo/core/macros.hpp>
 
 #include "forward.hpp"
 
 namespace mojo {
 
-typedef boost::shared_ptr<Library>    LibrarySPtr;
-typedef boost::weak_ptr<Library>      LibraryWPtr;
+MOJO_DEFINE_POINTER_TYPEDEFS(Library)
 
 } // namespace mojo
 

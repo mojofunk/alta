@@ -24,7 +24,7 @@ public: // Module interface
 
 public: // AudioEffectModule interface
 
-	virtual AudioEffectSPtr open (AudioEffectInfoSPtr info, samplerate_t rate);
+	virtual AudioEffectSP open (AudioEffectInfoSP info, samplerate_t rate);
 
 	virtual paths_t get_plugin_directory_paths () const;
 
@@ -34,7 +34,7 @@ public: // AudioEffectModule interface
 
 	virtual void set_preset_directory_paths (const paths_t& paths);
 
-	virtual AudioEffectInfoSet get_plugin_info ();
+	virtual AudioEffectInfoSPSet get_plugin_info ();
 
 	virtual std::string get_plugin_api_name () const;
 

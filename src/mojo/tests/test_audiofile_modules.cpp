@@ -19,7 +19,7 @@ using namespace mojo;
 #define fmt boost::format
 
 void
-test_audiofile_format (AudioFileFormatSPtr format)
+test_audiofile_format (AudioFileFormatSP format)
 {
 	BOOST_REQUIRE(format);
 
@@ -28,7 +28,7 @@ test_audiofile_format (AudioFileFormatSPtr format)
 }
 
 void
-test_read_audiofile (AudioFileSPtr af)
+test_read_audiofile (AudioFileSP af)
 {
 	const unsigned int frame_count = 4096U;
 	const unsigned int buffer_size = frame_count * af->channels();
@@ -60,9 +60,9 @@ test_read_audiofile (AudioFileSPtr af)
 }
 
 void
-test_open_existing_file (AudioFileModuleSPtr mod)
+test_open_existing_file (AudioFileModuleSP mod)
 {
-	AudioFileSPtr af = mod->open("share/projects/motronic/audiofiles/notify.wav");
+	AudioFileSP af = mod->open("share/projects/motronic/audiofiles/notify.wav");
 
 	BOOST_REQUIRE(af);
 
@@ -76,7 +76,7 @@ test_open_existing_file (AudioFileModuleSPtr mod)
 }
 
 void
-test_formats (const AudioFileFormatSet& formats)
+test_formats (const AudioFileFormatSPSet& formats)
 {
 	BOOST_CHECK(!formats.empty());
 
@@ -84,7 +84,7 @@ test_formats (const AudioFileFormatSet& formats)
 }
 
 void
-test_audiofile_module (AudioFileModuleSPtr mod)
+test_audiofile_module (AudioFileModuleSP mod)
 {
 	BOOST_REQUIRE(mod);
 
@@ -104,10 +104,10 @@ BOOST_AUTO_TEST_CASE( audiofile_module_test )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	AppSPtr app = App::init (argc, argv);
+	AppSP app = App::init (argc, argv);
 	BOOST_REQUIRE(app);
 
-	AudioFileModuleSet modules = App::get_audiofile_modules();
+	AudioFileModuleSPSet modules = App::get_audiofile_modules();
 
 	BOOST_CHECK(!modules.empty());
 

@@ -13,7 +13,7 @@ LADSPAAudioEffectInfo::LADSPAAudioEffectInfo (const fs::path& path,
 {
 	LADSPA_Descriptor_Function ladspa_func = NULL;
 
-	LibrarySPtr lib = create_library (path);
+	LibrarySP lib = create_library (path);
 
 	const LADSPA_Descriptor* descriptor = NULL;
 

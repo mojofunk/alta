@@ -22,29 +22,29 @@ class App
 public: // methods
 
 	// singleton constructor
-	static AppSPtr init (int argc, char *argv[]);
+	static AppSP init (int argc, char *argv[]);
 
-	static AudioFileSPtr open_audiofile (const fs::path& p);
+	static AudioFileSP open_audiofile (const fs::path& p);
 
-	static ModuleSet get_modules ();
+	static ModuleSPSet get_modules ();
 
-	static AudioFileModuleSet get_audiofile_modules ();
+	static AudioFileModuleSPSet get_audiofile_modules ();
 
-	static AudioDriverModuleSet get_audio_driver_modules ();
+	static AudioDriverModuleSPSet get_audio_driver_modules ();
 
-	static AudioEffectModuleSet get_audio_effect_modules ();
+	static AudioEffectModuleSPSet get_audio_effect_modules ();
 
-	static ArchiveModuleSet get_archive_modules ();
+	static ArchiveModuleSPSet get_archive_modules ();
 
-	static ArchiveSPtr create_archive ();
+	static ArchiveSP create_archive ();
 
 private: // member data
 
 	static App*     s_app;
 
-	TypeSystemSPtr          m_type_system;
+	TypeSystemSP          m_type_system;
 
-	ModuleSet               m_modules;
+	ModuleSPSet               m_modules;
 
 private: // constructors
 	

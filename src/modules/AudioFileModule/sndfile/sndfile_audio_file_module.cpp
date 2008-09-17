@@ -20,7 +20,7 @@ SndfileAudioFileModule::SndfileAudioFileModule ()
 SndfileAudioFileModule::~SndfileAudioFileModule () { }
 
 void
-SndfileAudioFileModule::get_readable_formats (AudioFileFormatSet& formats)
+SndfileAudioFileModule::get_readable_formats (AudioFileFormatSPSet& formats)
 {
 	SF_FORMAT_INFO          info;
 	SF_INFO                 sfinfo ;
@@ -49,7 +49,7 @@ SndfileAudioFileModule::get_readable_formats (AudioFileFormatSet& formats)
 
 			if (sf_format_check (&sfinfo))
 			{
-				AudioFileFormatSPtr f(new SndfileAudioFileFormat(sfinfo.format));
+				AudioFileFormatSP f(new SndfileAudioFileFormat(sfinfo.format));
 				formats.insert (f);
 			}
 		}
@@ -57,9 +57,9 @@ SndfileAudioFileModule::get_readable_formats (AudioFileFormatSet& formats)
 }
 
 void
-SndfileAudioFileModule::get_writable_formats (AudioFileFormatSet& formats)
+SndfileAudioFileModule::get_writable_formats (AudioFileFormatSPSet& formats)
 {
-	formats.insert (AudioFileFormatSPtr(new SndfileAudioFileFormat(SF_FORMAT_WAV|SF_FORMAT_FLOAT)));
+	formats.insert (AudioFileFormatSP(new SndfileAudioFileFormat(SF_FORMAT_WAV|SF_FORMAT_FLOAT)));
 }
 
 std::string
@@ -80,14 +80,14 @@ SndfileAudioFileModule::get_version()
 	return "0.0.1";
 }
 
-AudioFileSPtr
+AudioFileSP
 SndfileAudioFileModule::open (const std::string& path)
 {
-	AudioFileSPtr audio_file;
+	AudioFileSP audio_file;
 
 	try
 	{
-		audio_file = AudioFileSPtr(new SndfileAudioFile(path));
+		audio_file = AudioFileSP(new SndfileAudioFile(path));
 	}
 	catch(const SndfileException& e)
 	{
@@ -96,22 +96,22 @@ SndfileAudioFileModule::open (const std::string& path)
 	return audio_file;
 }
 
-AudioFileSPtr
+AudioFileSP
 SndfileAudioFileModule::open (const std::string& path,
-		AudioFileFormatSPtr format,
+		AudioFileFormatSP format,
 		samplerate_t rate,
 		channel_count_t channels)
 {
-	return AudioFileSPtr();
+	return AudioFileSP();
 }
 
-AudioFileFormatSet
+AudioFileFormatSPSet
 SndfileAudioFileModule::get_readable_formats () const
 {
 	return m_readable_formats;
 }
 
-AudioFileFormatSet
+AudioFileFormatSPSet
 SndfileAudioFileModule::get_writable_formats () const
 {
 	return m_writable_formats;
