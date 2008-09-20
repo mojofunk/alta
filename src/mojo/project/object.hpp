@@ -1,7 +1,7 @@
 #ifndef MOJO_OBJECT
 #define MOJO_OBJECT
 
-#include "properties.hpp"
+#include <mojo/core/properties.hpp>
 
 namespace mojo {
 

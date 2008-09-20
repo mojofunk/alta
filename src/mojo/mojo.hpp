@@ -22,6 +22,7 @@
 #include <mojo/core/audio_file_module.hpp>
 #include <mojo/core/typedefs.hpp>
 #include <mojo/core/module.hpp>
+#include <mojo/core/properties.hpp>
 
 #include <mojo/directory_names.hpp>
 #include <mojo/filesystem_paths.hpp>
@@ -42,7 +43,6 @@
 #include <mojo/project/object_collection.hpp>
 #include <mojo/project/object.hpp>
 #include <mojo/project/project.hpp>
-#include <mojo/project/properties.hpp>
 #include <mojo/project/track.hpp>
 #include <mojo/project/transition.hpp>
 #include <mojo/project/typedefs.hpp>

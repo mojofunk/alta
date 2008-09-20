@@ -3,8 +3,7 @@
 #define MOJO_ARCHIVE
 
 #include "filesystem.hpp"
-
-#include <mojo/project/properties.hpp> // needs to move into core or..
+#include "properties.hpp"
 
 namespace mojo {
 
