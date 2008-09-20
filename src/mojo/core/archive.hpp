@@ -4,7 +4,7 @@
 
 #include "filesystem.hpp"
 
-#include <mojo/objects/properties.hpp> // needs to move into core or..
+#include <mojo/project/properties.hpp> // needs to move into core or..
 
 namespace mojo {
 

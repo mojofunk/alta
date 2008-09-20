@@ -30,17 +30,17 @@ utils/search_path.cpp
 utils/resource.cpp
 """)
 
-mojo_objects_files = Split("""
-objects/audio_clip.cpp
-objects/audio_event.cpp
-objects/audio_region.cpp
-objects/audio_region_event.cpp
-objects/audio_sequence.cpp
-objects/audio_track.cpp
-objects/event.cpp
-objects/midi_track.cpp
-objects/project.cpp
-objects/track.cpp
+mojo_project_files = Split("""
+project/audio_clip.cpp
+project/audio_event.cpp
+project/audio_region.cpp
+project/audio_region_event.cpp
+project/audio_sequence.cpp
+project/audio_track.cpp
+project/event.cpp
+project/midi_track.cpp
+project/project.cpp
+project/track.cpp
 """)
 
 mojo_app_files = Split("""
@@ -76,7 +76,7 @@ sample_block.cpp
 
 mojo_source_files += mojo_typesystem_files
 mojo_source_files += mojo_utils_files
-mojo_source_files += mojo_objects_files
+mojo_source_files += mojo_project_files
 mojo_source_files += mojo_app_files
 mojo_source_files += mojo_rtg_files
 mojo_source_files += mojo_core_files

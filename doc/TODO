@@ -49,8 +49,6 @@ modules should only have to link to a small core library if at all
 Should all platform dependent code be in a base library
 which modules can link to? possibly in libgleam
 
-rename mojo/objects directory mojo/project
-
 TESTS
 
 Add ability to run test cases by name
