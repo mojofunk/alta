@@ -24,9 +24,9 @@
 #include <mojo/core/module.hpp>
 #include <mojo/core/properties.hpp>
 
-#include <mojo/directory_names.hpp>
-#include <mojo/filesystem_paths.hpp>
-#include <mojo/project_directory.hpp>
+#include <mojo/fs/directory_names.hpp>
+#include <mojo/fs/filesystem_paths.hpp>
+#include <mojo/fs/project_directory.hpp>
 
 #include <mojo/rtg/graph.hpp>
 #include <mojo/rtg/node.hpp>

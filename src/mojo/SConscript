@@ -67,10 +67,13 @@ mojo_rtg_files = Split("""
 rtg/graph.cpp
 """)
 
+mojo_fs_files = Split("""
+fs/directory_names.cpp
+fs/filesystem_paths.cpp
+fs/project_directory.cpp
+""")
+
 mojo_source_files = Split("""
-directory_names.cpp
-filesystem_paths.cpp
-project_directory.cpp
 sample_block.cpp
 """)
 
@@ -79,6 +82,7 @@ mojo_source_files += mojo_utils_files
 mojo_source_files += mojo_project_files
 mojo_source_files += mojo_app_files
 mojo_source_files += mojo_rtg_files
+mojo_source_files += mojo_fs_files
 mojo_source_files += mojo_core_files
 
 libmojo = mojo_env.SharedLibrary ( 'mojo', mojo_source_files )

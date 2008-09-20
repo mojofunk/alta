@@ -1,5 +1,5 @@
 
-#include <mojo/filesystem_paths.hpp>
+#include "filesystem_paths.hpp"
 
 #include <gleam/filesystem_paths.hpp>
 #include <gleam/utils.hpp>

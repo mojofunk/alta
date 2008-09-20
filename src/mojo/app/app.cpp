@@ -7,7 +7,7 @@
 #include <mojo/core/archive.hpp>
 #include <mojo/core/archive_module.hpp>
 
-#include <mojo/filesystem_paths.hpp>
+#include <mojo/fs/filesystem_paths.hpp>
 
 #include "app.hpp"
 #include "module_utils.hpp"

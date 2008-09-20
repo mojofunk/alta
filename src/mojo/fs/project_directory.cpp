@@ -1,6 +1,6 @@
 
-#include <mojo/directory_names.hpp>
-#include <mojo/project_directory.hpp>
+#include "directory_names.hpp"
+#include "project_directory.hpp"
 
 namespace mojo {
 
