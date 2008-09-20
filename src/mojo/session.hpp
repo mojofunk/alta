@@ -7,85 +7,43 @@
 namespace mojo {
 
 /**
- * A session processes a project to make noise :)
+ * The session class is the public API of libmojo. All interaction with a
+ * project must be done through the session.
  *
- * A session manages a task thread that asyncronously runs all tasks that
- * have been queued.
- *
- * Tasks:
- *
- * Read data from disk and fill the playback buffers
- * Write data from record buffers to disk
- * Modify project
- *
- * The task thread also dispatches events to the session bus. The session bus
- * is how the clients recieve all asyncronous messages.
- *
- * port/stream connection graph/state....hmmmm isn't that part of the project
- *
- * bus configuration?
- *
- * is the session state stored in a separate file to the project?, what
- * happens if the project is opened without the session data? no connections?
- *
- * The state of the project must remain constant while it is being processed 
- * by the session because any changes could lead to inconsistancies..how?.
- * At least no allocation or deallocation can occur in the processing thread/s
- * this means that if for instance a track is removed it must be deferred and
- * performed in another thread.
- *
- * If the state of the entire project must be constant while processing
- * the data graph and modifying the project must not interrupt processing,
- * which could happen if any locking is used.
- *
- * What might be much easier is if the processing occured in a non-RT
- * thread or threads and the RT thread just copies data between buffers
- * but that would mean introducing some control latency.
- * 
- * What about an approach where if an object is modified a new state based
- * on the current state is created and then put into a queue for the
- * RT thread to atomically update when it is safe to do so. A mechanism would
- * then be needed to notify about changes which could be done by sending the
- * updates back via a ringbuffer to be processed.
- *
- * As state changes are made via an object, the atomic update could contain a
- * functor or virtual method that is executed by a non-RT thread once the  
+ * The session state is stored in a separate file to the project and contains
+ * nothing project specific.
  *
  * I think it is important to keep locking and syncronization as simple and
  * as centralized as possible.
  *
- * The RT thread:
+ * A session manages a task thread that asyncronously runs all tasks that
+ * have been queued. some of these tasks are:
  *
- *  - reads data from ringbuffer/s that contain input data from the audio device
- *    into a place appropriate for processing.
+ * Read data from disk and fill the playback buffers
+ * Write data from record buffers to disk
+ * Modifications to the project
  *
- *  - signals processing threads to process the data, the processing threads
- *    then wake up and process the entire graph.
+ * The task thread also dispatches events to the session bus. The session bus
+ * is how the clients recieve all asyncronous messages.
  *
- *  - waits for every non-RT processing thread pool to complete processing, 
- *    possibly using a semaphore.
- *  
- *  - writes data into the ringbuffer/s that contain output data for the audio
- *    device.
+ * The processing thread is managed by the Engine class. The processing
+ * thread recieves events from the Session and processes them, for instance
+ * transport change events. It also sends events to the session, for instance
+ * buffer fill and buffer write events.
  *
- *  - processes state change events.
+ * The state of the Engine reflects the state of the project but the engine does
+ * not have access and does not depend on the Project or Session classes. This
+ * allows the Engine API to be reusable.
  *
- * A project is considered to be in an "Offline" state
- * when it is not part of a session.
+ * The Engine
  *
- * A project must be able to be edited "Offline"
+ *  - process incoming events including buffer fill events, stream modifications
+ *    and transport changes.
  *
- * When a project is "Offline" it can be edited directly
- * in the current thread.
+ *  - reads data from the audio device and performs any necessary processing
+ *    including posting a buffer write request if the stream is record enabled 
  *
- * When a Project is part of a Session then all modifications
- * to the project must be performed in a single thread.
- *
- * A Project can be modified while the transport is 
- * in a rolling state.
- *
- * Saving a Project requires that the Project is read-only
- * while it is being saved.
+ *  - write data to the audio device
  *
  */
 class Session
@@ -96,16 +54,28 @@ public:
 
 public:
 
+
 	/**
-	 * When setting the project for the session
-	 * if the native samplerate of the project
+	 * Create a new project.
+	 */
+	void new_project (const path& project_folder);
+
+	/**
+	 * If the native samplerate of the project
 	 * and the rate of the AudioDevice are different
 	 * then the audio device is re-opened to match
 	 * the native rate.
 	 */
-	void set_project (ProjectSP proj);
+	void open_project (const path& project_file);
 
-	ProjectSP get_project () const;
+	void save_project_as (const string& filename);
+
+	/// should return error status if project file name
+	/// hasn't been set
+	void save_project ();
+
+	/// should return status
+	void close_project ();
 
 	void set_audio_device (AudioDevice* dev);
 
