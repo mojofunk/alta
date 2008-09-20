@@ -9,7 +9,17 @@ namespace mojo {
 /**
  * A session processes a project to make noise :)
  *
- * It contains a thread to read data from disk
+ * A session manages a task thread that asyncronously runs all tasks that
+ * have been queued.
+ *
+ * Tasks:
+ *
+ * Read data from disk and fill the playback buffers
+ * Write data from record buffers to disk
+ * Modify project
+ *
+ * The task thread also dispatches events to the session bus. The session bus
+ * is how the clients recieve all asyncronous messages.
  *
  * port/stream connection graph/state....hmmmm isn't that part of the project
  *
@@ -41,6 +51,8 @@ namespace mojo {
  * As state changes are made via an object, the atomic update could contain a
  * functor or virtual method that is executed by a non-RT thread once the  
  *
+ * I think it is important to keep locking and syncronization as simple and
+ * as centralized as possible.
  *
  * The RT thread:
  *
@@ -91,9 +103,9 @@ public:
 	 * then the audio device is re-opened to match
 	 * the native rate.
 	 */
-	//void set_project (ProjectSPtr proj);
+	void set_project (ProjectSP proj);
 
-	//ProjectSPtr get_project () const;
+	ProjectSP get_project () const;
 
 	void set_audio_device (AudioDevice* dev);
 
