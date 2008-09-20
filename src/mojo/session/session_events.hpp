@@ -9,7 +9,11 @@ namespace mojo {
  */
 enum SessionEventType {
 	PropertyChange,
-	TransportStateChange
+	TransportStateChange,
+	ProjectOpened,
+	ProjectClosed,
+	ProjectSaved,
+	AudioDeviceChange
 };
 
 } // namespace mojo

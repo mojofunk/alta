@@ -8,7 +8,9 @@ namespace mojo {
 
 /**
  * The session class is the public API of libmojo. All interaction with a
- * project must be done through the session.
+ * project must be done through the session. This is to ensure that the state
+ * of the project is modified by a single thread. None of the project classes
+ * are exposed by session.
  *
  * The session state is stored in a separate file to the project and contains
  * nothing project specific.
@@ -23,28 +25,8 @@ namespace mojo {
  * Write data from record buffers to disk
  * Modifications to the project
  *
- * The task thread also dispatches events to the session bus. The session bus
- * is how the clients recieve all asyncronous messages.
- *
- * The processing thread is managed by the Engine class. The processing
- * thread recieves events from the Session and processes them, for instance
- * transport change events. It also sends events to the session, for instance
- * buffer fill and buffer write events.
- *
- * The state of the Engine reflects the state of the project but the engine does
- * not have access and does not depend on the Project or Session classes. This
- * allows the Engine API to be reusable.
- *
- * The Engine
- *
- *  - process incoming events including buffer fill events, stream modifications
- *    and transport changes.
- *
- *  - reads data from the audio device and performs any necessary processing
- *    including posting a buffer write request if the stream is record enabled 
- *
- *  - write data to the audio device
- *
+ * The Session thread also dispatches events to the session event bus. The
+ * session event bus is how the clients recieve all asyncronous messages.
  */
 class Session
 {
@@ -53,7 +35,6 @@ public:
 	Session();
 
 public:
-
 
 	/**
 	 * Create a new project.
