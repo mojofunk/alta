@@ -65,6 +65,7 @@ core/audio_file.cpp
 core/audio_file_format.cpp
 core/audio_file_module.cpp
 core/module.cpp
+core/sample_block.cpp
 """)
 
 mojo_rtg_files = Split("""
@@ -77,11 +78,7 @@ fs/filesystem_paths.cpp
 fs/project_directory.cpp
 """)
 
-mojo_source_files = Split("""
-sample_block.cpp
-""")
-
-mojo_source_files += mojo_typesystem_files
+mojo_source_files = mojo_typesystem_files
 mojo_source_files += mojo_utils_files
 mojo_source_files += mojo_project_files
 mojo_source_files += mojo_session_files
