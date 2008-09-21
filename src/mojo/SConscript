@@ -43,6 +43,10 @@ project/project.cpp
 project/track.cpp
 """)
 
+mojo_session_files = Split("""
+session/session.cpp
+""")
+
 mojo_app_files = Split("""
 app/app.cpp
 app/type_names.cpp
@@ -80,6 +84,7 @@ sample_block.cpp
 mojo_source_files += mojo_typesystem_files
 mojo_source_files += mojo_utils_files
 mojo_source_files += mojo_project_files
+mojo_source_files += mojo_session_files
 mojo_source_files += mojo_app_files
 mojo_source_files += mojo_rtg_files
 mojo_source_files += mojo_fs_files

@@ -2,6 +2,8 @@
 #ifndef MOJO_ENGINE
 #define MOJO_ENGINE
 
+#include <mojo/core/typedefs.hpp>
+
 namespace mojo {
 
 /**
@@ -30,10 +32,29 @@ namespace mojo {
  *
  *  The Session thread periodically calls Engine::get_events to get all the
  *  events issued by the engine and then processes them.
+ *
+ *  When the Engine issues a buffer fill event, the engine provides the array/buffer
+ *  to be written into.
  */
 class Engine
 {
+public: // ctors
 
+	Engine ();
+
+	~Engine ();
+
+public: // Interface
+
+	void start ();
+
+	//void is_running ();
+
+	void stop ();
+
+	void set_audio_device (AudioDevice* dev);
+
+	AudioDevice* get_audio_device () const;
 };
 
 } // namespace mojo

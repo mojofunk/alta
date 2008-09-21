@@ -2,7 +2,7 @@
 #ifndef MOJO_SESSION
 #define MOJO_SESSION
 
-#include <mojo/typedefs.hpp>
+#include <string>
 
 namespace mojo {
 
@@ -30,16 +30,18 @@ namespace mojo {
  */
 class Session
 {
-public:
+public: // ctors
 
-	Session();
+	Session ();
 
-public:
+	~Session ();
+
+public: // public API
 
 	/**
 	 * Create a new project.
 	 */
-	void new_project (const path& project_folder);
+	void new_project (const std::string& project_folder);
 
 	/**
 	 * If the native samplerate of the project
@@ -47,9 +49,9 @@ public:
 	 * then the audio device is re-opened to match
 	 * the native rate.
 	 */
-	void open_project (const path& project_file);
+	void open_project (const std::string& project_file);
 
-	void save_project_as (const string& filename);
+	void save_project_as (const std::string& filename);
 
 	/// should return error status if project file name
 	/// hasn't been set
@@ -57,10 +59,6 @@ public:
 
 	/// should return status
 	void close_project ();
-
-	void set_audio_device (AudioDevice* dev);
-
-	AudioDevice* get_audio_device () const;
 
 	// Access to auditioning functions
 	

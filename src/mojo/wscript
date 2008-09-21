@@ -10,7 +10,7 @@ def configure(conf):
 
 def build(bld):
 	obj = bld.create_obj('cpp', 'shlib')
-	obj.find_sources_in_dirs('. project rtg typesystem utils app core fs')
+	obj.find_sources_in_dirs('. project session rtg typesystem utils app core fs')
 	obj.includes ='. ..'
 	obj.uselib = 'BOOST_FILESYSTEM'
 	obj.uselib_local ='GLEAM'
