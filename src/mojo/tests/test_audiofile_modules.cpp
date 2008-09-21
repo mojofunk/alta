@@ -10,7 +10,7 @@
 
 #include <boost/format.hpp>
 
-#include <mojo/mojo.hpp>
+#include <mojo/mojo-internal.hpp>
 
 using namespace boost::unit_test;
 using namespace std;

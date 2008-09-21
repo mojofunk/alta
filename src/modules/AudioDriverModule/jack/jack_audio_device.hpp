@@ -2,7 +2,7 @@
 #ifndef JACK_AUDIO_DEVICE
 #define JACK_AUDIO_DEVICE
 
-#include <mojo/mojo.hpp>
+#include <mojo/mojo-internal.hpp>
 
 namespace mojo {
 

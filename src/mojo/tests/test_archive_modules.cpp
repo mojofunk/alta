@@ -4,7 +4,7 @@
 #include <boost/test/unit_test_log.hpp>
 
 #include <cformat/cformat.hpp>
-#include <mojo/mojo.hpp>
+#include <mojo/mojo-internal.hpp>
 
 #include <glib.h>
 

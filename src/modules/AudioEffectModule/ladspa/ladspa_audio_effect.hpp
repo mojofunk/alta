@@ -4,7 +4,7 @@
 
 #include <ladspa.h>
 
-#include <mojo/mojo.hpp>
+#include <mojo/mojo-internal.hpp>
 
 #include "ladspa_typedefs.hpp"
 

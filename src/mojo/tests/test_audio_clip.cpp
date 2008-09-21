@@ -7,7 +7,7 @@
 // for command line args
 #include <boost/test/framework.hpp>
 
-#include <mojo/mojo.hpp>
+#include <mojo/mojo-internal.hpp>
 
 using namespace boost::unit_test;
 using namespace mojo;

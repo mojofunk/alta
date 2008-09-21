@@ -2,7 +2,7 @@
 #ifndef MOJO_XML_ARCHIVE_MODULE
 #define MOJO_XML_ARCHIVE_MODULE
 
-#include <mojo/mojo.hpp>
+#include <mojo/mojo-internal.hpp>
 
 namespace mojo {
 

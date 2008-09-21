@@ -4,7 +4,7 @@
 
 #include <sndfile.h>
 
-#include <mojo/mojo.hpp>
+#include <mojo/mojo-internal.hpp>
 
 #include <stdexcept>
 

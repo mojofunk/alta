@@ -4,7 +4,7 @@
 #include "ladspa_audio_effect_info.hpp"
 #include "ladspa_typedefs.hpp"
 
-#include <mojo/mojo.hpp>
+#include <mojo/mojo-internal.hpp>
 
 namespace mojo {
 
