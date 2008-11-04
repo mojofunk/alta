@@ -7,6 +7,10 @@ SRS_OUTDIR ?= srs_html
 SRS_SRCDIR ?= srs_xml
 SRS_FILE ?= $(SRS_SRCDIR)/srs.xml
 
+PLAN_OUTDIR ?= plan_html
+PLAN_SRCDIR ?= plan_xml
+PLAN_FILE ?= $(PLAN_SRCDIR)/plan.xml
+
 XSL_FILE  ?= xsl/html.xsl
 
 COMMON_CSS_FILE	 ?= common.css
@@ -22,11 +26,17 @@ help::
 	@echo " srs-html:"
 	@echo "     Build HTML version of Software Requirements Specification(SRS)."
 	@echo
+	@echo " plan-html:"
+	@echo "     Build HTML version of Project Plan."
+	@echo
 	@echo " test-dev-guide:"
 	@echo "     Validate Developer Guide DocBook XML source."
 	@echo
 	@echo " test-srs:"
 	@echo "     Validate Developer Guide DocBook XML source."
+	@echo
+	@echo " test-plan:"
+	@echo "     Validate Project Plan."
 	@echo
 	@echo " format:"
 	@echo "     Format DocBook XML source using xmlformat."
@@ -36,6 +46,9 @@ help::
 	@echo
 	@echo " clean-srs-html:"
 	@echo "     Remove SRS html files."
+	@echo
+	@echo " clean-plan-html:"
+	@echo "     Remove Project Plan html files."
 	@echo
 	@echo " clean:"
 	@echo "     Remove temporary files."
@@ -75,6 +88,22 @@ srs-html:: clean-srs-html
 
 .PHONY : srs-html
 
+plan-html:: clean-plan-html
+	# creating output directory
+	-@mkdir $(PLAN_OUTDIR)
+	# copying entities file to build directory
+	-@cp entities.ent $(PLAN_SRCDIR)
+	# generating html
+	LANG=en_US.UTF-8 $(XSLTPROC) -xinclude $(XSL_FILE) $(PLAN_FILE)
+	# copy html files to output directory
+	-@mv *.html $(PLAN_OUTDIR)
+	# copy css file to output directory
+	-@cp css/$(COMMON_CSS_FILE) $(PLAN_OUTDIR)/$(COMMON_CSS_FILE)
+	# copy the image files to the output directory
+	-@cp -r images  $(PLAN_OUTDIR)/images
+
+.PHONY : plan-html
+
 test-dev-guide::
 	# validating book
 	xmllint --noout --postvalid --xinclude $(DEV_GUIDE_FILE)
@@ -87,7 +116,13 @@ test-srs::
 
 .PHONY : test-srs
 
-test:: test-dev-guide test-srs
+test-plan::
+	# validating book
+	xmllint --noout --postvalid --xinclude $(PLAN_FILE)
+
+.PHONY : test-plan
+
+test:: test-dev-guide test-srs test-plan
 
 .PHONY : test
 
@@ -106,6 +141,11 @@ clean-dev-guide-html::
 
 clean-srs-html::
 	@rm -rf $(SRS_OUTDIR)
+
+.PHONY : clean-srs-html
+
+clean-plan-html::
+	@rm -rf $(PLAN_OUTDIR)
 
 .PHONY : clean-srs-html
 

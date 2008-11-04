@@ -2,7 +2,7 @@
 
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
 
-<!ENTITY BOOKNAME "Book Title">
+<!ENTITY BOOKNAME "Project Plan">
 <!ENTITY BOOKVERSION "0.01"> <!-- change version here -->
 <!ENTITY BOOKDATE "2007-01-10"> <!-- change revision date here -->
 <!ENTITY BOOKID "&BOOKNAME;-&BOOKVERSION; (&BOOKDATE;)">
@@ -15,7 +15,7 @@
   <productnumber>1</productnumber>
   <abstract>
     <para>
-      Book description
+      Project plan
     </para>
   </abstract>
   <isbn>N/A</isbn>
