@@ -13,16 +13,20 @@
   <para>
     Modules are ...
   </para>
+
   <para>
-	  Interface classes where implementations are in modules that are loaded at runtime
-	  and may change from system to system should not derive from mojo::Object. For serialisation
-	  to work the derived class would need to register with the mojo type system in an
-	  init function within the module. What happens if a module doesn't exist on a particular
-	  system and a class factory isn't registered for a type found in the project file.
+    Interface classes where implementations are in modules that are loaded
+    at runtime and may change from system to system should not derive from
+    mojo::Object. For serialisation to work the derived class would need to
+    register with the mojo type system in an init function within the
+    module. What happens if a module doesn't exist on a particular system
+    and a class factory isn't registered for a type found in the project
+    file.
   </para>
+
   <para>
-	  This might happen in the case of plugins where the VSTAudioEffectModule might not be
-	  available on linux etc. 
+    This might happen in the case of plugins where the VSTAudioEffectModule
+    might not be available on linux etc.
   </para>
 <!--
 	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
