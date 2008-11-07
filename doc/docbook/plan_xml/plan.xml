@@ -9,4 +9,22 @@
 <book id="bk-plan">
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
 		href="book_info.xml" />
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="purpose.xml" />
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="objectives.xml" />
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="scope.xml" />
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="dependencies.xml" />
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="deliverables.xml" />
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="schedule.xml" />
 </book>
