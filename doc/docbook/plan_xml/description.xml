@@ -1,0 +1,25 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+
+<!ENTITY % BOOK_ENTITIES SYSTEM "./entities.ent">
+
+%BOOK_ENTITIES;
+
+]>
+
+<chapter id="ch-description">
+  <title>Project Description</title>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="purpose.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="objectives.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="scope.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="dependencies.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="deliverables.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="schedule.xml" />
+</chapter>

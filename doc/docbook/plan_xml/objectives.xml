@@ -10,7 +10,25 @@
 
 <section id="sn-objectives">
   <title>Objectives</title>
-  <para>
-    A paragraph
-  </para>
+  <para></para>
+
+  <itemizedlist>
+    <listitem>
+      <para>
+        Improve my software development skills.
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        Is useful to myself and others.
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        Is of high quality.
+      </para>
+    </listitem>
+  </itemizedlist>
 </section>

@@ -9,66 +9,66 @@
 ]>
 
 <section id="sn-smart">
-    <title>SMART</title>
-    <variablelist>
-      <title>The SMART Principle</title>
-      <varlistentry>
-        <term>Specific</term>
-        <listitem>
-          <para>
-            Also Significant, Stretching
-          </para>
-        </listitem>
-      </varlistentry>
+  <title>SMART</title>
+  <variablelist>
+    <title>The SMART Principle</title>
+    <varlistentry>
+      <term>Specific</term>
+      <listitem>
+        <para>
+          Also Significant, Stretching
+        </para>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>Measurable</term>
-        <listitem>
-          <para>
-            Also Meaningful, Motivational
-          </para>
-        </listitem>
-      </varlistentry>
+    <varlistentry>
+      <term>Measurable</term>
+      <listitem>
+        <para>
+          Also Meaningful, Motivational
+        </para>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>Agreed Upon</term>
-        <listitem>
-          <para>
-            Also Achievable, Attainable, Acceptable, Action-Oriented
-          </para>
-        </listitem>
-      </varlistentry>
+    <varlistentry>
+      <term>Agreed Upon</term>
+      <listitem>
+        <para>
+          Also Achievable, Attainable, Acceptable, Action-Oriented
+        </para>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>Realistic</term>
-        <listitem>
-          <para>
-            Also Relevant, Reasonable, Rewarding, Result-Oriented
-          </para>
-        </listitem>
-      </varlistentry>
+    <varlistentry>
+      <term>Realistic</term>
+      <listitem>
+        <para>
+          Also Relevant, Reasonable, Rewarding, Result-Oriented
+        </para>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>Time-Based</term>
-        <listitem>
-          <para>
-            Also Timely, Tangible, Trackable
-          </para>
-        </listitem>
-      </varlistentry>
+    <varlistentry>
+      <term>Time-Based</term>
+      <listitem>
+        <para>
+          Also Timely, Tangible, Trackable
+        </para>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>Ethical</term>
-        <listitem>
-          <para></para>
-        </listitem>
-      </varlistentry>
+    <varlistentry>
+      <term>Ethical</term>
+      <listitem>
+        <para></para>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>Recorded</term>
-        <listitem>
-          <para></para>
-        </listitem>
-      </varlistentry>
-    </variablelist>
+    <varlistentry>
+      <term>Recorded</term>
+      <listitem>
+        <para></para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
 </section>

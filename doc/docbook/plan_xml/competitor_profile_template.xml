@@ -1,0 +1,145 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+
+<!ENTITY % BOOK_ENTITIES SYSTEM "./entities.ent">
+
+%BOOK_ENTITIES;
+
+]>
+
+<section id="sn-competitor_profile_template">
+  <section id="sn-background">
+    <title>Background</title>
+    <itemizedlist>
+      <listitem>
+        <para>
+          location of offices, plants and online presences
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          history - key personalities, dates, events and trends
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Ownership, corporate governance and organizational structure
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section id="sn-financials">
+    <title>Financials</title>
+    <itemizedlist>
+      <listitem>
+        <para>
+          P-E ratios, dividend policy, and profitability** various financial
+          ratios, liquidity, and cash flow
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Profit growth profile; method of growth (organic or acquisitive)
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section id="sn-products">
+    <title>Products</title>
+    <itemizedlist>
+      <listitem>
+        <para>
+          Products offered, depth and breadth of product line
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          brands, strength of branch portfolio, brand loyalty and brand
+          awareness
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          patents and licences
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          quality control conformance
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section id="sn-marketing">
+    <title>Marketing</title>
+    <itemizedlist>
+      <listitem>
+        <para>
+          Market shares, customer base, growth rate and customer loyalty
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Pricing, discounts and allowances
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section id="sn-facilities">
+    <title>Facilities</title>
+    <para></para>
+  </section>
+
+  <section id="sn-personnel">
+    <title>Personnel</title>
+    <itemizedlist>
+      <listitem>
+        <para>
+          number of employees, key employees and skillsets
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          strength of management, management style
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          compensation, benefits and employee morale and retention rates
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section id="sn-stratagies">
+    <title>Stratagies</title>
+    <itemizedlist>
+      <listitem>
+        <para>
+          Objectives, mission statement, growth plans, aquisitions and
+          divestitures
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Marketing stratagies
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>

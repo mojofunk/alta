@@ -8,10 +8,13 @@
 
 ]>
 
-<section id="sn-stakeholders">
-  <title>Stakeholders</title>
+<section id="sn-key-success-factors">
+  <title>Key Success Factors</title>
   <para>
-    A stakeholder is anybody who is directly or indirectly affected by the
-    project.
+    A paragraph
   </para>
+<!--
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
+		href="Some_Subsection.xml" />
+	-->
 </section>

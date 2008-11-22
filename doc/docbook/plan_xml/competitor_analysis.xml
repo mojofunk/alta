@@ -1,0 +1,24 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+
+<!ENTITY % BOOK_ENTITIES SYSTEM "./entities.ent">
+
+%BOOK_ENTITIES;
+
+]>
+
+<chapter id="ch-competitor_analysis">
+  <title>Competitor Analysis</title>
+  <para>
+    Determine your industry
+  </para>
+
+  <para>
+    Determine who your customers are and what benefits they expect
+  </para>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="key_success_factors.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="competitor_profile_ardour.xml" />
+</chapter>
