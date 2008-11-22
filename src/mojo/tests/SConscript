@@ -20,6 +20,7 @@ mojo_test_env.Append(LIBS = [ 'boost_unit_test_framework', 'mojo', 'gleam' ])
 pkgconfig.ParseDependencies ( mojo_test_env, test_deps )
 
 tests='''
+test_session
 test_sequence
 test_type_system
 test_graph

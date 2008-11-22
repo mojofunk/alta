@@ -3,8 +3,11 @@
 #define MOJO_SESSION
 
 #include <string>
+#include <set>
 
 namespace mojo {
+
+class Bus;
 
 /**
  * The session class is the public API of libmojo. All interaction with a
@@ -49,6 +52,10 @@ namespace mojo {
  * This means that clients can treat any objects that are created through the
  * session as managed but do not participate in that management.
  *
+ * All the internal class types contained in the Project must only be
+ * accessed/referenced by the session. This makes it much easier to ensure
+ * that only one thread modifies the objects.
+ *
  */
 class Session
 {
@@ -59,6 +66,16 @@ public: // ctors
 	~Session ();
 
 public: // public API
+
+	/*
+	 * Sync
+	 */
+	void add_bus (Bus*);
+
+	/*
+	 * Sync
+	 */
+	void remove_bus (Bus*);
 
 	/**
 	 * Create a new project.
@@ -96,8 +113,10 @@ public: // public API
 	void close_project ();
 
 	// Access to auditioning functions
-	
+
 private:
+
+	std::set<Bus*> busses;
 
 	// transport_ptr
 	
