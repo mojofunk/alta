@@ -3,5 +3,6 @@
 
 #include <mojo/session/session.hpp>
 #include <mojo/session/bus.hpp>
+#include <mojo/session/types.hpp>
 
 #endif

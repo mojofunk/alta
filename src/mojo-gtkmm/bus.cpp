@@ -14,7 +14,7 @@ Bus::~Bus ()
 }
 
 void
-Bus::on_project_opened ()
+Bus::on_project_opened (mojo::project_t*)
 {
 
 }

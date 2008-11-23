@@ -30,10 +30,12 @@ Session::new_project ()
 void
 Session::open_project (const std::string& project_file)
 {
+	project_t *p = NULL;
+
 	for (std::set<Bus*>::iterator i = busses.begin();
 			i != busses.end(); ++i)
 	{
-		(*i)->on_project_opened ();
+		(*i)->on_project_opened (p);
 	}
 
 }

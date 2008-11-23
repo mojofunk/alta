@@ -1,6 +1,8 @@
 #ifndef MOJO_BUS
 #define MOJO_BUS
 
+#include "types.hpp"
+
 namespace mojo {
 
 /**
@@ -27,7 +29,7 @@ protected:
 
 	// all the events are called from the session thread
 
-	virtual void on_project_opened () = 0;
+	virtual void on_project_opened (project_t*) = 0;
 
 	virtual void on_project_closed () = 0;
 
