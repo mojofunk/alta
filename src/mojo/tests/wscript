@@ -27,9 +27,9 @@ def configure(conf):
 
 def build(bld):
 	for test in tests:
-		obj = bld.create_obj('cpp', 'program')
+		obj = bld.new_task_gen('cxx', 'program')
 		obj.source = test + '.cpp'
 		obj.includes ='. ../..'
-		obj.uselib = 'BOOST_TEST'
+		obj.uselib = 'BOOST_UNIT_TEST_FRAMEWORK'
 		obj.uselib_local ='MOJO'
 		obj.target = test

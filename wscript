@@ -3,7 +3,6 @@
 # Tim Mayberry, 2008
 
 import os
-import Params
 
 VERSION='0.1.0'
 APPNAME='gmojo'
@@ -23,34 +22,20 @@ def set_options(opt):
 	for i in "datadir libdir configdir".split():
 		opt.add_option('--'+i, type='string', default='', dest=i)
 
-def _check_deps(conf):
-	conf.check_pkg('jack', destvar='JACK', vnum='0.105.0', mandatory=True)
-	conf.check_pkg('glib-2.0', destvar='GLIB', vnum='2.10.1', mandatory=True)
-	conf.check_pkg('gthread-2.0', destvar='GTHREAD', vnum='2.10.1', mandatory=True)
-	conf.check_pkg('gtk+-2.0', destvar='GTK2', vnum='2.8.1', mandatory=True)
-	conf.check_pkg('libxml-2.0', destvar='LIBXML', vnum='2.6.0', mandatory=True)
-	conf.check_pkg('glibmm-2.4', destvar='GLIBMM', vnum='2.8.0', mandatory=True)
-	conf.check_pkg('gtkmm-2.4', destvar='GTKMM', vnum='2.8.0', mandatory=True)
-	conf.check_pkg('goocanvasmm-1.0', destvar='GOOCANVASMM', vnum='0.4.0', mandatory=True)
-	#conf.check_pkg('libSoundTouch', destvar='SOUNDTOUCH', vnum='1.3.1', mandatory=True)
-	#conf.check_pkg('samplerate', destvar='SAMPLERATE', vnum='0.1.0', mandatory=True)
-	#conf.check_pkg('raptor', destvar='RAPTOR', vnum='1.4.2', mandatory=True)
-	#conf.check_pkg('lrdf', destvar='LRDF', vnum='0.4.0', mandatory=True)
-	#conf.check_pkg('sndfile', destvar='SNDFILE', vnum='1.0.15', mandatory=True)
-	#conf.check_pkg('alsa', destvar='ALSA', vnum='1.0.13', mandatory=True)
+def _check_required_deps(conf, deps):
+	for pkg, version in deps.iteritems():
+	        conf.check_cfg(package=pkg, atleast_version=version, mandatory=1)
+		conf.check_cfg(package=pkg, args='--cflags --libs')
 
-	conf.check_library2 ('boost_unit_test_framework', uselib='BOOST_TEST')
-	conf.check_library2 ('boost_filesystem', uselib='BOOST_FILESYSTEM')
 
 def _define_paths(conf):
 
-	def getstr(varname):
-		return getattr(Params.g_options, varname, '')
+	import Options
 
-	prefix  = getstr('prefix')
-	datadir = getstr('datadir')
-	libdir  = getstr('libdir')
-	configdir  = getstr('configdir')
+	prefix = Options.options.prefix
+	datadir = Options.options.datadir
+	libdir = Options.options.libdir
+	configdir = Options.options.configdir
 
 	if not datadir: datadir = os.path.join(prefix,'share')
 	if not libdir:  libdir  = os.path.join(prefix,'lib')
@@ -70,11 +55,30 @@ def configure(conf):
 
 	conf.check_tool('compiler_cxx')
 	conf.check_tool('compiler_cc')
-	conf.check_tool('checks')
 
-	#conf.check_header('mntent.h', 'HAVE_GETMNTENT')
+	conf.check(header_name='mntent.h')
 
-	_check_deps(conf)
+	deps = \
+	{
+		'glib-2.0'             : '2.10.1',
+		'gthread-2.0'          : '2.10.1',
+		'gtk+-2.0'             : '2.8.1',
+		'glibmm-2.4'           : '2.8.1',
+		'gtkmm-2.4'            : '2.8.1',
+		'goocanvasmm-1.0'      : '0.4.0',
+#		'libxml-2.0'           : '2.6.0',
+#		'samplerate'           : '0.1.0',
+#		'raptor'               : '1.4.2',
+#		'lrdf'                 : '0.4.0',
+#		'jack'                 : '0.109.0',
+#		'libgnomecanvas-2.0'   : '2.0',
+#		'sndfile'              : '1.0.18'
+	}
+
+	_check_required_deps(conf, deps)
+
+	conf.check(lib='boost_unit_test_framework')
+	conf.check(lib='boost_filesystem')
 
 	defines=[ 'HAVE_CONFIG_H'
 		, '_REENTRANT'

@@ -4,7 +4,7 @@
 
 posix_files='''
 posix_signals.cpp
-'''
+'''.split()
 
 def init():
 	pass
@@ -13,11 +13,11 @@ def configure(conf):
 	pass
 
 def build(bld):
-	obj = bld.create_obj('cpp', 'shlib')
+	obj = bld.new_task_gen('cxx', 'shlib')
 	exclude_files=posix_files
 	obj.find_sources_in_dirs('.', excludes=exclude_files)
 	obj.includes ='. ..'
-	obj.uselib ='GLIBMM'
+	obj.uselib ='GLIBMM-2.4'
 	obj.target = 'gleam'
 	obj.name = 'GLEAM'
 

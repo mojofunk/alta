@@ -9,7 +9,7 @@ def configure(conf):
 	print "configure mojo"
 
 def build(bld):
-	obj = bld.create_obj('cpp', 'shlib')
+	obj = bld.new_task_gen('cxx', 'shlib')
 	obj.find_sources_in_dirs('. project session rtg typesystem utils app core fs')
 	obj.includes ='. ..'
 	obj.uselib = 'BOOST_FILESYSTEM'

@@ -9,10 +9,10 @@ def configure(conf):
 	print "configure mojo-gtkmm"
 
 def build(bld):
-	obj = bld.create_obj('cpp', 'program')
+	obj = bld.new_task_gen('cxx', 'program')
 	obj.find_sources_in_dirs('.')
 	obj.includes ='..'
-	obj.uselib ='GTKMM GOOCANVASMM'
-	obj.uselib_local ='GLEAM'
+	obj.uselib ='GTKMM-2.4 GOOCANVASMM-1.0'
+	obj.uselib_local ='GLEAM MOJO'
 	obj.target = 'mojo-gtkmm'
 	#obj.name = 'MOJO-GTKMM'
