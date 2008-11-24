@@ -51,8 +51,6 @@ which modules can link to? possibly in libgleam
 
 TESTS
 
-Add ability to run test cases by name
-
 Create a complex new project using all data types, save, close and restore.
 
 SMPTE
