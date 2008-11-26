@@ -14,13 +14,13 @@ Bus::~Bus ()
 }
 
 void
-Bus::on_project_opened (mojo::Project*)
+Bus::on_project_added (mojo::Project*)
 {
 
 }
 
 void
-Bus::on_project_closed ()
+Bus::on_project_removed (mojo::Project*)
 {
 
 }

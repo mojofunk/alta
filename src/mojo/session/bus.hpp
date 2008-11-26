@@ -29,9 +29,9 @@ protected:
 
 	// all the events are called from the session thread
 
-	virtual void on_project_opened (Project*) = 0;
+	virtual void on_project_added (Project*) = 0;
 
-	virtual void on_project_closed () = 0;
+	virtual void on_project_removed (Project*) = 0;
 
 	virtual void on_project_saved () = 0;
 };
