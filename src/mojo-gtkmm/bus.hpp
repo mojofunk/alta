@@ -15,7 +15,7 @@ public:
 
 protected:
 
-	virtual void on_project_opened (mojo::project_t*);
+	virtual void on_project_opened (mojo::Project*);
 
 	virtual void on_project_closed ();
 

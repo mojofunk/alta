@@ -5,12 +5,12 @@
 
 namespace mojo {
 
-struct _project {
-	ProjectWPtr project;
+class Project {
+	ProjectWPtr ptr;
 };
 
-struct _track {
-	TrackWPtr track;
+class Track {
+	TrackWPtr ptr;
 };
 
 }

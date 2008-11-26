@@ -56,6 +56,10 @@ class Bus;
  * accessed/referenced by the session. This makes it much easier to ensure
  * that only one thread modifies the objects.
  *
+ * To ensure this the clients don't have direct access to the internal class
+ * types. They have access to proxy classes that just contains the address
+ * of the internal class instance.
+ *
  */
 class Session
 {

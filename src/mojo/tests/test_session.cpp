@@ -17,7 +17,7 @@ class TestBus : public Bus
 {
 public:
 
-	void on_project_opened (project_t*)
+	void on_project_opened (Project*)
 	{
 		BOOST_TEST_MESSAGE ("project opened");
 	}
