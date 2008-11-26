@@ -47,21 +47,27 @@ Session::open_project (const std::string& project_file)
 }
 
 void
-Session::save_project_as (const std::string& filename)
+Session::save_project_as (Project*, const std::string& filename)
 {
 
 }
 
 void
-Session::save_project ()
+Session::save_project (Project*)
 {
 
 }
 
 void
-Session::close_project ()
+Session::close_project (Project*)
 {
+	Project *p = NULL;
 
+	for (std::set<Bus*>::iterator i = busses.begin();
+			i != busses.end(); ++i)
+	{
+		(*i)->on_project_removed (p);
+	}
 }
 
 } // namespace mojo

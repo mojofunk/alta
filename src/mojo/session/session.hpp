@@ -5,6 +5,8 @@
 #include <string>
 #include <set>
 
+#include "types.hpp"
+
 namespace mojo {
 
 class Bus;
@@ -100,7 +102,7 @@ public: // public API
 	/**
 	 * Async
 	 */
-	void save_project_as (const std::string& filename);
+	void save_project_as (Project*, const std::string& filename);
 
 	/**
 	 * Will send an error to the session bus if the if
@@ -108,15 +110,20 @@ public: // public API
 	 *
 	 * Async
 	 */
-	void save_project ();
+	void save_project (Project*);
 
 	/**
 	 * should return status
 	 * Async
 	 */
-	void close_project ();
+	void close_project (Project*);
 
+	// void set_active_project (Project*);
+	// Project* get_active_project ();
 	// Access to auditioning functions
+
+	/// ?? Sync
+	//std::set<Project*> get_projects ();
 
 private:
 
