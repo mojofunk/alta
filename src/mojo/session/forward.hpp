@@ -1,5 +1,5 @@
-#ifndef MOJO_EXTERNAL_TYPES
-#define MOJO_EXTERNAL_TYPES
+#ifndef MOJO_API_FORWARD
+#define MOJO_API_FORWARD
 
 namespace mojo {
 

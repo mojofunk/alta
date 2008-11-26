@@ -5,7 +5,7 @@
 #include <string>
 #include <set>
 
-#include "types.hpp"
+#include "forward.hpp"
 
 namespace mojo {
 
@@ -62,6 +62,11 @@ class Bus;
  * types. They have access to proxy classes that just contains the address
  * of the internal class instance.
  *
+ * How are the proxy classes managed? If they are created by the Session then
+ * they should also be managed by the Session.
+ *
+ * The internal::Project class manages all the internal classes. should the
+ * Project proxy class manage all the proxy classes in a similar pattern.
  */
 class Session
 {

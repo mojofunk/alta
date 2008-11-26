@@ -1,7 +1,7 @@
 #ifndef MOJO_BUS
 #define MOJO_BUS
 
-#include "types.hpp"
+#include "forward.hpp"
 
 namespace mojo {
 
