@@ -3,8 +3,15 @@
 
 namespace mojo {
 
+class Bus;
 class Project;
 class Track;
+
+namespace internal {
+
+class SessionData;
+
+} // namespace internal
 
 };
 

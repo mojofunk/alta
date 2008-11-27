@@ -1,24 +1,31 @@
 
 #include "session.hpp"
 #include "bus.hpp"
+#include "session_data.hpp"
 
 namespace mojo {
 
-Session::Session () { }
+Session::Session ()
+{
+	data = new internal::SessionData;
+}
 
-Session::~Session () { }
+Session::~Session ()
+{
+	delete data;
+}
 
 void
 Session::add_bus (Bus* bus)
 {
-	busses.insert (bus);
+	data->busses.insert (bus);
 
 }
 
 void
 Session::remove_bus (Bus* bus)
 {
-	busses.erase (bus);
+	data->busses.erase (bus);
 }
 
 void
@@ -26,8 +33,8 @@ Session::new_project ()
 {
 	Project *p = NULL;
 
-	for (std::set<Bus*>::iterator i = busses.begin();
-			i != busses.end(); ++i)
+	for (std::set<Bus*>::iterator i = data->busses.begin();
+			i != data->busses.end(); ++i)
 	{
 		(*i)->on_project_added (p);
 	}
@@ -39,8 +46,8 @@ Session::open_project (const std::string& project_file)
 {
 	Project *p = NULL;
 
-	for (std::set<Bus*>::iterator i = busses.begin();
-			i != busses.end(); ++i)
+	for (std::set<Bus*>::iterator i = data->busses.begin();
+			i != data->busses.end(); ++i)
 	{
 		(*i)->on_project_added (p);
 	}
@@ -63,8 +70,8 @@ Session::close_project (Project*)
 {
 	Project *p = NULL;
 
-	for (std::set<Bus*>::iterator i = busses.begin();
-			i != busses.end(); ++i)
+	for (std::set<Bus*>::iterator i = data->busses.begin();
+			i != data->busses.end(); ++i)
 	{
 		(*i)->on_project_removed (p);
 	}

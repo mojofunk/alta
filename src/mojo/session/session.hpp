@@ -9,8 +9,6 @@
 
 namespace mojo {
 
-class Bus;
-
 /**
  * The session class is the public API of libmojo. All interaction with a
  * project must be done through the session. This is to ensure that the state
@@ -132,7 +130,7 @@ public: // public API
 
 private:
 
-	std::set<Bus*> busses;
+	internal::SessionData *data;
 
 	// transport_ptr
 	
