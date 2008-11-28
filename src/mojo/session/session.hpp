@@ -5,7 +5,7 @@
 #include <string>
 #include <set>
 
-#include "forward.hpp"
+#include "types.hpp"
 
 namespace mojo {
 
@@ -105,7 +105,7 @@ public: // public API
 	/**
 	 * Async
 	 */
-	void save_project_as (Project*, const std::string& filename);
+	void save_project_as (project_t, const std::string& filename);
 
 	/**
 	 * Will send an error to the session bus if the if
@@ -113,20 +113,20 @@ public: // public API
 	 *
 	 * Async
 	 */
-	void save_project (Project*);
+	void save_project (project_t);
 
 	/**
 	 * should return status
 	 * Async
 	 */
-	void close_project (Project*);
+	void close_project (project_t);
 
-	// void set_active_project (Project*);
-	// Project* get_active_project ();
+	// void set_active_project (project_t);
+	// project_t get_active_project ();
 	// Access to auditioning functions
 
 	/// ?? Sync
-	//std::set<Project*> get_projects ();
+	//std::set<project_t> get_projects ();
 
 private:
 

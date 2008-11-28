@@ -31,7 +31,7 @@ Session::remove_bus (Bus* bus)
 void
 Session::new_project ()
 {
-	Project *p = NULL;
+	project_t p;
 
 	for (std::set<Bus*>::iterator i = data->busses.begin();
 			i != data->busses.end(); ++i)
@@ -44,7 +44,7 @@ Session::new_project ()
 void
 Session::open_project (const std::string& project_file)
 {
-	Project *p = NULL;
+	project_t p;
 
 	for (std::set<Bus*>::iterator i = data->busses.begin();
 			i != data->busses.end(); ++i)
@@ -54,21 +54,21 @@ Session::open_project (const std::string& project_file)
 }
 
 void
-Session::save_project_as (Project*, const std::string& filename)
+Session::save_project_as (project_t, const std::string& filename)
 {
 
 }
 
 void
-Session::save_project (Project*)
+Session::save_project (project_t)
 {
 
 }
 
 void
-Session::close_project (Project*)
+Session::close_project (project_t)
 {
-	Project *p = NULL;
+	project_t p;
 
 	for (std::set<Bus*>::iterator i = data->busses.begin();
 			i != data->busses.end(); ++i)

@@ -1,9 +1,7 @@
 #ifndef MOJO_SESSION_DATA
 #define MOJO_SESSION_DATA
 
-#include <mojo/mojo-internal.hpp>
-
-#include "forward.hpp"
+#include "types.hpp"
 
 namespace mojo {
 
@@ -13,7 +11,7 @@ struct SessionData
 {
 	std::set<Bus*> busses;
 
-	//std::set<ProjectSPtr> projects;
+	//std::set<ProjectSP> projects;
 
 };
 

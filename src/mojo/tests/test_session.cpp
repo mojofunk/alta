@@ -17,12 +17,12 @@ class TestBus : public Bus
 {
 public:
 
-	void on_project_added (Project*)
+	void on_project_added (project_t)
 	{
 		BOOST_TEST_MESSAGE ("project opened");
 	}
 
-	void on_project_removed (Project*)
+	void on_project_removed (project_t)
 	{
 		BOOST_TEST_MESSAGE ("project closed");
 	}
