@@ -46,6 +46,7 @@ project/track.cpp
 mojo_session_files = Split("""
 session/bus.cpp
 session/session.cpp
+session/session_async.cpp
 """)
 
 mojo_app_files = Split("""

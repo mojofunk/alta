@@ -132,9 +132,8 @@ private:
 
 	internal::SessionData *data;
 
-	// transport_ptr
-	
-	// project_ptr
+	void new_project_async ();
+
 };
 
 } // namespace mojo

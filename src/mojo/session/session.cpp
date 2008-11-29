@@ -1,4 +1,6 @@
 
+#include <boost/bind.hpp>
+
 #include "session.hpp"
 #include "bus.hpp"
 #include "session_data.hpp"
@@ -31,13 +33,17 @@ Session::remove_bus (Bus* bus)
 void
 Session::new_project ()
 {
-	project_t p;
+	boost::function<void()> func;
 
-	for (std::set<Bus*>::iterator i = data->busses.begin();
-			i != data->busses.end(); ++i)
-	{
-		(*i)->on_project_added (p);
-	}
+	func = boost::bind (&Session::new_project_async, this);
+
+	data->queue.push (func);
+
+	boost::function<void()> func_async;
+
+	func_async = data->queue.pop ();
+
+	func_async ();
 
 }
 
