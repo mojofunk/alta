@@ -31,6 +31,10 @@ protected:
 
 	virtual void on_project_added (project_t) = 0;
 
+	/**
+	 * project_t handle will only remain valid until
+	 * end of call.
+	 */
 	virtual void on_project_removed (project_t) = 0;
 
 	virtual void on_project_saved () = 0;

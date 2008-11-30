@@ -122,17 +122,28 @@ public: // public API
 	void close_project (project_t);
 
 	// void set_active_project (project_t);
-	// project_t get_active_project ();
-	// Access to auditioning functions
 
-	/// ?? Sync
-	//std::set<project_t> get_projects ();
+	/**
+	 * A client should only need to request tracks when a
+	 * project has been created or opened. The track_added
+	 * and track_removed signals should be used by the client
+	 * to maintain the list of tracks for a project_t
+	 *
+	 * Async
+	 */
+	void request_tracks (project_t);
+
+	//void add_track (const TrackOptions&, uint8_t count);
+
+	//void remove_track (track_t);
 
 private:
 
 	internal::SessionData *data;
 
-	void new_project_async ();
+	void new_project_internal ();
+	void open_project_internal (const std::string&);
+	void close_project_internal (project_t);
 
 };
 

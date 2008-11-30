@@ -33,30 +33,15 @@ Session::remove_bus (Bus* bus)
 void
 Session::new_project ()
 {
-	boost::function<void()> func;
-
-	func = boost::bind (&Session::new_project_async, this);
-
-	data->queue.push (func);
-
-	boost::function<void()> func_async;
-
-	func_async = data->queue.pop ();
-
-	func_async ();
-
+	data->queue.push (boost::bind (&Session::new_project_internal, this));
+	data->queue.pop ()();
 }
 
 void
 Session::open_project (const std::string& project_file)
 {
-	project_t p;
-
-	for (std::set<Bus*>::iterator i = data->busses.begin();
-			i != data->busses.end(); ++i)
-	{
-		(*i)->on_project_added (p);
-	}
+	data->queue.push (boost::bind (&Session::open_project_internal, this, project_file));
+	data->queue.pop ()();
 }
 
 void
@@ -72,15 +57,10 @@ Session::save_project (project_t)
 }
 
 void
-Session::close_project (project_t)
+Session::close_project (project_t p)
 {
-	project_t p;
-
-	for (std::set<Bus*>::iterator i = data->busses.begin();
-			i != data->busses.end(); ++i)
-	{
-		(*i)->on_project_removed (p);
-	}
+	data->queue.push (boost::bind (&Session::close_project_internal, this, p));
+	data->queue.pop ()();
 }
 
 } // namespace mojo

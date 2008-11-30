@@ -7,8 +7,28 @@ namespace mojo {
 
 class Bus;
 
-struct project_t
+class project_t
 {
+public:
+
+	project_t () { }
+
+	void reset () { ptr.reset(); }
+
+	void operator=(const project_t& p)
+	{
+		ptr = p.ptr;
+	}
+
+	bool operator==(const project_t& p)
+	{
+		// is this ok?
+		return (ptr.lock().get() == p.ptr.lock().get());
+	}
+
+private:
+	friend class Session;
+	project_t (const ProjectSP& sp) : ptr(sp) { }
 	ProjectWP ptr;
 };
 
