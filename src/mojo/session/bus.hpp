@@ -1,7 +1,7 @@
 #ifndef MOJO_BUS
 #define MOJO_BUS
 
-#include "types.hpp"
+#include "forward.hpp"
 
 namespace mojo {
 
@@ -29,13 +29,13 @@ protected:
 
 	// all the events are called from the session thread
 
-	virtual void on_project_added (project_t) = 0;
+	virtual void on_project_added (Project*) = 0;
 
 	/**
-	 * project_t handle will only remain valid until
+	 * Project* handle will only remain valid until
 	 * end of call.
 	 */
-	virtual void on_project_removed (project_t) = 0;
+	virtual void on_project_removed (Project*) = 0;
 
 	virtual void on_project_saved () = 0;
 };

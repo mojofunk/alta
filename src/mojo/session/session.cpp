@@ -45,19 +45,19 @@ Session::open_project (const std::string& project_file)
 }
 
 void
-Session::save_project_as (project_t, const std::string& filename)
+Session::save_project_as (Project*, const std::string& filename)
 {
 
 }
 
 void
-Session::save_project (project_t)
+Session::save_project (Project*)
 {
 
 }
 
 void
-Session::close_project (project_t p)
+Session::close_project (Project* p)
 {
 	data->queue.push (boost::bind (&Session::close_project_internal, this, p));
 	data->queue.pop ()();

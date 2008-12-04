@@ -4,6 +4,9 @@
 #include "bus.hpp"
 #include "session.hpp"
 #include "session_data.hpp"
+#include "null_deleter.hpp"
+
+#include <iostream>
 
 namespace mojo {
 
@@ -11,12 +14,14 @@ void
 Session::new_project_internal ()
 {
 	ProjectSP pi(new Project);
+	std::cerr << "Project: " << pi.get() << std::endl;
+
 	data->projects.insert (pi);
 
 	for (std::set<Bus*>::iterator i = data->busses.begin();
 			i != data->busses.end(); ++i)
 	{
-		(*i)->on_project_added (pi);
+		(*i)->on_project_added (pi.get());
 	}
 }
 
@@ -25,6 +30,7 @@ Session::open_project_internal (const std::string& project_file)
 {
 	ProjectSP pi(new Project);
 
+	std::cerr << "Project: " << pi.get() << std::endl;
 	// load project state from project file
 
 	data->projects.insert (pi);
@@ -32,30 +38,42 @@ Session::open_project_internal (const std::string& project_file)
 	for (std::set<Bus*>::iterator i = data->busses.begin();
 			i != data->busses.end(); ++i)
 	{
-		(*i)->on_project_added (pi);
+		(*i)->on_project_added (pi.get());
 	}
 
 }
 
 void
-Session::close_project_internal (project_t p)
+Session::close_project_internal (Project* p)
 {
-	ProjectSP pi = p.ptr.lock();
+	ProjectSP sp(p, internal::null_deleter());
 
-	if (pi)
-	{
-		for (std::set<Bus*>::iterator i = data->busses.begin();
-				i != data->busses.end(); ++i)
-		{
-			(*i)->on_project_removed (pi);
-		}
-		data->projects.erase (pi);
-	}
-	else
-	{
-		// ummm
+	//std::set<ProjectSP>::iterator i = data->projects.find (sp);
+	std::set<ProjectSP>::iterator i;
 
+	for (i = data->projects.begin ();
+			i != data->projects.end(); ++i)
+	{
+		if (sp == *i) break;
 	}
+
+	if (i == data->projects.end())
+	{
+		std::cerr << "project not found" << std::endl;
+		std::cerr << "Project: " << p << std::endl;
+		// send and error
+		return;
+	}
+
+	for (std::set<Bus*>::iterator i = data->busses.begin();
+			i != data->busses.end(); ++i)
+	{
+		(*i)->on_project_removed (sp.get());
+	}
+
+	std::cerr << "Project Removed: " << sp.get() << std::endl;
+
+	data->projects.erase (i);
 }
 
 

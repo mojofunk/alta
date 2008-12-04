@@ -1,8 +1,8 @@
 #ifndef MOJO_SESSION_DATA
 #define MOJO_SESSION_DATA
 
+#include <mojo/mojo-internal.hpp>
 
-#include "types.hpp"
 #include "queue.hpp"
 
 namespace mojo {

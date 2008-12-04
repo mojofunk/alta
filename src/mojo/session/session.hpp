@@ -3,9 +3,8 @@
 #define MOJO_SESSION
 
 #include <string>
-#include <set>
 
-#include "types.hpp"
+#include "forward.hpp"
 
 namespace mojo {
 
@@ -105,7 +104,7 @@ public: // public API
 	/**
 	 * Async
 	 */
-	void save_project_as (project_t, const std::string& filename);
+	void save_project_as (Project*, const std::string& filename);
 
 	/**
 	 * Will send an error to the session bus if the if
@@ -113,25 +112,25 @@ public: // public API
 	 *
 	 * Async
 	 */
-	void save_project (project_t);
+	void save_project (Project*);
 
 	/**
 	 * should return status
 	 * Async
 	 */
-	void close_project (project_t);
+	void close_project (Project*);
 
-	// void set_active_project (project_t);
+	// void set_active_project (Project*);
 
 	/**
 	 * A client should only need to request tracks when a
 	 * project has been created or opened. The track_added
 	 * and track_removed signals should be used by the client
-	 * to maintain the list of tracks for a project_t
+	 * to maintain the list of tracks for a Project*
 	 *
 	 * Async
 	 */
-	void request_tracks (project_t);
+	void request_tracks (Project*);
 
 	//void add_track (const TrackOptions&, uint8_t count);
 
@@ -143,7 +142,7 @@ private:
 
 	void new_project_internal ();
 	void open_project_internal (const std::string&);
-	void close_project_internal (project_t);
+	void close_project_internal (Project*);
 
 };
 

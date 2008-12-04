@@ -13,20 +13,20 @@ using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
 
-mojo::project_t p1;
+Project* p1;
 
 class TestBus : public Bus
 {
-	void on_project_added (project_t p)
+	void on_project_added (Project* p)
 	{
 		BOOST_TEST_MESSAGE ("project opened");
 		p1 = p;
 	}
 
-	void on_project_removed (project_t p)
+	void on_project_removed (Project* p)
 	{
 		BOOST_TEST_MESSAGE ("project closed");
-		p1.reset ();
+		p1 = 0;
 	}
 
 	void on_project_saved ()
@@ -44,7 +44,7 @@ BOOST_AUTO_TEST_CASE( test_session )
 
 	s->new_project ();
 
-	project_t p2 = p1;
+	Project* p2 = p1;
 
 	BOOST_CHECK(p1 == p2);
 
@@ -53,4 +53,5 @@ BOOST_AUTO_TEST_CASE( test_session )
 	s->remove_bus (bus);
 
 	delete s;
+	delete bus;
 }
