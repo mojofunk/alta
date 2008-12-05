@@ -1,10 +1,11 @@
+#include "session.hpp"
 
 #include <mojo/mojo-internal.hpp>
 
 #include "bus.hpp"
-#include "session.hpp"
 #include "session_data.hpp"
 #include "null_deleter.hpp"
+#include "utils.hpp"
 
 #include <iostream>
 
@@ -76,5 +77,11 @@ Session::close_project_internal (Project* p)
 	data->projects.erase (i);
 }
 
+void
+Session::add_track_internal (const TrackOptions& options)
+{
+	std::cerr << "Options type: " << track_type_to_string (options.type) << std::endl;
+	std::cerr << "Options count: " << options.count << std::endl;
+}
 
 } // namespace mojo

@@ -29,9 +29,19 @@ class TestBus : public Bus
 		p1 = 0;
 	}
 
-	void on_project_saved ()
+	void on_project_saved (Project* p)
 	{
 		BOOST_TEST_MESSAGE ("project saved");
+	}
+
+	void on_track_added (Track* t)
+	{
+		BOOST_TEST_MESSAGE ("Track Added");
+	}
+
+	void on_track_removed (Track* t)
+	{
+		BOOST_TEST_MESSAGE ("Track Removed");
 	}
 };
 
@@ -47,6 +57,13 @@ BOOST_AUTO_TEST_CASE( test_session )
 	Project* p2 = p1;
 
 	BOOST_CHECK(p1 == p2);
+
+	TrackOptions opt;
+
+	opt.type = MIDI;
+	opt.count = 12;
+
+	s->add_track (opt);
 
 	s->close_project (p1);
 

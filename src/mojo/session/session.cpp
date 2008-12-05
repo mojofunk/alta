@@ -63,4 +63,11 @@ Session::close_project (Project* p)
 	data->queue.pop ()();
 }
 
+void
+Session::add_track (const TrackOptions& options)
+{
+	data->queue.push (boost::bind (&Session::add_track_internal, this, options));
+	data->queue.pop ()();
+}
+
 } // namespace mojo

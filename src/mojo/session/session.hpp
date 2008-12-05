@@ -5,6 +5,7 @@
 #include <string>
 
 #include "forward.hpp"
+#include "types.hpp"
 
 namespace mojo {
 
@@ -55,15 +56,8 @@ namespace mojo {
  * accessed/referenced by the session. This makes it much easier to ensure
  * that only one thread modifies the objects.
  *
- * To ensure this the clients don't have direct access to the internal class
- * types. They have access to proxy classes that just contains the address
- * of the internal class instance.
+ * To ensure this the clients don't have direct access to the class definitions
  *
- * How are the proxy classes managed? If they are created by the Session then
- * they should also be managed by the Session.
- *
- * The internal::Project class manages all the internal classes. should the
- * Project proxy class manage all the proxy classes in a similar pattern.
  */
 class Session
 {
@@ -132,9 +126,15 @@ public: // public API
 	 */
 	void request_tracks (Project*);
 
-	//void add_track (const TrackOptions&, uint8_t count);
+	/**
+	 * Async
+	 */
+	void add_track (const TrackOptions&);
 
-	//void remove_track (track_t);
+	/**
+	 * Async
+	 */
+	void remove_track (Track*);
 
 private:
 
@@ -143,6 +143,7 @@ private:
 	void new_project_internal ();
 	void open_project_internal (const std::string&);
 	void close_project_internal (Project*);
+	void add_track_internal (const TrackOptions&);
 
 };
 
