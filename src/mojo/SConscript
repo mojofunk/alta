@@ -7,9 +7,9 @@ Import ('env')
 mojo_deps = \
 {
 #    'glib-2.0'      : '2.10.1',
-    'gmodule-2.0'   : '2.10.1'
+    'gmodule-2.0'   : '2.10.1',
 #    'gthread-2.0'   : '2.10.1',
-#    'glibmm-2.4'    : '2.8.1'
+    'glibmm-2.4'    : '2.8.1'
 }
 
 mojo_env = env.Clone()
@@ -46,6 +46,7 @@ project/track.cpp
 mojo_session_files = Split("""
 session/bus.cpp
 session/session.cpp
+session/session_dispatcher.cpp
 session/session_internal.cpp
 session/utils.cpp
 """)

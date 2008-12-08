@@ -140,6 +140,9 @@ private:
 
 	internal::SessionData *data;
 
+	void add_bus_internal (Bus*);
+	void remove_bus_internal (Bus*);
+
 	void new_project_internal ();
 	void open_project_internal (const std::string&);
 	void close_project_internal (Project*);

@@ -9,6 +9,8 @@
 
 #include <mojo/mojo.hpp>
 
+#include <glibmm/thread.h>
+
 using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
@@ -47,6 +49,8 @@ class TestBus : public Bus
 
 BOOST_AUTO_TEST_CASE( test_session )
 {
+	Glib::thread_init ();
+
 	Session *s = new Session;
 	Bus *bus = new TestBus;
 
@@ -65,6 +69,8 @@ BOOST_AUTO_TEST_CASE( test_session )
 
 	s->add_track (opt);
 
+	BOOST_TEST_MESSAGE (p1);
+	
 	s->close_project (p1);
 
 	s->remove_bus (bus);

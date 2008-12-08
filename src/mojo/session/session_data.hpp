@@ -3,7 +3,7 @@
 
 #include <mojo/mojo-internal.hpp>
 
-#include "queue.hpp"
+#include "session_dispatcher.hpp"
 
 namespace mojo {
 
@@ -15,8 +15,7 @@ struct SessionData
 
 	std::set<ProjectSP> projects;
 
-	Queue queue;
-
+	SessionDispatcher dispatcher;
 };
 
 } // namespace internal

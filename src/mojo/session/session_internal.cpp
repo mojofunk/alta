@@ -12,6 +12,20 @@
 namespace mojo {
 
 void
+Session::add_bus_internal (Bus* bus)
+{
+	std::cerr << "add_bus_internal: " << bus << std::endl;
+	data->busses.insert (bus);
+}
+
+void
+Session::remove_bus_internal (Bus* bus)
+{
+	std::cerr << "remove_bus_internal: " << bus << std::endl;
+	data->busses.erase (bus);
+}
+
+void
 Session::new_project_internal ()
 {
 	ProjectSP pi(new Project);
@@ -47,6 +61,7 @@ Session::open_project_internal (const std::string& project_file)
 void
 Session::close_project_internal (Project* p)
 {
+	std::cerr << "Project: " << p << std::endl;
 	ProjectSP sp(p, internal::null_deleter());
 
 	//std::set<ProjectSP>::iterator i = data->projects.find (sp);
@@ -61,7 +76,6 @@ Session::close_project_internal (Project* p)
 	if (i == data->projects.end())
 	{
 		std::cerr << "project not found" << std::endl;
-		std::cerr << "Project: " << p << std::endl;
 		// send and error
 		return;
 	}

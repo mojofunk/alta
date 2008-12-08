@@ -10,38 +10,40 @@ namespace mojo {
 Session::Session ()
 {
 	data = new internal::SessionData;
+
+	data->dispatcher.run();
 }
 
 Session::~Session ()
 {
+	data->dispatcher.quit();
 	delete data;
 }
 
 void
 Session::add_bus (Bus* bus)
 {
-	data->busses.insert (bus);
-
+	data->dispatcher.queue (boost::bind (&Session::add_bus_internal, this, bus));
+	data->dispatcher.iteration(true);
 }
 
 void
 Session::remove_bus (Bus* bus)
 {
-	data->busses.erase (bus);
+	data->dispatcher.queue (boost::bind (&Session::remove_bus_internal, this, bus));
+	data->dispatcher.iteration(true);
 }
 
 void
 Session::new_project ()
 {
-	data->queue.push (boost::bind (&Session::new_project_internal, this));
-	data->queue.pop ()();
+	data->dispatcher.queue (boost::bind (&Session::new_project_internal, this));
 }
 
 void
 Session::open_project (const std::string& project_file)
 {
-	data->queue.push (boost::bind (&Session::open_project_internal, this, project_file));
-	data->queue.pop ()();
+	data->dispatcher.queue (boost::bind (&Session::open_project_internal, this, project_file));
 }
 
 void
@@ -59,15 +61,13 @@ Session::save_project (Project*)
 void
 Session::close_project (Project* p)
 {
-	data->queue.push (boost::bind (&Session::close_project_internal, this, p));
-	data->queue.pop ()();
+	data->dispatcher.queue (boost::bind (&Session::close_project_internal, this, p));
 }
 
 void
 Session::add_track (const TrackOptions& options)
 {
-	data->queue.push (boost::bind (&Session::add_track_internal, this, options));
-	data->queue.pop ()();
+	data->dispatcher.queue (boost::bind (&Session::add_track_internal, this, options));
 }
 
 } // namespace mojo
