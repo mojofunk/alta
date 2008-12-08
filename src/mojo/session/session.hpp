@@ -58,6 +58,14 @@ namespace mojo {
  *
  * To ensure this the clients don't have direct access to the class definitions
  *
+ * The Session may need to use an internal Bus to syncronize the states of the
+ * Project and the Engine.
+ *
+ * The Engine does not reference the Project. The Session negotiates communication
+ * between the Engine and the Project.
+ *
+ * The Engine runs in a different context/thread than the Session(SessionDispatcher)
+ *
  */
 class Session
 {
