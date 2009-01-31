@@ -32,13 +32,26 @@ SessionDispatcher::on_quit ()
 }
 
 void
+SessionDispatcher::call_sync (const function_t& func)
+{
+	queue (func);
+	iteration(true);
+}
+
+void
+SessionDispatcher::call_async (const function_t& func)
+{
+	queue (func);
+	iteration(false);
+}
+
+void
 SessionDispatcher::queue (const function_t& func)
 {
 	{
 		Glib::Mutex::Lock guard(m_queue_lock);
 		m_queue.push (func);
 	}
-	iteration(false);
 }
 
 

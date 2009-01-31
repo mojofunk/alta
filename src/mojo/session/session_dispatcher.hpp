@@ -16,12 +16,16 @@ public:
 
 	SessionDispatcher ();
 
-	void queue (const function_t& func);
+	void call_sync (const function_t& func);
+
+	void call_async (const function_t& func);
 
 private:
 
 	virtual void on_run ();
 	virtual void on_quit();
+
+	void queue (const function_t& func);
 
 	void process_queue ();
 
