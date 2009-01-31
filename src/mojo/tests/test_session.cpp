@@ -10,25 +10,29 @@
 #include <mojo/mojo.hpp>
 
 #include <glibmm/thread.h>
+#include <glibmm/main.h>
 
 using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
 
-Project* p1;
-
 class TestBus : public Bus
 {
+public:
+
+	TestBus (Session* session) : m_session (session) { }
+
+private:
+
 	void on_project_added (Project* p)
 	{
-		BOOST_TEST_MESSAGE ("project opened");
-		p1 = p;
+		BOOST_TEST_MESSAGE ("on_project_added");
+		Glib::signal_idle().connect(sigc::bind_return(sigc::bind (sigc::mem_fun(*this, &TestBus::project_added), p), false));
 	}
 
 	void on_project_removed (Project* p)
 	{
 		BOOST_TEST_MESSAGE ("project closed");
-		p1 = 0;
 	}
 
 	void on_project_saved (Project* p)
@@ -45,6 +49,35 @@ class TestBus : public Bus
 	{
 		BOOST_TEST_MESSAGE ("Track Removed");
 	}
+
+private:
+
+	void project_added (Project* p)
+	{
+		BOOST_TEST_MESSAGE ("project_added");
+		m_project = p;
+
+		TrackOptions opt;
+
+		opt.type = MIDI;
+		opt.count = 12;
+
+		m_session->add_track (opt);
+
+		Glib::signal_idle().connect(sigc::bind_return(sigc::bind (sigc::mem_fun(*this, &TestBus::close_project), p), false));
+	}
+
+	void close_project (Project* p)
+	{
+		BOOST_TEST_MESSAGE ("close_project");
+		m_session->close_project (m_project);
+	}
+
+	Session* m_session;
+
+	Project* m_project;
+	Track* m_track;
+
 };
 
 BOOST_AUTO_TEST_CASE( test_session )
@@ -52,26 +85,14 @@ BOOST_AUTO_TEST_CASE( test_session )
 	Glib::thread_init ();
 
 	Session *s = new Session;
-	Bus *bus = new TestBus;
+
+	Bus *bus = new TestBus(s);
 
 	s->add_bus (bus);
 
 	s->new_project ();
 
-	Project* p2 = p1;
-
-	BOOST_CHECK(p1 == p2);
-
-	TrackOptions opt;
-
-	opt.type = MIDI;
-	opt.count = 12;
-
-	s->add_track (opt);
-
-	BOOST_TEST_MESSAGE (p1);
-	
-	s->close_project (p1);
+	// need a mainloop here
 
 	s->remove_bus (bus);
 
