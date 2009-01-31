@@ -14,6 +14,14 @@ enum TrackType {
 	MIDI
 };
 
+struct ImportOptions
+{
+	bool copy_files;
+	bool convert_samplerate;
+	bool convert_samplesize;
+	bool split_channels;
+};
+
 struct TrackOptions
 {
 	TrackType type;

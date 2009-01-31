@@ -4,13 +4,6 @@
 
 namespace mojo {
 
-struct ImportOptions
-{
-	bool copy_files;
-	bool convert_samplerate;
-	bool convert_samplesize;
-	bool split_channels;
-};
 
 /**
  * task_t is an identifier for a particular task
