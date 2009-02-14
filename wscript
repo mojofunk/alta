@@ -4,6 +4,8 @@
 
 import os
 
+import Options
+
 VERSION='0.1.0'
 APPNAME='gmojo'
 
@@ -22,6 +24,8 @@ def set_options(opt):
 	for i in "datadir libdir configdir".split():
 		opt.add_option('--'+i, type='string', default='', dest=i)
 
+        opt.add_option('--with-target-platform', type='string', dest='target_platform')
+
 def _check_required_deps(conf, deps):
 	for pkg, version in deps.iteritems():
 	        conf.check_cfg(package=pkg, atleast_version=version, mandatory=1)
@@ -29,8 +33,6 @@ def _check_required_deps(conf, deps):
 
 
 def _define_paths(conf):
-
-	import Options
 
 	prefix = Options.options.prefix
 	datadir = Options.options.datadir
@@ -56,7 +58,23 @@ def configure(conf):
 	conf.check_tool('compiler_cxx')
 	conf.check_tool('compiler_cc')
 
-	conf.check(header_name='mntent.h')
+        if Options.options.target_platform:
+                Options.platform = Options.options.target_platform
+
+        conf.define('TARGET_PLATFORM', Options.platform)
+
+	conf.check(function_name='getmntent', header_name='mntent.h')
+
+        if Options.platform == 'win32':
+                # As we have to change target platform after the tools
+                # have been loaded there are a few variables that needs
+                # to be initiated if building for win32.
+                # Make sure we don't have -fPIC and/or -DPIC in our CCFLAGS
+                conf.env["shlib_CCFLAGS"] = []
+                # Setup various prefixes
+                conf.env["shlib_PATTERN"] = 'lib%s.dll'
+                conf.env['program_PATTERN'] = '%s.exe'
+
 
 	deps = \
 	{
@@ -65,7 +83,7 @@ def configure(conf):
 		'gtk+-2.0'             : '2.8.1',
 		'glibmm-2.4'           : '2.8.1',
 		'gtkmm-2.4'            : '2.8.1',
-		'goocanvasmm-1.0'      : '0.4.0',
+#		'goocanvasmm-1.0'      : '0.4.0',
 #		'libxml-2.0'           : '2.6.0',
 #		'samplerate'           : '0.1.0',
 #		'raptor'               : '1.4.2',
@@ -76,6 +94,10 @@ def configure(conf):
 	}
 
 	_check_required_deps(conf, deps)
+
+        #if Options.platform == 'win32':
+        #        conf.check(lib='pthreadGC2')
+        #        conf.env.append_value('CPPPATH', os.path.join (os.getenv('MINGW_ROOT'), 'include', 'pthread'))
 
 	conf.check(lib='boost_unit_test_framework')
 	conf.check(lib='boost_filesystem')
@@ -94,7 +116,7 @@ def configure(conf):
 
 	conf.sub_config('src')
 
-	conf.write_config_header('config.h')
+	conf.write_config_header('gmojo_config.h')
 
 def build(bld):
 	# process subfolders from here
