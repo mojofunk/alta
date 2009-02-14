@@ -17,4 +17,5 @@ def build(bld):
 	obj.target = 'mojo'
 	obj.name = 'MOJO'
 
-	bld.add_subdirs('tests')
+        if bld.env['BUILD_TESTS']:
+                bld.add_subdirs('tests')

@@ -21,4 +21,5 @@ def build(bld):
 	obj.target = 'gleam'
 	obj.name = 'GLEAM'
 
-	bld.add_subdirs('tests')
+        if bld.env['BUILD_TESTS']:
+                bld.add_subdirs('tests')

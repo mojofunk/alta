@@ -25,6 +25,7 @@ def set_options(opt):
 		opt.add_option('--'+i, type='string', default='', dest=i)
 
         opt.add_option('--with-target-platform', type='string', dest='target_platform')
+        opt.add_option('--with-tests', action='store_true', default=False, help='Enable Testsuite')
 
 def _check_required_deps(conf, deps):
 	for pkg, version in deps.iteritems():
@@ -83,7 +84,7 @@ def configure(conf):
 		'gtk+-2.0'             : '2.8.1',
 		'glibmm-2.4'           : '2.8.1',
 		'gtkmm-2.4'            : '2.8.1',
-#		'goocanvasmm-1.0'      : '0.4.0',
+		'goocanvasmm-1.0'      : '0.4.0',
 #		'libxml-2.0'           : '2.6.0',
 #		'samplerate'           : '0.1.0',
 #		'raptor'               : '1.4.2',
@@ -95,19 +96,25 @@ def configure(conf):
 
 	_check_required_deps(conf, deps)
 
+        if Options.options.with_tests:
+                conf.define('BUILD_TESTS', Options.options.with_tests)
+                print "Building with testsuite"
+                conf.check(lib='boost_unit_test_framework')
+
         #if Options.platform == 'win32':
         #        conf.check(lib='pthreadGC2')
         #        conf.env.append_value('CPPPATH', os.path.join (os.getenv('MINGW_ROOT'), 'include', 'pthread'))
 
-	conf.check(lib='boost_unit_test_framework')
 	conf.check(lib='boost_filesystem')
 
 	defines=[ 'HAVE_CONFIG_H'
 		, '_REENTRANT'
 		, '_LARGEFILE_SOURCE'
 		, '_LARGEFILE64_SOURCE'
-		, 'BOOST_TEST_DYN_LINK'
 		]
+
+	if conf.env['BUILD_TESTS']:
+                defines += [ 'BOOST_TEST_DYN_LINK' ]
 
 	conf.env.append_value('CCDEFINES', defines)
 	conf.env.append_value('CXXDEFINES', defines)
