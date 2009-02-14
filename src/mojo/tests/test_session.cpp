@@ -16,7 +16,7 @@ using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
 
-class TestBus : public Bus
+class TestBus : public SessionBus
 {
 public:
 
@@ -86,7 +86,7 @@ BOOST_AUTO_TEST_CASE( test_session )
 
 	Session *s = new Session;
 
-	Bus *bus = new TestBus(s);
+	SessionBus *bus = new TestBus(s);
 
 	s->add_bus (bus);
 

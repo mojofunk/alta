@@ -6,7 +6,7 @@
 namespace mojo {
 
 /**
- * The Bus interface is how the Session communicates
+ * The SessionBus interface is how the Session communicates
  * with clients.
  *
  * The virtual calls are made by the Session in the
@@ -16,12 +16,12 @@ namespace mojo {
  * by another thread.
  *
  */
-class Bus
+class SessionBus
 {
 public:
 
-	Bus();
-	virtual ~Bus();
+	SessionBus();
+	virtual ~SessionBus();
 
 protected:
 

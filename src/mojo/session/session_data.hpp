@@ -11,7 +11,7 @@ namespace internal {
 	
 struct SessionData
 {
-	std::set<Bus*> busses;
+	std::set<SessionBus*> busses;
 
 	std::set<ProjectSP> projects;
 

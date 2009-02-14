@@ -58,7 +58,7 @@ namespace mojo {
  *
  * To ensure this the clients don't have direct access to the class definitions
  *
- * The Session may need to use an internal Bus to syncronize the states of the
+ * The Session may need to use an internal SessionBus to syncronize the states of the
  * Project and the Engine.
  *
  * The Engine does not reference the Project. The Session negotiates communication
@@ -80,12 +80,12 @@ public: // public API
 	/*
 	 * Sync
 	 */
-	void add_bus (Bus*);
+	void add_bus (SessionBus*);
 
 	/*
 	 * Sync
 	 */
-	void remove_bus (Bus*);
+	void remove_bus (SessionBus*);
 
 	/**
 	 * Create a new project.
@@ -148,8 +148,8 @@ private:
 
 	internal::SessionData *data;
 
-	void add_bus_internal (Bus*);
-	void remove_bus_internal (Bus*);
+	void add_bus_internal (SessionBus*);
+	void remove_bus_internal (SessionBus*);
 
 	void new_project_internal ();
 	void open_project_internal (const std::string&);

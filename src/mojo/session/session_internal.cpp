@@ -2,7 +2,7 @@
 
 #include <mojo/mojo-internal.hpp>
 
-#include "bus.hpp"
+#include "session_bus.hpp"
 #include "session_data.hpp"
 #include "null_deleter.hpp"
 #include "utils.hpp"
@@ -12,14 +12,14 @@
 namespace mojo {
 
 void
-Session::add_bus_internal (Bus* bus)
+Session::add_bus_internal (SessionBus* bus)
 {
 	std::cerr << "add_bus_internal: " << bus << std::endl;
 	data->busses.insert (bus);
 }
 
 void
-Session::remove_bus_internal (Bus* bus)
+Session::remove_bus_internal (SessionBus* bus)
 {
 	std::cerr << "remove_bus_internal: " << bus << std::endl;
 	data->busses.erase (bus);
@@ -33,7 +33,7 @@ Session::new_project_internal ()
 
 	data->projects.insert (pi);
 
-	for (std::set<Bus*>::iterator i = data->busses.begin();
+	for (std::set<SessionBus*>::iterator i = data->busses.begin();
 			i != data->busses.end(); ++i)
 	{
 		(*i)->on_project_added (pi.get());
@@ -50,7 +50,7 @@ Session::open_project_internal (const std::string& project_file)
 
 	data->projects.insert (pi);
 
-	for (std::set<Bus*>::iterator i = data->busses.begin();
+	for (std::set<SessionBus*>::iterator i = data->busses.begin();
 			i != data->busses.end(); ++i)
 	{
 		(*i)->on_project_added (pi.get());
@@ -80,7 +80,7 @@ Session::close_project_internal (Project* p)
 		return;
 	}
 
-	for (std::set<Bus*>::iterator i = data->busses.begin();
+	for (std::set<SessionBus*>::iterator i = data->busses.begin();
 			i != data->busses.end(); ++i)
 	{
 		(*i)->on_project_removed (sp.get());

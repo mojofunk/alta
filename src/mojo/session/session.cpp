@@ -2,7 +2,7 @@
 #include <boost/bind.hpp>
 
 #include "session.hpp"
-#include "bus.hpp"
+#include "session_bus.hpp"
 #include "session_data.hpp"
 
 namespace mojo {
@@ -21,13 +21,13 @@ Session::~Session ()
 }
 
 void
-Session::add_bus (Bus* bus)
+Session::add_bus (SessionBus* bus)
 {
 	data->dispatcher.call_sync (boost::bind (&Session::add_bus_internal, this, bus));
 }
 
 void
-Session::remove_bus (Bus* bus)
+Session::remove_bus (SessionBus* bus)
 {
 	data->dispatcher.call_sync (boost::bind (&Session::remove_bus_internal, this, bus));
 }

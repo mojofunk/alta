@@ -5,7 +5,7 @@
 
 namespace mojo {
 
-class Bus;
+class SessionBus;
 
 namespace internal {
 

@@ -6,7 +6,7 @@
 
 namespace ui {
 
-class Bus : public mojo::Bus
+class Bus : public mojo::SessionBus
 {
 public:
 
