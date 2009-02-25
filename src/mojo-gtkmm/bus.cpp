@@ -31,4 +31,16 @@ Bus::on_project_saved ()
 
 }
 
+void
+Bus::on_track_added (mojo::Track*)
+{
+
+}
+
+void
+Bus::on_track_removed (mojo::Track*)
+{
+
+}
+
 } // namespace ui
