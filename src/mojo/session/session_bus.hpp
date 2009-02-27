@@ -39,9 +39,9 @@ protected:
 
 	virtual void on_project_saved (Project*) = 0;
 
-	virtual void on_track_added (Track*) = 0;
+	virtual void on_track_added (Project*, Track*) = 0;
 
-	virtual void on_track_removed (Track*) = 0;
+	virtual void on_track_removed (Project*, Track*) = 0;
 
 };
 

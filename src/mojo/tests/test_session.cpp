@@ -40,12 +40,12 @@ private:
 		BOOST_TEST_MESSAGE ("project saved");
 	}
 
-	void on_track_added (Track* t)
+	void on_track_added (Project*, Track* t)
 	{
 		BOOST_TEST_MESSAGE ("Track Added");
 	}
 
-	void on_track_removed (Track* t)
+	void on_track_removed (Project*, Track* t)
 	{
 		BOOST_TEST_MESSAGE ("Track Removed");
 	}

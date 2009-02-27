@@ -13,7 +13,7 @@ class Bus : public mojo::SessionBus
 {
 public: // typedefs
 
-	typedef sigc::signal<void, mojo::Track*> track_signal_t;
+	typedef sigc::signal<void, mojo::Project*, mojo::Track*> track_signal_t;
 	typedef sigc::signal<void> transport_changed_signal_t;
 
 public:
@@ -44,9 +44,9 @@ protected:
 
 	virtual void on_project_saved (mojo::Project*);
 
-	virtual void on_track_added (mojo::Track*);
+	virtual void on_track_added (mojo::Project*, mojo::Track*);
 
-	virtual void on_track_removed (mojo::Track*);
+	virtual void on_track_removed (mojo::Project*, mojo::Track*);
 
 };
 

@@ -33,9 +33,9 @@ public: // constructors
 
 private: // signal handlers
 
-	void on_track_added (mojo::Track*);
+	void on_track_added (mojo::Project*, mojo::Track*);
 
-	void on_track_removed (mojo::Track*);
+	void on_track_removed (mojo::Project*, mojo::Track*);
 
 private: // member data
 

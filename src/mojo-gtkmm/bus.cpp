@@ -14,31 +14,31 @@ Bus::~Bus ()
 }
 
 void
-Bus::on_project_added (mojo::Project*)
+Bus::on_project_added (mojo::Project* p)
 {
 
 }
 
 void
-Bus::on_project_removed (mojo::Project*)
+Bus::on_project_removed (mojo::Project* p)
 {
 
 }
 
 void
-Bus::on_project_saved (mojo::Project*)
+Bus::on_project_saved (mojo::Project* p)
 {
 
 }
 
 void
-Bus::on_track_added (mojo::Track*)
+Bus::on_track_added (mojo::Project* p, mojo::Track* t)
 {
 
 }
 
 void
-Bus::on_track_removed (mojo::Track*)
+Bus::on_track_removed (mojo::Project* p, mojo::Track* t)
 {
 
 }

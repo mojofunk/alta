@@ -29,8 +29,10 @@ TrackView::~TrackView ()
 }
 
 void
-TrackView::on_track_added (mojo::Track* track)
+TrackView::on_track_added (mojo::Project* p, mojo::Track* track)
 {
+	if (p != m_project) return;
+
 	LOG;
 
 	TrackViewItemSPtr tvi(TrackViewItemFactory::create (track));
@@ -42,8 +44,10 @@ TrackView::on_track_added (mojo::Track* track)
 }
 
 void
-TrackView::on_track_removed (mojo::Track* track)
+TrackView::on_track_removed (mojo::Project* p, mojo::Track* track)
 {
+	if (p != m_project) return;
+
 	LOG;
 }
 
