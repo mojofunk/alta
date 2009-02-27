@@ -22,7 +22,7 @@ audio_track_view_item.cpp
 bus.cpp
 default_transport_toolbar.cpp
 edit_window.cpp
-mojo.cpp
+main.cpp
 project_windows.cpp
 timers.cpp
 track_canvas.cpp
