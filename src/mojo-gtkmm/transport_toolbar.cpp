@@ -3,7 +3,7 @@
 
 namespace ui {
 
-TransportToolbar::TransportToolbar(Project* p)
+TransportToolbar::TransportToolbar(mojo::Project* p)
 	: m_project(p)
 {
 

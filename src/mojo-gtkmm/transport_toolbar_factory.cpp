@@ -6,7 +6,7 @@
 namespace ui {
 
 TransportToolbar*
-TransportToolbarFactory::create (Project* proj)
+TransportToolbarFactory::create (mojo::Project* proj)
 {
 	return new DefaultTransportToolbar (proj);
 }

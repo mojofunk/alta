@@ -4,14 +4,14 @@
 
 #include <list>
 
+#include <mojo/mojo.hpp>
+
 #include <gtkmm/paned.h>
 
 #include <boost/shared_ptr.hpp>
 
 namespace ui {
 
-class Project;
-class Track;
 class TrackCanvas;
 class TrackList;
 class TrackViewItem;
@@ -27,19 +27,19 @@ public: // typedefs
 
 public: // constructors
 
-	TrackView (Project* p);
+	TrackView (mojo::Project* p);
 
 	~TrackView ();
 
 private: // signal handlers
 
-	void on_track_added (Track*);
+	void on_track_added (mojo::Track*);
 
-	void on_track_removed (Track*);
+	void on_track_removed (mojo::Track*);
 
 private: // member data
 
-	Project*                m_project;
+	mojo::Project*          m_project;
 
 	TrackCanvasPtr          m_canvas;
 

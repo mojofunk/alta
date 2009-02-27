@@ -4,15 +4,15 @@
 
 #include "track_canvas.hpp"
 
-namespace ui {
+#include <mojo/mojo.hpp>
 
-class Project;
+namespace ui {
 
 class TrackCanvasFactory
 {
 public:
 
-	static TrackCanvas* create (Project* proj);
+	static TrackCanvas* create (mojo::Project* proj);
 };
 
 } // namespace ui

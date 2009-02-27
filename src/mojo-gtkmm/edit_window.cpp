@@ -1,5 +1,4 @@
 
-#include "project.hpp"
 #include "app.hpp"
 #include "edit_window.hpp"
 #include "utils.hpp"
@@ -8,7 +7,7 @@
 
 namespace ui {
 
-EditWindow::EditWindow (Project* proj)
+EditWindow::EditWindow (mojo::Project* proj)
 	: m_project(proj)
 	, m_transport_toolbar (Gtk::manage (TransportToolbarFactory::create (proj)))
 	, m_track_view (Gtk::manage (TrackViewFactory::create (proj)))
@@ -43,7 +42,7 @@ EditWindow::connect_file_menu_actions ()
 		   	sigc::ptr_fun (App::open_project));
 
 	connect_action (m_builder, "save-project-menuitem",
-		   	sigc::mem_fun (m_project, &Project::save));
+			sigc::bind (sigc::ptr_fun (&App::save_project), m_project));
 
 	connect_action (m_builder, "close-project-menuitem",
 		   	sigc::bind (sigc::ptr_fun (&App::close_project), m_project));
@@ -55,8 +54,10 @@ EditWindow::connect_file_menu_actions ()
 void
 EditWindow::connect_project_menu_actions ()
 {
+	/*
 	connect_action (m_builder, "add-audio-track-menuitem",
-		   	sigc::mem_fun (m_project, &Project::create_audio_track));
+		   	sigc::mem_fun (sigc::bind (&App::create_audio_track, m_project )));
+			*/
 }
 
 void

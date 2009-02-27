@@ -3,7 +3,7 @@
 
 namespace ui {
 
-ProjectWindows::ProjectWindows (Project* proj)
+ProjectWindows::ProjectWindows (mojo::Project* proj)
 	: m_edit_window(proj)
 {
 

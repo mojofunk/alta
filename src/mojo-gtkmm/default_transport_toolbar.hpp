@@ -12,7 +12,7 @@ class DefaultTransportToolbar : public TransportToolbar
 {
 public:
 
-	DefaultTransportToolbar (Project*);
+	DefaultTransportToolbar (mojo::Project*);
 
 private:
 

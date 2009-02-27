@@ -4,6 +4,8 @@
 
 #include "track_view_item.hpp"
 
+#include <mojo/mojo.hpp>
+
 namespace ui {
 
 class Track;
@@ -11,7 +13,7 @@ class Track;
 class TrackViewItemFactory
 {
 public:
-	static TrackViewItem* create (Track* track);
+	static TrackViewItem* create (mojo::Track* track);
 };
 
 } // namespace ui

@@ -4,7 +4,7 @@
 namespace ui {
 
 TrackCanvas*
-TrackCanvasFactory::create (Project* proj)
+TrackCanvasFactory::create (mojo::Project* proj)
 {
 	return new TrackCanvas ();
 }

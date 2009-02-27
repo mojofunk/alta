@@ -26,7 +26,7 @@ Bus::on_project_removed (mojo::Project*)
 }
 
 void
-Bus::on_project_saved ()
+Bus::on_project_saved (mojo::Project*)
 {
 
 }

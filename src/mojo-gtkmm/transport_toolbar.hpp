@@ -4,6 +4,8 @@
 
 #include <gtkmm/box.h>
 
+#include <mojo/mojo.hpp>
+
 namespace ui {
 
 class Project;
@@ -11,13 +13,13 @@ class Project;
 class TransportToolbar : public Gtk::HBox
 {
 public:
-	TransportToolbar (Project* p);
+	TransportToolbar (mojo::Project* p);
 
 	virtual ~TransportToolbar ();
 
 protected:
 
-	Project* m_project;
+	mojo::Project* m_project;
 };
 
 } // namespace ui

@@ -12,12 +12,16 @@ class ProjectWindows : public sigc::trackable
 {
 public:
 
-	ProjectWindows (Project* p);
+	ProjectWindows (mojo::Project* p);
+
+        mojo::Project* get_project () const
+        { return m_project; }
 
 private:
 
 	EditWindow m_edit_window;
 
+        mojo::Project* m_project;
 };
 
 } // namespace ui

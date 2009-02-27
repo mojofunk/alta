@@ -4,14 +4,14 @@
 
 #include "track_view.hpp"
 
-namespace ui {
+#include <mojo/mojo.hpp>
 
-class Project;
+namespace ui {
 
 class TrackViewFactory
 {
 public:
-	static TrackView* create (Project* proj);
+	static TrackView* create (mojo::Project* proj);
 };
 
 } // namespace ui

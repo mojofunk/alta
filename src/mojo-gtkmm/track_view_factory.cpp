@@ -5,7 +5,7 @@
 namespace ui {
 
 TrackView*
-TrackViewFactory::create (Project* proj)
+TrackViewFactory::create (mojo::Project* proj)
 {
 	return new TrackView (proj);
 }

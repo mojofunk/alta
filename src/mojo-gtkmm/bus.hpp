@@ -4,19 +4,37 @@
 
 #include <mojo/mojo.hpp>
 
+#include <sigc++/trackable.h>
+#include <sigc++/signal.h>
+
 namespace ui {
 
-/*
- * The Bus class ensures that signals emitted
- * by the Session class are reemitted in the
- * in the GUI thread.
- */
 class Bus : public mojo::SessionBus
 {
+public: // typedefs
+
+	typedef sigc::signal<void, mojo::Track*> track_signal_t;
+	typedef sigc::signal<void> transport_changed_signal_t;
+
 public:
 
 	Bus ();
 	~Bus ();
+
+public: // signal accessors
+
+	track_signal_t& signal_track_added ()
+	{ return m_signal_track_added; }
+
+	track_signal_t& signal_track_removed ()
+	{ return m_signal_track_removed; }
+
+private: // signals
+
+	track_signal_t m_signal_track_added;
+	track_signal_t m_signal_track_removed;
+
+	transport_changed_signal_t m_signal_transport_changed;
 
 protected:
 
@@ -24,7 +42,7 @@ protected:
 
 	virtual void on_project_removed (mojo::Project*);
 
-	virtual void on_project_saved ();
+	virtual void on_project_saved (mojo::Project*);
 
 	virtual void on_track_added (mojo::Track*);
 

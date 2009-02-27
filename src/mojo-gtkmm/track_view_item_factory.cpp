@@ -2,22 +2,20 @@
 #include "track_view_item_factory.hpp"
 
 #include "audio_track_view_item.hpp"
-#include "audio_track.hpp"
 
 //#include "midi_track_view_item.hpp"
 
 namespace ui {
 
 TrackViewItem*
-TrackViewItemFactory::create (Track* track)
+TrackViewItemFactory::create (mojo::Track* track)
 {
-	AudioTrack* audio_track = dynamic_cast<AudioTrack*>(track);
-
-	if (audio_track)
+/*
+	if (Session::is_audio_track (track))
 	{
-		return new AudioTrackViewItem (audio_track);
+		return new AudioTrackViewItem (track);
 	}
-
+*/
 	return 0;
 }
 

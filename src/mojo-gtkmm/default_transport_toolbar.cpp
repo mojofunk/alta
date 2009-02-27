@@ -1,10 +1,10 @@
 
 #include "default_transport_toolbar.hpp"
-#include "project.hpp"
+#include "app.hpp"
 
 namespace ui {
 
-DefaultTransportToolbar::DefaultTransportToolbar (Project* p)
+DefaultTransportToolbar::DefaultTransportToolbar (mojo::Project* p)
 	: TransportToolbar(p)
 	, m_loop_button ("Loop")
 	, m_play_button ("Play")
@@ -14,6 +14,7 @@ DefaultTransportToolbar::DefaultTransportToolbar (Project* p)
 
 	pack_start (m_button_box, false, false);
 
+	/*
 	m_loop_button.signal_toggled().connect (sigc::mem_fun (this,
 		       	&DefaultTransportToolbar::on_loop_button_toggled));
 	m_play_button.signal_toggled().connect (sigc::mem_fun (this,
@@ -21,6 +22,7 @@ DefaultTransportToolbar::DefaultTransportToolbar (Project* p)
 
 	m_project->transport_changed_signal().connect (sigc::mem_fun (this,
 				&DefaultTransportToolbar::update_transport_buttons));
+	*/
 
 	update_transport_buttons ();
 }
@@ -28,20 +30,20 @@ DefaultTransportToolbar::DefaultTransportToolbar (Project* p)
 void
 DefaultTransportToolbar::update_transport_buttons ()
 {
-	m_loop_button.set_active (m_project->get_looping ());
-	m_play_button.set_active (m_project->get_playing ());
+//	m_loop_button.set_active (m_project->get_looping ());
+//	m_play_button.set_active (m_project->get_playing ());
 }
 
 void
 DefaultTransportToolbar::on_loop_button_toggled ()
 {
-	m_project->set_looping (m_loop_button.get_active ());
+//	m_project->set_looping (m_loop_button.get_active ());
 }
 
 void
 DefaultTransportToolbar::on_play_button_toggled ()
 {
-	m_project->set_playing (m_play_button.get_active ());
+//	m_project->set_playing (m_play_button.get_active ());
 }
 
 } // namespace ui

@@ -1,24 +1,24 @@
 
 #include "track_view.hpp"
 
+#include "app.hpp"
+#include "bus.hpp"
 #include "track_canvas_factory.hpp"
-
 #include "track_view_item_factory.hpp"
-#include "project.hpp"
 
 #include "log.hpp"
 
 namespace ui {
 
-TrackView::TrackView(Project* p)
+TrackView::TrackView(mojo::Project* p)
 	: m_project(p)
 	, m_canvas(TrackCanvasFactory::create (p))
 {
-	m_project->signal_track_added().connect ( sigc::mem_fun
-		       	(this, &TrackView::on_track_added));
+	App::get_session_bus().signal_track_added().connect (
+			sigc::mem_fun (this, &TrackView::on_track_added));
 
-	m_project->signal_track_removed().connect ( sigc::mem_fun
-		       	(this, &TrackView::on_track_removed));
+	App::get_session_bus().signal_track_removed().connect (
+			sigc::mem_fun (this, &TrackView::on_track_removed));
 
 	pack2 (*m_canvas);
 }
@@ -29,7 +29,7 @@ TrackView::~TrackView ()
 }
 
 void
-TrackView::on_track_added (Track* track)
+TrackView::on_track_added (mojo::Track* track)
 {
 	LOG;
 
@@ -42,7 +42,7 @@ TrackView::on_track_added (Track* track)
 }
 
 void
-TrackView::on_track_removed (Track* track)
+TrackView::on_track_removed (mojo::Track* track)
 {
 	LOG;
 }

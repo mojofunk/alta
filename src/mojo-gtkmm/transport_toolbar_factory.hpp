@@ -10,7 +10,7 @@ class Project;
 class TransportToolbarFactory
 {
 public:
-	static TransportToolbar* create (Project* proj);
+	static TransportToolbar* create (mojo::Project* proj);
 };
 
 } // namespace ui

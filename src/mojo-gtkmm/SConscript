@@ -23,7 +23,6 @@ bus.cpp
 default_transport_toolbar.cpp
 edit_window.cpp
 mojo.cpp
-project.cpp
 project_windows.cpp
 timers.cpp
 track_canvas.cpp

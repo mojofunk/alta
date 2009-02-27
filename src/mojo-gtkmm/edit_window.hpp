@@ -4,9 +4,10 @@
 
 #include "types.hpp"
 
+#include <mojo/mojo.hpp>
+
 namespace ui {
 
-class Project;
 class TransportToolbar;
 class TrackView;
 
@@ -14,7 +15,7 @@ class EditWindow
 {
 public:
 
-	EditWindow (Project* proj);
+	EditWindow (mojo::Project* proj);
 	
 	~EditWindow ();
 
@@ -36,7 +37,7 @@ private:
 
 private:
 
-	Project* m_project;
+	mojo::Project* m_project;
 
 	BuilderPtr m_builder;
 
