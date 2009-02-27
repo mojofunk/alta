@@ -12,7 +12,7 @@ def build(bld):
 	obj = bld.new_task_gen('cxx', 'program')
 	obj.find_sources_in_dirs('.')
 	obj.includes ='..'
-	obj.uselib ='GTKMM-2.4 GOOCANVASMM-1.0'
+	obj.uselib ='GTKMM-2.4 GOOCANVASMM-1.0 GTHREAD-2.0'
 	obj.uselib_local ='GLEAM MOJO'
 	obj.target = 'mojo-gtkmm'
 	#obj.name = 'MOJO-GTKMM'
