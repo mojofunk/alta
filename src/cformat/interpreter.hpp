@@ -3,6 +3,8 @@
 
 #include <string>
 
+#include <cstdio>
+
 #include <cformat/cformat_exception.hpp>
 #include <cformat/printf_format.hpp>
 
