@@ -25,6 +25,10 @@ public:
 	 */
 	static const std::string get_type_name (const std::type_info& info);
 
+	/**
+	 * Given a portable type name create a specific instance of that
+	 * type
+	 */
 	static boost::any create_type (const std::string& type_name);
 
 private:

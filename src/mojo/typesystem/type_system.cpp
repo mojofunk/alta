@@ -43,6 +43,7 @@ namespace mojo {
 
 TypeSystem* TypeSystem::s_type_system = 0;
 
+/* not thread safe */
 TypeSystemSP
 TypeSystem::init ()
 {
