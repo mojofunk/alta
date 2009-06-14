@@ -3,7 +3,9 @@
 
 #include <mojo/mojo-internal.hpp>
 
-#include "session_dispatcher.hpp"
+#include "session_worker.hpp"
+
+#include <glibmm/thread.h>
 
 namespace mojo {
 
@@ -15,7 +17,10 @@ struct SessionData
 
 	std::set<ProjectSP> projects;
 
-	SessionDispatcher dispatcher;
+	SessionWorker worker;
+
+	Glib::Thread* worker_thread;
+
 };
 
 } // namespace internal

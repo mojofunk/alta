@@ -33,9 +33,13 @@ public:
 
 private:
 
-        static void on_new_project (mojo::Project*);
+        static void on_project_added (mojo::Project*);
 
-        static void on_close_project (mojo::Project*);
+        static void on_project_removed (mojo::Project*);
+
+	static void add_project (mojo::Project*);
+
+	static void remove_project (mojo::Project*);
 
 	static AppData* s_data;
 

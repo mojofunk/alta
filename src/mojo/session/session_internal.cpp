@@ -7,21 +7,21 @@
 #include "null_deleter.hpp"
 #include "utils.hpp"
 
-#include <iostream>
+#include "log.hpp"
 
 namespace mojo {
 
 void
 Session::add_bus_internal (SessionBus* bus)
 {
-	std::cerr << "add_bus_internal: " << bus << std::endl;
+	LOG;
 	data->busses.insert (bus);
 }
 
 void
 Session::remove_bus_internal (SessionBus* bus)
 {
-	std::cerr << "remove_bus_internal: " << bus << std::endl;
+	LOG;
 	data->busses.erase (bus);
 }
 
@@ -29,7 +29,7 @@ void
 Session::new_project_internal ()
 {
 	ProjectSP pi(new Project);
-	std::cerr << "Project: " << pi.get() << std::endl;
+	LOG;
 
 	data->projects.insert (pi);
 
@@ -45,7 +45,7 @@ Session::open_project_internal (const std::string& project_file)
 {
 	ProjectSP pi(new Project);
 
-	std::cerr << "Project: " << pi.get() << std::endl;
+	LOG;
 	// load project state from project file
 
 	data->projects.insert (pi);
@@ -61,7 +61,7 @@ Session::open_project_internal (const std::string& project_file)
 void
 Session::close_project_internal (Project* p)
 {
-	std::cerr << "Project: " << p << std::endl;
+	LOG;
 	ProjectSP sp(p, internal::null_deleter());
 
 	//std::set<ProjectSP>::iterator i = data->projects.find (sp);
@@ -75,8 +75,7 @@ Session::close_project_internal (Project* p)
 
 	if (i == data->projects.end())
 	{
-		std::cerr << "project not found" << std::endl;
-		// send and error
+		// send an error
 		return;
 	}
 
@@ -86,16 +85,14 @@ Session::close_project_internal (Project* p)
 		(*i)->on_project_removed (sp.get());
 	}
 
-	std::cerr << "Project Removed: " << sp.get() << std::endl;
-
 	data->projects.erase (i);
 }
 
 void
 Session::add_track_internal (const TrackOptions& options)
 {
-	std::cerr << "Options type: " << track_type_to_string (options.type) << std::endl;
-	std::cerr << "Options count: " << options.count << std::endl;
+	//std::cerr << "Options type: " << track_type_to_string (options.type) << std::endl;
+	//std::cerr << "Options count: " << options.count << std::endl;
 }
 
 } // namespace mojo

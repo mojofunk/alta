@@ -13,6 +13,7 @@ class Bus : public mojo::SessionBus
 {
 public: // typedefs
 
+	typedef sigc::signal<void, mojo::Project*> project_signal_t;
 	typedef sigc::signal<void, mojo::Project*, mojo::Track*> track_signal_t;
 	typedef sigc::signal<void> transport_changed_signal_t;
 
@@ -23,6 +24,12 @@ public:
 
 public: // signal accessors
 
+	project_signal_t& signal_project_added ()
+	{ return m_signal_project_added; }
+
+	project_signal_t& signal_project_removed ()
+	{ return m_signal_project_removed; }
+
 	track_signal_t& signal_track_added ()
 	{ return m_signal_track_added; }
 
@@ -30,6 +37,9 @@ public: // signal accessors
 	{ return m_signal_track_removed; }
 
 private: // signals
+
+	project_signal_t m_signal_project_added;
+	project_signal_t m_signal_project_removed;
 
 	track_signal_t m_signal_track_added;
 	track_signal_t m_signal_track_removed;

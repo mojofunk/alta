@@ -1,20 +1,26 @@
 
-#ifndef MOJO_SESSION_DISPATCHER
-#define MOJO_SESSION_DISPATCHER
+#ifndef MOJO_SESSION_WORKER
+#define MOJO_SESSION_WORKER
 
 #include <queue>
 
-#include <gleam/manual_dispatcher.hpp>
 #include <boost/function.hpp>
+
+#include "worker.hpp"
 
 namespace mojo {
 
-class SessionDispatcher : public gleam::ManualDispatcher
+/**
+ * The SessionWorker class accepts worker functions to
+ * be called in another thread.
+ *
+ */
+class SessionWorker : public Worker
 {
 public:
 	typedef boost::function<void()> function_t;
 
-	SessionDispatcher ();
+	SessionWorker ();
 
 	void call_sync (const function_t& func);
 
@@ -22,8 +28,7 @@ public:
 
 private:
 
-	virtual void on_run ();
-	virtual void on_quit();
+	virtual void do_work ();
 
 	void queue (const function_t& func);
 

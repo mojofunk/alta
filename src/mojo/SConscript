@@ -46,8 +46,9 @@ project/track.cpp
 mojo_session_files = Split("""
 session/session_bus.cpp
 session/session.cpp
-session/session_dispatcher.cpp
 session/session_internal.cpp
+session/session_worker.cpp
+session/worker.cpp
 session/utils.cpp
 """)
 
