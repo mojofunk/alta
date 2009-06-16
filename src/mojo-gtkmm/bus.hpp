@@ -7,6 +7,8 @@
 #include <sigc++/trackable.h>
 #include <sigc++/signal.h>
 
+#include "dispatcher.hpp"
+
 namespace ui {
 
 class Bus : public mojo::SessionBus
@@ -45,6 +47,8 @@ private: // signals
 	track_signal_t m_signal_track_removed;
 
 	transport_changed_signal_t m_signal_transport_changed;
+
+	Dispatcher m_dispatcher;
 
 protected:
 

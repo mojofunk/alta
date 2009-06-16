@@ -19,14 +19,14 @@ void
 Bus::on_project_added (mojo::Project* p)
 {
 	LOG;
-	m_signal_project_added (p);
+	m_dispatcher.call_async (sigc::bind (m_signal_project_added, p));
 }
 
 void
 Bus::on_project_removed (mojo::Project* p)
 {
 	LOG;
-	m_signal_project_removed (p);
+	m_dispatcher.call_sync (sigc::bind (m_signal_project_removed, p));
 }
 
 void

@@ -16,5 +16,7 @@ main(int argc, char* argv[])
 
 	App::run ();
 
+	App::fini ();
+
 	return 0;
 }

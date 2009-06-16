@@ -14,14 +14,15 @@ public:
 
 	ProjectWindows (mojo::Project* p);
 
-        mojo::Project* get_project () const
+        mojo::Project const * get_project () const
         { return m_project; }
 
 private:
 
+        mojo::Project const * m_project;
+
 	EditWindow m_edit_window;
 
-        mojo::Project* m_project;
 };
 
 } // namespace ui

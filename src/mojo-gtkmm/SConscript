@@ -21,6 +21,7 @@ app.cpp
 audio_track_view_item.cpp
 bus.cpp
 default_transport_toolbar.cpp
+dispatcher.cpp
 edit_window.cpp
 main.cpp
 project_windows.cpp

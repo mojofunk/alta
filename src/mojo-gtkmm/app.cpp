@@ -19,10 +19,23 @@ App::init ()
 		s_data = new AppData;
 	}
 
-	s_data->m_session.add_bus(&s_data->m_bus);
 
 	s_data->m_bus.signal_project_added().connect (&App::on_project_added);
 	s_data->m_bus.signal_project_removed().connect (&App::on_project_removed);
+
+	// must add after connecting signals to ensure
+	// thread safety of signals?
+	s_data->m_session.add_bus(&s_data->m_bus);
+}
+
+void
+App::fini ()
+{
+	if (s_data)
+	{
+		delete s_data;
+	}
+
 }
 
 void
@@ -53,26 +66,8 @@ App::new_project ()
         s_data->m_session.new_project ();
 }
 
-// called from session worker thread
 void
 App::on_project_added (mojo::Project* p)
-{
-	LOG;
-
-	// TODO queue up project to be added async in ui thread
-}
-
-void
-App::on_project_removed (mojo::Project* p)
-{
-	LOG;
-
-	// TODO queue up project to be removed sync in ui thread
-
-}
-
-void
-App::add_project (mojo::Project* p)
 {
         boost::shared_ptr<ProjectWindows> project_windows(new ProjectWindows(p));
 
@@ -82,10 +77,9 @@ App::add_project (mojo::Project* p)
 }
 
 void
-App::remove_project (mojo::Project* p)
+App::on_project_removed (mojo::Project* p)
 {
 	LOG;
-
 	for(AppData::project_windows_set_t::iterator i = s_data->projects.begin();
 			i != s_data->projects.end(); ++i)
 	{
@@ -94,8 +88,10 @@ App::remove_project (mojo::Project* p)
 			s_data->projects.erase(i); 
 		}
 
-		if (s_data->projects.empty ())
+		if (s_data->projects.empty ()) {
+			// this is a problem
 			quit();
+		}
 	}
 }
 
