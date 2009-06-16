@@ -78,10 +78,10 @@ Session::close_project (Project* p)
 }
 
 void
-Session::add_track (const TrackOptions& options)
+Session::add_track (Project* p, const TrackOptions& options)
 {
 	LOG;
-	data->worker.call_async (boost::bind (&Session::add_track_internal, this, options));
+	data->worker.call_async (boost::bind (&Session::add_track_internal, this, p, options));
 }
 
 } // namespace mojo

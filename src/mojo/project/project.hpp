@@ -50,6 +50,10 @@ public: // convenience methodks
 
 	track_container_t get_tracks () const { return m_tracks; }
 
+	void add_track (const TrackSP&);
+
+	void remove_track (const TrackSP&);
+
 private: // member data
 
 	std::string                   m_name;

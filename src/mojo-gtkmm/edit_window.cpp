@@ -54,10 +54,8 @@ EditWindow::connect_file_menu_actions ()
 void
 EditWindow::connect_project_menu_actions ()
 {
-	/*
 	connect_action (m_builder, "add-audio-track-menuitem",
-		   	sigc::mem_fun (sigc::bind (&App::create_audio_track, m_project )));
-			*/
+			sigc::bind (sigc::ptr_fun (&App::add_track), m_project));
 }
 
 void

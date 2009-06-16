@@ -131,18 +131,22 @@ public: // public API
 	 * to maintain the list of tracks for a Project*
 	 *
 	 * Async
+	 *
+	 * This should be a more general mechanism to get properties
+	 *
 	 */
 	void request_tracks (Project*);
 
 	/**
+	 *
 	 * Async
 	 */
-	void add_track (const TrackOptions&);
+	void add_track (Project*, const TrackOptions&);
 
 	/**
 	 * Async
 	 */
-	void remove_track (Track*);
+	void remove_track (Project*, Track*);
 
 private:
 
@@ -154,7 +158,7 @@ private:
 	void new_project_internal ();
 	void open_project_internal (const std::string&);
 	void close_project_internal (Project*);
-	void add_track_internal (const TrackOptions&);
+	void add_track_internal (Project*, const TrackOptions&);
 
 };
 

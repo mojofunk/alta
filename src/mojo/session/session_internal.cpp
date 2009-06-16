@@ -89,10 +89,22 @@ Session::close_project_internal (Project* p)
 }
 
 void
-Session::add_track_internal (const TrackOptions& options)
+Session::add_track_internal (Project* p, const TrackOptions& options)
 {
 	//std::cerr << "Options type: " << track_type_to_string (options.type) << std::endl;
 	//std::cerr << "Options count: " << options.count << std::endl;
+
+	LOG;
+
+	TrackSP t(new AudioTrack);
+
+	p->add_track (t);
+
+	for (std::set<SessionBus*>::iterator i = data->busses.begin();
+			i != data->busses.end(); ++i)
+	{
+		(*i)->on_track_added (p, t.get());
+	}
 }
 
 } // namespace mojo

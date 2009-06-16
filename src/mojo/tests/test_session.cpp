@@ -62,7 +62,7 @@ private:
 		opt.type = MIDI;
 		opt.count = 12;
 
-		m_session->add_track (opt);
+		m_session->add_track (p, opt);
 
 		Glib::signal_idle().connect(sigc::bind_return(sigc::bind (sigc::mem_fun(*this, &TestBus::close_project), p), false));
 	}

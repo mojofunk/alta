@@ -38,13 +38,13 @@ Bus::on_project_saved (mojo::Project* p)
 void
 Bus::on_track_added (mojo::Project* p, mojo::Track* t)
 {
-
+	m_dispatcher.call_async (sigc::bind (m_signal_track_added, p, t));
 }
 
 void
 Bus::on_track_removed (mojo::Project* p, mojo::Track* t)
 {
-
+	m_dispatcher.call_sync (sigc::bind (m_signal_track_removed, p, t));
 }
 
 } // namespace ui

@@ -38,4 +38,16 @@ Project::new_midi_track (const std::string& name)
 	return track;
 }
 
+void
+Project::add_track (const TrackSP& track)
+{
+	m_tracks.insert(track);
+}
+
+void
+Project::remove_track (const TrackSP& track)
+{
+	m_tracks.erase(m_tracks.find(track));
+}
+
 } // namespace mojo

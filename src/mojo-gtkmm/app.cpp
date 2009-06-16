@@ -109,6 +109,14 @@ App::save_project (mojo::Project* p)
         s_data->m_session.save_project (p);
 }
 
+void
+App::add_track (mojo::Project* p)
+{
+	mojo::TrackOptions opt;
+	// bring up add audio track dialog
+	s_data->m_session.add_track (p, opt);
+}
+
 Bus&
 App::get_session_bus ()
 {

@@ -29,6 +29,10 @@ public:
 
 	static void close_project (mojo::Project*);
 
+	static void add_track (mojo::Project*);
+
+	static void remove_track (mojo::Project*, mojo::Track*);
+
 	static void show_about_window ();
 
 	static Bus& get_session_bus ();
