@@ -44,20 +44,18 @@ SessionWorker::do_work ()
 void
 SessionWorker::process_queue ()
 {
-	LOG;
+	Glib::Mutex::Lock guard(m_queue_lock);
 
-	for(;;)
-	{
-		function_t func;
+	while (!m_queue.empty()) {
 
-		{
-			Glib::Mutex::Lock guard(m_queue_lock);
-			func = m_queue.front ();
-			if (!func) break;
-			m_queue.pop ();
-		}
+		function_t func = m_queue.front ();
+		m_queue.pop ();
+
+		// unlock while executing
+		m_queue_lock.unlock ();
 		LOG;
 		func();
+		m_queue_lock.lock ();
 	}
 }
 
