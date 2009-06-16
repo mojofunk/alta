@@ -85,20 +85,13 @@ Dispatcher::process_queue ()
 
 	while (!m_queue.empty()) {
 
-		function_t func;
+		function_t func = m_queue.front ();
+		m_queue.pop ();
 
-		{
-			func = m_queue.front ();
-			m_queue.pop ();
-		}
-
+		// unlock while executing
 		m_queue_lock.unlock ();
-
-		if (func) {
-			LOG;
-			func();
-		}
-
+		LOG;
+		func();
 		m_queue_lock.lock ();
 	}
 }
