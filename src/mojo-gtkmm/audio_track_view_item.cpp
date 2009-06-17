@@ -8,7 +8,6 @@ AudioTrackViewItem::AudioTrackViewItem (mojo::Track* at)
 	, m_audio_track_list_item(new AudioTrackListItem(at))
 {
 
-
 }
 
 void

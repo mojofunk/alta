@@ -41,9 +41,9 @@ private: // member data
 
 	mojo::Project*          m_project;
 
-	TrackCanvasPtr          m_canvas;
-
 	TrackListPtr            m_track_list;
+
+	TrackCanvasPtr          m_canvas;
 	
 	TrackViewItemList       m_track_view_items;
 

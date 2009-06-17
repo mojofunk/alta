@@ -4,6 +4,8 @@
 
 #include <mojo/mojo.hpp>
 
+#include <gtkmm/label.h>
+
 #include "track_list_item.hpp"
 
 namespace ui {
@@ -17,6 +19,8 @@ public:
 private:
 
 	mojo::Track* m_track;
+
+	Gtk::Label m_track_name;
 
 };
 
