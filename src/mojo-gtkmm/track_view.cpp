@@ -33,12 +33,11 @@ TrackView::on_track_added (mojo::Project* p, mojo::Track* track)
 {
 	if (p != m_project) return;
 
-	LOG;
-
 	TrackViewItemSPtr tvi(TrackViewItemFactory::create (track));
 
 	if (tvi)
 	{
+		LOG;
 		m_track_view_items.push_back (tvi);
 	}
 }

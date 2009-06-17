@@ -148,6 +148,8 @@ public: // public API
 	 */
 	void remove_track (Project*, Track*);
 
+	static bool is_audio_track (Track*);
+
 private:
 
 	internal::SessionData *data;

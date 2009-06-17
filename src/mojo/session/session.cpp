@@ -84,4 +84,10 @@ Session::add_track (Project* p, const TrackOptions& options)
 	data->worker.call_async (boost::bind (&Session::add_track_internal, this, p, options));
 }
 
+bool
+Session::is_audio_track (Track* t)
+{
+	return dynamic_cast<AudioTrack*>(t);
+}
+
 } // namespace mojo

@@ -3,9 +3,8 @@
 
 namespace ui {
 
-AudioTrackViewItem::AudioTrackViewItem (AudioTrack* at)
+AudioTrackViewItem::AudioTrackViewItem (mojo::Track* at)
 	: m_audio_track(at)
-
 {
 
 
