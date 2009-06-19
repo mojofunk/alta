@@ -6,6 +6,7 @@
 namespace mojo {
 
 class SessionBus;
+class Property;
 
 namespace internal {
 

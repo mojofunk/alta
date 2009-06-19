@@ -62,6 +62,10 @@ protected:
 
 	virtual void on_track_removed (mojo::Project*, mojo::Track*);
 
+	virtual void on_project_property_changed(mojo::Project*, mojo::Property*);
+
+	virtual void on_track_property_changed(mojo::Project*, mojo::Track*, mojo::Property*);
+
 };
 
 } // namespace ui

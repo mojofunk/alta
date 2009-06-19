@@ -47,4 +47,16 @@ Bus::on_track_removed (mojo::Project* p, mojo::Track* t)
 	m_dispatcher.call_sync (sigc::bind (m_signal_track_removed, p, t));
 }
 
+void
+Bus::on_project_property_changed (mojo::Project*, mojo::Property*)
+{
+
+}
+
+void
+Bus::on_track_property_changed (mojo::Project*, mojo::Track*, mojo::Property*)
+{
+
+}
+
 } // namespace ui

@@ -37,11 +37,24 @@ protected:
 	 */
 	virtual void on_project_removed (Project*) = 0;
 
+	/*
+	 * This could be a property of the project
+	 */
 	virtual void on_project_saved (Project*) = 0;
 
 	virtual void on_track_added (Project*, Track*) = 0;
 
 	virtual void on_track_removed (Project*, Track*) = 0;
+
+	/**
+	 * There needs to be a way to listen to changes
+	 * in properties but as the types are opaque to the
+	 * client a separate function is required for each
+	 * type which is not ideal
+	 */
+	virtual void on_project_property_changed (Project*, Property* ) = 0;
+
+	virtual void on_track_property_changed (Project*, Track*, Property*) = 0;
 
 };
 
