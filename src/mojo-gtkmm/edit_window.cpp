@@ -56,6 +56,9 @@ EditWindow::connect_project_menu_actions ()
 {
 	connect_action (m_builder, "add-audio-track-menuitem",
 			sigc::bind (sigc::ptr_fun (&App::add_track), m_project));
+
+	connect_action (m_builder, "project-setup-menuitem",
+			sigc::bind (sigc::ptr_fun (&App::open_project_setup_dialog), m_project));
 }
 
 void

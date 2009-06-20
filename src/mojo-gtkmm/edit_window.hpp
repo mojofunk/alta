@@ -2,9 +2,9 @@
 #ifndef UI_EDIT_WINDOW
 #define UI_EDIT_WINDOW
 
-#include "types.hpp"
-
 #include <mojo/mojo.hpp>
+
+#include "types.hpp"
 
 namespace ui {
 

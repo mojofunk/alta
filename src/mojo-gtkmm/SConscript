@@ -25,6 +25,7 @@ default_transport_toolbar.cpp
 dispatcher.cpp
 edit_window.cpp
 main.cpp
+project_setup_dialog.cpp
 project_windows.cpp
 timers.cpp
 track_canvas.cpp

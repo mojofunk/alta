@@ -50,6 +50,16 @@ private:
 		BOOST_TEST_MESSAGE ("Track Removed");
 	}
 
+	void on_project_property_changed (Project*, Property* )
+	{
+		BOOST_TEST_MESSAGE ("Project Property Changed");
+	}
+
+	void on_track_property_changed (Project*, Track*, Property*)
+	{
+		BOOST_TEST_MESSAGE ("Track Property Changed");
+	}
+
 private:
 
 	void project_added (Project* p)

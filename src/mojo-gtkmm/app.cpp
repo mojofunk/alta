@@ -2,6 +2,7 @@
 #include <gtkmm.h>
 
 #include "app.hpp"
+#include "project_setup_dialog.hpp"
 
 #include "app_data.hpp"
 
@@ -115,6 +116,15 @@ App::add_track (mojo::Project* p)
 	mojo::TrackOptions opt;
 	// bring up add audio track dialog
 	s_data->m_session.add_track (p, opt);
+}
+
+void
+App::open_project_setup_dialog (mojo::Project* proj)
+{
+	LOG;
+	ProjectSetupDialog dialog(proj);
+
+	dialog.run();
 }
 
 Bus&
