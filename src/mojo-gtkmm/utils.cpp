@@ -28,7 +28,6 @@ connect_action (BuilderPtr& builder, const std::string& name,
 	assert (action);
 
 	action->signal_activate().connect (slot);
-
 }
 
 void

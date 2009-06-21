@@ -305,6 +305,21 @@
       Sample Edit Window
     </para>
   </section>
+
+  <section id="requirements-version-post-1.0.0">
+    <title>Requirements Version Post 1.0.0</title>
+    <para>
+	    These are requirements that will be implemented some time after the release of 1.0
+    </para>
+    <itemizedlist>
+	    <listitem>
+		    <para>
+			    I18N support
+		    </para>
+	    </listitem>
+    </itemizedlist>
+
+  </section>
 <!--
 	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
 		href="Some_Subsection.xml" />

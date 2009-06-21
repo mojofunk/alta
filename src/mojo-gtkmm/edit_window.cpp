@@ -12,11 +12,11 @@ EditWindow::EditWindow (mojo::Project* proj)
 	, m_transport_toolbar (Gtk::manage (TransportToolbarFactory::create (proj)))
 	, m_track_view (Gtk::manage (TrackViewFactory::create (proj)))
 {
-	const std::string ui_file = "data/gmojo.ui";
+	const std::string ui_file = "data/project_window.ui";
 
 	m_builder = Gtk::Builder::create_from_file (ui_file);
 
-	m_builder->get_widget ("editwindow", m_window);
+	m_builder->get_widget ("project-window", m_window);
 
 	connect_file_menu_actions ();
 
@@ -35,36 +35,36 @@ EditWindow::EditWindow (mojo::Project* proj)
 void
 EditWindow::connect_file_menu_actions ()
 {
-	connect_action (m_builder, "new-project-menuitem",
+	connect_action (m_builder, "project-new-action",
 		   	sigc::ptr_fun (App::new_project));
 
-	connect_action (m_builder, "open-project-menuitem",
+	connect_action (m_builder, "project-open-action",
 		   	sigc::ptr_fun (App::open_project));
 
-	connect_action (m_builder, "save-project-menuitem",
+	connect_action (m_builder, "project-save-action",
 			sigc::bind (sigc::ptr_fun (&App::save_project), m_project));
 
-	connect_action (m_builder, "close-project-menuitem",
+	connect_action (m_builder, "project-close-action",
 		   	sigc::bind (sigc::ptr_fun (&App::close_project), m_project));
 
-	connect_action (m_builder, "quit-menuitem",
+	connect_action (m_builder, "app-quit-action",
 		   	sigc::ptr_fun (App::quit));
 }
 
 void
 EditWindow::connect_project_menu_actions ()
 {
-	connect_action (m_builder, "add-audio-track-menuitem",
+	connect_action (m_builder, "audio-track-add-action",
 			sigc::bind (sigc::ptr_fun (&App::add_track), m_project));
 
-	connect_action (m_builder, "project-setup-menuitem",
+	connect_action (m_builder, "project-setup-action",
 			sigc::bind (sigc::ptr_fun (&App::open_project_setup_dialog), m_project));
 }
 
 void
 EditWindow::connect_view_menu_actions ()
 {
-	connect_toggleaction (m_builder, "fullscreen-menuitem", 
+	connect_toggleaction (m_builder, "project-window-fullscreen-toggleaction",
 	   	sigc::mem_fun (this, &EditWindow::on_fullscreen_toggled));
 }
 
