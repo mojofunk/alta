@@ -6,7 +6,7 @@ namespace ui {
 ProjectWindows::ProjectWindows (mojo::Project* proj)
 	:
 		m_project(proj)
-		, m_edit_window(proj)
+		, m_project_window(proj)
 {
 
 

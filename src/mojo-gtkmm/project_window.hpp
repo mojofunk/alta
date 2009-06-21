@@ -1,6 +1,6 @@
 
-#ifndef UI_EDIT_WINDOW
-#define UI_EDIT_WINDOW
+#ifndef UI_PROJECT_WINDOW
+#define UI_PROJECT_WINDOW
 
 #include <mojo/mojo.hpp>
 
@@ -11,13 +11,13 @@ namespace ui {
 class TransportToolbar;
 class TrackView;
 
-class EditWindow
+class ProjectWindow
 {
 public:
 
-	EditWindow (mojo::Project* proj);
+	ProjectWindow (mojo::Project* proj);
 	
-	~EditWindow ();
+	~ProjectWindow ();
 
 private:
 

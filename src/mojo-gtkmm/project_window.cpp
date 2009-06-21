@@ -1,13 +1,13 @@
 
 #include "app.hpp"
-#include "edit_window.hpp"
+#include "project_window.hpp"
 #include "utils.hpp"
 #include "transport_toolbar_factory.hpp"
 #include "track_view_factory.hpp"
 
 namespace ui {
 
-EditWindow::EditWindow (mojo::Project* proj)
+ProjectWindow::ProjectWindow (mojo::Project* proj)
 	: m_project(proj)
 	, m_transport_toolbar (Gtk::manage (TransportToolbarFactory::create (proj)))
 	, m_track_view (Gtk::manage (TrackViewFactory::create (proj)))
@@ -27,13 +27,13 @@ EditWindow::EditWindow (mojo::Project* proj)
 	pack_transport ();
 
 	m_window->signal_delete_event().connect
-		(sigc::mem_fun (this, &EditWindow::on_delete_event));
+		(sigc::mem_fun (this, &ProjectWindow::on_delete_event));
 
 	m_window->show_all ();
 }
 
 void
-EditWindow::connect_file_menu_actions ()
+ProjectWindow::connect_file_menu_actions ()
 {
 	connect_action (m_builder, "project-new-action",
 		   	sigc::ptr_fun (App::new_project));
@@ -52,7 +52,7 @@ EditWindow::connect_file_menu_actions ()
 }
 
 void
-EditWindow::connect_project_menu_actions ()
+ProjectWindow::connect_project_menu_actions ()
 {
 	connect_action (m_builder, "audio-track-add-action",
 			sigc::bind (sigc::ptr_fun (&App::add_track), m_project));
@@ -62,14 +62,14 @@ EditWindow::connect_project_menu_actions ()
 }
 
 void
-EditWindow::connect_view_menu_actions ()
+ProjectWindow::connect_view_menu_actions ()
 {
 	connect_toggleaction (m_builder, "project-window-fullscreen-toggleaction",
-	   	sigc::mem_fun (this, &EditWindow::on_fullscreen_toggled));
+	   	sigc::mem_fun (this, &ProjectWindow::on_fullscreen_toggled));
 }
 
 void
-EditWindow::pack_transport ()
+ProjectWindow::pack_transport ()
 {
 	Gtk::VBox* vbox1 = 0;
 
@@ -83,22 +83,22 @@ EditWindow::pack_transport ()
 
 }
 
-EditWindow::~EditWindow ()
+ProjectWindow::~ProjectWindow ()
 {
 	delete m_window;
 }
 
 bool
-EditWindow::on_delete_event (GdkEventAny*)
+ProjectWindow::on_delete_event (GdkEventAny*)
 {
 	App::close_project (m_project);
 	return true;
 }
 
 void
-EditWindow::on_fullscreen_toggled ()
+ProjectWindow::on_fullscreen_toggled ()
 {
-	ToggleActionPtr action = get_toggleaction (m_builder, "fullscreen-menuitem");
+	ToggleActionPtr action = get_toggleaction (m_builder, "project-window-fullscreen-toggleaction");
 
 	if (action->get_active ())
 		m_window->fullscreen ();

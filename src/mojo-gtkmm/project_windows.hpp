@@ -4,7 +4,7 @@
 
 #include <sigc++/trackable.h>
 
-#include "edit_window.hpp"
+#include "project_window.hpp"
 
 namespace ui {
 
@@ -21,7 +21,7 @@ private:
 
         mojo::Project const * m_project;
 
-	EditWindow m_edit_window;
+	ProjectWindow m_project_window;
 
 };
 

@@ -9,6 +9,7 @@ ActionPtr
 get_action (BuilderPtr& builder, const std::string& name)
 {
 	ObjectPtr obj = builder->get_object (name);
+	assert (obj);
 	return ActionPtr::cast_dynamic (obj);
 }
 
@@ -16,6 +17,7 @@ ToggleActionPtr
 get_toggleaction (BuilderPtr& builder, const std::string& name)
 {
 	ObjectPtr obj = builder->get_object (name);
+	assert (obj);
 	return ToggleActionPtr::cast_dynamic (obj);
 }
 
