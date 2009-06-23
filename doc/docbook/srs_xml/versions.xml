@@ -49,6 +49,16 @@
       </varlistentry>
 
       <varlistentry>
+        <term>Preferences Dialog</term>
+        <listitem>
+          <para>
+            The Preferences dialog contains preferences for the application
+            that aren't specific to a particular project
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term>Device Setup Dialog</term>
         <listitem>
           <para>
@@ -301,24 +311,23 @@
 
   <section id="requirements-version-0.6.0">
     <title>Requirements Version 0.X.0</title>
-    <para>
-      Sample Edit Window
-    </para>
+    <para></para>
   </section>
 
   <section id="requirements-version-post-1.0.0">
     <title>Requirements Version Post 1.0.0</title>
     <para>
-	    These are requirements that will be implemented some time after the release of 1.0
+      These are requirements that will be implemented some time after the
+      release of 1.0
     </para>
-    <itemizedlist>
-	    <listitem>
-		    <para>
-			    I18N support
-		    </para>
-	    </listitem>
-    </itemizedlist>
 
+    <itemizedlist>
+      <listitem>
+        <para>
+          I18N support
+        </para>
+      </listitem>
+    </itemizedlist>
   </section>
 <!--
 	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
