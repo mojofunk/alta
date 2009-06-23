@@ -44,6 +44,9 @@ ProjectWindow::connect_file_menu_actions ()
 	connect_action (m_builder, "project-save-action",
 			sigc::bind (sigc::ptr_fun (&App::save_project), m_project));
 
+	connect_action (m_builder, "open-preferences-action",
+			sigc::ptr_fun (&App::open_preferences_dialog));
+
 	connect_action (m_builder, "project-close-action",
 		   	sigc::bind (sigc::ptr_fun (&App::close_project), m_project));
 

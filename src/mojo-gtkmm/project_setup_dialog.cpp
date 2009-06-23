@@ -1,3 +1,5 @@
+#include <cassert>
+
 #include "project_setup_dialog.hpp"
 
 #include "log.hpp"

@@ -37,6 +37,8 @@ public:
 
 	static void open_project_setup_dialog (mojo::Project*);
 
+	static void open_preferences_dialog ();
+
 	static Bus& get_session_bus ();
 
 private:

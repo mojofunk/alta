@@ -3,6 +3,7 @@
 
 #include "app.hpp"
 #include "project_setup_dialog.hpp"
+#include "preferences_dialog.hpp"
 
 #include "app_data.hpp"
 
@@ -123,6 +124,15 @@ App::open_project_setup_dialog (mojo::Project* proj)
 {
 	LOG;
 	ProjectSetupDialog dialog(proj);
+
+	dialog.run();
+}
+
+void
+App::open_preferences_dialog ()
+{
+	PreferencesDialog dialog;
+	LOG;
 
 	dialog.run();
 }
