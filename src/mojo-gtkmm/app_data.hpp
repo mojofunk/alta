@@ -8,16 +8,16 @@
 
 #include <mojo/mojo.hpp>
 
-#include "project_windows.hpp"
+#include "project_objects.hpp"
 #include "bus.hpp"
 
 namespace ui {
 
 struct AppData
 {
-	typedef std::set< boost::shared_ptr<ProjectWindows> > project_windows_set_t;
+	typedef std::set< boost::shared_ptr<ProjectObjects> > project_objects_set_t;
 
-	project_windows_set_t projects;
+	project_objects_set_t project_objs;
 
         mojo::Session m_session;
         Bus     m_bus;

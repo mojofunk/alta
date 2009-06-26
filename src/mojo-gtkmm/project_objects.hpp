@@ -1,6 +1,6 @@
 
-#ifndef UI_PROJECT_WINDOWS
-#define UI_PROJECT_WINDOWS
+#ifndef UI_PROJECT_OBJECTS
+#define UI_PROJECT_OBJECTS
 
 #include <sigc++/trackable.h>
 
@@ -8,11 +8,15 @@
 
 namespace ui {
 
-class ProjectWindows : public sigc::trackable
+/**
+ * The ProjectObjects class contains all the objects in the UI
+ * that are associated with a project instance.
+ */
+class ProjectObjects : public sigc::trackable
 {
 public:
 
-	ProjectWindows (mojo::Project* p);
+	ProjectObjects (mojo::Project* p);
 
         mojo::Project const * get_project () const
         { return m_project; }

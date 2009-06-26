@@ -25,9 +25,9 @@ bus.cpp
 dispatcher.cpp
 main.cpp
 preferences_dialog.cpp
+project_objects.cpp
 project_setup_dialog.cpp
 project_window.cpp
-project_windows.cpp
 timers.cpp
 track_canvas.cpp
 track_canvas_item.cpp

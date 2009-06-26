@@ -71,9 +71,9 @@ App::new_project ()
 void
 App::on_project_added (mojo::Project* p)
 {
-        boost::shared_ptr<ProjectWindows> project_windows(new ProjectWindows(p));
+        boost::shared_ptr<ProjectObjects> po(new ProjectObjects(p));
 
-	s_data->projects.insert (project_windows);
+	s_data->project_objs.insert (po);
 
 	LOG;
 }
@@ -82,15 +82,15 @@ void
 App::on_project_removed (mojo::Project* p)
 {
 	LOG;
-	for(AppData::project_windows_set_t::iterator i = s_data->projects.begin();
-			i != s_data->projects.end(); ++i)
+	for(AppData::project_objects_set_t::iterator i = s_data->project_objs.begin();
+			i != s_data->project_objs.end(); ++i)
 	{
 		if (p == (*i)->get_project())
 		{
-			s_data->projects.erase(i); 
+			s_data->project_objs.erase(i);
 		}
 
-		if (s_data->projects.empty ()) {
+		if (s_data->project_objs.empty ()) {
 			// this is a problem
 			quit();
 		}
