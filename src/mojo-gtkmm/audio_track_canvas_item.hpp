@@ -12,9 +12,13 @@ namespace ui {
 
 class AudioTrackCanvasItem : public TrackCanvasItem
 {
-public:
+protected:
 
 	AudioTrackCanvasItem (mojo::Track*);
+
+public:
+
+	static Glib::RefPtr<AudioTrackCanvasItem> create (mojo::Track*);
 
 public:
 

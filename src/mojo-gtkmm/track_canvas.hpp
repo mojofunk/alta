@@ -2,8 +2,6 @@
 #ifndef UI_TRACK_CANVAS
 #define UI_TRACK_CANVAS
 
-#include <gtkmm/scrolledwindow.h>
-
 #include <goocanvasmm/canvas.h>
 
 #include "track_canvas_item.hpp"
@@ -18,9 +16,9 @@ public:
 
 public:
 
-	void add (TrackCanvasItem*);
+	void add (Glib::RefPtr<TrackCanvasItem>);
 
-	void remove (TrackCanvasItem*);
+	void remove (Glib::RefPtr<TrackCanvasItem>);
 
 };
 

@@ -12,16 +12,16 @@ TrackCanvas::TrackCanvas ()
 }
 
 void
-TrackCanvas::add (TrackCanvasItem* item)
+TrackCanvas::add (Glib::RefPtr<TrackCanvasItem> item)
 {
 	LOG;
 	Glib::RefPtr<Goocanvas::Item> ri = get_root_item();
 
-	ri->add_child (item->get_group ());
+	ri->add_child (Glib::RefPtr<Goocanvas::Item>::cast_dynamic(item));
 }
 
 void
-TrackCanvas::remove (TrackCanvasItem* item)
+TrackCanvas::remove (Glib::RefPtr<TrackCanvasItem> item)
 {
 
 }

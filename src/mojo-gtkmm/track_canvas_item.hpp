@@ -8,12 +8,11 @@
 
 namespace ui {
 
-class TrackCanvasItem
+class TrackCanvasItem : public Goocanvas::Group
 {
-public:
+protected:
 
 	TrackCanvasItem ();
-
 	virtual ~TrackCanvasItem ();
 
 public:
@@ -25,13 +24,6 @@ public:
 	virtual void set_selected (bool) = 0;
 
 	virtual bool get_selected () const = 0;
-
-	Glib::RefPtr<Goocanvas::Group> get_group ()
-	{ return m_group; }
-
-protected:
-
-	Glib::RefPtr<Goocanvas::Group> m_group;
 
 };
 

@@ -2,10 +2,11 @@
 #ifndef UI_TRACK_VIEW_ITEM
 #define UI_TRACK_VIEW_ITEM
 
+#include "track_canvas_item.hpp"
+
 namespace ui {
 
 class TrackListItem;
-class TrackCanvasItem;
 
 class TrackViewItem
 {
@@ -17,7 +18,7 @@ public:
 
 	virtual TrackListItem* get_track_list_item () = 0;
 
-	virtual TrackCanvasItem* get_track_canvas_item () = 0;
+	virtual Glib::RefPtr<TrackCanvasItem> get_track_canvas_item () = 0;
 
 };
 

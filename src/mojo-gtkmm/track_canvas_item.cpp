@@ -4,7 +4,6 @@
 namespace ui {
 
 TrackCanvasItem::TrackCanvasItem ()
-	: m_group (Goocanvas::Group::create())
 {
 
 }

@@ -6,7 +6,7 @@ namespace ui {
 AudioTrackViewItem::AudioTrackViewItem (mojo::Track* at)
 	: m_audio_track(at)
 	, m_audio_track_list_item(new AudioTrackListItem(at))
-	, m_audio_track_canvas_item(new AudioTrackCanvasItem(at))
+	, m_audio_track_canvas_item(AudioTrackCanvasItem::create(at))
 {
 
 }
@@ -25,10 +25,10 @@ AudioTrackViewItem::get_track_list_item ()
 
 }
 
-TrackCanvasItem*
+Glib::RefPtr<TrackCanvasItem>
 AudioTrackViewItem::get_track_canvas_item ()
 {
-	return m_audio_track_canvas_item.get();
+	return Glib::RefPtr<TrackCanvasItem>::cast_dynamic(m_audio_track_canvas_item);
 }
 
 } // namespace ui

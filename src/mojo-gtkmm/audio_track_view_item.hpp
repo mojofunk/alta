@@ -22,14 +22,14 @@ public:
 
 	virtual TrackListItem* get_track_list_item ();
 
-	virtual TrackCanvasItem* get_track_canvas_item ();
+	virtual Glib::RefPtr<TrackCanvasItem> get_track_canvas_item ();
 
 private:
 
 	mojo::Track* m_audio_track;
 
 	boost::shared_ptr<AudioTrackListItem> m_audio_track_list_item;
-	boost::shared_ptr<AudioTrackCanvasItem> m_audio_track_canvas_item;
+	Glib::RefPtr<AudioTrackCanvasItem> m_audio_track_canvas_item;
 
 };
 
