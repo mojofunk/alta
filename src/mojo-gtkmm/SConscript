@@ -22,7 +22,6 @@ audio_track_view_item.cpp
 audio_track_list_item.cpp
 audio_track_canvas_item.cpp
 bus.cpp
-default_transport_toolbar.cpp
 dispatcher.cpp
 main.cpp
 preferences_dialog.cpp
@@ -38,7 +37,6 @@ track_view_factory.cpp
 track_view.cpp
 track_view_item.cpp
 track_view_item_factory.cpp
-transport_toolbar_factory.cpp
 transport_toolbar.cpp
 utils.cpp
 """)

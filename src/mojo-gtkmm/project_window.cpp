@@ -2,14 +2,14 @@
 #include "app.hpp"
 #include "project_window.hpp"
 #include "utils.hpp"
-#include "transport_toolbar_factory.hpp"
+#include "transport_toolbar.hpp"
 #include "track_view_factory.hpp"
 
 namespace ui {
 
 ProjectWindow::ProjectWindow (mojo::Project* proj)
 	: m_project(proj)
-	, m_transport_toolbar (Gtk::manage (TransportToolbarFactory::create (proj)))
+	, m_transport_toolbar (Gtk::manage (new TransportToolbar(proj)))
 	, m_track_view (Gtk::manage (TrackViewFactory::create (proj)))
 {
 	const std::string ui_file = "data/project_window.ui";
