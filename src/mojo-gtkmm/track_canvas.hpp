@@ -10,7 +10,7 @@
 
 namespace ui {
 
-class TrackCanvas : public Gtk::ScrolledWindow
+class TrackCanvas : public Goocanvas::Canvas
 {
 public:
 
@@ -21,10 +21,6 @@ public:
 	void add (TrackCanvasItem*);
 
 	void remove (TrackCanvasItem*);
-
-private:
-
-	Goocanvas::Canvas m_canvas;
 
 };
 
