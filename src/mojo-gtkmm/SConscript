@@ -31,7 +31,6 @@ project_window.cpp
 project_windows.cpp
 timers.cpp
 track_canvas.cpp
-track_canvas_factory.cpp
 track_canvas_item.cpp
 track_list.cpp
 track_list_item.cpp
