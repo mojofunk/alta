@@ -8,6 +8,7 @@
 
 #include "track_view_item.hpp"
 #include "audio_track_list_item.hpp"
+#include "audio_track_canvas_item.hpp"
 
 namespace ui {
 
@@ -28,6 +29,7 @@ private:
 	mojo::Track* m_audio_track;
 
 	boost::shared_ptr<AudioTrackListItem> m_audio_track_list_item;
+	boost::shared_ptr<AudioTrackCanvasItem> m_audio_track_canvas_item;
 
 };
 

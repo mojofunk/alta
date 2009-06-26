@@ -20,6 +20,7 @@ mojo_gtkmm_source_files = Split("""
 app.cpp
 audio_track_view_item.cpp
 audio_track_list_item.cpp
+audio_track_canvas_item.cpp
 bus.cpp
 default_transport_toolbar.cpp
 dispatcher.cpp
@@ -31,6 +32,7 @@ project_windows.cpp
 timers.cpp
 track_canvas.cpp
 track_canvas_factory.cpp
+track_canvas_item.cpp
 track_list.cpp
 track_list_item.cpp
 track_view_factory.cpp
@@ -45,7 +47,7 @@ utils.cpp
 all_source_files = \
 mojo_gtkmm_source_files
 
-mojo_gtkmm = mojo_gtkmm_env.Program( env['VERSIONED_NAME'] + '-gtkmm', all_source_files)
+mojo_gtkmm = mojo_gtkmm_env.Program( env['VERSIONED_NAME'], all_source_files)
 
 Default(mojo_gtkmm)
 

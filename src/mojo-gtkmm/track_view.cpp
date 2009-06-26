@@ -43,7 +43,8 @@ TrackView::on_track_added (mojo::Project* p, mojo::Track* track)
 	{
 		LOG;
 		m_track_view_items.push_back (tvi);
-		m_track_list->pack_start(*tvi->get_track_list_item ());
+		m_track_list->add(tvi->get_track_list_item ());
+		m_canvas->add(tvi->get_track_canvas_item ());
 	}
 }
 

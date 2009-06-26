@@ -13,6 +13,12 @@ public:
 
 	TrackList ();
 
+public:
+
+	void add (TrackListItem* item);
+
+	void remove (TrackListItem* item);
+
 private:
 
 };

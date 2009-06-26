@@ -6,6 +6,8 @@
 
 #include <goocanvasmm/canvas.h>
 
+#include "track_canvas_item.hpp"
+
 namespace ui {
 
 class TrackCanvas : public Gtk::ScrolledWindow
@@ -16,6 +18,9 @@ public:
 
 public:
 
+	void add (TrackCanvasItem*);
+
+	void remove (TrackCanvasItem*);
 
 private:
 

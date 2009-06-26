@@ -6,6 +6,7 @@ namespace ui {
 AudioTrackViewItem::AudioTrackViewItem (mojo::Track* at)
 	: m_audio_track(at)
 	, m_audio_track_list_item(new AudioTrackListItem(at))
+	, m_audio_track_canvas_item(new AudioTrackCanvasItem(at))
 {
 
 }
@@ -27,7 +28,7 @@ AudioTrackViewItem::get_track_list_item ()
 TrackCanvasItem*
 AudioTrackViewItem::get_track_canvas_item ()
 {
-	return 0;
+	return m_audio_track_canvas_item.get();
 }
 
 } // namespace ui

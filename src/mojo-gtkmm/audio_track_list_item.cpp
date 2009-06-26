@@ -11,4 +11,28 @@ AudioTrackListItem::AudioTrackListItem (mojo::Track* t)
 	show();
 }
 
+void
+AudioTrackListItem::set_height ()
+{
+
+}
+
+uint32_t
+AudioTrackListItem::get_height () const
+{
+
+}
+
+void
+AudioTrackListItem::set_selected (bool)
+{
+
+}
+
+bool
+AudioTrackListItem::get_selected () const
+{
+
+}
+
 } // namespace ui

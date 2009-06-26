@@ -16,6 +16,16 @@ public:
 
 	AudioTrackListItem (mojo::Track*);
 
+public: // TrackListItem interface
+
+	virtual void set_height ();
+
+	virtual uint32_t get_height () const;
+
+	virtual void set_selected (bool);
+
+	virtual bool get_selected () const;
+
 private:
 
 	mojo::Track* m_track;
