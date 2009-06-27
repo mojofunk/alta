@@ -2,11 +2,15 @@
 #ifndef UI_PROJECT_OBJECTS
 #define UI_PROJECT_OBJECTS
 
+#include <mojo/mojo.hpp>
+
+#include <boost/shared_ptr.hpp>
+
 #include <sigc++/trackable.h>
 
-#include "project_window.hpp"
-
 namespace ui {
+
+class ProjectWindow;
 
 /**
  * The ProjectObjects class contains all the objects in the UI
@@ -25,7 +29,7 @@ private:
 
         mojo::Project const * m_project;
 
-	ProjectWindow m_project_window;
+	boost::shared_ptr<ProjectWindow> m_project_window;
 
 };
 
