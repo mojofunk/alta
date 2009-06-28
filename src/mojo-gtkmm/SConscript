@@ -24,13 +24,16 @@ audio_track_canvas_item.cpp
 bus.cpp
 dispatcher.cpp
 main.cpp
+object_selection_tool.cpp
 preferences_dialog.cpp
 project_objects.cpp
 project_setup_dialog.cpp
 project_window.cpp
 timers.cpp
+toolkit.cpp
 track_canvas.cpp
 track_canvas_item.cpp
+track_canvas_toolkit.cpp
 track_list.cpp
 track_list_item.cpp
 track_view_factory.cpp
