@@ -63,6 +63,7 @@
                         <property name="visible">True</property>
                         <property name="use_action_appearance">True</property>
                         <property name="related_action">project-save-as-action</property>
+                        <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                       </object>
                     </child>
@@ -182,6 +183,48 @@
               </object>
             </child>
             <child>
+              <object class="GtkMenuItem" id="media-menuitem">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Media</property>
+                <property name="use_underline">True</property>
+                <child type="submenu">
+                  <object class="GtkMenu" id="menu6">
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="GtkImageMenuItem" id="open-pool-menuitem">
+                        <property name="visible">True</property>
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">open-pool-action</property>
+                        <property name="use_stock">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="import-medium-menuitem">
+                        <property name="visible">True</property>
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">import-medium-action</property>
+                        <property name="use_stock">True</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkMenuItem" id="transport-menuitem">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Transport</property>
+                <property name="use_underline">True</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkMenuItem" id="devices-menuitem">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Devices</property>
+                <property name="use_underline">True</property>
+              </object>
+            </child>
+            <child>
               <object class="GtkMenuItem" id="menuitem3">
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">_View</property>
@@ -282,5 +325,14 @@
     <property name="label">Preferences</property>
     <property name="tooltip">Open the Preferences Dialog</property>
     <property name="stock_id">gtk-preferences</property>
+  </object>
+  <object class="GtkAction" id="open-pool-action">
+    <property name="label">Open Pool</property>
+    <property name="tooltip">Open the Pool Window</property>
+    <property name="stock_id">gtk-open</property>
+  </object>
+  <object class="GtkAction" id="import-medium-action">
+    <property name="label">Import Medium</property>
+    <property name="tooltip">Import Media files into Project Pool</property>
   </object>
 </interface>
