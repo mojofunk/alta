@@ -23,6 +23,7 @@ audio_track_list_item.cpp
 audio_track_canvas_item.cpp
 bus.cpp
 dispatcher.cpp
+import_dialog.cpp
 main.cpp
 object_selection_tool.cpp
 preferences_dialog.cpp

@@ -47,6 +47,9 @@ ProjectWindow::connect_file_menu_actions ()
 	connect_action (m_builder, "open-preferences-action",
 			sigc::ptr_fun (&App::open_preferences_dialog));
 
+	connect_action (m_builder, "import-audio-action",
+			sigc::ptr_fun (&App::open_import_dialog));
+
 	connect_action (m_builder, "project-close-action",
 		   	sigc::bind (sigc::ptr_fun (&App::close_project), m_project));
 

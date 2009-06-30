@@ -4,6 +4,7 @@
 #include "app.hpp"
 #include "project_setup_dialog.hpp"
 #include "preferences_dialog.hpp"
+#include "import_dialog.hpp"
 
 #include "app_data.hpp"
 
@@ -132,6 +133,15 @@ void
 App::open_preferences_dialog ()
 {
 	PreferencesDialog dialog;
+	LOG;
+
+	dialog.run();
+}
+
+void
+App::open_import_dialog ()
+{
+	ImportDialog dialog;
 	LOG;
 
 	dialog.run();

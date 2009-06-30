@@ -39,6 +39,8 @@ public:
 
 	static void open_preferences_dialog ();
 
+	static void open_import_dialog ();
+
 	static Bus& get_session_bus ();
 
 private:
