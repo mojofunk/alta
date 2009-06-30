@@ -2,7 +2,7 @@
 #ifndef UI_TOOLKIT
 #define UI_TOOLKIT
 
-#include <set>
+#include <list>
 
 #include <boost/shared_ptr.hpp>
 
@@ -15,7 +15,7 @@ class Toolkit
 {
 public: // typedefs
 
-	typedef std::set<ToolSP> tool_set_t;
+	typedef std::list<ToolSP> tool_list_t;
 
 public:
 
@@ -23,7 +23,7 @@ public:
 
 public: // API
 
-	tool_set_t get_tools () const
+	tool_list_t get_tools () const
 	{ return m_tools; }
 
 	ToolSP get_current_tool () const
@@ -40,7 +40,7 @@ protected:
 
 	ToolSP m_current_tool;
 
-	tool_set_t m_tools;
+	tool_list_t m_tools;
 
 };
 
