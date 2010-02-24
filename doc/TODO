@@ -73,7 +73,7 @@ There must be able to be more than one graph per process
 
 A graph contains a number of nodes
 
-The graph cannot have parallel edges between nodes
+The graph cannot have parallel edges between nodes?
 
 Can a graph contain isolated nodes(no edges)?
 
