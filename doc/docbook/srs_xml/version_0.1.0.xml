@@ -1,0 +1,180 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+
+<!ENTITY % BOOK_ENTITIES SYSTEM "./entities.ent">
+
+%BOOK_ENTITIES;
+
+]>
+
+<section id="sn-requirements-version-0.1.0">
+    <title>Requirements Version 0.1.0</title>
+    <para>
+      The goal is to implement enough functionality so that the application
+      is useful for playing back audio files. The first version is a marking
+      point where some of the basic application design is worked out, which
+      includes communication between GUI and backend, data structures for
+      the project, serialisation and the audio engine.
+    </para>
+
+    <variablelist>
+      <title>Windows and Dialogs</title>
+      <varlistentry>
+        <term>Project Window</term>
+        <listitem>
+          <para>
+            The Project window is the main window in &GMOJO_APP; where
+	    editing takes place. In this version the Project window will contain
+	    a menu, a Transport controller and a canvas containing Tracks.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Project Setup Dialog</term>
+        <listitem>
+          <para>
+            The Project setup dialog contains the general settings for the
+            project. The only field in the project setup dialog that will be
+            used in the first version is the sample rate.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Preferences Dialog</term>
+        <listitem>
+          <para>
+            The Preferences dialog contains preferences for the application
+	    that aren't specific to a particular project. what preferences will
+	    the this version support?
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Device Setup Dialog</term>
+        <listitem>
+          <para>
+            The device setup dialog is where the audio driver is selected
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Connections window</term>
+        <listitem>
+          <para>
+            The connections window is where input and output busses are
+            defined to route audio between &GMOJO_APP; and the audio
+            hardware.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <itemizedlist>
+      <title>Requirements</title>
+      <listitem>
+        <para>
+          Create new project
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Save Project state to file
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Open Project state from file
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Open multiple projects at once.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Audition audio files
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Import audio files into the project.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Add audio tracks to project
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Display audio tracks in project in Edit Window
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Select audio tracks
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Remove selected audio tracks from project
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Add an audio file to an audio track as an audio event
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Display audio event as a waveform view of audio data in an audio
+          track
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Select audio events
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Remove selected audio events from audio tracks
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          playback audio tracks
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Control the volume of individual tracks.
+        </para>
+      </listitem>
+    </itemizedlist>
+<!--
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="Some_Subsection.xml" />
+	-->
+</section>
