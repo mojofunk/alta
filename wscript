@@ -80,11 +80,12 @@ def configure(conf):
 	deps = \
 	{
 		'glib-2.0'             : '2.10.1',
+		'gmodule-2.0'          : '2.10.1',
 		'gthread-2.0'          : '2.10.1',
 		'gtk+-2.0'             : '2.8.1',
 		'glibmm-2.4'           : '2.8.1',
 		'gtkmm-2.4'            : '2.8.1',
-		'goocanvasmm-1.0'      : '0.4.0',
+		'goocanvasmm-1.0'      : '0.14.0',
 #		'libxml-2.0'           : '2.6.0',
 #		'samplerate'           : '0.1.0',
 #		'raptor'               : '1.4.2',
@@ -106,6 +107,7 @@ def configure(conf):
         #        conf.env.append_value('CPPPATH', os.path.join (os.getenv('MINGW_ROOT'), 'include', 'pthread'))
 
 	conf.check(lib='boost_filesystem')
+	conf.check(lib='boost_system')
 
 	defines=[ 'HAVE_CONFIG_H'
 		, '_REENTRANT'
