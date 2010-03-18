@@ -85,6 +85,7 @@ def configure(conf):
 		'gtk+-2.0'             : '2.8.1',
 		'glibmm-2.4'           : '2.8.1',
 		'gtkmm-2.4'            : '2.8.1',
+		'goocanvas'            : '0.14',
 		'goocanvasmm-1.0'      : '0.14.0',
 #		'libxml-2.0'           : '2.6.0',
 #		'samplerate'           : '0.1.0',
