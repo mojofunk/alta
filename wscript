@@ -107,9 +107,14 @@ def configure(conf):
         #        conf.check(lib='pthreadGC2')
         #        conf.env.append_value('CPPPATH', os.path.join (os.getenv('MINGW_ROOT'), 'include', 'pthread'))
 
-	conf.check(lib='boost_filesystem')
-	conf.check(lib='boost_system')
-
+        if Options.platform == 'win32':
+		# depend on F13 mingw lib names for now
+                conf.check(lib='boost_filesystem-gcc44-mt-1_41', uselib_store='BOOST_FILESYSTEM')
+                conf.check(lib='boost_system-gcc44-mt-1_41', uselib_store='BOOST_SYSTEM')
+	else:
+                conf.check(lib='boost_filesystem')
+                conf.check(lib='boost_system')
+	
 	defines=[ 'HAVE_CONFIG_H'
 		, '_REENTRANT'
 		, '_LARGEFILE_SOURCE'

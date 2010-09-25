@@ -14,4 +14,4 @@ export LINK_CXX=$HOST-g++
 export WINRC=$HOST-windres
 
 ./waf configure --with-target-platform=win32
-./waf -v -j1 "$@"
+./waf -v -j4 "$@"
