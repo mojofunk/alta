@@ -19,7 +19,7 @@ cp -r $MINGW_ROOT/lib/gtk-2.0 $WIN32_ROOT/lib
 
 mkdir -p $WIN32_ROOT/lib/pango/1.6.0/modules
 cp -r $MINGW_ROOT/lib/pango/1.6.0/modules/*.dll $WIN32_ROOT/lib/pango/1.6.0/modules
-cp pango.modules $WIN32_ROOT/etc/pango
+cp $MINGW_ROOT/etc/pango/pango.modules $WIN32_ROOT/etc/pango
 
 DLLS='
 libintl-8.dll

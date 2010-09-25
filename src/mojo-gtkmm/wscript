@@ -14,5 +14,5 @@ def build(bld):
 	obj.includes ='..'
 	obj.uselib ='GTKMM-2.4 GOOCANVASMM-1.0 GTHREAD-2.0'
 	obj.uselib_local ='GLEAM MOJO'
-	obj.target = 'mojo-gtkmm'
+	obj.target = bld.env['APPNAME']
 	#obj.name = 'MOJO-GTKMM'

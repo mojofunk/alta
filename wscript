@@ -56,6 +56,7 @@ def _define_paths(conf):
 
 def configure(conf):
 
+	conf.check_tool('misc')
 	conf.check_tool('compiler_cxx')
 	conf.check_tool('compiler_cc')
 
@@ -63,6 +64,7 @@ def configure(conf):
                 Options.platform = Options.options.target_platform
 
         conf.define('TARGET_PLATFORM', Options.platform)
+        conf.env['APPNAME'] = APPNAME
 
 	conf.check(function_name='getmntent', header_name='mntent.h')
 
@@ -136,3 +138,9 @@ def configure(conf):
 def build(bld):
 	# process subfolders from here
 	bld.add_subdirs('src')
+
+	obj = bld(
+                features = 'subst',
+                source   = 'scripts/gmojo_env.sh.in',
+                target   = 'gmojo_env.sh')
+        obj.dict     = {'BUILD_DIR': bld.path.abspath(bld.env), 'APPNAME': bld.env['APPNAME']}

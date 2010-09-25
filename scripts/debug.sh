@@ -1,4 +1,4 @@
 #!/bin/sh
 
-. ./gmojo_env.sh
+. build/default/gmojo_env.sh
 exec nemiver $EXECUTABLE "$@"
