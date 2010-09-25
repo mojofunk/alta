@@ -111,3 +111,4 @@ The test suite must be able to measure thread context switching time.
 The test suite must be able to test the effect cache size has on processing
 performance.
 
+Get rid of scons build
