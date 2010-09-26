@@ -9,13 +9,15 @@ def configure(conf):
 	print "configure mojo"
 
 def build(bld):
-        obj = bld.new_task_gen('cxx', 'shlib')
-	obj.find_sources_in_dirs('. project session rtg typesystem utils app core fs')
-	obj.includes ='. ..'
-	obj.uselib = ['GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
-	obj.uselib_local ='GLEAM'
-	obj.target = 'mojo'
-	obj.name = 'MOJO'
+	mojo_lib = bld(
+		features = [ 'cxx', 'cshlib' ],
+		includes ='. ..',
+		uselib = ['GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM'],
+		uselib_local ='GLEAM',
+		target = 'mojo',
+		name = 'MOJO')
+
+	mojo_lib.find_sources_in_dirs('. project session rtg typesystem utils app core fs')
 
         if bld.env['BUILD_TESTS']:
                 bld.add_subdirs('tests')
