@@ -3,10 +3,10 @@
 # Tim Mayberry, 2008
 
 subdirs='''
-gleam
-mojo
-mojo-gtkmm
-modules
+ArchiveModule
+AudioFileModule
+AudioDriverModule
+AudioEffectModule
 '''
 
 def configure(conf):

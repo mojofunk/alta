@@ -89,13 +89,13 @@ def configure(conf):
 		'gtkmm-2.4'            : '2.8.1',
 		'goocanvas'            : '0.14',
 		'goocanvasmm-1.0'      : '0.14.0',
+#		'sndfile'              : '1.0.18'
 #		'libxml-2.0'           : '2.6.0',
 #		'samplerate'           : '0.1.0',
 #		'raptor'               : '1.4.2',
 #		'lrdf'                 : '0.4.0',
 #		'jack'                 : '0.109.0',
 #		'libgnomecanvas-2.0'   : '2.0',
-#		'sndfile'              : '1.0.18'
 	}
 
 	_check_required_deps(conf, deps)

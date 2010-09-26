@@ -3,10 +3,8 @@
 # Tim Mayberry, 2008
 
 subdirs='''
-gleam
-mojo
-mojo-gtkmm
-modules
+dummy
+xml
 '''
 
 def configure(conf):

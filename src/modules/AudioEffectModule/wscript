@@ -3,10 +3,7 @@
 # Tim Mayberry, 2008
 
 subdirs='''
-gleam
-mojo
-mojo-gtkmm
-modules
+ladspa
 '''
 
 def configure(conf):
