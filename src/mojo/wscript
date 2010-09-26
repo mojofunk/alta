@@ -11,7 +11,8 @@ def configure(conf):
 def build(bld):
 	mojo_lib = bld(
 		features = [ 'cxx', 'cshlib' ],
-		includes ='. ..',
+		includes = '. ..',
+		export_incdirs = '..', # this should probably be .
 		uselib = ['GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM'],
 		uselib_local ='GLEAM',
 		target = 'mojo',

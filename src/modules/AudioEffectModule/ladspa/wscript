@@ -11,7 +11,7 @@ def configure(conf):
 def build(bld):
         obj = bld.new_task_gen('cxx', 'shlib')
 	obj.find_sources_in_dirs('.')
-	obj.includes ='. ../../../'
+	obj.includes ='.'
 	obj.uselib = ['LADSPA']
 	obj.uselib_local ='MOJO'
 	obj.target = 'ladspa_audio_effect'
