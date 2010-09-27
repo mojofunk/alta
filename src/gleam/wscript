@@ -13,13 +13,16 @@ def configure(conf):
 	pass
 
 def build(bld):
-	obj = bld.new_task_gen('cxx', 'shlib')
+	gleam_lib = bld(
+		features = [ 'cxx', 'cshlib' ],
+		includes = '. ..',
+		export_incdirs = '..', # this should probably be .
+		uselib = ['GLIBMM-2.4'],
+		target = 'gleam',
+		name = 'GLEAM')
+
 	exclude_files=posix_files
-	obj.find_sources_in_dirs('.', excludes=exclude_files)
-	obj.includes ='. ..'
-	obj.uselib ='GLIBMM-2.4'
-	obj.target = 'gleam'
-	obj.name = 'GLEAM'
+	gleam_lib.find_sources_in_dirs('.', excludes=exclude_files)
 
         if bld.env['BUILD_TESTS']:
                 bld.add_subdirs('tests')
