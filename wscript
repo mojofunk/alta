@@ -81,6 +81,7 @@ def configure(conf):
 
 	deps = \
 	{
+		'cairo'                : '1.8',
 		'glib-2.0'             : '2.10.1',
 		'gmodule-2.0'          : '2.10.1',
 		'gthread-2.0'          : '2.10.1',

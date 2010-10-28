@@ -7,6 +7,9 @@ AudioFile modules:
 	MadAudioFileModule
 	CoreaudioAudioFileModule
 
+MidiFile modules:
+	JackMidiModule
+	
 AudioEffectModule:
 	LADSPAEffectModule
 	LV2EffectModule

@@ -16,11 +16,14 @@ public: // Tool interface
 
 	const std::string get_name() const;
 
-	virtual bool on_button_press (Goocanvas::Canvas*, Glib::RefPtr<Goocanvas::Item>, GdkEventButton*);
-
-	virtual bool on_button_release (Goocanvas::Canvas*, Glib::RefPtr<Goocanvas::Item>, GdkEventButton*);
-
-	virtual bool on_motion (Goocanvas::Canvas*, Glib::RefPtr<Goocanvas::Item>, GdkEventMotion*);
+	bool on_item_button_press_event (Glib::RefPtr<Goocanvas::Item>, GdkEventButton*);
+	bool on_item_button_release_event (Glib::RefPtr<Goocanvas::Item>, GdkEventButton*);
+	bool on_item_motion_notify_event (Glib::RefPtr<Goocanvas::Item>, GdkEventMotion*);
+	bool on_item_scroll_event (Glib::RefPtr<Goocanvas::Item>, GdkEventScroll*);
+	bool on_item_key_press_event (Glib::RefPtr<Goocanvas::Item>, GdkEventKey*);
+	bool on_item_key_release_event (Glib::RefPtr<Goocanvas::Item>, GdkEventKey*);
+	bool on_item_left_event (Glib::RefPtr<Goocanvas::Item>, GdkEventCrossing*);
+	bool on_item_entered_event (Glib::RefPtr<Goocanvas::Item>, GdkEventCrossing*);
 
 };
 
