@@ -22,6 +22,61 @@
     the design has been refined over many versions. Once the application is
     complete enough to be useful then differenciation may occur.
   </para>
+
+  <variablelist>
+    <title>Windows and Dialogs</title>
+    <varlistentry>
+      <term>Project Window</term>
+      <listitem>
+        <para>
+          The Project window is the main window in &GMOJO_APP; where editing
+          takes place. In this version the Project window will contain a
+          menu, a Transport controller and a canvas containing Tracks.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Project Setup Dialog</term>
+      <listitem>
+        <para>
+          The Project setup dialog contains the general settings for the
+          project. The only field in the project setup dialog that will be
+          used in the first version is the sample rate.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Preferences Dialog</term>
+      <listitem>
+        <para>
+          The Preferences dialog contains preferences for the application
+          that aren't specific to a particular project. what preferences
+          will the this version support?
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Device Setup Dialog</term>
+      <listitem>
+        <para>
+          The device setup dialog is where the audio driver is selected
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Connections window</term>
+      <listitem>
+        <para>
+          The connections window is where input and output busses are
+          defined to route audio between &GMOJO_APP; and the audio hardware.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
 	  href="version_0.1.0.xml" />
   <section id="requirements-version-0.2.0">
@@ -82,6 +137,18 @@
     </para>
 
     <itemizedlist>
+      <listitem>
+        <para>
+          Select audio events
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Remove selected audio events from audio tracks
+        </para>
+      </listitem>
+
       <listitem>
         <para>
           Move selected audio events to new positions on a tracks timeline

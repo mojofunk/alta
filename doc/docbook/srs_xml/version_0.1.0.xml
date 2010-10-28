@@ -18,61 +18,6 @@
     project, serialisation and the audio engine.
   </para>
 
-  <variablelist>
-    <title>Windows and Dialogs</title>
-    <varlistentry>
-      <term>Project Window</term>
-      <listitem>
-        <para>
-          The Project window is the main window in &GMOJO_APP; where editing
-          takes place. In this version the Project window will contain a
-          menu, a Transport controller and a canvas containing Tracks.
-        </para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Project Setup Dialog</term>
-      <listitem>
-        <para>
-          The Project setup dialog contains the general settings for the
-          project. The only field in the project setup dialog that will be
-          used in the first version is the sample rate.
-        </para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Preferences Dialog</term>
-      <listitem>
-        <para>
-          The Preferences dialog contains preferences for the application
-          that aren't specific to a particular project. what preferences
-          will the this version support?
-        </para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Device Setup Dialog</term>
-      <listitem>
-        <para>
-          The device setup dialog is where the audio driver is selected
-        </para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Connections window</term>
-      <listitem>
-        <para>
-          The connections window is where input and output busses are
-          defined to route audio between &GMOJO_APP; and the audio hardware.
-        </para>
-      </listitem>
-    </varlistentry>
-  </variablelist>
-
   <itemizedlist>
     <title>Requirements</title>
     <listitem>
@@ -119,7 +64,7 @@
 
     <listitem>
       <para>
-        Display audio tracks in project in Edit Window
+        Display audio tracks in Project Window
       </para>
     </listitem>
 
@@ -145,18 +90,6 @@
       <para>
         Display audio event as a waveform view of audio data in an audio
         track
-      </para>
-    </listitem>
-
-    <listitem>
-      <para>
-        Select audio events
-      </para>
-    </listitem>
-
-    <listitem>
-      <para>
-        Remove selected audio events from audio tracks
       </para>
     </listitem>
 
