@@ -1,14 +1,15 @@
 
-#include <ui/utils/window_title.hpp>
+#include "window_title.hpp"
+
+using std::string;
 
 namespace {
-	
-// I don't know if this should be translated.
+
 const char* const title_separator = " - ";
 
 } // anonymous namespace
 
-namespace gmojo {
+namespace ui {
 
 WindowTitle::WindowTitle(const string& title)
 	:
@@ -23,4 +24,4 @@ WindowTitle::operator+= (const string& element)
 	m_title = m_title + title_separator + element;
 }
 
-} // namespace gmojo
+} // namespace ui
