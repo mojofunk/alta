@@ -1,5 +1,5 @@
-#ifndef MOJO_BUS
-#define MOJO_BUS
+#ifndef MOJO_EVENT_HANDLER
+#define MOJO_EVENT_HANDLER
 
 #include "types.hpp"
 #include "forward.hpp"
@@ -7,7 +7,7 @@
 namespace mojo {
 
 /**
- * The SessionBus interface is how the Session communicates
+ * The SessionEventHandler interface is how the Session communicates
  * with clients.
  *
  * The virtual calls are made by the Session in the
@@ -17,12 +17,12 @@ namespace mojo {
  * by another thread.
  *
  */
-class SessionBus
+class SessionEventHandler
 {
 public:
 
-	SessionBus();
-	virtual ~SessionBus();
+	SessionEventHandler();
+	virtual ~SessionEventHandler();
 
 protected:
 

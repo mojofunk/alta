@@ -9,7 +9,7 @@
 #include <mojo/mojo.hpp>
 
 #include "project_objects.hpp"
-#include "bus.hpp"
+#include "session_event_handler.hpp"
 
 namespace ui {
 
@@ -20,7 +20,7 @@ struct AppData
 	project_objects_set_t project_objs;
 
         mojo::Session m_session;
-        Bus     m_bus;
+        SessionEventHandler     m_session_event_handler;
 };
 
 } // namespace ui

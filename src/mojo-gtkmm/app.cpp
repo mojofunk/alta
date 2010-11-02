@@ -23,12 +23,12 @@ App::init ()
 	}
 
 
-	s_data->m_bus.signal_project_added().connect (&App::on_project_added);
-	s_data->m_bus.signal_project_removed().connect (&App::on_project_removed);
+	s_data->m_session_event_handler.signal_project_added().connect (&App::on_project_added);
+	s_data->m_session_event_handler.signal_project_removed().connect (&App::on_project_removed);
 
 	// must add after connecting signals to ensure
 	// thread safety of signals?
-	s_data->m_session.add_bus(&s_data->m_bus);
+	s_data->m_session.add_event_handler(&s_data->m_session_event_handler);
 }
 
 void
@@ -147,10 +147,10 @@ App::open_import_dialog ()
 	dialog.run();
 }
 
-Bus&
-App::get_session_bus ()
+SessionEventHandler&
+App::get_session_event_handler ()
 {
-	return s_data->m_bus;
+	return s_data->m_session_event_handler;
 }
 
 } // namespace ui

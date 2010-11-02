@@ -1,6 +1,6 @@
 
-#ifndef UI_BUS
-#define UI_BUS
+#ifndef UI_SESSION_EVENT_HANDLER
+#define UI_SESSION_EVENT_HANDLER
 
 #include <mojo/mojo.hpp>
 
@@ -11,7 +11,7 @@
 
 namespace ui {
 
-class Bus : public mojo::SessionBus
+class SessionEventHandler : public mojo::SessionEventHandler
 {
 public: // typedefs
 
@@ -23,8 +23,8 @@ public: // typedefs
 
 public:
 
-	Bus ();
-	~Bus ();
+	SessionEventHandler ();
+	~SessionEventHandler ();
 
 public: // signal accessors
 
@@ -66,7 +66,7 @@ private: // signals
 protected:
 
 	/*
-	 * These virtual methods are part of the mojo::Bus API
+	 * These virtual methods are part of the mojo::SessionEventHandler API
 	 * and are called by the Session from the Session thread
 	 */
 

@@ -7,7 +7,7 @@
 namespace ui {
 
 class AppData;
-class Bus;
+class SessionEventHandler;
 
 class App
 {
@@ -41,7 +41,7 @@ public:
 
 	static void open_import_dialog ();
 
-	static Bus& get_session_bus ();
+	static SessionEventHandler& get_session_event_handler ();
 
 private:
 

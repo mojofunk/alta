@@ -2,7 +2,7 @@
 #include <boost/bind.hpp>
 
 #include "session.hpp"
-#include "session_bus.hpp"
+#include "session_event_handler.hpp"
 #include "session_data.hpp"
 
 #include "log.hpp"
@@ -31,17 +31,17 @@ Session::~Session ()
 }
 
 void
-Session::add_bus (SessionBus* bus)
+Session::add_event_handler (SessionEventHandler* event_handler)
 {
 	LOG;
-	data->worker.call_sync (boost::bind (&Session::add_bus_internal, this, bus));
+	data->worker.call_sync (boost::bind (&Session::add_event_handler_internal, this, event_handler));
 }
 
 void
-Session::remove_bus (SessionBus* bus)
+Session::remove_event_handler (SessionEventHandler* event_handler)
 {
 	LOG;
-	data->worker.call_sync (boost::bind (&Session::remove_bus_internal, this, bus));
+	data->worker.call_sync (boost::bind (&Session::remove_event_handler_internal, this, event_handler));
 }
 
 void

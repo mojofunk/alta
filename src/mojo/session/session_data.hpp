@@ -13,7 +13,7 @@ namespace internal {
 	
 struct SessionData
 {
-	std::set<SessionBus*> busses;
+	std::set<SessionEventHandler*> event_handlers;
 
 	std::set<ProjectSP> projects;
 

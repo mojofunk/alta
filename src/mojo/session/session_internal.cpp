@@ -2,7 +2,7 @@
 
 #include <mojo/mojo-internal.hpp>
 
-#include "session_bus.hpp"
+#include "session_event_handler.hpp"
 #include "session_data.hpp"
 #include "null_deleter.hpp"
 #include "utils.hpp"
@@ -12,17 +12,17 @@
 namespace mojo {
 
 void
-Session::add_bus_internal (SessionBus* bus)
+Session::add_event_handler_internal (SessionEventHandler* bus)
 {
 	LOG;
-	data->busses.insert (bus);
+	data->event_handlers.insert (bus);
 }
 
 void
-Session::remove_bus_internal (SessionBus* bus)
+Session::remove_event_handler_internal (SessionEventHandler* bus)
 {
 	LOG;
-	data->busses.erase (bus);
+	data->event_handlers.erase (bus);
 }
 
 void
@@ -33,8 +33,8 @@ Session::new_project_internal ()
 
 	data->projects.insert (pi);
 
-	for (std::set<SessionBus*>::iterator i = data->busses.begin();
-			i != data->busses.end(); ++i)
+	for (std::set<SessionEventHandler*>::iterator i = data->event_handlers.begin();
+			i != data->event_handlers.end(); ++i)
 	{
 		(*i)->on_project_added (pi.get());
 	}
@@ -50,8 +50,8 @@ Session::open_project_internal (const std::string& project_file)
 
 	data->projects.insert (pi);
 
-	for (std::set<SessionBus*>::iterator i = data->busses.begin();
-			i != data->busses.end(); ++i)
+	for (std::set<SessionEventHandler*>::iterator i = data->event_handlers.begin();
+			i != data->event_handlers.end(); ++i)
 	{
 		(*i)->on_project_added (pi.get());
 	}
@@ -79,8 +79,8 @@ Session::close_project_internal (Project* p)
 		return;
 	}
 
-	for (std::set<SessionBus*>::iterator i = data->busses.begin();
-			i != data->busses.end(); ++i)
+	for (std::set<SessionEventHandler*>::iterator i = data->event_handlers.begin();
+			i != data->event_handlers.end(); ++i)
 	{
 		(*i)->on_project_removed (sp.get());
 	}
@@ -100,8 +100,8 @@ Session::add_track_internal (Project* p, const TrackOptions& options)
 
 	p->add_track (t);
 
-	for (std::set<SessionBus*>::iterator i = data->busses.begin();
-			i != data->busses.end(); ++i)
+	for (std::set<SessionEventHandler*>::iterator i = data->event_handlers.begin();
+			i != data->event_handlers.end(); ++i)
 	{
 		(*i)->on_track_added (p, t.get());
 	}

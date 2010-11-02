@@ -28,8 +28,8 @@ namespace mojo {
  * Write data from record buffers to disk
  * Modifications to the project
  *
- * The Session thread also dispatches events to the session event bus. The
- * session event bus is how the clients recieve all asyncronous messages.
+ * The Session thread also dispatches events to the session event handler. The
+ * session event handler is how the clients recieve all asyncronous messages.
  *
  * A new project must be able to be created without needing to specify
  * a project/recording directory. This implies that when enabling record
@@ -58,7 +58,7 @@ namespace mojo {
  *
  * To ensure this the clients don't have direct access to the class definitions
  *
- * The Session may need to use an internal SessionBus to syncronize the states of the
+ * The Session may need to use an internal SessionEventHandler to syncronize the states of the
  * Project and the Engine.
  *
  * The Engine does not reference the Project. The Session negotiates communication
@@ -80,12 +80,12 @@ public: // public API
 	/*
 	 * Sync
 	 */
-	void add_bus (SessionBus*);
+	void add_event_handler (SessionEventHandler*);
 
 	/*
 	 * Sync
 	 */
-	void remove_bus (SessionBus*);
+	void remove_event_handler (SessionEventHandler*);
 
 	/**
 	 * Create a new project.
@@ -109,7 +109,7 @@ public: // public API
 	void save_project_as (Project*, const std::string& filename);
 
 	/**
-	 * Will send an error to the session bus if the if
+	 * Will send an error to the session event_handler if the if
 	 * project file name hasn't been set
 	 *
 	 * Async
@@ -168,8 +168,8 @@ private:
 
 	internal::SessionData *data;
 
-	void add_bus_internal (SessionBus*);
-	void remove_bus_internal (SessionBus*);
+	void add_event_handler_internal (SessionEventHandler*);
+	void remove_event_handler_internal (SessionEventHandler*);
 
 	void new_project_internal ();
 	void open_project_internal (const std::string&);
