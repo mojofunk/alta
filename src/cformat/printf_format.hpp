@@ -18,13 +18,6 @@ printf_format (const T&)
 
 template <>
 const char* const
-printf_format (const int8_t&)
-{
-	return "%" PRIi8 ;
-}
-
-template <>
-const char* const
 printf_format (const int16_t&)
 {
 	return "%" PRIi16;
@@ -42,13 +35,6 @@ const char* const
 printf_format (const int64_t&)
 {
 	return "%" PRIi64;
-}
-
-template <>
-const char* const
-printf_format (const uint8_t&)
-{
-	return "%" PRIu8;
 }
 
 template <>

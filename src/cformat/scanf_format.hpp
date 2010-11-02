@@ -18,13 +18,6 @@ scanf_format (const T&)
 
 template <>
 const char* const
-scanf_format (const int8_t&)
-{
-	return "%" SCNi8 ;
-}
-
-template <>
-const char* const
 scanf_format (const int16_t&)
 {
 	return "%" SCNi16;
@@ -42,13 +35,6 @@ const char* const
 scanf_format (const int64_t&)
 {
 	return "%" SCNi64;
-}
-
-template <>
-const char* const
-scanf_format (const uint8_t&)
-{
-	return "%" SCNu8;
 }
 
 template <>
