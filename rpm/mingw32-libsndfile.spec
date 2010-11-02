@@ -5,7 +5,7 @@
 %define __find_provides %{_mingw32_findprovides}
 
 Name:		mingw32-libsndfile
-Version:	1.0.18pre24h
+Version:	1.0.23
 Release:	1%{?dist}
 Summary:	Library for reading and writing sound files
 License:	LGPLv2+
@@ -54,7 +54,8 @@ This package contains files needed to develop with libsndfile.
 	--disable-static \
 	--disable-alsa \
 	--disable-sqlite \
-	--disable-external-libs 
+	--disable-external-libs \
+	--disable-shave
 	#--enable-largefile
 
 make %{?_smp_mflags}
@@ -71,7 +72,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%doc COPYING AUTHORS TODO README NEWS ChangeLog
+%doc COPYING AUTHORS README NEWS ChangeLog
 %{_mingw32_bindir}/*sndfile*.exe
 %{_mingw32_mandir}/man1/*.1
 %{_mingw32_bindir}/libsndfile-1.dll
@@ -88,5 +89,8 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Wed Nov 3 2010 Tim Mayberry <mojofunk@gmail.com> - 1.0.23-1
+- update to latest release
+- added --disable-shave to configure options to allow build to succeed
 * Sun Nov 30 2008 Tim Mayberry <mojofunk@gmail.com> - 1.0.18pre24h-1
 - Initial MinGW build of pre-release version
