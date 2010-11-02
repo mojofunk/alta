@@ -3,6 +3,7 @@
 # Tim Mayberry, 2008
 
 tests='''
+test_session
 test_sequence
 test_type_system
 test_graph

@@ -16,18 +16,18 @@ using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
 
-class TestBus : public SessionBus
+class TestSessionEventHandler : public SessionEventHandler
 {
 public:
 
-	TestBus (Session* session) : m_session (session) { }
+	TestSessionEventHandler (Session* session) : m_session (session) { }
 
 private:
 
 	void on_project_added (Project* p)
 	{
 		BOOST_TEST_MESSAGE ("on_project_added");
-		Glib::signal_idle().connect(sigc::bind_return(sigc::bind (sigc::mem_fun(*this, &TestBus::project_added), p), false));
+		Glib::signal_idle().connect(sigc::bind_return(sigc::bind (sigc::mem_fun(*this, &TestSessionEventHandler::project_added), p), false));
 	}
 
 	void on_project_removed (Project* p)
@@ -60,6 +60,21 @@ private:
 		BOOST_TEST_MESSAGE ("Track Property Changed");
 	}
 
+	void on_transport_speed_changed (Project*, float speed)
+	{
+		BOOST_TEST_MESSAGE ("Transport Speed Changed");
+	}
+
+	void on_transport_position_changed (Project*, count_t)
+	{
+		BOOST_TEST_MESSAGE ("Transport Position Changed");
+	}
+
+	void on_transport_record_changed (Project*, bool)
+	{
+		BOOST_TEST_MESSAGE ("Transport Record Changed");
+	}
+
 private:
 
 	void project_added (Project* p)
@@ -74,7 +89,7 @@ private:
 
 		m_session->add_track (p, opt);
 
-		Glib::signal_idle().connect(sigc::bind_return(sigc::bind (sigc::mem_fun(*this, &TestBus::close_project), p), false));
+		Glib::signal_idle().connect(sigc::bind_return(sigc::bind (sigc::mem_fun(*this, &TestSessionEventHandler::close_project), p), false));
 	}
 
 	void close_project (Project* p)
@@ -96,16 +111,16 @@ BOOST_AUTO_TEST_CASE( test_session )
 
 	Session *s = new Session;
 
-	SessionBus *bus = new TestBus(s);
+	SessionEventHandler *handler = new TestSessionEventHandler(s);
 
-	s->add_bus (bus);
+	s->add_event_handler (handler);
 
 	s->new_project ();
 
 	// need a mainloop here
 
-	s->remove_bus (bus);
+	s->remove_event_handler (handler);
 
 	delete s;
-	delete bus;
+	delete handler;
 }
