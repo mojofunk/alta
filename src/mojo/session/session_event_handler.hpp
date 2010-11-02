@@ -16,6 +16,14 @@ namespace mojo {
  * the derived class to queue the events to be processed
  * by another thread.
  *
+ * Another option to virtual methods and inheritance would be to
+ * Have a SessionEvent class and then different events from that
+ * class. The clients would then just register callbacks for different
+ * event types. Some possible advantages of an interface is that
+ * all events have to be handled anyway so just enforce it rather than
+ * having to register callbacks and then check that they have been registered
+ * etc.
+ *
  */
 class SessionEventHandler
 {
