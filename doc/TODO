@@ -114,4 +114,19 @@ The test suite must be able to measure thread context switching time.
 The test suite must be able to test the effect cache size has on processing
 performance.
 
-Get rid of scons build
+debug and release builds
+
+Session API should use method names like transport_* track_* project_* etc
+
+Bus should be renamed to something like SessionEventHandler/Listener/Observer
+
+Session API should have a sync method for testing(at least)
+
+Should the mojo public API be in C?
+
+There is a race in SessionWorker leading to a deadlock?
+
+If the SessionWorker is calling a sync function and the UI thread is waiting for the
+SessionWorker to finish then there is a deadlock.
+
+If when the last project is removed can App::quit be called in an idle callback.
