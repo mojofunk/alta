@@ -1,0 +1,105 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+
+<!ENTITY % BOOK_ENTITIES SYSTEM "./entities.ent">
+
+%BOOK_ENTITIES;
+
+]>
+
+<section id="requirements-version-0.2.0">
+  <title>Requirements Version 0.2.0</title>
+  <para>
+    The objective of this iteration is to implement the core editing
+    functionality for audio events.
+  </para>
+
+  <variablelist>
+    <title>Tools</title>
+    <varlistentry>
+      <term>Object Selection(Arrow) Tool</term>
+      <listitem>
+        <para>
+          Implement the fundamental editing operations supported by the
+          Object Selection tool that apply to audio events.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Select Tool</term>
+      <listitem>
+        <para>
+          Implement the fundamental editing operations supported by the
+          Select tool that apply to audio events.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Range Tool</term>
+      <listitem>
+        <para>
+          Implement the fundamental editing operations supported by the
+          Range tool that apply to audio events.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Split Tool</term>
+      <listitem>
+        <para>
+          Implement the fundamental editing operations supported by the
+          Split tool that apply to audio events.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+
+  <para></para>
+
+  <para>
+    Support for non-destructive spliting and joining of audio events. This
+    will mean introducting audio parts.
+  </para>
+
+  <itemizedlist>
+    <listitem>
+      <para>
+        Select audio events
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        Remove selected audio events from audio tracks
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        Move selected audio events to new positions on a tracks timeline
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        copy selected audio events to the same or different track
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        Split an audio event into two distinct audio events.
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        Join two audio events into an audio part.
+      </para>
+    </listitem>
+  </itemizedlist>
+</section>

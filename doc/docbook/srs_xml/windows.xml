@@ -1,0 +1,53 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+
+<!ENTITY % BOOK_ENTITIES SYSTEM "./entities.ent">
+
+%BOOK_ENTITIES;
+
+]>
+
+<section id="sn-windows">
+  <title>Windows</title>
+  <subtitle>The Main Application Windows</subtitle>
+  <para></para>
+
+  <variablelist>
+    <title>Main Windows</title>
+    <varlistentry>
+      <term>Project Window</term>
+      <listitem>
+        <para>
+          The Project window is the main window in &GMOJO_APP; where editing
+          takes place. In this version the Project window will contain a
+          menu, a Transport controller and a canvas containing Tracks.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Mixer Window</term>
+      <listitem>
+        <para>
+          The Mixer window is contains an environment for controlling track
+          properties such as volume, pan and solo/mute status.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Connections window</term>
+      <listitem>
+        <para>
+          The connections window is where input and output busses are
+          defined to route audio between &GMOJO_APP; and the audio hardware.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+<!--
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
+		href="Some_Subsection.xml" />
+	-->
+</section>

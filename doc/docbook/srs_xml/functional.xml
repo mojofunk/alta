@@ -99,6 +99,10 @@
       </listitem>
     </itemizedlist>
   </section>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+	  href="windows.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+	  href="dialogs.xml" />
 <!--
 	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
 		href="Some_Subsection.xml" />

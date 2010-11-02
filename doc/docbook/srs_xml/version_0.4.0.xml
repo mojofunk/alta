@@ -1,0 +1,36 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+
+<!ENTITY % BOOK_ENTITIES SYSTEM "./entities.ent">
+
+%BOOK_ENTITIES;
+
+]>
+
+<section id="requirements-version-0.4.0">
+  <title>Requirements Version 0.X.0</title>
+  <para>
+    Recording requirements
+  </para>
+
+  <itemizedlist>
+    <listitem>
+      <para>
+        Save Project as Template
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        Device setup dialog
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        Pending Connections dialog
+      </para>
+    </listitem>
+  </itemizedlist>
+</section>

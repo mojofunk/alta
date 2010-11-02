@@ -7,12 +7,15 @@
 ]>
 
 <book id="bk-srs">
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
 		href="book_info.xml" />
 
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
 		href="functional.xml" />
 
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
-		href="versions.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="version_one.xml" />
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="version_X.xml" />
 </book>

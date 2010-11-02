@@ -1,0 +1,50 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+
+<!ENTITY % BOOK_ENTITIES SYSTEM "./entities.ent">
+
+%BOOK_ENTITIES;
+
+]>
+
+<section id="sn-dialogs">
+  <title>Dialogs</title>
+  <variablelist>
+    <title>Dialogs</title>
+    <varlistentry>
+      <term>Project Setup Dialog</term>
+      <listitem>
+        <para>
+          The Project setup dialog contains the general settings for the
+          project. The only field in the project setup dialog that will be
+          used in the first version is the sample rate.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Preferences Dialog</term>
+      <listitem>
+        <para>
+          The Preferences dialog contains preferences for the application
+          that aren't specific to a particular project. what preferences
+          will the this version support?
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Device Setup Dialog</term>
+      <listitem>
+        <para>
+          The device setup dialog is where the audio driver is selected
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+<!--
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="Some_Subsection.xml" />
+	-->
+</section>

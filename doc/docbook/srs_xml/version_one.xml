@@ -1,0 +1,37 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+
+<!ENTITY % BOOK_ENTITIES SYSTEM "./entities.ent">
+
+%BOOK_ENTITIES;
+
+]>
+
+<chapter id="ch-version-one">
+  <title>Requirements for version 1.0</title>
+  <para>
+    The first major version of the application is intended to be a simple
+    tool for recording, editing and mixing of audio data.
+  </para>
+
+  <para>
+    The eventual goal is to create an application that is similar in
+    functionality to Steinberg's Cubase. The design and usability of the
+    application will also be modelled on Cubase as it is a popular tool and
+    the design has been refined over many versions. Once the application is
+    complete enough to be useful then differenciation may occur.
+  </para>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+	  href="version_0.1.0.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+	  href="version_0.2.0.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+	  href="version_0.3.0.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+	  href="version_0.4.0.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+	  href="version_0.5.0.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+	  href="version_0.6.0.xml" />
+</chapter>
