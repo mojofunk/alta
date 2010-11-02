@@ -59,4 +59,22 @@ Bus::on_track_property_changed (mojo::Project*, mojo::Track*, mojo::Property*)
 
 }
 
+void
+Bus::on_transport_speed_changed (mojo::Project* p, float speed)
+{
+	m_dispatcher.call_async (sigc::bind (m_signal_transport_speed_changed, p, speed));
+}
+
+void
+Bus::on_transport_position_changed (mojo::Project* p, mojo::count_t pos)
+{
+	m_dispatcher.call_async (sigc::bind (m_signal_transport_position_changed, p, pos));
+}
+
+void
+Bus::on_transport_record_changed (mojo::Project* p, bool record)
+{
+	m_dispatcher.call_async (sigc::bind (m_signal_transport_record_changed, p, record));
+}
+
 } // namespace ui

@@ -1,6 +1,7 @@
 #ifndef MOJO_BUS
 #define MOJO_BUS
 
+#include "types.hpp"
 #include "forward.hpp"
 
 namespace mojo {
@@ -55,6 +56,12 @@ protected:
 	virtual void on_project_property_changed (Project*, Property* ) = 0;
 
 	virtual void on_track_property_changed (Project*, Track*, Property*) = 0;
+
+	virtual void on_transport_speed_changed (Project*, float speed) = 0;
+
+	virtual void on_transport_position_changed (Project*, count_t) = 0;
+
+	virtual void on_transport_record_changed (Project*, bool) = 0;
 
 };
 

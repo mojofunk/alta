@@ -1,7 +1,7 @@
 #ifndef MOJO_SESSION_TYPES
 #define MOJO_SESSION_TYPES
 
-#include <inttypes.h>
+#include <mojo/core/types.hpp>
 
 namespace mojo {
 

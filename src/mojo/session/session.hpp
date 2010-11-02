@@ -150,6 +150,20 @@ public: // public API
 
 	static bool is_audio_track (Track*);
 
+public: // transport API
+
+	void transport_set_speed (float speed);
+	float transport_get_speed ();
+
+	void transport_stop ();
+	void transport_play ();
+
+	void transport_set_position (count_t pos);
+	count_t transport_get_position ();
+
+	void transport_set_record (bool record);
+	bool transport_get_record ();
+
 private:
 
 	internal::SessionData *data;
@@ -162,6 +176,9 @@ private:
 	void close_project_internal (Project*);
 	void add_track_internal (Project*, const TrackOptions&);
 
+	void transport_set_speed_internal (float);
+	void transport_set_position_internal (count_t pos);
+	void transport_set_record_internal (bool);
 };
 
 } // namespace mojo

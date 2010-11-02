@@ -17,9 +17,17 @@ struct SessionData
 
 	std::set<ProjectSP> projects;
 
+	ProjectSP active_project;
+
 	SessionWorker worker;
 
 	Glib::Thread* worker_thread;
+
+	// transport data
+
+	float speed;
+	count_t position;
+	bool record;
 
 };
 
