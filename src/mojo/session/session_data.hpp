@@ -24,6 +24,7 @@ struct SessionData
 	Glib::Thread* worker_thread;
 
 	// transport data
+	// position and record status are properties of a project
 
 	float speed;
 	count_t position;

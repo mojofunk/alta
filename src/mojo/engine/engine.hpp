@@ -7,8 +7,7 @@
 namespace mojo {
 
 /**
- * The processing thread is managed by the Engine class. The processing
- * thread recieves events from the Session and processes them, for instance
+ * Engine recieves events from the Session and processes them, for instance
  * transport change events. It also sends events to the session, for instance
  * buffer fill and buffer write events.
  *
@@ -18,10 +17,12 @@ namespace mojo {
  *
  * The Engine
  *
+ *  - waits for callback from the audio device
+ *
  *  - processes incoming events including buffer filled events, stream modifications
  *    and transport changes.
  *
- *  - reads data from the audio device and performs any necessary processing
+ *  - reads data from the audio device and performs processing(possibly concurrently)
  *    including posting a buffer write request if the stream is record enabled 
  *
  *  - write data to the audio device
@@ -31,7 +32,8 @@ namespace mojo {
  *  to be filled then a buffer fill request is sent via the Engine event queue.
  *
  *  The Session thread periodically calls Engine::get_events to get all the
- *  events issued by the engine and then processes them.
+ *  events issued by the engine and then processes them. The Engine could signal the
+ *  Session to run somehow perhaps.
  *
  *  When the Engine issues a buffer fill event, the engine provides the array/buffer
  *  to be written into.
