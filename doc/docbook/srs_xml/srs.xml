@@ -11,6 +11,9 @@
 		href="book_info.xml" />
 
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="system_requirements.xml" />
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
 		href="functional.xml" />
 
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"

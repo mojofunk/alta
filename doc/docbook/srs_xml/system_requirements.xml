@@ -1,0 +1,106 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+
+<!ENTITY % BOOK_ENTITIES SYSTEM "./entities.ent">
+
+%BOOK_ENTITIES;
+
+]>
+
+<chapter id="ch-system-requirements">
+  <title>System Requirements</title>
+  <para>
+    &GMOJO_APP; is a Desktop application that will run on Linux, Windows and
+    Mac. It should also run on Netbooks resolution of 1024X600 but some
+    control elements may be hidden.
+  </para>
+
+  <section id="sn-system-requirements-linux">
+    <title>Linux</title>
+    <para></para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          32bit or 64bit
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          1024MB Memory
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Display resolution of 1024X600
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          ALSA, JACK compatible audio hardware
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section id="system-requirements-windows">
+    <title>Windows</title>
+    <para></para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          Windows XP, Windows Vista, Windows 7
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          1024MB Memory
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Display resolution of 1024X600
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Direct X or ASIO compatible audio hardware
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section id="system-requirements-mac">
+    <title>Mac</title>
+    <para></para>
+
+    <itemizedlist>
+      <title>Mac</title>
+      <listitem>
+        <para>
+          Which minimum OS version? 10.4?
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          1024MB Memory
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          CoreAudio compatible audio hardware
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</chapter>

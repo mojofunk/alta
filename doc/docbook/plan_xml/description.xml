@@ -19,7 +19,7 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
 		href="dependencies.xml" />
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-		href="deliverables.xml" />
+		href="requirements.xml" />
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
 		href="schedule.xml" />
 </chapter>

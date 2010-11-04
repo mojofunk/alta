@@ -104,6 +104,12 @@
         Control the volume of individual tracks.
       </para>
     </listitem>
+
+    <listitem>
+      <para>
+        Compiles on Linux and Windows
+      </para>
+    </listitem>
   </itemizedlist>
 <!--
 	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"

@@ -8,9 +8,10 @@
 
 ]>
 
-<section id="sn-deliverables">
-  <title>Deliverables</title>
+<section id="sn-requirements">
+  <title>Requirements</title>
   <para>
-    A paragraph
+    The requirements for the application are contained in a separate
+    document called the System Requirements Specification.
   </para>
 </section>
