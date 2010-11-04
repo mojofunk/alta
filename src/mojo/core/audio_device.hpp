@@ -7,7 +7,17 @@
 namespace mojo {
 
 /**
- * An AudioDevice has a number of input or output channels
+ * An AudioDevice has a number of input or output streams
+ *
+ * Each stream can be either an input stream(source) or a output stream(source)
+ *
+ * Each stream can have a number of channels
+ *
+ * Each stream can have a channel map
+ *
+ * Each stream has a number of ports
+ *
+ * Each Port has a buffer
  *
  */
 class AudioDevice
@@ -19,7 +29,7 @@ public: // ctors
 public: // interface
 
 	/**
-	 * The Callback should contain all the data needed.
+	 * The Callback should contain all the data needed
 	 */
 	typedef int callback_t(count_t frames);
 

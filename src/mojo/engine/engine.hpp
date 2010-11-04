@@ -15,6 +15,9 @@ namespace mojo {
  * not have access and does not depend on the Project or Session classes. This
  * allows the Engine API to be reusable.
  *
+ * The processing is performed by the Engine using the optimal number of threads for
+ * the system or a specific number if set.
+ *
  * The Engine
  *
  *  - waits for callback from the audio device
@@ -25,18 +28,21 @@ namespace mojo {
  *  - reads data from the audio device and performs processing(possibly concurrently)
  *    including posting a buffer write request if the stream is record enabled 
  *
- *  - write data to the audio device
+ *  - writes data to the audio device
  *
- *  None of the Engine buffers are exposed outside of the Engine class. During
- *  the process cycle the engine checks the state of the buffers and if any need
- *  to be filled then a buffer fill request is sent via the Engine event queue.
+ * None of the Engine buffers are exposed outside of the Engine class. During
+ * the process cycle the engine checks the state of the buffers and if any need
+ * to be filled then a buffer fill request is sent via the Engine event queue.
  *
- *  The Session thread periodically calls Engine::get_events to get all the
- *  events issued by the engine and then processes them. The Engine could signal the
- *  Session to run somehow perhaps.
+ * The Session thread periodically calls Engine::get_events to get all the
+ * events issued by the engine and then processes them. The Engine could signal the
+ * Session to run somehow perhaps.
  *
- *  When the Engine issues a buffer fill event, the engine provides the array/buffer
- *  to be written into.
+ * When the Engine issues a buffer fill event, the engine provides the array/buffer
+ * to be written into.
+ *
+ * The AudioDevice interface hides the implementation of the audio driver
+ *
  */
 class Engine
 {
@@ -54,6 +60,10 @@ public: // Interface
 
 	void stop ();
 
+	/**
+	 * This must stop the Engine, change devices
+	 * and restart?
+	 */
 	void set_audio_device (AudioDevice* dev);
 
 	AudioDevice* get_audio_device () const;
