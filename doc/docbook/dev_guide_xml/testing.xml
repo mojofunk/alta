@@ -8,77 +8,113 @@
   <title>Testing</title>
   <section id="testing-types">
     <title>Types of Testing</title>
-    <para></para>
+    <para>
+      Testing deserves its own book but I'll keep testing information here
+      until there is enough content.
+    </para>
 
     <variablelist>
       <title></title>
       <varlistentry>
         <term>Unit Testing</term>
         <listitem>
-          <para></para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>Integration Testing</term>
-        <listitem>
-          <para></para>
+          <para>
+            The unit testing will be performed using the Boost test library.
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>System Testing</term>
         <listitem>
-          <para></para>
+          <para>
+            System testing involves testing to ensure that the requirements
+            are met. A system test plan is needed.
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Performance Testing</term>
         <listitem>
-          <para></para>
+          <para>
+            Latency
+          </para>
+
+          <para>
+            Read and Write throughput
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Scalability Testing</term>
         <listitem>
-          <para></para>
+          <para>
+            Maximum Tracks
+          </para>
+
+          <para>
+            Canvas
+          </para>
+
+          <para>
+            Plugins
+          </para>
+
+          <para>
+            Multi-core processing/overhead etc
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Regression Testing</term>
         <listitem>
-          <para></para>
+          <para>
+            Use System test plan
+          </para>
+
+          <para>
+            Add Bug reports to system test plan
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Stress Testing</term>
         <listitem>
-          <para></para>
+          <para>
+            Simulate competition for resources such as memory, disk space
+            and cpu time.
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Smoke Testing</term>
         <listitem>
-          <para></para>
+          <para>
+            Core tests in system test plan
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Recovery Testing</term>
         <listitem>
-          <para></para>
+          <para>
+            Simulate crashes to test data recovery
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Installation Testing</term>
         <listitem>
-          <para></para>
+          <para>
+            tests to be preformed prior to release
+          </para>
         </listitem>
       </varlistentry>
     </variablelist>
