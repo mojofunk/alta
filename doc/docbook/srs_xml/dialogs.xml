@@ -10,6 +10,11 @@
 
 <section id="sn-dialogs">
   <title>Dialogs</title>
+  <para>
+    Dialogs are used as secondary windows, to provide specific information
+    or to ask questions.
+  </para>
+
   <variablelist>
     <title>Dialogs</title>
     <varlistentry>

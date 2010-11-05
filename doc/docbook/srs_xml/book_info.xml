@@ -2,9 +2,13 @@
 
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
 
+<!ENTITY % BOOK_ENTITIES SYSTEM "./entities.ent">
+
+%BOOK_ENTITIES;
+
 <!ENTITY BOOKNAME "System Requirements Specification">
 <!ENTITY BOOKVERSION "0.01"> <!-- change version here -->
-<!ENTITY BOOKDATE "2007-01-10"> <!-- change revision date here -->
+<!ENTITY BOOKDATE "2010-11-5"> <!-- change revision date here -->
 <!ENTITY BOOKID "&BOOKNAME;-&BOOKVERSION; (&BOOKDATE;)">
 
 ]>
@@ -15,12 +19,13 @@
   <productnumber>1</productnumber>
   <abstract>
     <para>
-      Book description
+      This is the System Requirements Specification Document for the Desktop
+      Application &GMOJO_APP;.
     </para>
   </abstract>
   <isbn>N/A</isbn>
   <copyright>
-    <year>2008</year>
+    <year>2008-2010</year>
     <holder>Tim Mayberry</holder>
   </copyright>
 </bookinfo>

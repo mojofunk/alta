@@ -20,5 +20,8 @@
 		href="version_one.xml" />
 
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="version_two.xml" />
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
 		href="version_X.xml" />
 </book>
