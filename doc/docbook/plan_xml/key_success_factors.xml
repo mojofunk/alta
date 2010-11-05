@@ -11,8 +11,20 @@
 <section id="sn-key-success-factors">
   <title>Key Success Factors</title>
   <para>
-    A paragraph
+	  The factors that are a necessary condition for success in a given market.
   </para>
+  <itemizedlist>
+	  <listitem>
+		  <para>
+			  Quality
+		  </para>
+	  </listitem>
+	  <listitem>
+		  <para>
+			  Usability
+		  </para>
+	  </listitem>
+  </itemizedlist>
 <!--
 	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
 		href="Some_Subsection.xml" />
