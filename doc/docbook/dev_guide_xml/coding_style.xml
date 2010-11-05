@@ -52,10 +52,9 @@ public:
     </para>
 <programlisting>
 	Foo::Foo ()
-		:
-			m_one(1)
-			, m_two(2)
-			, m_three(3)
+		: m_one(1)
+		, m_two(2)
+		, m_three(3)
 	{ }
     </programlisting>
   </section>
