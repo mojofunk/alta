@@ -47,6 +47,17 @@
         </para>
       </listitem>
     </varlistentry>
+
+    <varlistentry>
+      <term>Sample Editor</term>
+      <listitem>
+        <para>
+          The Sample Editor allows audio data to be viewed and manipulated.
+          All the processing and editing performed in the Sample Editor is
+          non-destructive.
+        </para>
+      </listitem>
+    </varlistentry>
   </variablelist>
 <!--
 	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
