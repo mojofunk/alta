@@ -17,7 +17,7 @@ struct SessionData
 
 	std::set<ProjectSP> projects;
 
-	ProjectSP active_project;
+	Project* active_project;
 
 	SessionWorker worker;
 

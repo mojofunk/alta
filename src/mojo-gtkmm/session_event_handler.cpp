@@ -54,6 +54,12 @@ SessionEventHandler::on_project_property_changed (mojo::Project*, mojo::Property
 }
 
 void
+SessionEventHandler::on_active_project_changed (mojo::Project* p)
+{
+	m_dispatcher.call_async (sigc::bind (m_signal_active_project_changed, p));
+}
+
+void
 SessionEventHandler::on_track_property_changed (mojo::Project*, mojo::Track*, mojo::Property*)
 {
 

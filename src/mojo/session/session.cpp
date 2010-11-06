@@ -71,6 +71,19 @@ Session::save_project (Project*)
 }
 
 void
+Session::set_active_project(Project* p)
+{
+	if (data->active_project == p) return;
+	data->worker.call_async (boost::bind (&Session::set_active_project_internal, this, p));
+}
+
+Project*
+Session::get_active_project() const
+{
+	return data->active_project;
+}
+
+void
 Session::close_project (Project* p)
 {
 	LOG;

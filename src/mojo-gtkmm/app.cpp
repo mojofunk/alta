@@ -153,4 +153,10 @@ App::get_session_event_handler ()
 	return s_data->m_session_event_handler;
 }
 
+mojo::Session&
+App::get_session ()
+{
+	return s_data->m_session;
+}
+
 } // namespace ui

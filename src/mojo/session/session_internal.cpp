@@ -89,6 +89,26 @@ Session::close_project_internal (Project* p)
 }
 
 void
+Session::set_active_project_internal (Project* p)
+{
+	// data->engine->reset();
+
+	if (data->active_project == p)
+	{
+		return;
+	}
+
+	data->active_project = p;
+
+	for (std::set<SessionEventHandler*>::iterator i = data->event_handlers.begin();
+			i != data->event_handlers.end(); ++i)
+	{
+		(*i)->on_active_project_changed (p);
+	}
+
+}
+
+void
 Session::add_track_internal (Project* p, const TrackOptions& options)
 {
 	//std::cerr << "Options type: " << track_type_to_string (options.type) << std::endl;

@@ -122,7 +122,23 @@ public: // public API
 	 */
 	void close_project (Project*);
 
-	// void set_active_project (Project*);
+	/**
+	 * Set the project as the current active project.
+	 * There can only be one active project per Session.
+	 *
+	 * Setting the project active unloads the current active project if
+	 * there is one and then loads the current project into the engine.
+	 *
+	 * Async
+	 */
+	void set_active_project (Project*);
+
+	/**
+	 * Get the current active project
+	 *
+	 * Sync...could this be a problem?
+	 */
+	Project* get_active_project () const;
 
 	/**
 	 * A client should only need to request tracks when a
@@ -130,12 +146,12 @@ public: // public API
 	 * and track_removed signals should be used by the client
 	 * to maintain the list of tracks for a Project*
 	 *
-	 * Async
+	 * Sync
 	 *
 	 * This should be a more general mechanism to get properties
 	 *
 	 */
-	void request_tracks (Project*);
+	//void get_tracks (Project*, std::set<Track*>);
 
 	/**
 	 *
@@ -174,7 +190,10 @@ private:
 	void new_project_internal ();
 	void open_project_internal (const std::string&);
 	void close_project_internal (Project*);
+	void set_active_project_internal (Project*);
+
 	void add_track_internal (Project*, const TrackOptions&);
+	void remove_track_internal (Project*, Track*);
 
 	void transport_set_speed_internal (float);
 	void transport_set_position_internal (count_t pos);

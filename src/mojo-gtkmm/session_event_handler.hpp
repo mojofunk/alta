@@ -34,6 +34,9 @@ public: // signal accessors
 	project_signal_t& signal_project_removed ()
 	{ return m_signal_project_removed; }
 
+	project_signal_t& signal_active_project_changed ()
+	{ return m_signal_active_project_changed; }
+
 	track_signal_t& signal_track_added ()
 	{ return m_signal_track_added; }
 
@@ -53,6 +56,7 @@ private: // signals
 
 	project_signal_t m_signal_project_added;
 	project_signal_t m_signal_project_removed;
+	project_signal_t m_signal_active_project_changed;
 
 	track_signal_t m_signal_track_added;
 	track_signal_t m_signal_track_removed;
@@ -81,6 +85,8 @@ protected:
 	virtual void on_track_removed (mojo::Project*, mojo::Track*);
 
 	virtual void on_project_property_changed(mojo::Project*, mojo::Property*);
+
+	virtual void on_active_project_changed (mojo::Project*);
 
 	virtual void on_track_property_changed(mojo::Project*, mojo::Track*, mojo::Property*);
 

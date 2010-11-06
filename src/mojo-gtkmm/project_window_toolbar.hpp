@@ -31,6 +31,11 @@ private:
 
 	// m_project_window_tools;
 
+private:
+
+	void on_activate_project_button_toggled ();
+	void on_activate_project_changed (mojo::Project*);
+
 };
 
 } // namespace ui

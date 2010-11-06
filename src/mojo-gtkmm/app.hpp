@@ -43,6 +43,8 @@ public:
 
 	static SessionEventHandler& get_session_event_handler ();
 
+	static mojo::Session& get_session ();
+
 private:
 
         static void on_project_added (mojo::Project*);

@@ -8,6 +8,10 @@
 
 namespace ui {
 
+/**
+ * Should this inherit from Gtk::Window? will the builder still work etc
+ *
+ */
 class ProjectWindow
 {
 public:
