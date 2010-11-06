@@ -16,6 +16,10 @@ public:
 
 public:
 
+	/**
+	 * A track list item may need to hide control widgets
+	 * based on height
+	 */
 	virtual void set_height () = 0;
 
 	virtual uint32_t get_height () const = 0;

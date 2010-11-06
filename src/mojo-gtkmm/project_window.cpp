@@ -2,15 +2,13 @@
 #include "app.hpp"
 #include "project_window.hpp"
 #include "utils.hpp"
-#include "transport_toolbar.hpp"
+#include "project_window_toolbar.hpp"
 #include "track_view_factory.hpp"
 
 namespace ui {
 
 ProjectWindow::ProjectWindow (mojo::Project* proj)
 	: m_project(proj)
-	, m_transport_toolbar (Gtk::manage (new TransportToolbar(proj)))
-	, m_track_view (Gtk::manage (TrackViewFactory::create (proj)))
 {
 	const std::string ui_file = "data/project_window.ui";
 
@@ -24,7 +22,7 @@ ProjectWindow::ProjectWindow (mojo::Project* proj)
 
 	connect_view_menu_actions ();
 
-	pack_transport ();
+	pack_children ();
 
 	m_window->signal_delete_event().connect
 		(sigc::mem_fun (this, &ProjectWindow::on_delete_event));
@@ -75,17 +73,21 @@ ProjectWindow::connect_view_menu_actions ()
 }
 
 void
-ProjectWindow::pack_transport ()
+ProjectWindow::pack_children ()
 {
 	Gtk::VBox* vbox1 = 0;
 
 	m_builder->get_widget ("vbox1", vbox1);
 
-	vbox1->pack_start (*m_transport_toolbar, false, false);
-	vbox1->reorder_child (*m_transport_toolbar, 1);
+	ProjectWindowToolbar *tb = Gtk::manage(new ProjectWindowToolbar(m_project));
 
-	vbox1->pack_start (*m_track_view, true, true);
-	vbox1->reorder_child (*m_track_view, 2);
+	vbox1->pack_start (*tb, false, false);
+	vbox1->reorder_child (*tb, 1);
+
+	TrackView *tv = Gtk::manage (TrackViewFactory::create (m_project));
+
+	vbox1->pack_start (*tv, true, true);
+	vbox1->reorder_child (*tv, 2);
 
 }
 

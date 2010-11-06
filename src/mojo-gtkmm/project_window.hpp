@@ -8,9 +8,6 @@
 
 namespace ui {
 
-class TransportToolbar;
-class TrackView;
-
 class ProjectWindow
 {
 public:
@@ -27,7 +24,7 @@ private:
 
 	void connect_view_menu_actions ();
 
-	void pack_transport ();
+	void pack_children ();
 
 private:
 
@@ -42,10 +39,6 @@ private:
 	BuilderPtr m_builder;
 
 	Gtk::Window* m_window;
-
-	TransportToolbar* m_transport_toolbar;
-
-	TrackView* m_track_view;
 
 };
 
