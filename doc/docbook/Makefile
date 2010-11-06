@@ -104,6 +104,9 @@ plan-html:: clean-plan-html
 
 .PHONY : plan-html
 
+all:: srs-html plan-html dev-guide-html
+.PHONY : all
+
 test-dev-guide::
 	# validating book
 	xmllint --noout --postvalid --xinclude $(DEV_GUIDE_FILE)
