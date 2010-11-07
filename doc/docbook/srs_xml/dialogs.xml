@@ -15,6 +15,10 @@
     or to ask questions.
   </para>
 
+  <para>
+    Dialogs should use Gtk+ builder files to define the user interface.
+  </para>
+
   <variablelist>
     <title>Dialogs</title>
     <varlistentry>
