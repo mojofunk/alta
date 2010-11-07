@@ -29,10 +29,10 @@ SearchPath::SearchPath (const std::string& path)
 	tokenizer tokens(path, sep);
 
 	for (
-			tokenizer::iterator tok_iter = tokens.begin();
-			tok_iter != tokens.end();
-			++tok_iter
-		)
+		tokenizer::iterator tok_iter = tokens.begin();
+		tok_iter != tokens.end();
+		++tok_iter
+	    )
 	{
 		add_directory (*tok_iter);
 	}
