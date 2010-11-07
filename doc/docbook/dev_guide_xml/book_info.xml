@@ -2,9 +2,13 @@
 
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
 
+<!ENTITY % BOOK_ENTITIES SYSTEM "./entities.ent">
+
+%BOOK_ENTITIES;
+
 <!ENTITY BOOKNAME "Developer's Guide">
 <!ENTITY BOOKVERSION "0.01"> <!-- change version here -->
-<!ENTITY BOOKDATE "2007-01-10"> <!-- change revision date here -->
+<!ENTITY BOOKDATE "2010-11-7"> <!-- change revision date here -->
 <!ENTITY BOOKID "&BOOKNAME;-&BOOKVERSION; (&BOOKDATE;)">
 <!ENTITY BUG-NUM "000001"> <!-- use this only while in draft stage -->
 
@@ -16,14 +20,12 @@
   <productnumber>1</productnumber>
   <abstract>
     <para>
-      An incomplete developers guide to GMojo
+      An incomplete developers guide to &GMOJO;
     </para>
   </abstract>
-  <isbn>
-		N/A
-	</isbn>
+  <isbn>N/A</isbn>
   <copyright>
-    <year>2006</year>
+    <year>2006-2010</year>
     <holder>Tim Mayberry</holder>
   </copyright>
 </bookinfo>

@@ -13,7 +13,31 @@
     </para>
   </section>
 
-  <section id="namespaces">
+  <section id="sn-brackets">
+    <title>Brackets</title>
+    <para>
+      All brackets should be aligned.
+    </para>
+<programlisting>
+for (
+	fs::directory_iterator itr( dir_path );
+	itr != end_itr;
+	++itr
+    )
+{
+	if ( fs::is_directory( *itr ) )
+	{
+		find_matching_files ( *itr, match_func, result );
+	}
+	else if (match_func(itr->leaf()))
+	{
+		result.push_back(*itr);
+	}
+}
+	  </programlisting>
+  </section>
+
+  <section id="sn-namespaces">
     <title>Namespaces</title>
     <para>
       Classes inside namespaces should not use any indentation and the
@@ -33,7 +57,7 @@ public:
     </programlisting>
   </section>
 
-  <section id="function-calls">
+  <section id="sn-function-calls">
     <title>Function Calls</title>
     <para>
       When calling a function there should be a single space between the
@@ -41,7 +65,7 @@ public:
     </para>
   </section>
 
-  <section id="constructor-init-list">
+  <section id="sn-constructor-init-list">
     <title>Constructor Initialization List</title>
     <para>
       Each member initialization should occur on a new line and each
@@ -58,8 +82,4 @@ public:
 	{ }
     </programlisting>
   </section>
-<!--
-	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
-		href="Some_Subsection.xml" />
-	-->
 </section>
