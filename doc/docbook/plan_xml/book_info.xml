@@ -2,9 +2,13 @@
 
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
 
+<!ENTITY % BOOK_ENTITIES SYSTEM "./entities.ent">
+
+%BOOK_ENTITIES;
+
 <!ENTITY BOOKNAME "Project Plan">
 <!ENTITY BOOKVERSION "0.01"> <!-- change version here -->
-<!ENTITY BOOKDATE "2007-01-10"> <!-- change revision date here -->
+<!ENTITY BOOKDATE "2010-11-7"> <!-- change revision date here -->
 <!ENTITY BOOKID "&BOOKNAME;-&BOOKVERSION; (&BOOKDATE;)">
 
 ]>
@@ -20,7 +24,7 @@
   </abstract>
   <isbn>N/A</isbn>
   <copyright>
-    <year>2008</year>
+    <year>2008-2010</year>
     <holder>Tim Mayberry</holder>
   </copyright>
 </bookinfo>
