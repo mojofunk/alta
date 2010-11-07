@@ -10,10 +10,12 @@ find_matching_files (const vector<fs::path>& paths,
                      FileMatchFunc match_func,
                      vector<fs::path>& result)
 {
-	for ( vector<fs::path>::const_iterator iter = paths.begin(),
-			end = paths.end();
-			iter != end;
-			++iter )
+	for (
+		vector<fs::path>::const_iterator iter = paths.begin(),
+		end = paths.end();
+		iter != end;
+		++iter
+	    )
 	{
 		find_matching_files(*iter, match_func, result);
 	}
@@ -30,9 +32,11 @@ find_matching_files (const fs::path& dir_path,
 
 	fs::directory_iterator end_itr; // default construction yields past-the-end
 
-	for ( fs::directory_iterator itr( dir_path );
-			itr != end_itr;
-			++itr )
+	for (
+		fs::directory_iterator itr( dir_path );
+		itr != end_itr;
+		++itr
+	    )
 	{
 		if ( fs::is_directory( *itr ) )
 		{
