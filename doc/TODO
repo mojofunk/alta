@@ -130,3 +130,12 @@ If the SessionWorker is calling a sync function and the UI thread is waiting for
 SessionWorker to finish then there is a deadlock.
 
 If when the last project is removed can App::quit be called in an idle callback.
+
+Need simple debug library for logging messages.
+	- only compiled in debug mode?
+	- M_DEBUG_ASSERT
+	- M_DEBUG_LOG just takes a string
+	- records line and file
+	- optional namespace?
+	- command line args?
+	- header only?
