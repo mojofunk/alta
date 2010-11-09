@@ -8,9 +8,9 @@
 
 ]>
 
-<section id="sn-competitor-profile-template">
-  <title>Template</title>
-  <section id="sn-background">
+<section id="sn-competitor-profile-pro-tools">
+  <title>Pro Tools</title>
+  <section id="sn-pro-tools-background">
     <title>Background</title>
     <itemizedlist>
       <listitem>
@@ -33,7 +33,7 @@
     </itemizedlist>
   </section>
 
-  <section id="sn-financials">
+  <section id="sn-pro-tools-financials">
     <title>Financials</title>
     <itemizedlist>
       <listitem>
@@ -51,7 +51,7 @@
     </itemizedlist>
   </section>
 
-  <section id="sn-products">
+  <section id="sn-pro-tools-products">
     <title>Products</title>
     <itemizedlist>
       <listitem>
@@ -81,7 +81,7 @@
     </itemizedlist>
   </section>
 
-  <section id="sn-marketing">
+  <section id="sn-pro-tools-marketing">
     <title>Marketing</title>
     <itemizedlist>
       <listitem>
@@ -98,12 +98,12 @@
     </itemizedlist>
   </section>
 
-  <section id="sn-facilities">
+  <section id="sn-pro-tools-facilities">
     <title>Facilities</title>
     <para></para>
   </section>
 
-  <section id="sn-personnel">
+  <section id="sn-pro-tools-personnel">
     <title>Personnel</title>
     <itemizedlist>
       <listitem>
@@ -126,7 +126,7 @@
     </itemizedlist>
   </section>
 
-  <section id="sn-stratagies">
+  <section id="sn-pro-tools-stratagies">
     <title>Stratagies</title>
     <itemizedlist>
       <listitem>

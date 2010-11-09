@@ -8,9 +8,9 @@
 
 ]>
 
-<section id="sn-competitor-profile-template">
-  <title>Template</title>
-  <section id="sn-background">
+<section id="sn-competitor-profile-sonar">
+  <title>Sonar</title>
+  <section id="sn-sonar-background">
     <title>Background</title>
     <itemizedlist>
       <listitem>
@@ -33,7 +33,7 @@
     </itemizedlist>
   </section>
 
-  <section id="sn-financials">
+  <section id="sn-sonar-financials">
     <title>Financials</title>
     <itemizedlist>
       <listitem>
@@ -51,7 +51,7 @@
     </itemizedlist>
   </section>
 
-  <section id="sn-products">
+  <section id="sn-sonar-products">
     <title>Products</title>
     <itemizedlist>
       <listitem>
@@ -81,7 +81,7 @@
     </itemizedlist>
   </section>
 
-  <section id="sn-marketing">
+  <section id="sn-sonar-marketing">
     <title>Marketing</title>
     <itemizedlist>
       <listitem>
@@ -98,12 +98,12 @@
     </itemizedlist>
   </section>
 
-  <section id="sn-facilities">
+  <section id="sn-sonar-facilities">
     <title>Facilities</title>
     <para></para>
   </section>
 
-  <section id="sn-personnel">
+  <section id="sn-sonar-personnel">
     <title>Personnel</title>
     <itemizedlist>
       <listitem>
@@ -126,7 +126,7 @@
     </itemizedlist>
   </section>
 
-  <section id="sn-stratagies">
+  <section id="sn-sonar-stratagies">
     <title>Stratagies</title>
     <itemizedlist>
       <listitem>

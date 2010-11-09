@@ -21,4 +21,22 @@
 		href="key_success_factors.xml" />
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
 		href="competitor_profile_ardour.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="competitor_profile_audacity.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="competitor_profile_cubase.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="competitor_profile_logic.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="competitor_profile_pro_tools.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="competitor_profile_qtractor.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="competitor_profile_reaper.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="competitor_profile_rosegarden.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="competitor_profile_sonar.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="competitor_profile_traverso.xml" />
 </chapter>

@@ -8,9 +8,9 @@
 
 ]>
 
-<section id="sn-competitor-profile-template">
-  <title>Template</title>
-  <section id="sn-background">
+<section id="sn-competitor-profile-audacity">
+  <title>Audacity</title>
+  <section id="sn-audacity-background">
     <title>Background</title>
     <itemizedlist>
       <listitem>
@@ -33,7 +33,7 @@
     </itemizedlist>
   </section>
 
-  <section id="sn-financials">
+  <section id="sn-audacity-financials">
     <title>Financials</title>
     <itemizedlist>
       <listitem>
@@ -51,7 +51,7 @@
     </itemizedlist>
   </section>
 
-  <section id="sn-products">
+  <section id="sn-audacity-products">
     <title>Products</title>
     <itemizedlist>
       <listitem>
@@ -81,7 +81,7 @@
     </itemizedlist>
   </section>
 
-  <section id="sn-marketing">
+  <section id="sn-audacity-marketing">
     <title>Marketing</title>
     <itemizedlist>
       <listitem>
@@ -98,12 +98,12 @@
     </itemizedlist>
   </section>
 
-  <section id="sn-facilities">
+  <section id="sn-audacity-facilities">
     <title>Facilities</title>
     <para></para>
   </section>
 
-  <section id="sn-personnel">
+  <section id="sn-audacity-personnel">
     <title>Personnel</title>
     <itemizedlist>
       <listitem>
@@ -126,7 +126,7 @@
     </itemizedlist>
   </section>
 
-  <section id="sn-stratagies">
+  <section id="sn-audacity-stratagies">
     <title>Stratagies</title>
     <itemizedlist>
       <listitem>
