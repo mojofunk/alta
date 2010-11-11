@@ -13,6 +13,17 @@
       until there is enough content.
     </para>
 
+    <para>
+      Nearly all the types of testing can be automated. There should be
+      included in the source tree all the files that are needed for running
+      automated testing. These should included project files, audio files
+      and testing tools.
+    </para>
+
+    <para>
+      There should be a 'test' build target that runs all tests
+    </para>
+
     <variablelist>
       <title></title>
       <varlistentry>
