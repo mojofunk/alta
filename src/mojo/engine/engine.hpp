@@ -20,7 +20,7 @@ namespace mojo {
  *
  * The Engine
  *
- *  - waits for callback from the audio device
+ *  - waits for periodic wakeup/callback from the audio device
  *
  *  - processes incoming events including buffer filled events, stream modifications
  *    and transport changes.
@@ -42,6 +42,9 @@ namespace mojo {
  * to be written into.
  *
  * The AudioDevice interface hides the implementation of the audio driver
+ *
+ * The Engine needs to return a reference to a structure that represents an
+ * internal representation of a track
  *
  */
 class Engine
