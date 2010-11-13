@@ -8,8 +8,8 @@
 
 ]>
 
-<section id="sn-scm-policy">
-  <title>SCM Policy</title>
+<section id="sn-revision-control">
+  <title>Revision Control</title>
   <para>
     Git will be used as the revision control system
   </para>

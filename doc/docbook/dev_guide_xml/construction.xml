@@ -13,7 +13,7 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
 		href="coding_idioms.xml" />
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
-		href="scm_policy.xml" />
+		href="revision_control.xml" />
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
 		href="dependencies.xml" />
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
