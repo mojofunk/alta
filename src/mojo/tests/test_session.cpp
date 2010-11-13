@@ -55,6 +55,11 @@ private:
 		BOOST_TEST_MESSAGE ("Project Property Changed");
 	}
 
+	void on_active_project_changed (Project*)
+	{
+		BOOST_TEST_MESSAGE ("Active Project Changed");
+	}
+
 	void on_track_property_changed (Project*, Track*, Property*)
 	{
 		BOOST_TEST_MESSAGE ("Track Property Changed");
