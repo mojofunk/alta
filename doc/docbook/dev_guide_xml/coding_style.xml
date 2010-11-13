@@ -6,7 +6,7 @@
 
 <section id="sn-coding-style">
   <title>Coding Style</title>
-  <section id="indentation">
+  <section id="sn-indentation">
     <title>Indentation</title>
     <para>
       Tabs are to be used for indentation.
@@ -16,7 +16,7 @@
   <section id="sn-brackets">
     <title>Brackets</title>
     <para>
-      All brackets should be aligned.
+      All brackets should be aligned. For example:
     </para>
 <programlisting>
 for (
@@ -37,8 +37,17 @@ for (
 	  </programlisting>
   </section>
 
-  <section id="sn-namespaces">
-    <title>Namespaces</title>
+  <section id="sn-namespace-names">
+    <title>Namespace Names</title>
+    <para>
+      Namespace identifiers should be a short and lower case. The name of
+      the top level namespace of a library should be the same name as the
+      library.
+    </para>
+  </section>
+
+  <section id="sn-namespace-indentation">
+    <title>Namespace Indentation</title>
     <para>
       Classes inside namespaces should not use any indentation and the
       namespace name should be added in a single line comment after the
@@ -55,6 +64,22 @@ public:
 
 } // namespace foo
     </programlisting>
+  </section>
+
+  <section id="sn-class-names">
+    <title>Class Names</title>
+    <para>
+      Class names use CamelCase notation.
+    </para>
+  </section>
+
+  <section id="sn-class-files">
+    <title>Class Files</title>
+    <para>
+      Each C++ class is defined in header file and a single source file. A
+      C++ header file must use the hpp extension and the source file must
+      use the cpp extension.
+    </para>
   </section>
 
   <section id="sn-function-calls">
@@ -81,5 +106,31 @@ public:
 		, m_three(3)
 	{ }
     </programlisting>
+  </section>
+
+  <section id="header-include-guards">
+    <title>Header Include Guards</title>
+    <para>
+      Header include guards are used to ensure that a header file is not
+      included more than once from a source file. The names used for the
+      guards should be uppercase with words separated by underscores.
+    </para>
+
+    <para>
+      The guard name used is determined by the class name so for example if
+      the class name was Polygon in the Geom library then the guard name
+      would be the following:
+    </para>
+<programlisting>
+#ifndef GEOM_POLYGON
+#define GEOM_POLYGON
+...
+#endif // GEOM_POLYGON
+	  </programlisting>
+    <para>
+      Using the prefix of the library name makes it less likely for there to
+      be an identifier class if there are two libraries being used that both
+      contain Polygon classes.
+    </para>
   </section>
 </section>

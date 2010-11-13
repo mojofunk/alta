@@ -11,8 +11,33 @@
 <section id="sn-scm-policy">
   <title>SCM Policy</title>
   <para>
-    A paragraph
+    Git will be used as the revision control system
   </para>
+
+  <section id="commit-size">
+    <title>Commit size</title>
+    <para>
+      Each set of changes that is commited must be as small and distinct as
+      possible. An indication that a commit is too large and should be split
+      up is if it takes more than one sentence to describe what the change
+      was.
+    </para>
+
+    <para>
+      Reasons for a large commit might be a rename of a function or variable
+      that effects a large number of source files but that in itself
+      signifies that the code may need to be refactored
+    </para>
+  </section>
+
+  <section id="commit-messages">
+    <title>Commit Message Format</title>
+    <para>
+      Each commit message is a small one line sentence that describes the
+      change followed by a blank line and then if necessary a longer
+      description of the change.
+    </para>
+  </section>
 <!--
 	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
 		href="Some_Subsection.xml" />
