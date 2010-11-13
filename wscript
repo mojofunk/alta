@@ -25,7 +25,7 @@ def set_options(opt):
 		opt.add_option('--'+i, type='string', default='', dest=i)
 
         opt.add_option('--with-target-platform', type='string', dest='target_platform')
-        opt.add_option('--with-tests', action='store_true', default=False, help='Enable Testsuite')
+        opt.add_option('--with-tests', action='store_true', default=True, help='Enable Testsuite')
 
 def _check_required_deps(conf, deps):
 	for pkg, version in deps.iteritems():
