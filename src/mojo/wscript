@@ -8,17 +8,16 @@ def init():
 def configure(conf):
 	print "configure mojo"
 
-def build(bld):
-	mojo_lib = bld(
-		features = [ 'cxx', 'cshlib' ],
+def build(ctx):
+	mojo_lib = ctx(
+		features = "cxx cxxshlib",
 		includes = '. ..',
-		export_incdirs = '..', # this should probably be .
+		export_includes = '..', # this should probably be .
+		source = ctx.path.ant_glob('**/*.cpp', excl='tests'),
 		uselib = ['GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM'],
-		uselib_local ='GLEAM',
+		use ='GLEAM',
 		target = 'mojo',
 		name = 'MOJO')
 
-	mojo_lib.find_sources_in_dirs('. project session rtg typesystem utils app core fs')
-
-        if bld.env['BUILD_TESTS']:
-                bld.add_subdirs('tests')
+        if ctx.env['BUILD_TESTS']:
+                ctx.recurse('tests')

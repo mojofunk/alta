@@ -26,11 +26,13 @@ def init():
 def configure(conf):
 	print "configure mojo tests"
 
-def build(bld):
+def build(ctx):
 	for test in tests:
-		obj = bld.new_task_gen('cxx', 'program')
-		obj.source = test + '.cpp'
-		obj.includes ='. ../..'
-		obj.uselib = 'BOOST_UNIT_TEST_FRAMEWORK'
-		obj.uselib_local ='MOJO'
-		obj.target = test
+		test_program = ctx(
+			features = 'cxx cxxprogram',
+			source = test + '.cpp',
+			includes ='. ../..',
+			defines = 'BOOST_TEST_DYN_LINK=1',
+			uselib = 'BOOST_UNIT_TEST_FRAMEWORK',
+			use ='MOJO',
+			target = test)

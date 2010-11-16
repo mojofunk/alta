@@ -8,11 +8,12 @@ def init():
 def configure(conf):
 	print "configure mojo-gtkmm"
 
-def build(bld):
-	obj = bld.new_task_gen('cxx', 'program')
-	obj.find_sources_in_dirs('.')
-	obj.includes ='..'
-	obj.uselib ='GTKMM-2.4 GOOCANVASMM-1.0 GTHREAD-2.0'
-	obj.uselib_local ='GLEAM MOJO'
-	obj.target = bld.env['APPNAME']
-	#obj.name = 'MOJO-GTKMM'
+def build(ctx):
+	mojo_program = ctx(
+		features = "cxx cxxprogram",
+		source = ctx.path.ant_glob('*.cpp'),
+		includes ='..',
+		uselib = 'GTKMM-2.4 GOOCANVASMM-1.0 GTHREAD-2.0',
+		use = 'GLEAM MOJO',
+		target = ctx.env['APPNAME'])
+		#name = 'MOJO-GTKMM'

@@ -8,11 +8,12 @@ def init():
 def configure(conf):
 	print "configure LADSPAAudioEffect"
 
-def build(bld):
-        obj = bld.new_task_gen('cxx', 'shlib')
-	obj.find_sources_in_dirs('.')
-	obj.includes ='.'
-	obj.uselib = ['LADSPA']
-	obj.uselib_local ='MOJO'
-	obj.target = 'ladspa_audio_effect'
-	obj.name = 'LADSPA_AUDIO_EFFECT'
+def build(ctx):
+	shlib = ctx(
+		features = "cxx cxxshlib",
+		includes = '.',
+		source = ctx.path.ant_glob('*.cpp'),
+		uselib = ['LADSPA'],
+		use ='MOJO',
+		target = 'ladspa_audio_effect',
+		name = 'LADSPA_AUDIO_EFFECT')

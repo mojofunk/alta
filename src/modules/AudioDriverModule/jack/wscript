@@ -8,11 +8,12 @@ def init():
 def configure(conf):
 	print "configure JACKAudioDriver"
 
-def build(bld):
-        obj = bld.new_task_gen('cxx', 'shlib')
-	obj.find_sources_in_dirs('.')
-	obj.includes ='.'
-	obj.uselib = ['JACK']
-	obj.uselib_local ='MOJO'
-	obj.target = 'jack_audio_driver'
-	obj.name = 'JACK_AUDIO_DRIVER'
+def build(ctx):
+	shlib = ctx(
+		features = "cxx cxxshlib",
+		includes = '.',
+		source = ctx.path.ant_glob('*.cpp'),
+		uselib = ['JACK'],
+		use ='MOJO',
+		target = 'jack_audio_driver',
+		name = 'JACK_AUDIO_DRIVER')

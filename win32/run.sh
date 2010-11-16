@@ -6,7 +6,7 @@ then
 	exit 1
 fi
 
-BUILD_DIR=build/default/src
+BUILD_DIR=build/src
 
 GMOJO_PATH=share
 
@@ -19,7 +19,7 @@ $BUILD_DIR/modules/AudioEffectModule/ladspa:\
 $BUILD_DIR/modules/ArchiveModule/dummy:\
 $BUILD_DIR/modules/ArchiveModule/xml
 
-EXECUTABLE="build/default/src/mojo-gtkmm/gmojo.exe"
+EXECUTABLE="build/src/mojo-gtkmm/gmojo.exe"
 cp $EXECUTABLE winmojo
 cd winmojo
 

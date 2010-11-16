@@ -7,8 +7,8 @@ rm -rf $WIN32_ROOT
 
 mkdir $WIN32_ROOT 
 
-cp build/default/src/gleam/libgleam.dll $WIN32_ROOT
-cp build/default/src/mojo/libmojo.dll $WIN32_ROOT
+cp build/src/gleam/gleam.dll $WIN32_ROOT
+cp build/src/mojo/mojo.dll $WIN32_ROOT
 cp -r data $WIN32_ROOT
 
 # just copy it all for now

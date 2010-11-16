@@ -8,11 +8,11 @@ def init():
 def configure(conf):
 	print "configure DummyArchive"
 
-def build(bld):
-        obj = bld.new_task_gen('cxx', 'shlib')
-	obj.find_sources_in_dirs('.')
-	obj.includes ='.'
-#	obj.uselib = ['GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
-	obj.uselib_local ='MOJO'
-	obj.target = 'dummy_archive'
-	obj.name = 'DUMMY_ARCHIVE'
+def build(ctx):
+	shlib = ctx(
+		features = "cxx cxxshlib",
+		includes = '.',
+		source = ctx.path.ant_glob('*.cpp'),
+		use ='MOJO',
+		target = 'dummy_archive',
+		name = 'DUMMY_ARCHIVE')

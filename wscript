@@ -10,13 +10,10 @@ VERSION='0.1.0'
 APPNAME='gmojo'
 
 # these variables are mandatory ('/' are converted automatically)
-srcdir = '.'
-blddir = 'build'
+top = '.'
+out = 'build'
 
-def init():
-	pass
-
-def set_options(opt):
+def options(opt):
 	# options provided by the modules
 	opt.tool_options('compiler_cxx')
 	opt.tool_options('compiler_cc')
@@ -56,28 +53,27 @@ def _define_paths(conf):
 
 def configure(conf):
 
-	conf.check_tool('misc')
 	conf.check_tool('compiler_cxx')
 	conf.check_tool('compiler_cc')
 
         if Options.options.target_platform:
                 Options.platform = Options.options.target_platform
 
-        conf.define('TARGET_PLATFORM', Options.platform)
+        #conf.define('TARGET_PLATFORM', Options.platform)
         conf.env['APPNAME'] = APPNAME
 
-	conf.check(function_name='getmntent', header_name='mntent.h')
+	# waf 1.6 has a problem with this
+	#conf.check_cc(function_name='getmntent', header_name='mntent.h')
 
-        if Options.platform == 'win32':
+        #if Options.platform == 'win32':
                 # As we have to change target platform after the tools
                 # have been loaded there are a few variables that needs
                 # to be initiated if building for win32.
                 # Make sure we don't have -fPIC and/or -DPIC in our CCFLAGS
-                conf.env["shlib_CCFLAGS"] = []
+                #conf.env["shlib_CCFLAGS"] = []
                 # Setup various prefixes
-                conf.env["shlib_PATTERN"] = 'lib%s.dll'
-                conf.env['program_PATTERN'] = '%s.exe'
-
+                #conf.env["cxxshlib_PATTERN"] = 'lib%s.dll'
+                #conf.env['program_PATTERN'] = '%s.exe'
 
 	deps = \
 	{
@@ -102,18 +98,22 @@ def configure(conf):
 	_check_required_deps(conf, deps)
 
         if Options.options.with_tests:
-                conf.define('BUILD_TESTS', Options.options.with_tests)
+                conf.env['BUILD_TESTS'] = True
                 print "Building with testsuite"
-                conf.check(lib='boost_unit_test_framework')
+		if Options.platform == 'win32':
+			# depend on F14 mingw lib names for now
+			conf.check(lib='boost_unit_test_framework-gcc45-mt-1_41', uselib_store='BOOST_UNIT_TEST_FRAMEWORK')
+		else:
+			conf.check(lib='boost_unit_test_framework')
 
         #if Options.platform == 'win32':
         #        conf.check(lib='pthreadGC2')
         #        conf.env.append_value('CPPPATH', os.path.join (os.getenv('MINGW_ROOT'), 'include', 'pthread'))
 
         if Options.platform == 'win32':
-		# depend on F13 mingw lib names for now
-                conf.check(lib='boost_filesystem-gcc44-mt-1_41', uselib_store='BOOST_FILESYSTEM')
-                conf.check(lib='boost_system-gcc44-mt-1_41', uselib_store='BOOST_SYSTEM')
+		# depend on F14 mingw lib names for now
+                conf.check(lib='boost_filesystem-gcc45-mt-1_41', uselib_store='BOOST_FILESYSTEM')
+                conf.check(lib='boost_system-gcc45-mt-1_41', uselib_store='BOOST_SYSTEM')
 	else:
                 conf.check(lib='boost_filesystem')
                 conf.check(lib='boost_system')
@@ -132,16 +132,17 @@ def configure(conf):
 
 	_define_paths(conf)
 
-	conf.sub_config('src')
+	conf.recurse('src')
 
 	conf.write_config_header('gmojo_config.h')
 
-def build(bld):
+def build(ctx):
 	# process subfolders from here
-	bld.add_subdirs('src')
+	ctx.recurse('src')
 
-	obj = bld(
+	obj = ctx(
                 features = 'subst',
                 source   = 'scripts/gmojo_env.sh.in',
-                target   = 'gmojo_env.sh')
-        obj.dict     = {'BUILD_DIR': bld.path.abspath(bld.env), 'APPNAME': bld.env['APPNAME']}
+                target   = 'gmojo_env.sh',
+		BUILD_DIR = ctx.path.get_bld().abspath(),
+		APPNAME = ctx.env['APPNAME'])

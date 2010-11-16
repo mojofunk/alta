@@ -12,17 +12,15 @@ def init():
 def configure(conf):
 	pass
 
-def build(bld):
-	gleam_lib = bld(
-		features = [ 'cxx', 'cshlib' ],
+def build(ctx):
+	gleam_lib = ctx(
+		features = "cxx cxxshlib",
 		includes = '. ..',
-		export_incdirs = '..', # this should probably be .
+		export_includes = '..', # this should probably be .
+		source = ctx.path.ant_glob('*.cpp', excl=posix_files),
 		uselib = ['GLIBMM-2.4'],
 		target = 'gleam',
 		name = 'GLEAM')
 
-	exclude_files=posix_files
-	gleam_lib.find_sources_in_dirs('.', excludes=exclude_files)
-
-        if bld.env['BUILD_TESTS']:
-                bld.add_subdirs('tests')
+        if ctx.env['BUILD_TESTS']:
+                ctx.recurse('tests')

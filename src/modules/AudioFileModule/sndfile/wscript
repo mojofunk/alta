@@ -8,11 +8,12 @@ def init():
 def configure(conf):
 	print "configure SndfileAudioFile"
 
-def build(bld):
-        obj = bld.new_task_gen('cxx', 'shlib')
-	obj.find_sources_in_dirs('.')
-	obj.includes ='.'
-	obj.uselib = ['SNDFILE']
-	obj.uselib_local ='MOJO'
-	obj.target = 'sndfile_audio_file'
-	obj.name = 'SNDFILE_AUDIO_FILE'
+def build(ctx):
+	shlib = ctx(
+		features = "cxx cxxshlib",
+		includes = '.',
+		source = ctx.path.ant_glob('*.cpp'),
+		uselib = ['SNDFILE'],
+		use ='MOJO',
+		target = 'sndfile_audio_file',
+		name = 'SNDFILE_AUDIO_FILE')
