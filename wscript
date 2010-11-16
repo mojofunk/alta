@@ -65,16 +65,6 @@ def configure(conf):
 	# waf 1.6 has a problem with this
 	#conf.check_cc(function_name='getmntent', header_name='mntent.h')
 
-        #if Options.platform == 'win32':
-                # As we have to change target platform after the tools
-                # have been loaded there are a few variables that needs
-                # to be initiated if building for win32.
-                # Make sure we don't have -fPIC and/or -DPIC in our CCFLAGS
-                #conf.env["shlib_CCFLAGS"] = []
-                # Setup various prefixes
-                #conf.env["cxxshlib_PATTERN"] = 'lib%s.dll'
-                #conf.env['program_PATTERN'] = '%s.exe'
-
 	deps = \
 	{
 		'cairo'                : '1.8',
@@ -101,8 +91,9 @@ def configure(conf):
                 conf.env['BUILD_TESTS'] = True
                 print "Building with testsuite"
 		if Options.platform == 'win32':
-			# depend on F14 mingw lib names for now
-			conf.check(lib='boost_unit_test_framework-gcc45-mt-1_41', uselib_store='BOOST_UNIT_TEST_FRAMEWORK')
+			if conf.env.CC_NAME == 'gcc':
+				libname = 'boost_unit_test_framework-gcc%s%s-mt-1_41' % (conf.env.CC_VERSION[0], conf.env.CC_VERSION[1])
+				conf.check(lib=libname, uselib_store='BOOST_UNIT_TEST_FRAMEWORK')
 		else:
 			conf.check(lib='boost_unit_test_framework')
 
@@ -112,8 +103,10 @@ def configure(conf):
 
         if Options.platform == 'win32':
 		# depend on F14 mingw lib names for now
-                conf.check(lib='boost_filesystem-gcc45-mt-1_41', uselib_store='BOOST_FILESYSTEM')
-                conf.check(lib='boost_system-gcc45-mt-1_41', uselib_store='BOOST_SYSTEM')
+		boost_filesystem_libname = 'boost_filesystem-gcc%s%s-mt-1_41' % (conf.env.CC_VERSION[0], conf.env.CC_VERSION[1])
+		boost_system_libname = 'boost_system-gcc%s%s-mt-1_41' % (conf.env.CC_VERSION[0], conf.env.CC_VERSION[1])
+                conf.check(lib=boost_filesystem_libname, uselib_store='BOOST_FILESYSTEM')
+                conf.check(lib=boost_system_libname, uselib_store='BOOST_SYSTEM')
 	else:
                 conf.check(lib='boost_filesystem')
                 conf.check(lib='boost_system')
