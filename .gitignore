@@ -8,18 +8,12 @@
 
 .lock-wscript
 .lock-wafbuild
-.sconf_temp/
-.sconsign.dblite
 .waf-*
 build/
-config.log
-doc/docbook/plan_html
-doc/docbook/srs_xml/entities.ent
 doc/doxygen/Doxyfile
 doc/docbook/*html
 doc/docbook/*xml*/entities.ent
-gmojo.conf
-gmojo_env.sh
-tools
 N5*
 *.swp
+*~
+winmojo
