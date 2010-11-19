@@ -11,7 +11,20 @@ ProjectSetupDialog::ProjectSetupDialog (mojo::Project* proj)
 {
 	const std::string ui_file = "data/project_setup.ui";
 
-	m_builder = Gtk::Builder::create_from_file (ui_file);
+	try
+	{
+		m_builder = Gtk::Builder::create_from_file (ui_file);
+	}
+	catch(const Glib::FileError& ex)
+	{
+		std::cerr << "FileError: " << ex.what() << std::endl;
+		return;
+	}
+	catch(const Gtk::BuilderError& ex)
+	{
+		std::cerr << "BuilderError: " << ex.what() << std::endl;
+		return;
+	}
 
 	m_builder->get_widget ("projectsetup", m_window);
 
