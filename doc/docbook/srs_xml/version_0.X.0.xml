@@ -12,13 +12,19 @@
   <title>Requirements Version 0.X.0</title>
   <para>
     This page contains all the features that need to be implemented at some
-    point before version 1.0.0/>
+    point before version 1.0.0
   </para>
 
   <itemizedlist>
     <listitem>
       <para>
         Project Import and Export
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        Export Audio Mixdown
       </para>
     </listitem>
 
