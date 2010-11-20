@@ -1,19 +1,140 @@
 <?xml version="1.0" standalone="no"?>
 
-<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
 
 ]>
 
 <section id="sn-coding-conventions">
-  <title>Naming Conventions</title>
-  <section id="class-names">
-    <title>Class Names</title>
+  <title>Coding Conventions</title>
+  <section id="sn-indentation">
+    <title>Indentation</title>
     <para>
-      Class names should use UpperCamelCase
+      Tabs are to be used for indentation.
     </para>
   </section>
 
-  <section id="member-variable-names">
+  <section id="sn-brackets">
+    <title>Brackets</title>
+    <para>
+      All brackets should be aligned. For example:
+    </para>
+<programlisting>
+for (
+	fs::directory_iterator itr( dir_path );
+	itr != end_itr;
+	++itr
+    )
+{
+	if ( fs::is_directory( *itr ) )
+	{
+		find_matching_files ( *itr, match_func, result );
+	}
+	else if (match_func(itr->leaf()))
+	{
+		result.push_back(*itr);
+	}
+}
+	  </programlisting>
+  </section>
+
+  <section id="sn-namespace-names">
+    <title>Namespace Names</title>
+    <para>
+      Namespace identifiers should be a short and lower case. The name of
+      the top level namespace of a library should be the same name as the
+      library.
+    </para>
+  </section>
+
+  <section id="sn-namespace-indentation">
+    <title>Namespace Indentation</title>
+    <para>
+      Classes inside namespaces should not use any indentation and the
+      namespace name should be added in a single line comment after the
+      closing bracket(on the same line).
+    </para>
+<programlisting>
+namespace  foo {
+
+class Widget
+{
+public:
+	Widget ();
+};
+
+} // namespace foo
+    </programlisting>
+  </section>
+
+  <section id="sn-class-names">
+    <title>Class Names</title>
+    <para>
+      Class names use CamelCase notation.
+    </para>
+  </section>
+
+  <section id="sn-class-files">
+    <title>Class Files</title>
+    <para>
+      Each C++ class is defined in header file and a single source file. A
+      C++ header file must use the hpp extension and the source file must
+      use the cpp extension.
+    </para>
+  </section>
+
+  <section id="sn-function-calls">
+    <title>Function Calls</title>
+    <para>
+      When calling a function there should be a single space between the
+      function or method name and the starting bracket.
+    </para>
+  </section>
+
+  <section id="sn-constructor-init-list">
+    <title>Constructor Initialization List</title>
+    <para>
+      Each member initialization should occur on a new line and each
+      line(apart from the first) should start with a comma. The colon after
+      the class constructor declaration should be on a line by itself. If
+      this style is followed adding or removing a class member will only
+      cause a one line change.
+    </para>
+<programlisting>
+	Foo::Foo ()
+		: m_one(1)
+		, m_two(2)
+		, m_three(3)
+	{ }
+    </programlisting>
+  </section>
+
+  <section id="sn-header-include-guards">
+    <title>Header Include Guards</title>
+    <para>
+      Header include guards are used to ensure that a header file is not
+      included more than once from a source file. The names used for the
+      guards should be uppercase with words separated by underscores.
+    </para>
+
+    <para>
+      The guard name used is determined by the class name so for example if
+      the class name was Polygon in the Geom library then the guard name
+      would be the following:
+    </para>
+<programlisting>
+#ifndef GEOM_POLYGON
+#define GEOM_POLYGON
+...
+#endif // GEOM_POLYGON
+	  </programlisting>
+    <para>
+      Using the prefix of the library name makes it less likely for there to
+      be an identifier class if there are two libraries being used that both
+      contain Polygon classes.
+    </para>
+  </section>
+
+  <section id="sn-member-variable-names">
     <title>Member Variable Names</title>
     <para>
       Member variable and member function identifiers are all lower case
@@ -35,15 +156,4 @@
       ugly than just prefixing or postfixing with <literal>_</literal>.
     </para>
   </section>
-
-  <section id="namespace-names">
-    <title>Namespace Names</title>
-    <para>
-      namespace identifiers should be as short as possible and lower case.
-    </para>
-  </section>
-<!--
-	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
-		href="Some_Subsection.xml" />
-	-->
 </section>

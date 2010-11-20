@@ -9,8 +9,6 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
 		href="coding_conventions.xml" />
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
-		href="coding_style.xml" />
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
 		href="coding_idioms.xml" />
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" 
 		href="revision_control.xml" />
