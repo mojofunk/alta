@@ -118,8 +118,6 @@ debug and release builds
 
 Session API should use method names like transport_* track_* project_* etc
 
-Bus should be renamed to something like SessionEventHandler/Listener/Observer
-
 Session API should have a sync method for testing(at least)
 
 Should the mojo public API be in C?
@@ -150,3 +148,9 @@ timer library for measuring execution time
 	- records line and file
 	- per thread timers?
 	- BEGIN and END or RAII?
+
+Track Canvas
+	- align TrackListItems with TrackCanvasItems
+	- add border/frame to TrackViewListItem
+
+Dev guide section on including headers using " instead of <
