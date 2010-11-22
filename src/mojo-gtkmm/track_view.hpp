@@ -16,6 +16,11 @@ class TrackCanvas;
 class TrackList;
 class TrackViewItem;
 
+/**
+ * Is it a goal for the TrackList and the TrackCanvas to be independant
+ * widgets and only enforce the Items in TrackCanvas and TrackList
+ * to line up when in the TrackView container.
+ */
 class TrackView : public Gtk::HPaned
 {
 public: // typedefs
@@ -36,6 +41,8 @@ private: // signal handlers
 	void on_track_added (mojo::Project*, mojo::Track*);
 
 	void on_track_removed (mojo::Project*, mojo::Track*);
+
+	void on_track_canvas_item_height_changed (TrackViewItemSPtr);
 
 private: // member data
 

@@ -18,7 +18,7 @@ public:
 
 public: // TrackListItem interface
 
-	virtual void set_height ();
+	virtual void set_height (uint32_t height);
 
 	virtual uint32_t get_height () const;
 

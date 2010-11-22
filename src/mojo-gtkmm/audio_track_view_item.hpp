@@ -18,11 +18,14 @@ public:
 
 	AudioTrackViewItem (mojo::Track* at);
 
-	virtual void set_height (double height);
-
 	virtual TrackListItem* get_track_list_item ();
 
 	virtual Glib::RefPtr<TrackCanvasItem> get_track_canvas_item ();
+
+private:
+
+	// maybe this should go into TVI
+	void on_track_canvas_item_height_changed ();
 
 private:
 

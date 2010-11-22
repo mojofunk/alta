@@ -22,9 +22,13 @@ public:
 
 public:
 
-	virtual void set_height ();
+	virtual void set_height (int height);
 
 	virtual uint32_t get_height () const;
+
+	virtual void set_width (int width);
+
+	virtual uint32_t get_width () const;
 
 	virtual void set_selected (bool);
 

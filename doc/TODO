@@ -150,7 +150,7 @@ timer library for measuring execution time
 	- BEGIN and END or RAII?
 
 Track Canvas
-	- align TrackListItems with TrackCanvasItems
+	- change height from the track view list
 	- add border/frame to TrackViewListItem
 
 Dev guide section on including headers using " instead of <

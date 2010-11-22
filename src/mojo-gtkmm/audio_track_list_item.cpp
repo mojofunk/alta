@@ -12,15 +12,18 @@ AudioTrackListItem::AudioTrackListItem (mojo::Track* t)
 }
 
 void
-AudioTrackListItem::set_height ()
+AudioTrackListItem::set_height (uint32_t height)
 {
+	if (get_height () == height) return;
 
+	property_height_request() = height;
+	m_signal_height_changed();
 }
 
 uint32_t
 AudioTrackListItem::get_height () const
 {
-
+	return get_allocation ().get_height ();
 }
 
 void

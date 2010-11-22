@@ -39,13 +39,12 @@ TrackView::on_track_added (mojo::Project* p, mojo::Track* track)
 
 	TrackViewItemSPtr tvi(TrackViewItemFactory::create (track));
 
-	if (tvi)
-	{
-		LOG;
-		m_track_view_items.push_back (tvi);
-		m_track_list->add(tvi->get_track_list_item ());
-		m_canvas->add(tvi->get_track_canvas_item ());
-	}
+	if (!tvi) throw; // do something smart
+
+	m_track_view_items.push_back (tvi);
+
+	m_track_list->add(tvi->get_track_list_item ());
+	m_canvas->add(tvi->get_track_canvas_item ());
 }
 
 void
