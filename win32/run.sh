@@ -1,3 +1,5 @@
+#!/bin/bash
+
 WIN32_ROOT=winmojo
 
 if test ! -d $WIN32_ROOT

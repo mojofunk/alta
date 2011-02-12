@@ -1,3 +1,4 @@
+#!/bin/bash
 
 export HOST=i686-pc-mingw32
 

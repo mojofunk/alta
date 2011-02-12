@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 MINGW_ROOT='/usr/i686-pc-mingw32/sys-root/mingw'
 WIN32_ROOT='winmojo'
