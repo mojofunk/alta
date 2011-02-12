@@ -92,7 +92,7 @@ def configure(conf):
                 print "Building with testsuite"
 		if Options.platform == 'win32':
 			if conf.env.CC_NAME == 'gcc':
-				libname = 'boost_unit_test_framework-gcc%s%s-mt-1_41' % (conf.env.CC_VERSION[0], conf.env.CC_VERSION[1])
+				libname = 'boost_unit_test_framework-gcc%s%s-mt-1_44' % (conf.env.CC_VERSION[0], conf.env.CC_VERSION[1])
 				conf.check(lib=libname, uselib_store='BOOST_UNIT_TEST_FRAMEWORK')
 		else:
 			conf.check(lib='boost_unit_test_framework')
@@ -103,8 +103,8 @@ def configure(conf):
 
         if Options.platform == 'win32':
 		# depend on F14 mingw lib names for now
-		boost_filesystem_libname = 'boost_filesystem-gcc%s%s-mt-1_41' % (conf.env.CC_VERSION[0], conf.env.CC_VERSION[1])
-		boost_system_libname = 'boost_system-gcc%s%s-mt-1_41' % (conf.env.CC_VERSION[0], conf.env.CC_VERSION[1])
+		boost_filesystem_libname = 'boost_filesystem-gcc%s%s-mt-1_44' % (conf.env.CC_VERSION[0], conf.env.CC_VERSION[1])
+		boost_system_libname = 'boost_system-gcc%s%s-mt-1_44' % (conf.env.CC_VERSION[0], conf.env.CC_VERSION[1])
                 conf.check(lib=boost_filesystem_libname, uselib_store='BOOST_FILESYSTEM')
                 conf.check(lib=boost_system_libname, uselib_store='BOOST_SYSTEM')
 	else:
