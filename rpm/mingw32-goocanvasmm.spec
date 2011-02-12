@@ -6,7 +6,7 @@
 %define __debug_install_post %{_mingw32_debug_install_post}
 
 Name:           mingw32-goocanvasmm
-Version:        0.15.1
+Version:        0.15.4
 Release:        1%{?dist}
 
 Summary:        MinGW Windows C++ interface for goocanvas
@@ -88,5 +88,7 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Feb 12 2011 Tim Mayberry <mojofunk@gmail.com> - 0.15.4-1
+- Update to 0.15.4 to fix compatibility with new cairomm version
 * Wed Mar 17 2010 Tim Mayberry <mojofunk@gmail.com> - 0.15.1-1
 - First build for MinGW based on native spec file

@@ -1,12 +1,12 @@
-%global __strip %{_mingw32_strip}
-%global __objdump %{_mingw32_objdump}
-%global _use_internal_dependency_generator 0
-%global __find_requires %{_mingw32_findrequires}
-%global __find_provides %{_mingw32_findprovides}
+%define __strip %{_mingw32_strip}
+%define __objdump %{_mingw32_objdump}
+%define _use_internal_dependency_generator 0
+%define __find_requires %{_mingw32_findrequires}
+%define __find_provides %{_mingw32_findprovides}
 %define __debug_install_post %{_mingw32_debug_install_post}
 
 Name:           mingw32-goocanvas
-Version:        0.15
+Version:        1.0.0
 Release:        1%{?dist}
 Summary:        MinGW Windows GooCanvas library
 
@@ -67,5 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 	
 	
 %changelog
+* Sat Feb 12 2011 Tim Mayberry <mojofunk@gmail.com> - 1.0-1
+- update to version 1.0.0
 * Wed Mar 17 2010 Tim Mayberry <mojofunk@gmail.com> - 0.15-1
 - initial release for mingw32
