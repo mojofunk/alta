@@ -3,7 +3,6 @@
 
 namespace gleam {
 
-// These should probably be inline
 Semaphore::Semaphore (gint initial_val)
 	:
 		m_counter(initial_val)
@@ -12,8 +11,9 @@ Semaphore::Semaphore (gint initial_val)
 void
 Semaphore::aquire ()
 {
+	Glib::Mutex::Lock guard (m_mutex);
+
 	while (m_counter.get() < 1) {
-		Glib::Mutex::Lock guard (m_mutex);
 
 		m_cond.wait(m_mutex);
 
@@ -25,7 +25,18 @@ Semaphore::aquire ()
 bool
 Semaphore::try_aquire ()
 {
-	// XXX todo
+	if (!m_mutex.trylock())
+	{
+		return false;
+	}
+	// lock successful
+	while (m_counter.get() < 1) {
+		m_cond.wait(m_mutex);
+
+	}
+
+	--m_counter;
+	m_mutex.unlock();
 	return true;
 }
 
@@ -33,7 +44,6 @@ void
 Semaphore::release ()
 {
 	++m_counter;
-
 	m_cond.signal();
 }
 
