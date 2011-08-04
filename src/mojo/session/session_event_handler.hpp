@@ -23,6 +23,9 @@ namespace mojo {
  * all events have to be handled anyway so just enforce it rather than
  * having to register callbacks and then check that they have been registered
  * etc.
+ * The main disadvantage is that the client code has to have a top down
+ * event processing heirarchy. I think it would be better to have
+ * A virtual SessionEvent class and Subclasses for different event types
  *
  */
 class SessionEventHandler

@@ -9,7 +9,7 @@ namespace mojo {
 /**
  * An AudioDevice has a number of input or output streams
  *
- * Each stream can be either an input stream(source) or a output stream(source)
+ * Each stream can be either an input stream(source) or a output stream(sink)
  *
  * Each stream can have a number of channels
  *
