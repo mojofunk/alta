@@ -2,7 +2,7 @@
 #ifndef MOJO_TEMPLATE_TYPE_FACTORY
 #define MOJO_TEMPLATE_TYPE_FACTORY
 
-#include <mojo/typesystem/type_factory.hpp>
+#include "type_factory.hpp"
 
 namespace mojo {
 

@@ -7,7 +7,7 @@
 
 #include <boost/any.hpp>
 
-#include <mojo/typesystem/typedefs.hpp>
+#include "typedefs.hpp"
 
 namespace mojo {
 

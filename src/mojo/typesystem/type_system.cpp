@@ -4,9 +4,8 @@
 
 #include <cassert>
 
-#include <mojo/typesystem/type_system.hpp>
-
-#include <mojo/typesystem/type_factory.hpp>
+#include "type_system.hpp"
+#include "type_factory.hpp"
 
 using std::map;
 using std::set;
