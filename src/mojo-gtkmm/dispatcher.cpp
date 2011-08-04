@@ -33,6 +33,7 @@ Dispatcher::iteration (bool block)
 	{
 		Glib::Mutex::Lock guard(m_iter_mtx);
 
+		// thread safe?
 		Glib::signal_idle().connect(sigc::bind_return(sigc::mem_fun(*this, &Dispatcher::run), false));
 
 		//signal to run
@@ -43,6 +44,7 @@ Dispatcher::iteration (bool block)
 	}
 	else
 	{
+		// thread safe?
 		Glib::signal_idle().connect(sigc::bind_return(sigc::mem_fun(*this, &Dispatcher::run), false));
 		m_iter_sema.release();
 	}
