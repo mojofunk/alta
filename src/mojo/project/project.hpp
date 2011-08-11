@@ -5,8 +5,9 @@
 #include <string>
 #include <set>
 
+#include <mojo/core/object.hpp>
+
 #include "typedefs.hpp"
-#include "object.hpp"
 
 namespace mojo {
 

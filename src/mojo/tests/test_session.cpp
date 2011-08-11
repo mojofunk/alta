@@ -119,12 +119,33 @@ BOOST_AUTO_TEST_CASE( test_session )
 	SessionEventHandler *handler = new TestSessionEventHandler(s);
 
 	s->add_event_handler (handler);
+	//s->connect_event_handler (handler, SessionEvent::ProjectAdded);
+	//s->connect_event_handler (handler, SessionEvent::ProjectRemoved);
+	//s->connect_event_handler (handler, SessionEvent::TracksAdded);
+	//s->connect_event_handler (handler, SessionEvent::TracksRemoved);
+	//s->connect_event_handler (handler, TransportEvent::SpeedChanged);
+	//s->connect_event_handler (handler, TransportEvent::PositionChanged);
+	//s->connect_event_handler (handler, TransportEvent::RecordEnabledChanged);
+	// handler->unref (); ??
+
 
 	s->new_project ();
+
+	// should receive a project added event for new project
+
+
+
+	// loading another project
+
+	//s->load_project (project_file);
+
+	// should receive a project added event for the loaded project
 
 	// need a mainloop here
 
 	s->remove_event_handler (handler);
+
+	//s->remove_event_handler (handler); //disconnects all event signals
 
 	delete s;
 	delete handler;

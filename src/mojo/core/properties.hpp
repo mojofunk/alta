@@ -5,9 +5,14 @@
 #include <string>
 #include <map>
 
+#include <glib.h>
+
 #include <boost/any.hpp>
 
 namespace mojo {
+
+// use PropertyID in map instead of string
+typedef GQuark PropertyID;
 
 typedef std::map<std::string, boost::any> Properties;
 

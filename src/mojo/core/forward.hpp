@@ -18,6 +18,7 @@ class AudioFileModule;
 class AudioFile;
 class Library;
 class Module;
+class Object;
 class TypeFactory;
 class TypeSystem;
 

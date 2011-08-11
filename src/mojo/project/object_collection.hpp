@@ -4,6 +4,8 @@
 
 #include <list>
 
+#include <mojo/core/typedefs.hpp>
+
 #include "typedefs.hpp"
 
 namespace mojo {

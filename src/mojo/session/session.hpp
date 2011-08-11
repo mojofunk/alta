@@ -56,7 +56,7 @@ namespace mojo {
  * accessed/referenced by the session. This makes it much easier to ensure
  * that only one thread modifies the objects.
  *
- * To ensure this the clients don't have direct access to the class definitions
+ * To ensure this the clients don't have direct access to the class definitions?
  *
  * The Session may need to use an internal SessionEventHandler to syncronize the states of the
  * Project and the Engine.

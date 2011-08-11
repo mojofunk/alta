@@ -10,7 +10,6 @@ class AudioRegion;
 class AudioSequence;
 class AudioTrack;
 class MidiTrack;
-class Object;
 class ObjectCollection;
 class Project;
 class Track;
