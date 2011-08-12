@@ -134,6 +134,15 @@ public:
     </para>
   </section>
 
+  <section id="sn-typedefs">
+    <title>Typedefs</title>
+    <para>
+      Typedef statements should normally use lower case letters with an
+      underscore used for word separation with a postfix
+      <literal>_t</literal> added
+    </para>
+  </section>
+
   <section id="sn-member-variable-names">
     <title>Member Variable Names</title>
     <para>
