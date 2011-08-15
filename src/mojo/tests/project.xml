@@ -4,6 +4,14 @@
 		<objectref id="6"/>
 	</objectcollection>
 
+	<!-- Perhaps something like this... -->
+	<object type="AudioTrack" id=2>
+		<property type="std::string" name="name" value="Bass Guitar"/>
+		<property type="boost::shared_ptr<Sequence>" name="sequence" value="3"/>
+		<property type="bool" name="record" value="1"/>
+	</object>
+
+	<!-- or perhaps this... -->
 	<objects>
 		<group type="audiotrack">
 			<audiotrack id="2">
