@@ -10,9 +10,11 @@ namespace mojo {
 class Object
 {
 	typedef boost::signals2::signal<void (const Properties&)> changed_signal_t;
+	typedef boost::signals2::signal<void ()> destroy_signal_t;
 
 public:
 	typedef	changed_signal_t::slot_type changed_slot_t;
+	typedef	destroy_signal_t::slot_type destroy_slot_t;
 	typedef	boost::signals2::connection connection_t;
 
 	// type_name
@@ -31,11 +33,25 @@ public:
 	connection_t on_changed_signal (const changed_slot_t& slot)
 	{ m_changed_signal.connect (slot); }
 
+	void destroy () { m_destroy_signal (); }
+
+	/**
+	 * When a reference to an Object is held the holder must
+	 * register a functor to drop references when an Object is
+	 * forcibly destroyed.
+	 *
+	 * should this be called dispose? or do we need a separate
+	 * dispose handler
+	 */
+	connection_t on_destroy_signal (const destroy_slot_t& slot)
+	{ m_destroy_signal.connect (slot); }
+
 protected:
 
 	virtual ~Object() { }
 
 	changed_signal_t m_changed_signal;
+	destroy_signal_t m_destroy_signal;
 
 };
 
