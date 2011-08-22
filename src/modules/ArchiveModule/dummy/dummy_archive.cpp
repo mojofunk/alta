@@ -30,7 +30,7 @@ DummyArchive::write_object(std::ostream& os, const ObjectSP& obj)
 	for (Properties::const_iterator i = props.begin();
 			i != props.end();)
 	{
-		write_property (os, i->first, i->second);
+		write_property (os, *i);
 
 		++i;
 
@@ -55,35 +55,35 @@ DummyArchive::write_object_collection(std::ostream& os, const ObjectCollection& 
 }
 
 void
-DummyArchive::write_property (std::ostream& os, const string& name, const boost::any& any_type)
+DummyArchive::write_property (std::ostream& os, const Property& prop)
 {
-	string type_name = TypeSystem::get_type_name(any_type.type());
+	string type_name = TypeSystem::get_type_name(prop.value.type());
 
-	os << "Name: " << name << " Type: " << type_name << " Value: ";
+	os << "Name: " << prop.get_name_string () << " Type: " << type_name << " Value: ";
 
-	if(any_type.type() == typeid(ObjectCollection))
+	if(prop.value.type() == typeid(ObjectCollection))
 	{
-		write_object_collection(os, boost::any_cast<ObjectCollection>(any_type));
+		write_object_collection(os, boost::any_cast<ObjectCollection>(prop.value));
 	}
-	else if(any_type.type() == typeid(std::string))
+	else if(prop.value.type() == typeid(std::string))
 	{
-		os << boost::any_cast<std::string>(any_type);
+		os << boost::any_cast<std::string>(prop.value);
 	}
-	else if(any_type.type() == typeid(ObjectSP))
+	else if(prop.value.type() == typeid(ObjectSP))
 	{
-		write_object(os, boost::any_cast<ObjectSP>(any_type));
+		write_object(os, boost::any_cast<ObjectSP>(prop.value));
 	}
-	else if(any_type.type() == typeid(int64_t))
+	else if(prop.value.type() == typeid(int64_t))
 	{
-		os << cformat::convert<std::string>(boost::any_cast<int64_t>(any_type));
+		os << cformat::convert<std::string>(boost::any_cast<int64_t>(prop.value));
 	}
-	else if(any_type.type() == typeid(int32_t))
+	else if(prop.value.type() == typeid(int32_t))
 	{
-		os << cformat::convert<std::string>(boost::any_cast<int32_t>(any_type));
+		os << cformat::convert<std::string>(boost::any_cast<int32_t>(prop.value));
 	}
-	else if(any_type.type() == typeid(float))
+	else if(prop.value.type() == typeid(float))
 	{
-		os << cformat::convert<std::string>(boost::any_cast<float>(any_type));
+		os << cformat::convert<std::string>(boost::any_cast<float>(prop.value));
 	}
 }
 
@@ -95,7 +95,7 @@ DummyArchive::write (const fs::path& file_path, const Properties& props)
 	for (Properties::const_iterator i = props.begin();
 			i != props.end(); ++i)
 	{
-		write_property (output_file, i->first, i->second);
+		write_property (output_file, *i);
 	}
 
 	// recursively find all the Properties that are of type mojo::Object

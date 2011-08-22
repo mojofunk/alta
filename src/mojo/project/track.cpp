@@ -1,9 +1,15 @@
 
 #include "track.hpp"
 
+namespace {
+
+const char * const property_name = "name";
+
+}
+
 namespace mojo {
 
-const char * const Track::s_property_name = "name";
+PropertyID const Track::s_property_name_id = g_quark_from_static_string(property_name);
 
 Track::Track()
 	:
@@ -15,7 +21,7 @@ Track::Track()
 void
 Track::get_properties (Properties& props) const
 {
-	props.insert (make_property (s_property_name, m_name));
+	props.set_property (s_property_name_id, m_name);
 }
 
 void
@@ -33,9 +39,13 @@ Track::get_name() const
 void
 Track::set_name(const std::string& new_name)
 {
+	Change name_change(s_property_name_id, m_name);
+
 	if (m_name != new_name)
 	{
 		m_name = new_name;
+		name_change.set_new_value (m_name);
+		signal_changes (name_change);
 	}
 }
 

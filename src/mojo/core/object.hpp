@@ -4,12 +4,13 @@
 #include <boost/signals2.hpp>
 
 #include <mojo/core/properties.hpp>
+#include <mojo/core/change_set.hpp>
 
 namespace mojo {
 
 class Object
 {
-	typedef boost::signals2::signal<void (const Properties&)> changed_signal_t;
+	typedef boost::signals2::signal<void (const ChangeSet&)> changed_signal_t;
 	typedef boost::signals2::signal<void ()> destroy_signal_t;
 
 public:
@@ -26,9 +27,6 @@ public:
 	// bool set_property
 	//
 	// bool get_property
-	//
-	// signal_
-	//
 
 	connection_t on_changed_signal (const changed_slot_t& slot)
 	{ m_changed_signal.connect (slot); }
@@ -53,6 +51,13 @@ protected:
 	changed_signal_t m_changed_signal;
 	destroy_signal_t m_destroy_signal;
 
+	void signal_changes (const ChangeSet& changes)
+	{
+		if (!changes.empty())
+		{
+			m_changed_signal (changes);
+		}
+	}
 };
 
 } // namespace mojo

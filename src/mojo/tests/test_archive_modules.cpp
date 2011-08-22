@@ -13,22 +13,12 @@ using namespace std;
 using namespace mojo;
 
 template <class T>
-bool
-insert_property(Properties& props, const string& name, const T& value)
-{
-	return props.insert(make_property<string, T>(name, value)).second;
-}
-
-template <class T>
 void
 check_property (const Properties& props, const string& property_name, const T& expected_value)
 {
-	Properties::const_iterator i;
-	BOOST_REQUIRE((i = props.find (property_name)) != props.end());
-
 	T prop_value; 
 
-	BOOST_CHECK_NO_THROW(prop_value = boost::any_cast<T>(i->second));
+	BOOST_CHECK_NO_THROW(props.get_property (property_name, prop_value));
 
 	BOOST_CHECK_EQUAL(prop_value, expected_value);
 }
@@ -36,9 +26,9 @@ check_property (const Properties& props, const string& property_name, const T& e
 void
 insert_some_properties (Properties& props)
 {
-	BOOST_CHECK(insert_property<string>(props, "name", "timbyr"));
-	BOOST_CHECK(insert_property<int32_t>(props, "age", 12));
-	BOOST_CHECK(insert_property<float>(props, "avgloc", 10.53f));
+	props.set_property ("name", string("timbyr"));
+	props.set_property ("age", 12);
+	props.set_property ("avgloc", 10.53f);
 }
 
 void
@@ -58,11 +48,12 @@ test_archive (ArchiveSP archive, const string& filename)
 
 	BOOST_CHECK_NO_THROW(archive->write (filename, props));
 
-	props.clear();
+	Properties props2;
 
-	BOOST_CHECK_NO_THROW(archive->read (filename, props));
+	BOOST_CHECK_NO_THROW(archive->read (filename, props2));
 
-	check_some_properties (props);
+	//BOOST_CHECK_EQUAL (props, props2);
+
 }
 
 BOOST_AUTO_TEST_CASE( archive_module_test )

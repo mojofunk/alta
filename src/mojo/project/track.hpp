@@ -38,9 +38,9 @@ private:
 	// member data
 	std::string m_name;
 
-private:
+public:
 
-	static const char * const s_property_name;
+	static PropertyID const s_property_name_id;
 };
 
 } // namespace mojo

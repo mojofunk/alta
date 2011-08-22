@@ -24,6 +24,7 @@
 #include <mojo/core/module.hpp>
 #include <mojo/core/object.hpp>
 #include <mojo/core/properties.hpp>
+#include <mojo/core/state_tracker.hpp>
 
 #include <mojo/fs/directory_names.hpp>
 #include <mojo/fs/filesystem_paths.hpp>

@@ -21,6 +21,7 @@ class Module;
 class Object;
 class TypeFactory;
 class TypeSystem;
+class StateTracker;
 
 } // namespace mojo
 

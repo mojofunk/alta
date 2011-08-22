@@ -11,7 +11,7 @@ const char * const Project::s_property_tracks = "tracks";
 void
 Project::get_properties (Properties& props) const
 {
-	props.insert (make_property (s_property_tracks, m_tracks));
+	props.set_property (s_property_tracks, m_tracks);
 }
 
 void

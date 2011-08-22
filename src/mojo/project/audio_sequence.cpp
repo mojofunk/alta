@@ -14,7 +14,7 @@ AudioSequence::AudioSequence ()
 void
 AudioSequence::get_properties (Properties& props) const
 {
-	props.insert (make_property (s_property_audio_events, m_audio_events));
+	props.set_property (s_property_audio_events, m_audio_events);
 }
 
 void
