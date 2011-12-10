@@ -24,9 +24,21 @@ namespace mojo {
  * A session manages a task thread that asyncronously runs all tasks that
  * have been queued. some of these tasks are:
  *
- * Read data from disk and fill the playback buffers
- * Write data from record buffers to disk
- * Modifications to the project
+ * The Session "task" thread is the only thread that makes modifications
+ * to the project data structures.
+ *
+ * Saving the project should probably happen in a separate thread as it may
+ * take some time. That should be ok though as the property data are all copied
+ * from the project classes.
+ *
+ * Order of task thread processing
+ *
+ * Process queued "tasks"(Modifications to the project/etc)
+ * Process Engine Events
+ *  - Read data from disk and fill the playback buffers
+ *  - Write data from record buffers to disk
+ * Queue project to be saved if modified.
+ * Dispatch Session events
  *
  * The Session thread also dispatches events to the session event handler. The
  * session event handler is how the clients recieve all asyncronous messages.
