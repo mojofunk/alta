@@ -42,7 +42,7 @@ find_matching_files (const fs::path& dir_path,
 		{
 			find_matching_files ( *itr, match_func, result );
 		}
-		else if (match_func(itr->leaf()))
+		else if (match_func(itr->path().filename()))
 		{
 			result.push_back(*itr);
 		}
