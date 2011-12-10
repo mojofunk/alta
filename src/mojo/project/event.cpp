@@ -3,15 +3,15 @@
 
 namespace {
 
-const char * const Event::s_property_position = "position";
-const char * const Event::s_property_duration = "duration";
+const char * const s_property_position = "position";
+const char * const s_property_duration = "duration";
 
 }
 
+namespace mojo {
+
 PropertyID const Event::s_property_position_id = g_quark_from_static_string (s_property_position);
 PropertyID const Event::s_property_duration_id = g_quark_from_static_string (s_property_duration);
-
-namespace mojo {
 
 Event::Event () : position(0), duration(0) { }
 
