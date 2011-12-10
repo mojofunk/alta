@@ -1,0 +1,28 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+
+<!ENTITY % BOOK_ENTITIES SYSTEM "./entities.ent">
+
+%BOOK_ENTITIES;
+
+]>
+
+<chapter id="ch-release-cycle">
+  <title>Release Cycle</title>
+  <section>
+    <title>Time Based Releases</title>
+    <para>
+      The release cycle works around a rough 6 month timeline
+    </para>
+
+    <para>
+      There are two phases of a release, the merge window and the testing
+      period.
+    </para>
+  </section>
+<!--
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+		href="Some_Subsection.xml" />
+	-->
+</chapter>
