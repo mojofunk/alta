@@ -20,6 +20,21 @@
       There are two phases of a release, the merge window and the testing
       period.
     </para>
+
+    <para>
+      All code committed during the merge window must exist and be
+      accessible for review before the merge window opens.
+    </para>
+
+    <para>
+      All code committed during the merge window must be reviewed and
+      approved by the lead developers before the merge window opens.
+    </para>
+
+    <para>
+      New library dependencies can only be introduced during merge window
+      and must be approved by platform maintainers.
+    </para>
   </section>
 <!--
 	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
