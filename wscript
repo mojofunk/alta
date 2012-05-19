@@ -6,8 +6,8 @@ import os
 
 import Options
 
-VERSION='0.1.0'
-APPNAME='gmojo'
+VERSION = '0.1.0'
+APPNAME = 'gmojo'
 
 # these variables are mandatory ('/' are converted automatically)
 top = '.'
@@ -89,21 +89,21 @@ def configure(conf):
         if Options.options.with_tests:
                 conf.env['BUILD_TESTS'] = True
                 print "Building with testsuite"
-		if Options.platform == 'win32':
+		if Options.platform == 'mingw':
 			if conf.env.CC_NAME == 'gcc':
-				libname = 'boost_unit_test_framework-gcc%s%s-mt-1_44' % (conf.env.CC_VERSION[0], conf.env.CC_VERSION[1])
+				libname = 'boost_unit_test_framework-gcc%s%s-mt-1_47' % (conf.env.CC_VERSION[0], conf.env.CC_VERSION[1])
 				conf.check(lib=libname, uselib_store='BOOST_UNIT_TEST_FRAMEWORK')
 		else:
 			conf.check(lib='boost_unit_test_framework')
 
-        #if Options.platform == 'win32':
+        #if Options.platform == 'mingw':
         #        conf.check(lib='pthreadGC2')
         #        conf.env.append_value('CPPPATH', os.path.join (os.getenv('MINGW_ROOT'), 'include', 'pthread'))
 
-        if Options.platform == 'win32':
+        if Options.platform == 'mingw':
 		# depend on F14 mingw lib names for now
-		boost_filesystem_libname = 'boost_filesystem-gcc%s%s-mt-1_44' % (conf.env.CC_VERSION[0], conf.env.CC_VERSION[1])
-		boost_system_libname = 'boost_system-gcc%s%s-mt-1_44' % (conf.env.CC_VERSION[0], conf.env.CC_VERSION[1])
+		boost_filesystem_libname = 'boost_filesystem-gcc%s%s-mt-1_47' % (conf.env.CC_VERSION[0], conf.env.CC_VERSION[1])
+		boost_system_libname = 'boost_system-gcc%s%s-mt-1_47' % (conf.env.CC_VERSION[0], conf.env.CC_VERSION[1])
                 conf.check(lib=boost_filesystem_libname, uselib_store='BOOST_FILESYSTEM')
                 conf.check(lib=boost_system_libname, uselib_store='BOOST_SYSTEM')
 	else:
