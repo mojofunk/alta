@@ -27,6 +27,14 @@ system_config_search_path()
 }
 
 SearchPath
+system_data_search_path()
+{
+	SearchPath sp(gleam::get_system_data_directories ());
+	sp / "mojo";
+	return sp;
+}
+
+SearchPath
 module_search_path ()
 {
 	return mojo_search_path ();

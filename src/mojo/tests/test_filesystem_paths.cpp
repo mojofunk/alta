@@ -38,6 +38,11 @@ BOOST_AUTO_TEST_CASE( system_config_search_path_test )
 	test_search_path (system_config_search_path ());
 }
 
+BOOST_AUTO_TEST_CASE( system_data_search_path_test )
+{
+	test_search_path (system_data_search_path ());
+}
+
 BOOST_AUTO_TEST_CASE( module_search_path_test )
 {
 	test_search_path (module_search_path ());

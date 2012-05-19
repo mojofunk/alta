@@ -14,6 +14,8 @@ namespace mojo {
 
 	SearchPath system_config_search_path();
 
+	SearchPath system_data_search_path();
+
 	SearchPath module_search_path();
 
 } // namespace mojo
