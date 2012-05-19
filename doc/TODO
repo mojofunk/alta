@@ -157,6 +157,11 @@ Track Canvas
 	- change height from the track view list
 	- add border/frame to TrackViewListItem
 
+
+DOCS
+
 Dev guide section on including headers using " instead of <
 
 Convert docs to publician
+
+Add README
