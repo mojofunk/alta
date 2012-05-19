@@ -1,4 +1,6 @@
 #!/bin/sh
 
-. build/gmojo_env.sh
+. ./env.sh
+
+cd $BASE || exit 1
 exec $EXECUTABLE "$@"
