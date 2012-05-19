@@ -131,10 +131,3 @@ def configure(conf):
 def build(ctx):
 	# process subfolders from here
 	ctx.recurse('src')
-
-	obj = ctx(
-                features = 'subst',
-                source   = 'tools/linux/gmojo_env.sh.in',
-                target   = 'gmojo_env.sh',
-		BUILD_DIR = ctx.path.get_bld().abspath(),
-		APPNAME = ctx.env['APPNAME'])
