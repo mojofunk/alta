@@ -1,3 +1,7 @@
+GENERAL
+
+Add license headers to files where necessary
+
 LIBMOJO
 
 Make a generic module infrastructure for libmojo, modules may include
@@ -154,3 +158,5 @@ Track Canvas
 	- add border/frame to TrackViewListItem
 
 Dev guide section on including headers using " instead of <
+
+Convert docs to publician
