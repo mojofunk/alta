@@ -7,7 +7,9 @@
 // for command line args
 #include <boost/test/framework.hpp>
 
-#include <mojo/mojo-internal.hpp>
+#include "mojo/mojo-internal.hpp"
+
+#include "test_common.hpp"
 
 using namespace boost::unit_test;
 using namespace mojo;
@@ -21,11 +23,29 @@ BOOST_AUTO_TEST_CASE( audio_clip )
 
 	// given a file path create an AudioFile
 
-	ProjectDirectory pdir("./share/projects/motronic");
+	fs::path project_path;
+	fs::path audiofile_path;
 
-	const fs::path file_path(pdir.audiofiles_path () / "notify.wav");
+	SearchPath tsp = test_search_path();
+
+	tsp.add_subdirectory_to_paths ("projects");
+	tsp.add_subdirectory_to_paths ("motronic");
 	
-	AudioFileSP audiofile = App::open_audiofile (file_path);
+	project_path = tsp.get_paths().front();
+
+	BOOST_TEST_MESSAGE(project_path);
+
+	BOOST_CHECK(is_directory (project_path));
+
+	ProjectDirectory pdir(project_path);
+
+	BOOST_CHECK(!pdir.is_valid ());
+
+	BOOST_CHECK(find_matching_file (pdir.audiofiles_path(), "notify.wav", audiofile_path));
+
+	BOOST_CHECK(is_regular_file (audiofile_path));
+
+	AudioFileSP audiofile = App::open_audiofile (audiofile_path);
 
 	BOOST_REQUIRE(audiofile);
 	

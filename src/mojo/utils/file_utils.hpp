@@ -27,6 +27,20 @@ std::size_t
 find_matching_files (const fs::path& directory_path,
                      FileMatchFunc match_functor,
                      vector<fs::path>& result);
+std::size_t
+find_matching_file (const vector<fs::path>& paths,
+                    const std::string& filename,
+                    vector<fs::path>& result);
+
+std::size_t
+find_matching_file (const fs::path& paths,
+                    const std::string& filename,
+                    vector<fs::path>& result);
+
+bool
+find_matching_file (const fs::path& paths,
+                    const std::string& filename,
+                    fs::path& result);
 
 /**
  * Given a full path to a file that may or may not exist,

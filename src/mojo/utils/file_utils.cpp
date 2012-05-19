@@ -50,6 +50,67 @@ find_matching_files (const fs::path& dir_path,
 	return result.size();
 }
 
+std::size_t
+find_matching_file (const vector<fs::path>& paths,
+                    const std::string& filename,
+                    vector<fs::path>& result)
+{
+	for (
+		vector<fs::path>::const_iterator iter = paths.begin(),
+		end = paths.end();
+		iter != end;
+		++iter
+	    )
+	{
+		find_matching_file(*iter, filename, result);
+	}
+
+	return result.size();
+}
+
+std::size_t
+find_matching_file (const fs::path& dir_path,
+                    const std::string& filename,
+                    vector<fs::path>& result)
+{
+	if ( !exists( dir_path ) ) return 0;
+
+	fs::directory_iterator end_itr; // default construction yields past-the-end
+
+	for (
+		fs::directory_iterator itr( dir_path );
+		itr != end_itr;
+		++itr
+	    )
+	{
+		if ( fs::is_directory( *itr ) )
+		{
+			find_matching_file ( *itr, filename, result );
+		}
+		else if (filename == itr->path().filename())
+		{
+			result.push_back(*itr);
+		}
+	}
+	return result.size();
+}
+
+bool
+find_matching_file (const fs::path& dir_path,
+                    const std::string& filename,
+                    fs::path& result)
+{
+	vector<fs::path> paths;
+
+	bool found = find_matching_file(dir_path, filename, paths);
+
+	if (found)
+	{
+		result = paths.front();
+	}
+	return found;
+}
+
 const fs::path
 get_non_existent_file_path (const fs::path& desired_file_path)
 {

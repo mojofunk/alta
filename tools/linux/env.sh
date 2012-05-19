@@ -14,7 +14,8 @@ VERSION=`grep -m 1 '^VERSION' $BASE/wscript | awk '{print $3}' | sed "s/'//g"`
 
 EXECUTABLE="$BUILD_DIR/src/mojo-gtkmm/gmojo"
 
-export GMOJO_PATH=share
+export GMOJO_PATH=data
+export MOJO_TEST_PATH=$BASE/data
 
 MOJO_PATH=\
 $BUILD_DIR/src/modules/AudioFileModule/sndfile:\

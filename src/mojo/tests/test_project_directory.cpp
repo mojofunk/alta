@@ -7,7 +7,9 @@
 // for command line args
 #include <boost/test/framework.hpp>
 
-#include <mojo/mojo-internal.hpp>
+#include "mojo/mojo-internal.hpp"
+
+#include "test_common.hpp"
 
 using namespace boost::unit_test;
 using namespace std;
@@ -15,8 +17,13 @@ using namespace mojo;
 
 BOOST_AUTO_TEST_CASE( test_project_directory )
 {
-	// XXX not absolute...
-	ProjectDirectory pdir("./share/projects/motronic");
+	BOOST_CHECK (fs::exists (test_search_path().get_paths().front()));
+
+	fs::path project_path = test_search_path().get_paths().front();
+
+	project_path = project_path / "projects" / "motronic";
+
+	ProjectDirectory pdir(project_path);
 
 	bool is_new = false;
 	

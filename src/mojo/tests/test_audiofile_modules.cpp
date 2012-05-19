@@ -10,7 +10,9 @@
 
 #include <boost/format.hpp>
 
-#include <mojo/mojo-internal.hpp>
+#include "mojo/mojo-internal.hpp"
+
+#include "test_common.hpp"
 
 using namespace boost::unit_test;
 using namespace std;
@@ -62,7 +64,15 @@ test_read_audiofile (AudioFileSP af)
 void
 test_open_existing_file (AudioFileModuleSP mod)
 {
-	AudioFileSP af = mod->open("share/projects/motronic/audiofiles/notify.wav");
+	BOOST_CHECK (fs::exists (test_search_path().get_paths().front()));
+
+	fs::path project_path = test_search_path().get_paths().front();
+
+	project_path = project_path / "projects" / "motronic";
+
+	fs::path audiofile_path = ProjectDirectory(project_path).audiofiles_path() / "notify.wav";
+
+	AudioFileSP af = mod->open(audiofile_path.string());
 
 	BOOST_REQUIRE(af);
 

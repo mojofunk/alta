@@ -28,6 +28,14 @@ def configure(conf):
 	print "configure mojo tests"
 
 def build(ctx):
+	test_common = ctx(
+			features = 'cxx',
+			source = 'test_common.cpp',
+			includes ='. ../..',
+			defines = 'BOOST_TEST_DYN_LINK=1',
+			uselib = 'BOOST_UNIT_TEST_FRAMEWORK',
+			use = 'MOJO',
+			name = 'MOJOTESTCOMMON')
 	for test in tests:
 		test_program = ctx(
 			features = 'cxx cxxprogram',
@@ -35,5 +43,5 @@ def build(ctx):
 			includes ='. ../..',
 			defines = 'BOOST_TEST_DYN_LINK=1',
 			uselib = 'BOOST_UNIT_TEST_FRAMEWORK',
-			use ='MOJO',
+			use = ['MOJO', 'MOJOTESTCOMMON'],
 			target = test)
