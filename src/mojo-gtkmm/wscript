@@ -13,7 +13,7 @@ def build(ctx):
 		features = "cxx cxxprogram",
 		source = ctx.path.ant_glob('*.cpp'),
 		includes ='..',
-		uselib = 'GTKMM-2.4 GOOCANVASMM-1.0 GTHREAD-2.0',
+		uselib = 'GTKMM-3.0 GOOCANVASMM-2.0 GTHREAD-2.0',
 		use = 'GLEAM MOJO',
 		target = ctx.env['APPNAME'])
 		#name = 'MOJO-GTKMM'

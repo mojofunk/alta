@@ -68,15 +68,13 @@ def configure(conf):
 
 	deps = \
 	{
-		'cairo'                : '1.8',
 		'glib-2.0'             : '2.10.1',
 		'gmodule-2.0'          : '2.10.1',
 		'gthread-2.0'          : '2.10.1',
-		'gtk+-2.0'             : '2.8.1',
 		'glibmm-2.4'           : '2.8.1',
-		'gtkmm-2.4'            : '2.8.1',
-		'goocanvas'            : '0.14',
-		'goocanvasmm-1.0'      : '0.14.0',
+		'gtkmm-3.0'            : '2.8.1',
+		'goocanvas-2.0'        : '2.0.0',
+		'goocanvasmm-2.0'      : '1.90.6',
 		'sndfile'              : '1.0.20'
 #		'libxml-2.0'           : '2.6.0',
 #		'samplerate'           : '0.1.0',
