@@ -17,23 +17,34 @@
     </para>
 
     <para>
-      There are two phases of a release, the merge window and the testing
-      period.
+      This time period was chosen because it corresponds to the release
+      cycle length of Gnome and major linux distributions such as Fedora and
+      Ubuntu.
     </para>
 
     <para>
-      All code committed during the merge window must exist and be
-      accessible for review before the merge window opens.
+      This should mean that each new release can get a greater amount of
+      testing.
     </para>
 
     <para>
-      All code committed during the merge window must be reviewed and
-      approved by the lead developers before the merge window opens.
+      There are two phases of a release, the development period and the
+      testing period.
     </para>
 
     <para>
-      New library dependencies can only be introduced during merge window
-      and must be approved by platform maintainers.
+      All code committed during the development period must exist and be
+      accessible for review before the development period starts.
+    </para>
+
+    <para>
+      All code committed during the development period must be reviewed and
+      approved by the lead developers before the period starts.
+    </para>
+
+    <para>
+      New library dependencies can only be introduced during development
+      period and must be approved by platform maintainers.
     </para>
   </section>
 <!--
