@@ -18,7 +18,7 @@ def options(opt):
 	opt.tool_options('compiler_cxx')
 	opt.tool_options('compiler_cc')
 
-	for i in "datadir libdir configdir".split():
+	for i in "datadir libdir bindir configdir".split():
 		opt.add_option('--'+i, type='string', default='', dest=i)
 
         opt.add_option('--with-target-platform', type='string', dest='target_platform')
@@ -46,6 +46,7 @@ def _define_paths(conf):
 			configdir  = os.path.join(prefix, 'etc')
 
 	conf.define('DATA_DIR', datadir)
+	conf.define('BIN_DIR', datadir)
 	conf.define('LIB_DIR', libdir)
 	conf.define('MODULE_DIR', os.path.join(prefix, libdir))
 	conf.define('LOCALE_DIR', os.path.join(datadir, 'locale'))
