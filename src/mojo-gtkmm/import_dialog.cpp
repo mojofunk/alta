@@ -2,17 +2,17 @@
 #include "import_dialog.hpp"
 
 #include "log.hpp"
+#include "filesystem_paths.hpp"
 
 namespace ui {
 
 ImportDialog::ImportDialog ()
 {
 	LOG;
-	const std::string ui_file = "data/import_dialog.ui";
 
 	try
 	{
-		m_builder = Gtk::Builder::create_from_file (ui_file);
+		m_builder = Gtk::Builder::create_from_file (get_ui_filepath ("import_dialog.ui"));
 	}
 	catch(const Glib::FileError& ex)
 	{

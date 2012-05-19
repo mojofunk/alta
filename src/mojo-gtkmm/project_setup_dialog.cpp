@@ -1,6 +1,7 @@
 #include <cassert>
 
 #include "project_setup_dialog.hpp"
+#include "filesystem_paths.hpp"
 
 #include "log.hpp"
 
@@ -9,11 +10,9 @@ namespace ui {
 ProjectSetupDialog::ProjectSetupDialog (mojo::Project* proj)
 	: m_project(proj)
 {
-	const std::string ui_file = "data/project_setup.ui";
-
 	try
 	{
-		m_builder = Gtk::Builder::create_from_file (ui_file);
+		m_builder = Gtk::Builder::create_from_file (get_ui_filepath ("project_setup.ui"));
 	}
 	catch(const Glib::FileError& ex)
 	{

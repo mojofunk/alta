@@ -4,15 +4,14 @@
 #include "utils.hpp"
 #include "project_window_toolbar.hpp"
 #include "track_view_factory.hpp"
+#include "filesystem_paths.hpp"
 
 namespace ui {
 
 ProjectWindow::ProjectWindow (mojo::Project* proj)
 	: m_project(proj)
 {
-	const std::string ui_file = "data/project_window.ui";
-
-	m_builder = Gtk::Builder::create_from_file (ui_file);
+	m_builder = Gtk::Builder::create_from_file (get_ui_filepath ("project_window.ui"));
 
 	m_builder->get_widget ("project-window", m_window);
 

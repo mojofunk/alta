@@ -1,6 +1,7 @@
 #include <cassert>
 
 #include "preferences_dialog.hpp"
+#include "filesystem_paths.hpp"
 
 #include "log.hpp"
 
@@ -13,11 +14,9 @@ namespace ui {
 PreferencesDialog::PreferencesDialog ()
 {
 	LOG;
-	const std::string ui_file = "data/preferences_dialog.ui";
-
 	try
 	{
-		m_builder = Gtk::Builder::create_from_file (ui_file);
+		m_builder = Gtk::Builder::create_from_file (get_ui_filepath ("preferences_dialog.ui"));
 	}
 	catch(const Glib::FileError& ex)
 	{
