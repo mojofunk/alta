@@ -7,7 +7,7 @@
 #
 
 .lock-wscript
-.lock-wafbuild
+.lock-waf*
 .waf-*
 build/
 doc/doxygen/Doxyfile
