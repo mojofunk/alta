@@ -135,7 +135,7 @@ def build(ctx):
 
 	obj = ctx(
                 features = 'subst',
-                source   = 'scripts/gmojo_env.sh.in',
+                source   = 'tools/linux/gmojo_env.sh.in',
                 target   = 'gmojo_env.sh',
 		BUILD_DIR = ctx.path.get_bld().abspath(),
 		APPNAME = ctx.env['APPNAME'])
