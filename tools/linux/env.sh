@@ -12,7 +12,7 @@ TOOLS_DIR=$BASE/tools/linux
 APPNAME=`grep -m 1 '^APPNAME' $BASE/wscript | awk '{print $3}' | sed "s/'//g"`
 VERSION=`grep -m 1 '^VERSION' $BASE/wscript | awk '{print $3}' | sed "s/'//g"`
 
-EXECUTABLE="$BUILD_DIR/src/mojo-gtkmm/gmojo"
+EXECUTABLE="$BUILD_DIR/src/ui/gmojo"
 
 export GMOJO_PATH=data
 export MOJO_TEST_PATH=$BASE/data

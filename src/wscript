@@ -5,7 +5,7 @@
 subdirs='''
 gleam
 mojo
-mojo-gtkmm
+ui
 modules
 '''
 

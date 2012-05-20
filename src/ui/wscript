@@ -6,7 +6,7 @@ def init():
 	pass
 
 def configure(conf):
-	print "configure mojo-gtkmm"
+	print "configure ui"
 
 def build(ctx):
 	mojo_program = ctx(
@@ -16,4 +16,3 @@ def build(ctx):
 		uselib = 'GTKMM-3.0 GOOCANVASMM-2.0 GTHREAD-2.0',
 		use = 'GLEAM MOJO',
 		target = ctx.env['APPNAME'])
-		#name = 'MOJO-GTKMM'

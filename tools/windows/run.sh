@@ -21,7 +21,7 @@ $BUILD_DIR/modules/AudioEffectModule/ladspa:\
 $BUILD_DIR/modules/ArchiveModule/dummy:\
 $BUILD_DIR/modules/ArchiveModule/xml
 
-EXECUTABLE="build/src/mojo-gtkmm/gmojo.exe"
+EXECUTABLE="build/src/ui/gmojo.exe"
 cp $EXECUTABLE winmojo
 cd winmojo
 
