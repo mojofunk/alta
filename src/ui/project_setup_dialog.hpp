@@ -2,9 +2,9 @@
 #ifndef UI_PROJECT_SETUP_DIALOG
 #define UI_PROJECT_SETUP_DIALOG
 
-#include "types.hpp"
-
 #include <mojo/mojo.hpp>
+
+#include "types.hpp"
 
 namespace ui {
 
@@ -22,7 +22,7 @@ private:
 
 	mojo::Project* m_project;
 
-	BuilderPtr m_builder;
+	BuilderGPtr m_builder;
 
 	Gtk::Dialog* m_window;
 

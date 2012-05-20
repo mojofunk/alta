@@ -105,7 +105,7 @@ ProjectWindow::on_delete_event (GdkEventAny*)
 void
 ProjectWindow::on_fullscreen_toggled ()
 {
-	ToggleActionPtr action = get_toggleaction (m_builder, "project-window-fullscreen-toggleaction");
+	ToggleActionGPtr action = get_toggleaction (m_builder, "project-window-fullscreen-toggleaction");
 
 	if (action->get_active ())
 		m_window->fullscreen ();

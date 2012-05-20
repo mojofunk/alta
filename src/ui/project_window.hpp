@@ -40,7 +40,7 @@ private:
 
 	mojo::Project* m_project;
 
-	BuilderPtr m_builder;
+	BuilderGPtr m_builder;
 
 	Gtk::Window* m_window;
 

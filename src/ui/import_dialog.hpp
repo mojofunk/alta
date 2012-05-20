@@ -18,7 +18,7 @@ public:
 
 private:
 
-	BuilderPtr m_builder;
+	BuilderGPtr m_builder;
 
 	Gtk::Dialog* m_dialog;
 };

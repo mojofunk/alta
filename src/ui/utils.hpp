@@ -6,15 +6,15 @@
 
 namespace ui {
 
-ActionPtr get_action (BuilderPtr& builder, const std::string& name);
+ActionGPtr get_action (BuilderGPtr& builder, const std::string& name);
 
-ToggleActionPtr get_toggleaction (BuilderPtr& builder,
+ToggleActionGPtr get_toggleaction (BuilderGPtr& builder,
 	   	const std::string& name);
 
-void connect_action (BuilderPtr& builder,
+void connect_action (BuilderGPtr& builder,
 		const std::string& name, const sigc::slot<void>& slot);
 
-void connect_toggleaction (BuilderPtr& builder,
+void connect_toggleaction (BuilderGPtr& builder,
 	   	const std::string& name, const sigc::slot<void>& slot);
 
 }

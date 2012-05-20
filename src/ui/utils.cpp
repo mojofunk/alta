@@ -5,27 +5,27 @@
 
 namespace ui {
 
-ActionPtr
-get_action (BuilderPtr& builder, const std::string& name)
+ActionGPtr
+get_action (BuilderGPtr& builder, const std::string& name)
 {
-	ObjectPtr obj = builder->get_object (name);
+	ObjectGPtr obj = builder->get_object (name);
 	assert (obj);
-	return ActionPtr::cast_dynamic (obj);
+	return ActionGPtr::cast_dynamic (obj);
 }
 
-ToggleActionPtr
-get_toggleaction (BuilderPtr& builder, const std::string& name)
+ToggleActionGPtr
+get_toggleaction (BuilderGPtr& builder, const std::string& name)
 {
-	ObjectPtr obj = builder->get_object (name);
+	ObjectGPtr obj = builder->get_object (name);
 	assert (obj);
-	return ToggleActionPtr::cast_dynamic (obj);
+	return ToggleActionGPtr::cast_dynamic (obj);
 }
 
 void
-connect_action (BuilderPtr& builder, const std::string& name, 
+connect_action (BuilderGPtr& builder, const std::string& name,
 	   	const sigc::slot<void>& slot)
 {
-	ActionPtr action = get_action (builder, name);
+	ActionGPtr action = get_action (builder, name);
 
 	assert (action);
 
@@ -33,10 +33,10 @@ connect_action (BuilderPtr& builder, const std::string& name,
 }
 
 void
-connect_toggleaction (BuilderPtr& builder, const std::string& name, 
+connect_toggleaction (BuilderGPtr& builder, const std::string& name,
 	   	const sigc::slot<void>& slot)
 {
-	ToggleActionPtr action = get_toggleaction (builder, name);
+	ToggleActionGPtr action = get_toggleaction (builder, name);
 
 	assert (action);
 

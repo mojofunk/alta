@@ -4,9 +4,9 @@
 
 #include <gtkmm.h>
 
-typedef Glib::RefPtr<Gtk::Builder> BuilderPtr;
-typedef Glib::RefPtr<Glib::Object> ObjectPtr;
-typedef Glib::RefPtr<Gtk::Action> ActionPtr;
-typedef Glib::RefPtr<Gtk::ToggleAction> ToggleActionPtr;
+typedef Glib::RefPtr<Gtk::Builder> BuilderGPtr;
+typedef Glib::RefPtr<Glib::Object> ObjectGPtr;
+typedef Glib::RefPtr<Gtk::Action> ActionGPtr;
+typedef Glib::RefPtr<Gtk::ToggleAction> ToggleActionGPtr;
 
 #endif
