@@ -4,6 +4,10 @@ Add license headers to files where necessary
 
 LIBMOJO
 
+Prevent headers being included directly
+
+must only include mojo.hpp
+
 Make a generic module infrastructure for libmojo, modules may include
 
 AudioFile modules:
