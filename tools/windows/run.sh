@@ -1,18 +1,15 @@
 #!/bin/bash
 
-WIN32_ROOT=winmojo
+. mingw-env.sh
 
-if test ! -d $WIN32_ROOT
-then
-	echo "Win32 root does not exist"
+cd $BASE
+
+if test ! -d $PACKAGE_DIR; then
+	echo "Win32 package directory does not exist"
 	exit 1
 fi
 
-BUILD_DIR=build/src
-
-GMOJO_PATH=share
-
-export GMOJO_PATH
+export GMOJO_PATH="$BASE/$PACKAGE_DIR/data"
 
 MOJO_PATH=\
 $BUILD_DIR/modules/AudioFileModule/sndfile:\
@@ -21,8 +18,6 @@ $BUILD_DIR/modules/AudioEffectModule/ladspa:\
 $BUILD_DIR/modules/ArchiveModule/dummy:\
 $BUILD_DIR/modules/ArchiveModule/xml
 
-EXECUTABLE="build/src/ui/gmojo.exe"
-cp $EXECUTABLE winmojo
-cd winmojo
+cd $PACKAGE_DIR
 
 wine gmojo.exe
