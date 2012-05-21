@@ -12,11 +12,11 @@ main(int argc, char* argv[])
 
 	Gtk::Main app (argc, argv);
 
-	App::init ();
+	App::init (argc, argv);
 
 	App::run ();
 
-	App::fini ();
+	App::cleanup ();
 
 	return 0;
 }

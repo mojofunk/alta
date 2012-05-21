@@ -2,22 +2,30 @@
 #ifndef UI_APP
 #define UI_APP
 
+#include <set>
+
+#include <boost/shared_ptr.hpp>
+
 #include <mojo/mojo.hpp>
+
+#include "project_objects.hpp"
+#include "session_event_handler.hpp"
 
 namespace ui {
 
-class AppData;
-class SessionEventHandler;
-
 class App
 {
+private: // typedefs
+
+	typedef std::set< boost::shared_ptr<ProjectObjects> > project_objects_set_t;
+
 public:
 
-	static void init ();
+	static void init (int argc, char *argv[]);
 
 	static void run ();
 
-	static void fini ();
+	static void cleanup ();
 
 	static void quit ();
 
@@ -47,11 +55,23 @@ public:
 
 private:
 
+	App (int argc, char *argv[]);
+
+	~App ();
+
         static void on_project_added (mojo::Project*);
 
         static void on_project_removed (mojo::Project*);
 
-	static AppData* s_data;
+
+private: // member data
+
+	static App* s_app;
+
+	project_objects_set_t project_objs;
+
+        mojo::Session m_session;
+	SessionEventHandler m_session_event_handler;
 
 };
 
