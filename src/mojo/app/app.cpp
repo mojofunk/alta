@@ -11,7 +11,6 @@
 
 #include "app.hpp"
 #include "module_utils.hpp"
-#include "register_types.hpp"
 
 namespace mojo {
 

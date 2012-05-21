@@ -8,13 +8,13 @@
 #include <mojo/project/audio_sequence.hpp>
 #include <mojo/project/audio_event.hpp>
 
-#include "register_types.hpp"
+#include "app.hpp"
 #include "type_names.hpp"
 
 namespace mojo {
 
 void
-register_types()
+App::register_types()
 {
 	TypeSystem::register_type (TypeFactorySP(new TemplateTypeFactory<int32_t>(int32_type_name)));
 	TypeSystem::register_type (TypeFactorySP(new TemplateTypeFactory<int64_t>(int64_type_name)));

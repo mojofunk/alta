@@ -38,6 +38,10 @@ public: // methods
 
 	static ArchiveSP create_archive ();
 
+private:
+
+	void register_types ();
+
 private: // member data
 
 	static App*     s_app;

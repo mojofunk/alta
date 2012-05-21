@@ -3,7 +3,6 @@
 
 #include <mojo/app/app.hpp>
 #include <mojo/app/module_utils.hpp>
-#include <mojo/app/register_types.hpp>
 #include <mojo/app/type_names.hpp>
 
 #include <mojo/core/filesystem.hpp>
