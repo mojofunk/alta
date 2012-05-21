@@ -4,7 +4,11 @@ Add license headers to files where necessary
 
 LIBMOJO
 
-Prevent headers being included directly
+transport should be in Engine not Session
+
+Prevent headers being included directly?
+
+get rid of mojo-internal.hpp? why is it necessary
 
 must only include mojo.hpp
 
@@ -169,6 +173,8 @@ timer library for measuring execution time
 
 UI
 
+ui::Application inherits from Gtk::Application or stick to composition?
+
 Track Canvas
 	- change height from the track view list
 	- add border/frame to TrackViewListItem
@@ -181,5 +187,9 @@ Dev guide section on including headers using " instead of <
 Convert docs to publician
 
 Update section on header include guards
+
+Add section on typedefs for Glib::RefPtr and boost::shared_ptr
+
+Section on mojo/macros.hpp forward class decl and typedefs.
 
 Add README
