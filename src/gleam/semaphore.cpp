@@ -9,7 +9,7 @@ Semaphore::Semaphore (gint initial_val)
 { }
 
 void
-Semaphore::aquire ()
+Semaphore::wait ()
 {
 	Glib::Mutex::Lock guard (m_mutex);
 
@@ -23,7 +23,7 @@ Semaphore::aquire ()
 }
 
 bool
-Semaphore::try_aquire ()
+Semaphore::try_wait ()
 {
 	if (!m_mutex.trylock())
 	{
@@ -41,7 +41,7 @@ Semaphore::try_aquire ()
 }
 
 void
-Semaphore::release ()
+Semaphore::post ()
 {
 	++m_counter;
 	m_cond.signal();

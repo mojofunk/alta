@@ -14,7 +14,7 @@ void
 Dispatcher::run()
 {
 	{
-		m_iter_sema.aquire();
+		m_iter_sema.wait();
 
 		do_work();
 
@@ -37,7 +37,7 @@ Dispatcher::iteration (bool block)
 		Glib::signal_idle().connect(sigc::bind_return(sigc::mem_fun(*this, &Dispatcher::run), false));
 
 		//signal to run
-		m_iter_sema.release();
+		m_iter_sema.post();
 
 		// wait for one iteration to complete
 		m_cond.wait(m_iter_mtx);
@@ -46,7 +46,7 @@ Dispatcher::iteration (bool block)
 	{
 		// thread safe?
 		Glib::signal_idle().connect(sigc::bind_return(sigc::mem_fun(*this, &Dispatcher::run), false));
-		m_iter_sema.release();
+		m_iter_sema.post();
 	}
 }
 

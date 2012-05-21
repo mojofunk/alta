@@ -18,14 +18,14 @@ ManualDispatcher::iteration (bool block)
 		Glib::Mutex::Lock guard(m_iter_mtx);
 
 		//signal other thread to run
-		m_iter_sema.release();
+		m_iter_sema.post();
 
 		// wait for one iteration to complete
 		m_cond.wait(m_iter_mtx);
 	}
 	else
 	{
-		m_iter_sema.release();
+		m_iter_sema.post();
 	}
 }
 
@@ -48,7 +48,7 @@ ManualDispatcher::main_loop()
 {
 	while(can_run())
 	{
-		m_iter_sema.aquire();
+		m_iter_sema.wait();
 
 		get_main_context()->iteration(true);
 

@@ -30,7 +30,7 @@ public:
 	 * then the thread will be put into a blocked state
 	 * until another thread calls release.
 	 */
-	void aquire ();
+	void wait ();
 
 	/**
 	 * Try and aquire a permit. This is a non-blocking 
@@ -38,13 +38,13 @@ public:
 	 * \return true if a permit was able to be aquired, false
 	 * if otherwise.
 	 */
-	bool try_aquire ();
+	bool try_wait ();
 	
 	/**
 	 * Release a permit increasing the number of permits
 	 * by one. This is a non-blocking operation.
 	 */
-	void release ();
+	void post ();
 
 private:
 

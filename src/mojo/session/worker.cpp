@@ -39,7 +39,7 @@ Worker::run()
 {
 	while(can_run())
 	{
-		m_iter_sema.aquire();
+		m_iter_sema.wait();
 
 		do_work();
 
@@ -85,14 +85,14 @@ Worker::iteration (bool block)
 		Glib::Mutex::Lock guard(m_iter_mtx);
 
 		//signal worker to run
-		m_iter_sema.release();
+		m_iter_sema.post();
 
 		// wait for one iteration to complete
 		m_cond.wait(m_iter_mtx);
 	}
 	else
 	{
-		m_iter_sema.release();
+		m_iter_sema.post();
 	}
 }
 
