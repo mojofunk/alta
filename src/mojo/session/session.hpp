@@ -78,6 +78,13 @@ namespace mojo {
  *
  * The Engine runs in a different context/thread than the Session(SessionDispatcher)
  *
+ * I think this Session class should be renamed to Application class, current App class
+ * should be internal::App or something. Also because this class is very different than
+ * what libardour calls a "Session" so better to avoid confusion and rename it.
+ *
+ * Should only be one Application class per process so makes sense to make all methods
+ * static(might as well be a C API...)
+ *
  */
 class Session
 {
