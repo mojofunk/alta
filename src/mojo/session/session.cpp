@@ -27,6 +27,7 @@ Session::~Session ()
 {
 	LOG;
 	data->worker.quit();
+	data->worker_thread->join ();
 	delete data;
 }
 

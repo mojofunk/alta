@@ -58,6 +58,8 @@ Worker::quit ()
 
 	m_quit = true;
 
+	iteration (false);
+
 	// wait for the iteration to complete
 	// which can only happen when m_iter_mtx
 	// is released in the wait.
