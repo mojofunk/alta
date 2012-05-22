@@ -48,8 +48,6 @@
 #include <mojo/project/transition.hpp>
 #include <mojo/project/typedefs.hpp>
 
-#include <mojo/session/session.hpp>
-
 #include <mojo/typesystem/forward.hpp>
 #include <mojo/typesystem/template_type_factory.hpp>
 #include <mojo/typesystem/typedefs.hpp>

@@ -1,8 +1,8 @@
 #ifndef MOJO_MOJO
 #define MOJO_MOJO
 
-#include <mojo/session/session.hpp>
-#include <mojo/session/session_event_handler.hpp>
-#include <mojo/session/forward.hpp>
+#include <mojo/api/session.hpp>
+#include <mojo/api/session_event_handler.hpp>
+#include <mojo/api/forward.hpp>
 
 #endif
