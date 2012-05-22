@@ -1,9 +1,9 @@
-#include "session.hpp"
+#include "application.hpp"
 
 #include <mojo/mojo-internal.hpp>
 
-#include "session_event_handler.hpp"
-#include "session_data.hpp"
+#include "application_event_handler.hpp"
+#include "application_data.hpp"
 #include "null_deleter.hpp"
 #include "utils.hpp"
 
@@ -12,28 +12,28 @@
 namespace mojo {
 
 void
-Session::add_event_handler_internal (SessionEventHandler* bus)
+Application::add_event_handler_internal (ApplicationEventHandler* bus)
 {
 	LOG;
 	data->event_handlers.insert (bus);
 }
 
 void
-Session::remove_event_handler_internal (SessionEventHandler* bus)
+Application::remove_event_handler_internal (ApplicationEventHandler* bus)
 {
 	LOG;
 	data->event_handlers.erase (bus);
 }
 
 void
-Session::new_project_internal ()
+Application::new_project_internal ()
 {
 	ProjectSP pi(new Project);
 	LOG;
 
 	data->projects.insert (pi);
 
-	for (std::set<SessionEventHandler*>::iterator i = data->event_handlers.begin();
+	for (std::set<ApplicationEventHandler*>::iterator i = data->event_handlers.begin();
 			i != data->event_handlers.end(); ++i)
 	{
 		(*i)->on_project_added (pi.get());
@@ -41,7 +41,7 @@ Session::new_project_internal ()
 }
 
 void
-Session::open_project_internal (const std::string& project_file)
+Application::open_project_internal (const std::string& project_file)
 {
 	ProjectSP pi(new Project);
 
@@ -50,7 +50,7 @@ Session::open_project_internal (const std::string& project_file)
 
 	data->projects.insert (pi);
 
-	for (std::set<SessionEventHandler*>::iterator i = data->event_handlers.begin();
+	for (std::set<ApplicationEventHandler*>::iterator i = data->event_handlers.begin();
 			i != data->event_handlers.end(); ++i)
 	{
 		(*i)->on_project_added (pi.get());
@@ -59,7 +59,7 @@ Session::open_project_internal (const std::string& project_file)
 }
 
 void
-Session::close_project_internal (Project* p)
+Application::close_project_internal (Project* p)
 {
 	LOG;
 	ProjectSP sp(p, internal::null_deleter());
@@ -79,7 +79,7 @@ Session::close_project_internal (Project* p)
 		return;
 	}
 
-	for (std::set<SessionEventHandler*>::iterator i = data->event_handlers.begin();
+	for (std::set<ApplicationEventHandler*>::iterator i = data->event_handlers.begin();
 			i != data->event_handlers.end(); ++i)
 	{
 		(*i)->on_project_removed (sp.get());
@@ -89,7 +89,7 @@ Session::close_project_internal (Project* p)
 }
 
 void
-Session::set_active_project_internal (Project* p)
+Application::set_active_project_internal (Project* p)
 {
 	// data->engine->reset();
 
@@ -100,7 +100,7 @@ Session::set_active_project_internal (Project* p)
 
 	data->active_project = p;
 
-	for (std::set<SessionEventHandler*>::iterator i = data->event_handlers.begin();
+	for (std::set<ApplicationEventHandler*>::iterator i = data->event_handlers.begin();
 			i != data->event_handlers.end(); ++i)
 	{
 		(*i)->on_active_project_changed (p);
@@ -109,7 +109,7 @@ Session::set_active_project_internal (Project* p)
 }
 
 void
-Session::add_track_internal (Project* p, const TrackOptions& options)
+Application::add_track_internal (Project* p, const TrackOptions& options)
 {
 	//std::cerr << "Options type: " << track_type_to_string (options.type) << std::endl;
 	//std::cerr << "Options count: " << options.count << std::endl;
@@ -120,7 +120,7 @@ Session::add_track_internal (Project* p, const TrackOptions& options)
 
 	p->add_track (t);
 
-	for (std::set<SessionEventHandler*>::iterator i = data->event_handlers.begin();
+	for (std::set<ApplicationEventHandler*>::iterator i = data->event_handlers.begin();
 			i != data->event_handlers.end(); ++i)
 	{
 		(*i)->on_track_added (p, t.get());
@@ -128,19 +128,19 @@ Session::add_track_internal (Project* p, const TrackOptions& options)
 }
 
 void
-Session::transport_set_speed_internal (float speed)
+Application::transport_set_speed_internal (float speed)
 {
 	data->speed = speed;
 }
 
 void
-Session::transport_set_position_internal (count_t pos)
+Application::transport_set_position_internal (count_t pos)
 {
 	data->position = pos;
 }
 
 void
-Session::transport_set_record_internal (bool record)
+Application::transport_set_record_internal (bool record)
 {
 	data->record = record;
 }

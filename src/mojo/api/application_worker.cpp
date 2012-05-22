@@ -1,16 +1,16 @@
-#include "session_worker.hpp"
+#include "application_worker.hpp"
 
 #include "log.hpp"
 
 namespace mojo {
 
-SessionWorker::SessionWorker ()
+ApplicationWorker::ApplicationWorker ()
 {
 
 }
 
 void
-SessionWorker::call_sync (const function_t& func)
+ApplicationWorker::call_sync (const function_t& func)
 {
 	LOG;
 	queue (func);
@@ -18,7 +18,7 @@ SessionWorker::call_sync (const function_t& func)
 }
 
 void
-SessionWorker::call_async (const function_t& func)
+ApplicationWorker::call_async (const function_t& func)
 {
 	LOG;
 	queue (func);
@@ -26,7 +26,7 @@ SessionWorker::call_async (const function_t& func)
 }
 
 void
-SessionWorker::queue (const function_t& func)
+ApplicationWorker::queue (const function_t& func)
 {
 	{
 		Glib::Mutex::Lock guard(m_queue_lock);
@@ -35,14 +35,14 @@ SessionWorker::queue (const function_t& func)
 }
 
 void
-SessionWorker::do_work ()
+ApplicationWorker::do_work ()
 {
 	LOG;
 	process_queue();
 }
 
 void
-SessionWorker::process_queue ()
+ApplicationWorker::process_queue ()
 {
 	Glib::Mutex::Lock guard(m_queue_lock);
 

@@ -12,7 +12,7 @@ using namespace mojo;
 BOOST_AUTO_TEST_CASE( audition_test )
 {
 	/*
-	 * A Session is needed to audition an audio file
+	 * A Application is needed to audition an audio file
 	 *
 	 * Auditioning can occur while the transport is rolling
 	 * or stopped.

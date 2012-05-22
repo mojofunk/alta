@@ -11,16 +11,16 @@
 namespace mojo {
 
 /**
- * The SessionWorker class accepts worker functions to
+ * The ApplicationWorker class accepts worker functions to
  * be called in another thread.
  *
  */
-class SessionWorker : public Worker
+class ApplicationWorker : public Worker
 {
 public:
 	typedef boost::function<void()> function_t;
 
-	SessionWorker ();
+	ApplicationWorker ();
 
 	void call_sync (const function_t& func);
 

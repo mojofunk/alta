@@ -11,7 +11,7 @@
 
 namespace ui {
 
-class SessionEventHandler : public mojo::SessionEventHandler
+class ApplicationEventHandler : public mojo::ApplicationEventHandler
 {
 public: // typedefs
 
@@ -23,11 +23,14 @@ public: // typedefs
 
 public:
 
-	SessionEventHandler ();
-	~SessionEventHandler ();
+	ApplicationEventHandler ();
+	~ApplicationEventHandler ();
 
 public: // signal accessors
 
+	// is it thread safe to access these signals?
+	// signals are only emitted in gui thread so emission and connection
+	// never occur simultaneously
 	project_signal_t& signal_project_added ()
 	{ return m_signal_project_added; }
 
@@ -70,8 +73,8 @@ private: // signals
 protected:
 
 	/*
-	 * These virtual methods are part of the mojo::SessionEventHandler API
-	 * and are called by the Session from the Session thread
+	 * These virtual methods are part of the mojo::ApplicationEventHandler API
+	 * and are called by the Application from the Application thread
 	 */
 
 	virtual void on_project_added (mojo::Project*);

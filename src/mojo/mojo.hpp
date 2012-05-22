@@ -1,8 +1,8 @@
-#ifndef MOJO_MOJO
-#define MOJO_MOJO
+#ifndef MOJO_API
+#define MOJO_API
 
-#include <mojo/api/session.hpp>
-#include <mojo/api/session_event_handler.hpp>
+#include <mojo/api/application.hpp>
+#include <mojo/api/application_event_handler.hpp>
 #include <mojo/api/forward.hpp>
 
 #endif

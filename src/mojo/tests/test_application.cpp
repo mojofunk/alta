@@ -1,5 +1,5 @@
 
-#define BOOST_TEST_MODULE mojo_session
+#define BOOST_TEST_MODULE mojo_application
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
@@ -16,18 +16,18 @@ using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
 
-class TestSessionEventHandler : public SessionEventHandler
+class TestApplicationEventHandler : public ApplicationEventHandler
 {
 public:
 
-	TestSessionEventHandler (Session* session) : m_session (session) { }
+	TestApplicationEventHandler (Application* application) : m_application (application) { }
 
 private:
 
 	void on_project_added (Project* p)
 	{
 		BOOST_TEST_MESSAGE ("on_project_added");
-		Glib::signal_idle().connect(sigc::bind_return(sigc::bind (sigc::mem_fun(*this, &TestSessionEventHandler::project_added), p), false));
+		Glib::signal_idle().connect(sigc::bind_return(sigc::bind (sigc::mem_fun(*this, &TestApplicationEventHandler::project_added), p), false));
 	}
 
 	void on_project_removed (Project* p)
@@ -92,37 +92,37 @@ private:
 		opt.type = MIDI;
 		opt.count = 12;
 
-		m_session->add_track (p, opt);
+		m_application->add_track (p, opt);
 
-		Glib::signal_idle().connect(sigc::bind_return(sigc::bind (sigc::mem_fun(*this, &TestSessionEventHandler::close_project), p), false));
+		Glib::signal_idle().connect(sigc::bind_return(sigc::bind (sigc::mem_fun(*this, &TestApplicationEventHandler::close_project), p), false));
 	}
 
 	void close_project (Project* p)
 	{
 		BOOST_TEST_MESSAGE ("close_project");
-		m_session->close_project (m_project);
+		m_application->close_project (m_project);
 	}
 
-	Session* m_session;
+	Application* m_application;
 
 	Project* m_project;
 	Track* m_track;
 
 };
 
-BOOST_AUTO_TEST_CASE( test_session )
+BOOST_AUTO_TEST_CASE( test_application )
 {
 	Glib::thread_init ();
 
-	Session *s = new Session;
+	Application *s = new Application;
 
-	SessionEventHandler *handler = new TestSessionEventHandler(s);
+	ApplicationEventHandler *handler = new TestApplicationEventHandler(s);
 
 	s->add_event_handler (handler);
-	//s->connect_event_handler (handler, SessionEvent::ProjectAdded);
-	//s->connect_event_handler (handler, SessionEvent::ProjectRemoved);
-	//s->connect_event_handler (handler, SessionEvent::TracksAdded);
-	//s->connect_event_handler (handler, SessionEvent::TracksRemoved);
+	//s->connect_event_handler (handler, ApplicationEvent::ProjectAdded);
+	//s->connect_event_handler (handler, ApplicationEvent::ProjectRemoved);
+	//s->connect_event_handler (handler, ApplicationEvent::TracksAdded);
+	//s->connect_event_handler (handler, ApplicationEvent::TracksRemoved);
 	//s->connect_event_handler (handler, TransportEvent::SpeedChanged);
 	//s->connect_event_handler (handler, TransportEvent::PositionChanged);
 	//s->connect_event_handler (handler, TransportEvent::RecordEnabledChanged);

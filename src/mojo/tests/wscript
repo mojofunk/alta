@@ -3,7 +3,7 @@
 # Tim Mayberry, 2008
 
 tests='''
-test_session
+test_application
 test_sequence
 test_state_tracker
 test_type_system

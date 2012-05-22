@@ -9,7 +9,7 @@
 #include <mojo/mojo.hpp>
 
 #include "project_objects.hpp"
-#include "session_event_handler.hpp"
+#include "application_event_handler.hpp"
 
 namespace ui {
 
@@ -49,9 +49,9 @@ public:
 
 	static void open_import_dialog ();
 
-	static SessionEventHandler& get_session_event_handler ();
+	static ApplicationEventHandler& get_application_event_handler ();
 
-	static mojo::Session& get_session ();
+	static mojo::Application& get_application ();
 
 private:
 
@@ -70,8 +70,8 @@ private: // member data
 
 	project_objects_set_t project_objs;
 
-        mojo::Session m_session;
-	SessionEventHandler m_session_event_handler;
+        mojo::Application m_application;
+	ApplicationEventHandler m_application_event_handler;
 
 };
 

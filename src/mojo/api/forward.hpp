@@ -5,12 +5,12 @@
 
 namespace mojo {
 
-class SessionEventHandler;
+class ApplicationEventHandler;
 class Property;
 
 namespace internal {
 
-class SessionData;
+class ApplicationData;
 
 } // namespace internal
 

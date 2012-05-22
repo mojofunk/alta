@@ -9,12 +9,12 @@ namespace mojo {
 class Node;
 
 /**
- * Engine recieves events from the Session and processes them, for instance
- * transport change events. It also sends events to the session, for instance
+ * Engine recieves events from the Application and processes them, for instance
+ * transport change events. It also sends events to the application, for instance
  * buffer fill and buffer write events
  *
  * The state of the Engine reflects the state of the project but the engine does
- * not have access and does not depend on the Project or Session classes. This
+ * not have access and does not depend on the Project or Application classes. This
  * allows the Engine API to be reusable.
  *
  * The Engine has a clock signal that it receives from the audio device
@@ -34,7 +34,7 @@ class Node;
  *
  *  - writes data to the audio device
  *
- * The Session registers an event handler callback to recieve all the events issued
+ * The Application registers an event handler callback to recieve all the events issued
  * by the engine and then processes them.
  *
  * The AudioDevice interface hides the implementation of the audio driver

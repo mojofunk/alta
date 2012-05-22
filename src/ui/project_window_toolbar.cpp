@@ -2,7 +2,7 @@
 #include "project_window_toolbar.hpp"
 
 #include "app.hpp"
-#include "session_event_handler.hpp"
+#include "application_event_handler.hpp"
 #include "transport_toolbar.hpp"
 
 #include "log.hpp"
@@ -21,7 +21,7 @@ ProjectWindowToolbar::ProjectWindowToolbar (mojo::Project* p)
 	m_activate_project_button.signal_toggled().connect (sigc::mem_fun (this,
 		&ProjectWindowToolbar::on_activate_project_button_toggled));
 
-	App::get_session_event_handler().signal_active_project_changed().connect (sigc::mem_fun (this,
+	App::get_application_event_handler().signal_active_project_changed().connect (sigc::mem_fun (this,
 		&ProjectWindowToolbar::on_activate_project_changed));
 
 }
@@ -31,7 +31,7 @@ ProjectWindowToolbar::on_activate_project_button_toggled ()
 {
 	if (m_activate_project_button.get_active())
 	{
-		App::get_session().set_active_project (m_project);
+		App::get_application().set_active_project (m_project);
 	}
 	else
 	{

@@ -1,5 +1,5 @@
-#ifndef MOJO_EVENT_HANDLER
-#define MOJO_EVENT_HANDLER
+#ifndef MOJO_APPLICATION_EVENT_HANDLER
+#define MOJO_APPLICATION_EVENT_HANDLER
 
 #include "types.hpp"
 #include "forward.hpp"
@@ -7,17 +7,17 @@
 namespace mojo {
 
 /**
- * The SessionEventHandler interface is how the Session communicates
+ * The ApplicationEventHandler interface is how the Application communicates
  * with clients.
  *
- * The virtual calls are made by the Session in the
- * Session thread. If the events must be processed by
+ * The virtual calls are made by the Application in the
+ * Application thread. If the events must be processed by
  * another thread(say the GUI thread) then it is up to
  * the derived class to queue the events to be processed
  * by another thread.
  *
  * Another option to virtual methods and inheritance would be to
- * Have a SessionEvent class and then different events from that
+ * Have a ApplicationEvent class and then different events from that
  * class. The clients would then just register callbacks for different
  * event types. Some possible advantages of an interface is that
  * all events have to be handled anyway so just enforce it rather than
@@ -25,21 +25,21 @@ namespace mojo {
  * etc.
  * The main disadvantage is that the client code has to have a top down
  * event processing heirarchy. I think it would be better to have
- * A virtual SessionEvent class and Subclasses for different event types
+ * A virtual ApplicationEvent class and Subclasses for different event types
  *
  */
-class SessionEventHandler
+class ApplicationEventHandler
 {
 public:
 
-	SessionEventHandler();
-	virtual ~SessionEventHandler();
+	ApplicationEventHandler();
+	virtual ~ApplicationEventHandler();
 
 protected:
 
-	friend class Session;
+	friend class Application;
 
-	// all the events are called from the session thread
+	// all the events are called from the application thread
 
 	virtual void on_project_added (Project*) = 0;
 

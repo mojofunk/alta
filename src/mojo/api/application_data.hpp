@@ -3,7 +3,7 @@
 
 #include <mojo/mojo-internal.hpp>
 
-#include "session_worker.hpp"
+#include "application_worker.hpp"
 
 #include <glibmm/thread.h>
 
@@ -11,15 +11,15 @@ namespace mojo {
 
 namespace internal {
 	
-struct SessionData
+struct ApplicationData
 {
-	std::set<SessionEventHandler*> event_handlers;
+	std::set<ApplicationEventHandler*> event_handlers;
 
 	std::set<ProjectSP> projects;
 
 	Project* active_project;
 
-	SessionWorker worker;
+	ApplicationWorker worker;
 
 	Glib::Thread* worker_thread;
 
