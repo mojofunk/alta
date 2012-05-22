@@ -4,7 +4,7 @@ Add license headers to files where necessary
 
 LIBMOJO
 
-transport should be in Engine not Session
+transport should be in Engine not Application
 
 Prevent headers being included directly?
 
@@ -136,20 +136,14 @@ The test suite must be able to measure thread context switching time.
 The test suite must be able to test the effect cache size has on processing
 performance.
 
-Rename mojo::App mojo::Application
+Application API should use method names like transport_* track_* project_* etc
 
-Should Session functionality be moved to mojo::Application ?
-
-Move session dir to application
-
-Session API should use method names like transport_* track_* project_* etc
-
-Session API should have a sync method for testing(at least)
+Application API should have a sync method for testing(at least)
 
 Should the mojo public API be in C?
 
-If the SessionWorker is calling a sync function and the UI thread is waiting for the
-SessionWorker to finish then there is a deadlock?
+If the ApplicationWorker is calling a sync function and the UI thread is waiting for the
+ApplicationWorker to finish then there is a deadlock?
 
 If when the last project is removed can App::quit be called in an idle callback.
 
