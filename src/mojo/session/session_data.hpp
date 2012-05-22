@@ -23,6 +23,10 @@ struct SessionData
 
 	Glib::Thread* worker_thread;
 
+	// going to need a per project lock for access to
+	// project data from worker thread and from client
+	// when data is needed syncronously.
+
 	// transport data
 	// position and record status are properties of a project
 
