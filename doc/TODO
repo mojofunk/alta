@@ -8,9 +8,13 @@ transport should be in Engine not Session
 
 Prevent headers being included directly?
 
+Move all interfaces to interfaces directory
+
 get rid of mojo-internal.hpp? why is it necessary
 
 must only include mojo.hpp
+
+include facility for startup messages during initialization?
 
 SearchPath should be renamed search_path so it doesn't clash with SearchPath
 typedef in windows.h
