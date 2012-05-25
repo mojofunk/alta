@@ -56,12 +56,11 @@ BOOST_AUTO_TEST_CASE( save_open_project_test )
 	BOOST_REQUIRE(proj->new_midi_track("Drum Fill"));
 	BOOST_REQUIRE(proj->new_midi_track("Horn"));
 
-	Project::track_container_t tracks = proj->get_tracks ();
+	TrackSPSet tracks = proj->get_tracks ();
 
 	BOOST_CHECK(tracks.size() == 9);
 
-	for (Project::track_container_t::iterator i = tracks.begin();
-			i != tracks.end(); ++i)
+	for (TrackSPSet::iterator i = tracks.begin(); i != tracks.end(); ++i)
 	{
 		AudioTrackSP audio_track = boost::dynamic_pointer_cast<AudioTrack>(*i);
 

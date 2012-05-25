@@ -3,9 +3,8 @@
 #define MOJO_PROJECT
 
 #include <string>
-#include <set>
 
-#include <mojo/core/object.hpp>
+#include "mojo/core/object.hpp"
 
 #include "typedefs.hpp"
 
@@ -33,10 +32,6 @@ using std::set;
  */
 class Project : Object
 {
-public: // typedefs
-
-	typedef set<TrackSP> track_container_t;
-
 public: // Object interface
 
 	virtual void get_properties (Properties& props) const;
@@ -49,7 +44,7 @@ public: // convenience methodks
 
 	MidiTrackSP new_midi_track (const std::string& name = "");
 
-	track_container_t get_tracks () const { return m_tracks; }
+	TrackSPSet get_tracks () const { return m_tracks; }
 
 	void add_track (const TrackSP&);
 
@@ -58,7 +53,7 @@ public: // convenience methodks
 private: // member data
 
 	std::string                   m_name;
-	track_container_t             m_tracks;
+	TrackSPSet                    m_tracks;
 
 private: // property names
 	
