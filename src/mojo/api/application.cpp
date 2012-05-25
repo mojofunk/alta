@@ -1,11 +1,12 @@
 
 #include <boost/bind.hpp>
 
+#include "mojo/core/debug.hpp"
+
 #include "application.hpp"
 #include "application_event_handler.hpp"
 #include "application_data.hpp"
 
-#include "log.hpp"
 
 namespace mojo {
 

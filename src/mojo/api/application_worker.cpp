@@ -1,6 +1,7 @@
-#include "application_worker.hpp"
 
-#include "log.hpp"
+#include "mojo/core/debug.hpp"
+
+#include "application_worker.hpp"
 
 namespace mojo {
 

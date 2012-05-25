@@ -2,11 +2,11 @@
 
 #include <mojo/mojo-internal.hpp>
 
+#include "mojo/core/debug.hpp"
+
 #include "application_event_handler.hpp"
 #include "application_data.hpp"
 #include "utils.hpp"
-
-#include "log.hpp"
 
 namespace mojo {
 

@@ -1,5 +1,5 @@
-#ifndef SESSION_LOG
-#define SESSION_LOG
+#ifndef MOJO_CORE_DEBUG
+#define MOJO_CORE_DEBUG
 
 #include <iostream>
 
