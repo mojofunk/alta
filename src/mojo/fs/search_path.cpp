@@ -84,28 +84,28 @@ SearchPath::operator= (const SearchPath& path)
 	return *this;
 }
 
-SearchPath& 
+SearchPath&
 SearchPath::operator+= (const SearchPath& spath)
 {
 	m_dirs.insert(m_dirs.end(), spath.m_dirs.begin(), spath.m_dirs.end());
 	return *this;
 }
 
-SearchPath& 
+SearchPath&
 SearchPath::operator+= (const fs::path& directory_path)
 {
 	add_directory (directory_path);
 	return *this;
 }
 
-SearchPath& 
+SearchPath&
 SearchPath::operator+ (const fs::path& directory_path)
 {
 	add_directory (directory_path);
 	return *this;
 }
 
-SearchPath& 
+SearchPath&
 SearchPath::operator+ (const SearchPath& spath)
 {
 	// concatenate paths into new SearchPath
@@ -121,14 +121,14 @@ SearchPath::add_subdirectory_to_paths (const std::string& subdir)
 
 	for (iterator i = m_dirs.begin(); i != m_dirs.end(); ++i)
 	{
-		// should these new paths just be added to the end of 
+		// should these new paths just be added to the end of
 		// the search path rather than replace?
 		*i /= subdir;
 	}
-	
+
 	return *this;
 }
-	
+
 SearchPath&
 SearchPath::operator/ (const std::string& subdir)
 {

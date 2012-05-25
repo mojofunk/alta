@@ -9,9 +9,9 @@
 namespace mojo {
 
 /**
- * @class The SearchPath class is a helper class for getting a 
- * vector of paths contained in a search path string where a 
- * "search path string" contains absolute directory paths 
+ * @class The SearchPath class is a helper class for getting a
+ * vector of paths contained in a search path string where a
+ * "search path string" contains absolute directory paths
  * separated by a colon(:) or a semi-colon(;) on windows.
  */
 class SearchPath {
@@ -30,7 +30,7 @@ public:
 	/**
 	 * Initialize SearchPath from a string each path may or may not
 	 * exist.
-	 * 
+	 *
 	 * @param search_path A path string.
 	 */
 	SearchPath (const std::string& search_path);
@@ -58,8 +58,8 @@ public:
 	SearchPath (const SearchPath& search_path);
 
 	/**
-	 * Indicate whether there are any directories in m_dirs, if SearchPath 
-	 * is initialized with an empty string as the result of for instance 
+	 * Indicate whether there are any directories in m_dirs, if SearchPath
+	 * is initialized with an empty string as the result of for instance
 	 * the contents of an unset environment variable.
 	 *
 	 * @return true if there are any paths in m_paths.
@@ -72,7 +72,7 @@ public:
 	 *  element order.
 	 */
 	iterator begin () { return m_dirs.begin(); }
-	
+
 	/**
 	 *  @return A read-only (constant) iterator that points to the
 	 *  first path in the SearchPath.
@@ -84,9 +84,9 @@ public:
 	 *  path in the SearchPath.
 	 */
 	iterator end () { return m_dirs.end(); }
-	
+
 	/**
-	 *  @return A read-only (constant) iterator that points one past 
+	 *  @return A read-only (constant) iterator that points one past
 	 *  the last path in the SearchPath.
 	 */
 	const_iterator end () const { return m_dirs.end(); }
@@ -95,7 +95,7 @@ public:
 	 * @return a search path string.
 	 *
 	 * The string that is returned contains the platform specific
-	 * path separator. The verbosity and "explicitness" of this 
+	 * path separator. The verbosity and "explicitness" of this
 	 * method is indicitive that I don't think it should be used
 	 * that often.
 	 */
@@ -117,12 +117,12 @@ public:
 	 * Add another directory path to the search path.
 	 */
 	SearchPath& operator+= (const fs::path& directory_path);
-	
+
 	/**
 	 * Concatenate another SearchPath onto this.
 	 */
 	SearchPath& operator+ (const SearchPath& other);
-	
+
 	/**
 	 * Add another path to the search path.
 	 */
@@ -142,7 +142,7 @@ public:
 protected:
 
 	void add_directory (const fs::path& directory_path);
-	
+
 	paths_t m_dirs;
 
 };

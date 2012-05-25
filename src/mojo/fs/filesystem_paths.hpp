@@ -2,8 +2,7 @@
 #ifndef MOJO_FILESYSTEM_PATHS
 #define MOJO_FILESYSTEM_PATHS
 
-#include <mojo/utils/search_path.hpp>
-
+#include "search_path.hpp"
 #include "filesystem.hpp"
 
 namespace mojo {

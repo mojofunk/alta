@@ -5,8 +5,7 @@
 #include "mojo/interfaces/typedefs.hpp"
 
 #include "mojo/fs/filesystem.hpp"
-
-#include "mojo/utils/search_path.hpp"
+#include "mojo/fs/search_path.hpp"
 
 namespace mojo {
 
