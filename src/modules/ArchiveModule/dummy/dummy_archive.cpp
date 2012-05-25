@@ -4,6 +4,10 @@
 #include <iostream>
 #include <fstream>
 
+#include "mojo/typesystem/type_system.hpp"
+
+#include "mojo/core/object.hpp"
+
 #include "dummy_archive.hpp"
 
 namespace mojo {

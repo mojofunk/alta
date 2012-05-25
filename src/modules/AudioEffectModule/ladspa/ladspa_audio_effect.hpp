@@ -4,7 +4,9 @@
 
 #include <ladspa.h>
 
-#include <mojo/mojo-internal.hpp>
+#include "mojo/interfaces/audio_effect.hpp"
+
+#include "mojo/utils/typedefs.hpp"
 
 #include "ladspa_typedefs.hpp"
 

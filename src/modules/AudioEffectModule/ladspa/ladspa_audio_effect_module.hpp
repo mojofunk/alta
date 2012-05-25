@@ -2,7 +2,7 @@
 #ifndef MOJO_LADSPA_AUDIO_EFFECT_MODULE
 #define MOJO_LADSPA_AUDIO_EFFECT_MODULE
 
-#include <mojo/mojo-internal.hpp>
+#include "mojo/interfaces/audio_effect_module.hpp"
 
 namespace mojo {
 

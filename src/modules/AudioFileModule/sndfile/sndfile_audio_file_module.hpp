@@ -2,7 +2,7 @@
 #ifndef MOJO_SNDFILE_AUDIO_FILE_MODULE
 #define MOJO_SNDFILE_AUDIO_FILE_MODULE
 
-#include <mojo/mojo-internal.hpp>
+#include "mojo/interfaces/audio_file_module.hpp"
 
 namespace mojo {
 

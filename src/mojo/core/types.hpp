@@ -1,6 +1,6 @@
 
-#ifndef MOJO_TYPES
-#define MOJO_TYPES
+#ifndef MOJO_CORE_TYPES
+#define MOJO_CORE_TYPES
 
 #include <inttypes.h>
 

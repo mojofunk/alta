@@ -4,7 +4,17 @@
 #include <boost/test/unit_test_log.hpp>
 
 #include <cformat/cformat.hpp>
-#include <mojo/mojo-internal.hpp>
+
+
+#include "mojo/app/app.hpp"
+
+#include "mojo/core/properties.hpp"
+
+#include "mojo/interfaces/archive.hpp"
+#include "mojo/interfaces/archive_module.hpp"
+#include "mojo/interfaces/archive.hpp"
+
+#include "mojo/app/app.hpp"
 
 #include <glib.h>
 

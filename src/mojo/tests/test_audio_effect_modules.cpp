@@ -7,7 +7,17 @@
 // for command line args
 #include <boost/test/framework.hpp>
 
-#include <mojo/mojo-internal.hpp>
+#include "mojo/app/app.hpp"
+
+#include "mojo/core/typedefs.hpp"
+
+#include "mojo/interfaces/audio_effect.hpp"
+#include "mojo/interfaces/audio_effect_info.hpp"
+#include "mojo/interfaces/audio_effect_parameter_info.hpp"
+#include "mojo/interfaces/audio_effect_module.hpp"
+#include "mojo/interfaces/audio_effect_info.hpp"
+#include "mojo/interfaces/audio_effect_info.hpp"
+
 
 using namespace boost::unit_test;
 using namespace std;

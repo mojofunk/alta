@@ -4,7 +4,10 @@
 #include "ladspa_audio_effect_info.hpp"
 #include "ladspa_typedefs.hpp"
 
-#include <mojo/mojo-internal.hpp>
+#include "mojo/core/export.h"
+
+#include "mojo/utils/library.hpp"
+#include "mojo/utils/file_utils.hpp"
 
 namespace mojo {
 

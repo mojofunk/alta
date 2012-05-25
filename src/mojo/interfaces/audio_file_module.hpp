@@ -4,8 +4,9 @@
 
 #include <string>
 
-#include "types.hpp"
-#include "typedefs.hpp"
+#include "mojo/core/types.hpp"
+#include "mojo/core/typedefs.hpp"
+
 #include "module.hpp"
 
 namespace mojo {

@@ -2,6 +2,8 @@
 #include "xml_archive.hpp"
 #include "xml_archive_module.hpp"
 
+#include "mojo/core/export.h"
+
 namespace mojo {
 
 XMLArchiveModule::XMLArchiveModule () { }

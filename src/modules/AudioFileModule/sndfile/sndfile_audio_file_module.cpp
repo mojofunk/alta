@@ -3,6 +3,8 @@
 #include "sndfile_audio_file.hpp"
 #include "sndfile_audio_file_format.hpp"
 
+#include "mojo/core/export.h"
+
 #include <cstring>
 #include <algorithm>
 

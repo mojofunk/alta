@@ -1,6 +1,8 @@
 
 #include <boost/bind.hpp>
 
+#include "mojo/project/audio_track.hpp"
+
 #include "mojo/core/debug.hpp"
 
 #include "application.hpp"

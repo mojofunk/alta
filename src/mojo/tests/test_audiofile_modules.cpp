@@ -10,7 +10,13 @@
 
 #include <boost/format.hpp>
 
-#include "mojo/mojo-internal.hpp"
+#include "mojo/app/app.hpp"
+
+#include "mojo/interfaces/audio_file.hpp"
+#include "mojo/interfaces/audio_file_format.hpp"
+#include "mojo/interfaces/audio_file_module.hpp"
+
+#include "mojo/fs/project_directory.hpp"
 
 #include "test_common.hpp"
 

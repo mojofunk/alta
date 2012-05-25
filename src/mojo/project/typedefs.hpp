@@ -2,7 +2,7 @@
 #ifndef MOJO_OBJECTS_TYPEDEFS
 #define MOJO_OBJECTS_TYPEDEFS
 
-#include <mojo/core/macros.hpp>
+#include "mojo/core/macros.hpp"
 
 #include "forward.hpp"
 
@@ -14,7 +14,7 @@ MOJO_DEFINE_POINTER_TYPEDEFS(AudioRegion)
 MOJO_DEFINE_POINTER_TYPEDEFS(AudioSequence)
 MOJO_DEFINE_POINTER_TYPEDEFS(AudioTrack)
 MOJO_DEFINE_POINTER_TYPEDEFS(MidiTrack)
-MOJO_DEFINE_POINTER_TYPEDEFS(Project)
+MOJO_DEFINE_ALL_TYPEDEFS(Project)
 MOJO_DEFINE_POINTER_TYPEDEFS(Track)
 
 } // namespace mojo

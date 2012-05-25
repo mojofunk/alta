@@ -1,7 +1,7 @@
 #ifndef MOJO_APPLICATION_DATA
 #define MOJO_APPLICATION_DATA
 
-#include "mojo-internal.hpp"
+#include "mojo/project/typedefs.hpp"
 
 #include "application_worker.hpp"
 
@@ -15,7 +15,7 @@ struct ApplicationData
 {
 	std::set<ApplicationEventHandler*> event_handlers;
 
-	std::set<ProjectSP> projects;
+	ProjectSPSet projects;
 
 	Project* active_project;
 

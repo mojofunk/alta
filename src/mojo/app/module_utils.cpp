@@ -1,7 +1,7 @@
-#include <mojo/core/module.hpp>
+#include "mojo/interfaces/module.hpp"
 
-#include <mojo/utils/file_utils.hpp>
-#include <mojo/utils/library.hpp>
+#include "mojo/utils/file_utils.hpp"
+#include "mojo/utils/library.hpp"
 
 #include "module_utils.hpp"
 

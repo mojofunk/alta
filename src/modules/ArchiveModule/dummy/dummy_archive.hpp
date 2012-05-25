@@ -2,7 +2,11 @@
 #ifndef MOJO_DUMMY_ARCHIVE
 #define MOJO_DUMMY_ARCHIVE
 
-#include <mojo/mojo-internal.hpp>
+#include "mojo/interfaces/archive.hpp"
+
+#include "mojo/core/typedefs.hpp"
+
+#include "mojo/project/object_collection.hpp"
 
 namespace mojo {
 

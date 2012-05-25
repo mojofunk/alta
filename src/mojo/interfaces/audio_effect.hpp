@@ -2,8 +2,9 @@
 #ifndef MOJO_AUDIO_EFFECT
 #define MOJO_AUDIO_EFFECT
 
-#include "typedefs.hpp"
-#include <inttypes.h>
+#include "mojo/core/types.hpp"
+#include "mojo/core/typedefs.hpp"
+
 
 namespace mojo {
 

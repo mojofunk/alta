@@ -2,6 +2,8 @@
 #include "dummy_archive.hpp"
 #include "dummy_archive_module.hpp"
 
+#include "mojo/core/export.h"
+
 namespace mojo {
 
 DummyArchiveModule::DummyArchiveModule () { }
