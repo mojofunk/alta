@@ -1,5 +1,5 @@
-#ifndef MOJO_API_TYPES
-#define MOJO_API_TYPES
+#ifndef MOJO_API_FORWARD
+#define MOJO_API_FORWARD
 
 #include "mojo/project/forward.hpp"
 

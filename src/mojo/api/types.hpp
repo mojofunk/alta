@@ -1,5 +1,5 @@
-#ifndef MOJO_APPLICATION_TYPES
-#define MOJO_APPLICATION_TYPES
+#ifndef MOJO_API_TYPES
+#define MOJO_API_TYPES
 
 #include "mojo/core/types.hpp"
 
