@@ -1,7 +1,7 @@
 #ifndef MOJO_API_TYPES
 #define MOJO_API_TYPES
 
-#include <mojo/project/forward.hpp>
+#include "mojo/project/forward.hpp"
 
 namespace mojo {
 

@@ -1,7 +1,7 @@
 #ifndef MOJO_APPLICATION_TYPES
 #define MOJO_APPLICATION_TYPES
 
-#include <mojo/core/types.hpp>
+#include "mojo/core/types.hpp"
 
 namespace mojo {
 
