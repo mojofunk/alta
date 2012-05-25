@@ -4,7 +4,6 @@
 
 #include "application_event_handler.hpp"
 #include "application_data.hpp"
-#include "null_deleter.hpp"
 #include "utils.hpp"
 
 #include "log.hpp"

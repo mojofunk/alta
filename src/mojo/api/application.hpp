@@ -81,6 +81,13 @@ namespace mojo {
  * Should only be one Application class per process so makes sense to make all methods
  * static(might as well be a C API...)
  *
+ * If the worker context is exposed in a private header(perhaps in core) then the clients should
+ * be able to access the project class directly and the classes can then defer some/all modification
+ * calls to the worker thread.
+ *
+ * The main difference between the Async communication in Ardour and this library is that
+ * all signals are proxied through a single class rather than signal templates.
+ *
  */
 class Application
 {

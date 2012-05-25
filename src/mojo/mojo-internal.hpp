@@ -21,6 +21,7 @@
 #include <mojo/core/audio_file_module.hpp>
 #include <mojo/core/typedefs.hpp>
 #include <mojo/core/module.hpp>
+#include <mojo/core/null_deleter.hpp>
 #include <mojo/core/object.hpp>
 #include <mojo/core/properties.hpp>
 #include <mojo/core/state_tracker.hpp>
