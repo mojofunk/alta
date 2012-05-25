@@ -1,5 +1,5 @@
-#ifndef MOJO_SESSION_TYPES
-#define MOJO_SESSION_TYPES
+#ifndef MOJO_APPLICATION_TYPES
+#define MOJO_APPLICATION_TYPES
 
 #include <mojo/core/types.hpp>
 

@@ -1,5 +1,5 @@
-#ifndef MOJO_SESSION_DATA
-#define MOJO_SESSION_DATA
+#ifndef MOJO_APPLICATION_DATA
+#define MOJO_APPLICATION_DATA
 
 #include "mojo-internal.hpp"
 

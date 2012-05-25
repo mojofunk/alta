@@ -1,6 +1,6 @@
 
-#ifndef MOJO_SESSION_WORKER
-#define MOJO_SESSION_WORKER
+#ifndef MOJO_APPLICATION_WORKER
+#define MOJO_APPLICATION_WORKER
 
 #include <queue>
 
