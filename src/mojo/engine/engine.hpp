@@ -2,7 +2,7 @@
 #ifndef MOJO_ENGINE
 #define MOJO_ENGINE
 
-#include <mojo/core/typedefs.hpp>
+#include "mojo/interfaces/typedefs.hpp"
 
 namespace mojo {
 

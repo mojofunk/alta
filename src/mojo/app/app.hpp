@@ -2,7 +2,7 @@
 #ifndef MOJO_APP
 #define MOJO_APP
 
-#include "mojo/core/typedefs.hpp"
+#include "mojo/interfaces/typedefs.hpp"
 
 #include "mojo/fs/filesystem.hpp"
 

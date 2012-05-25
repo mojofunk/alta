@@ -3,7 +3,8 @@
 #define MOJO_AUDIO_FILE
 
 #include "mojo/core/types.hpp"
-#include "mojo/core/typedefs.hpp"
+
+#include "typedefs.hpp"
 
 namespace mojo {
 

@@ -2,7 +2,7 @@
 #ifndef MOJO_MODULE_UTILS
 #define MOJO_MODULE_UTILS
 
-#include "mojo/core/typedefs.hpp"
+#include "mojo/interfaces/typedefs.hpp"
 
 #include "mojo/fs/filesystem.hpp"
 

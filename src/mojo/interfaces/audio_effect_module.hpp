@@ -3,10 +3,10 @@
 #define MOJO_AUDIO_EFFECT_MODULE
 
 #include "mojo/core/types.hpp"
-#include "mojo/core/typedefs.hpp"
 
 #include "mojo/fs/filesystem.hpp"
 
+#include "typedefs.hpp"
 #include "module.hpp"
 
 namespace mojo {
