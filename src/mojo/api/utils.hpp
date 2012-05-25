@@ -1,5 +1,5 @@
-#ifndef MOJO_UTILS
-#define MOJO_UTILS
+#ifndef MOJO_API_UTILS
+#define MOJO_API_UTILS
 
 #include "types.hpp"
 
