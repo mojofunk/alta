@@ -2,7 +2,7 @@
 #ifndef MOJO_LIBRARY
 #define MOJO_LIBRARY
 
-#include <mojo/core/filesystem.hpp>
+#include "mojo/fs/filesystem.hpp"
 
 #include "typedefs.hpp"
 

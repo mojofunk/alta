@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-#include <mojo/core/filesystem.hpp>
+#include "filesystem.hpp"
 
 namespace mojo {
 
