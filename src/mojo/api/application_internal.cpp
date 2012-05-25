@@ -1,9 +1,8 @@
-#include "application.hpp"
-
-#include <mojo/mojo-internal.hpp>
+#include "mojo-internal.hpp"
 
 #include "mojo/core/debug.hpp"
 
+#include "application.hpp"
 #include "application_event_handler.hpp"
 #include "application_data.hpp"
 #include "utils.hpp"

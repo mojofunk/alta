@@ -1,7 +1,7 @@
 #ifndef MOJO_SESSION_DATA
 #define MOJO_SESSION_DATA
 
-#include <mojo/mojo-internal.hpp>
+#include "mojo-internal.hpp"
 
 #include "application_worker.hpp"
 
