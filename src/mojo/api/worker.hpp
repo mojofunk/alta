@@ -1,6 +1,6 @@
 
-#ifndef WORKER
-#define WORKER
+#ifndef MOJO_API_WORKER
+#define MOJO_API_WORKER
 
 #include <glibmm/thread.h>
 
@@ -51,6 +51,6 @@ protected:
 
 };
 
-} // namespace gleam
+} // namespace mojo
 
-#endif // GLEAM_DISPATCHER
+#endif // MOJO_API_WORKER
