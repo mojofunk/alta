@@ -1,6 +1,6 @@
 
-#ifndef MOJO_APPLICATION_PROPERTY
-#define MOJO_APPLICATION_PROPERTY
+#ifndef MOJO_API_PROPERTY
+#define MOJO_API_PROPERTY
 
 // TODO copy boost any so as not to depend on boost
 #include <boost/any.hpp>
