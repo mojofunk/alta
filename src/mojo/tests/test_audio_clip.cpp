@@ -9,9 +9,8 @@
 
 #include "mojo/app/app.hpp"
 
+#include "mojo/fs/file_utils.hpp"
 #include "mojo/fs/project_directory.hpp"
-
-#include "mojo/utils/file_utils.hpp"
 
 #include "test_common.hpp"
 

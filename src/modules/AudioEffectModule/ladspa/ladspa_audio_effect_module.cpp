@@ -6,8 +6,9 @@
 
 #include "mojo/core/export.h"
 
+#include "mojo/fs/file_utils.hpp"
+
 #include "mojo/utils/library.hpp"
-#include "mojo/utils/file_utils.hpp"
 
 namespace mojo {
 

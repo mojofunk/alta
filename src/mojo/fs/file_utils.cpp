@@ -24,7 +24,7 @@ find_matching_files (const vector<fs::path>& paths,
 }
 
 std::size_t
-find_matching_files (const fs::path& dir_path, 
+find_matching_files (const fs::path& dir_path,
                      FileMatchFunc match_func,
                      vector<fs::path>& result)
 {
@@ -145,7 +145,7 @@ get_non_existent_file_path (const fs::path& desired_file_path)
 			break;
 		}
 	}
-	
+
 	return final_path;
 }
 
