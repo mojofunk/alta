@@ -80,6 +80,14 @@ public:
       C++ header file must use the hpp extension and the source file must
       use the cpp extension.
     </para>
+
+    <para>
+      The name of the source file should be the class name in lower case and
+      use underscores between words. For instance the class
+      <literal>SearchPath</literal> would have a header file
+      <literal>search_path.hpp</literal> and an implementation file
+      <literal>search_path.cpp</literal>
+    </para>
   </section>
 
   <section id="sn-function-calls">
