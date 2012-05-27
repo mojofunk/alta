@@ -50,6 +50,4 @@ get_system_config_directories ()
 	return tmp;
 }
 
-
-
 }
