@@ -6,6 +6,13 @@
 
 <section id="sn-coding-conventions">
   <title>Coding Conventions</title>
+  <para>
+    These conventions are intended to keep the style of the source code as
+    easy to read and consistent as possible. Code style is very subjective
+    and opinions change over time, in which case these conventions should be
+    updated.
+  </para>
+
   <section id="sn-indentation">
     <title>Indentation</title>
     <para>
