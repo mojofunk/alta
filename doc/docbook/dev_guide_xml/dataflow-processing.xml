@@ -1,0 +1,84 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+
+<!ENTITY % BOOK_ENTITIES SYSTEM "./entities.ent">
+
+%BOOK_ENTITIES;
+
+]>
+
+<section id="dataflow-processing">
+  <title>Dataflow and Processing</title>
+  <variablelist>
+    <title>Requirements</title>
+    <varlistentry>
+      <term>read-only</term>
+      <listitem>
+        <para>
+          Graph structure must be read-only while processing. Meaning
+          edges/connections cannot change while data is being processed by
+          any of the vertices/nodes.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Few external dependencies</term>
+      <listitem>
+        <para>
+          must have as little external dependencies as possible. Atomic
+          primitives should probably be provided by a separate library.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Guaranteed completion</term>
+      <listitem>
+        <para>
+          Graph processing must complete in a finite amount of time. i.e It
+          is a directed acyclic graph.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>network</term>
+      <listitem>
+        <para>
+          The high level audio interface should allow for data to be routed
+          between processes or across a network with sample accurate
+          syncronisation.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Library independence</term>
+      <listitem>
+        <para>
+          The audio processing and graphing part of the implementation will
+          also need to be accessible for internal processing which means it
+          won't be able to depend on any particular audio library.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Multi-Threaded Processing</term>
+      <listitem>
+        <para>
+          processing a graph must be able to occur in parallel using more
+          than one thread, perhaps there should be a GraphProcessor
+          interface that can have several implementations. For those cases
+          where one thread processing the data is optimal then a
+          NonThreadedGraphProcessor or perhaps GenericGraphProcessor can be
+          used.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+
+  <para></para>
+</section>

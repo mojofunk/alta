@@ -1,0 +1,39 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+
+<!ENTITY % BOOK_ENTITIES SYSTEM "./entities.ent">
+
+%BOOK_ENTITIES;
+
+]>
+
+<section id="filesystem-access">
+  <title>Filesystem Access</title>
+  <para>
+    An interface/abstract class could be written and then inheriting classes
+    could use different libraries to implement the needed functionality.
+    boost::filesystem and glib have most of the needed functionality but
+    perhaps it would be better to use either directly. The only small issue
+    with using Glib directly is that the API isn't as C++ish as boost.
+  </para>
+
+  <para>
+    I think it would be better to use the boost libraries as the API is very
+    good, seemingly well tested and more complete that the glib File
+    Utilities.
+  </para>
+
+  <para>
+    What might be worth defining an interface for would be the few
+    miscellaneous functions provided by glib that are needed probably needed
+    like:
+  </para>
+<screen>
+g_get_home_dir
+g_get_tmp_dir
+g_get_user_name
+g_get_real_name
+etc
+	 </screen>
+</section>

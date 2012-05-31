@@ -1,0 +1,61 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+
+<!ENTITY % BOOK_ENTITIES SYSTEM "./entities.ent">
+
+%BOOK_ENTITIES;
+
+]>
+
+<section id="interfaces">
+  <title>Interfaces</title>
+  <para>
+    Interfaces should be defined where possible so that modules implementing
+    a particular interface can be loaded at runtime. This reduces compile
+    time dependencies and allows for dummy modules to be used for testing if
+    necessary.
+  </para>
+
+  <para>
+    Ideally each class implementing a specific interface should be a
+    separate module that is loaded at runtime. I think using a Factory
+    pattern is an accepted way to do this.
+  </para>
+
+  <para>
+    For the case of the AudioSource interface a dummy AudioSource could be
+    written to generate a sine wave for signal testing.
+  </para>
+
+  <para>
+    Interfaces should depend on as few non-primitive types as possible to
+    decrease the class interdependence and increase the reusability.
+  </para>
+
+  <para>
+    This pattern could be used for classes that read and or write audio data
+    with possible interface names something like AudioSink/AudioOutputStream
+    or AudioSource/AudioIStream.
+  </para>
+
+  <para>
+    Implementations of AudioSource could use libsndfile or libaudiofile for
+    instance any other combination of libraries to support reading of audio
+    data.
+  </para>
+
+  <para>
+    Audio Plugin frameworks like LADSPA and VST may also be supported by
+    implementing a class that implements the AudioPlugin interface. The
+    AudioPlugin interface acts as a Bridge so that the different types of
+    plugins can be supported on different platforms. This abstraction also
+    allows reuse of classes built on top of the interface like gui widgets.
+  </para>
+
+  <para>
+    The base functionality of classes should assume a single thread model
+    and not use locking. If a class is used in a multi-threaded environment
+    then locking can be performed externally.
+  </para>
+</section>
