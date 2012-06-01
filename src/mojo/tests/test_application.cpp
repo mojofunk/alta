@@ -18,10 +18,6 @@ using namespace mojo;
 
 class TestApplicationEventHandler : public ApplicationEventHandler
 {
-public:
-
-	TestApplicationEventHandler (Application* application) : m_application (application) { }
-
 private:
 
 	void on_project_added (Project* p)
@@ -92,7 +88,7 @@ private:
 		opt.type = MIDI;
 		opt.count = 12;
 
-		m_application->add_track (p, opt);
+		Application::add_track (p, opt);
 
 		Glib::signal_idle().connect(sigc::bind_return(sigc::bind (sigc::mem_fun(*this, &TestApplicationEventHandler::close_project), p), false));
 	}
@@ -100,10 +96,8 @@ private:
 	void close_project (Project* p)
 	{
 		BOOST_TEST_MESSAGE ("close_project");
-		m_application->close_project (m_project);
+		Application::close_project (m_project);
 	}
-
-	Application* m_application;
 
 	Project* m_project;
 	Track* m_track;
@@ -114,11 +108,11 @@ BOOST_AUTO_TEST_CASE( test_application )
 {
 	Glib::thread_init ();
 
-	Application *s = new Application;
+	Application::init (0, NULL);
 
-	ApplicationEventHandler *handler = new TestApplicationEventHandler(s);
+	ApplicationEventHandler *handler = new TestApplicationEventHandler();
 
-	s->add_event_handler (handler);
+	Application::add_event_handler (handler);
 	//s->connect_event_handler (handler, ApplicationEvent::ProjectAdded);
 	//s->connect_event_handler (handler, ApplicationEvent::ProjectRemoved);
 	//s->connect_event_handler (handler, ApplicationEvent::TracksAdded);
@@ -129,7 +123,7 @@ BOOST_AUTO_TEST_CASE( test_application )
 	// handler->unref (); ??
 
 
-	s->new_project ();
+	Application::new_project ();
 
 	// should receive a project added event for new project
 
@@ -143,10 +137,7 @@ BOOST_AUTO_TEST_CASE( test_application )
 
 	// need a mainloop here
 
-	s->remove_event_handler (handler);
+	Application::remove_event_handler (handler);
 
-	//s->remove_event_handler (handler); //disconnects all event signals
-
-	delete s;
 	delete handler;
 }

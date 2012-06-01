@@ -91,7 +91,13 @@ namespace mojo {
  */
 class Application
 {
-public: // ctors
+public:
+
+	static void init (int argc, char *argv[]);
+
+	static void cleanup ();
+
+private: // ctors
 
 	Application ();
 
@@ -102,18 +108,18 @@ public: // public API
 	/*
 	 * Sync
 	 */
-	void add_event_handler (ApplicationEventHandler*);
+	static void add_event_handler (ApplicationEventHandler*);
 
 	/*
 	 * Sync
 	 */
-	void remove_event_handler (ApplicationEventHandler*);
+	static void remove_event_handler (ApplicationEventHandler*);
 
 	/**
 	 * Create a new project.
 	 * Async
 	 */
-	void new_project ();
+	static void new_project ();
 
 	/**
 	 * If the native samplerate of the project
@@ -123,12 +129,12 @@ public: // public API
 	 *
 	 * Async
 	 */
-	void open_project (const std::string& project_file);
+	static void open_project (const std::string& project_file);
 
 	/**
 	 * Async
 	 */
-	void save_project_as (Project*, const std::string& filename);
+	static void save_project_as (Project*, const std::string& filename);
 
 	/**
 	 * Will send an error to the application event_handler if the if
@@ -136,13 +142,13 @@ public: // public API
 	 *
 	 * Async
 	 */
-	void save_project (Project*);
+	static void save_project (Project*);
 
 	/**
 	 * should return status
 	 * Async
 	 */
-	void close_project (Project*);
+	static void close_project (Project*);
 
 	/**
 	 * Set the project as the current active project.
@@ -153,14 +159,14 @@ public: // public API
 	 *
 	 * Async
 	 */
-	void set_active_project (Project*);
+	static void set_active_project (Project*);
 
 	/**
 	 * Get the current active project
 	 *
 	 * Sync...could this be a problem?
 	 */
-	Project* get_active_project () const;
+	static Project* get_active_project ();
 
 	/**
 	 * A client should only need to request tracks when a
@@ -179,12 +185,12 @@ public: // public API
 	 *
 	 * Async
 	 */
-	void add_track (Project*, const TrackOptions&);
+	static void add_track (Project*, const TrackOptions&);
 
 	/**
 	 * Async
 	 */
-	void remove_track (Project*, Track*);
+	static void remove_track (Project*, Track*);
 
 	static bool is_audio_track (Track*);
 

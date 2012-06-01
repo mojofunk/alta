@@ -51,8 +51,6 @@ public:
 
 	static ApplicationEventHandler& get_application_event_handler ();
 
-	static mojo::Application& get_application ();
-
 private:
 
 	App (int argc, char *argv[]);
@@ -70,7 +68,6 @@ private: // member data
 
 	project_objects_set_t project_objs;
 
-        mojo::Application m_application;
 	ApplicationEventHandler m_application_event_handler;
 
 };

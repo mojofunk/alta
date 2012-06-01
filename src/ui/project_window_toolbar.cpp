@@ -31,7 +31,7 @@ ProjectWindowToolbar::on_activate_project_button_toggled ()
 {
 	if (m_activate_project_button.get_active())
 	{
-		App::get_application().set_active_project (m_project);
+		mojo::Application::set_active_project (m_project);
 	}
 	else
 	{

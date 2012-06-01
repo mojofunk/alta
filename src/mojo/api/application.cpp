@@ -9,8 +9,28 @@
 #include "application_event_handler.hpp"
 #include "application_data.hpp"
 
+namespace {
+
+	mojo::Application* s_application = 0;
+
+}
 
 namespace mojo {
+
+void
+Application::init (int argc, char *argv[])
+{
+	if(s_application) throw;
+
+	// try/catch?
+	s_application = new Application();
+}
+
+void
+Application::cleanup ()
+{
+	delete s_application;
+}
 
 Application::Application ()
 {
@@ -31,35 +51,35 @@ Application::~Application ()
 	LOG;
 	data->worker.quit();
 	data->worker_thread->join ();
-	delete data;
+	delete s_application->data;
 }
 
 void
 Application::add_event_handler (ApplicationEventHandler* event_handler)
 {
 	LOG;
-	data->worker.call_sync (boost::bind (&Application::add_event_handler_internal, this, event_handler));
+	s_application->data->worker.call_sync (boost::bind (&Application::add_event_handler_internal, s_application, event_handler));
 }
 
 void
 Application::remove_event_handler (ApplicationEventHandler* event_handler)
 {
 	LOG;
-	data->worker.call_sync (boost::bind (&Application::remove_event_handler_internal, this, event_handler));
+	s_application->data->worker.call_sync (boost::bind (&Application::remove_event_handler_internal, s_application, event_handler));
 }
 
 void
 Application::new_project ()
 {
 	LOG;
-	data->worker.call_async (boost::bind (&Application::new_project_internal, this));
+	s_application->data->worker.call_async (boost::bind (&Application::new_project_internal, s_application));
 }
 
 void
 Application::open_project (const std::string& project_file)
 {
 	LOG;
-	data->worker.call_async (boost::bind (&Application::open_project_internal, this, project_file));
+	s_application->data->worker.call_async (boost::bind (&Application::open_project_internal, s_application, project_file));
 }
 
 void
@@ -77,28 +97,28 @@ Application::save_project (Project*)
 void
 Application::set_active_project(Project* p)
 {
-	if (data->active_project == p) return;
-	data->worker.call_async (boost::bind (&Application::set_active_project_internal, this, p));
+	if (s_application->data->active_project == p) return;
+	s_application->data->worker.call_async (boost::bind (&Application::set_active_project_internal, s_application, p));
 }
 
 Project*
-Application::get_active_project() const
+Application::get_active_project()
 {
-	return data->active_project;
+	return s_application->data->active_project;
 }
 
 void
 Application::close_project (Project* p)
 {
 	LOG;
-	data->worker.call_async (boost::bind (&Application::close_project_internal, this, p));
+	s_application->data->worker.call_async (boost::bind (&Application::close_project_internal, s_application, p));
 }
 
 void
 Application::add_track (Project* p, const TrackOptions& options)
 {
 	LOG;
-	data->worker.call_async (boost::bind (&Application::add_track_internal, this, p, options));
+	s_application->data->worker.call_async (boost::bind (&Application::add_track_internal, s_application, p, options));
 }
 
 bool
@@ -111,13 +131,13 @@ void
 Application::transport_set_speed (float speed)
 {
 	LOG;
-	data->worker.call_async (boost::bind (&Application::transport_set_speed_internal, this, speed));
+	s_application->data->worker.call_async (boost::bind (&Application::transport_set_speed_internal, s_application, speed));
 }
 
 float
 Application::transport_get_speed ()
 {
-	return data->speed;
+	return s_application->data->speed;
 }
 
 void
@@ -135,25 +155,25 @@ Application::transport_play ()
 void
 Application::transport_set_position (count_t pos)
 {
-	data->worker.call_async (boost::bind (&Application::transport_set_position_internal, this, pos));
+	s_application->data->worker.call_async (boost::bind (&Application::transport_set_position_internal, s_application, pos));
 }
 
 count_t
 Application::transport_get_position ()
 {
-	return data->position;
+	return s_application->data->position;
 }
 
 void
 Application::transport_set_record (bool record)
 {
-	data->worker.call_async (boost::bind (&Application::transport_set_record_internal, this, record));
+	s_application->data->worker.call_async (boost::bind (&Application::transport_set_record_internal, s_application, record));
 }
 
 bool
 Application::transport_get_record ()
 {
-	return data->record;
+	return s_application->data->record;
 }
 
 } // namespace mojo

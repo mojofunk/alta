@@ -17,6 +17,8 @@ App::init (int argc, char *argv[])
 {
 	if (s_app) throw;
 
+	mojo::Application::init (argc, argv);
+
 	s_app = new App(argc, argv);
 }
 
@@ -24,6 +26,8 @@ void
 App::cleanup ()
 {
 	delete s_app;
+
+	mojo::Application::cleanup ();
 }
 
 App::App (int argc, char *argv[])
@@ -33,12 +37,12 @@ App::App (int argc, char *argv[])
 
 	// must add after connecting signals to ensure
 	// thread safety of signals?
-	m_application.add_event_handler(&m_application_event_handler);
+	mojo::Application::add_event_handler(&m_application_event_handler);
 }
 
 App::~App ()
 {
-	m_application.remove_event_handler(&m_application_event_handler);
+	mojo::Application::remove_event_handler(&m_application_event_handler);
 }
 
 void
@@ -66,7 +70,7 @@ void
 App::new_project ()
 {
 	LOG;
-        s_app->m_application.new_project ();
+        mojo::Application::new_project ();
 }
 
 void
@@ -103,13 +107,13 @@ App::close_project (mojo::Project* p)
 {
 	// TODO ask about saving
 	LOG;
-        s_app->m_application.close_project (p);
+        mojo::Application::close_project (p);
 }
 
 void
 App::save_project (mojo::Project* p)
 {
-        s_app->m_application.save_project (p);
+        mojo::Application::save_project (p);
 }
 
 void
@@ -117,7 +121,7 @@ App::add_track (mojo::Project* p)
 {
 	mojo::TrackOptions opt;
 	// bring up add audio track dialog
-	s_app->m_application.add_track (p, opt);
+	mojo::Application::add_track (p, opt);
 }
 
 void
@@ -151,12 +155,6 @@ ApplicationEventHandler&
 App::get_application_event_handler ()
 {
 	return s_app->m_application_event_handler;
-}
-
-mojo::Application&
-App::get_application ()
-{
-	return s_app->m_application;
 }
 
 } // namespace ui
