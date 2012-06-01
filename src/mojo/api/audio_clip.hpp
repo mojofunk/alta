@@ -2,7 +2,7 @@
 #ifndef MOJO_AUDIO_CLIP
 #define MOJO_AUDIO_CLIP
 
-#include <mojo/core/object.hpp>
+#include "object.hpp"
 
 namespace mojo {
 

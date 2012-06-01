@@ -6,7 +6,7 @@
 
 #include "mojo/typesystem/type_system.hpp"
 
-#include "mojo/core/object.hpp"
+#include "mojo/api/object.hpp"
 
 #include "dummy_archive.hpp"
 

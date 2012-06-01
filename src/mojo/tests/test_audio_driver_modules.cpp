@@ -10,8 +10,6 @@
 
 #include "mojo/app/app.hpp"
 
-#include "mojo/core/typedefs.hpp"
-
 #include "mojo/interfaces/audio_device.hpp"
 #include "mojo/interfaces/audio_driver_module.hpp"
 

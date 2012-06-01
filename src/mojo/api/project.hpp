@@ -4,8 +4,7 @@
 
 #include <string>
 
-#include "mojo/core/object.hpp"
-
+#include "object.hpp"
 #include "typedefs.hpp"
 
 namespace mojo {

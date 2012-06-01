@@ -3,6 +3,8 @@
 
 namespace mojo {
 
+class Object;
+
 class AudioClip;
 class AudioEvent;
 class AudioRegion;
@@ -11,6 +13,7 @@ class AudioTrack;
 class MidiTrack;
 class ObjectCollection;
 class Project;
+class StateTracker;
 class Track;
 
 class ApplicationEventHandler;

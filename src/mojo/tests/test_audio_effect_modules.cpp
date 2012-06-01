@@ -9,8 +9,6 @@
 
 #include "mojo/app/app.hpp"
 
-#include "mojo/core/typedefs.hpp"
-
 #include "mojo/interfaces/audio_effect.hpp"
 #include "mojo/interfaces/audio_effect_info.hpp"
 #include "mojo/interfaces/audio_effect_parameter_info.hpp"
