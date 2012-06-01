@@ -4,8 +4,9 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
 
+#include "mojo/core/type_names.hpp"
+
 #include "mojo/app/app.hpp"
-#include "mojo/app/type_names.hpp"
 
 #include "mojo/api/audio_event.hpp"
 #include "mojo/api/audio_sequence.hpp"

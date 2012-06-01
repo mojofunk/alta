@@ -2,6 +2,8 @@
 #include <mojo/typesystem/type_system.hpp>
 #include <mojo/typesystem/template_type_factory.hpp>
 
+#include "mojo/core/type_names.hpp"
+
 #include "mojo/api/object_collection.hpp"
 #include "mojo/api/audio_track.hpp"
 #include "mojo/api/midi_track.hpp"
@@ -9,7 +11,6 @@
 #include "mojo/api/audio_event.hpp"
 
 #include "app.hpp"
-#include "type_names.hpp"
 
 namespace mojo {
 
