@@ -1,6 +1,6 @@
 
-#ifndef MOJO_APPLICATION_WORKER
-#define MOJO_APPLICATION_WORKER
+#ifndef MOJO_FUNCTOR_DISPATCHER
+#define MOJO_FUNCTOR_DISPATCHER
 
 #include <queue>
 
@@ -11,16 +11,16 @@
 namespace mojo {
 
 /**
- * The ApplicationWorker class accepts worker functions to
+ * The FunctorDispatcher class accepts worker functions to
  * be called in another thread.
  *
  */
-class ApplicationWorker : public Worker
+class FunctorDispatcher : public Worker
 {
 public:
 	typedef boost::function<void()> function_t;
 
-	ApplicationWorker ();
+	FunctorDispatcher ();
 
 	void call_sync (const function_t& func);
 

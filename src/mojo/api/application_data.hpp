@@ -3,7 +3,7 @@
 
 #include "mojo/project/typedefs.hpp"
 
-#include "application_worker.hpp"
+#include "functor_dispatcher.hpp"
 
 #include <glibmm/thread.h>
 
@@ -19,7 +19,7 @@ struct ApplicationData
 
 	Project* active_project;
 
-	ApplicationWorker worker;
+	FunctorDispatcher worker;
 
 	Glib::Thread* worker_thread;
 

@@ -1,17 +1,17 @@
 
 #include "mojo/core/debug.hpp"
 
-#include "application_worker.hpp"
+#include "functor_dispatcher.hpp"
 
 namespace mojo {
 
-ApplicationWorker::ApplicationWorker ()
+FunctorDispatcher::FunctorDispatcher ()
 {
 
 }
 
 void
-ApplicationWorker::call_sync (const function_t& func)
+FunctorDispatcher::call_sync (const function_t& func)
 {
 	LOG;
 	queue (func);
@@ -19,7 +19,7 @@ ApplicationWorker::call_sync (const function_t& func)
 }
 
 void
-ApplicationWorker::call_async (const function_t& func)
+FunctorDispatcher::call_async (const function_t& func)
 {
 	LOG;
 	queue (func);
@@ -27,7 +27,7 @@ ApplicationWorker::call_async (const function_t& func)
 }
 
 void
-ApplicationWorker::queue (const function_t& func)
+FunctorDispatcher::queue (const function_t& func)
 {
 	{
 		Glib::Mutex::Lock guard(m_queue_lock);
@@ -36,14 +36,14 @@ ApplicationWorker::queue (const function_t& func)
 }
 
 void
-ApplicationWorker::do_work ()
+FunctorDispatcher::do_work ()
 {
 	LOG;
 	process_queue();
 }
 
 void
-ApplicationWorker::process_queue ()
+FunctorDispatcher::process_queue ()
 {
 	Glib::Mutex::Lock guard(m_queue_lock);
 

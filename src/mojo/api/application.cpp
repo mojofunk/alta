@@ -40,7 +40,7 @@ Application::Application ()
 	const sigc::slot<void> main_func = sigc::mem_fun
 		(
 			data->worker,
-			&ApplicationWorker::run
+			&FunctorDispatcher::run
 		);
 
 	data->worker_thread = Glib::Thread::create(main_func, true);
