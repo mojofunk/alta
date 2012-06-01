@@ -30,7 +30,7 @@ get_modules_of_type (const ModuleSPSet& modules)
 	}
 	return mods;
 }
-	
+
 } // namespace mojo
 
 #endif

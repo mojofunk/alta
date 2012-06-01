@@ -1,3 +1,4 @@
+#include "mojo/core/module_utils.hpp"
 
 #include "mojo/typesystem/type_system.hpp"
 
@@ -10,7 +11,6 @@
 #include "mojo/fs/filesystem_paths.hpp"
 
 #include "app.hpp"
-#include "module_utils.hpp"
 
 namespace mojo {
 

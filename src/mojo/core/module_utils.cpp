@@ -34,11 +34,11 @@ ModuleSPSet
 discover_modules (const SearchPath& sp)
 {
 	paths_t module_paths;
-	
+
 	find_matching_files (sp.get_paths (), is_library, module_paths);
 
 	ModuleSPSet modules;
-	
+
 	std::transform (module_paths.begin(),
 			module_paths.end(),
 			std::insert_iterator<ModuleSPSet>(modules, modules.begin()),

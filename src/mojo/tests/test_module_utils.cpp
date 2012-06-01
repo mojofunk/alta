@@ -6,7 +6,7 @@
 
 #include <glib.h> //remove this
 
-#include "mojo/app/module_utils.hpp"
+#include "mojo/core/module_utils.hpp"
 
 #include "mojo/fs/filesystem_paths.hpp"
 
