@@ -2,12 +2,12 @@
 #include "mojo/core/debug.hpp"
 #include "mojo/core/null_deleter.hpp"
 
-#include "mojo/project/project.hpp"
-#include "mojo/project/audio_track.hpp"
 
 #include "application.hpp"
 #include "application_event_handler.hpp"
 #include "application_data.hpp"
+#include "audio_track.hpp"
+#include "project.hpp"
 #include "utils.hpp"
 
 namespace mojo {

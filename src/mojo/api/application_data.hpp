@@ -3,7 +3,7 @@
 
 #include "mojo/core/functor_dispatcher.hpp"
 
-#include "mojo/project/typedefs.hpp"
+#include "typedefs.hpp"
 
 #include <glibmm/thread.h>
 

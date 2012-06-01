@@ -7,10 +7,10 @@
 #include "mojo/app/app.hpp"
 #include "mojo/app/type_names.hpp"
 
-#include "mojo/project/audio_event.hpp"
-#include "mojo/project/audio_sequence.hpp"
-#include "mojo/project/audio_track.hpp"
-#include "mojo/project/midi_track.hpp"
+#include "mojo/api/audio_event.hpp"
+#include "mojo/api/audio_sequence.hpp"
+#include "mojo/api/audio_track.hpp"
+#include "mojo/api/midi_track.hpp"
 
 #include "mojo/typesystem/type_system.hpp"
 

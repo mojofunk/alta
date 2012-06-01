@@ -2,11 +2,11 @@
 #include <mojo/typesystem/type_system.hpp>
 #include <mojo/typesystem/template_type_factory.hpp>
 
-#include <mojo/project/object_collection.hpp>
-#include <mojo/project/audio_track.hpp>
-#include <mojo/project/midi_track.hpp>
-#include <mojo/project/audio_sequence.hpp>
-#include <mojo/project/audio_event.hpp>
+#include "mojo/api/object_collection.hpp"
+#include "mojo/api/audio_track.hpp"
+#include "mojo/api/midi_track.hpp"
+#include "mojo/api/audio_sequence.hpp"
+#include "mojo/api/audio_event.hpp"
 
 #include "app.hpp"
 #include "type_names.hpp"

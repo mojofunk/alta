@@ -1,9 +1,17 @@
 #ifndef MOJO_API_FORWARD
 #define MOJO_API_FORWARD
 
-#include "mojo/project/forward.hpp"
-
 namespace mojo {
+
+class AudioClip;
+class AudioEvent;
+class AudioRegion;
+class AudioSequence;
+class AudioTrack;
+class MidiTrack;
+class ObjectCollection;
+class Project;
+class Track;
 
 class ApplicationEventHandler;
 class Property;

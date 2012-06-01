@@ -1,13 +1,12 @@
 
 #include <boost/bind.hpp>
 
-#include "mojo/project/audio_track.hpp"
-
 #include "mojo/core/debug.hpp"
 
 #include "application.hpp"
 #include "application_event_handler.hpp"
 #include "application_data.hpp"
+#include "audio_track.hpp"
 
 namespace {
 
