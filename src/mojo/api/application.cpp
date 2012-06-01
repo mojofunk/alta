@@ -41,6 +41,8 @@ Application::init (int argc, char *argv[])
 {
 	if(s_application) throw;
 
+	Glib::thread_init ();
+
 	// try/catch?
 	s_application = new Application();
 }

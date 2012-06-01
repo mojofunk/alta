@@ -11,7 +11,6 @@
 
 #include "mojo/interfaces/module.hpp"
 
-#include <glibmm/thread.h>
 #include <glibmm/main.h>
 
 using namespace boost::unit_test;
@@ -108,8 +107,6 @@ private:
 
 BOOST_AUTO_TEST_CASE( test_application )
 {
-	Glib::thread_init ();
-
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
