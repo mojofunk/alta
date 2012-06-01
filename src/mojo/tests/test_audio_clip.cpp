@@ -7,10 +7,10 @@
 // for command line args
 #include <boost/test/framework.hpp>
 
-#include "mojo/app/app.hpp"
-
 #include "mojo/fs/file_utils.hpp"
 #include "mojo/fs/project_directory.hpp"
+
+#include "mojo/api/application.hpp"
 
 #include "test_common.hpp"
 
@@ -22,7 +22,7 @@ BOOST_AUTO_TEST_CASE( audio_clip )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	AppSP app = App::init (argc, argv);
+	BOOST_CHECK_NO_THROW (Application::init (argc, argv));
 
 	// given a file path create an AudioFile
 
@@ -48,7 +48,7 @@ BOOST_AUTO_TEST_CASE( audio_clip )
 
 	BOOST_CHECK(is_regular_file (audiofile_path));
 
-	AudioFileSP audiofile = App::open_audiofile (audiofile_path);
+	AudioFileSP audiofile = Application::open_audiofile (audiofile_path);
 
 	BOOST_REQUIRE(audiofile);
 	
@@ -57,4 +57,6 @@ BOOST_AUTO_TEST_CASE( audio_clip )
 
 	// The AudioClip has the same properties as the
 	// AudioFile, file format, channel format, samplerate, length
+
+	Application::cleanup ();
 }

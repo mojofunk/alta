@@ -4,6 +4,12 @@
 
 #include <string>
 
+#include "mojo/typesystem/typedefs.hpp"
+
+#include "mojo/interfaces/typedefs.hpp"
+
+#include "mojo/fs/filesystem.hpp"
+
 #include "forward.hpp"
 #include "types.hpp"
 
@@ -224,9 +230,27 @@ public: // transport API
 	void transport_set_record (bool record);
 	bool transport_get_record ();
 
+public: // modules
+
+	static AudioFileSP open_audiofile (const fs::path& p);
+
+	static ModuleSPSet get_modules ();
+
+	static AudioFileModuleSPSet get_audiofile_modules ();
+
+	static AudioDriverModuleSPSet get_audio_driver_modules ();
+
+	static AudioEffectModuleSPSet get_audio_effect_modules ();
+
+	static ArchiveModuleSPSet get_archive_modules ();
+
+	static ArchiveSP create_archive ();
+
 private:
 
 	internal::ApplicationData *data;
+
+	void register_types ();
 
 	void add_event_handler_internal (ApplicationEventHandler*);
 	void remove_event_handler_internal (ApplicationEventHandler*);

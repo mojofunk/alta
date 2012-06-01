@@ -10,13 +10,13 @@
 
 #include <boost/format.hpp>
 
-#include "mojo/app/app.hpp"
-
 #include "mojo/interfaces/audio_file.hpp"
 #include "mojo/interfaces/audio_file_format.hpp"
 #include "mojo/interfaces/audio_file_module.hpp"
 
 #include "mojo/fs/project_directory.hpp"
+
+#include "mojo/api/application.hpp"
 
 #include "test_common.hpp"
 
@@ -120,12 +120,13 @@ BOOST_AUTO_TEST_CASE( audiofile_module_test )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	AppSP app = App::init (argc, argv);
-	BOOST_REQUIRE(app);
+	BOOST_CHECK_NO_THROW (Application::init (argc, argv));
 
-	AudioFileModuleSPSet modules = App::get_audiofile_modules();
+	AudioFileModuleSPSet modules = Application::get_audiofile_modules();
 
 	BOOST_CHECK(!modules.empty());
 
 	for_each (modules.begin(), modules.end(), test_audiofile_module);
+
+	Application::cleanup ();
 }

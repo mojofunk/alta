@@ -7,7 +7,7 @@
 // for command line args
 #include <boost/test/framework.hpp>
 
-#include "mojo/app/app.hpp"
+#include "mojo/api/application.hpp"
 
 #include "mojo/interfaces/audio_effect.hpp"
 #include "mojo/interfaces/audio_effect_info.hpp"
@@ -95,12 +95,13 @@ BOOST_AUTO_TEST_CASE( test_audio_effect_modules )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	AppSP app = App::init (argc, argv);
-	BOOST_REQUIRE(app);
+	BOOST_CHECK_NO_THROW (Application::init (argc, argv));
 
-	AudioEffectModuleSPSet modules = App::get_audio_effect_modules ();
+	AudioEffectModuleSPSet modules = Application::get_audio_effect_modules ();
 
 	BOOST_CHECK(!modules.empty());
 
 	for_each (modules.begin(), modules.end(), test_audio_effect_module);
+
+	Application::cleanup ();
 }

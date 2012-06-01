@@ -7,7 +7,9 @@
 // for command line args
 #include <boost/test/framework.hpp>
 
-#include <mojo/mojo.hpp>
+#include "mojo/mojo.hpp"
+
+#include "mojo/interfaces/module.hpp"
 
 #include <glibmm/thread.h>
 #include <glibmm/main.h>
@@ -108,9 +110,14 @@ BOOST_AUTO_TEST_CASE( test_application )
 {
 	Glib::thread_init ();
 
-	Application::init (0, NULL);
+	int argc = framework::master_test_suite().argc;
+	char** argv = framework::master_test_suite().argv;
+
+	BOOST_CHECK_NO_THROW(Application::init (argc, argv));
 
 	ApplicationEventHandler *handler = new TestApplicationEventHandler();
+
+	BOOST_REQUIRE(handler);
 
 	Application::add_event_handler (handler);
 	//s->connect_event_handler (handler, ApplicationEvent::ProjectAdded);
@@ -140,4 +147,30 @@ BOOST_AUTO_TEST_CASE( test_application )
 	Application::remove_event_handler (handler);
 
 	delete handler;
+
+	Application::cleanup ();
+}
+
+void
+test_module (const ModuleSP& mod)
+{
+	BOOST_REQUIRE(mod);
+
+	BOOST_TEST_MESSAGE(mod->get_author());
+	BOOST_TEST_MESSAGE(mod->get_description());
+	BOOST_TEST_MESSAGE(mod->get_version());
+}
+
+BOOST_AUTO_TEST_CASE( test_get_modules )
+{
+	int argc = framework::master_test_suite().argc;
+	char** argv = framework::master_test_suite().argv;
+
+	BOOST_CHECK_NO_THROW(Application::init (argc, argv));
+
+	ModuleSPSet modules = Application::get_modules();
+
+	for_each (modules.begin(), modules.end(), test_module);
+
+	Application::cleanup ();
 }

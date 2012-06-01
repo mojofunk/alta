@@ -10,7 +10,6 @@ test_type_system
 test_graph
 test_module_utils
 test_project
-test_app
 test_audio_clip
 test_filesystem_paths
 test_project_directory
