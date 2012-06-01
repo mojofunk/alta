@@ -1,9 +1,9 @@
 #ifndef MOJO_APPLICATION_DATA
 #define MOJO_APPLICATION_DATA
 
-#include "mojo/project/typedefs.hpp"
+#include "mojo/core/functor_dispatcher.hpp"
 
-#include "functor_dispatcher.hpp"
+#include "mojo/project/typedefs.hpp"
 
 #include <glibmm/thread.h>
 
