@@ -1,18 +1,36 @@
 GENERAL
 
-Add license headers to files where necessary
+Add license headers to files where necessary, using scripts to add copyright
+headers and update year etc
+
+BUILDSYSTEM
+
+use waf gnu_dirs
+
+make each sub wscript standalone
+
+LIBGLEAM
+
+make dispatcher and interface and have ManualDispatcher and AutomaticDispatcher
 
 LIBMOJO
 
 transport should be in Engine not Application
 
 Prevent headers being included directly?
+must only include mojo.hpp and enforce it?
 
-Move all interfaces to interfaces directory
+Use Glib::Module and remove mojo/utils/library?
 
-get rid of mojo-internal.hpp? why is it necessary
+Move Object class to interfaces?
 
-must only include mojo.hpp
+Add ardour/jack_utils code to JackAudioDriverModule to get devices
+
+Merge Worker/ApplicationWorker with gleam::dispatcher?
+
+Rename ApplicationWorker FunctorDispatcher and inherit from gleam::ManualDispatcher
+
+Worker should have its own thread like gleam::dispatcher
 
 include facility for startup messages during initialization?
 
@@ -76,7 +94,24 @@ which modules can link to? possibly in libgleam
 
 TESTS
 
+Tests should try to provide full coverage of API
+
+All tests should also test that undo/redo work properly. one way to do
+that would be to make a copy of an object then change it, check for inequality
+then call undo and check for equality. also copy the changed state(before undo)
+, call redo and check for equality
+
 Create a complex new project using all data types, save, close and restore.
+
+char encoding tests etc
+
+Event
+
+- split events in a Sequence
+- nudge forward events
+- nudge backward events
+
+Sequence
 
 SMPTE
 
@@ -180,12 +215,19 @@ DOCS
 
 Dev guide section on including headers using " instead of <
 
+Dev guide section on why _t shouldn't be used for typedefs but
+why we do anyway
+
 Convert docs to publician
 
-Update section on header include guards
+Update section on header include guards include style where there
+is no class defined in the file. eg mojo/core/typedefs.hpp ->
+MOJO_CORE_TYPEDEFS
 
 Add section on typedefs for Glib::RefPtr and boost::shared_ptr
 
 Section on mojo/macros.hpp forward class decl and typedefs.
+
+Section on file name standard for test files
 
 Add README
