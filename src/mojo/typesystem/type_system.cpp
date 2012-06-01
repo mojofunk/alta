@@ -60,14 +60,18 @@ namespace mojo {
 TypeSystem* TypeSystem::s_type_system = 0;
 
 /* not thread safe */
-TypeSystemSP
+void
 TypeSystem::init ()
 {
 	assert(!s_type_system);
-
 	s_type_system = new TypeSystem;
+}
 
-	return TypeSystemSP(s_type_system, TypeSystem::deleter());
+void
+TypeSystem::cleanup ()
+{
+	assert(s_type_system);
+	delete s_type_system;
 }
 
 TypeSystem::TypeSystem ()

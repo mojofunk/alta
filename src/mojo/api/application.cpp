@@ -58,7 +58,9 @@ Application::Application ()
 	LOG;
 	data = new internal::ApplicationData;
 
-	data->m_type_system = TypeSystem::init ();
+	TypeSystem::init ();
+
+	register_types ();
 
 	data->m_modules = discover_modules (module_search_path ());
 
@@ -76,6 +78,9 @@ Application::~Application ()
 	LOG;
 	data->worker.quit();
 	data->worker_thread->join ();
+
+	TypeSystem::cleanup ();
+
 	delete s_application->data;
 }
 
@@ -261,7 +266,7 @@ Application::create_archive ()
 }
 
 void
-Application::register_types()
+Application::register_types ()
 {
 	TypeSystem::register_type (TypeFactorySP(new TemplateTypeFactory<int32_t>(int32_type_name)));
 	TypeSystem::register_type (TypeFactorySP(new TemplateTypeFactory<int64_t>(int64_type_name)));

@@ -32,7 +32,9 @@ class TypeSystem
 {
 public:
 
-	static TypeSystemSP init ();
+	static void init ();
+
+	static void cleanup ();
 
 	static void register_type (TypeFactorySP type);
 	
@@ -58,16 +60,6 @@ private:
 
 	static TypeSystem* s_type_system;
 
-private:
-
-	struct deleter;
-	friend struct deleter;
-
-	struct deleter
-	{
-		void operator()(TypeSystem* type_system)
-		{ delete type_system; s_type_system = 0; }
-	};
 };
 
 } // namespace mojo

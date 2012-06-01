@@ -34,8 +34,6 @@ struct ApplicationData
 	count_t position;
 	bool record;
 
-	TypeSystemSP          m_type_system;
-
 	ModuleSPSet               m_modules;
 
 };
