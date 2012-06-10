@@ -24,6 +24,18 @@ namespace mojo {
  *
  * The Project class is not tied to any on disk format
  *
+ * Project contains all the data for a project, that includes
+ * project history
+ *
+ * The State of each Object in the project must be monitored by
+ * the StateTracker so the history can be preserved and so Project
+ * can be marked as "dirty" and needing to be saved.
+ *
+ * If all Objects in a project can only be in one project then
+ * perhaps instead of using signals to tell the Project(the only listener)
+ * that the state has changed or that the class is being destroyed
+ * each Object has PropertyListener interface or something
+ *
  *
  */
 class Project : Object

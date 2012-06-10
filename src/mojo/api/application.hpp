@@ -16,16 +16,17 @@
 namespace mojo {
 
 /**
- * The application class is the public API of libmojo. All interaction with a
- * project must be done through the application. This is to ensure that the state
- * of the project is modified by a single thread. None of the project classes
- * are exposed by application.
+ * If access to the worker thread is through the application and all Object classes
+ * use the worker thread then changes to the Application class will cause a total
+ * recompile. Better to have a singleton WorkerThread that accessed through a private
+ * header.
+ *
+ * To use boost signals in a thread safe manner all connection/disconnection and emission
+ * must be in a single thread? This means that all signals must be connected/connected and
+ * emitted through the worker thread.
  *
  * The application state is stored in a separate file to the project and contains
  * nothing project specific.
- *
- * I think it is important to keep locking and syncronization as simple and
- * as centralized as possible.
  *
  * A application manages a task thread that asyncronously runs all tasks that
  * have been queued. some of these tasks are:
