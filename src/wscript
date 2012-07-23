@@ -5,7 +5,6 @@
 subdirs='''
 gleam
 mojo
-ui
 modules
 '''
 
