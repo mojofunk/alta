@@ -15,6 +15,30 @@ make dispatcher and interface and have ManualDispatcher and AutomaticDispatcher
 
 LIBMOJO
 
+New Signals System
+
+Object
+ - SignalConnection connect_signal (signal_id, Handler, Callback)
+ - void disconnect_signal (signal_id, Callback)
+
+Callback class
+ - signal id
+ - Handler ref
+ - message_functor
+ - user_data
+ 
+Handler class
+ - call_sync (Callback, Message)
+ - call_async (Callback, Message)
+
+Closure class? Callback + Message
+
+Signal class list of Callbacks
+
+SignalConnection class
+ - scoped signal connection
+
+
 transport should be in Engine not Application
 
 Prevent headers being included directly?
@@ -210,6 +234,18 @@ Track Canvas
 	- change height from the track view list
 	- add border/frame to TrackViewListItem
 
+Add ToolButtons class
+
+Rename TransportToolbar TransportButtons
+
+Add Stop, Locate to start, Locate to End buttons to TransportButtons
+
+Add Inspector class
+Add StatusLine class
+Add InfoLine class
+Add ProjectOverview class
+
+Add WindowLayoutDialog and button to ProjectWindowToolbar
 
 DOCS
 
