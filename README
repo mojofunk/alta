@@ -1,3 +1,11 @@
 Mojo is a project to implement a cross platform Digital Audio Workstation.
 
+Alternate names for this project include MyMojo and Alta
+
+MyMojo because so far this project, when I get around to work on it
+is only really done out of personal interest.
+
+Alta because some of this code has been a response to code I've seen in
+Ardour, hence Alt-A(rdour).
+
 The platforms initially being targetted are Linux and Windows
