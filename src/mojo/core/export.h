@@ -12,10 +12,19 @@
 	#define MOJO_LOCAL __attribute__ ((visibility("hidden")))
 #endif
 
-#ifdef BUILDING_DLL
+#ifdef MOJO_BUILD_STATIC
+
+	#define MOJO_API
+	#define MOJO_LOCAL
+
+#else // building shared
+
+#ifdef MOJO_BUILDING_DLL
 	#define MOJO_API MOJO_EXPORT
 #else
 	#define MOJO_API MOJO_IMPORT
+#endif
+
 #endif
 
 #define MOJO_CAPI extern "C" MOJO_API
