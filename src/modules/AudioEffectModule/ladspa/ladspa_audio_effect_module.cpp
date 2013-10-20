@@ -4,7 +4,7 @@
 #include "ladspa_audio_effect_info.hpp"
 #include "ladspa_typedefs.hpp"
 
-#include "mojo/core/export.h"
+#include "mojo/core/visibility.hpp"
 
 #include "mojo/fs/file_utils.hpp"
 

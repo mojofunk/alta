@@ -1,7 +1,7 @@
 
 #include "jack_audio_driver_module.hpp"
 
-#include "mojo/core/export.h"
+#include "mojo/core/visibility.hpp"
 
 namespace mojo {
 
