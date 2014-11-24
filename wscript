@@ -7,7 +7,7 @@ import os
 import Options
 
 VERSION = '0.1.0'
-APPNAME = 'gmojo'
+APPNAME = 'Alta'
 
 # these variables are mandatory ('/' are converted automatically)
 top = '.'
