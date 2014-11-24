@@ -1,13 +1,12 @@
-Mojo is a project to implement a cross platform Digital Audio Workstation.
-
-Alternate names for this project include MyMojo and Alta
-
-MyMojo because so far this project, when I get around to work on it
-is only really done out of personal interest.
+Alta is a project to implement a cross platform Digital Audio Workstation.
 
 Alta because some of this code has been a response to code I've seen in
-Ardour, hence Alt-A(rdour).
+Ardour, hence Alt-A(rdour). This project is a way for me to flesh out
+some ideas before hopefully integrating them into Ardour or presenting
+alternative designs to Ardour developers.
 
-Latin origin, and the meaning of Alta is "high, elevated".
+Latin origin, and the meaning of Alta is "high, elevated", if that comes
+across as arrogant and condescending that is not my intention, I just like
+the name.
 
-The platforms initially being targetted are Linux and Windows
+The platforms initially being targetted are Linux, Windows and OS X.
