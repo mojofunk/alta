@@ -63,22 +63,20 @@ TypeSystem* TypeSystem::s_type_system = 0;
 void
 TypeSystem::init ()
 {
-	assert(!s_type_system);
+	if (s_type_system) return;
 	s_type_system = new TypeSystem;
 }
 
 void
 TypeSystem::cleanup ()
 {
-	assert(s_type_system);
+	if (!s_type_system) return;
 	delete s_type_system;
+	s_type_system = 0;
 }
 
 TypeSystem::TypeSystem ()
 {
-	assert(!s_type_names);
-	assert(!s_types);
-
 	s_type_names = new TypeNameMap;
 	s_types = new Types;
 }

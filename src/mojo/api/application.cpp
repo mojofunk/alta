@@ -51,6 +51,7 @@ void
 Application::cleanup ()
 {
 	delete s_application;
+	s_application = 0;
 }
 
 Application::Application ()
