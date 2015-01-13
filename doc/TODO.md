@@ -1,21 +1,21 @@
-GENERAL
+# GENERAL
 
 Add license headers to files where necessary, using scripts to add copyright
 headers and update year etc
 
-BUILDSYSTEM
+# BUILDSYSTEM
 
 automatic formatting of python code
 
 make each sub wscript standalone
 
-LIBGLEAM
+# LIBGLEAM
 
 make dispatcher and interface and have ManualDispatcher and AutomaticDispatcher
 
-LIBMOJO
+# LIBMOJO
 
-New Signals System
+## New Signals System
 
 Object
  - SignalConnection connect_signal (signal_id, Handler, Callback)
@@ -38,6 +38,7 @@ Signal class list of Callbacks
 SignalConnection class
  - scoped signal connection
 
+## MISC
 
 transport should be in Engine not Application
 
@@ -63,6 +64,8 @@ typedef in windows.h
 
 SearchPath should be exposed in mojo public API so it can be used outside of
 libmojo. Not worth putting it in a separate lib.
+
+## MODULES
 
 Make a generic module infrastructure for libmojo, modules may include
 
@@ -116,7 +119,7 @@ modules should only have to link to a small core library if at all
 Should all platform dependent code be in a base library
 which modules can link to? possibly in libgleam
 
-TESTS
+## TESTS
 
 Tests should try to provide full coverage of API
 
@@ -147,7 +150,7 @@ The later may be slightly slower due to branching.
 
 conversion to/from ltc/vitc/mtc.
 
-RT GRAPH
+# RT GRAPH
 
 The graph must be directed and acyclic
 
@@ -206,6 +209,8 @@ ApplicationWorker to finish then there is a deadlock?
 
 If when the last project is removed can App::quit be called in an idle callback.
 
+## DEBUG LIBRARY
+
 Need simple debug library for logging messages.
 	- only compiled in debug mode?
 	- M_DEBUG_ASSERT
@@ -226,7 +231,7 @@ timer library for measuring execution time
 	- per thread timers?
 	- BEGIN and END or RAII?
 
-UI
+# UI
 
 ui::Application inherits from Gtk::Application or stick to composition?
 
@@ -247,7 +252,7 @@ Add ProjectOverview class
 
 Add WindowLayoutDialog and button to ProjectWindowToolbar
 
-DOCS
+# DOCS
 
 Dev guide section on including headers using " instead of <
 
