@@ -25,6 +25,13 @@ def _check_required_deps(conf, deps):
 	        conf.check_cfg(package=pkg, atleast_version=version, mandatory=1)
 		conf.check_cfg(package=pkg, args='--cflags --libs')
 
+def set_compiler_flags (conf):
+	cxx_flags = []
+        conf.check_cxx(cxxflags=["-std=c++11"])
+        cxx_flags.append('-std=c++11')
+
+	conf.env.append_value('CXXFLAGS', cxx_flags)
+
 def configure(conf):
 	conf.load('compiler_cxx')
 	conf.load('compiler_c')
@@ -36,8 +43,7 @@ def configure(conf):
         #conf.define('TARGET_PLATFORM', conf.env['build_target'])
         conf.env['APPNAME'] = APPNAME
 
-	# waf 1.6 has a problem with this
-	#conf.check_cc(function_name='getmntent', header_name='mntent.h')
+	set_compiler_flags (conf)
 
 	deps = \
 	{
