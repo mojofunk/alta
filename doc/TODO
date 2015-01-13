@@ -5,7 +5,7 @@ headers and update year etc
 
 BUILDSYSTEM
 
-use waf gnu_dirs
+automatic formatting of python code
 
 make each sub wscript standalone
 
