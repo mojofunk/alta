@@ -3,6 +3,7 @@
 # Tim Mayberry, 2008
 
 import os
+from waflib import Logs
 
 VERSION = '0.1.0'
 APPNAME = 'Alta'
@@ -31,6 +32,9 @@ def set_compiler_flags (conf):
         cxx_flags.append('-std=c++11')
 
 	conf.env.append_value('CXXFLAGS', cxx_flags)
+
+def display_config (conf):
+	Logs.info('C++ compiler flags %s' % conf.env['CXXFLAGS'])
 
 def configure(conf):
 	conf.load('compiler_cxx')
@@ -102,6 +106,8 @@ def configure(conf):
 	conf.recurse('src')
 
 	conf.write_config_header('gmojo_config.h')
+
+	display_config (conf)
 
 def build(ctx):
 	# process subfolders from here
