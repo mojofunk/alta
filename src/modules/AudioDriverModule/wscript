@@ -8,8 +8,8 @@ jack
 
 def configure(conf):
 	for dir in subdirs.split():
-		conf.sub_config(dir)
+		conf.recurse(dir)
 
 def build(bld):
 	# process subfolders from here
-	bld.add_subdirs(subdirs)
+	bld.recurse(subdirs)

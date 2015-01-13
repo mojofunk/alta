@@ -13,6 +13,7 @@ def build(ctx):
 		features = "cxx cxxshlib",
 		includes = '.',
 		source = ctx.path.ant_glob('*.cpp'),
+		uselib ='GLIB-2.0',
 		use ='MOJO',
 		target = 'xml_archive',
 		name = 'XML_ARCHIVE')

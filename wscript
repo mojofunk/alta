@@ -4,8 +4,6 @@
 
 import os
 
-import Options
-
 VERSION = '0.1.0'
 APPNAME = 'Alta'
 
@@ -15,8 +13,8 @@ out = 'build'
 
 def options(opt):
 	# options provided by the modules
-	opt.tool_options('compiler_cxx')
-	opt.tool_options('compiler_cc')
+	opt.load('compiler_cxx')
+	opt.load('compiler_c')
 
 	for i in "datadir libdir bindir configdir".split():
 		opt.add_option('--'+i, type='string', default='', dest=i)
@@ -32,10 +30,10 @@ def _check_required_deps(conf, deps):
 
 def _define_paths(conf):
 
-	prefix = Options.options.prefix
-	datadir = Options.options.datadir
-	libdir = Options.options.libdir
-	configdir = Options.options.configdir
+	prefix = conf.options.prefix
+	datadir = conf.options.datadir
+	libdir = conf.options.libdir
+	configdir = conf.options.configdir
 
 	if not datadir: datadir = os.path.join(prefix,'share')
 	if not libdir:  libdir  = os.path.join(prefix,'lib')
@@ -53,14 +51,13 @@ def _define_paths(conf):
 	conf.define('CONFIG_DIR', configdir)
 
 def configure(conf):
+	conf.load('compiler_cxx')
+	conf.load('compiler_c')
 
-	conf.check_tool('compiler_cxx')
-	conf.check_tool('compiler_cc')
+        if conf.options.target_platform:
+                conf.env['build_target'] = conf.options.target_platform
 
-        if Options.options.target_platform:
-                Options.platform = Options.options.target_platform
-
-        #conf.define('TARGET_PLATFORM', Options.platform)
+        #conf.define('TARGET_PLATFORM', conf.env['build_target'])
         conf.env['APPNAME'] = APPNAME
 
 	# waf 1.6 has a problem with this
@@ -84,21 +81,21 @@ def configure(conf):
 
 	_check_required_deps(conf, deps)
 
-        if Options.options.with_tests:
+        if conf.options.with_tests:
                 conf.env['BUILD_TESTS'] = True
                 print "Building with testsuite"
-		if Options.platform == 'mingw':
+		if conf.env['build_target'] == 'mingw':
 			if conf.env.CC_NAME == 'gcc':
 				libname = 'boost_unit_test_framework-gcc%s%s-mt-1_47' % (conf.env.CC_VERSION[0], conf.env.CC_VERSION[1])
 				conf.check(lib=libname, uselib_store='BOOST_UNIT_TEST_FRAMEWORK')
 		else:
 			conf.check(lib='boost_unit_test_framework')
 
-        #if Options.platform == 'mingw':
+        #if conf.env['build_target'] == 'mingw':
         #        conf.check(lib='pthreadGC2')
         #        conf.env.append_value('CPPPATH', os.path.join (os.getenv('MINGW_ROOT'), 'include', 'pthread'))
 
-        if Options.platform == 'mingw':
+        if conf.env['build_target'] == 'mingw':
 		# depend on F14 mingw lib names for now
 		boost_filesystem_libname = 'boost_filesystem-gcc%s%s-mt-1_47' % (conf.env.CC_VERSION[0], conf.env.CC_VERSION[1])
 		boost_system_libname = 'boost_system-gcc%s%s-mt-1_47' % (conf.env.CC_VERSION[0], conf.env.CC_VERSION[1])
