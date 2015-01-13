@@ -1,19 +1,19 @@
-# GENERAL
+# General
 
 Add license headers to files where necessary, using scripts to add copyright
 headers and update year etc
 
-# BUILDSYSTEM
+# Build System
 
 automatic formatting of python code
 
 make each sub wscript standalone
 
-# LIBGLEAM
+# Libgleam
 
 make dispatcher and interface and have ManualDispatcher and AutomaticDispatcher
 
-# LIBMOJO
+# libmojo
 
 ## New Signals System
 
@@ -38,7 +38,7 @@ Signal class list of Callbacks
 SignalConnection class
  - scoped signal connection
 
-## MISC
+## Misc
 
 transport should be in Engine not Application
 
@@ -65,7 +65,7 @@ typedef in windows.h
 SearchPath should be exposed in mojo public API so it can be used outside of
 libmojo. Not worth putting it in a separate lib.
 
-## MODULES
+## Modules
 
 Make a generic module infrastructure for libmojo, modules may include
 
@@ -119,7 +119,7 @@ modules should only have to link to a small core library if at all
 Should all platform dependent code be in a base library
 which modules can link to? possibly in libgleam
 
-## TESTS
+## Tests
 
 Tests should try to provide full coverage of API
 
@@ -140,7 +140,9 @@ Event
 
 Sequence
 
-SMPTE
+# SMPTE
+
+Use libltc
 
 smpte::time interface with implementations for each time type
 vs
@@ -150,7 +152,7 @@ The later may be slightly slower due to branching.
 
 conversion to/from ltc/vitc/mtc.
 
-# RT GRAPH
+# RT Graph
 
 The graph must be directed and acyclic
 
@@ -209,7 +211,7 @@ ApplicationWorker to finish then there is a deadlock?
 
 If when the last project is removed can App::quit be called in an idle callback.
 
-## DEBUG LIBRARY
+## Debug Macros
 
 Need simple debug library for logging messages.
 	- only compiled in debug mode?
@@ -231,7 +233,7 @@ timer library for measuring execution time
 	- per thread timers?
 	- BEGIN and END or RAII?
 
-# UI
+# User Interface
 
 ui::Application inherits from Gtk::Application or stick to composition?
 
@@ -252,7 +254,7 @@ Add ProjectOverview class
 
 Add WindowLayoutDialog and button to ProjectWindowToolbar
 
-# DOCS
+# Docs
 
 Dev guide section on including headers using " instead of <
 
