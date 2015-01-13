@@ -60,9 +60,9 @@ BOOST_AUTO_TEST_CASE( save_open_project_test )
 
 	BOOST_CHECK(tracks.size() == 9);
 
-	for (TrackSPSet::iterator i = tracks.begin(); i != tracks.end(); ++i)
+	for (auto& x : tracks)
 	{
-		AudioTrackSP audio_track = boost::dynamic_pointer_cast<AudioTrack>(*i);
+		AudioTrackSP audio_track = boost::dynamic_pointer_cast<AudioTrack>(x);
 
 		if (audio_track)
 		{

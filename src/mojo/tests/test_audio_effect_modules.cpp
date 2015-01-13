@@ -53,11 +53,10 @@ test_audio_effect (AudioEffectSP aeffect)
 
 	AudioEffect::ParameterList params = aeffect->get_parameter_list();
 
-	for (AudioEffect::ParameterList::const_iterator i = params.begin();
-			i != params.end(); ++i)
+	for (const auto& x : params)
 	{
 		AudioEffectParameterInfo info;
-		aeffect->get_parameter_info (*i, info);
+		aeffect->get_parameter_info (x, info);
 		test_parameter_info (info);
 	}
 }
@@ -82,10 +81,9 @@ test_audio_effect_module (AudioEffectModuleSP mod)
 
 	for_each (info.begin(), info.end(), test_info);
 
-	for (AudioEffectInfoSPSet::const_iterator i = info.begin ();
-		       	i != info.end(); ++i)
+	for (const auto& x : info)
 	{
-		AudioEffectSP ae = mod->open (*i, 44100); 
+		AudioEffectSP ae = mod->open (x, 44100);
 		test_audio_effect(ae);
 	}
 }

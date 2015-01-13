@@ -74,13 +74,12 @@ BOOST_AUTO_TEST_CASE( archive_module_test )
 
 	BOOST_CHECK (!modules.empty());
 
-	for (ArchiveModuleSPSet::iterator i = modules.begin ();
-			i != modules.end(); ++i)
+	for (auto&x : modules)
 	{
 		string file_extension = cformat::convert<string>(g_random_int());
-		string file_name = string((typeid (*i).name())) + "." + file_extension;
+		string file_name = string(typeid (x).name()) + "." + file_extension;
 
-		ArchiveSP archive = (*i)->create_archive ();
+		ArchiveSP archive = x->create_archive ();
 
 		test_archive (archive, file_name);
 	}
