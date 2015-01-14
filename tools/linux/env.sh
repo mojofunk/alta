@@ -18,17 +18,17 @@ export GMOJO_PATH=data
 export MOJO_TEST_PATH=$BASE/data
 
 MOJO_PATH=\
-$BUILD_DIR/src/modules/AudioFileModule/sndfile:\
-$BUILD_DIR/src/modules/AudioDriverModule/jack:\
-$BUILD_DIR/src/modules/AudioEffectModule/ladspa:\
-$BUILD_DIR/src/modules/ArchiveModule/dummy:\
-$BUILD_DIR/src/modules/ArchiveModule/xml
+$BUILD_DIR/src/mojules/AudioFileModule/sndfile:\
+$BUILD_DIR/src/mojules/AudioDriverModule/jack:\
+$BUILD_DIR/src/mojules/AudioEffectModule/ladspa:\
+$BUILD_DIR/src/mojules/ArchiveModule/dummy:\
+$BUILD_DIR/src/mojules/ArchiveModule/xml
 
 export MOJO_PATH
 
 GLEAM_LIBRARY_PATH=$BUILD_DIR/src/gleam
 MOJO_LIBRARY_PATH=$BUILD_DIR/src/mojo
-MOJO_MODULE_LIBRARY_PATH=$BUILD_DIR/src/modules
+MOJO_MODULE_LIBRARY_PATH=$BUILD_DIR/src/mojules
 
 export LD_LIBRARY_PATH=\
 $GLEAM_LIBRARY_PATH:\
