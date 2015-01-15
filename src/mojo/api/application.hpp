@@ -21,10 +21,6 @@ namespace mojo {
  * recompile. Better to have a singleton WorkerThread that accessed through a private
  * header.
  *
- * To use boost signals in a thread safe manner all connection/disconnection and emission
- * must be in a single thread? This means that all signals must be connected/connected and
- * emitted through the worker thread.
- *
  * The application state is stored in a separate file to the project and contains
  * nothing project specific.
  *
@@ -37,6 +33,9 @@ namespace mojo {
  * Saving the project should probably happen in a separate thread as it may
  * take some time. That should be ok though as the property data are all copied
  * from the project classes.
+ *
+ * Should be a separate thread/context for handling state changes and reading
+ * audio/midi data off disk. Group of worker threads?
  *
  * Order of task thread processing
  *
@@ -64,9 +63,9 @@ namespace mojo {
  * identifier argument. Does that mean they apply to the current active
  * project?
  *
- * I think it would simplify things greatly if all objects are managed
- * by the Application or at least creation and destruction of objects is controlled
- * through the Application.
+ * Perhaps it would simplify things greatly if all objects are managed
+ * by the Application or once a class is added to a project then the project
+ * then manages the child class.
  *
  * This means that clients can treat any objects that are created through the
  * application as managed but do not participate in that management.
@@ -74,11 +73,6 @@ namespace mojo {
  * All the internal class types contained in the Project must only be
  * accessed/referenced by the application. This makes it much easier to ensure
  * that only one thread modifies the objects.
- *
- * To ensure this the clients don't have direct access to the class definitions?
- *
- * The Application may need to use an internal ApplicationEventHandler to syncronize the states of the
- * Project and the Engine.
  *
  * The Engine does not reference the Project. The Application negotiates communication
  * between the Engine and the Project.
@@ -91,10 +85,6 @@ namespace mojo {
  * If the worker context is exposed in a private header(perhaps in core) then the clients should
  * be able to access the project class directly and the classes can then defer some/all modification
  * calls to the worker thread.
- *
- * The main difference between the Async communication in Ardour and this library is that
- * all signals are proxied through a single class rather than signal templates.
- *
  */
 class Application
 {
