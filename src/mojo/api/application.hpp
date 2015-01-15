@@ -46,9 +46,6 @@ namespace mojo {
  * Queue project to be saved if modified.
  * Dispatch Application events
  *
- * The Application thread also dispatches events to the application event handler. The
- * application event handler is how the clients recieve all asyncronous messages.
- *
  * A new project must be able to be created without needing to specify
  * a project/recording directory. This implies that when enabling record
  * that it should return an error status that allows the client to set a
@@ -101,16 +98,6 @@ private: // ctors
 	~Application ();
 
 public: // public API
-
-	/*
-	 * Sync
-	 */
-	static void add_event_handler (ApplicationEventHandler*);
-
-	/*
-	 * Sync
-	 */
-	static void remove_event_handler (ApplicationEventHandler*);
 
 	/**
 	 * Create a new project.
@@ -242,9 +229,6 @@ private:
 	internal::ApplicationData *data;
 
 	void register_types ();
-
-	void add_event_handler_internal (ApplicationEventHandler*);
-	void remove_event_handler_internal (ApplicationEventHandler*);
 
 	void new_project_internal ();
 	void open_project_internal (const std::string&);

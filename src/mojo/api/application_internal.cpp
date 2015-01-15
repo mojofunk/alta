@@ -4,27 +4,12 @@
 
 
 #include "application.hpp"
-#include "application_event_handler.hpp"
 #include "application_data.hpp"
 #include "audio_track.hpp"
 #include "project.hpp"
 #include "utils.hpp"
 
 namespace mojo {
-
-void
-Application::add_event_handler_internal (ApplicationEventHandler* bus)
-{
-	LOG;
-	data->event_handlers.insert (bus);
-}
-
-void
-Application::remove_event_handler_internal (ApplicationEventHandler* bus)
-{
-	LOG;
-	data->event_handlers.erase (bus);
-}
 
 void
 Application::new_project_internal ()
@@ -34,11 +19,7 @@ Application::new_project_internal ()
 
 	data->projects.insert (pi);
 
-	for (std::set<ApplicationEventHandler*>::iterator i = data->event_handlers.begin();
-			i != data->event_handlers.end(); ++i)
-	{
-		(*i)->on_project_added (pi.get());
-	}
+	// signal async
 }
 
 void
@@ -51,12 +32,7 @@ Application::open_project_internal (const std::string& project_file)
 
 	data->projects.insert (pi);
 
-	for (std::set<ApplicationEventHandler*>::iterator i = data->event_handlers.begin();
-			i != data->event_handlers.end(); ++i)
-	{
-		(*i)->on_project_added (pi.get());
-	}
-
+	// signal async
 }
 
 void
@@ -80,11 +56,7 @@ Application::close_project_internal (Project* p)
 		return;
 	}
 
-	for (std::set<ApplicationEventHandler*>::iterator i = data->event_handlers.begin();
-			i != data->event_handlers.end(); ++i)
-	{
-		(*i)->on_project_removed (sp.get());
-	}
+	// signal sync
 
 	data->projects.erase (i);
 }
@@ -101,12 +73,7 @@ Application::set_active_project_internal (Project* p)
 
 	data->active_project = p;
 
-	for (std::set<ApplicationEventHandler*>::iterator i = data->event_handlers.begin();
-			i != data->event_handlers.end(); ++i)
-	{
-		(*i)->on_active_project_changed (p);
-	}
-
+	// signal sync?
 }
 
 void
@@ -121,11 +88,7 @@ Application::add_track_internal (Project* p, const TrackOptions& options)
 
 	p->add_track (t);
 
-	for (std::set<ApplicationEventHandler*>::iterator i = data->event_handlers.begin();
-			i != data->event_handlers.end(); ++i)
-	{
-		(*i)->on_track_added (p, t.get());
-	}
+	// signal async
 }
 
 void

@@ -13,8 +13,6 @@ namespace internal {
 	
 struct ApplicationData
 {
-	std::set<ApplicationEventHandler*> event_handlers;
-
 	ProjectSPSet projects;
 
 	Project* active_project;

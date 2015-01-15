@@ -24,7 +24,6 @@
 #include "mojo/fs/filesystem_paths.hpp"
 
 #include "application.hpp"
-#include "application_event_handler.hpp"
 #include "application_data.hpp"
 #include "audio_track.hpp"
 
@@ -83,20 +82,6 @@ Application::~Application ()
 	TypeSystem::cleanup ();
 
 	delete s_application->data;
-}
-
-void
-Application::add_event_handler (ApplicationEventHandler* event_handler)
-{
-	LOG;
-	s_application->data->worker.call_sync (boost::bind (&Application::add_event_handler_internal, s_application, event_handler));
-}
-
-void
-Application::remove_event_handler (ApplicationEventHandler* event_handler)
-{
-	LOG;
-	s_application->data->worker.call_sync (boost::bind (&Application::remove_event_handler_internal, s_application, event_handler));
 }
 
 void
