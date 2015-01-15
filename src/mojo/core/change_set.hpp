@@ -10,6 +10,9 @@ namespace mojo {
 
 /**
  * A ChangeSet is a collection of related property changes
+ *
+ * Why can't this just be std::set<Change>? do we want ChangeSet
+ * to inherit from Object? I don't think so.
  */
 class ChangeSet
 {

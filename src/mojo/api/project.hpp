@@ -46,7 +46,7 @@ public: // Object interface
 
 	virtual void set_properties (const Properties& props);
 
-public: // convenience methodks
+public: // convenience methods
 
 	AudioTrackSP new_audio_track (const std::string& name = "");
 
@@ -57,6 +57,20 @@ public: // convenience methodks
 	void add_track (const TrackSP&);
 
 	void remove_track (const TrackSP&);
+
+public: // signals
+
+	/**
+	SignalConnectionUP connect_on_track_added (ContextSP,
+				track_added_function);
+
+	SignalConnectionUP connect_on_track_removed (ContextSP,
+				track_added_function);
+	*/
+
+private: // signal members
+
+	//Signal<void(TrackSP)>
 
 private: // member data
 
