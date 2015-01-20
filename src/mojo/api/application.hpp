@@ -3,6 +3,9 @@
 #define MOJO_APPLICATION
 
 #include <string>
+#include <memory>
+
+#include "mojo/core/signals.hpp"
 
 #include "mojo/typesystem/typedefs.hpp"
 
@@ -10,7 +13,7 @@
 
 #include "mojo/fs/filesystem.hpp"
 
-#include "forward.hpp"
+#include "typedefs.hpp"
 #include "types.hpp"
 
 namespace mojo {
@@ -90,6 +93,8 @@ public:
 	static void init (int argc, char *argv[]);
 
 	static void cleanup ();
+
+	static void iteration (bool block);
 
 private: // ctors
 
@@ -194,6 +199,17 @@ public: // public API
 	 */
 	//task_t import_audiofiles (const paths& files, const ImportOptions&)
 
+public: // signals
+
+	using ProjectAddedSyncSignal = boost::signals2::signal<void (Project*)>;
+	using ProjectRemovedSyncSignal = boost::signals2::signal<void (Project*)>;
+	using ProjectAddedFunc = ProjectAddedSyncSignal::slot_type;
+	using ProjectRemovedFunc = ProjectRemovedSyncSignal::slot_type;
+
+	static signals::connection connect_project_added (const ProjectAddedFunc& slot);
+
+	static signals::connection connect_project_removed (const ProjectAddedFunc& slot);
+
 public: // transport API
 
 	void transport_set_speed (float speed);
@@ -226,7 +242,8 @@ public: // modules
 
 private:
 
-	internal::ApplicationData *data;
+	// std::unique_ptr in future
+	std::shared_ptr<internal::ApplicationData> data;
 
 	void register_types ();
 

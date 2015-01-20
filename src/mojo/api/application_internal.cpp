@@ -19,7 +19,8 @@ Application::new_project_internal ()
 
 	data->projects.insert (pi);
 
-	// signal async
+	// sync signal
+	data->m_project_added(pi.get());
 }
 
 void
@@ -57,6 +58,7 @@ Application::close_project_internal (Project* p)
 	}
 
 	// signal sync
+	data->m_project_removed(p);
 
 	data->projects.erase (i);
 }

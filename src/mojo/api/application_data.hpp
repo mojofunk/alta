@@ -3,9 +3,9 @@
 
 #include "mojo/core/functor_dispatcher.hpp"
 
-#include "typedefs.hpp"
-
 #include <glibmm/thread.h>
+
+#include "typedefs.hpp"
 
 namespace mojo {
 
@@ -33,6 +33,9 @@ struct ApplicationData
 	bool record;
 
 	ModuleSPSet               m_modules;
+
+	signals::signal<void (Project*)> m_project_added;
+	signals::signal<void (Project*)> m_project_removed;
 
 };
 

@@ -1,3 +1,4 @@
+#include "application.hpp"
 
 #include <boost/bind.hpp>
 
@@ -23,7 +24,6 @@
 
 #include "mojo/fs/filesystem_paths.hpp"
 
-#include "application.hpp"
 #include "application_data.hpp"
 #include "audio_track.hpp"
 
@@ -53,10 +53,16 @@ Application::cleanup ()
 	s_application = 0;
 }
 
+void
+Application::iteration (bool block)
+{
+	s_application->data->worker.iteration (block);
+}
+
 Application::Application ()
 {
 	LOG;
-	data = new internal::ApplicationData;
+	data = std::make_shared<internal::ApplicationData>();
 
 	TypeSystem::init ();
 
@@ -80,8 +86,6 @@ Application::~Application ()
 	data->worker_thread->join ();
 
 	TypeSystem::cleanup ();
-
-	delete s_application->data;
 }
 
 void
@@ -128,6 +132,18 @@ Application::close_project (Project* p)
 {
 	LOG;
 	s_application->data->worker.call_async (boost::bind (&Application::close_project_internal, s_application, p));
+}
+
+signals::connection
+Application::connect_project_added (const ProjectAddedFunc& slot)
+{
+	return s_application->data->m_project_added.connect(slot);
+}
+
+signals::connection
+Application::connect_project_removed (const ProjectRemovedFunc& slot)
+{
+	return s_application->data->m_project_removed.connect(slot);
 }
 
 void
