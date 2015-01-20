@@ -17,8 +17,6 @@
    MA  02110-1301, USA.
 */
 
-#include <glib.h>
-
 #include "worker.hpp"
 
 namespace mojo {
@@ -44,9 +42,9 @@ Worker::run()
 		do_work();
 
 		{
-			Glib::Mutex::Lock guard(m_iter_mtx);
+			std::unique_lock<std::mutex> lock(m_iter_mtx);
 
-			m_cond.signal();
+			m_cond.notify_one();
 		}
 	}
 }
@@ -54,7 +52,7 @@ Worker::run()
 void
 Worker::quit ()
 {
-	Glib::Mutex::Lock lock(m_iter_mtx);
+	std::unique_lock<std::mutex> lock(m_iter_mtx);
 
 	m_quit = true;
 
@@ -63,17 +61,17 @@ Worker::quit ()
 	// wait for the iteration to complete
 	// which can only happen when m_iter_mtx
 	// is released in the wait.
-	m_cond.wait(m_iter_mtx);
+	m_cond.wait(lock);
 }
 
 bool
 Worker::can_run()
 {
-	Glib::Mutex::Lock	guard (m_iter_mtx);
+	std::unique_lock<std::mutex> lock(m_iter_mtx);
 
 	if(m_quit)
 	{
-		m_cond.signal();
+		m_cond.notify_one();
 		return false;
 	}
 	return true;
@@ -84,13 +82,13 @@ Worker::iteration (bool block)
 {
 	if(block)
 	{
-		Glib::Mutex::Lock guard(m_iter_mtx);
+		std::unique_lock<std::mutex> lock(m_iter_mtx);
 
 		//signal worker to run
 		m_iter_sema.post();
 
 		// wait for one iteration to complete
-		m_cond.wait(m_iter_mtx);
+		m_cond.wait(lock);
 	}
 	else
 	{

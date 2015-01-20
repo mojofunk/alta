@@ -2,7 +2,10 @@
 #ifndef MOJO_API_WORKER
 #define MOJO_API_WORKER
 
-#include <glibmm/thread.h>
+
+#include <atomic>
+#include <mutex>
+#include <condition_variable>
 
 #include <gleam/gleam.hpp>
 
@@ -41,11 +44,11 @@ protected:
 	 */
 	bool can_run ();
 	
-	Glib::Mutex                     m_iter_mtx;
+	std::mutex                      m_iter_mtx;
 
-	Glib::Cond                      m_cond;
+	std::condition_variable         m_cond;
 
-	bool                            m_quit;
+	std::atomic<bool>               m_quit;
 
 	gleam::Semaphore                m_iter_sema;
 
