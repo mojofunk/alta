@@ -18,7 +18,9 @@
 
 #include <sstream>
 
-#include <glibmm/miscutils.h>
+#include <glib.h>
+
+#include "gleam/utils.hpp"
 
 #include "mojo/fs/filesystem_paths.hpp"
 
@@ -31,7 +33,7 @@ Searchpath
 test_search_path ()
 {
 	Searchpath test_path(system_data_search_path());
-	return Searchpath(Glib::getenv("MOJO_TEST_PATH")) + test_path;
+	return Searchpath(gleam::getenv("MOJO_TEST_PATH")) + test_path;
 }
 
 fs::path
