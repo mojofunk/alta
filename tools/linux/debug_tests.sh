@@ -2,7 +2,7 @@
 
 # --log_level=test_suite, all, message, warning, nothing
 
-. build/gmojo_env.sh
+. ./env.sh
 
 TESTS='test_*'
 
