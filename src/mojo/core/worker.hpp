@@ -7,7 +7,7 @@
 #include <mutex>
 #include <condition_variable>
 
-#include <gleam/gleam.hpp>
+#include "mojo/core/semaphore.hpp"
 
 namespace mojo {
 
@@ -50,7 +50,7 @@ protected:
 
 	std::atomic<bool>               m_quit;
 
-	gleam::Semaphore                m_iter_sema;
+	Semaphore                       m_iter_sema;
 
 };
 
