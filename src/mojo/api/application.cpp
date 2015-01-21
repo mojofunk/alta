@@ -40,8 +40,6 @@ Application::init (int argc, char *argv[])
 {
 	if(s_application) throw;
 
-	Glib::thread_init ();
-
 	// try/catch?
 	s_application = new Application();
 }
@@ -69,22 +67,11 @@ Application::Application ()
 	register_types ();
 
 	data->m_modules = discover_modules (module_search_path ());
-
-	const sigc::slot<void> main_func = sigc::mem_fun
-		(
-			data->worker,
-			&FunctorDispatcher::run
-		);
-
-	data->worker_thread = Glib::Thread::create(main_func, true);
 }
 
 Application::~Application ()
 {
 	LOG;
-	data->worker.quit();
-	data->worker_thread->join ();
-
 	TypeSystem::cleanup ();
 }
 
