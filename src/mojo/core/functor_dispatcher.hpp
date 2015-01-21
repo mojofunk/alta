@@ -35,7 +35,7 @@ private:
 	void process_queue ();
 
 	std::queue<function_t> m_queue;
-	Glib::Mutex m_queue_lock;
+	std::mutex m_queue_mutex;
 
 };
 

@@ -29,10 +29,8 @@ FunctorDispatcher::call_async (const function_t& func)
 void
 FunctorDispatcher::queue (const function_t& func)
 {
-	{
-		Glib::Mutex::Lock guard(m_queue_lock);
-		m_queue.push (func);
-	}
+	std::unique_lock<std::mutex> lock(m_queue_mutex);
+	m_queue.push (func);
 }
 
 void
@@ -45,7 +43,7 @@ FunctorDispatcher::do_work ()
 void
 FunctorDispatcher::process_queue ()
 {
-	Glib::Mutex::Lock guard(m_queue_lock);
+	std::unique_lock<std::mutex> lock(m_queue_mutex);
 
 	while (!m_queue.empty()) {
 
@@ -53,10 +51,10 @@ FunctorDispatcher::process_queue ()
 		m_queue.pop ();
 
 		// unlock while executing
-		m_queue_lock.unlock ();
+		lock.unlock ();
 		LOG;
 		func();
-		m_queue_lock.lock ();
+		lock.lock ();
 	}
 }
 
