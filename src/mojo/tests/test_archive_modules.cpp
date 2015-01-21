@@ -68,8 +68,6 @@ BOOST_AUTO_TEST_CASE( archive_module_test )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	BOOST_CHECK_NO_THROW (Application::init (argc, argv));
-
 	ArchiveModuleSPSet modules = Application::get_archive_modules ();
 
 	BOOST_CHECK (!modules.empty());
@@ -83,6 +81,4 @@ BOOST_AUTO_TEST_CASE( archive_module_test )
 
 		test_archive (archive, file_name);
 	}
-
-	Application::cleanup ();
 }

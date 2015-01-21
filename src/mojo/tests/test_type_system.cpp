@@ -42,7 +42,8 @@ BOOST_AUTO_TEST_CASE( mojo_test_type_system )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	Application::init (argc, argv);
+	// this test is actually testing types registered by mojo::Application
+	Application::get_instance();
 
 	BOOST_CHECK(test_type_name<int32_t>(int32_type_name));
 	BOOST_CHECK(test_type_name<int64_t>(int64_type_name));

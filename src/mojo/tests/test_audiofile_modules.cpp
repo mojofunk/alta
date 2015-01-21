@@ -120,13 +120,9 @@ BOOST_AUTO_TEST_CASE( audiofile_module_test )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	BOOST_CHECK_NO_THROW (Application::init (argc, argv));
-
 	AudioFileModuleSPSet modules = Application::get_audiofile_modules();
 
 	BOOST_CHECK(!modules.empty());
 
 	for_each (modules.begin(), modules.end(), test_audiofile_module);
-
-	Application::cleanup ();
 }

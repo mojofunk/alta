@@ -27,42 +27,25 @@
 #include "application_data.hpp"
 #include "audio_track.hpp"
 
-namespace {
-
-	mojo::Application* s_application = 0;
-
-}
-
 namespace mojo {
 
-void
-Application::init (int argc, char *argv[])
+mojo::Application&
+Application::get_instance ()
 {
-	if(s_application) throw;
-
-	// try/catch?
-	s_application = new Application();
-}
-
-void
-Application::cleanup ()
-{
-	delete s_application;
-	s_application = 0;
+	static mojo::Application s_instance;
+	return s_instance;
 }
 
 void
 Application::iteration (bool block)
 {
-	s_application->data->worker.iteration (block);
+	get_instance().data->worker.iteration (block);
 }
 
 Application::Application ()
 {
 	LOG;
 	data = std::unique_ptr<internal::ApplicationData>(new internal::ApplicationData);
-
-	TypeSystem::init ();
 
 	register_types ();
 
@@ -72,21 +55,20 @@ Application::Application ()
 Application::~Application ()
 {
 	LOG;
-	TypeSystem::cleanup ();
 }
 
 void
 Application::new_project ()
 {
 	LOG;
-	s_application->data->worker.call_async (boost::bind (&Application::new_project_internal, s_application));
+	get_instance().data->worker.call_async (boost::bind (&Application::new_project_internal, boost::ref(get_instance())));
 }
 
 void
 Application::open_project (const std::string& project_file)
 {
 	LOG;
-	s_application->data->worker.call_async (boost::bind (&Application::open_project_internal, s_application, project_file));
+	get_instance().data->worker.call_async (boost::bind (&Application::open_project_internal, boost::ref(get_instance()), project_file));
 }
 
 void
@@ -104,40 +86,40 @@ Application::save_project (Project*)
 void
 Application::set_active_project(Project* p)
 {
-	if (s_application->data->active_project == p) return;
-	s_application->data->worker.call_async (boost::bind (&Application::set_active_project_internal, s_application, p));
+	if (get_instance().data->active_project == p) return;
+	get_instance().data->worker.call_async (boost::bind (&Application::set_active_project_internal, boost::ref(get_instance()), p));
 }
 
 Project*
 Application::get_active_project()
 {
-	return s_application->data->active_project;
+	return get_instance().data->active_project;
 }
 
 void
 Application::close_project (Project* p)
 {
 	LOG;
-	s_application->data->worker.call_async (boost::bind (&Application::close_project_internal, s_application, p));
+	get_instance().data->worker.call_async (boost::bind (&Application::close_project_internal, boost::ref(get_instance()), p));
 }
 
 signals::connection
 Application::connect_project_added (const ProjectAddedFunc& slot)
 {
-	return s_application->data->m_project_added.connect(slot);
+	return get_instance().data->m_project_added.connect(slot);
 }
 
 signals::connection
 Application::connect_project_removed (const ProjectRemovedFunc& slot)
 {
-	return s_application->data->m_project_removed.connect(slot);
+	return get_instance().data->m_project_removed.connect(slot);
 }
 
 void
 Application::add_track (Project* p, const TrackOptions& options)
 {
 	LOG;
-	s_application->data->worker.call_async (boost::bind (&Application::add_track_internal, s_application, p, options));
+	get_instance().data->worker.call_async (boost::bind (&Application::add_track_internal, boost::ref(get_instance()), p, options));
 }
 
 bool
@@ -150,13 +132,13 @@ void
 Application::transport_set_speed (float speed)
 {
 	LOG;
-	s_application->data->worker.call_async (boost::bind (&Application::transport_set_speed_internal, s_application, speed));
+	get_instance().data->worker.call_async (boost::bind (&Application::transport_set_speed_internal, boost::ref(get_instance()), speed));
 }
 
 float
 Application::transport_get_speed ()
 {
-	return s_application->data->speed;
+	return get_instance().data->speed;
 }
 
 void
@@ -174,25 +156,25 @@ Application::transport_play ()
 void
 Application::transport_set_position (count_t pos)
 {
-	s_application->data->worker.call_async (boost::bind (&Application::transport_set_position_internal, s_application, pos));
+	get_instance().data->worker.call_async (boost::bind (&Application::transport_set_position_internal, boost::ref(get_instance()), pos));
 }
 
 count_t
 Application::transport_get_position ()
 {
-	return s_application->data->position;
+	return get_instance().data->position;
 }
 
 void
 Application::transport_set_record (bool record)
 {
-	s_application->data->worker.call_async (boost::bind (&Application::transport_set_record_internal, s_application, record));
+	get_instance().data->worker.call_async (boost::bind (&Application::transport_set_record_internal, boost::ref(get_instance()), record));
 }
 
 bool
 Application::transport_get_record ()
 {
-	return s_application->data->record;
+	return get_instance().data->record;
 }
 
 AudioFileSP
@@ -214,7 +196,7 @@ Application::open_audiofile (const fs::path& p)
 ModuleSPSet
 Application::get_modules ()
 {
-	return s_application->data->m_modules;
+	return get_instance().data->m_modules;
 }
 
 AudioFileModuleSPSet

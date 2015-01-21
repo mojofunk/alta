@@ -93,13 +93,9 @@ BOOST_AUTO_TEST_CASE( test_audio_effect_modules )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	BOOST_CHECK_NO_THROW (Application::init (argc, argv));
-
 	AudioEffectModuleSPSet modules = Application::get_audio_effect_modules ();
 
 	BOOST_CHECK(!modules.empty());
 
 	for_each (modules.begin(), modules.end(), test_audio_effect_module);
-
-	Application::cleanup ();
 }

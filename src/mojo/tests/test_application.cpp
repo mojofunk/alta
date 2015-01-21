@@ -69,8 +69,6 @@ BOOST_AUTO_TEST_CASE( test_application )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	BOOST_CHECK_NO_THROW(Application::init (argc, argv));
-
 	ApplicationListener* listener = new ApplicationListener;
 
 	// connect to project added/removed signals
@@ -84,8 +82,6 @@ BOOST_AUTO_TEST_CASE( test_application )
 	listener->close_projects ();
 
 	delete listener;
-
-	Application::cleanup ();
 }
 
 void
@@ -103,11 +99,7 @@ BOOST_AUTO_TEST_CASE( test_get_modules )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	BOOST_CHECK_NO_THROW(Application::init (argc, argv));
-
 	ModuleSPSet modules = Application::get_modules();
 
 	for_each (modules.begin(), modules.end(), test_module);
-
-	Application::cleanup ();
 }

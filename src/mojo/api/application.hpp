@@ -90,9 +90,7 @@ class Application
 {
 public:
 
-	static void init (int argc, char *argv[]);
-
-	static void cleanup ();
+	static Application& get_instance ();
 
 	static void iteration (bool block);
 
