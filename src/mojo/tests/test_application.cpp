@@ -13,8 +13,6 @@
 
 #include "mojo/interfaces/module.hpp"
 
-#include <glibmm/main.h>
-
 using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
