@@ -60,7 +60,7 @@ Application::iteration (bool block)
 Application::Application ()
 {
 	LOG;
-	data = std::make_shared<internal::ApplicationData>();
+	data = std::unique_ptr<internal::ApplicationData>(new internal::ApplicationData);
 
 	TypeSystem::init ();
 

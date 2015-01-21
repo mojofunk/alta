@@ -243,7 +243,7 @@ public: // modules
 private:
 
 	// std::unique_ptr in future
-	std::shared_ptr<internal::ApplicationData> data;
+	std::unique_ptr<internal::ApplicationData> data;
 
 	void register_types ();
 
