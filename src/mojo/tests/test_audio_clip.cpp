@@ -29,7 +29,7 @@ BOOST_AUTO_TEST_CASE( audio_clip )
 	fs::path project_path;
 	fs::path audiofile_path;
 
-	SearchPath tsp = test_search_path();
+	Searchpath tsp = test_search_path();
 
 	tsp.add_subdirectory_to_paths ("projects");
 	tsp.add_subdirectory_to_paths ("motronic");

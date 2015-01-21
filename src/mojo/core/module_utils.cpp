@@ -31,7 +31,7 @@ open_module (const fs::path& module_path)
 }
 
 ModuleSPSet
-discover_modules (const SearchPath& sp)
+discover_modules (const Searchpath& sp)
 {
 	paths_t module_paths;
 

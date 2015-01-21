@@ -15,12 +15,12 @@ const char * const path_delimiter = ":";
 
 namespace mojo {
 
-SearchPath::SearchPath ()
+Searchpath::Searchpath ()
 {
 
 }
 
-SearchPath::SearchPath (const std::string& path)
+Searchpath::Searchpath (const std::string& path)
 {
 	typedef boost::tokenizer<boost::char_separator<char> > tokenizer;
 
@@ -38,17 +38,17 @@ SearchPath::SearchPath (const std::string& path)
 	}
 }
 
-SearchPath::SearchPath (const paths_t& paths)
+Searchpath::Searchpath (const paths_t& paths)
 {
 	std::copy (paths.begin(), paths.end(), std::back_inserter(m_dirs));
 }
 
-SearchPath::SearchPath (const std::vector<std::string>& paths)
+Searchpath::Searchpath (const std::vector<std::string>& paths)
 {
 	std::copy (paths.begin(), paths.end(), std::back_inserter(m_dirs));
 }
 
-SearchPath::SearchPath (const SearchPath& other)
+Searchpath::Searchpath (const Searchpath& other)
 	:
 		m_dirs(other.m_dirs)
 {
@@ -56,14 +56,14 @@ SearchPath::SearchPath (const SearchPath& other)
 }
 
 void
-SearchPath::add_directory (const fs::path& directory_path)
+Searchpath::add_directory (const fs::path& directory_path)
 {
 	// test for existance and warn etc?
 	m_dirs.push_back(directory_path);
 }
 
 const std::string
-SearchPath::to_string () const
+Searchpath::to_string () const
 {
 	std::string path;
 
@@ -77,44 +77,44 @@ SearchPath::to_string () const
 	return path;
 }
 
-SearchPath&
-SearchPath::operator= (const SearchPath& path)
+Searchpath&
+Searchpath::operator= (const Searchpath& path)
 {
 	m_dirs = path.m_dirs;
 	return *this;
 }
 
-SearchPath&
-SearchPath::operator+= (const SearchPath& spath)
+Searchpath&
+Searchpath::operator+= (const Searchpath& spath)
 {
 	m_dirs.insert(m_dirs.end(), spath.m_dirs.begin(), spath.m_dirs.end());
 	return *this;
 }
 
-SearchPath&
-SearchPath::operator+= (const fs::path& directory_path)
+Searchpath&
+Searchpath::operator+= (const fs::path& directory_path)
 {
 	add_directory (directory_path);
 	return *this;
 }
 
-SearchPath&
-SearchPath::operator+ (const fs::path& directory_path)
+Searchpath&
+Searchpath::operator+ (const fs::path& directory_path)
 {
 	add_directory (directory_path);
 	return *this;
 }
 
-SearchPath&
-SearchPath::operator+ (const SearchPath& spath)
+Searchpath&
+Searchpath::operator+ (const Searchpath& spath)
 {
-	// concatenate paths into new SearchPath
+	// concatenate paths into new Searchpath
 	m_dirs.insert(m_dirs.end(), spath.m_dirs.begin(), spath.m_dirs.end());
 	return *this;
 }
 
-SearchPath&
-SearchPath::add_subdirectory_to_paths (const std::string& subdir)
+Searchpath&
+Searchpath::add_subdirectory_to_paths (const std::string& subdir)
 {
 	paths_t tmp;
 	std::string directory_path;
@@ -129,8 +129,8 @@ SearchPath::add_subdirectory_to_paths (const std::string& subdir)
 	return *this;
 }
 
-SearchPath&
-SearchPath::operator/ (const std::string& subdir)
+Searchpath&
+Searchpath::operator/ (const std::string& subdir)
 {
 	return add_subdirectory_to_paths (subdir);
 }

@@ -10,24 +10,24 @@ namespace ui {
 
 using namespace mojo;
 
-SearchPath
+Searchpath
 gmojo_search_path()
 {
-	return SearchPath(gleam::getenv ("GMOJO_PATH"));
+	return Searchpath(gleam::getenv ("GMOJO_PATH"));
 }
 
-SearchPath
+Searchpath
 system_config_search_path()
 {
-	SearchPath sp(gleam::get_system_config_directories ());
+	Searchpath sp(gleam::get_system_config_directories ());
 	sp / "gmojo";
 	return sp;
 }
 
-SearchPath
+Searchpath
 system_data_search_path()
 {
-	SearchPath sp(gleam::get_system_data_directories ());
+	Searchpath sp(gleam::get_system_data_directories ());
 	sp / "gmojo";
 	return sp;
 }
@@ -35,7 +35,7 @@ system_data_search_path()
 std::string
 get_ui_filepath (const std::string& filename)
 {
-	SearchPath sp(gmojo_search_path() + system_data_search_path ());
+	Searchpath sp(gmojo_search_path() + system_data_search_path ());
 
 	fs::path filepath;
 

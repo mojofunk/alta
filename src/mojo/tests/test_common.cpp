@@ -27,11 +27,11 @@
 using namespace std;
 using namespace mojo;
 
-SearchPath
+Searchpath
 test_search_path ()
 {
-	SearchPath test_path(system_data_search_path());
-	return SearchPath(Glib::getenv("MOJO_TEST_PATH")) + test_path;
+	Searchpath test_path(system_data_search_path());
+	return Searchpath(Glib::getenv("MOJO_TEST_PATH")) + test_path;
 }
 
 fs::path

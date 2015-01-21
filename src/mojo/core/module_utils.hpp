@@ -11,7 +11,7 @@ namespace mojo {
 
 ModuleSP open_module (const fs::path& filepath);
 
-ModuleSPSet discover_modules (const SearchPath& sp);
+ModuleSPSet discover_modules (const Searchpath& sp);
 
 template<class T>
 std::set<boost::shared_ptr<T> >

@@ -9,13 +9,13 @@ namespace mojo {
 
 	fs::path user_config_directory();
 
-	SearchPath mojo_search_path();
+	Searchpath mojo_search_path();
 
-	SearchPath system_config_search_path();
+	Searchpath system_config_search_path();
 
-	SearchPath system_data_search_path();
+	Searchpath system_data_search_path();
 
-	SearchPath module_search_path();
+	Searchpath module_search_path();
 
 } // namespace mojo
 

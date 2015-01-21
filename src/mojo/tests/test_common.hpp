@@ -21,7 +21,7 @@
 
 #include "mojo/fs/search_path.hpp"
 
-mojo::SearchPath test_search_path ();
+mojo::Searchpath test_search_path ();
 
 fs::path new_test_output_dir ();
 

@@ -18,7 +18,7 @@ test_path (const fs::path& p)
 }
 
 void
-test_search_path (const SearchPath& sp)
+test_search_path (const Searchpath& sp)
 {
 	for_each (sp.begin(), sp.end(), test_path);
 }

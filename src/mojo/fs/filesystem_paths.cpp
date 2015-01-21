@@ -12,29 +12,29 @@ user_config_directory()
 	return fs::path(gleam::get_user_config_directory ()) / "mojo";
 }
 
-SearchPath
+Searchpath
 mojo_search_path()
 {
-	return SearchPath(gleam::getenv ("MOJO_PATH"));
+	return Searchpath(gleam::getenv ("MOJO_PATH"));
 }
 
-SearchPath
+Searchpath
 system_config_search_path()
 {
-	SearchPath sp(gleam::get_system_config_directories ());
+	Searchpath sp(gleam::get_system_config_directories ());
 	sp / "mojo";
 	return sp;
 }
 
-SearchPath
+Searchpath
 system_data_search_path()
 {
-	SearchPath sp(gleam::get_system_data_directories ());
+	Searchpath sp(gleam::get_system_data_directories ());
 	sp / "mojo";
 	return sp;
 }
 
-SearchPath
+Searchpath
 module_search_path ()
 {
 	return mojo_search_path ();
