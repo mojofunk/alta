@@ -28,13 +28,10 @@
 
 namespace mojo {
 
+// namespace?
 class TypeSystem
 {
 public:
-
-	static void init ();
-
-	static void cleanup ();
 
 	static void register_type (TypeFactorySP type);
 	
@@ -49,16 +46,6 @@ public:
 	 * type
 	 */
 	static boost::any create_type (const std::string& type_name);
-
-private:
-
-	TypeSystem();
-
-	~TypeSystem();
-
-private:
-
-	static TypeSystem* s_type_system;
 
 };
 
