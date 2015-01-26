@@ -19,7 +19,8 @@
 #ifndef MOJO_TYPESYSTEM_TYPEDEFS
 #define MOJO_TYPESYSTEM_TYPEDEFS
 
-#include "macros.hpp"
+#include "mojo/core/macros.hpp"
+
 #include "forward.hpp"
 
 namespace mojo {
