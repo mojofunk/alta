@@ -9,22 +9,22 @@
 #include <boost/weak_ptr.hpp>
 
 #define MOJO_DEFINE_POINTER_TYPEDEFS(CLASS) \
-	typedef boost::shared_ptr<CLASS>    CLASS##SP;\
-	typedef boost::weak_ptr<CLASS>      CLASS##WP;\
-	typedef boost::shared_ptr<CLASS const>    CLASS##ConstSP;\
-	typedef boost::weak_ptr<CLASS const>      CLASS##ConstWP;
+	using CLASS##SP = boost::shared_ptr<CLASS>;\
+	using CLASS##WP = boost::weak_ptr<CLASS>;\
+	using CLASS##ConstSP = boost::shared_ptr<CLASS const>;\
+	using CLASS##ConstWP = boost::weak_ptr<CLASS const>;
 
 #define MOJO_DEFINE_POINTER_SET_TYPEDEFS(CLASS) \
-	typedef std::set<CLASS##SP>         CLASS##SPSet;\
-	typedef std::set<CLASS##WP>         CLASS##WPSet;
+	using CLASS##SPSet = std::set<CLASS##SP>;\
+	using CLASS##WPSet = std::set<CLASS##WP>;
 
 #define MOJO_DEFINE_POINTER_LIST_TYPEDEFS(CLASS) \
-	typedef std::list<CLASS##SP>         CLASS##SPList;\
-	typedef std::list<CLASS##WP>         CLASS##WPList;
+	using CLASS##SPList = std::list<CLASS##SP>;\
+	using CLASS##WPList = std::list<CLASS##WP>;
 
 #define MOJO_DEFINE_POINTER_VECTOR_TYPEDEFS(CLASS) \
-	typedef std::vector<CLASS##SP>         CLASS##SPVec;\
-	typedef std::vector<CLASS##WP>         CLASS##WPVec;
+	using CLASS##SPVec = std::vector<CLASS##SP>;\
+	using CLASS##WPVec = std::vector<CLASS##WP>;
 
 #define MOJO_DEFINE_ALL_TYPEDEFS(CLASS) \
 	MOJO_DEFINE_POINTER_TYPEDEFS(CLASS) \
