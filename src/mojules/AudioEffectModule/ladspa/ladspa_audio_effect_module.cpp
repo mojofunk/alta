@@ -84,7 +84,7 @@ LADSPAAudioEffectModule::set_preset_directory_paths (const paths_t& paths)
 }
 
 void
-get_info (const fs::path& path, AudioEffectInfoSPSet& info_set)
+LADSPAAudioEffectModule::get_info (const fs::path& path, AudioEffectInfoSPSet& info_set)
 {
 	LADSPA_Descriptor_Function ladspa_func = NULL;
 	
@@ -107,6 +107,7 @@ get_info (const fs::path& path, AudioEffectInfoSPSet& info_set)
 		}
 	}
 }
+
 
 AudioEffectInfoSPSet
 LADSPAAudioEffectModule::get_plugin_info ()

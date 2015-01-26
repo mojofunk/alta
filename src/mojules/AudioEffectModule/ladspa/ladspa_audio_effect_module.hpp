@@ -40,6 +40,8 @@ public: // AudioEffectModule interface
 
 private:
 
+	void get_info (const fs::path& path, AudioEffectInfoSPSet& info_set);
+
 	paths_t m_plugin_dirs;
 
 };
