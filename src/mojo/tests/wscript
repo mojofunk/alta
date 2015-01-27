@@ -32,7 +32,7 @@ def build(ctx):
 			source = 'test_common.cpp',
 			includes ='. ../..',
 			defines = 'BOOST_TEST_DYN_LINK=1',
-			uselib = ['BOOST_UNIT_TEST_FRAMEWORK', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM', 'GLIBMM-2.4'],
+			uselib = ['BOOST_UNIT_TEST_FRAMEWORK', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM', 'GLIB-2.0'],
 			use = 'MOJO',
 			name = 'MOJOTESTCOMMON')
 	for test in tests:
@@ -41,6 +41,6 @@ def build(ctx):
 			source = test + '.cpp',
 			includes ='. ../..',
 			defines = 'BOOST_TEST_DYN_LINK=1',
-			uselib = ['BOOST_UNIT_TEST_FRAMEWORK', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM', 'GLIBMM-2.4'],
+			uselib = ['BOOST_UNIT_TEST_FRAMEWORK', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM', 'GLIB-2.0'],
 			use = ['MOJO', 'MOJOTESTCOMMON'],
 			target = test)
