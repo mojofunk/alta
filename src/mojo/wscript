@@ -14,7 +14,7 @@ def build(ctx):
 		includes = '. ..',
 		export_includes = '..', # this should probably be .
 		source = ctx.path.ant_glob('**/*.cpp', excl='tests'),
-		uselib = ['GMODULE-2.0', 'GLIBMM-2.4', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM'],
+		uselib = ['GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM'],
 		use = ['GLEAM'],
 		target = 'mojo',
 		name = 'MOJO')
