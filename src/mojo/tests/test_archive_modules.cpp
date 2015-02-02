@@ -3,8 +3,6 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
 
-#include <cformat/cformat.hpp>
-
 #include "mojo/core/properties.hpp"
 
 #include "mojo/interfaces/archive.hpp"
@@ -12,6 +10,8 @@
 #include "mojo/interfaces/archive.hpp"
 
 #include "mojo/api/application.hpp"
+
+#include "mojo/string/convert.hpp"
 
 #include <glib.h>
 
@@ -70,11 +70,12 @@ BOOST_AUTO_TEST_CASE( archive_module_test )
 
 	ArchiveModuleSPSet modules = Application::get_archive_modules ();
 
-	BOOST_CHECK (!modules.empty());
+	BOOST_CHECK(!modules.empty());
 
 	for (auto&x : modules)
 	{
-		string file_extension = cformat::convert<string>(g_random_int());
+		string file_extension;
+		BOOST_CHECK(int32_to_string(g_random_int(), file_extension));
 		string file_name = string(typeid (x).name()) + "." + file_extension;
 
 		ArchiveSP archive = x->create_archive ();

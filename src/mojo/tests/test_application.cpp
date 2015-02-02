@@ -1,13 +1,13 @@
 
 #define BOOST_TEST_MODULE mojo_application
 
-#include <mutex>
-
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
 
 // for command line args
 #include <boost/test/framework.hpp>
+
+#include <mutex>
 
 #include "mojo/mojo.hpp"
 

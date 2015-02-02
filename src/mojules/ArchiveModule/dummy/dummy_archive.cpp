@@ -1,10 +1,10 @@
 
-#include <cformat/cformat.hpp>
-
 #include <iostream>
 #include <fstream>
 
 #include "mojo/typesystem/type_system.hpp"
+
+#include "mojo/string/convert.hpp"
 
 #include "mojo/api/object.hpp"
 
@@ -79,15 +79,21 @@ DummyArchive::write_property (std::ostream& os, const Property& prop)
 	}
 	else if(prop.value.type() == typeid(int64_t))
 	{
-		os << cformat::convert<std::string>(boost::any_cast<int64_t>(prop.value));
+		string tmp;
+		int64_to_string(boost::any_cast<int64_t>(prop.value), tmp);
+		os << tmp;
 	}
 	else if(prop.value.type() == typeid(int32_t))
 	{
-		os << cformat::convert<std::string>(boost::any_cast<int32_t>(prop.value));
+		string tmp;
+		int32_to_string(boost::any_cast<int32_t>(prop.value), tmp);
+		os << tmp;
 	}
 	else if(prop.value.type() == typeid(float))
 	{
-		os << cformat::convert<std::string>(boost::any_cast<float>(prop.value));
+		string tmp;
+		float_to_string(boost::any_cast<float>(prop.value), tmp);
+		os << tmp;
 	}
 }
 
