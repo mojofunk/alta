@@ -7,6 +7,7 @@ test_application
 test_sequence
 test_state_tracker
 test_string_convert
+test_timing
 test_type_system
 test_graph
 test_module_utils
