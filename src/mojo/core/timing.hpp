@@ -22,11 +22,11 @@
 
 #include <cstdint>
 
-#include <chrono>
 #include <string>
 #include <vector>
 
 #include "mojo/core/visibility.hpp"
+#include "mojo/core/time.hpp"
 
 namespace mojo {
 
@@ -60,33 +60,33 @@ class MOJO_API Timing
 public:
 
 	Timing ()
-		: m_start_val()
-		, m_last_val()
+		: m_start_val(0)
+		, m_last_val(0)
 	{ start ();}
 
 	bool valid () const {
-		return ((m_start_val.time_since_epoch() != std::chrono::duration<uint64_t>::zero()) &&
-		        (m_last_val.time_since_epoch() != std::chrono::duration<uint64_t>::zero()));
+		return (m_start_val != 0 && m_last_val != 0) &&
+		       (m_start_val < m_last_val);
 	}
 
 	void start () {
-		m_start_val = std::chrono::high_resolution_clock::now();
+		m_start_val = get_monotonic_time();
 	}
 
 	void update () {
-		m_last_val = std::chrono::high_resolution_clock::now();
+		m_last_val = get_monotonic_time();
 	}
 
 	void reset () {
-		//m_start_val = m_last_val = 0;
+		m_start_val = m_last_val = 0;
 	}
 
 	uint64_t get_interval () {
 		update ();
 		if (valid()) {
-			auto elapsed = m_last_val - m_start_val;
+			uint64_t elapsed = m_last_val - m_start_val;
 			m_start_val = m_last_val;
-			return std::chrono::duration_cast<std::chrono::microseconds>(elapsed).count();
+			return elapsed;
 		}
 		return 0;
 	}
@@ -94,14 +94,14 @@ public:
 	/// Elapsed time in microseconds
 	uint64_t elapsed () const {
 		if (!valid()) return 0;
-		auto elapsed = m_last_val - m_start_val;
-		return std::chrono::duration_cast<std::chrono::microseconds>(elapsed).count();
+		uint64_t elapsed = m_last_val - m_start_val;
+		return elapsed;
 	}
 
 private:
 
-	std::chrono::high_resolution_clock::time_point m_start_val;
-	std::chrono::high_resolution_clock::time_point m_last_val;
+	uint64_t m_start_val;
+	uint64_t m_last_val;
 
 };
 
