@@ -80,19 +80,19 @@ DummyArchive::write_property (std::ostream& os, const Property& prop)
 	else if(prop.value.type() == typeid(int64_t))
 	{
 		string tmp;
-		int64_to_string(boost::any_cast<int64_t>(prop.value), tmp);
+		to_string(boost::any_cast<int64_t>(prop.value), tmp);
 		os << tmp;
 	}
 	else if(prop.value.type() == typeid(int32_t))
 	{
 		string tmp;
-		int32_to_string(boost::any_cast<int32_t>(prop.value), tmp);
+		to_string(boost::any_cast<int32_t>(prop.value), tmp);
 		os << tmp;
 	}
 	else if(prop.value.type() == typeid(float))
 	{
 		string tmp;
-		float_to_string(boost::any_cast<float>(prop.value), tmp);
+		to_string(boost::any_cast<float>(prop.value), tmp);
 		os << tmp;
 	}
 }

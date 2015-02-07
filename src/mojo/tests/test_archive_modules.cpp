@@ -75,7 +75,7 @@ BOOST_AUTO_TEST_CASE( archive_module_test )
 	for (auto&x : modules)
 	{
 		string file_extension;
-		BOOST_CHECK(int32_to_string(g_random_int(), file_extension));
+		BOOST_CHECK(mojo::to_string(g_random_int(), file_extension));
 		string file_name = string(typeid (x).name()) + "." + file_extension;
 
 		ArchiveSP archive = x->create_archive ();

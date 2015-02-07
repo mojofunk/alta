@@ -8,7 +8,6 @@
 
 using namespace boost::unit_test;
 using namespace std;
-using namespace mojo;
 
 #define MAX_INT32_T "2147483647"
 #define MIN_INT32_T "-2147483648"
@@ -16,17 +15,17 @@ using namespace mojo;
 BOOST_AUTO_TEST_CASE( int32_conversion )
 {
 	string str;
-	BOOST_CHECK(int32_to_string(numeric_limits<int32_t>::max(), str));
+	BOOST_CHECK(mojo::to_string(numeric_limits<int32_t>::max(), str));
 	BOOST_CHECK_EQUAL(MAX_INT32_T, str);
 
 	int32_t val = 0;
-	BOOST_CHECK(string_to_int32(str, val));
+	BOOST_CHECK(mojo::string_to(str, val));
 	BOOST_CHECK_EQUAL(numeric_limits<int32_t>::max(), val);
 
-	BOOST_CHECK(int32_to_string(numeric_limits<int32_t>::min(), str));
+	BOOST_CHECK(mojo::to_string(numeric_limits<int32_t>::min(), str));
 	BOOST_CHECK_EQUAL(MIN_INT32_T, str);
 
-	BOOST_CHECK(string_to_int32(str, val));
+	BOOST_CHECK(mojo::string_to(str, val));
 	BOOST_CHECK_EQUAL(numeric_limits<int32_t>::min(), val);
 }
 
@@ -36,17 +35,17 @@ BOOST_AUTO_TEST_CASE( int32_conversion )
 BOOST_AUTO_TEST_CASE( int64_conversion )
 {
 	string str;
-	BOOST_CHECK(int64_to_string(numeric_limits<int64_t>::max(), str));
+	BOOST_CHECK(mojo::to_string(numeric_limits<int64_t>::max(), str));
 	BOOST_CHECK_EQUAL(MAX_INT64_T, str);
 
 	int64_t val = 0;
-	BOOST_CHECK(string_to_int64(str, val));
+	BOOST_CHECK(mojo::string_to(str, val));
 	BOOST_CHECK_EQUAL(numeric_limits<int64_t>::max(), val);
 
-	BOOST_CHECK(int64_to_string(numeric_limits<int64_t>::min(), str));
+	BOOST_CHECK(mojo::to_string(numeric_limits<int64_t>::min(), str));
 	BOOST_CHECK_EQUAL(MIN_INT64_T, str);
 
-	BOOST_CHECK(string_to_int64(str, val));
+	BOOST_CHECK(mojo::string_to(str, val));
 	BOOST_CHECK_EQUAL(numeric_limits<int64_t>::min(), val);
 }
 
@@ -58,17 +57,17 @@ BOOST_AUTO_TEST_CASE( float_conversion )
 {
 	string str;
 
-	BOOST_CHECK(float_to_string(numeric_limits<float>::max(), str));
+	BOOST_CHECK(mojo::to_string(numeric_limits<float>::max(), str));
 	BOOST_CHECK_EQUAL(MAX_FLOAT, str);
 
 	float val = 0.0f;
-	BOOST_CHECK(string_to_float(str, val));
+	BOOST_CHECK(mojo::string_to(str, val));
 	BOOST_CHECK_CLOSE(numeric_limits<float>::max(), val, numeric_limits<float>::epsilon());
 
-	BOOST_CHECK(float_to_string(numeric_limits<float>::min(), str));
+	BOOST_CHECK(mojo::to_string(numeric_limits<float>::min(), str));
 	BOOST_CHECK_EQUAL(MIN_FLOAT, str);
 
-	BOOST_CHECK(string_to_float(str, val));
+	BOOST_CHECK(mojo::string_to(str, val));
 	BOOST_CHECK_CLOSE(numeric_limits<float>::min(), val, numeric_limits<float>::epsilon());
 }
 
@@ -80,15 +79,15 @@ BOOST_AUTO_TEST_CASE( double_conversion )
 {
 	string str;
 
-	BOOST_CHECK(double_to_string(numeric_limits<double>::max(), str));
+	BOOST_CHECK(mojo::to_string(numeric_limits<double>::max(), str));
 
 	double val = 0.0f;
-	BOOST_CHECK(string_to_double(str, val));
+	BOOST_CHECK(mojo::string_to(str, val));
 	BOOST_CHECK_CLOSE(numeric_limits<double>::max(), val, numeric_limits<double>::epsilon());
 
-	BOOST_CHECK(double_to_string(numeric_limits<double>::min(), str));
+	BOOST_CHECK(mojo::to_string(numeric_limits<double>::min(), str));
 
-	BOOST_CHECK(string_to_double(str, val));
+	BOOST_CHECK(mojo::string_to(str, val));
 	BOOST_CHECK_CLOSE(numeric_limits<double>::min(), val, numeric_limits<double>::epsilon());
 }
 
@@ -96,16 +95,16 @@ BOOST_AUTO_TEST_CASE( bool_conversion )
 {
 	string str;
 
-	BOOST_CHECK(bool_to_string(true, str));
+	BOOST_CHECK(mojo::to_string(true, str));
 	BOOST_CHECK_EQUAL("true", str);
 
 	bool val = false;
-	BOOST_CHECK(string_to_bool(str, val));
+	BOOST_CHECK(mojo::string_to(str, val));
 	BOOST_CHECK_EQUAL(val, true);
 
-	BOOST_CHECK(bool_to_string(false, str));
+	BOOST_CHECK(mojo::to_string(false, str));
 	BOOST_CHECK_EQUAL("false", str);
 
-	BOOST_CHECK(string_to_bool(str, val));
+	BOOST_CHECK(mojo::string_to(str, val));
 	BOOST_CHECK_EQUAL(val, false);
 }
