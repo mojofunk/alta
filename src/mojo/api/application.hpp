@@ -240,7 +240,6 @@ public: // modules
 
 private:
 
-	// std::unique_ptr in future
 	std::unique_ptr<internal::ApplicationData> data;
 
 	void register_types ();
