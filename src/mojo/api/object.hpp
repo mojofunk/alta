@@ -1,22 +1,21 @@
 #ifndef MOJO_OBJECT
 #define MOJO_OBJECT
 
-#include <boost/signals2.hpp>
-
-#include <mojo/core/properties.hpp>
 #include <mojo/core/change_set.hpp>
+#include <mojo/core/properties.hpp>
+#include <mojo/core/signals.hpp>
 
 namespace mojo {
 
 class Object
 {
-	typedef boost::signals2::signal<void (const ChangeSet&)> changed_signal_t;
-	typedef boost::signals2::signal<void ()> destroy_signal_t;
+	typedef signals::signal<void (const ChangeSet&)> changed_signal_t;
+	typedef signals::signal<void ()> destroy_signal_t;
 
 public:
 	typedef	changed_signal_t::slot_type changed_slot_t;
 	typedef	destroy_signal_t::slot_type destroy_slot_t;
-	typedef	boost::signals2::connection connection_t;
+	typedef	signals::connection connection_t;
 
 	// type_name
 

@@ -199,8 +199,8 @@ public: // public API
 
 public: // signals
 
-	using ProjectAddedSyncSignal = boost::signals2::signal<void (Project*)>;
-	using ProjectRemovedSyncSignal = boost::signals2::signal<void (Project*)>;
+	using ProjectAddedSyncSignal = signals::signal<void (Project*)>;
+	using ProjectRemovedSyncSignal = signals::signal<void (Project*)>;
 	using ProjectAddedFunc = ProjectAddedSyncSignal::slot_type;
 	using ProjectRemovedFunc = ProjectRemovedSyncSignal::slot_type;
 
