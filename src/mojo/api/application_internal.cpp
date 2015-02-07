@@ -93,22 +93,4 @@ Application::add_track_internal (Project* p, const TrackOptions& options)
 	// signal async
 }
 
-void
-Application::transport_set_speed_internal (float speed)
-{
-	data->speed = speed;
-}
-
-void
-Application::transport_set_position_internal (count_t pos)
-{
-	data->position = pos;
-}
-
-void
-Application::transport_set_record_internal (bool record)
-{
-	data->record = record;
-}
-
 } // namespace mojo

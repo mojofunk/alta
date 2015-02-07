@@ -63,13 +63,6 @@ struct ApplicationData
 	// project data from worker thread and from client
 	// when data is needed syncronously.
 
-	// transport data
-	// position and record status are properties of a project
-
-	float speed;
-	count_t position;
-	bool record;
-
 	ModuleSPSet               m_modules;
 
 	signals::signal<void (Project*)> m_project_added;

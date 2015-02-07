@@ -128,55 +128,6 @@ Application::is_audio_track (Track* t)
 	return dynamic_cast<AudioTrack*>(t);
 }
 
-void
-Application::transport_set_speed (float speed)
-{
-	LOG;
-	get_instance().data->worker.call_async (boost::bind (&Application::transport_set_speed_internal, boost::ref(get_instance()), speed));
-}
-
-float
-Application::transport_get_speed ()
-{
-	return get_instance().data->speed;
-}
-
-void
-Application::transport_stop ()
-{
-	transport_set_speed (0);
-}
-
-void
-Application::transport_play ()
-{
-	transport_set_speed (1.0);
-}
-
-void
-Application::transport_set_position (count_t pos)
-{
-	get_instance().data->worker.call_async (boost::bind (&Application::transport_set_position_internal, boost::ref(get_instance()), pos));
-}
-
-count_t
-Application::transport_get_position ()
-{
-	return get_instance().data->position;
-}
-
-void
-Application::transport_set_record (bool record)
-{
-	get_instance().data->worker.call_async (boost::bind (&Application::transport_set_record_internal, boost::ref(get_instance()), record));
-}
-
-bool
-Application::transport_get_record ()
-{
-	return get_instance().data->record;
-}
-
 AudioFileSP
 Application::open_audiofile (const fs::path& p)
 {
