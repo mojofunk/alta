@@ -4,6 +4,7 @@
 
 tests='''
 test_application
+test_debug
 test_sequence
 test_state_tracker
 test_string_convert
