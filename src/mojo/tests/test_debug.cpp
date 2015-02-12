@@ -34,7 +34,7 @@ BOOST_AUTO_TEST_CASE( debug_simple_test )
 BOOST_AUTO_TEST_CASE( debug_domain_name_test )
 {
 	std::vector<std::string> domain_names;
-	mojo::debug::get_domains(domain_names);
+	mojo::debug::get_registry().get_domains(domain_names);
 	BOOST_TEST_MESSAGE(domain_names.size());
 
 	for (auto& x : domain_names)
