@@ -1,6 +1,5 @@
-
-#ifndef MOJO_UTILS_FORWARD
-#define MOJO_UTILS_FORWARD
+#ifndef MOJO_UTILS_FORWARD_H
+#define MOJO_UTILS_FORWARD_H
 
 namespace mojo {
 
@@ -8,4 +7,4 @@ class Library;
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_UTILS_FORWARD_H

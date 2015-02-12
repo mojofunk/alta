@@ -1,5 +1,5 @@
-#ifndef MOJO_AUDIO_SEQUENCE
-#define MOJO_AUDIO_SEQUENCE
+#ifndef MOJO_AUDIO_SEQUENCE_H
+#define MOJO_AUDIO_SEQUENCE_H
 
 #include "object.hpp"
 
@@ -43,4 +43,4 @@ private:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_AUDIO_SEQUENCE_H

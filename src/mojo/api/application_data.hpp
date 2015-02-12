@@ -1,5 +1,5 @@
-#ifndef MOJO_APPLICATION_DATA
-#define MOJO_APPLICATION_DATA
+#ifndef MOJO_APPLICATION_DATA_H
+#define MOJO_APPLICATION_DATA_H
 
 #include <thread>
 
@@ -74,4 +74,4 @@ struct ApplicationData
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_APPLICATION_DATA_H

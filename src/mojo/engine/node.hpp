@@ -1,5 +1,5 @@
-#ifndef MOJO_NODE
-#define MOJO_NODE
+#ifndef MOJO_NODE_H
+#define MOJO_NODE_H
 
 #include <set>
 
@@ -35,4 +35,4 @@ private:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_NODE_H

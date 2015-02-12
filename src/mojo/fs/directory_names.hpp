@@ -1,6 +1,5 @@
-
-#ifndef MOJO_DIRECTORY_NAMES
-#define MOJO_DIRECTORY_NAMES
+#ifndef MOJO_DIRECTORY_NAMES_H
+#define MOJO_DIRECTORY_NAMES_H
 
 namespace mojo {
    
@@ -14,4 +13,4 @@ extern const char * const peak_dir_name;
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_DIRECTORY_NAMES_H

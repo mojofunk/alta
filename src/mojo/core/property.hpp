@@ -1,5 +1,5 @@
-#ifndef MOJO_PROPERTY
-#define MOJO_PROPERTY
+#ifndef MOJO_PROPERTY_H
+#define MOJO_PROPERTY_H
 
 #include <glib.h>
 
@@ -53,4 +53,4 @@ struct Property
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_PROPERTY_H

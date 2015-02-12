@@ -1,6 +1,5 @@
-
-#ifndef MOJO_TYPE_NAMES
-#define MOJO_TYPE_NAMES
+#ifndef MOJO_TYPE_NAMES_H
+#define MOJO_TYPE_NAMES_H
 
 namespace mojo {
 
@@ -23,4 +22,4 @@ extern const char * const audio_event_type_name;
 
 }
 
-#endif
+#endif // MOJO_TYPE_NAMES_H

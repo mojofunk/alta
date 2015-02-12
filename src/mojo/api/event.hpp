@@ -1,5 +1,5 @@
-#ifndef MOJO_EVENT
-#define MOJO_EVENT
+#ifndef MOJO_EVENT_H
+#define MOJO_EVENT_H
 
 #include "mojo/core/types.hpp"
 
@@ -50,4 +50,4 @@ private:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_EVENT_H

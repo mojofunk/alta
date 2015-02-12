@@ -5,4 +5,4 @@
 
 namespace signals = boost::signals2;
 
-#endif
+#endif // MOJO_SIGNALS_H

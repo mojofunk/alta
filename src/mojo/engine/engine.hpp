@@ -1,6 +1,5 @@
-
-#ifndef MOJO_ENGINE
-#define MOJO_ENGINE
+#ifndef MOJO_ENGINE_H
+#define MOJO_ENGINE_H
 
 #include "mojo/interfaces/typedefs.hpp"
 
@@ -102,4 +101,4 @@ public: // Interface
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_ENGINE_H

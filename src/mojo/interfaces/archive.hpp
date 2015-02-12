@@ -1,6 +1,5 @@
-
-#ifndef MOJO_ARCHIVE
-#define MOJO_ARCHIVE
+#ifndef MOJO_ARCHIVE_H
+#define MOJO_ARCHIVE_H
 
 #include "mojo/fs/filesystem.hpp"
 
@@ -39,4 +38,4 @@ public: // Interface
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_ARCHIVE_H

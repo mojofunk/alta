@@ -1,6 +1,5 @@
-
-#ifndef MOJO_MODULE
-#define MOJO_MODULE
+#ifndef MOJO_MODULE_H
+#define MOJO_MODULE_H
 
 #include <string>
 
@@ -33,4 +32,4 @@ public: // Module Interface
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_MODULE_H

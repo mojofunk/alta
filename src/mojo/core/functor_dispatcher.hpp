@@ -1,6 +1,5 @@
-
-#ifndef MOJO_FUNCTOR_DISPATCHER
-#define MOJO_FUNCTOR_DISPATCHER
+#ifndef MOJO_FUNCTOR_DISPATCHER_H
+#define MOJO_FUNCTOR_DISPATCHER_H
 
 #include <queue>
 
@@ -41,4 +40,4 @@ private:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_FUNCTOR_DISPATCHER_H

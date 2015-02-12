@@ -1,5 +1,5 @@
-#ifndef MOJO_PROPERTIES
-#define MOJO_PROPERTIES
+#ifndef MOJO_PROPERTIES_H
+#define MOJO_PROPERTIES_H
 
 #include <string>
 #include <set>
@@ -81,4 +81,4 @@ private:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_PROPERTIES_H

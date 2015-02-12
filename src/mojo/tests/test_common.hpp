@@ -7,4 +7,4 @@ mojo::Searchpath test_search_path ();
 
 fs::path new_test_output_dir ();
 
-#endif
+#endif // MOJO_TEST_COMMON_H

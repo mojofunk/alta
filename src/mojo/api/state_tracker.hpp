@@ -1,6 +1,5 @@
-
-#ifndef MOJO_STATE_TRACKER
-#define MOJO_STATE_TRACKER
+#ifndef MOJO_STATE_TRACKER_H
+#define MOJO_STATE_TRACKER_H
 
 #include "object.hpp"
 
@@ -28,4 +27,4 @@ private:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_STATE_TRACKER_H

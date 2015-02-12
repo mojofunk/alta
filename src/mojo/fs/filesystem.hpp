@@ -1,5 +1,5 @@
-#ifndef MOJO_FILESYSTEM
-#define MOJO_FILESYSTEM
+#ifndef MOJO_FILESYSTEM_H
+#define MOJO_FILESYSTEM_H
 
 #include <boost/filesystem.hpp>
 
@@ -14,4 +14,4 @@ typedef std::vector<fs::path> paths_t;
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_FILESYSTEM_H

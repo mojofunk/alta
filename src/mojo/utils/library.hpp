@@ -1,6 +1,5 @@
-
-#ifndef MOJO_LIBRARY
-#define MOJO_LIBRARY
+#ifndef MOJO_LIBRARY_H
+#define MOJO_LIBRARY_H
 
 #include "mojo/fs/filesystem.hpp"
 
@@ -35,4 +34,4 @@ bool is_library (const fs::path& filepath);
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_LIBRARY_H

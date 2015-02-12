@@ -1,6 +1,5 @@
-
-#ifndef MOJO_PROJECT
-#define MOJO_PROJECT
+#ifndef MOJO_PROJECT_H
+#define MOJO_PROJECT_H
 
 #include <string>
 
@@ -85,4 +84,4 @@ private: // property names
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_PROJECT_H

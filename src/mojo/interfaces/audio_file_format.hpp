@@ -1,6 +1,5 @@
-
-#ifndef MOJO_AUDIO_FILE_FORMAT
-#define MOJO_AUDIO_FILE_FORMAT
+#ifndef MOJO_AUDIO_FILE_FORMAT_H
+#define MOJO_AUDIO_FILE_FORMAT_H
 
 #include <string>
 
@@ -26,4 +25,4 @@ protected:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_AUDIO_FILE_FORMAT_H

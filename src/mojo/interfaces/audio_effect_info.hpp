@@ -1,6 +1,5 @@
-
-#ifndef MOJO_AUDIO_EFFECT_INFO
-#define MOJO_AUDIO_EFFECT_INFO
+#ifndef MOJO_AUDIO_EFFECT_INFO_H
+#define MOJO_AUDIO_EFFECT_INFO_H
 
 #include <string>
 
@@ -24,4 +23,4 @@ public: // AudioEffectInfo interface
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_AUDIO_EFFECT_INFO_H

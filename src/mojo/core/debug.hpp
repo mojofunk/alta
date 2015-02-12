@@ -30,4 +30,4 @@ namespace debug {
 
 #define MOJO_DEBUG(domain) if (mojo::debug::get_enabled(domain)) { mojo::debug::log_message (__FILE__, __LINE__, domain, ""); }
 
-#endif
+#endif // MOJO_CORE_DEBUG_H

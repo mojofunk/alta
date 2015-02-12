@@ -1,6 +1,5 @@
-
-#ifndef MOJO_ARCHIVE_MODULE
-#define MOJO_ARCHIVE_MODULE
+#ifndef MOJO_ARCHIVE_MODULE_H
+#define MOJO_ARCHIVE_MODULE_H
 
 #include "typedefs.hpp"
 #include "module.hpp"
@@ -24,4 +23,4 @@ public: // Interface
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_ARCHIVE_MODULE_H

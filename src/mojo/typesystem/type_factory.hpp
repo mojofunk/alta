@@ -1,5 +1,5 @@
-#ifndef MOJO_TYPE_FACTORY
-#define MOJO_TYPE_FACTORY
+#ifndef MOJO_TYPE_FACTORY_H
+#define MOJO_TYPE_FACTORY_H
 
 #include <string>
 #include <typeinfo>
@@ -27,4 +27,4 @@ protected:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_TYPE_FACTORY_H

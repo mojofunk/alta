@@ -1,7 +1,5 @@
-
-#ifndef MOJO_API_WORKER
-#define MOJO_API_WORKER
-
+#ifndef MOJO_API_WORKER_H
+#define MOJO_API_WORKER_H
 
 #include <atomic>
 #include <mutex>
@@ -56,4 +54,4 @@ protected:
 
 } // namespace mojo
 
-#endif // MOJO_API_WORKER
+#endif // MOJO_API_WORKER_H

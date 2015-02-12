@@ -1,5 +1,5 @@
-#ifndef MOJO_OBJECT
-#define MOJO_OBJECT
+#ifndef MOJO_OBJECT_H
+#define MOJO_OBJECT_H
 
 #include <mojo/core/change_set.hpp>
 #include <mojo/core/properties.hpp>
@@ -61,4 +61,4 @@ protected:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_OBJECT_H

@@ -1,6 +1,5 @@
-
-#ifndef MOJO_CORE_TYPES
-#define MOJO_CORE_TYPES
+#ifndef MOJO_CORE_TYPES_H
+#define MOJO_CORE_TYPES_H
 
 #include <inttypes.h>
 
@@ -12,4 +11,4 @@ typedef uint32_t    samplerate_t;
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_CORE_TYPES_H

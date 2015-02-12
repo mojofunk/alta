@@ -1,5 +1,5 @@
-#ifndef MOJO_GRAPH
-#define MOJO_GRAPH
+#ifndef MOJO_GRAPH_H
+#define MOJO_GRAPH_H
 
 #include <set>
 
@@ -43,4 +43,4 @@ private:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_GRAPH_H

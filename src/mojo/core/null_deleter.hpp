@@ -1,5 +1,5 @@
-#ifndef MOJO_NULL_DELETER
-#define MOJO_NULL_DELETER
+#ifndef MOJO_NULL_DELETER_H
+#define MOJO_NULL_DELETER_H
 
 namespace mojo {
 
@@ -14,4 +14,4 @@ struct null_deleter
 
 }
 
-#endif
+#endif // MOJO_NULL_DELETER_H

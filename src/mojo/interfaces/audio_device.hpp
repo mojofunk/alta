@@ -1,6 +1,5 @@
-
-#ifndef MOJO_AUDIO_DEVICE
-#define MOJO_AUDIO_DEVICE
+#ifndef MOJO_AUDIO_DEVICE_H
+#define MOJO_AUDIO_DEVICE_H
 
 #include "mojo/core/types.hpp"
 
@@ -73,4 +72,4 @@ public: // interface
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_AUDIO_DEVICE_H

@@ -1,6 +1,5 @@
-
-#ifndef MOJO_INTERFACES_TYPEDEFS
-#define MOJO_INTERFACES_TYPEDEFS
+#ifndef MOJO_INTERFACES_TYPEDEFS_H
+#define MOJO_INTERFACES_TYPEDEFS_H
 
 #include "mojo/core/smart_pointer_macros.hpp"
 #include "forward.hpp"
@@ -22,4 +21,4 @@ MOJO_DEFINE_ALL_TYPEDEFS(Module)
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_INTERFACES_TYPEDEFS_H

@@ -1,6 +1,5 @@
-
-#ifndef MOJO_APPLICATION
-#define MOJO_APPLICATION
+#ifndef MOJO_APPLICATION_H
+#define MOJO_APPLICATION_H
 
 #include <string>
 #include <memory>
@@ -242,4 +241,4 @@ private:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_APPLICATION_H

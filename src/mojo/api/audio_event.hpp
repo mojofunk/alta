@@ -1,5 +1,5 @@
-#ifndef MOJO_AUDIO_EVENT
-#define MOJO_AUDIO_EVENT
+#ifndef MOJO_AUDIO_EVENT_H
+#define MOJO_AUDIO_EVENT_H
 
 #include "event.hpp"
 
@@ -24,4 +24,4 @@ public:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_AUDIO_EVENT_H

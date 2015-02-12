@@ -1,6 +1,5 @@
-
-#ifndef MOJO_AUDIO_REGION_EVENT
-#define MOJO_AUDIO_REGION_EVENT
+#ifndef MOJO_AUDIO_REGION_EVENT_H
+#define MOJO_AUDIO_REGION_EVENT_H
 
 #include "typedefs.hpp"
 #include "audio_event.hpp"
@@ -40,4 +39,4 @@ private:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_AUDIO_REGION_EVENT_H

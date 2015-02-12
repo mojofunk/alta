@@ -1,6 +1,5 @@
-
-#ifndef MOJO_CHANGE
-#define MOJO_CHANGE
+#ifndef MOJO_CHANGE_H
+#define MOJO_CHANGE_H
 
 #include <cassert>
 
@@ -54,4 +53,4 @@ public:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_CHANGE_H

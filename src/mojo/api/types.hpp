@@ -1,5 +1,5 @@
-#ifndef MOJO_API_TYPES
-#define MOJO_API_TYPES
+#ifndef MOJO_API_TYPES_H
+#define MOJO_API_TYPES_H
 
 #include "mojo/core/types.hpp"
 
@@ -36,4 +36,4 @@ struct TrackOptions
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_API_TYPES_H

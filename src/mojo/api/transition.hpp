@@ -1,5 +1,5 @@
-#ifndef MOJO_TRANSITION
-#define MOJO_TRANSITION
+#ifndef MOJO_TRANSITION_H
+#define MOJO_TRANSITION_H
 
 /**
  * A transition is an event.
@@ -15,4 +15,4 @@ class transition {
 
 }
 
-#endif // MOJO_TRANSITION
+#endif // MOJO_TRANSITION_H

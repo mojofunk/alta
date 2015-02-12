@@ -1,6 +1,5 @@
-
-#ifndef MOJO_CHANGE_SET
-#define MOJO_CHANGE_SET
+#ifndef MOJO_CHANGE_SET_H
+#define MOJO_CHANGE_SET_H
 
 #include <set>
 
@@ -57,4 +56,4 @@ private:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_CHANGE_SET_H

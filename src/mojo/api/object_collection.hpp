@@ -1,6 +1,5 @@
-
-#ifndef MOJO_OBJECT_COLLECTION
-#define MOJO_OBJECT_COLLECTION
+#ifndef MOJO_OBJECT_COLLECTION_H
+#define MOJO_OBJECT_COLLECTION_H
 
 #include <list>
 
@@ -42,4 +41,4 @@ protected:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_OBJECT_COLLECTION_H

@@ -1,6 +1,5 @@
-
-#ifndef MOJO_AUDIO_CLIP
-#define MOJO_AUDIO_CLIP
+#ifndef MOJO_AUDIO_CLIP_H
+#define MOJO_AUDIO_CLIP_H
 
 #include "object.hpp"
 
@@ -54,4 +53,4 @@ private:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_AUDIO_CLIP_H

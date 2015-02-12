@@ -1,6 +1,5 @@
-
-#ifndef MOJO_PROJECT_IMPORT_MODULE
-#define MOJO_PROJECT_IMPORT_MODULE
+#ifndef MOJO_PROJECT_IMPORT_MODULE_H
+#define MOJO_PROJECT_IMPORT_MODULE_H
 
 #include <string>
 
@@ -41,4 +40,4 @@ public:
 
 }
 
-#endif
+#endif // MOJO_PROJECT_IMPORT_MODULE_H

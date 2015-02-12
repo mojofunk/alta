@@ -1,5 +1,5 @@
-#ifndef MOJO_TYPE_SYSTEM
-#define MOJO_TYPE_SYSTEM
+#ifndef MOJO_TYPE_SYSTEM_H
+#define MOJO_TYPE_SYSTEM_H
 
 #include <string>
 #include <typeinfo>
@@ -33,4 +33,4 @@ public:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_TYPE_SYSTEM_H

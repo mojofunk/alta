@@ -1,5 +1,5 @@
-#ifndef MOJO_API_FORWARD
-#define MOJO_API_FORWARD
+#ifndef MOJO_API_FORWARD_H
+#define MOJO_API_FORWARD_H
 
 namespace mojo {
 
@@ -27,4 +27,4 @@ class ApplicationData;
 
 };
 
-#endif
+#endif // MOJO_API_FORWARD_H

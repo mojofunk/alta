@@ -1,5 +1,5 @@
-#ifndef MOJO_AUDIO_TRACK
-#define MOJO_AUDIO_TRACK
+#ifndef MOJO_AUDIO_TRACK_H
+#define MOJO_AUDIO_TRACK_H
 
 #include "track.hpp"
 #include "typedefs.hpp"
@@ -48,4 +48,4 @@ private:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_AUDIO_TRACK_H

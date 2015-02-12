@@ -1,6 +1,5 @@
-
-#ifndef MOJO_CORE_SEMAPHORE
-#define MOJO_CORE_SEMAPHORE
+#ifndef MOJO_CORE_SEMAPHORE_H
+#define MOJO_CORE_SEMAPHORE_H
 
 #include <atomic>
 #include <mutex>
@@ -58,4 +57,4 @@ private:
 
 } // namespace mojo
 
-#endif // MOJO_CORE_SEMAPHORE
+#endif // MOJO_CORE_SEMAPHORE_H

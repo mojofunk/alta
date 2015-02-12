@@ -1,5 +1,5 @@
-#ifndef MOJO_TEMPLATE_TYPE_FACTORY
-#define MOJO_TEMPLATE_TYPE_FACTORY
+#ifndef MOJO_TEMPLATE_TYPE_FACTORY_H
+#define MOJO_TEMPLATE_TYPE_FACTORY_H
 
 #include "type_factory.hpp"
 
@@ -33,4 +33,4 @@ private:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_TEMPLATE_TYPE_FACTORY_H

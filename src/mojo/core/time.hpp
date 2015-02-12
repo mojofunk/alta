@@ -1,5 +1,5 @@
-#ifndef MOJO_CORE_TIME
-#define MOJO_CORE_TIME
+#ifndef MOJO_CORE_TIME_H
+#define MOJO_CORE_TIME_H
 
 #include <cstdint>
 
@@ -14,4 +14,4 @@ MOJO_API uint64_t get_monotonic_time ();
 
 }
 
-#endif
+#endif // MOJO_CORE_TIME_H

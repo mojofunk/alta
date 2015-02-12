@@ -1,6 +1,5 @@
-
-#ifndef MOJO_AUDIO_DRIVER_MODULE
-#define MOJO_AUDIO_DRIVER_MODULE
+#ifndef MOJO_AUDIO_DRIVER_MODULE_H
+#define MOJO_AUDIO_DRIVER_MODULE_H
 
 #include "typedefs.hpp"
 #include "module.hpp"
@@ -28,4 +27,4 @@ protected: // ctors
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_AUDIO_DRIVER_MODULE_H

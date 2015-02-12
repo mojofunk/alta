@@ -1,6 +1,5 @@
-
-#ifndef MOJO_AUDIO_FILE
-#define MOJO_AUDIO_FILE
+#ifndef MOJO_AUDIO_FILE_H
+#define MOJO_AUDIO_FILE_H
 
 #include "mojo/core/types.hpp"
 
@@ -43,4 +42,4 @@ protected:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_AUDIO_FILE_H

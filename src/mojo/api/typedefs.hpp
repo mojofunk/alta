@@ -1,6 +1,5 @@
-
-#ifndef MOJO_PROJECT_TYPEDEFS
-#define MOJO_PROJECT_TYPEDEFS
+#ifndef MOJO_PROJECT_TYPEDEFS_H
+#define MOJO_PROJECT_TYPEDEFS_H
 
 #include "mojo/core/smart_pointer_macros.hpp"
 
@@ -22,4 +21,4 @@ MOJO_DEFINE_ALL_TYPEDEFS(Track)
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_PROJECT_TYPEDEFS_H

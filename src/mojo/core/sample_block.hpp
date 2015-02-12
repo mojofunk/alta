@@ -1,6 +1,5 @@
-
-#ifndef MOJO_SAMPLE_BLOCK
-#define MOJO_SAMPLE_BLOCK
+#ifndef MOJO_SAMPLE_BLOCK_H
+#define MOJO_SAMPLE_BLOCK_H
 
 #include <vector>
 
@@ -21,4 +20,4 @@ void sample_blocks_silence (std::vector<float*>& blocks, size_t block_size);
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_SAMPLE_BLOCK_H

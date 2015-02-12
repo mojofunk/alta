@@ -1,6 +1,5 @@
-
-#ifndef MOJO_GLIB_LIBRARY
-#define MOJO_GLIB_LIBRARY
+#ifndef MOJO_GLIB_LIBRARY_H
+#define MOJO_GLIB_LIBRARY_H
 
 #include <gmodule.h>
 
@@ -38,4 +37,5 @@ private:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_GLIB_LIBRARY_H
+

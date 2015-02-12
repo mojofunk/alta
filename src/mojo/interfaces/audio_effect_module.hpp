@@ -1,6 +1,5 @@
-
-#ifndef MOJO_AUDIO_EFFECT_MODULE
-#define MOJO_AUDIO_EFFECT_MODULE
+#ifndef MOJO_AUDIO_EFFECT_MODULE_H
+#define MOJO_AUDIO_EFFECT_MODULE_H
 
 #include "mojo/core/types.hpp"
 
@@ -45,4 +44,4 @@ public: // Interface
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_AUDIO_EFFECT_MODULE_H

@@ -1,6 +1,5 @@
-
-#ifndef MOJO_INTERFACES_FORWARD
-#define MOJO_INTERFACES_FORWARD
+#ifndef MOJO_INTERFACES_FORWARD_H
+#define MOJO_INTERFACES_FORWARD_H
 
 namespace mojo {
 
@@ -19,4 +18,4 @@ class Module;
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_INTERFACES_FORWARD_H

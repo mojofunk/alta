@@ -1,6 +1,5 @@
-
-#ifndef MOJO_MODULE_UTILS
-#define MOJO_MODULE_UTILS
+#ifndef MOJO_MODULE_UTILS_H
+#define MOJO_MODULE_UTILS_H
 
 #include "mojo/interfaces/typedefs.hpp"
 
@@ -33,4 +32,4 @@ get_modules_of_type (const ModuleSPSet& modules)
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_MODULE_UTILS_H

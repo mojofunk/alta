@@ -1,6 +1,5 @@
-
-#ifndef MOJO_SEARCH_PATH
-#define MOJO_SEARCH_PATH
+#ifndef MOJO_SEARCH_PATH_H
+#define MOJO_SEARCH_PATH_H
 
 #include <string>
 
@@ -149,4 +148,4 @@ protected:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_SEARCH_PATH_H

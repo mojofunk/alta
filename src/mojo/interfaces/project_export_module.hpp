@@ -1,6 +1,5 @@
-
-#ifndef MOJO_PROJECT_EXPORT_MODULE
-#define MOJO_PROJECT_EXPORT_MODULE
+#ifndef MOJO_PROJECT_EXPORT_MODULE_H
+#define MOJO_PROJECT_EXPORT_MODULE_H
 
 #include <string>
 
@@ -41,4 +40,4 @@ public:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_PROJECT_EXPORT_MODULE_H

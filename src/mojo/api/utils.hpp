@@ -1,5 +1,5 @@
-#ifndef MOJO_API_UTILS
-#define MOJO_API_UTILS
+#ifndef MOJO_API_UTILS_H
+#define MOJO_API_UTILS_H
 
 #include "types.hpp"
 
@@ -13,4 +13,4 @@ std::string error_to_string (Error);
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_API_UTILS_H

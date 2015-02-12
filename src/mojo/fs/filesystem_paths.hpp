@@ -1,6 +1,5 @@
-
-#ifndef MOJO_FILESYSTEM_PATHS
-#define MOJO_FILESYSTEM_PATHS
+#ifndef MOJO_FILESYSTEM_PATHS_H
+#define MOJO_FILESYSTEM_PATHS_H
 
 #include "search_path.hpp"
 #include "filesystem.hpp"
@@ -19,4 +18,4 @@ namespace mojo {
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_FILESYSTEM_PATHS_H

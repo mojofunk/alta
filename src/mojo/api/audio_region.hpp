@@ -1,6 +1,5 @@
-
-#ifndef MOJO_AUDIO_REGION
-#define MOJO_AUDIO_REGION
+#ifndef MOJO_AUDIO_REGION_H
+#define MOJO_AUDIO_REGION_H
 
 #include "mojo/core/types.hpp"
 
@@ -52,4 +51,4 @@ private:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_AUDIO_REGION_H

@@ -1,5 +1,5 @@
-#ifndef MOJO_CORE_TIMING
-#define MOJO_CORE_TIMING
+#ifndef MOJO_CORE_TIMING_H
+#define MOJO_CORE_TIMING_H
 
 #include <cstdint>
 
@@ -159,4 +159,4 @@ private:
 
 } // namespace mojo
 
-#endif // __libpbd_timing_h__
+#endif // MOJO_CORE_TIMING_H

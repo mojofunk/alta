@@ -1,6 +1,5 @@
-
-#ifndef MOJO_AUDIO_FILE_MODULE
-#define MOJO_AUDIO_FILE_MODULE
+#ifndef MOJO_AUDIO_FILE_MODULE_H
+#define MOJO_AUDIO_FILE_MODULE_H
 
 #include <string>
 
@@ -53,4 +52,4 @@ protected: // constructors
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_AUDIO_FILE_MODULE_H

@@ -1,6 +1,5 @@
-
-#ifndef MOJO_TRACK
-#define MOJO_TRACK
+#ifndef MOJO_TRACK_H
+#define MOJO_TRACK_H
 
 #include "object.hpp"
 
@@ -45,4 +44,4 @@ public:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_TRACK_H

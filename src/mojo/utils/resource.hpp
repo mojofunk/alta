@@ -1,6 +1,5 @@
-
-#ifndef MOJO_RESOURCE
-#define MOJO_RESOURCE
+#ifndef MOJO_RESOURCE_H
+#define MOJO_RESOURCE_H
 
 #include <inttypes.h>
 
@@ -19,4 +18,4 @@ namespace mojo {
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_RESOURCE_H

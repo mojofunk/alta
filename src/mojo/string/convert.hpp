@@ -1,4 +1,3 @@
-
 #ifndef MOJO_STRING_CONVERT_H
 #define MOJO_STRING_CONVERT_H
 
