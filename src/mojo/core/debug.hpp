@@ -1,12 +1,8 @@
 #ifndef MOJO_CORE_DEBUG_H
 #define MOJO_CORE_DEBUG_H
 
-#include <iostream>
 #include <string>
 #include <vector>
-
-
-#include <glib.h>
 
 namespace mojo {
 
