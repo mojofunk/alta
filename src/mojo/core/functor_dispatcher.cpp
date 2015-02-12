@@ -1,7 +1,8 @@
+#include "functor_dispatcher.hpp"
 
 #include "mojo/core/debug.hpp"
 
-#include "functor_dispatcher.hpp"
+MOJO_DEBUG_DOMAIN(FUNCTOR_DISPATCHER);
 
 namespace mojo {
 
@@ -13,7 +14,7 @@ FunctorDispatcher::FunctorDispatcher ()
 void
 FunctorDispatcher::call_sync (const function_t& func)
 {
-	LOG;
+	MOJO_DEBUG(FUNCTOR_DISPATCHER);
 	queue (func);
 	iteration(true);
 }
@@ -21,7 +22,7 @@ FunctorDispatcher::call_sync (const function_t& func)
 void
 FunctorDispatcher::call_async (const function_t& func)
 {
-	LOG;
+	MOJO_DEBUG(FUNCTOR_DISPATCHER);
 	queue (func);
 	iteration(false);
 }
@@ -36,7 +37,7 @@ FunctorDispatcher::queue (const function_t& func)
 void
 FunctorDispatcher::do_work ()
 {
-	LOG;
+	MOJO_DEBUG(FUNCTOR_DISPATCHER);
 	process_queue();
 }
 
@@ -52,7 +53,7 @@ FunctorDispatcher::process_queue ()
 
 		// unlock while executing
 		lock.unlock ();
-		LOG;
+		MOJO_DEBUG(FUNCTOR_DISPATCHER);
 		func();
 		lock.lock ();
 	}
