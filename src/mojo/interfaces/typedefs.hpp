@@ -2,7 +2,7 @@
 #ifndef MOJO_INTERFACES_TYPEDEFS
 #define MOJO_INTERFACES_TYPEDEFS
 
-#include "mojo/core/macros.hpp"
+#include "mojo/core/smart_pointer_macros.hpp"
 #include "forward.hpp"
 
 namespace mojo {

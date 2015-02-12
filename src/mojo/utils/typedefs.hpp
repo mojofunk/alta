@@ -2,7 +2,7 @@
 #ifndef MOJO_UTILS_TYPEDEFS
 #define MOJO_UTILS_TYPEDEFS
 
-#include <mojo/core/macros.hpp>
+#include <mojo/core/smart_pointer_macros.hpp>
 
 #include "forward.hpp"
 
