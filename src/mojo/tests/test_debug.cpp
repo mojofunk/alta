@@ -13,7 +13,7 @@ MOJO_DEBUG_DOMAIN( TEST_DOMAIN_TWO );
 
 BOOST_AUTO_TEST_CASE( debug_simple_test )
 {
-	MOJO_DEBUG(TEST_DOMAIN_ONE, "First Debug Message");
+	MOJO_DEBUG_MSG(TEST_DOMAIN_ONE, "First Debug Message");
 
 	BOOST_CHECK(!mojo::debug::get_enabled(TEST_DOMAIN_ONE));
 	mojo::debug::set_enabled(TEST_DOMAIN_ONE, true);
@@ -22,12 +22,12 @@ BOOST_AUTO_TEST_CASE( debug_simple_test )
 	BOOST_CHECK(!mojo::debug::get_enabled(TEST_DOMAIN_ONE));
 	mojo::debug::set_enabled(TEST_DOMAIN_ONE, true);
 
-	MOJO_DEBUG(TEST_DOMAIN_ONE, "Second Debug Message");
-	MOJO_DEBUG(TEST_DOMAIN_TWO, "A Debug Message");
+	MOJO_DEBUG_MSG(TEST_DOMAIN_ONE, "Second Debug Message");
+	MOJO_DEBUG_MSG(TEST_DOMAIN_TWO, "A Debug Message");
 
 	mojo::debug::set_enabled(TEST_DOMAIN_TWO, true);
 
-	MOJO_DEBUG(TEST_DOMAIN_TWO, "A Debug Message");
+	MOJO_DEBUG_MSG(TEST_DOMAIN_TWO, "A Debug Message");
 
 }
 
