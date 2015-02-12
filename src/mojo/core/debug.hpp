@@ -23,9 +23,6 @@ namespace debug
 
 } // namespace mojo
 
-#define LOG \
-	std::cerr << G_STRFUNC << " " << std::endl;
-
 #define MOJO_DEBUG_DOMAIN(domain_name) namespace { uint32_t domain_name = mojo::debug::get_domain_index( # domain_name ); }
 
 #define MOJO_DEBUG_MSG(domain, str) if (mojo::debug::get_enabled(domain)) { mojo::debug::log (__FILE__, __LINE__, domain, str); }

@@ -23,9 +23,12 @@
 #include "mojo/interfaces/archive_module.hpp"
 
 #include "mojo/fs/filesystem_paths.hpp"
+#include "mojo/core/debug.hpp"
 
 #include "application_data.hpp"
 #include "audio_track.hpp"
+
+MOJO_DEBUG_DOMAIN(APPLICATION);
 
 namespace mojo {
 
@@ -44,7 +47,7 @@ Application::iteration (bool block)
 
 Application::Application ()
 {
-	LOG;
+	MOJO_DEBUG(APPLICATION);
 	data = std::unique_ptr<internal::ApplicationData>(new internal::ApplicationData);
 
 	register_types ();
@@ -54,20 +57,20 @@ Application::Application ()
 
 Application::~Application ()
 {
-	LOG;
+	MOJO_DEBUG(APPLICATION);
 }
 
 void
 Application::new_project ()
 {
-	LOG;
+	MOJO_DEBUG(APPLICATION);
 	get_instance().data->worker.call_async (boost::bind (&Application::new_project_internal, boost::ref(get_instance())));
 }
 
 void
 Application::open_project (const std::string& project_file)
 {
-	LOG;
+	MOJO_DEBUG(APPLICATION);
 	get_instance().data->worker.call_async (boost::bind (&Application::open_project_internal, boost::ref(get_instance()), project_file));
 }
 
@@ -99,7 +102,7 @@ Application::get_active_project()
 void
 Application::close_project (Project* p)
 {
-	LOG;
+	MOJO_DEBUG(APPLICATION);
 	get_instance().data->worker.call_async (boost::bind (&Application::close_project_internal, boost::ref(get_instance()), p));
 }
 
@@ -118,7 +121,7 @@ Application::connect_project_removed (const ProjectRemovedFunc& slot)
 void
 Application::add_track (Project* p, const TrackOptions& options)
 {
-	LOG;
+	MOJO_DEBUG(APPLICATION);
 	get_instance().data->worker.call_async (boost::bind (&Application::add_track_internal, boost::ref(get_instance()), p, options));
 }
 
