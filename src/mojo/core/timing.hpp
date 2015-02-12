@@ -1,4 +1,3 @@
-
 #ifndef MOJO_CORE_TIMING
 #define MOJO_CORE_TIMING
 
