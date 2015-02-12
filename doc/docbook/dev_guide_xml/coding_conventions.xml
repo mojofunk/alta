@@ -128,7 +128,8 @@ public:
     <para>
       Header include guards are used to ensure that a header file is not
       included more than once from a source file. The names used for the
-      guards should be uppercase with words separated by underscores.
+      guards should be uppercase with words separated by underscores
+      followed by a _H postfix.
     </para>
 
     <para>
@@ -137,10 +138,10 @@ public:
       would be the following:
     </para>
 <programlisting>
-#ifndef GEOM_POLYGON
-#define GEOM_POLYGON
+#ifndef GEOM_POLYGON_H
+#define GEOM_POLYGON_H
 ...
-#endif // GEOM_POLYGON
+#endif // GEOM_POLYGON_H
 	  </programlisting>
     <para>
       Using the prefix of the library name makes it less likely for there to
