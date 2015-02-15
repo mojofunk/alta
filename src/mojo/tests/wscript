@@ -34,7 +34,7 @@ def configure(conf):
 def build(ctx):
 	test_common = ctx(
 			features = 'cxx',
-			source = 'test_common.cpp',
+			source = ['test_common.cpp', 'example_application.cpp'],
 			includes ='. ../..',
 			defines = 'BOOST_TEST_DYN_LINK=1',
 			uselib = ['BOOST_UNIT_TEST_FRAMEWORK', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM', 'GLIB-2.0'],
