@@ -2,7 +2,6 @@
 #include "track_view.hpp"
 
 #include "app.hpp"
-#include "application_event_handler.hpp"
 #include "track_canvas.hpp"
 #include "track_view_item_factory.hpp"
 #include "track_list.hpp"
@@ -17,11 +16,11 @@ TrackView::TrackView(mojo::Project* p)
 	, m_track_list(new TrackList)
 	, m_canvas(new TrackCanvas())
 {
-	App::get_application_event_handler().signal_track_added().connect (
-			sigc::mem_fun (this, &TrackView::on_track_added));
+	//App::get_application_event_handler().signal_track_added().connect (
+	//		sigc::mem_fun (this, &TrackView::on_track_added));
 
-	App::get_application_event_handler().signal_track_removed().connect (
-			sigc::mem_fun (this, &TrackView::on_track_removed));
+	//App::get_application_event_handler().signal_track_removed().connect (
+	//		sigc::mem_fun (this, &TrackView::on_track_removed));
 
 	pack1 (*m_track_list);
 	pack2 (*m_canvas);

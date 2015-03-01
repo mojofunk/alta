@@ -8,8 +8,8 @@
 
 #include <mojo/mojo.hpp>
 
+#include "dispatcher.hpp"
 #include "project_objects.hpp"
-#include "application_event_handler.hpp"
 
 namespace ui {
 
@@ -49,18 +49,23 @@ public:
 
 	static void open_import_dialog ();
 
-	static ApplicationEventHandler& get_application_event_handler ();
-
 private:
 
 	App (int argc, char *argv[]);
 
 	~App ();
 
-        static void on_project_added (mojo::Project*);
+	static void on_project_added_handler (mojo::Project*);
 
-        static void on_project_removed (mojo::Project*);
+	static void on_project_removed_handler (mojo::Project*);
 
+	static void on_project_added (mojo::Project*);
+
+	static void on_project_removed (mojo::Project*);
+
+private:
+
+	static Dispatcher& get_dispatcher ();
 
 private: // member data
 
@@ -68,8 +73,7 @@ private: // member data
 
 	project_objects_set_t project_objs;
 
-	ApplicationEventHandler m_application_event_handler;
-
+	Dispatcher m_dispatcher;
 };
 
 }

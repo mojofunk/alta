@@ -2,17 +2,20 @@
 # encoding: utf-8
 # Tim Mayberry, 2008
 
+
 def init():
-	pass
+    pass
+
 
 def configure(conf):
-	print "configure ui"
+    print "configure ui"
+
 
 def build(ctx):
-	mojo_program = ctx(
-		features = "cxx cxxprogram",
-		source = ctx.path.ant_glob('*.cpp'),
-		includes ='..',
-		uselib = 'GTKMM-3.0 GOOCANVASMM-2.0 GTHREAD-2.0',
-		use = 'GLEAM MOJO',
-		target = ctx.env['APPNAME'])
+    mojo_program = ctx(
+        features="cxx cxxprogram",
+        source=ctx.path.ant_glob('*.cpp'),
+        includes='..',
+        uselib='GTKMM-3.0 GOOCANVASMM-2.0 GTHREAD-2.0 BOOST_SYSTEM',
+        use='GLEAM MOJO',
+        target=ctx.env['APPNAME'])

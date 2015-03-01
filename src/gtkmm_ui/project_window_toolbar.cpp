@@ -2,7 +2,6 @@
 #include "project_window_toolbar.hpp"
 
 #include "app.hpp"
-#include "application_event_handler.hpp"
 #include "transport_toolbar.hpp"
 
 #include "log.hpp"
@@ -21,8 +20,8 @@ ProjectWindowToolbar::ProjectWindowToolbar (mojo::Project* p)
 	m_activate_project_button.signal_toggled().connect (sigc::mem_fun (this,
 		&ProjectWindowToolbar::on_activate_project_button_toggled));
 
-	App::get_application_event_handler().signal_active_project_changed().connect (sigc::mem_fun (this,
-		&ProjectWindowToolbar::on_activate_project_changed));
+	//App::get_application_event_handler().signal_active_project_changed().connect (sigc::mem_fun (this,
+	//	&ProjectWindowToolbar::on_activate_project_changed));
 
 }
 

@@ -17,7 +17,7 @@ App::init (int argc, char *argv[])
 {
 	if (s_app) throw;
 
-	mojo::Application::init (argc, argv);
+	mojo::Application::get_instance ();
 
 	s_app = new App(argc, argv);
 }
@@ -26,23 +26,17 @@ void
 App::cleanup ()
 {
 	delete s_app;
-
-	mojo::Application::cleanup ();
 }
 
 App::App (int argc, char *argv[])
 {
-	m_application_event_handler.signal_project_added().connect (&App::on_project_added);
-	m_application_event_handler.signal_project_removed().connect (&App::on_project_removed);
-
-	// must add after connecting signals to ensure
-	// thread safety of signals?
-	mojo::Application::add_event_handler(&m_application_event_handler);
+	mojo::Application::connect_project_added (boost::bind (&App::on_project_added_handler, _1));
+	mojo::Application::connect_project_removed (boost::bind (&App::on_project_removed_handler, _1));
 }
 
 App::~App ()
 {
-	mojo::Application::remove_event_handler(&m_application_event_handler);
+
 }
 
 void
@@ -70,13 +64,25 @@ void
 App::new_project ()
 {
 	LOG;
-        mojo::Application::new_project ();
+	mojo::Application::new_project ();
+}
+
+void
+App::on_project_added_handler (mojo::Project* p)
+{
+	s_app->m_dispatcher.call_async (sigc::bind (sigc::ptr_fun (App::on_project_added), p));
+}
+
+void
+App::on_project_removed_handler (mojo::Project* p)
+{
+	s_app->m_dispatcher.call_sync (sigc::bind (sigc::ptr_fun (App::on_project_removed), p));
 }
 
 void
 App::on_project_added (mojo::Project* p)
 {
-        boost::shared_ptr<ProjectObjects> po(new ProjectObjects(p));
+	boost::shared_ptr<ProjectObjects> po(new ProjectObjects(p));
 
 	s_app->project_objs.insert (po);
 
@@ -107,13 +113,13 @@ App::close_project (mojo::Project* p)
 {
 	// TODO ask about saving
 	LOG;
-        mojo::Application::close_project (p);
+	mojo::Application::close_project (p);
 }
 
 void
 App::save_project (mojo::Project* p)
 {
-        mojo::Application::save_project (p);
+	mojo::Application::save_project (p);
 }
 
 void
@@ -149,12 +155,6 @@ App::open_import_dialog ()
 	LOG;
 
 	dialog.run();
-}
-
-ApplicationEventHandler&
-App::get_application_event_handler ()
-{
-	return s_app->m_application_event_handler;
 }
 
 } // namespace ui
