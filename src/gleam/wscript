@@ -2,25 +2,28 @@
 # encoding: utf-8
 # Tim Mayberry, 2008
 
-posix_files='''
+posix_files = '''
 posix_signals.cpp
 '''.split()
 
+
 def init():
-	pass
+    pass
+
 
 def configure(conf):
-	pass
+    pass
+
 
 def build(ctx):
-	gleam_lib = ctx(
-		features = "cxx cxxshlib",
-		includes = '. ..',
-		export_includes = '..', # this should probably be .
-		source = ctx.path.ant_glob('*.cpp', excl=posix_files),
-		uselib = ['GLIBMM-2.4'],
-		target = 'gleam',
-		name = 'GLEAM')
+    gleam_lib = ctx(
+        features="cxx cxxshlib",
+        includes='. ..',
+        export_includes='..',  # this should probably be .
+        source=ctx.path.ant_glob('*.cpp', excl=posix_files),
+        uselib=['GLIBMM-2.4'],
+        target='gleam',
+        name='GLEAM')
 
-        if ctx.env['BUILD_TESTS']:
-                ctx.recurse('tests')
+    if ctx.env['BUILD_TESTS']:
+        ctx.recurse('tests')

@@ -2,17 +2,18 @@
 # encoding: utf-8
 # Tim Mayberry, 2008
 
-tests='''
+tests = '''
 test_filesystem_paths
 '''.split()
 
+
 def build(ctx):
-	for test in tests:
-		test_program = ctx(
-			features = 'cxx cxxprogram',
-			source = test + '.cpp',
-			includes ='.',
-			defines = 'BOOST_TEST_DYN_LINK=1',
-			uselib = 'BOOST_UNIT_TEST_FRAMEWORK',
-			use ='GLEAM',
-			target = test)
+    for test in tests:
+        test_program = ctx(
+            features='cxx cxxprogram',
+            source=test + '.cpp',
+            includes='.',
+            defines='BOOST_TEST_DYN_LINK=1',
+            uselib='BOOST_UNIT_TEST_FRAMEWORK',
+            use='GLEAM',
+            target=test)

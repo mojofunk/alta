@@ -2,22 +2,25 @@
 # encoding: utf-8
 # Tim Mayberry, 2008
 
+
 def init():
-	pass
+    pass
+
 
 def configure(conf):
-	print "configure mojo"
+    print "configure mojo"
+
 
 def build(ctx):
-	mojo_lib = ctx(
-		features = "cxx cxxshlib",
-		includes = '. ..',
-		export_includes = '..', # this should probably be .
-		source = ctx.path.ant_glob('**/*.cpp', excl='tests'),
-		uselib = ['GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM'],
-		use = ['GLEAM'],
-		target = 'mojo',
-		name = 'MOJO')
+    mojo_lib = ctx(
+        features="cxx cxxshlib",
+        includes='. ..',
+        export_includes='..',  # this should probably be .
+        source=ctx.path.ant_glob('**/*.cpp', excl='tests'),
+        uselib=['GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM'],
+        use=['GLEAM'],
+        target='mojo',
+        name='MOJO')
 
-        if ctx.env['BUILD_TESTS']:
-                ctx.recurse('tests')
+    if ctx.env['BUILD_TESTS']:
+        ctx.recurse('tests')

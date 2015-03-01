@@ -2,18 +2,21 @@
 # encoding: utf-8
 # Tim Mayberry, 2008
 
+
 def init():
-	pass
+    pass
+
 
 def configure(conf):
-	print "configure SndfileAudioFile"
+    print "configure SndfileAudioFile"
+
 
 def build(ctx):
-	shlib = ctx(
-		features = "cxx cxxshlib",
-		includes = '.',
-		source = ctx.path.ant_glob('*.cpp'),
-		uselib = ['SNDFILE'],
-		use ='MOJO',
-		target = 'sndfile_audio_file',
-		name = 'SNDFILE_AUDIO_FILE')
+    shlib = ctx(
+        features="cxx cxxshlib",
+        includes='.',
+        source=ctx.path.ant_glob('*.cpp'),
+        uselib=['SNDFILE'],
+        use='MOJO',
+        target='sndfile_audio_file',
+        name='SNDFILE_AUDIO_FILE')

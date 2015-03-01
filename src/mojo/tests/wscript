@@ -2,7 +2,7 @@
 # encoding: utf-8
 # Tim Mayberry, 2008
 
-tests='''
+tests = '''
 test_application
 test_debug
 test_sequence
@@ -25,27 +25,38 @@ test_audio_driver_modules
 test_audio_effect_modules
 '''.split()
 
+
 def init():
-	pass
+    pass
+
 
 def configure(conf):
-	print "configure mojo tests"
+    print "configure mojo tests"
+
 
 def build(ctx):
-	test_common = ctx(
-			features = 'cxx',
-			source = ['test_common.cpp', 'example_application.cpp'],
-			includes ='. ../..',
-			defines = 'BOOST_TEST_DYN_LINK=1',
-			uselib = ['BOOST_UNIT_TEST_FRAMEWORK', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM', 'GLIB-2.0'],
-			use = 'MOJO',
-			name = 'MOJOTESTCOMMON')
-	for test in tests:
-		test_program = ctx(
-			features = 'cxx cxxprogram',
-			source = test + '.cpp',
-			includes ='. ../..',
-			defines = 'BOOST_TEST_DYN_LINK=1',
-			uselib = ['BOOST_UNIT_TEST_FRAMEWORK', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM', 'GLIB-2.0'],
-			use = ['MOJO', 'MOJOTESTCOMMON'],
-			target = test)
+    test_common = ctx(
+        features='cxx',
+        source=['test_common.cpp', 'example_application.cpp'],
+        includes='. ../..',
+        defines='BOOST_TEST_DYN_LINK=1',
+        uselib=[
+            'BOOST_UNIT_TEST_FRAMEWORK',
+            'BOOST_FILESYSTEM',
+            'BOOST_SYSTEM',
+            'GLIB-2.0'],
+        use='MOJO',
+        name='MOJOTESTCOMMON')
+    for test in tests:
+        test_program = ctx(
+            features='cxx cxxprogram',
+            source=test + '.cpp',
+            includes='. ../..',
+            defines='BOOST_TEST_DYN_LINK=1',
+            uselib=[
+                'BOOST_UNIT_TEST_FRAMEWORK',
+                'BOOST_FILESYSTEM',
+                'BOOST_SYSTEM',
+                'GLIB-2.0'],
+            use=['MOJO', 'MOJOTESTCOMMON'],
+            target=test)

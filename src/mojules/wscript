@@ -2,17 +2,19 @@
 # encoding: utf-8
 # Tim Mayberry, 2008
 
-subdirs='''
+subdirs = '''
 ArchiveModule
 AudioFileModule
 AudioDriverModule
 AudioEffectModule
 '''
 
+
 def configure(conf):
-	for dir in subdirs.split():
-		conf.recurse(dir)
+    for dir in subdirs.split():
+        conf.recurse(dir)
+
 
 def build(bld):
-	# process subfolders from here
-	bld.recurse(subdirs)
+    # process subfolders from here
+    bld.recurse(subdirs)

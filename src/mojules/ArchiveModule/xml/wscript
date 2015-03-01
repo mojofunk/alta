@@ -2,18 +2,21 @@
 # encoding: utf-8
 # Tim Mayberry, 2008
 
+
 def init():
-	pass
+    pass
+
 
 def configure(conf):
-	print "configure XMLArchive"
+    print "configure XMLArchive"
+
 
 def build(ctx):
-	shlib = ctx(
-		features = "cxx cxxshlib",
-		includes = '.',
-		source = ctx.path.ant_glob('*.cpp'),
-		uselib ='GLIB-2.0',
-		use ='MOJO',
-		target = 'xml_archive',
-		name = 'XML_ARCHIVE')
+    shlib = ctx(
+        features="cxx cxxshlib",
+        includes='.',
+        source=ctx.path.ant_glob('*.cpp'),
+        uselib='GLIB-2.0',
+        use='MOJO',
+        target='xml_archive',
+        name='XML_ARCHIVE')

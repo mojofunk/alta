@@ -2,18 +2,21 @@
 # encoding: utf-8
 # Tim Mayberry, 2008
 
+
 def init():
-	pass
+    pass
+
 
 def configure(conf):
-	print "configure JACKAudioDriver"
+    print "configure JACKAudioDriver"
+
 
 def build(ctx):
-	shlib = ctx(
-		features = "cxx cxxshlib",
-		includes = '.',
-		source = ctx.path.ant_glob('*.cpp'),
-		uselib = ['JACK'],
-		use ='MOJO',
-		target = 'jack_audio_driver',
-		name = 'JACK_AUDIO_DRIVER')
+    shlib = ctx(
+        features="cxx cxxshlib",
+        includes='.',
+        source=ctx.path.ant_glob('*.cpp'),
+        uselib=['JACK'],
+        use='MOJO',
+        target='jack_audio_driver',
+        name='JACK_AUDIO_DRIVER')
