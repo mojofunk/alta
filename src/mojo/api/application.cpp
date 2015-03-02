@@ -1,6 +1,9 @@
 #include "application.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/tokenizer.hpp>
+
+#include "gleam/utils.hpp"
 
 #include "mojo/core/debug.hpp"
 #include "mojo/core/module_utils.hpp"
@@ -30,6 +33,25 @@
 
 MOJO_DEBUG_DOMAIN(APPLICATION);
 
+#ifndef NDEBUG
+namespace {
+
+void
+set_debugging_from_env_var ()
+{
+	using tokenizer = boost::tokenizer<boost::char_separator<char> >;
+	boost::char_separator<char> sep (",");
+	tokenizer tokens (gleam::getenv("MOJO_DEBUG"), sep);
+
+	for (auto& t : tokens) {
+		mojo::debug::set_enabled (
+			mojo::debug::get_domain_index(t.c_str()), true);
+	}
+}
+
+}
+#endif
+
 namespace mojo {
 
 mojo::Application&
@@ -51,6 +73,10 @@ Application::Application ()
 	data = std::unique_ptr<internal::ApplicationData>(new internal::ApplicationData);
 
 	register_types ();
+
+#ifndef NDEBUG
+	set_debugging_from_env_var ();
+#endif
 
 	data->m_modules = discover_modules (module_search_path ());
 }
