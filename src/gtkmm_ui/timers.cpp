@@ -17,8 +17,7 @@
 
 */
 
-#include <gleam/standard_timer.hpp>
-#include <gleam/blink_timer.hpp>
+#include <gleam/timer.hpp>
 
 #include "timers.hpp"
 
