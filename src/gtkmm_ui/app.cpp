@@ -157,4 +157,10 @@ App::open_import_dialog ()
 	dialog.run();
 }
 
+Dispatcher&
+App::get_dispatcher ()
+{
+	return s_app->m_dispatcher;
+}
+
 } // namespace ui

@@ -198,9 +198,9 @@ public: // public API
 
 public: // signals
 
-	using ProjectAddedSyncSignal = signals::signal<void (Project*)>;
+	using ProjectAddedASyncSignal = signals::signal<void (Project*)>;
 	using ProjectRemovedSyncSignal = signals::signal<void (Project*)>;
-	using ProjectAddedFunc = ProjectAddedSyncSignal::slot_type;
+	using ProjectAddedFunc = ProjectAddedASyncSignal::slot_type;
 	using ProjectRemovedFunc = ProjectRemovedSyncSignal::slot_type;
 
 	static signals::connection connect_project_added (const ProjectAddedFunc& slot);

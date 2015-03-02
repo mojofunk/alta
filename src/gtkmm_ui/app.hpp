@@ -63,7 +63,7 @@ private:
 
 	static void on_project_removed (mojo::Project*);
 
-private:
+public:
 
 	static Dispatcher& get_dispatcher ();
 
@@ -74,6 +74,7 @@ private: // member data
 	project_objects_set_t project_objs;
 
 	Dispatcher m_dispatcher;
+
 };
 
 }

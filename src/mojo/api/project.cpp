@@ -42,12 +42,28 @@ void
 Project::add_track (const TrackSP& track)
 {
 	m_tracks.insert(track);
+
+	m_track_added (track.get());
 }
 
 void
 Project::remove_track (const TrackSP& track)
 {
 	m_tracks.erase(m_tracks.find(track));
+
+	m_track_removed (track.get());
+}
+
+signals::connection
+Project::connect_track_added (const TrackAddedFunc& slot)
+{
+	return m_track_added.connect(slot);
+}
+
+signals::connection
+Project::connect_track_removed (const TrackRemovedFunc& slot)
+{
+	return m_track_removed.connect(slot);
 }
 
 } // namespace mojo

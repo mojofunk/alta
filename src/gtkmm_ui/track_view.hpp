@@ -38,9 +38,13 @@ public: // constructors
 
 private: // signal handlers
 
-	void on_track_added (mojo::Project*, mojo::Track*);
+	void on_track_added_handler (mojo::Track*);
 
-	void on_track_removed (mojo::Project*, mojo::Track*);
+	void on_track_removed_handler (mojo::Track*);
+
+	void on_track_added (mojo::Track*);
+
+	void on_track_removed (mojo::Track*);
 
 	void on_track_canvas_item_height_changed (TrackViewItemSPtr);
 

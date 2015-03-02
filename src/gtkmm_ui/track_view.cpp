@@ -1,5 +1,6 @@
-
 #include "track_view.hpp"
+
+#include <mojo/api/project.hpp>
 
 #include "app.hpp"
 #include "track_canvas.hpp"
@@ -16,11 +17,11 @@ TrackView::TrackView(mojo::Project* p)
 	, m_track_list(new TrackList)
 	, m_canvas(new TrackCanvas())
 {
-	//App::get_application_event_handler().signal_track_added().connect (
-	//		sigc::mem_fun (this, &TrackView::on_track_added));
+	p->connect_track_added(
+		boost::bind (&TrackView::on_track_added_handler, this, _1));
 
-	//App::get_application_event_handler().signal_track_removed().connect (
-	//		sigc::mem_fun (this, &TrackView::on_track_removed));
+	p->connect_track_removed(
+		boost::bind (&TrackView::on_track_removed_handler, this, _1));
 
 	pack1 (*m_track_list);
 	pack2 (*m_canvas);
@@ -32,10 +33,20 @@ TrackView::~TrackView ()
 }
 
 void
-TrackView::on_track_added (mojo::Project* p, mojo::Track* track)
+TrackView::on_track_added_handler (mojo::Track* track)
 {
-	if (p != m_project) return;
+	App::get_dispatcher().call_async (sigc::bind (sigc::mem_fun (this, &TrackView::on_track_added), track));
+}
 
+void
+TrackView::on_track_removed_handler (mojo::Track* track)
+{
+	App::get_dispatcher().call_sync (sigc::bind (sigc::mem_fun (this, &TrackView::on_track_removed), track));
+}
+
+void
+TrackView::on_track_added (mojo::Track* track)
+{
 	TrackViewItemSPtr tvi(TrackViewItemFactory::create (track));
 
 	if (!tvi) throw; // do something smart
@@ -47,9 +58,8 @@ TrackView::on_track_added (mojo::Project* p, mojo::Track* track)
 }
 
 void
-TrackView::on_track_removed (mojo::Project* p, mojo::Track* track)
+TrackView::on_track_removed (mojo::Track* track)
 {
-	if (p != m_project) return;
 
 	LOG;
 }

@@ -59,17 +59,19 @@ public: // convenience methods
 
 public: // signals
 
-	/**
-	SignalConnectionUP connect_on_track_added (ContextSP,
-				track_added_function);
+	using TrackAddedASyncSignal = signals::signal<void (Track*)>;
+	using TrackRemovedSyncSignal = signals::signal<void (Track*)>;
+	using TrackAddedFunc = TrackAddedASyncSignal::slot_type;
+	using TrackRemovedFunc = TrackRemovedSyncSignal::slot_type;
 
-	SignalConnectionUP connect_on_track_removed (ContextSP,
-				track_added_function);
-	*/
+	signals::connection connect_track_added (const TrackAddedFunc& slot);
+
+	signals::connection connect_track_removed (const TrackRemovedFunc& slot);
 
 private: // signal members
 
-	//Signal<void(TrackSP)>
+	TrackAddedASyncSignal       m_track_added;
+	TrackRemovedSyncSignal      m_track_removed;
 
 private: // member data
 
