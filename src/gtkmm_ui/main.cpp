@@ -1,8 +1,6 @@
 
 #include <gtkmm.h>
 
-#include <mojo/core/debug.hpp>
-
 #include "app.hpp"
 
 using namespace ui;
