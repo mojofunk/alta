@@ -28,6 +28,11 @@ def options(opt):
         action='store_true',
         default=False,
         help='Enable Testsuite')
+    opt.add_option(
+        '--optimize',
+        action='store_true',
+        default=False,
+        help='Enable Optimization')
 
 
 def _check_required_deps(conf, deps):
@@ -42,6 +47,10 @@ def set_compiler_flags(conf):
     cxx_flags.append('-std=c++11')
 
     conf.env.append_value('CXXFLAGS', cxx_flags)
+
+    if conf.options.optimize:
+        conf.env.append_value('CFLAGS', '-DNDEBUG')
+        conf.env.append_value('CXXFLAGS', '-DNDEBUG')
 
 
 def display_config(conf):
