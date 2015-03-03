@@ -8,7 +8,7 @@
 
 #include "mojo/core/module_utils.hpp"
 
-#include "mojo/fs/filesystem_paths.hpp"
+#include "mojo/core/filesystem/filesystem_paths.hpp"
 
 #include "mojo/interfaces/audio_file_module.hpp"
 

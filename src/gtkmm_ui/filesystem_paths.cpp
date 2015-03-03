@@ -4,7 +4,7 @@
 #include <gleam/filesystem_paths.hpp>
 #include <gleam/utils.hpp>
 
-#include "mojo/fs/file_utils.hpp"
+#include "mojo/core/filesystem/file_utils.hpp"
 
 namespace ui {
 

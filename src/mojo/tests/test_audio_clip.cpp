@@ -7,7 +7,7 @@
 // for command line args
 #include <boost/test/framework.hpp>
 
-#include "mojo/fs/file_utils.hpp"
+#include "mojo/core/filesystem/file_utils.hpp"
 
 #include "mojo/application/project_directory.hpp"
 #include "mojo/application/application.hpp"

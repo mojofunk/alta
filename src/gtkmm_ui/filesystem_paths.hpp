@@ -3,7 +3,7 @@
 #define UI_FILESYSTEM_PATHS
 
 // this needs to be private or in another lib
-#include <mojo/fs/search_path.hpp>
+#include <mojo/core/filesystem/search_path.hpp>
 
 namespace ui {
 

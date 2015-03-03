@@ -25,7 +25,7 @@
 #include "mojo/interfaces/archive.hpp"
 #include "mojo/interfaces/archive_module.hpp"
 
-#include "mojo/fs/filesystem_paths.hpp"
+#include "mojo/core/filesystem/filesystem_paths.hpp"
 #include "mojo/core/debug.hpp"
 
 #include "application_data.hpp"

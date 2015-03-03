@@ -1,7 +1,7 @@
 #ifndef MOJO_ARCHIVE_H
 #define MOJO_ARCHIVE_H
 
-#include "mojo/fs/filesystem.hpp"
+#include "mojo/core/filesystem/filesystem.hpp"
 
 #include "mojo/core/properties.hpp"
 

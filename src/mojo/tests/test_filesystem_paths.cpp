@@ -4,7 +4,7 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
 
-#include "mojo/fs/filesystem_paths.hpp"
+#include "mojo/core/filesystem/filesystem_paths.hpp"
 
 using namespace boost::unit_test;
 using namespace std;

@@ -5,7 +5,7 @@
 #include <string>
 //#include <cstddef> // for std::size_t
 
-#include "mojo/fs/filesystem.hpp"
+#include "mojo/core/filesystem/filesystem.hpp"
 
 namespace mojo {
 

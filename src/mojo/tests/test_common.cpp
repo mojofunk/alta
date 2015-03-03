@@ -4,7 +4,7 @@
 
 #include "gleam/utils.hpp"
 
-#include "mojo/fs/filesystem_paths.hpp"
+#include "mojo/core/filesystem/filesystem_paths.hpp"
 
 #include "test_common.hpp"
 

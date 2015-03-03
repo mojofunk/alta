@@ -6,7 +6,7 @@
 
 #include "mojo/core/visibility.hpp"
 
-#include "mojo/fs/file_utils.hpp"
+#include "mojo/core/filesystem/file_utils.hpp"
 
 #include "mojo/utils/library.hpp"
 

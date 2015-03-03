@@ -3,8 +3,8 @@
 
 #include "mojo/interfaces/typedefs.hpp"
 
-#include "mojo/fs/filesystem.hpp"
-#include "mojo/fs/search_path.hpp"
+#include "mojo/core/filesystem/filesystem.hpp"
+#include "mojo/core/filesystem/search_path.hpp"
 
 namespace mojo {
 

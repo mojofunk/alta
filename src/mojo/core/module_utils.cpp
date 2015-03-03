@@ -1,6 +1,6 @@
 #include "mojo/interfaces/module.hpp"
 
-#include "mojo/fs/file_utils.hpp"
+#include "mojo/core/filesystem/file_utils.hpp"
 
 #include "mojo/utils/library.hpp"
 

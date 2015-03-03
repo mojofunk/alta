@@ -4,8 +4,8 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
 
-#include "mojo/fs/filesystem.hpp"
-#include "mojo/fs/file_utils.hpp"
+#include "mojo/core/filesystem/filesystem.hpp"
+#include "mojo/core/filesystem/file_utils.hpp"
 
 #include "mojo/application/project_directory.hpp"
 
