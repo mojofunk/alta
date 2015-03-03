@@ -4,10 +4,10 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
 
-#include "mojo/api/audio_event.hpp"
-#include "mojo/api/audio_sequence.hpp"
-#include "mojo/api/audio_track.hpp"
-#include "mojo/api/project.hpp"
+#include "mojo/application/audio_event.hpp"
+#include "mojo/application/audio_sequence.hpp"
+#include "mojo/application/audio_track.hpp"
+#include "mojo/application/project.hpp"
 
 #include <glib.h>
 

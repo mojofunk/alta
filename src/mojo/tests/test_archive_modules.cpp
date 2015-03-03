@@ -9,7 +9,7 @@
 #include "mojo/interfaces/archive_module.hpp"
 #include "mojo/interfaces/archive.hpp"
 
-#include "mojo/api/application.hpp"
+#include "mojo/application/application.hpp"
 
 #include "mojo/core/string/convert.hpp"
 

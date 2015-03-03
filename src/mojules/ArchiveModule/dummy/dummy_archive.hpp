@@ -4,8 +4,8 @@
 
 #include "mojo/interfaces/archive.hpp"
 
-#include "mojo/api/typedefs.hpp"
-#include "mojo/api/object_collection.hpp"
+#include "mojo/application/typedefs.hpp"
+#include "mojo/application/object_collection.hpp"
 
 namespace mojo {
 

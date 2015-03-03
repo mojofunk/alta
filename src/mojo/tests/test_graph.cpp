@@ -31,7 +31,7 @@ graph_contains_node (Node*)
 	return true;
 }
 
-BOOST_AUTO_TEST_CASE( test_graph_api )
+BOOST_AUTO_TEST_CASE( test_graph_application )
 {
 	Graph g;
 	

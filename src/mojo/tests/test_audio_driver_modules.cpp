@@ -11,7 +11,7 @@
 #include "mojo/interfaces/audio_device.hpp"
 #include "mojo/interfaces/audio_driver_module.hpp"
 
-#include "mojo/api/application.hpp"
+#include "mojo/application/application.hpp"
 
 using namespace boost::unit_test;
 using namespace std;

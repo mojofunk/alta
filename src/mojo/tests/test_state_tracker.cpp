@@ -4,8 +4,8 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
 
-#include "mojo/api/typedefs.hpp"
-#include "mojo/api/state_tracker.hpp"
+#include "mojo/application/typedefs.hpp"
+#include "mojo/application/state_tracker.hpp"
 
 using namespace boost::unit_test;
 using namespace std;

@@ -6,7 +6,7 @@
 
 #include "mojo/core/string/convert.hpp"
 
-#include "mojo/api/object.hpp"
+#include "mojo/application/object.hpp"
 
 #include "dummy_archive.hpp"
 

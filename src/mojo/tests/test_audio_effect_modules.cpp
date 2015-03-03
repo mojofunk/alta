@@ -7,7 +7,7 @@
 // for command line args
 #include <boost/test/framework.hpp>
 
-#include "mojo/api/application.hpp"
+#include "mojo/application/application.hpp"
 
 #include "mojo/interfaces/audio_effect.hpp"
 #include "mojo/interfaces/audio_effect_info.hpp"

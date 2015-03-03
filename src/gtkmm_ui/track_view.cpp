@@ -1,6 +1,6 @@
 #include "track_view.hpp"
 
-#include <mojo/api/project.hpp>
+#include <mojo/application/project.hpp>
 
 #include "app.hpp"
 #include "track_canvas.hpp"

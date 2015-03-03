@@ -16,7 +16,7 @@
 
 #include "mojo/fs/project_directory.hpp"
 
-#include "mojo/api/application.hpp"
+#include "mojo/application/application.hpp"
 
 #include "test_common.hpp"
 

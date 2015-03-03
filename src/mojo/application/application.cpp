@@ -13,11 +13,11 @@
 
 #include "mojo/core/type_names.hpp"
 
-#include "mojo/api/object_collection.hpp"
-#include "mojo/api/audio_track.hpp"
-#include "mojo/api/midi_track.hpp"
-#include "mojo/api/audio_sequence.hpp"
-#include "mojo/api/audio_event.hpp"
+#include "mojo/application/object_collection.hpp"
+#include "mojo/application/audio_track.hpp"
+#include "mojo/application/midi_track.hpp"
+#include "mojo/application/audio_sequence.hpp"
+#include "mojo/application/audio_event.hpp"
 
 #include "mojo/interfaces/audio_file_module.hpp"
 #include "mojo/interfaces/audio_driver_module.hpp"
