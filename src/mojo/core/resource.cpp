@@ -1,19 +1,21 @@
+#include "resource.hpp"
+
 #ifdef _WIN32
 #include <stdio.h>
-#else
+#else // linux
+#include <unistd.h>
 #include <sys/time.h>
 #include <sys/resource.h>
 #endif
 
-#include "resource.hpp"
+#include <limits>
 
 namespace mojo {
 
 bool
 get_resource_limit (ResourceType resource, ResourceLimit& limit)
 {
-	if (resource == OpenFiles)
-	{
+	if (resource == OpenFiles) {
 #ifdef _WIN32
 		limit.current_limit = _getmaxstdio();
 		limit.max_limit = 2048;
@@ -25,6 +27,21 @@ get_resource_limit (ResourceType resource, ResourceLimit& limit)
 			limit.max_limit = rl.rlim_max;
 			return true;
 		}
+#endif
+	} else if (resource == MemLock) {
+#ifdef __linux__
+	struct rlimit rl;
+
+	if (getrlimit (RLIMIT_MEMLOCK, &rl) != 0) {
+		return false;
+	}
+
+	if (rl.rlim_cur != RLIM_INFINITY) {
+		return std::numeric_limits<int64_t>::max();
+	}
+
+	limit.current_limit = rl.rlim_cur;
+	limit.max_limit = rl.rlim_max;
 #endif
 	}
 
@@ -53,6 +70,22 @@ set_resource_limit (ResourceType resource, const ResourceLimit& limit)
 	}
 
 	return false;
+}
+
+int64_t
+physical_memory_size ()
+{
+
+#ifdef __linux__
+	long pages, page_size;
+
+	if ((page_size = sysconf (_SC_PAGESIZE)) < 0 || (pages = sysconf (_SC_PHYS_PAGES)) < 0) {
+		return 0;
+	}
+	return (int64_t) pages * (int64_t) page_size;
+#endif
+
+	return 0;
 }
 
 } // namespace mojo

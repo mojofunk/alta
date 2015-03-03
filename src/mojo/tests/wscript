@@ -5,6 +5,7 @@
 tests = '''
 test_application
 test_debug
+test_resource
 test_sequence
 test_spinwait
 test_state_tracker
