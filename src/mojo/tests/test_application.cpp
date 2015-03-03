@@ -9,7 +9,7 @@
 
 #include "mojo/mojo.hpp"
 
-#include "mojo/interfaces/module.hpp"
+#include "mojo/core/modules/module.hpp"
 
 #include "example_application.hpp"
 

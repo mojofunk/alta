@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "module.hpp"
+#include "mojo/core/modules/module.hpp"
 
 namespace mojo {
 

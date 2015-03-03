@@ -2,7 +2,7 @@
 #define MOJO_ARCHIVE_MODULE_H
 
 #include "typedefs.hpp"
-#include "module.hpp"
+#include "mojo/core/modules/module.hpp"
 
 namespace mojo {
 

@@ -2,7 +2,7 @@
 #define MOJO_AUDIO_DRIVER_MODULE_H
 
 #include "typedefs.hpp"
-#include "module.hpp"
+#include "mojo/core/modules/module.hpp"
 
 namespace mojo {
 

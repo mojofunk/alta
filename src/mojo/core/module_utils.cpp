@@ -1,4 +1,4 @@
-#include "mojo/interfaces/module.hpp"
+#include "mojo/core/modules/module.hpp"
 
 #include "mojo/core/filesystem/file_utils.hpp"
 
