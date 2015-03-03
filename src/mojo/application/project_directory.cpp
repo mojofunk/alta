@@ -57,7 +57,7 @@ ProjectDirectory::peak_path () const
 const vector<fs::path>
 ProjectDirectory::sub_directories () const
 {
-	vector<fs::path> tmp_paths; 
+	vector<fs::path> tmp_paths;
 
 	tmp_paths.push_back ( audiofiles_path () );
 	tmp_paths.push_back ( peak_path () );

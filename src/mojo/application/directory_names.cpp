@@ -2,7 +2,7 @@
 #include "directory_names.hpp"
 
 namespace mojo {
- 
+
 const char * const template_dir_name = "templates";
 
 const char * const mojo_dir_name = "mojo";

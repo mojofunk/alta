@@ -8,8 +8,8 @@
 #include <boost/test/framework.hpp>
 
 #include "mojo/fs/file_utils.hpp"
-#include "mojo/fs/project_directory.hpp"
 
+#include "mojo/application/project_directory.hpp"
 #include "mojo/application/application.hpp"
 
 #include "test_common.hpp"
