@@ -7,7 +7,7 @@
 #include <boost/test/framework.hpp>
 
 #include "mojo/core/resource.hpp"
-#include "mojo/string/compose.hpp"
+#include "mojo/core/string/compose.hpp"
 
 #include "test_common.hpp"
 

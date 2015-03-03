@@ -11,7 +11,7 @@
 
 #include "mojo/api/application.hpp"
 
-#include "mojo/string/convert.hpp"
+#include "mojo/core/string/convert.hpp"
 
 #include <glib.h>
 

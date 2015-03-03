@@ -4,7 +4,7 @@
 #include <boost/test/unit_test_log.hpp>
 #include <boost/test/floating_point_comparison.hpp>
 
-#include "mojo/string/convert.hpp"
+#include "mojo/core/string/convert.hpp"
 
 using namespace boost::unit_test;
 using namespace std;

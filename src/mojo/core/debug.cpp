@@ -4,7 +4,7 @@
 #include <map>
 #include <vector>
 
-#include "mojo/string/compose.hpp"
+#include "mojo/core/string/compose.hpp"
 
 namespace mojo {
 
