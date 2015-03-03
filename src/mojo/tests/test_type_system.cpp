@@ -12,7 +12,7 @@
 #include "mojo/application/audio_track.hpp"
 #include "mojo/application/midi_track.hpp"
 
-#include "mojo/typesystem/type_system.hpp"
+#include "mojo/core/typesystem/type_system.hpp"
 
 
 using namespace boost::unit_test;

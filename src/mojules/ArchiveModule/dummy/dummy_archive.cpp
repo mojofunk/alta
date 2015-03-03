@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 
-#include "mojo/typesystem/type_system.hpp"
+#include "mojo/core/typesystem/type_system.hpp"
 
 #include "mojo/core/string/convert.hpp"
 
