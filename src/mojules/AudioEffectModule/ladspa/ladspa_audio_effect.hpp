@@ -6,7 +6,7 @@
 
 #include "mojo/interfaces/audio_effect.hpp"
 
-#include "mojo/utils/typedefs.hpp"
+#include "mojo/core/modules/typedefs.hpp"
 
 #include "ladspa_typedefs.hpp"
 

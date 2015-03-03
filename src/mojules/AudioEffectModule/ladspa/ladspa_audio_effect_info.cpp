@@ -1,6 +1,6 @@
 #include <ladspa.h>
 
-#include "mojo/utils/library.hpp"
+#include "mojo/core/modules/library.hpp"
 
 #include "ladspa_audio_effect_info.hpp"
 

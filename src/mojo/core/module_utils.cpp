@@ -2,7 +2,7 @@
 
 #include "mojo/core/filesystem/file_utils.hpp"
 
-#include "mojo/utils/library.hpp"
+#include "mojo/core/modules/library.hpp"
 
 #include "module_utils.hpp"
 
