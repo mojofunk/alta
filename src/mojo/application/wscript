@@ -46,7 +46,7 @@ def build(bld):
                           '**/*.cpp',
                           excl='mojo-application.cpp'),
                       uselib=uselibs,
-                      use=['GLEAM'],
+                      use=['GLEAM', 'MOJO_CORE_SHARED'],
                       target='mojo-application',
                       name='MOJO_APPLICATION_SHARED')
 
@@ -57,6 +57,6 @@ def build(bld):
                           '**/*.cpp',
                           excl='mojo-application.cpp'),
                       uselib=uselibs,
-                      use=['GLEAM'],
+                      use=['GLEAM', 'MOJO_CORE_STATIC'],
                       target='mojo-application',
-                      name='MOJO_APPLICATION_SHARED')
+                      name='MOJO_APPLICATION_STATIC')

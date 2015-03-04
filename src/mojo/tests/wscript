@@ -26,6 +26,13 @@ test_audio_driver_modules
 test_audio_effect_modules
 '''.split()
 
+uselibs = [
+    'BOOST_UNIT_TEST_FRAMEWORK',
+    'BOOST_FILESYSTEM',
+    'BOOST_SYSTEM',
+    'GLIB-2.0',
+    'GMODULE-2.0']
+
 
 def init():
     pass
@@ -40,11 +47,7 @@ def build_shared(bld):
         source=['test_common.cpp', 'example_application.cpp'],
         includes='.',
         defines='BOOST_TEST_DYN_LINK=1',
-        uselib=[
-            'BOOST_UNIT_TEST_FRAMEWORK',
-            'BOOST_FILESYSTEM',
-            'BOOST_SYSTEM',
-            'GLIB-2.0'],
+        uselib=uselibs,
         use=[
             'MOJO_CORE_SHARED',
             'MOJO_ENGINE_SHARED',
@@ -56,11 +59,7 @@ def build_shared(bld):
             source=test + '.cpp',
             includes='.',
             defines='BOOST_TEST_DYN_LINK=1',
-            uselib=[
-                'BOOST_UNIT_TEST_FRAMEWORK',
-                'BOOST_FILESYSTEM',
-                'BOOST_SYSTEM',
-                'GLIB-2.0'],
+            uselib=uselibs,
             use=[
                 'MOJO_CORE_SHARED',
                 'MOJO_ENGINE_SHARED',
@@ -74,11 +73,7 @@ def build_static(bld):
         source=['test_common.cpp', 'example_application.cpp'],
         includes='.',
         defines='BOOST_TEST_DYN_LINK=1',
-        uselib=[
-            'BOOST_UNIT_TEST_FRAMEWORK',
-            'BOOST_FILESYSTEM',
-            'BOOST_SYSTEM',
-            'GLIB-2.0'],
+        uselib=uselibs,
         use=[
             'MOJO_CORE_STATIC',
             'MOJO_ENGINE_STATIC',
@@ -90,11 +85,7 @@ def build_static(bld):
             source=test + '.cpp',
             includes='.',
             defines='BOOST_TEST_DYN_LINK=1',
-            uselib=[
-                'BOOST_UNIT_TEST_FRAMEWORK',
-                'BOOST_FILESYSTEM',
-                'BOOST_SYSTEM',
-                'GLIB-2.0'],
+            uselib=uselibs,
             use=[
                 'MOJO_CORE_STATIC',
                 'MOJO_ENGINE_STATIC',

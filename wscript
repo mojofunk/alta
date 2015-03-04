@@ -48,6 +48,11 @@ def options(opt):
         action='store_true',
         default=False,
         help='Amalgamate files when building libraries')
+    opt.add_option(
+        '--with-gtkmm-ui',
+        action='store_true',
+        default=False,
+        help='Build Gtkmm based GUI')
 
 
 def _check_required_deps(conf, deps):
@@ -120,14 +125,17 @@ def configure(conf):
         else:
             conf.check(lib='boost_unit_test_framework')
 
-        if conf.options.enable_shared:
-            conf.env['ENABLE_SHARED'] = True
+    if conf.options.enable_shared:
+        conf.env['ENABLE_SHARED'] = True
 
-        if conf.options.enable_static:
-            conf.env['ENABLE_STATIC'] = True
+    if conf.options.enable_static:
+        conf.env['ENABLE_STATIC'] = True
 
-        if conf.options.enable_amalgamation:
-            conf.env['ENABLE_AMALGAMATION'] = True
+    if conf.options.enable_amalgamation:
+        conf.env['ENABLE_AMALGAMATION'] = True
+
+    if conf.options.with_gtkmm_ui:
+        conf.env['WITH_GTKMM_UI'] = True
 
     # if conf.env['build_target'] == 'mingw':
     #        conf.check(lib='pthreadGC2')

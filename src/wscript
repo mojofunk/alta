@@ -11,8 +11,12 @@ mojo
 def configure(conf):
     for dir in subdirs.split():
         conf.recurse(dir)
+    if conf.env['WITH_GTKMM_UI']:
+        conf.recurse('gtkmm_ui')
 
 
 def build(bld):
     # process subfolders from here
     bld.recurse(subdirs)
+    if bld.env['WITH_GTKMM_UI']:
+        bld.recurse('gtkmm_ui')
