@@ -2,6 +2,15 @@
 # encoding: utf-8
 # Tim Mayberry, 2008
 
+uselibs = [
+    'GTKMM-3.0',
+    'GOOCANVASMM-2.0',
+    'GTHREAD-2.0',
+    'GMODULE-2.0',
+    'BOOST_SYSTEM',
+    'BOOST_FILESYSTEM'
+]
+
 
 def init():
     pass
@@ -10,25 +19,27 @@ def init():
 def configure(conf):
     print "configure ui"
 
+
 def build_shared(bld):
     bld.program(
         source=bld.path.ant_glob('*.cpp'),
         includes='.',
-        uselib='GTKMM-3.0 GOOCANVASMM-2.0 GTHREAD-2.0 BOOST_SYSTEM',
+        uselib=uselibs,
         use=['GLEAM', 'MOJO_APPLICATION_SHARED', 'MOJO_CORE_SHARED'],
         target=bld.env['APPNAME'])
+
 
 def build_static(bld):
     bld.program(
         source=bld.path.ant_glob('*.cpp'),
         includes='.',
-        uselib='GTKMM-3.0 GOOCANVASMM-2.0 GTHREAD-2.0 BOOST_SYSTEM',
-        use=['GLEAM', 'MOJO_APPLICATION_STATIC'],
-        target=bld.env['APPNAME'])
+        uselib=uselibs,
+        use=['GLEAM', 'MOJO_APPLICATION_STATIC', 'MOJO_CORE_STATIC'],
+        target=bld.env['APPNAME'] + '-static')
+
 
 def build(bld):
     if bld.env['ENABLE_SHARED']:
         build_shared(bld)
-    else:
+    if bld.env['ENABLE_STATIC']:
         build_static(bld)
-
