@@ -1,7 +1,7 @@
 #ifndef MOJO_APPLICATION_AMALGAMATED
 
 #include "mojo/core/debug/debug.hpp"
-#include "mojo/core/null_deleter.hpp"
+#include "mojo/core/misc/null_deleter.hpp"
 
 #include "application.hpp"
 #include "application_data.hpp"
