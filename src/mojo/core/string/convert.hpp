@@ -1,5 +1,5 @@
-#ifndef MOJO_STRING_CONVERT_H
-#define MOJO_STRING_CONVERT_H
+#ifndef MOJO_CORE_STRING_CONVERT_H
+#define MOJO_CORE_STRING_CONVERT_H
 
 #include <cstdint>
 #include <string>
@@ -23,6 +23,7 @@ string_to (const std::string& str, T& val)
 }
 
 template <>
+inline
 bool
 string_to (const std::string& str, bool& val)
 {
@@ -44,6 +45,7 @@ string_to (const std::string& str, bool& val)
 }
 
 template <>
+inline
 bool
 string_to (const std::string& str, float& val)
 {
@@ -54,6 +56,7 @@ string_to (const std::string& str, float& val)
 }
 
 template <>
+inline
 bool
 string_to (const std::string& str, double& val)
 {
@@ -64,6 +67,7 @@ string_to (const std::string& str, double& val)
 }
 
 template <class T>
+inline
 bool
 to_string (T val, std::string& str)
 {
@@ -75,6 +79,7 @@ to_string (T val, std::string& str)
 }
 
 template <>
+inline
 bool
 to_string (bool val, std::string& str)
 {
@@ -84,6 +89,7 @@ to_string (bool val, std::string& str)
 }
 
 template <>
+inline
 bool
 to_string (float val, std::string& str)
 {
@@ -97,6 +103,7 @@ to_string (float val, std::string& str)
 
 
 template <>
+inline
 bool
 to_string (double val, std::string& str)
 {
@@ -110,5 +117,5 @@ to_string (double val, std::string& str)
 
 } // namespace mojo
 
-#endif // MOJO_STRING_CONVERT_H
+#endif // MOJO_CORE_STRING_CONVERT_H
 

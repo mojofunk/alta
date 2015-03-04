@@ -5,7 +5,9 @@
 
 namespace mojo {
 
-void spinwait (uint64_t usecs)
+inline
+void
+spinwait (uint64_t usecs)
 {
 	mojo::Timing timing;
 

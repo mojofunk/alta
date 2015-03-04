@@ -1,5 +1,5 @@
-#ifndef STRING_COMPOSE_H
-#define STRING_COMPOSE_H
+#ifndef MOJO_CORE_STRING_COMPOSE_H
+#define MOJO_CORE_STRING_COMPOSE_H
 
 #include <string>
 #include <sstream>
@@ -8,6 +8,7 @@ namespace mojo {
 
 namespace internal {
 
+inline
 void
 compose_oss(const char* format, std::stringstream& oss)
 {
@@ -42,4 +43,4 @@ compose (const char* format, Targs...Fargs)
 
 } // namespace mojo
 
-#endif // STRING_COMPOSE_H
+#endif // MOJO_CORE_STRING_COMPOSE_H
