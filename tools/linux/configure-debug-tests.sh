@@ -3,4 +3,4 @@
 . ./env.sh
 
 cd $BASE || exit 1
-./waf configure --enable-amalgamation "$@"
+./waf configure --with-tests "$@"
