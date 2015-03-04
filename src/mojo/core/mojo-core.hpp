@@ -53,8 +53,8 @@
 #include "string/compose.hpp"
 #include "string/convert.hpp"
 
-#include "debug_registry.hpp"
-#include "debug.hpp"
+#include "debug/debug_registry.hpp"
+#include "debug/debug.hpp"
 
 #include "time.hpp"
 #include "timing.hpp"

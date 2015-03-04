@@ -7,7 +7,7 @@
 #ifndef MOJO_APPLICATION_AMALGAMATED
 #include "application.hpp"
 
-#include "mojo/core/debug.hpp"
+#include "mojo/core/debug/debug.hpp"
 #include "mojo/core/modules/module_utils.hpp"
 
 #include "mojo/core/typesystem/type_system.hpp"
@@ -23,7 +23,6 @@
 #include "mojo/core/modules/archive_module.hpp"
 
 #include "mojo/core/filesystem/filesystem_paths.hpp"
-#include "mojo/core/debug.hpp"
 
 #include "mojo/application/object_collection.hpp"
 #include "mojo/application/audio_track.hpp"

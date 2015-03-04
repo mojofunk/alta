@@ -4,7 +4,7 @@
 
 #ifndef MOJO_CORE_AMALGAMATED
 
-#include "mojo/core/debug.hpp"
+#include "mojo/core/debug/debug.hpp"
 
 #include "mojo/core/string/compose.hpp"
 

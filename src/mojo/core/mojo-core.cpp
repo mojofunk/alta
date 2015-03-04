@@ -4,7 +4,7 @@
 
 
 
-#include "debug.cpp"
+#include "debug/debug.cpp"
 
 #include "filesystem/filesystem_paths.cpp"
 #include "filesystem/file_utils.cpp"

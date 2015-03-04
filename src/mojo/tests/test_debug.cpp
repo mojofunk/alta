@@ -3,7 +3,7 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
 
-#include "mojo/core/debug.hpp"
+#include "mojo/core/debug/debug.hpp"
 
 using namespace boost::unit_test;
 using namespace std;
