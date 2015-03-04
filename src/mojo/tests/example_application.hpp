@@ -4,7 +4,7 @@
 
 #include <mutex>
 
-#include "mojo/mojo.hpp"
+#include "mojo-application.hpp"
 
 class ExampleApplication
 {

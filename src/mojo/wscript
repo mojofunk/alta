@@ -16,3 +16,5 @@ def configure(conf):
 def build(bld):
     # process subfolders from here
     bld.recurse(subdirs)
+    if bld.env['BUILD_TESTS']:
+        bld.recurse('tests')

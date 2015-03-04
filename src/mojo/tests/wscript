@@ -35,29 +35,28 @@ def configure(conf):
     print "configure mojo tests"
 
 
-def build(ctx):
-    test_common = ctx(
-        features='cxx',
+def build(bld):
+    bld.shlib(
         source=['test_common.cpp', 'example_application.cpp'],
-        includes='. ../..',
+        includes='.',
         defines='BOOST_TEST_DYN_LINK=1',
         uselib=[
             'BOOST_UNIT_TEST_FRAMEWORK',
             'BOOST_FILESYSTEM',
             'BOOST_SYSTEM',
             'GLIB-2.0'],
-        use='MOJO',
-        name='MOJOTESTCOMMON')
+        use=['MOJO_CORE_SHARED', 'MOJO_APPLICATION_SHARED'],
+		target='mojo-test-common',
+        name='MOJO_TEST_COMMON')
     for test in tests:
-        test_program = ctx(
-            features='cxx cxxprogram',
+        bld.program(
             source=test + '.cpp',
-            includes='. ../..',
+            includes='.',
             defines='BOOST_TEST_DYN_LINK=1',
             uselib=[
                 'BOOST_UNIT_TEST_FRAMEWORK',
                 'BOOST_FILESYSTEM',
                 'BOOST_SYSTEM',
                 'GLIB-2.0'],
-            use=['MOJO', 'MOJOTESTCOMMON'],
+            use=['MOJO_CORE_SHARED', 'MOJO_APPLICATION_SHARED', 'MOJO_TEST_COMMON'],
             target=test)

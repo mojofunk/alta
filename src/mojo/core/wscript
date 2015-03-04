@@ -68,6 +68,3 @@ def build(bld):
                       use=['GLEAM'],
                       target='mojo-core',
                       name='MOJO_CORE_SHARED')
-
-#    if ctx.env['BUILD_TESTS']:
-#        ctx.recurse('tests')
