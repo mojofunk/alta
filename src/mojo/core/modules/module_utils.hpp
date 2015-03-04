@@ -3,8 +3,7 @@
 
 #ifndef MOJO_CORE_AMALGAMATED
 
-#include "mojo/interfaces/typedefs.hpp"
-
+#include "mojo/core/modules/typedefs.hpp"
 #include "mojo/core/filesystem/filesystem.hpp"
 #include "mojo/core/filesystem/search_path.hpp"
 

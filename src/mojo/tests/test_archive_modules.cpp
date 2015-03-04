@@ -5,9 +5,8 @@
 
 #include "mojo/core/properties.hpp"
 
-#include "mojo/interfaces/archive.hpp"
-#include "mojo/interfaces/archive_module.hpp"
-#include "mojo/interfaces/archive.hpp"
+#include "mojo/core/modules/archive_module.hpp"
+#include "mojo/core/interfaces/archive.hpp"
 
 #include "mojo/application/application.hpp"
 

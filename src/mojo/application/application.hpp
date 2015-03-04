@@ -10,7 +10,7 @@
 #include "mojo/core/modules/typedefs.hpp"
 #include "mojo/core/filesystem/filesystem.hpp"
 
-#include "mojo/interfaces/typedefs.hpp"
+#include "mojo/core/interfaces/typedefs.hpp"
 
 #include "typedefs.hpp"
 #include "types.hpp"

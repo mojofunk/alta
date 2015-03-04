@@ -15,24 +15,22 @@
 
 #include "mojo/core/type_names.hpp"
 
+#include "mojo/core/interfaces/archive.hpp"
+
+#include "mojo/core/modules/audio_file_module.hpp"
+#include "mojo/core/modules/audio_driver_module.hpp"
+#include "mojo/core/modules/audio_effect_module.hpp"
+#include "mojo/core/modules/archive_module.hpp"
+
+#include "mojo/core/filesystem/filesystem_paths.hpp"
+#include "mojo/core/debug.hpp"
+
 #include "mojo/application/object_collection.hpp"
 #include "mojo/application/audio_track.hpp"
 #include "mojo/application/midi_track.hpp"
 #include "mojo/application/audio_sequence.hpp"
 #include "mojo/application/audio_event.hpp"
-
-#include "mojo/interfaces/audio_file_module.hpp"
-#include "mojo/interfaces/audio_driver_module.hpp"
-#include "mojo/interfaces/audio_effect_module.hpp"
-#include "mojo/interfaces/archive.hpp"
-#include "mojo/interfaces/archive_module.hpp"
-
-#include "mojo/core/filesystem/filesystem_paths.hpp"
-#include "mojo/core/debug.hpp"
-
-#include "application_data.hpp"
-#include "audio_track.hpp"
-
+#include "mojo/application/application_data.hpp"
 #endif // MOJO_APPLICATION_AMALGAMATED
 
 MOJO_DEBUG_DOMAIN(APPLICATION);

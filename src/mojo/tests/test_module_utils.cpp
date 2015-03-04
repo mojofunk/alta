@@ -7,10 +7,10 @@
 #include <glib.h> //remove this
 
 #include "mojo/core/modules/module_utils.hpp"
+#include "mojo/core/modules/audio_file_module.hpp"
 
 #include "mojo/core/filesystem/filesystem_paths.hpp"
 
-#include "mojo/interfaces/audio_file_module.hpp"
 
 using namespace boost::unit_test;
 using namespace std;

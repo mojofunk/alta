@@ -5,8 +5,7 @@
 
 #include "mojo/core/types.hpp"
 #include "mojo/core/modules/module.hpp"
-
-#include "typedefs.hpp"
+#include "mojo/core/interfaces/typedefs.hpp"
 
 namespace mojo {
 

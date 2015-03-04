@@ -1,7 +1,8 @@
 #ifndef MOJO_ARCHIVE_MODULE_H
 #define MOJO_ARCHIVE_MODULE_H
 
-#include "typedefs.hpp"
+#include "mojo/core/interfaces/typedefs.hpp"
+
 #include "mojo/core/modules/module.hpp"
 
 namespace mojo {
