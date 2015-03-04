@@ -1,7 +1,7 @@
 #ifndef MOJO_CORE_SPINWAIT_H
 #define MOJO_CORE_SPINWAIT_H
 
-#include "mojo/core/timing.hpp"
+#include "mojo/core/time/timing.hpp"
 
 namespace mojo {
 

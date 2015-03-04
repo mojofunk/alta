@@ -8,7 +8,7 @@
 
 #ifndef MOJO_CORE_AMALGAMATED
 #include "mojo/core/visibility.hpp"
-#include "mojo/core/time.hpp"
+#include "mojo/core/time/time.hpp"
 #endif
 
 namespace mojo {

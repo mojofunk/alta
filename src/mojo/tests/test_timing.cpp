@@ -8,7 +8,7 @@
 
 #include <chrono>
 
-#include "mojo/core/timing.hpp"
+#include "mojo/core/time/timing.hpp"
 
 using namespace boost::unit_test;
 using namespace std;

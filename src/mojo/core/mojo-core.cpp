@@ -36,8 +36,8 @@
 
 #include "semaphore.cpp"
 
-#include "time.cpp"
-#include "timing.cpp"
+#include "time/time.cpp"
+#include "time/timing.cpp"
 
 #include "type_names.cpp"
 

@@ -56,8 +56,8 @@
 #include "debug/debug_registry.hpp"
 #include "debug/debug.hpp"
 
-#include "time.hpp"
-#include "timing.hpp"
+#include "time/time.hpp"
+#include "time/timing.hpp"
 
 #include "spinwait.hpp"
 

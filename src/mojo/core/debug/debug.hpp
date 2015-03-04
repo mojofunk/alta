@@ -6,7 +6,7 @@
 
 #ifndef MOJO_CORE_AMALGAMATED
 #include "mojo/core/debug/debug_registry.hpp"
-#include "mojo/core/timing.hpp"
+#include "mojo/core/time/timing.hpp"
 #endif
 
 namespace mojo {
