@@ -1,7 +1,10 @@
-
 #include <boost/tokenizer.hpp>
 
+#ifndef MOJO_CORE_AMALGAMATED
+
 #include "search_path.hpp"
+
+#endif // MOJO_CORE_AMALGAMATED
 
 namespace {
 

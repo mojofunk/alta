@@ -33,6 +33,21 @@ def options(opt):
         action='store_true',
         default=False,
         help='Enable Optimization')
+    opt.add_option(
+        '--enable-shared',
+        action='store_true',
+        default=True,
+        help='Build shared libraries')
+    opt.add_option(
+        '--enable-static',
+        action='store_true',
+        default=False,
+        help='Build static libraries')
+    opt.add_option(
+        '--enable-amalgamation',
+        action='store_true',
+        default=False,
+        help='Amalgamate files when building libraries')
 
 
 def _check_required_deps(conf, deps):
@@ -54,7 +69,10 @@ def set_compiler_flags(conf):
 
 
 def display_config(conf):
-    Logs.info('C++ compiler flags %s' % conf.env['CXXFLAGS'])
+    Logs.info('C++ compiler flags: %s' % conf.env['CXXFLAGS'])
+    Logs.info('Enable shared: %s' % conf.env['ENABLE_SHARED'])
+    Logs.info('Enable static: %s' % conf.env['ENABLE_STATIC'])
+    Logs.info('Enable amalgamation: %s' % conf.env['ENABLE_AMALGAMATION'])
 
 
 def configure(conf):
@@ -101,6 +119,15 @@ def configure(conf):
                     uselib_store='BOOST_UNIT_TEST_FRAMEWORK')
         else:
             conf.check(lib='boost_unit_test_framework')
+
+        if conf.options.enable_shared:
+            conf.env['ENABLE_SHARED'] = True
+
+        if conf.options.enable_static:
+            conf.env['ENABLE_STATIC'] = True
+
+        if conf.options.enable_amalgamation:
+            conf.env['ENABLE_AMALGAMATION'] = True
 
     # if conf.env['build_target'] == 'mingw':
     #        conf.check(lib='pthreadGC2')

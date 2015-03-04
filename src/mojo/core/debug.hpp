@@ -4,8 +4,12 @@
 #include <string>
 #include <vector>
 
+#ifndef MOJO_CORE_AMALGAMATED
+
 #include "mojo/core/debug_registry.hpp"
 #include "mojo/core/timing.hpp"
+
+#endif // MOJO_CORE_AMALGAMATED
 
 namespace mojo {
 

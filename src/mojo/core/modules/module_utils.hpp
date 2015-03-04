@@ -1,10 +1,14 @@
 #ifndef MOJO_MODULE_UTILS_H
 #define MOJO_MODULE_UTILS_H
 
+#ifndef MOJO_CORE_AMALGAMATED
+
 #include "mojo/interfaces/typedefs.hpp"
 
 #include "mojo/core/filesystem/filesystem.hpp"
 #include "mojo/core/filesystem/search_path.hpp"
+
+#endif
 
 namespace mojo {
 

@@ -4,6 +4,11 @@
 #include <gleam/filesystem_paths.hpp>
 #include <gleam/utils.hpp>
 
+#ifndef MOJO_CORE_AMALGAMATED
+
+
+#endif // MOJO_CORE_AMALGAMATED
+
 namespace mojo {
 
 fs::path

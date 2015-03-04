@@ -1,6 +1,8 @@
-#include "time.hpp"
-
 #include <chrono>
+
+#ifndef MOJO_CORE_AMALGAMATED
+#include "time.hpp"
+#endif
 
 namespace mojo {
 
@@ -12,4 +14,4 @@ get_monotonic_time ()
 	return duration_cast<microseconds>(duration.time_since_epoch()).count();
 }
 
-}
+} // namespace mojo

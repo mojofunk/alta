@@ -3,7 +3,11 @@
 
 #include <gmodule.h>
 
+#ifndef MOJO_CORE_AMALGAMATED
+
 #include "library.hpp"
+
+#endif
 
 namespace mojo {
 

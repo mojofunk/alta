@@ -1,7 +1,10 @@
-#include "timing.hpp"
 
 #include <sstream>
 #include <limits>
+
+#ifndef MOJO_CORE_AMALGAMATED
+#include "timing.hpp"
+#endif
 
 namespace mojo {
 

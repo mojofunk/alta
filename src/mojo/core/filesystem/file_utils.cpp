@@ -1,7 +1,12 @@
 #include <sstream>
 #include <limits>
 
+#ifndef MOJO_CORE_AMALGAMATED
+
 #include "file_utils.hpp"
+
+#endif // MOJO_CORE_AMALGAMATED
+
 
 namespace mojo {
 

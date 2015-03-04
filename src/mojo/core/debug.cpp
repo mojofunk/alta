@@ -1,10 +1,14 @@
-#include "debug.hpp"
-
 #include <iostream>
 #include <map>
 #include <vector>
 
+#ifndef MOJO_CORE_AMALGAMATED
+
+#include "mojo/core/debug.hpp"
+
 #include "mojo/core/string/compose.hpp"
+
+#endif // MOJO_CORE_AMALGAMATED
 
 namespace mojo {
 

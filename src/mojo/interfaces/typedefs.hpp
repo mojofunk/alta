@@ -17,7 +17,6 @@ MOJO_DEFINE_ALL_TYPEDEFS(AudioEffectParameterInfo)
 MOJO_DEFINE_ALL_TYPEDEFS(AudioFile)
 MOJO_DEFINE_ALL_TYPEDEFS(AudioFileFormat)
 MOJO_DEFINE_ALL_TYPEDEFS(AudioFileModule)
-MOJO_DEFINE_ALL_TYPEDEFS(Module)
 
 } // namespace mojo
 

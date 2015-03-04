@@ -14,7 +14,6 @@ class AudioEffectParameterInfo;
 class AudioFile;
 class AudioFileFormat;
 class AudioFileModule;
-class Module;
 
 } // namespace mojo
 

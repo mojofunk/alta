@@ -1,9 +1,13 @@
 #ifndef MOJO_LIBRARY_H
 #define MOJO_LIBRARY_H
 
+#ifndef MOJO_CORE_AMALGAMATED
+
 #include "mojo/core/filesystem/filesystem.hpp"
 
 #include "typedefs.hpp"
+
+#endif
 
 namespace mojo {
 

@@ -3,7 +3,9 @@
 
 #include <cstdint>
 
+#ifndef MOJO_CORE_AMALGAMATED
 #include "mojo/core/visibility.hpp"
+#endif
 
 namespace mojo {
 

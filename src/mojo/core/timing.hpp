@@ -6,8 +6,10 @@
 #include <string>
 #include <vector>
 
+#ifndef MOJO_CORE_AMALGAMATED
 #include "mojo/core/visibility.hpp"
 #include "mojo/core/time.hpp"
+#endif
 
 namespace mojo {
 

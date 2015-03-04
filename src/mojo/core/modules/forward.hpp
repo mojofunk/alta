@@ -4,6 +4,7 @@
 namespace mojo {
 
 class Library;
+class Module;
 
 } // namespace mojo
 

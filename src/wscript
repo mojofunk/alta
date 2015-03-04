@@ -4,9 +4,7 @@
 
 subdirs = '''
 gleam
-gtkmm_ui
 mojo
-mojules
 '''
 
 

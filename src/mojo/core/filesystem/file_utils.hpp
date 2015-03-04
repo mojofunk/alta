@@ -5,7 +5,11 @@
 #include <string>
 //#include <cstddef> // for std::size_t
 
+#ifndef MOJO_CORE_AMALGAMATED
+
 #include "mojo/core/filesystem/filesystem.hpp"
+
+#endif // MOJO_CORE_AMALGAMATED
 
 namespace mojo {
 
