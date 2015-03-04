@@ -2,7 +2,7 @@
 #ifndef UI_PROJECT_WINDOW
 #define UI_PROJECT_WINDOW
 
-#include <mojo/mojo.hpp>
+#include <mojo-application.hpp>
 
 #include "types.hpp"
 

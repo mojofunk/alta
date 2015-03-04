@@ -4,7 +4,7 @@
 
 #include "track_view_item.hpp"
 
-#include <mojo/mojo.hpp>
+#include <mojo-application.hpp>
 
 namespace ui {
 

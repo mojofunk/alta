@@ -6,7 +6,7 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include <mojo/mojo.hpp>
+#include <mojo-application.hpp>
 
 #include "dispatcher.hpp"
 #include "project_objects.hpp"

@@ -4,7 +4,7 @@
 
 #include <list>
 
-#include <mojo/mojo.hpp>
+#include <mojo-application.hpp>
 
 #include <gtkmm/paned.h>
 

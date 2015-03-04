@@ -2,7 +2,7 @@
 #ifndef UI_PROJECT_SETUP_DIALOG
 #define UI_PROJECT_SETUP_DIALOG
 
-#include <mojo/mojo.hpp>
+#include <mojo-application.hpp>
 
 #include "types.hpp"
 

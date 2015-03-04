@@ -4,7 +4,7 @@
 
 #include <goocanvasmm/rect.h>
 
-#include <mojo/mojo.hpp>
+#include <mojo-application.hpp>
 
 #include "track_canvas_item.hpp"
 

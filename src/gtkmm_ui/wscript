@@ -10,12 +10,25 @@ def init():
 def configure(conf):
     print "configure ui"
 
-
-def build(ctx):
-    mojo_program = ctx(
-        features="cxx cxxprogram",
-        source=ctx.path.ant_glob('*.cpp'),
-        includes='..',
+def build_shared(bld):
+    bld.program(
+        source=bld.path.ant_glob('*.cpp'),
+        includes='.',
         uselib='GTKMM-3.0 GOOCANVASMM-2.0 GTHREAD-2.0 BOOST_SYSTEM',
-        use='GLEAM MOJO',
-        target=ctx.env['APPNAME'])
+        use=['GLEAM', 'MOJO_APPLICATION_SHARED', 'MOJO_CORE_SHARED'],
+        target=bld.env['APPNAME'])
+
+def build_static(bld):
+    bld.program(
+        source=bld.path.ant_glob('*.cpp'),
+        includes='.',
+        uselib='GTKMM-3.0 GOOCANVASMM-2.0 GTHREAD-2.0 BOOST_SYSTEM',
+        use=['GLEAM', 'MOJO_APPLICATION_STATIC'],
+        target=bld.env['APPNAME'])
+
+def build(bld):
+    if bld.env['ENABLE_SHARED']:
+        build_shared(bld)
+    else:
+        build_static(bld)
+

@@ -2,7 +2,7 @@
 #ifndef UI_AUDIO_TRACK_LIST_ITEM
 #define UI_AUDIO_TRACK_LIST_ITEM
 
-#include <mojo/mojo.hpp>
+#include <mojo-application.hpp>
 
 #include <gtkmm/label.h>
 

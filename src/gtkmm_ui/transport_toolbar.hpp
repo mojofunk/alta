@@ -5,7 +5,7 @@
 #include <gtkmm/buttonbox.h>
 #include <gtkmm/togglebutton.h>
 
-#include <mojo/mojo.hpp>
+#include <mojo-application.hpp>
 
 namespace ui {
 

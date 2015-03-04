@@ -2,7 +2,7 @@
 #ifndef UI_PROJECT_OBJECTS
 #define UI_PROJECT_OBJECTS
 
-#include <mojo/mojo.hpp>
+#include <mojo-application.hpp>
 
 #include <boost/shared_ptr.hpp>
 

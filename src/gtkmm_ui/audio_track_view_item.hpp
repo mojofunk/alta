@@ -2,7 +2,7 @@
 #ifndef UI_AUDIO_TRACK_VIEW_ITEM
 #define UI_AUDIO_TRACK_VIEW_ITEM
 
-#include <mojo/mojo.hpp>
+#include <mojo-application.hpp>
 
 #include <boost/shared_ptr.hpp>
 
