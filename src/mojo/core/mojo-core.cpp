@@ -12,7 +12,7 @@
 
 #include "functor_dispatcher.cpp"
 
-#include "log.cpp"
+#include "logging/log.cpp"
 
 #include "interfaces/archive.cpp"
 #include "interfaces/audio_effect.cpp"

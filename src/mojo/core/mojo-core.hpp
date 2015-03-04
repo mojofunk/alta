@@ -19,7 +19,7 @@
 
 #include "functor_dispatcher.hpp"
 
-#include "log.hpp"
+#include "logging/log.hpp"
 
 #include "smart_pointer_macros.hpp"
 
