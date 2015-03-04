@@ -45,8 +45,11 @@ def build(bld):
             'BOOST_FILESYSTEM',
             'BOOST_SYSTEM',
             'GLIB-2.0'],
-        use=['MOJO_CORE_SHARED', 'MOJO_APPLICATION_SHARED'],
-		target='mojo-test-common',
+        use=[
+            'MOJO_CORE_SHARED',
+            'MOJO_ENGINE_SHARED',
+            'MOJO_APPLICATION_SHARED'],
+        target='mojo-test-common',
         name='MOJO_TEST_COMMON')
     for test in tests:
         bld.program(
@@ -58,5 +61,9 @@ def build(bld):
                 'BOOST_FILESYSTEM',
                 'BOOST_SYSTEM',
                 'GLIB-2.0'],
-            use=['MOJO_CORE_SHARED', 'MOJO_APPLICATION_SHARED', 'MOJO_TEST_COMMON'],
+            use=[
+                'MOJO_CORE_SHARED',
+                'MOJO_ENGINE_SHARED',
+                'MOJO_APPLICATION_SHARED',
+                'MOJO_TEST_COMMON'],
             target=test)

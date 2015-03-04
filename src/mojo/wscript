@@ -4,6 +4,7 @@
 
 subdirs = '''
 core
+engine
 application
 '''
 
