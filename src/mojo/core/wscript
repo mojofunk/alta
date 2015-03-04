@@ -1,0 +1,73 @@
+#! /usr/bin/env python
+# encoding: utf-8
+# Tim Mayberry, 2008
+
+
+def init():
+    pass
+
+
+def configure(conf):
+    print "configure mojo-core"
+
+
+def build(bld):
+
+    if bld.env['ENABLE_AMALGAMATION']:
+        if bld.env['ENABLE_SHARED']:
+            bld.shlib(includes='.',
+                      export_includes='.',
+                      source='mojo-core.cpp',
+                      uselib=[
+                          'GMODULE-2.0',
+                          'BOOST_FILESYSTEM',
+                          'BOOST_SYSTEM'],
+                      use=['GLEAM'],
+                      defines='MOJO_CORE_AMALGAMATED',
+                      target='mojo-core-a',
+                      name='MOJO_CORE_SHARED_AMALGAMATED')
+
+        if bld.env['ENABLE_STATIC']:
+            bld.stlib(includes='.',
+                      export_includes='.',
+                      source='mojo-core.cpp',
+                      uselib=[
+                          'GMODULE-2.0',
+                          'BOOST_FILESYSTEM',
+                          'BOOST_SYSTEM'],
+                      use=['GLEAM'],
+                      defines='MOJO_CORE_AMALGAMATED',
+                      target='mojo-core-a',
+                      name='MOJO_CORE_STATIC_AMALGAMATED')
+    else:
+
+        if bld.env['ENABLE_SHARED']:
+            bld.shlib(includes='.',
+                      export_includes='.',
+                      source=bld.path.ant_glob(
+                          '**/*.cpp',
+                          excl='mojo-core.cpp'),
+                      uselib=[
+                          'GMODULE-2.0',
+                          'BOOST_FILESYSTEM',
+                          'BOOST_SYSTEM'],
+                      use=['GLEAM'],
+                      target='mojo-core',
+                      name='MOJO_CORE_SHARED')
+
+        if bld.env['ENABLE_STATIC']:
+            bld.stlib(includes='.',
+                      export_includes='.',
+                      source=bld.path.ant_glob(
+                          '**/*.cpp',
+                          excl='mojo-core.cpp'),
+                      uselib=[
+                          'GMODULE-2.0',
+                          'BOOST_FILESYSTEM',
+                          'BOOST_SYSTEM'],
+                      use=['GLEAM'],
+                      target='mojo-core',
+                      name='MOJO_CORE_SHARED')
+
+#    if ctx.env['BUILD_TESTS']:
+#        ctx.recurse('tests')

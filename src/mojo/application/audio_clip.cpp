@@ -1,5 +1,6 @@
-
+#ifndef MOJO_APPLICATION_AMALGAMATED
 #include "audio_clip.hpp"
+#endif
 
 namespace mojo {
 

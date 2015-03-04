@@ -1,7 +1,9 @@
 #ifndef MOJO_TRACK_H
 #define MOJO_TRACK_H
 
+#ifndef MOJO_APPLICATION_AMALGAMATED
 #include "object.hpp"
+#endif
 
 namespace mojo {
 

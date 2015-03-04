@@ -1,9 +1,11 @@
 #ifndef MOJO_API_UTILS_H
 #define MOJO_API_UTILS_H
 
-#include "types.hpp"
-
 #include <string>
+
+#ifndef MOJO_APPLICATION_AMALGAMATED
+#include "types.hpp"
+#endif
 
 namespace mojo {
 

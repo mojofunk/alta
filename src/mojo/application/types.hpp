@@ -1,7 +1,9 @@
 #ifndef MOJO_API_TYPES_H
 #define MOJO_API_TYPES_H
 
+#ifndef MOJO_APPLICATION_AMALGAMATED
 #include "mojo/core/types.hpp"
+#endif
 
 namespace mojo {
 

@@ -1,5 +1,7 @@
 
+#ifndef MOJO_APPLICATION_AMALGAMATED
 #include "track.hpp"
+#endif
 
 namespace {
 

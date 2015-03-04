@@ -1,9 +1,11 @@
 #ifndef MOJO_EVENT_H
 #define MOJO_EVENT_H
 
+#ifndef MOJO_APPLICATION_AMALGAMATED
 #include "mojo/core/types.hpp"
 
 #include "object.hpp"
+#endif
 
 namespace mojo {
 

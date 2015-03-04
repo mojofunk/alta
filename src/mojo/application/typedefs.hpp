@@ -1,9 +1,11 @@
 #ifndef MOJO_PROJECT_TYPEDEFS_H
 #define MOJO_PROJECT_TYPEDEFS_H
 
+#ifndef MOJO_APPLICATION_AMALGAMATED
 #include "mojo/core/smart_pointer_macros.hpp"
 
 #include "forward.hpp"
+#endif
 
 namespace mojo {
 

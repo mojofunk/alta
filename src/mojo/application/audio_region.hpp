@@ -1,11 +1,13 @@
 #ifndef MOJO_AUDIO_REGION_H
 #define MOJO_AUDIO_REGION_H
 
+#ifndef MOJO_APPLICATION_AMALGAMATED
 #include "mojo/core/types.hpp"
 
 #include "object.hpp"
 
 #include "typedefs.hpp"
+#endif
 
 namespace mojo {
 

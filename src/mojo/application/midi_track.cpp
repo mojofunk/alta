@@ -1,5 +1,7 @@
 
+#ifndef MOJO_APPLICATION_AMALGAMATED
 #include "midi_track.hpp"
+#endif
 
 namespace mojo {
 

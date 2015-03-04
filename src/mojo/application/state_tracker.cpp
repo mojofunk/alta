@@ -1,5 +1,7 @@
 
+#ifndef MOJO_APPLICATION_AMALGAMATED
 #include "state_tracker.hpp"
+#endif
 
 namespace mojo {
 

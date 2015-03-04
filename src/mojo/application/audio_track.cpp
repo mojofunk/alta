@@ -1,6 +1,8 @@
 
+#ifndef MOJO_APPLICATION_AMALGAMATED
 #include "audio_track.hpp"
 #include "audio_sequence.hpp"
+#endif
 
 namespace mojo {
 

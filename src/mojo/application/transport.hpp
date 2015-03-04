@@ -1,7 +1,9 @@
 #ifndef MOJO_TRANSPORT_H
 #define MOJO_TRANSPORT_H
 
-#incluce "mojo/core/types.hpp"
+#ifndef MOJO_APPLICATION_AMALGAMATED
+#include "mojo/core/types.hpp"
+#endif
 
 namespace mojo {
 

@@ -3,7 +3,9 @@
 
 #include <list>
 
+#ifndef MOJO_APPLICATION_AMALGAMATED
 #include "typedefs.hpp"
+#endif
 
 namespace mojo {
 

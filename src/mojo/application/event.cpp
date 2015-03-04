@@ -1,5 +1,7 @@
 
+#ifndef MOJO_APPLICATION_AMALGAMATED
 #include "event.hpp"
+#endif
 
 namespace {
 

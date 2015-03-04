@@ -4,6 +4,8 @@
 #include <string>
 #include <memory>
 
+#ifndef MOJO_APPLICATION_AMALGAMATED
+
 #include "mojo/core/signals.hpp"
 
 #include "mojo/interfaces/typedefs.hpp"
@@ -12,6 +14,8 @@
 
 #include "typedefs.hpp"
 #include "types.hpp"
+
+#endif
 
 namespace mojo {
 

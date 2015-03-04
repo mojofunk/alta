@@ -3,8 +3,10 @@
 
 #include <string>
 
+#ifndef MOJO_APPLICATION_AMALGAMATED
 #include "object.hpp"
 #include "typedefs.hpp"
+#endif
 
 namespace mojo {
 

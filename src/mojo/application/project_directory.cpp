@@ -1,6 +1,8 @@
 
+#ifndef MOJO_APPLICATION_AMALGAMATED
 #include "directory_names.hpp"
 #include "project_directory.hpp"
+#endif
 
 namespace mojo {
 

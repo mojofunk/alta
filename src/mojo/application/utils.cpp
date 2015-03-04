@@ -1,4 +1,6 @@
+#ifndef MOJO_APPLICATION_AMALGAMATED
 #include "utils.hpp"
+#endif
 
 namespace mojo {
 

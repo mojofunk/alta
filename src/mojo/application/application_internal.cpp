@@ -1,13 +1,15 @@
+#ifndef MOJO_APPLICATION_AMALGAMATED
 
 #include "mojo/core/debug.hpp"
 #include "mojo/core/null_deleter.hpp"
-
 
 #include "application.hpp"
 #include "application_data.hpp"
 #include "audio_track.hpp"
 #include "project.hpp"
 #include "utils.hpp"
+
+#endif
 
 MOJO_DEBUG_DOMAIN(APPLICATION);
 

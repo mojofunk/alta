@@ -2,42 +2,17 @@
 # encoding: utf-8
 # Tim Mayberry, 2008
 
-
-def init():
-    pass
+subdirs = '''
+core
+application
+'''
 
 
 def configure(conf):
-    print "configure mojo"
+    for dir in subdirs.split():
+        conf.recurse(dir)
 
 
 def build(bld):
-
-    if bld.env['ENABLE_AMALGAMATION']:
-        if bld.env['ENABLE_SHARED']:
-            bld.shlib(includes='.',
-                      export_includes='core',
-                      source='core/core.cpp',
-                      uselib=[
-                          'GMODULE-2.0',
-                          'BOOST_FILESYSTEM',
-                          'BOOST_SYSTEM'],
-                      use=['GLEAM'],
-                      defines='MOJO_CORE_AMALGAMATED',
-                      target='mojo-core',
-                      name='MOJO_CORE_SHARED_AMALGAMATED')
-
-            bld.stlib(includes='.',
-                      export_includes='core',
-                      source='core/core.cpp',
-                      uselib=[
-                          'GMODULE-2.0',
-                          'BOOST_FILESYSTEM',
-                          'BOOST_SYSTEM'],
-                      use=['GLEAM'],
-                      defines='MOJO_CORE_AMALGAMATED',
-                      target='mojo-core',
-                      name='MOJO_CORE_STATIC_AMALGAMATED')
-
-#    if ctx.env['BUILD_TESTS']:
-#        ctx.recurse('tests')
+    # process subfolders from here
+    bld.recurse(subdirs)

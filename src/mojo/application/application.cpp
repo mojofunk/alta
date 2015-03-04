@@ -1,9 +1,11 @@
-#include "application.hpp"
 
 #include <boost/bind.hpp>
 #include <boost/tokenizer.hpp>
 
 #include "gleam/utils.hpp"
+
+#ifndef MOJO_APPLICATION_AMALGAMATED
+#include "application.hpp"
 
 #include "mojo/core/debug.hpp"
 #include "mojo/core/modules/module_utils.hpp"
@@ -30,6 +32,8 @@
 
 #include "application_data.hpp"
 #include "audio_track.hpp"
+
+#endif // MOJO_APPLICATION_AMALGAMATED
 
 MOJO_DEBUG_DOMAIN(APPLICATION);
 

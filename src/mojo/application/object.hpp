@@ -1,9 +1,11 @@
 #ifndef MOJO_OBJECT_H
 #define MOJO_OBJECT_H
 
+#ifndef MOJO_APPLICATION_AMALGAMATED
 #include <mojo/core/change_set.hpp>
 #include <mojo/core/properties.hpp>
 #include <mojo/core/signals.hpp>
+#endif
 
 namespace mojo {
 

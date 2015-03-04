@@ -1,6 +1,9 @@
+
+#ifndef MOJO_APPLICATION_AMALGAMATED
 #include "audio_sequence.hpp"
 #include "object_collection.hpp"
 #include "audio_event.hpp"
+#endif
 
 namespace mojo {
 

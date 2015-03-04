@@ -1,5 +1,7 @@
 
+#ifndef MOJO_APPLICATION_AMALGAMATED
 #include "audio_event.hpp"
+#endif
 
 namespace mojo {
 
