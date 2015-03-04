@@ -1,5 +1,5 @@
-#ifndef MOJO_GRAPH_H
-#define MOJO_GRAPH_H
+#ifndef MOJO_ENGINE_EDGE_H
+#define MOJO_ENGINE_EDGE_H
 
 namespace mojo {
 
@@ -18,8 +18,8 @@ private:
 
 	void* m_user_data;
 
-}
+};
 
 } // namespace mojo
 
-#endif // MOJO_GRAPH_H
+#endif // MOJO_ENGINE_EDGE_H

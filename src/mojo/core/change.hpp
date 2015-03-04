@@ -3,7 +3,9 @@
 
 #include <cassert>
 
+#ifndef MOJO_CORE_AMALGAMATED
 #include "property.hpp"
+#endif
 
 namespace mojo {
 

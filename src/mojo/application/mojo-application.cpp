@@ -9,6 +9,7 @@
 #include "audio_clip.cpp"
 #include "audio_event.cpp"
 #include "audio_region.cpp"
+#include "audio_region_event.cpp"
 #include "audio_sequence.cpp"
 #include "track.cpp"
 #include "audio_track.cpp"
@@ -20,3 +21,5 @@
 
 #include "state_tracker.cpp"
 
+#include "application.cpp"
+#include "application_internal.cpp"

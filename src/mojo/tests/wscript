@@ -35,7 +35,7 @@ def configure(conf):
     print "configure mojo tests"
 
 
-def build(bld):
+def build_shared(bld):
     bld.shlib(
         source=['test_common.cpp', 'example_application.cpp'],
         includes='.',
@@ -50,7 +50,7 @@ def build(bld):
             'MOJO_ENGINE_SHARED',
             'MOJO_APPLICATION_SHARED'],
         target='mojo-test-common',
-        name='MOJO_TEST_COMMON')
+        name='MOJO_TEST_COMMON_SHARED')
     for test in tests:
         bld.program(
             source=test + '.cpp',
@@ -65,5 +65,47 @@ def build(bld):
                 'MOJO_CORE_SHARED',
                 'MOJO_ENGINE_SHARED',
                 'MOJO_APPLICATION_SHARED',
-                'MOJO_TEST_COMMON'],
+                'MOJO_TEST_COMMON_SHARED'],
             target=test)
+
+
+def build_static(bld):
+    bld.stlib(
+        source=['test_common.cpp', 'example_application.cpp'],
+        includes='.',
+        defines='BOOST_TEST_DYN_LINK=1',
+        uselib=[
+            'BOOST_UNIT_TEST_FRAMEWORK',
+            'BOOST_FILESYSTEM',
+            'BOOST_SYSTEM',
+            'GLIB-2.0'],
+        use=[
+            'MOJO_CORE_STATIC',
+            'MOJO_ENGINE_STATIC',
+            'MOJO_APPLICATION_STATIC'],
+        target='mojo-test-common',
+        name='MOJO_TEST_COMMON_STATIC')
+    for test in tests:
+        bld.program(
+            source=test + '.cpp',
+            includes='.',
+            defines='BOOST_TEST_DYN_LINK=1',
+            uselib=[
+                'BOOST_UNIT_TEST_FRAMEWORK',
+                'BOOST_FILESYSTEM',
+                'BOOST_SYSTEM',
+                'GLIB-2.0'],
+            use=[
+                'MOJO_CORE_STATIC',
+                'MOJO_ENGINE_STATIC',
+                'MOJO_APPLICATION_STATIC',
+                'MOJO_TEST_COMMON_STATIC'],
+            target=test)
+
+
+def build(bld):
+
+    if bld.env['ENABLE_SHARED']:
+        build_shared(bld)
+    else:
+        build_static(bld)

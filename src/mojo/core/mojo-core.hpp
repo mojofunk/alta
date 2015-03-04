@@ -6,6 +6,9 @@
 
 //////
 
+#include "property.hpp"
+#include "properties.hpp"
+
 #include "change.hpp"
 #include "change_set.hpp"
 
@@ -20,6 +23,9 @@
 
 #include "smart_pointer_macros.hpp"
 
+#include "interfaces/forward.hpp"
+#include "interfaces/typedefs.hpp"
+
 #include "modules/forward.hpp"
 #include "modules/typedefs.hpp"
 #include "modules/module.hpp"
@@ -27,10 +33,14 @@
 #include "modules/library.hpp"
 #include "modules/glib_library.hpp"
 
-#include "null_deleter.hpp"
+#include "modules/archive_module.hpp"
+#include "modules/audio_driver_module.hpp"
+#include "modules/audio_effect_module.hpp"
+#include "modules/audio_file_module.hpp"
+#include "modules/project_export_module.hpp"
+#include "modules/project_import_module.hpp"
 
-#include "property.hpp"
-#include "properties.hpp"
+#include "null_deleter.hpp"
 
 #include "resource.hpp"
 

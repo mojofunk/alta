@@ -25,7 +25,7 @@ def build(bld):
                       use=['GLEAM'],
                       defines='MOJO_CORE_AMALGAMATED',
                       target='mojo-core-a',
-                      name='MOJO_CORE_SHARED_AMALGAMATED')
+                      name='MOJO_CORE_SHARED')
 
         if bld.env['ENABLE_STATIC']:
             bld.stlib(includes='.',
@@ -38,7 +38,7 @@ def build(bld):
                       use=['GLEAM'],
                       defines='MOJO_CORE_AMALGAMATED',
                       target='mojo-core-a',
-                      name='MOJO_CORE_STATIC_AMALGAMATED')
+                      name='MOJO_CORE_STATIC')
     else:
 
         if bld.env['ENABLE_SHARED']:

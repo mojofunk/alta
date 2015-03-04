@@ -3,6 +3,9 @@
 # Tim Mayberry, 2008
 
 
+uselibs = ['GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
+
+
 def init():
     pass
 
@@ -18,27 +21,21 @@ def build(bld):
             bld.shlib(includes='.',
                       export_includes='.',
                       source='mojo-application.cpp',
-                      uselib=[
-                          'GMODULE-2.0',
-                          'BOOST_FILESYSTEM',
-                          'BOOST_SYSTEM'],
-                      use=['GLEAM', 'MOJO_CORE_SHARED_AMALGAMATED'],
+                      uselib=uselibs,
+                      use=['GLEAM', 'MOJO_CORE_SHARED'],
                       defines='MOJO_APPLICATION_AMALGAMATED',
                       target='mojo-application-a',
-                      name='MOJO_APPLICATION_SHARED_AMALGAMATED')
+                      name='MOJO_APPLICATION_SHARED')
 
         if bld.env['ENABLE_STATIC']:
             bld.stlib(includes='.',
                       export_includes='.',
                       source='mojo-application.cpp',
-                      uselib=[
-                          'GMODULE-2.0',
-                          'BOOST_FILESYSTEM',
-                          'BOOST_SYSTEM'],
-                      use=['GLEAM', 'MOJO_CORE_STATIC_AMALGAMATED'],
+                      uselib=uselibs,
+                      use=['GLEAM', 'MOJO_CORE_STATIC'],
                       defines='MOJO_APPLICATION_AMALGAMATED',
                       target='mojo-application-a',
-                      name='MOJO_APPLICATION_STATIC_AMALGAMATED')
+                      name='MOJO_APPLICATION_STATIC')
 
     else:
 
@@ -48,10 +45,7 @@ def build(bld):
                       source=bld.path.ant_glob(
                           '**/*.cpp',
                           excl='mojo-application.cpp'),
-                      uselib=[
-                          'GMODULE-2.0',
-                          'BOOST_FILESYSTEM',
-                          'BOOST_SYSTEM'],
+                      uselib=uselibs,
                       use=['GLEAM'],
                       target='mojo-application',
                       name='MOJO_APPLICATION_SHARED')
@@ -62,10 +56,7 @@ def build(bld):
                       source=bld.path.ant_glob(
                           '**/*.cpp',
                           excl='mojo-application.cpp'),
-                      uselib=[
-                          'GMODULE-2.0',
-                          'BOOST_FILESYSTEM',
-                          'BOOST_SYSTEM'],
+                      uselib=uselibs,
                       use=['GLEAM'],
                       target='mojo-application',
                       name='MOJO_APPLICATION_SHARED')
