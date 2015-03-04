@@ -11,7 +11,7 @@
 
 #endif
 
-MOJO_DEBUG_DOMAIN(APPLICATION);
+MOJO_DEBUG_DOMAIN(APPLICATION_INTERNAL);
 
 namespace mojo {
 
@@ -19,7 +19,7 @@ void
 Application::new_project_internal ()
 {
 	ProjectSP pi(new Project);
-	MOJO_DEBUG(APPLICATION);
+	MOJO_DEBUG(APPLICATION_INTERNAL);
 
 	data->projects.insert (pi);
 
@@ -32,7 +32,7 @@ Application::open_project_internal (const std::string& project_file)
 {
 	ProjectSP pi(new Project);
 
-	MOJO_DEBUG(APPLICATION);
+	MOJO_DEBUG(APPLICATION_INTERNAL);
 	// load project state from project file
 
 	data->projects.insert (pi);
@@ -43,7 +43,7 @@ Application::open_project_internal (const std::string& project_file)
 void
 Application::close_project_internal (Project* p)
 {
-	MOJO_DEBUG(APPLICATION);
+	MOJO_DEBUG(APPLICATION_INTERNAL);
 	ProjectSP sp(p, internal::null_deleter());
 
 	//std::set<ProjectSP>::iterator i = data->projects.find (sp);
@@ -88,7 +88,7 @@ Application::add_track_internal (Project* p, const TrackOptions& options)
 	//std::cerr << "Options type: " << track_type_to_string (options.type) << std::endl;
 	//std::cerr << "Options count: " << options.count << std::endl;
 
-	MOJO_DEBUG(APPLICATION);
+	MOJO_DEBUG(APPLICATION_INTERNAL);
 
 	TrackSP t(new AudioTrack);
 
