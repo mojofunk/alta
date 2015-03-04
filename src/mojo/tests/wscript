@@ -91,12 +91,13 @@ def build_static(bld):
                 'MOJO_ENGINE_STATIC',
                 'MOJO_APPLICATION_STATIC',
                 'MOJO_TEST_COMMON_STATIC'],
-            target=test)
+            target=test + '-static')
 
 
 def build(bld):
 
     if bld.env['ENABLE_SHARED']:
         build_shared(bld)
-    else:
+
+    if bld.env['ENABLE_STATIC']:
         build_static(bld)

@@ -67,4 +67,4 @@ def build(bld):
                           'BOOST_SYSTEM'],
                       use=['GLEAM'],
                       target='mojo-core',
-                      name='MOJO_CORE_SHARED')
+                      name='MOJO_CORE_STATIC')
