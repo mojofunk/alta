@@ -1,10 +1,8 @@
 #ifndef MOJO_CORE_DEBUG_H
 #define MOJO_CORE_DEBUG_H
 
-#include <string>
-#include <vector>
-
 #ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
 #include "mojo/core/debug/debug_registry.hpp"
 #include "mojo/core/time/timing.hpp"
 #endif

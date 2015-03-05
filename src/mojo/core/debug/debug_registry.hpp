@@ -1,9 +1,9 @@
 #ifndef MOJO_CORE_DEBUG_REGISTRY_H
 #define MOJO_CORE_DEBUG_REGISTRY_H
 
-#include <string>
-#include <map>
-#include <vector>
+#ifndef MOJO_CORE_AMALGAMATED
+#include "config/common_header.hpp"
+#endif
 
 namespace mojo {
 
