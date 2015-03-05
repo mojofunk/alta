@@ -1,9 +1,11 @@
 #ifndef MOJO_AUDIO_DRIVER_MODULE_H
 #define MOJO_AUDIO_DRIVER_MODULE_H
 
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
 #include "mojo/core/interfaces/typedefs.hpp"
-
 #include "mojo/core/modules/module.hpp"
+#endif
 
 namespace mojo {
 

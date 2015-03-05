@@ -1,5 +1,7 @@
-
-#include "glib_library.hpp"
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_source.hpp"
+#include "mojo/core/modules/glib_library.hpp"
+#endif
 
 namespace mojo {
 

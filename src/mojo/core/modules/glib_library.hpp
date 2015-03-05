@@ -1,13 +1,13 @@
 #ifndef MOJO_GLIB_LIBRARY_H
 #define MOJO_GLIB_LIBRARY_H
 
-#include <gmodule.h>
-
 #ifndef MOJO_CORE_AMALGAMATED
-
-#include "library.hpp"
-
+#include "mojo/core/config/common_header.hpp"
+#include "mojo/core/modules/library.hpp"
 #endif
+
+// forward declaration
+typedef struct _GModule GModule;
 
 namespace mojo {
 

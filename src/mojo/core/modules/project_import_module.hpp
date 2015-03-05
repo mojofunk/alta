@@ -1,9 +1,10 @@
 #ifndef MOJO_PROJECT_IMPORT_MODULE_H
 #define MOJO_PROJECT_IMPORT_MODULE_H
 
-#include <string>
-
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
 #include "mojo/core/modules/module.hpp"
+#endif
 
 namespace mojo {
 

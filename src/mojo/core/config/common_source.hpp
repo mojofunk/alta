@@ -16,6 +16,8 @@
 #include <sstream>
 #include <limits>
 
+#include <gmodule.h>
+
 #include <gleam/filesystem_paths.hpp>
 #include <gleam/utils.hpp>
 

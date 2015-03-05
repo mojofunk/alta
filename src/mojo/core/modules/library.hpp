@@ -2,11 +2,9 @@
 #define MOJO_LIBRARY_H
 
 #ifndef MOJO_CORE_AMALGAMATED
-
+#include "mojo/core/config/common_header.hpp"
 #include "mojo/core/filesystem/filesystem.hpp"
-
-#include "typedefs.hpp"
-
+#include "mojo/core/modules/typedefs.hpp"
 #endif
 
 namespace mojo {
