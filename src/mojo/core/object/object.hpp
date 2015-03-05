@@ -2,9 +2,9 @@
 #define MOJO_OBJECT_H
 
 #ifndef MOJO_APPLICATION_AMALGAMATED
-#include <mojo/core/change_set.hpp>
-#include <mojo/core/properties.hpp>
-#include <mojo/core/signals.hpp>
+#include "mojo/core/object/change_set.hpp"
+#include "mojo/core/object/properties.hpp"
+#include "mojo/core/object/signals.hpp"
 #endif
 
 namespace mojo {

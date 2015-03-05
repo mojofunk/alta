@@ -6,11 +6,11 @@
 
 //////
 
-#include "property.hpp"
-#include "properties.hpp"
-
-#include "change.hpp"
-#include "change_set.hpp"
+#include "object/signals.hpp"
+#include "object/property.hpp"
+#include "object/properties.hpp"
+#include "object/change.hpp"
+#include "object/change_set.hpp"
 
 #include "filesystem/filesystem.hpp"
 #include "filesystem/filesystem_paths.hpp"
@@ -50,8 +50,6 @@
 #include "system/resource.hpp"
 
 #include "semaphore.hpp"
-
-#include "signals.hpp"
 
 #include "string/compose.hpp"
 #include "string/convert.hpp"

@@ -3,7 +3,7 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
 
-#include "mojo/core/properties.hpp"
+#include "mojo/core/object/properties.hpp"
 
 #include "mojo/core/modules/archive_module.hpp"
 #include "mojo/core/interfaces/archive.hpp"
