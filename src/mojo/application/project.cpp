@@ -1,8 +1,10 @@
 
 #ifndef MOJO_APPLICATION_AMALGAMATED
+
+#include "mojo/core/object/object_collection.hpp"
+
 #include "audio_track.hpp"
 #include "midi_track.hpp"
-#include "object_collection.hpp"
 #include "project.hpp"
 #endif
 

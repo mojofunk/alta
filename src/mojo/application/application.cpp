@@ -23,7 +23,8 @@
 
 #include "mojo/core/filesystem/filesystem_paths.hpp"
 
-#include "mojo/application/object_collection.hpp"
+#include "mojo/core/object/object_collection.hpp"
+
 #include "mojo/application/audio_track.hpp"
 #include "mojo/application/midi_track.hpp"
 #include "mojo/application/audio_sequence.hpp"

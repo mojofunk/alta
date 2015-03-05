@@ -67,5 +67,9 @@
 #include "typesystem/type_factory.hpp"
 #include "typesystem/type_system.hpp"
 
+#include "object/forward.hpp"
+#include "object/typedefs.hpp"
+#include "object/object.hpp"
+#include "object/object_collection.hpp"
 
 #endif // MOJO_CORE_H

@@ -2,7 +2,7 @@
 #define MOJO_STATE_TRACKER_H
 
 #ifndef MOJO_APPLICATION_AMALGAMATED
-#include "object.hpp"
+#include "mojo/core/object/object.hpp"
 #endif
 
 namespace mojo {

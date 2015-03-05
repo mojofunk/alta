@@ -4,7 +4,7 @@
 #ifndef MOJO_APPLICATION_AMALGAMATED
 #include "mojo/core/typesystem/types.hpp"
 
-#include "object.hpp"
+#include "mojo/core/object/object.hpp"
 
 #include "typedefs.hpp"
 #endif

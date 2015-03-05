@@ -21,9 +21,6 @@
 
 #include <mojo/application/utils.hpp>
 
-#include <mojo/application/object.hpp>
-#include <mojo/application/object_collection.hpp>
-
 #include <mojo/application/event.hpp>
 #include <mojo/application/audio_clip.hpp>
 #include <mojo/application/audio_event.hpp>

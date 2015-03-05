@@ -1,7 +1,9 @@
 
 #ifndef MOJO_APPLICATION_AMALGAMATED
+
+#include "mojo/core/object/object_collection.hpp"
+
 #include "audio_sequence.hpp"
-#include "object_collection.hpp"
 #include "audio_event.hpp"
 #endif
 
