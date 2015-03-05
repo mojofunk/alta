@@ -1,12 +1,10 @@
 #ifndef MOJO_TYPE_SYSTEM_H
 #define MOJO_TYPE_SYSTEM_H
 
-#include <string>
-#include <typeinfo>
-
-#include <boost/any.hpp>
-
-#include "typedefs.hpp"
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
+#include "mojo/core/typesystem/typedefs.hpp"
+#endif
 
 namespace mojo {
 

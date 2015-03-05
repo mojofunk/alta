@@ -1,7 +1,10 @@
 #ifndef MOJO_TEMPLATE_TYPE_FACTORY_H
 #define MOJO_TEMPLATE_TYPE_FACTORY_H
 
-#include "type_factory.hpp"
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
+#include "mojo/core/typesystem/type_factory.hpp"
+#endif
 
 namespace mojo {
 

@@ -1,9 +1,11 @@
 #ifndef MOJO_TYPESYSTEM_TYPEDEFS_H
 #define MOJO_TYPESYSTEM_TYPEDEFS_H
 
-#include "smart_pointer_macros.hpp"
-
-#include "forward.hpp"
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
+#include "mojo/core/typesystem/smart_pointer_macros.hpp"
+#include "mojo/core/typesystem/forward.hpp"
+#endif
 
 namespace mojo {
 

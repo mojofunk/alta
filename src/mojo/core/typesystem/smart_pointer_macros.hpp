@@ -1,12 +1,9 @@
 #ifndef MOJO_CORE_SMART_POINTER_MACROS_H
 #define MOJO_CORE_SMART_POINTER_MACROS_H
 
-#include <set>
-#include <vector>
-#include <list>
-
-#include <boost/shared_ptr.hpp>
-#include <boost/weak_ptr.hpp>
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
+#endif
 
 #define MOJO_DEFINE_POINTER_TYPEDEFS(CLASS) \
 	using CLASS##SP = boost::shared_ptr<CLASS>;\

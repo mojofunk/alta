@@ -1,7 +1,9 @@
 #ifndef MOJO_CORE_TYPES_H
 #define MOJO_CORE_TYPES_H
 
-#include <inttypes.h>
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
+#endif
 
 namespace mojo {
 

@@ -1,10 +1,9 @@
 #ifndef MOJO_TYPE_FACTORY_H
 #define MOJO_TYPE_FACTORY_H
 
-#include <string>
-#include <typeinfo>
-
-#include <boost/any.hpp>
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
+#endif
 
 namespace mojo {
 

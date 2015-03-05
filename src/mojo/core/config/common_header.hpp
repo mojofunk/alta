@@ -23,6 +23,7 @@
 #include <cstdint>
 #include <string>
 #include <sstream>
+#include <typeinfo> // could possibly forward declare?
 #include <limits>
 #include <locale>
 #include <list>
@@ -37,5 +38,7 @@
 #include <boost/filesystem.hpp>
 #include <boost/function.hpp>
 #include <boost/signals2.hpp>
+#include <boost/shared_ptr.hpp>
+#include <boost/weak_ptr.hpp>
 
 #endif // MOJO_CORE_COMMON_HEADER_H

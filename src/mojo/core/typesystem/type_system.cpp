@@ -1,10 +1,8 @@
-#include <map>
-#include <set>
-
-#include <cassert>
-
-#include "type_system.hpp"
-#include "type_factory.hpp"
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
+#include "mojo/core/typesystem/type_system.hpp"
+#include "mojo/core/typesystem/type_factory.hpp"
+#endif
 
 using std::map;
 using std::set;

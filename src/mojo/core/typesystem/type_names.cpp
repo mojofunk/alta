@@ -1,5 +1,8 @@
 
-#include "type_names.hpp"
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_source.hpp"
+#include "mojo/core/typesystem/type_names.hpp"
+#endif
 
 namespace mojo {
 
