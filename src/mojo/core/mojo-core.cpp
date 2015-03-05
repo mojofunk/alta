@@ -12,6 +12,7 @@
 
 #include "misc/functor_dispatcher.cpp"
 #include "misc/worker.cpp"
+#include "misc/sample_block.cpp"
 
 #include "logging/log.cpp"
 
@@ -33,7 +34,6 @@
 
 #include "resource.cpp"
 
-#include "sample_block.cpp"
 
 #include "semaphore.cpp"
 

@@ -20,7 +20,7 @@
 #include "misc/null_deleter.hpp"
 #include "misc/functor_dispatcher.hpp"
 #include "misc/worker.hpp"
-
+#include "misc/sample_block.hpp"
 
 #include "logging/log.hpp"
 
@@ -45,7 +45,6 @@
 
 #include "resource.hpp"
 
-#include "sample_block.hpp"
 
 #include "semaphore.hpp"
 
