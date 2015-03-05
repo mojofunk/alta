@@ -14,6 +14,7 @@
 #include <cstring>
 #include <cstdlib>
 #include <iostream>
+#include <chrono>
 
 #if MOJO_WINDOWS
 #include <stdio.h>

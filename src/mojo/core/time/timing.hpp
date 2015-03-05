@@ -1,13 +1,8 @@
 #ifndef MOJO_CORE_TIMING_H
 #define MOJO_CORE_TIMING_H
 
-#include <cstdint>
-
-#include <string>
-#include <vector>
-
 #ifndef MOJO_CORE_AMALGAMATED
-#include "mojo/core/config/visibility.hpp"
+#include "mojo/core/config/common_header.hpp"
 #include "mojo/core/time/time.hpp"
 #endif
 

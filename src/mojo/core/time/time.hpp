@@ -1,10 +1,8 @@
 #ifndef MOJO_CORE_TIME_H
 #define MOJO_CORE_TIME_H
 
-#include <cstdint>
-
 #ifndef MOJO_CORE_AMALGAMATED
-#include "mojo/core/config/visibility.hpp"
+#include "mojo/core/config/common_header.hpp"
 #endif
 
 namespace mojo {
