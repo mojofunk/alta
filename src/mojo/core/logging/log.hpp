@@ -3,8 +3,6 @@
 
 #include <string>
 
-#include "mojo/core/visibility.hpp"
-
 namespace mojo {
 
 void log (const char* log_domain, const std::string& msg);

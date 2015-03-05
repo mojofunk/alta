@@ -7,7 +7,7 @@
 #include <vector>
 
 #ifndef MOJO_CORE_AMALGAMATED
-#include "mojo/core/visibility.hpp"
+#include "mojo/core/config/visibility.hpp"
 #include "mojo/core/time/time.hpp"
 #endif
 

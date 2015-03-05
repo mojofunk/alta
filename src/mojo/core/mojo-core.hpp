@@ -2,7 +2,7 @@
 #ifndef MOJO_CORE_H
 #define MOJO_CORE_H
 
-#include "visibility.hpp"
+#include "config/visibility.hpp"
 
 //////
 
