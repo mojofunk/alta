@@ -1,7 +1,7 @@
-#ifndef MOJO_VISIBILITY_H
-#define MOJO_VISIBILITY_H
+#ifndef MOJO_CORE_VISIBILITY_H
+#define MOJO_CORE_VISIBILITY_H
 
-#ifdef _MSC_VER
+#ifdef MOJO_MSVC
 	#define MOJO_EXPORT __declspec(dllexport)
 	#define MOJO_IMPORT __declspec(dllimport)
 	#define MOJO_LOCAL
@@ -28,4 +28,4 @@
 
 #define MOJO_CAPI extern "C" MOJO_API
 
-#endif // MOJO_VISIBILITY_H
+#endif // MOJO_CORE_VISIBILITY_H
