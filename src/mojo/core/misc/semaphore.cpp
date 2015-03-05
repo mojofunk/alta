@@ -1,5 +1,5 @@
 
-#include "mojo/core/semaphore.hpp"
+#include "mojo/core/misc/semaphore.hpp"
 
 namespace mojo {
 

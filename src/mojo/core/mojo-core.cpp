@@ -16,6 +16,7 @@
 #include "misc/functor_dispatcher.cpp"
 #include "misc/worker.cpp"
 #include "misc/sample_block.cpp"
+#include "misc/semaphore.cpp"
 
 #include "logging/log.cpp"
 
@@ -37,7 +38,6 @@
 
 #include "system/resource.cpp"
 
-#include "semaphore.cpp"
 
 #include "typesystem/type_names.cpp"
 #include "typesystem/type_system.cpp"

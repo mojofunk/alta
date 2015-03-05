@@ -25,6 +25,7 @@
 #include "misc/worker.hpp"
 #include "misc/sample_block.hpp"
 #include "misc/spinwait.hpp"
+#include "misc/semaphore.hpp"
 
 #include "logging/log.hpp"
 
@@ -49,7 +50,6 @@
 
 #include "system/resource.hpp"
 
-#include "semaphore.hpp"
 
 #include "string/compose.hpp"
 #include "string/convert.hpp"

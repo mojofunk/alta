@@ -5,7 +5,7 @@
 #include <mutex>
 #include <condition_variable>
 
-#include "mojo/core/semaphore.hpp"
+#include "mojo/core/misc/semaphore.hpp"
 
 namespace mojo {
 
