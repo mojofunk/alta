@@ -29,7 +29,14 @@
 
 #include "logging/log.hpp"
 
-#include "smart_pointer_macros.hpp"
+#include "typesystem/smart_pointer_macros.hpp"
+#include "typesystem/types.hpp"
+#include "typesystem/type_names.hpp"
+#include "typesystem/forward.hpp"
+#include "typesystem/template_type_factory.hpp"
+#include "typesystem/typedefs.hpp"
+#include "typesystem/type_factory.hpp"
+#include "typesystem/type_system.hpp"
 
 #include "interfaces/forward.hpp"
 #include "interfaces/typedefs.hpp"
@@ -56,14 +63,6 @@
 
 #include "debug/debug_registry.hpp"
 #include "debug/debug.hpp"
-
-#include "typesystem/types.hpp"
-#include "typesystem/type_names.hpp"
-#include "typesystem/forward.hpp"
-#include "typesystem/template_type_factory.hpp"
-#include "typesystem/typedefs.hpp"
-#include "typesystem/type_factory.hpp"
-#include "typesystem/type_system.hpp"
 
 #include "object/forward.hpp"
 #include "object/typedefs.hpp"

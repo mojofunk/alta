@@ -3,7 +3,7 @@
 
 #ifndef MOJO_CORE_AMALGAMATED
 
-#include <mojo/core/smart_pointer_macros.hpp>
+#include "mojo/core/typesystem/smart_pointer_macros.hpp"
 
 #include "forward.hpp"
 

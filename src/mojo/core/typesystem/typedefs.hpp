@@ -1,7 +1,7 @@
 #ifndef MOJO_TYPESYSTEM_TYPEDEFS_H
 #define MOJO_TYPESYSTEM_TYPEDEFS_H
 
-#include "mojo/core/smart_pointer_macros.hpp"
+#include "smart_pointer_macros.hpp"
 
 #include "forward.hpp"
 

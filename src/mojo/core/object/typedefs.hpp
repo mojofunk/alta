@@ -1,9 +1,8 @@
 #ifndef MOJO_CORE_OBJECT_TYPEDEFS_H
-
 #define MOJO_CORE_OBJECT_TYPEDEFS_H
 
 #ifndef MOJO_CORE_AMALGAMATED
-#include "mojo/core/smart_pointer_macros.hpp"
+#include "mojo/core/typesystem/smart_pointer_macros.hpp"
 
 #include "forward.hpp"
 #endif

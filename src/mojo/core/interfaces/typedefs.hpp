@@ -2,7 +2,7 @@
 #define MOJO_INTERFACES_TYPEDEFS_H
 
 #ifndef MOJO_CORE_AMALGAMATED
-#include "mojo/core/smart_pointer_macros.hpp"
+#include "mojo/core/typesystem/smart_pointer_macros.hpp"
 #include "mojo/core/interfaces/forward.hpp"
 #endif
 
