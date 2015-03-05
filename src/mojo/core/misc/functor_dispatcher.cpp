@@ -1,6 +1,8 @@
-#include "functor_dispatcher.hpp"
-
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_source.hpp"
 #include "mojo/core/debug/debug.hpp"
+#include "mojo/core/misc/functor_dispatcher.hpp"
+#endif
 
 MOJO_DEBUG_DOMAIN(FUNCTOR_DISPATCHER);
 

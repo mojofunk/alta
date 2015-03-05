@@ -21,11 +21,11 @@
 #include "time/timing.hpp"
 
 #include "misc/null_deleter.hpp"
-#include "misc/functor_dispatcher.hpp"
+#include "misc/semaphore.hpp"
 #include "misc/worker.hpp"
+#include "misc/functor_dispatcher.hpp"
 #include "misc/sample_block.hpp"
 #include "misc/spinwait.hpp"
-#include "misc/semaphore.hpp"
 
 #include "logging/log.hpp"
 

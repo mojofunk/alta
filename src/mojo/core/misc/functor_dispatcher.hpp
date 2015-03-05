@@ -1,11 +1,10 @@
 #ifndef MOJO_FUNCTOR_DISPATCHER_H
 #define MOJO_FUNCTOR_DISPATCHER_H
 
-#include <queue>
-
-#include <boost/function.hpp>
-
-#include "worker.hpp"
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
+#include "mojo/core/misc/worker.hpp"
+#endif
 
 namespace mojo {
 

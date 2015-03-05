@@ -9,6 +9,8 @@
  * headers and then only when MOJO_CORE_AMALGAMATED is not defined.
  */
 
+#include <cstring>
+#include <cstdlib>
 #include <iostream>
 #include <string>
 #include <sstream>

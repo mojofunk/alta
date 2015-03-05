@@ -1,7 +1,9 @@
 #ifndef MOJO_SAMPLE_BLOCK_H
 #define MOJO_SAMPLE_BLOCK_H
 
-#include <vector>
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
+#endif
 
 namespace mojo {
 

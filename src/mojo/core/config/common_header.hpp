@@ -17,10 +17,15 @@
  * includes.
  */
 
+#include <atomic>
+#include <mutex>
+#include <condition_variable>
 #include <string>
 #include <map>
 #include <vector>
+#include <queue>
 
 #include <boost/filesystem.hpp>
+#include <boost/function.hpp>
 
 #endif // MOJO_CORE_COMMON_HEADER_H

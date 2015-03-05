@@ -13,10 +13,10 @@
 #include "time/time.cpp"
 #include "time/timing.cpp"
 
-#include "misc/functor_dispatcher.cpp"
-#include "misc/worker.cpp"
-#include "misc/sample_block.cpp"
 #include "misc/semaphore.cpp"
+#include "misc/worker.cpp"
+#include "misc/functor_dispatcher.cpp"
+#include "misc/sample_block.cpp"
 
 #include "logging/log.cpp"
 

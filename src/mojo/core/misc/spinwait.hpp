@@ -1,7 +1,10 @@
 #ifndef MOJO_CORE_SPINWAIT_H
 #define MOJO_CORE_SPINWAIT_H
 
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
 #include "mojo/core/time/timing.hpp"
+#endif
 
 namespace mojo {
 
