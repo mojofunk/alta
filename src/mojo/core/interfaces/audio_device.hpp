@@ -1,7 +1,7 @@
 #ifndef MOJO_AUDIO_DEVICE_H
 #define MOJO_AUDIO_DEVICE_H
 
-#include "mojo/core/types.hpp"
+#include "mojo/core/typesystem/types.hpp"
 
 namespace mojo {
 

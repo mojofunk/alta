@@ -1,7 +1,7 @@
 #ifndef MOJO_AUDIO_EFFECT_MODULE_H
 #define MOJO_AUDIO_EFFECT_MODULE_H
 
-#include "mojo/core/types.hpp"
+#include "mojo/core/typesystem/types.hpp"
 
 #include "mojo/core/filesystem/filesystem.hpp"
 #include "mojo/core/interfaces/typedefs.hpp"

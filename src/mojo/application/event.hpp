@@ -2,7 +2,7 @@
 #define MOJO_EVENT_H
 
 #ifndef MOJO_APPLICATION_AMALGAMATED
-#include "mojo/core/types.hpp"
+#include "mojo/core/typesystem/types.hpp"
 
 #include "object.hpp"
 #endif

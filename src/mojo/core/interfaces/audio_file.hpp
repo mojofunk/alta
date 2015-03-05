@@ -1,7 +1,7 @@
 #ifndef MOJO_AUDIO_FILE_H
 #define MOJO_AUDIO_FILE_H
 
-#include "mojo/core/types.hpp"
+#include "mojo/core/typesystem/types.hpp"
 
 #include "typedefs.hpp"
 
