@@ -3,4 +3,4 @@
 . ./env.sh
 
 cd $BASE || exit 1
-./waf configure --with-tests --with-gtkmm-ui "$@"
+./waf configure --with-gtkmm-ui "$@"
