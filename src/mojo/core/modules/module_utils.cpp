@@ -1,5 +1,5 @@
 #ifndef MOJO_CORE_AMALGAMATED
-#include "mojo/core/config/common_source.hpp"
+#include "mojo/core/config/common_source_includes.hpp"
 #include "mojo/core/modules/module_utils.hpp"
 #include "mojo/core/modules/module.hpp"
 #include "mojo/core/modules/library.hpp"

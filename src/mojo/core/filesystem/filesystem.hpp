@@ -2,7 +2,7 @@
 #define MOJO_CORE_FILESYSTEM_H
 
 #ifndef MOJO_CORE_AMALGAMATED
-#include "mojo/core/config/common_header.hpp"
+#include "mojo/core/config/common_header_includes.hpp"
 #endif
 
 // use a namespace alias

@@ -2,7 +2,7 @@
 #ifndef MOJO_CORE_H
 #define MOJO_CORE_H
 
-#include "config/common_header.hpp"
+#include "config/common_header_includes.hpp"
 
 //////
 

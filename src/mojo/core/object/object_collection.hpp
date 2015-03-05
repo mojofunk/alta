@@ -2,7 +2,7 @@
 #define MOJO_OBJECT_COLLECTION_H
 
 #ifndef MOJO_CORE_AMALGAMATED
-#include "mojo/core/config/common_header.hpp"
+#include "mojo/core/config/common_header_includes.hpp"
 #include "mojo/core/object/typedefs.hpp"
 #endif
 

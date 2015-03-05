@@ -2,7 +2,7 @@
 #define MOJO_AUDIO_EFFECT_MODULE_H
 
 #ifndef MOJO_CORE_AMALGAMATED
-#include "mojo/core/config/common_header.hpp"
+#include "mojo/core/config/common_header_includes.hpp"
 #include "mojo/core/typesystem/types.hpp"
 #include "mojo/core/filesystem/filesystem.hpp"
 #include "mojo/core/interfaces/typedefs.hpp"

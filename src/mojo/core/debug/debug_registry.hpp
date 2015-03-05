@@ -2,7 +2,7 @@
 #define MOJO_CORE_DEBUG_REGISTRY_H
 
 #ifndef MOJO_CORE_AMALGAMATED
-#include "config/common_header.hpp"
+#include "config/common_header_includes.hpp"
 #endif
 
 namespace mojo {

@@ -2,7 +2,7 @@
 #define MOJO_CORE_SMART_POINTER_MACROS_H
 
 #ifndef MOJO_CORE_AMALGAMATED
-#include "mojo/core/config/common_header.hpp"
+#include "mojo/core/config/common_header_includes.hpp"
 #endif
 
 #define MOJO_DEFINE_POINTER_TYPEDEFS(CLASS) \
