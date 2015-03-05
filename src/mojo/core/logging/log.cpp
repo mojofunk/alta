@@ -1,6 +1,7 @@
-#include "log.hpp"
-
-#include <iostream>
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_source.hpp"
+#include "mojo/core/logging/log.hpp"
+#endif
 
 namespace mojo {
 
