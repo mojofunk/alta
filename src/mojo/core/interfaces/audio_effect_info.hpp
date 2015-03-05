@@ -1,9 +1,10 @@
 #ifndef MOJO_AUDIO_EFFECT_INFO_H
 #define MOJO_AUDIO_EFFECT_INFO_H
 
-#include <string>
-
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
 #include "mojo/core/filesystem/filesystem.hpp"
+#endif
 
 namespace mojo {
 

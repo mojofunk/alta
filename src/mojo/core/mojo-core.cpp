@@ -38,6 +38,5 @@
 
 #include "system/resource.cpp"
 
-
 #include "typesystem/type_names.cpp"
 #include "typesystem/type_system.cpp"

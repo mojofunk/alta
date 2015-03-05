@@ -1,9 +1,11 @@
 #ifndef MOJO_AUDIO_EFFECT_H
 #define MOJO_AUDIO_EFFECT_H
 
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
 #include "mojo/core/typesystem/types.hpp"
-
-#include "typedefs.hpp"
+#include "mojo/core/interfaces/typedefs.hpp"
+#endif
 
 namespace mojo {
 

@@ -40,6 +40,13 @@
 
 #include "interfaces/forward.hpp"
 #include "interfaces/typedefs.hpp"
+#include "interfaces/archive.hpp"
+#include "interfaces/audio_device.hpp"
+#include "interfaces/audio_effect.hpp"
+#include "interfaces/audio_effect_info.hpp"
+#include "interfaces/audio_effect_parameter_info.hpp"
+#include "interfaces/audio_file_format.hpp"
+#include "interfaces/audio_file.hpp"
 
 #include "modules/forward.hpp"
 #include "modules/typedefs.hpp"

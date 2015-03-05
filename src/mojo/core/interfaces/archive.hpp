@@ -1,9 +1,11 @@
-#ifndef MOJO_ARCHIVE_H
-#define MOJO_ARCHIVE_H
+#ifndef MOJO_CORE_ARCHIVE_H
+#define MOJO_CORE_ARCHIVE_H
 
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
 #include "mojo/core/filesystem/filesystem.hpp"
-
 #include "mojo/core/object/properties.hpp"
+#endif
 
 namespace mojo {
 
@@ -38,4 +40,4 @@ public: // Interface
 
 } // namespace mojo
 
-#endif // MOJO_ARCHIVE_H
+#endif // MOJO_CORE_ARCHIVE_H
