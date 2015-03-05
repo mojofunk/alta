@@ -1,12 +1,9 @@
 #ifndef MOJO_PROPERTY_H
 #define MOJO_PROPERTY_H
 
-#include <glib.h>
-
-#include <boost/any.hpp>
-
-#include <string>
-#include <map>
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
+#endif
 
 namespace mojo {
 

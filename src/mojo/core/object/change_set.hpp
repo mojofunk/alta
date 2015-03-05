@@ -1,9 +1,10 @@
 #ifndef MOJO_CHANGE_SET_H
 #define MOJO_CHANGE_SET_H
 
-#include <set>
-
-#include "change.hpp"
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
+#include "mojo/core/object/change.hpp"
+#endif
 
 namespace mojo {
 

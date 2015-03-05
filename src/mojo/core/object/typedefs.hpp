@@ -2,9 +2,9 @@
 #define MOJO_CORE_OBJECT_TYPEDEFS_H
 
 #ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
 #include "mojo/core/typesystem/smart_pointer_macros.hpp"
-
-#include "forward.hpp"
+#include "mojo/core/object/forward.hpp"
 #endif
 
 namespace mojo {

@@ -1,15 +1,9 @@
 #ifndef MOJO_PROPERTIES_H
 #define MOJO_PROPERTIES_H
 
-#include <string>
-#include <set>
-
-#include <glib.h>
-
 #ifndef MOJO_CORE_AMALGAMATED
-
-#include "property.hpp"
-
+#include "mojo/core/config/common_header.hpp"
+#include "mojo/core/object/property.hpp"
 #endif
 
 namespace mojo {

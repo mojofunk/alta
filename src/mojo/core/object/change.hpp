@@ -1,10 +1,9 @@
 #ifndef MOJO_CHANGE_H
 #define MOJO_CHANGE_H
 
-#include <cassert>
-
 #ifndef MOJO_CORE_AMALGAMATED
-#include "property.hpp"
+#include "mojo/core/config/common_header.hpp"
+#include "mojo/core/object/property.hpp"
 #endif
 
 namespace mojo {
@@ -45,7 +44,7 @@ public:
 		new_value.value = new_value_arg;
 
 		// The types must always be the same
-		assert (new_value.value.type() == old_value.value.type());
+		//assert (new_value.value.type() == old_value.value.type());
 	}
 
 	Property old_value;

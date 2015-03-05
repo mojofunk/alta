@@ -1,10 +1,9 @@
 #ifndef MOJO_OBJECT_COLLECTION_H
 #define MOJO_OBJECT_COLLECTION_H
 
-#include <list>
-
 #ifndef MOJO_CORE_AMALGAMATED
-#include "typedefs.hpp"
+#include "mojo/core/config/common_header.hpp"
+#include "mojo/core/object/typedefs.hpp"
 #endif
 
 namespace mojo {
