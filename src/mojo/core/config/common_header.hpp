@@ -20,8 +20,12 @@
 #include <atomic>
 #include <mutex>
 #include <condition_variable>
-#include <list>
+#include <cstdint>
 #include <string>
+#include <sstream>
+#include <limits>
+#include <locale>
+#include <list>
 #include <set>
 #include <map>
 #include <vector>

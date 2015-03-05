@@ -1,11 +1,9 @@
 #ifndef MOJO_CORE_STRING_CONVERT_H
 #define MOJO_CORE_STRING_CONVERT_H
 
-#include <cstdint>
-#include <string>
-#include <limits>
-#include <locale>
-#include <sstream>
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
+#endif
 
 /**
  * Locale independent string conversion utility functions.

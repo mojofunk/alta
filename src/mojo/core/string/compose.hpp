@@ -1,8 +1,9 @@
 #ifndef MOJO_CORE_STRING_COMPOSE_H
 #define MOJO_CORE_STRING_COMPOSE_H
 
-#include <string>
-#include <sstream>
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
+#endif
 
 namespace mojo {
 

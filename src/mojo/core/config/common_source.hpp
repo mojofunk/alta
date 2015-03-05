@@ -12,9 +12,6 @@
 #include <cstring>
 #include <cstdlib>
 #include <iostream>
-#include <string>
-#include <sstream>
-#include <limits>
 
 #include <gmodule.h>
 
