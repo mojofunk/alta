@@ -10,7 +10,8 @@
 #include "filesystem/file_utils.cpp"
 #include "filesystem/search_path.cpp"
 
-#include "functor_dispatcher.cpp"
+#include "misc/functor_dispatcher.cpp"
+#include "misc/worker.cpp"
 
 #include "logging/log.cpp"
 
@@ -43,4 +44,3 @@
 
 #include "typesystem/type_system.cpp"
 
-#include "worker.cpp"

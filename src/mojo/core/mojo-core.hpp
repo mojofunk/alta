@@ -17,7 +17,10 @@
 #include "filesystem/file_utils.hpp"
 #include "filesystem/search_path.hpp"
 
-#include "functor_dispatcher.hpp"
+#include "misc/null_deleter.hpp"
+#include "misc/functor_dispatcher.hpp"
+#include "misc/worker.hpp"
+
 
 #include "logging/log.hpp"
 
@@ -39,8 +42,6 @@
 #include "modules/audio_file_module.hpp"
 #include "modules/project_export_module.hpp"
 #include "modules/project_import_module.hpp"
-
-#include "misc/null_deleter.hpp"
 
 #include "resource.hpp"
 
@@ -71,6 +72,5 @@
 #include "typesystem/type_factory.hpp"
 #include "typesystem/type_system.hpp"
 
-#include "worker.hpp"
 
 #endif // MOJO_CORE_H

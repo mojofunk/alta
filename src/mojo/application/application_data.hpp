@@ -4,7 +4,7 @@
 #include <thread>
 
 #ifndef MOJO_APPLICATION_AMALGAMATED
-#include "mojo/core/functor_dispatcher.hpp"
+#include "mojo/core/misc/functor_dispatcher.hpp"
 
 #include "typedefs.hpp"
 #endif
