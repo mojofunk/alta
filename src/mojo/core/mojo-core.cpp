@@ -6,9 +6,9 @@
 
 #include "debug/debug.cpp"
 
+#include "filesystem/search_path.cpp"
 #include "filesystem/filesystem_paths.cpp"
 #include "filesystem/file_utils.cpp"
-#include "filesystem/search_path.cpp"
 
 #include "time/time.cpp"
 #include "time/timing.cpp"

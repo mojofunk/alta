@@ -10,10 +10,13 @@
  */
 
 #include <iostream>
+#include <string>
 #include <sstream>
 #include <limits>
 
 #include <gleam/filesystem_paths.hpp>
 #include <gleam/utils.hpp>
+
+#include <boost/tokenizer.hpp>
 
 #endif

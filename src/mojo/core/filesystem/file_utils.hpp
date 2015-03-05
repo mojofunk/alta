@@ -1,15 +1,11 @@
 #ifndef MOJO_FILE_UTILS_H
 #define MOJO_FILE_UTILS_H
 
-#include <vector>
-#include <string>
-//#include <cstddef> // for std::size_t
-
 #ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
 
 #include "mojo/core/filesystem/filesystem.hpp"
-
-#endif // MOJO_CORE_AMALGAMATED
+#endif
 
 namespace mojo {
 

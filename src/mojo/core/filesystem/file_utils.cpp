@@ -1,9 +1,7 @@
-#include <sstream>
-#include <limits>
-
 #ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_source.hpp"
 
-#include "file_utils.hpp"
+#include "mojo/core/filesystem/file_utils.hpp"
 
 #endif // MOJO_CORE_AMALGAMATED
 

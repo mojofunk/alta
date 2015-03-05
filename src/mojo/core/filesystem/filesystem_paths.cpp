@@ -1,13 +1,8 @@
-
-#include "filesystem_paths.hpp"
-
-#include <gleam/filesystem_paths.hpp>
-#include <gleam/utils.hpp>
-
 #ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_source.hpp"
 
-
-#endif // MOJO_CORE_AMALGAMATED
+#include "mojo/core/filesystem/filesystem_paths.hpp"
+#endif
 
 namespace mojo {
 

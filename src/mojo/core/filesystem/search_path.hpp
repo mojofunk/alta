@@ -1,13 +1,11 @@
 #ifndef MOJO_SEARCH_PATH_H
 #define MOJO_SEARCH_PATH_H
 
-#include <string>
-
 #ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_header.hpp"
 
 #include "mojo/core/filesystem/filesystem.hpp"
-
-#endif // MOJO_CORE_AMALGAMATED
+#endif
 
 namespace mojo {
 
