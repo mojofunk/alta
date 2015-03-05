@@ -6,7 +6,7 @@
 // for command line args
 #include <boost/test/framework.hpp>
 
-#include "mojo/core/resource.hpp"
+#include "mojo/core/system/resource.hpp"
 #include "mojo/core/string/compose.hpp"
 
 #include "test_common.hpp"

@@ -47,7 +47,7 @@
 #include "modules/project_export_module.hpp"
 #include "modules/project_import_module.hpp"
 
-#include "resource.hpp"
+#include "system/resource.hpp"
 
 #include "semaphore.hpp"
 

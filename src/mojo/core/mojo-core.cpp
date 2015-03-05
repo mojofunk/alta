@@ -35,7 +35,7 @@
 #include "modules/audio_effect_module.cpp"
 #include "modules/audio_file_module.cpp"
 
-#include "resource.cpp"
+#include "system/resource.cpp"
 
 #include "semaphore.cpp"
 
