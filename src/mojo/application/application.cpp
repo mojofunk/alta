@@ -10,10 +10,9 @@
 #include "mojo/core/debug/debug.hpp"
 #include "mojo/core/modules/module_utils.hpp"
 
+#include "mojo/core/typesystem/type_names.hpp"
 #include "mojo/core/typesystem/type_system.hpp"
 #include "mojo/core/typesystem/template_type_factory.hpp"
-
-#include "mojo/core/type_names.hpp"
 
 #include "mojo/core/interfaces/archive.hpp"
 

@@ -60,10 +60,10 @@
 #include "debug/debug.hpp"
 
 
-#include "type_names.hpp"
 
 #include "types.hpp"
 
+#include "typesystem/type_names.hpp"
 #include "typesystem/forward.hpp"
 #include "typesystem/template_type_factory.hpp"
 #include "typesystem/typedefs.hpp"

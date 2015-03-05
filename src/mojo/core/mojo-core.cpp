@@ -39,7 +39,5 @@
 
 #include "semaphore.cpp"
 
-#include "type_names.cpp"
-
+#include "typesystem/type_names.cpp"
 #include "typesystem/type_system.cpp"
-
