@@ -9,9 +9,19 @@
  * headers and then only when MOJO_CORE_AMALGAMATED is not defined.
  */
 
+#include "config/common_header.hpp"
+
 #include <cstring>
 #include <cstdlib>
 #include <iostream>
+
+#if MOJO_WINDOWS
+#include <stdio.h>
+#else
+#include <unistd.h>
+#include <sys/time.h>
+#include <sys/resource.h>
+#endif
 
 #include <gmodule.h>
 

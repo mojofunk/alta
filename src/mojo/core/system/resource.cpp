@@ -1,14 +1,7 @@
-#include "resource.hpp"
-
-#ifdef _WIN32
-#include <stdio.h>
-#else // linux
-#include <unistd.h>
-#include <sys/time.h>
-#include <sys/resource.h>
+#ifndef MOJO_CORE_AMALGAMATED
+#include "mojo/core/config/common_source.hpp"
+#include "mojo/core/system/resource.hpp"
 #endif
-
-#include <limits>
 
 namespace mojo {
 
@@ -16,7 +9,7 @@ bool
 get_resource_limit (ResourceType resource, ResourceLimit& limit)
 {
 	if (resource == OpenFiles) {
-#ifdef _WIN32
+#ifdef MOJO_WINDOWS
 		limit.current_limit = _getmaxstdio();
 		limit.max_limit = 2048;
 		return true;
@@ -29,7 +22,7 @@ get_resource_limit (ResourceType resource, ResourceLimit& limit)
 		}
 #endif
 	} else if (resource == MemLock) {
-#ifdef __linux__
+#ifdef MOJO_LINUX
 	struct rlimit rl;
 
 	if (getrlimit (RLIMIT_MEMLOCK, &rl) != 0) {
@@ -53,7 +46,7 @@ set_resource_limit (ResourceType resource, const ResourceLimit& limit)
 {
 	if (resource == OpenFiles)
 	{
-#ifdef _WIN32
+#ifdef MOJO_WINDOWS
 		// no soft and hard limits on windows
 		rlimit_t new_max = _setmaxstdio(limit.current_limit);
 
@@ -76,7 +69,7 @@ int64_t
 physical_memory_size ()
 {
 
-#ifdef __linux__
+#ifdef MOJO_LINUX
 	long pages, page_size;
 
 	if ((page_size = sysconf (_SC_PAGESIZE)) < 0 || (pages = sysconf (_SC_PHYS_PAGES)) < 0) {
