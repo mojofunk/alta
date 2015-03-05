@@ -10,6 +10,9 @@
 #include "filesystem/file_utils.cpp"
 #include "filesystem/search_path.cpp"
 
+#include "time/time.cpp"
+#include "time/timing.cpp"
+
 #include "misc/functor_dispatcher.cpp"
 #include "misc/worker.cpp"
 #include "misc/sample_block.cpp"
@@ -34,11 +37,7 @@
 
 #include "resource.cpp"
 
-
 #include "semaphore.cpp"
-
-#include "time/time.cpp"
-#include "time/timing.cpp"
 
 #include "type_names.cpp"
 

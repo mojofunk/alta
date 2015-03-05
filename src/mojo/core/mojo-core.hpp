@@ -17,10 +17,14 @@
 #include "filesystem/file_utils.hpp"
 #include "filesystem/search_path.hpp"
 
+#include "time/time.hpp"
+#include "time/timing.hpp"
+
 #include "misc/null_deleter.hpp"
 #include "misc/functor_dispatcher.hpp"
 #include "misc/worker.hpp"
 #include "misc/sample_block.hpp"
+#include "misc/spinwait.hpp"
 
 #include "logging/log.hpp"
 
@@ -45,7 +49,6 @@
 
 #include "resource.hpp"
 
-
 #include "semaphore.hpp"
 
 #include "signals.hpp"
@@ -56,10 +59,6 @@
 #include "debug/debug_registry.hpp"
 #include "debug/debug.hpp"
 
-#include "time/time.hpp"
-#include "time/timing.hpp"
-
-#include "spinwait.hpp"
 
 #include "type_names.hpp"
 

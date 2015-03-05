@@ -3,7 +3,7 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
 
-#include "mojo/core/spinwait.hpp"
+#include "mojo/core/misc/spinwait.hpp"
 
 using namespace boost::unit_test;
 using namespace std;
