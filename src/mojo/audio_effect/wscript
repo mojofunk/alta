@@ -2,6 +2,9 @@
 # encoding: utf-8
 # Tim Mayberry, 2008
 
+subdirs = '''
+ladspa
+'''
 
 def init():
     pass
@@ -36,3 +39,5 @@ def build(bld):
                   use=['GLEAM'],
                   target='mojo-audio-effect',
                   name='MOJO_AUDIO_EFFECT_STATIC')
+
+    bld.recurse(subdirs)

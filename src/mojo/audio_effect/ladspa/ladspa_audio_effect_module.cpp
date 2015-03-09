@@ -4,11 +4,7 @@
 #include "ladspa_audio_effect_info.hpp"
 #include "ladspa_typedefs.hpp"
 
-#include "mojo/core/visibility.hpp"
-
-#include "mojo/core/filesystem/file_utils.hpp"
-
-#include "mojo/core/modules/library.hpp"
+#include "mojo-audio-effect.hpp"
 
 namespace mojo {
 
