@@ -2,6 +2,9 @@
 # encoding: utf-8
 # Tim Mayberry, 2008
 
+subdirs = '''
+jack
+'''
 
 def init():
     pass
@@ -36,3 +39,5 @@ def build(bld):
                   use=['GLEAM'],
                   target='mojo-audio-driver',
                   name='MOJO_AUDIO_DRIVER_STATIC')
+
+    bld.recurse(subdirs)

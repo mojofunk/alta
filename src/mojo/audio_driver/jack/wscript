@@ -2,21 +2,34 @@
 # encoding: utf-8
 # Tim Mayberry, 2008
 
-
 def init():
     pass
 
 
 def configure(conf):
-    print "configure JACKAudioDriver"
+    print "configure mojo-audio-driver-jack"
 
 
-def build(ctx):
-    shlib = ctx(
-        features="cxx cxxshlib",
-        includes='.',
-        source=ctx.path.ant_glob('*.cpp'),
-        uselib=['JACK'],
-        use='MOJO',
-        target='jack_audio_driver',
-        name='JACK_AUDIO_DRIVER')
+def build(bld):
+
+    if bld.env['ENABLE_SHARED']:
+        bld.shlib(includes='.',
+                  source=bld.path.ant_glob('*.cpp'),
+                  uselib=[
+                      'GMODULE-2.0',
+                      'BOOST_FILESYSTEM',
+                      'BOOST_SYSTEM'],
+                  use=['GLEAM', 'MOJO_AUDIO_DRIVER_SHARED', 'MOJO_CORE_SHARED'],
+                  target='mojo-audio-driver-jack',
+                  name='MOJO_AUDIO_DRIVER_JACK')
+
+    if bld.env['ENABLE_STATIC']:
+        bld.stlib(includes='.',
+                  source=bld.path.ant_glob('*.cpp'),
+                  uselib=[
+                      'GMODULE-2.0',
+                      'BOOST_FILESYSTEM',
+                      'BOOST_SYSTEM'],
+                  use=['GLEAM', 'MOJO_AUDIO_DRIVER_STATIC', 'MOJO_CORE_STATIC'],
+                  target='mojo-audio-driver-jack',
+                  name='MOJO_AUDIO_DRIVER_JACK')
