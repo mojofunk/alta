@@ -52,6 +52,7 @@ test_archive (ArchiveSP archive, const string& filename)
 
 	insert_some_properties (props);
 
+	BOOST_TEST_MESSAGE(filename);
 	BOOST_CHECK_NO_THROW(archive->write (filename, props));
 
 	Properties props2;
@@ -71,13 +72,17 @@ BOOST_AUTO_TEST_CASE( archive_module_test )
 
 	BOOST_CHECK(!modules.empty());
 
-	for (auto&x : modules)
+	for (auto&mod : modules)
 	{
 		string file_extension;
 		BOOST_CHECK(mojo::to_string(g_random_int(), file_extension));
-		string file_name = string(typeid (x).name()) + "." + file_extension;
+		string file_name = string(typeid (*mod).name()) + "." + file_extension;
 
-		ArchiveSP archive = x->create_archive ();
+		BOOST_TEST_MESSAGE(mod->get_author());
+		BOOST_TEST_MESSAGE(mod->get_description());
+		BOOST_TEST_MESSAGE(mod->get_version());
+
+		ArchiveSP archive = mod->create_archive ();
 
 		test_archive (archive, file_name);
 	}

@@ -2,7 +2,7 @@
 #include "xml_archive.hpp"
 #include "xml_archive_module.hpp"
 
-#include "mojo/core/visibility.hpp"
+#include "mojo-archive.hpp"
 
 namespace mojo {
 

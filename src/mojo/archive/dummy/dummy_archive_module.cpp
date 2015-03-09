@@ -2,8 +2,6 @@
 #include "dummy_archive.hpp"
 #include "dummy_archive_module.hpp"
 
-#include "mojo/core/visibility.hpp"
-
 namespace mojo {
 
 DummyArchiveModule::DummyArchiveModule () { }

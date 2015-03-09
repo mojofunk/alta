@@ -2,12 +2,6 @@
 #include <iostream>
 #include <fstream>
 
-#include "mojo/core/typesystem/type_system.hpp"
-
-#include "mojo/core/string/convert.hpp"
-
-#include "mojo/core/object/object.hpp"
-
 #include "dummy_archive.hpp"
 
 namespace mojo {
