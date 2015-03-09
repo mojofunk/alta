@@ -21,7 +21,7 @@ def build(bld):
                       'BOOST_SYSTEM'],
                   use=['GLEAM', 'MOJO_ARCHIVE_SHARED', 'MOJO_CORE_SHARED'],
                   target='mojo-archive-dummy',
-                  name='MOJO_DUMMY')
+                  name='MOJO_ARCHIVE_DUMMY')
 
     if bld.env['ENABLE_STATIC']:
         bld.stlib(includes='.',
@@ -32,4 +32,4 @@ def build(bld):
                       'BOOST_SYSTEM'],
                   use=['GLEAM', 'MOJO_ARCHIVE_STATIC', 'MOJO_CORE_STATIC'],
                   target='mojo-archive-dummy',
-                  name='MOJO_DUMMY')
+                  name='MOJO_ARCHIVE_DUMMY')
