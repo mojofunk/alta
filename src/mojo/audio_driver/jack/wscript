@@ -2,6 +2,7 @@
 # encoding: utf-8
 # Tim Mayberry, 2008
 
+
 def init():
     pass
 
@@ -19,7 +20,10 @@ def build(bld):
                       'GMODULE-2.0',
                       'BOOST_FILESYSTEM',
                       'BOOST_SYSTEM'],
-                  use=['GLEAM', 'MOJO_AUDIO_DRIVER_SHARED', 'MOJO_CORE_SHARED'],
+                  use=[
+                      'GLEAM',
+                      'MOJO_AUDIO_DRIVER_SHARED',
+                      'MOJO_CORE_SHARED'],
                   target='mojo-audio-driver-jack',
                   name='MOJO_AUDIO_DRIVER_JACK')
 
@@ -30,6 +34,9 @@ def build(bld):
                       'GMODULE-2.0',
                       'BOOST_FILESYSTEM',
                       'BOOST_SYSTEM'],
-                  use=['GLEAM', 'MOJO_AUDIO_DRIVER_STATIC', 'MOJO_CORE_STATIC'],
+                  use=[
+                      'GLEAM',
+                      'MOJO_AUDIO_DRIVER_STATIC',
+                      'MOJO_CORE_STATIC'],
                   target='mojo-audio-driver-jack',
                   name='MOJO_AUDIO_DRIVER_JACK')
