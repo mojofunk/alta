@@ -9,10 +9,10 @@
 
 #include "mojo/application/application.hpp"
 
-#include "mojo/core/interfaces/audio_effect.hpp"
-#include "mojo/core/interfaces/audio_effect_info.hpp"
-#include "mojo/core/interfaces/audio_effect_parameter_info.hpp"
-#include "mojo/core/modules/audio_effect_module.hpp"
+#include "mojo/audio_effect/audio_effect.hpp"
+#include "mojo/audio_effect/audio_effect_info.hpp"
+#include "mojo/audio_effect/audio_effect_parameter_info.hpp"
+#include "mojo/audio_effect/audio_effect_module.hpp"
 
 
 using namespace boost::unit_test;

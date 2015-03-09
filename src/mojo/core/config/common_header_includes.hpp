@@ -6,10 +6,10 @@
  * each header file.
  */
 
-#include "target_platform.hpp"
-#include "compiler_defines.hpp"
-#include "visibility.hpp"
-#include "version.hpp"
+#include "mojo/core/config/target_platform.hpp"
+#include "mojo/core/config/compiler_defines.hpp"
+#include "mojo/core/config/visibility.hpp"
+#include "mojo/core/config/version.hpp"
 
 /**
  * These are the common system includes required by header files

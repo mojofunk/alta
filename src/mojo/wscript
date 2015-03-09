@@ -6,6 +6,10 @@ subdirs = '''
 core
 engine
 application
+archive
+audio_driver
+audio_effect
+audio_file
 '''
 
 

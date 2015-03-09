@@ -20,21 +20,10 @@
 
 #include "logging/log.cpp"
 
-#include "interfaces/archive.cpp"
-#include "interfaces/audio_effect.cpp"
-#include "interfaces/audio_effect_info.cpp"
-#include "interfaces/audio_file.cpp"
-#include "interfaces/audio_file_format.cpp"
-
 #include "modules/glib_library.cpp"
 #include "modules/library.cpp"
 #include "modules/module.cpp"
 #include "modules/module_utils.cpp"
-
-#include "modules/archive_module.cpp"
-#include "modules/audio_driver_module.cpp"
-#include "modules/audio_effect_module.cpp"
-#include "modules/audio_file_module.cpp"
 
 #include "system/resource.cpp"
 

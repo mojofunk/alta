@@ -8,9 +8,8 @@
 // for command line args
 #include <boost/test/framework.hpp>
 
-#include "mojo/core/interfaces/audio_device.hpp"
-
-#include "mojo/core/modules/audio_driver_module.hpp"
+#include "mojo/audio_driver/audio_device.hpp"
+#include "mojo/audio_driver/audio_driver_module.hpp"
 
 #include "mojo/application/application.hpp"
 

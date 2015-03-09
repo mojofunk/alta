@@ -20,21 +20,26 @@ export GMOJO_PATH=data
 export MOJO_TEST_PATH=$BASE/data
 
 MOJO_PATH=\
-$BUILD_DIR/src/mojules/AudioFileModule/sndfile:\
-$BUILD_DIR/src/mojules/AudioDriverModule/jack:\
-$BUILD_DIR/src/mojules/AudioEffectModule/ladspa:\
-$BUILD_DIR/src/mojules/ArchiveModule/dummy:\
-$BUILD_DIR/src/mojules/ArchiveModule/xml
+$BUILD_DIR/src/mojo/archive/xml:\
+$BUILD_DIR/src/mojo/audio_effect/ladspa:\
+$BUILD_DIR/src/mojo/audio_file/sndfile:\
+$BUILD_DIR/src/mojo/audio_driver/jack:
 
 export MOJO_PATH
 
 GLEAM_LIBRARY_PATH=$BUILD_DIR/src/gleam
-MOJO_LIBRARY_PATH=$BUILD_DIR/src/mojo/core:$BUILD_DIR/src/mojo/application:$BUILD_DIR/src/mojo/engine:
+
+MOJO_LIBRARY_PATH=$BUILD_DIR/src/mojo/core:\
+$BUILD_DIR/src/mojo/application:\
+$BUILD_DIR/src/mojo/engine:\
+$BUILD_DIR/src/mojo/archive:\
+$BUILD_DIR/src/mojo/audio_driver:\
+$BUILD_DIR/src/mojo/audio_effect:\
+$BUILD_DIR/src/mojo/audio_file:
+
 MOJO_TEST_LIBRARY_PATH=$BUILD_DIR/src/mojo/tests:
-MOJO_MODULE_LIBRARY_PATH=$BUILD_DIR/src/mojules
 
 export LD_LIBRARY_PATH=\
 $GLEAM_LIBRARY_PATH:\
 $MOJO_LIBRARY_PATH:\
-$MOJO_TEST_LIBRARY_PATH:\
-$MOJO_MODULE_LIBRARY_PATH:\
+$MOJO_TEST_LIBRARY_PATH:

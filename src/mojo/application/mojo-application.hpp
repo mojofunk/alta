@@ -13,6 +13,11 @@
  */
 #include <mojo-core.hpp>
 
+#include <mojo-archive.hpp>
+#include <mojo-audio-driver.hpp>
+#include <mojo-audio-effect.hpp>
+#include <mojo-audio-file.hpp>
+
 #include <mojo/application/types.hpp>
 
 #include <mojo/application/forward.hpp>

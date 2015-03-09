@@ -14,16 +14,15 @@
 #include "mojo/core/typesystem/type_system.hpp"
 #include "mojo/core/typesystem/template_type_factory.hpp"
 
-#include "mojo/core/interfaces/archive.hpp"
-
-#include "mojo/core/modules/audio_file_module.hpp"
-#include "mojo/core/modules/audio_driver_module.hpp"
-#include "mojo/core/modules/audio_effect_module.hpp"
-#include "mojo/core/modules/archive_module.hpp"
-
 #include "mojo/core/filesystem/filesystem_paths.hpp"
 
 #include "mojo/core/object/object_collection.hpp"
+
+#include "mojo/archive/archive.hpp"
+#include "mojo/archive/archive_module.hpp"
+#include "mojo/audio_file/audio_file_module.hpp"
+#include "mojo/audio_driver/audio_driver_module.hpp"
+#include "mojo/audio_effect/audio_effect_module.hpp"
 
 #include "mojo/application/audio_track.hpp"
 #include "mojo/application/midi_track.hpp"

@@ -78,6 +78,7 @@ def display_config(conf):
     Logs.info('Enable shared: %s' % conf.env['ENABLE_SHARED'])
     Logs.info('Enable static: %s' % conf.env['ENABLE_STATIC'])
     Logs.info('Enable amalgamation: %s' % conf.env['ENABLE_AMALGAMATION'])
+    Logs.info('Build tests: %s' % conf.env['BUILD_TESTS'])
 
 
 def configure(conf):

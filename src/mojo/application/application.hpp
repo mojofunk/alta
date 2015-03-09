@@ -10,7 +10,10 @@
 #include "mojo/core/modules/typedefs.hpp"
 #include "mojo/core/filesystem/filesystem.hpp"
 
-#include "mojo/core/interfaces/typedefs.hpp"
+#include "mojo/archive/typedefs.hpp"
+#include "mojo/audio_driver/typedefs.hpp"
+#include "mojo/audio_effect/typedefs.hpp"
+#include "mojo/audio_file/typedefs.hpp"
 
 #include "typedefs.hpp"
 #include "types.hpp"

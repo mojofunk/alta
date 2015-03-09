@@ -1,0 +1,38 @@
+#! /usr/bin/env python
+# encoding: utf-8
+# Tim Mayberry, 2008
+
+
+def init():
+    pass
+
+
+def configure(conf):
+    print "configure mojo-audio-effect"
+
+
+def build(bld):
+
+    if bld.env['ENABLE_SHARED']:
+        bld.shlib(includes='.',
+                  export_includes='.',
+                  source=bld.path.ant_glob('*.cpp'),
+                  uselib=[
+                      'GMODULE-2.0',
+                      'BOOST_FILESYSTEM',
+                      'BOOST_SYSTEM'],
+                  use=['GLEAM'],
+                  target='mojo-audio-effect',
+                  name='MOJO_AUDIO_EFFECT_SHARED')
+
+    if bld.env['ENABLE_STATIC']:
+        bld.stlib(includes='.',
+                  export_includes='.',
+                  source=bld.path.ant_glob('*.cpp'),
+                  uselib=[
+                      'GMODULE-2.0',
+                      'BOOST_FILESYSTEM',
+                      'BOOST_SYSTEM'],
+                  use=['GLEAM'],
+                  target='mojo-audio-effect',
+                  name='MOJO_AUDIO_EFFECT_STATIC')

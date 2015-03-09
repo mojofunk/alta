@@ -38,16 +38,6 @@
 #include "typesystem/template_type_factory.hpp"
 #include "typesystem/type_system.hpp"
 
-#include "interfaces/forward.hpp"
-#include "interfaces/typedefs.hpp"
-#include "interfaces/archive.hpp"
-#include "interfaces/audio_device.hpp"
-#include "interfaces/audio_effect.hpp"
-#include "interfaces/audio_effect_info.hpp"
-#include "interfaces/audio_effect_parameter_info.hpp"
-#include "interfaces/audio_file_format.hpp"
-#include "interfaces/audio_file.hpp"
-
 #include "modules/forward.hpp"
 #include "modules/typedefs.hpp"
 #include "modules/module.hpp"
@@ -55,15 +45,7 @@
 #include "modules/library.hpp"
 #include "modules/glib_library.hpp"
 
-#include "modules/archive_module.hpp"
-#include "modules/audio_driver_module.hpp"
-#include "modules/audio_effect_module.hpp"
-#include "modules/audio_file_module.hpp"
-#include "modules/project_export_module.hpp"
-#include "modules/project_import_module.hpp"
-
 #include "system/resource.hpp"
-
 
 #include "string/compose.hpp"
 #include "string/convert.hpp"

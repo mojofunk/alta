@@ -7,7 +7,8 @@
 #include <glib.h> //remove this
 
 #include "mojo/core/modules/module_utils.hpp"
-#include "mojo/core/modules/audio_file_module.hpp"
+
+#include "mojo/audio_file/audio_file_module.hpp"
 
 #include "mojo/core/filesystem/filesystem_paths.hpp"
 

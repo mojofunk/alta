@@ -9,7 +9,7 @@
  * headers and then only when MOJO_CORE_AMALGAMATED is not defined.
  */
 
-#include "config/common_header_includes.hpp"
+#include "mojo/core/config/common_header_includes.hpp"
 
 #include <cstring>
 #include <cstdlib>
