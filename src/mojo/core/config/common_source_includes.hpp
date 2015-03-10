@@ -16,7 +16,7 @@
 #include <iostream>
 #include <chrono>
 
-#if MOJO_WINDOWS
+#ifdef MOJO_WINDOWS
 #include <stdio.h>
 #else
 #include <unistd.h>
