@@ -1,168 +1,133 @@
 #!/bin/bash
 
-. ./mingw-env.sh
+. ./env-mingw.sh
 
 . ./print-env.sh
 
-cd $BASE || exit 1
-
-if ! test -f $BUILD_CACHE_FILE; then
-	echo "ERROR: $APPNAME is not configured and built yet..."
+if [ -z "$DLLS" ]; then
+	echo "ERROR: DLLS variable is not defined..."
 	exit 1
 fi
+
+cd $BASE || exit 1
 
 if [ -d $PACKAGE_DIR ]; then
 	echo "Removing old package directory structure ..."
 	rm -rf $PACKAGE_DIR || exit 1
 fi
 
-./waf --destdir=$PACKAGE_DIR install || exit 1
+$PYTHON ./waf --destdir=$PACKAGE_DIR install || exit 1
 
-echo "Copying UI files $PACKAGE_DIR ..."
+echo "Moving Ardour dll's and executable to $PACKAGE_BIN_DIR ..."
 
-cp -r $BASE/data $PACKAGE_DIR
-
-echo "Moving dll's and executable to $PACKAGE_DIR ..."
-
-mv $PACKAGE_DIR/bin/*.dll $PACKAGE_DIR || exit 1
-mv $PACKAGE_DIR/bin/*.exe $PACKAGE_DIR || exit 1
+mv $PACKAGE_LIB_DIR/ardour3/*.dll $PACKAGE_BIN_DIR || exit 1
+mv $PACKAGE_LIB_DIR/ardour3/*.exe $PACKAGE_BIN_DIR || exit 1
 
 echo "Deleting import libs ..."
 
-rm $PACKAGE_DIR/lib/*dll.a
+rm $PACKAGE_LIB_DIR/*dll.a
+
+# delete sh script
+rm $PACKAGE_BIN_DIR/ardour3
 
 if test x$WITH_TESTS != x ; then
 	echo "Copying tests and test data to $PACKAGE_DIR ..."
-	#cp $BUILD_DIR/libs/pbd/run-tests.exe $PACKAGE_DIR/pbd-run-tests.exe
-	#cp -r $BASE/libs/pbd/test $ARDOUR_DATA_DIR/pbd_testdata
+	cp $BUILD_DIR/libs/pbd/run-tests.exe $PACKAGE_BIN_DIR/pbd-run-tests.exe
+	cp -r $BASE/libs/pbd/test $PACKAGE_DIR/pbd_testdata
 
-	#cp $BUILD_DIR/libs/evoral/run-tests.exe $PACKAGE_DIR/evoral-run-tests.exe
-	#mkdir -p $PACKAGE_DIR/test/testdata
-	#cp -r $BASE/libs/evoral/test/testdata/TakeFive.mid $PACKAGE_DIR/test/testdata
+	cp $BUILD_DIR/libs/midi++2/run-tests.exe $PACKAGE_BIN_DIR/midipp-run-tests.exe
+
+	cp $BUILD_DIR/libs/evoral/run-tests.exe $PACKAGE_BIN_DIR/evoral-run-tests.exe
+	mkdir -p $PACKAGE_DIR/evoral_testdata
+	cp -r $BASE/libs/evoral/test/testdata/* $PACKAGE_DIR/evoral_testdata
+
+	cp -r $BASE/libs/ardour/test/data $PACKAGE_DIR/ardour_testdata
 fi
 
+echo "Copying config files to $PACKAGE_DIR ..."
+mkdir -p $PACKAGE_DIR/etc
+cp -RL $MINGW_ROOT/etc/fonts $PACKAGE_DIR/etc
+cp -RL $MINGW_ROOT/etc/gtk-2.0 $PACKAGE_DIR/etc
+cp -RL $MINGW_ROOT/etc/pango $PACKAGE_DIR/etc
 
-echo "Copying mingw config files to $PACKAGE_DIR ..."
-# just copy it all for now
-cp -r $MINGW_ROOT/etc $PACKAGE_DIR
+cp -R $MINGW_ROOT/lib/gtk-2.0 $PACKAGE_DIR/lib
 
-cp -r $MINGW_ROOT/lib/gtk-2.0 $PACKAGE_DIR/lib
-cp -r $MINGW_ROOT/lib/gdk-pixbuf-2.0 $PACKAGE_DIR/lib
-cp $TOOLS_DIR/loaders.cache $PACKAGE_DIR/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
+# Copy any gdk-pixbuf2 modules if they exist
+if [ -d $MINGW_ROOT/lib/gdk-pixbuf-2.0 ]; then
+    echo "Copying gdk-pixbuf2 modules to $PACKAGE_LIB_DIR ..."
+    cp -R $MINGW_ROOT/lib/gdk-pixbuf-2.0 $PACKAGE_LIB_DIR
+    cp $TOOLS_DIR/loaders.cache $PACKAGE_LIB_DIR/gdk-pixbuf-2.0/2.10.0/loaders.cache
+fi
 
-mkdir -p $PACKAGE_DIR/lib/pango/1.6.0/modules
-cp -r $MINGW_ROOT/lib/pango/1.6.0/modules/*.dll $PACKAGE_DIR/lib/pango/1.6.0/modules
-cp $TOOLS_DIR/pango.modules $PACKAGE_DIR/etc/pango
+# Copy any pango modules if they exist
+if [ -d $MINGW_ROOT/lib/pango/1.8.0/modules ]; then
+    echo "Copying pango modules to $PACKAGE_LIB_DIR ..."
+    mkdir -p $PACKAGE_LIB_DIR/pango/1.8.0/modules
+    cp -r $MINGW_ROOT/lib/pango/1.8.0/modules/*.dll $PACKAGE_LIB_DIR/pango/1.8.0/modules
+    cp $TOOLS_DIR/pango.modules $PACKAGE_DIR/etc/pango
+fi
 
-#/usr/i686-pc-mingw32/sys-root/mingw/bin/boost_signals-gcc46-mt-1_47.dll
-#/usr/i686-pc-mingw32/sys-root/mingw/bin/boost_unit_test_framework-gcc46-mt-1_47.dll
+cp $TOOLS_DIR/README $PACKAGE_DIR
 
-
-DLLS='
-jack-0.dll
-jackserver-0.dll
-libatk-1.0-0.dll
-libatkmm-1.6-1.dll
-boost_filesystem-gcc46-mt-1_47.dll
-boost_system-gcc46-mt-1_47.dll
-libcairo-2.dll
-libcairo-gobject-2.dll
-libcairomm-1.0-1.dll
-libcairo-script-interpreter-2.dll
-libcppunit-1-12-1.dll
-libcrypto-10.dll
-libcurl-4.dll
-libexpat-1.dll
-libfftw3-3.dll
-libfftw3f-3.dll
-libfontconfig-1.dll
-libfreetype-6.dll
-libgailutil-18.dll
-libgcc_s_sjlj-1.dll
-libgdkmm-2.4-1.dll
-libgdk_pixbuf-2.0-0.dll
-libgdk-win32-2.0-0.dll
-libgio-2.0-0.dll
-libgiomm-2.4-1.dll
-libglib-2.0-0.dll
-libglibmm-2.4-1.dll
-libglibmm_generate_extra_defs-2.4-1.dll
-libgmodule-2.0-0.dll
-libgdk-3-0.dll
-libgtk-3-0.dll
-libgtkmm-3.0-1.dll
-libgdkmm-3.0-1.dll
-libgoocanvas-2.0-9.dll
-libgoocanvasmm-2.0-6.dll
-libgnurx-0.dll
-libgobject-2.0-0.dll
-libgthread-2.0-0.dll
-libgtk-win32-2.0-0.dll
-libiconv-2.dll
-iconv.dll
-libFLAC-8.dll
-libogg-0.dll
-libvorbis-0.dll
-libvorbisenc-2.dll
-libffi-5.dll
-libidn-11.dll
-libintl-8.dll
-libpango-1.0-0.dll
-libpangocairo-1.0-0.dll
-libpangoft2-1.0-0.dll
-libpangomm-1.4-1.dll
-libpangowin32-1.0-0.dll
-libpixman-1-0.dll
-libpng14-14.dll
-libsamplerate-0.dll
-libsigc-2.0-0.dll
-libsndfile-1.dll
-libssh2-1.dll
-libssl-10.dll
-libstdc++-6.dll
-libxml2-2.dll
-pthreadGC2.dll
-zlib1.dll
-'
-
-echo "Copying mingw shared libraries to $PACKAGE_DIR ..."
+echo "Copying mingw shared libraries to $PACKAGE_BIN_DIR ..."
 
 for i in $DLLS;
 do
-cp $MINGW_ROOT/bin/$i $PACKAGE_DIR
+	copydll "$i" "$PACKAGE_BIN_DIR" || exit 1
 done
 
-echo "Copying JACK server and drivers to $PACKAGE_DIR ..."
+if test x$WITH_JACK != x; then
+	echo "Copying JACK server and drivers to $PACKAGE_BIN_DIR ..."
+	cp $MINGW_ROOT/bin/jackd.exe $PACKAGE_BIN_DIR
+	cp -r $MINGW_ROOT/bin/jack $PACKAGE_BIN_DIR
+fi
 
-cp $MINGW_ROOT/bin/jackd.exe $PACKAGE_DIR
-cp -r $MINGW_ROOT/bin/jack $PACKAGE_DIR
-cp $MINGW_ROOT/bin/libportaudio-2.dll $PACKAGE_DIR
+SRC_DIRS='
+libs/ardour
+libs/pbd
+libs/gtkmm2ext
+libs/midi++2
+libs/evoral
+libs/panners
+libs/timecode
+libs/audiographer
+'
 
-if test x$DEBUG != x ; then
+if [ x$DEBUG = xT ]; then
 
 	PACKAGE_SRC_DIR=$PACKAGE_DIR/src
 	echo "Copying source files to $PACKAGE_SRC_DIR ..."
 	mkdir -p $PACKAGE_SRC_DIR/libs
-	cp -r $BASE/src $PACKAGE_DIR
-	
-	echo "Copying JACK utility programs to $PACKAGE_DIR ..."
-	cp $MINGW_ROOT/bin/jack_*.exe $PACKAGE_DIR
+	cp -r $BASE/gtk2_ardour $PACKAGE_SRC_DIR
+	for i in $SRC_DIRS;
+	do
+	cp -r -p $BASE/$i $PACKAGE_SRC_DIR/libs
+	done
 
-	echo "Copying any debug files to $PACKAGE_DIR ..."
-	cp $MINGW_ROOT/bin/*.debug $PACKAGE_DIR
+	if test x$WITH_JACK != x; then
+		echo "Copying JACK utility programs to $PACKAGE_BIN_DIR ..."
+		cp $MINGW_ROOT/bin/jack_*.exe $PACKAGE_BIN_DIR
+	fi
 
-	echo "Copying gdb to $PACKAGE_DIR ..."
-	cp $MINGW_ROOT/bin/gdb.exe $PACKAGE_DIR
+	if test x$WITH_LV2 != x; then
+		echo "Copying LV2 utility programs to $PACKAGE_BIN_DIR ..."
+		cp $MINGW_ROOT/bin/lilv-bench.exe $PACKAGE_BIN_DIR
+		cp $MINGW_ROOT/bin/lv2info.exe $PACKAGE_BIN_DIR
+		cp $MINGW_ROOT/bin/lv2ls.exe $PACKAGE_BIN_DIR
+	fi
 
-	echo "Copying .gdbinit to $PACKAGE_DIR ..."
-	cp $TOOLS_DIR/gdbinit $PACKAGE_DIR/.gdbinit
+	#echo "Copying any debug files to $PACKAGE_DIR ..."
+	#cp $MINGW_ROOT/bin/*.debug $PACKAGE_DIR
 
-	echo "Copying Gtk demo to $PACKAGE_DIR ..."
-	cp $MINGW_ROOT/bin/gtk-demo.exe $PACKAGE_DIR
+	echo "Copying gdb and config files to $PACKAGE_DIR ..."
+	cp $MINGW_ROOT/bin/gdb.exe $PACKAGE_BIN_DIR
+	. $TOOLS_DIR/make-debug-script.sh
+
+	echo "Copying Gtk demo to $PACKAGE_BIN_DIR ..."
+	cp $MINGW_ROOT/bin/gtk-demo.exe $PACKAGE_BIN_DIR
 else
 	echo "Optimized build Stripping executable ..."
-	#find $PACKAGE_DIR -type f -name "*.exe" | xargs $STRIP
-	#$STRIP $PACKAGE_DIR/ardour-3.0.exe
+	find $PACKAGE_DIR -type f -name "*.exe*" | xargs $STRIP
 	echo "Stripping libraries ..."
 	find $PACKAGE_DIR -type f -name "*.dll*" | xargs $STRIP
 fi
