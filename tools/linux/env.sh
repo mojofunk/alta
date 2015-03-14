@@ -24,7 +24,8 @@ $BUILD_DIR/src/mojo/archive/xml:\
 $BUILD_DIR/src/mojo/archive/dummy:\
 $BUILD_DIR/src/mojo/audio_effect/ladspa:\
 $BUILD_DIR/src/mojo/audio_file/sndfile:\
-$BUILD_DIR/src/mojo/audio_driver/jack:
+$BUILD_DIR/src/mojo/audio_driver/jack:\
+$BUILD_DIR/src/mojo/audio_driver/portaudio:
 
 export MOJO_PATH
 

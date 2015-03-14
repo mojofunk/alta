@@ -2,44 +2,41 @@
 # encoding: utf-8
 # Tim Mayberry, 2008
 
-subdirs = '''
-jack
-portaudio
-'''
-
 
 def init():
     pass
 
 
 def configure(conf):
-    print "configure mojo-driver"
+    print "configure mojo-audio-driver-portaudio"
 
 
 def build(bld):
 
     if bld.env['ENABLE_SHARED']:
         bld.shlib(includes='.',
-                  export_includes='.',
                   source=bld.path.ant_glob('*.cpp'),
                   uselib=[
                       'GMODULE-2.0',
                       'BOOST_FILESYSTEM',
                       'BOOST_SYSTEM'],
-                  use=['GLEAM', 'MOJO_CORE_SHARED'],
-                  target='mojo-audio-driver',
-                  name='MOJO_AUDIO_DRIVER_SHARED')
+                  use=[
+                      'GLEAM',
+                      'MOJO_AUDIO_DRIVER_SHARED',
+                      'MOJO_CORE_SHARED'],
+                  target='mojo-audio-driver-portaudio',
+                  name='MOJO_AUDIO_DRIVER_PORTAUDIO')
 
     if bld.env['ENABLE_STATIC']:
         bld.stlib(includes='.',
-                  export_includes='.',
                   source=bld.path.ant_glob('*.cpp'),
                   uselib=[
                       'GMODULE-2.0',
                       'BOOST_FILESYSTEM',
                       'BOOST_SYSTEM'],
-                  use=['GLEAM', 'MOJO_CORE_STATIC'],
-                  target='mojo-audio-driver',
-                  name='MOJO_AUDIO_DRIVER_STATIC')
-
-    bld.recurse(subdirs)
+                  use=[
+                      'GLEAM',
+                      'MOJO_AUDIO_DRIVER_STATIC',
+                      'MOJO_CORE_STATIC'],
+                  target='mojo-audio-driver-portaudio',
+                  name='MOJO_AUDIO_DRIVER_PORTAUDIO')
