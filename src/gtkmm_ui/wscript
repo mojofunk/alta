@@ -18,6 +18,16 @@ def init():
 
 def configure(conf):
     print "configure ui"
+    conf.check_cfg(
+        package='gtkmm-3.0',
+        atleast_version='3.8',
+        args='--cflags --libs',
+        mandatory=1)
+    conf.check_cfg(
+        package='goocanvasmm-2.0',
+        atleast_version='1.9.8',
+        args='--cflags --libs',
+        mandatory=1)
 
 
 def build_shared(bld):
