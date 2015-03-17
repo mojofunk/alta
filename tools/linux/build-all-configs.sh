@@ -11,11 +11,11 @@
 ./clean.sh
 ./configure-debug-tests-amalgamated.sh && ./waf.sh -j2 || exit 1
 ./clean.sh
-./configure-debug-gui.sh && ./waf.sh -j2 || exit 1
+./configure-debug-gtkmm-ui.sh && ./waf.sh -j2 || exit 1
 ./clean.sh
-./configure-debug-gui-static.sh && ./waf.sh -j2 || exit 1
+./configure-debug-gtkmm-ui-static.sh && ./waf.sh -j2 || exit 1
 ./clean.sh
-./configure-debug-gui-amalgamated.sh && ./waf.sh -j2 || exit 1
+./configure-debug-gtkmm-ui-amalgamated.sh && ./waf.sh -j2 || exit 1
 ./clean.sh
 ./configure-release.sh && ./waf.sh -j2 || exit 1
 ./clean.sh
