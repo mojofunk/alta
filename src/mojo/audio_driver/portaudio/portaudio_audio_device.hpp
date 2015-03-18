@@ -20,6 +20,9 @@ public: // AudioDevice interface
 
 	virtual error_t close ();
 
+private:
+
+	int m_device_num;
 };
 
 } // namespace mojo

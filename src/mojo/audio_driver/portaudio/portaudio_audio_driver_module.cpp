@@ -1,11 +1,19 @@
 
 #include "portaudio_audio_driver_module.hpp"
 
+MOJO_DEBUG_DOMAIN(PORTAUDIO_DRIVER)
+
 namespace mojo {
 
-PortaudioAudioDriverModule::PortaudioAudioDriverModule () { }
+PortaudioAudioDriverModule::PortaudioAudioDriverModule ()
+{
+	MOJO_DEBUG(PORTAUDIO_DRIVER);
+}
 
-PortaudioAudioDriverModule::~PortaudioAudioDriverModule () { }
+PortaudioAudioDriverModule::~PortaudioAudioDriverModule ()
+{
+	MOJO_DEBUG(PORTAUDIO_DRIVER);
+}
 
 std::string
 PortaudioAudioDriverModule::get_author()
