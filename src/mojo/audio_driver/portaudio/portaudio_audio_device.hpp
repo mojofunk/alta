@@ -15,8 +15,11 @@ public: // Constructors
 
 public: // AudioDevice interface
 
-	virtual error_t open (callback_t* cb,
-			samplerate_t samplerate);
+	virtual error_t open (uint32_t input_channels,
+	                      uint32_t output_channels,
+	                      uint32_t samplerate,
+	                      uint32_t buffersize,
+	                      callback_t* cb);
 
 	virtual error_t close ();
 

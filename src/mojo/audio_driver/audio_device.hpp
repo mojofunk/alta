@@ -30,10 +30,10 @@ public: // ctors
 
 public: // interface
 
-	/**
-	 * The Callback should contain all the data needed
-	 */
-	typedef int callback_t(count_t frames);
+	typedef int callback_t(const float* input_buffer,
+	                       const float* output_buffer,
+	                       count_t frames,
+	                       void* user_data);
 
 	enum error_t {
 		NO_ERROR = 0
@@ -49,15 +49,18 @@ public: // interface
 
 	// input_latency/output_latency??
 	// user_data
-	virtual error_t open (callback_t* cb,
-			samplerate_t samplerate) = 0;
+	virtual error_t open (uint32_t input_channels,
+	                      uint32_t output_channels,
+	                      uint32_t samplerate,
+	                      uint32_t buffersize,
+	                      callback_t* cb) = 0;
 
 	// wait till callback completed?
 	virtual error_t close () = 0;
 
-	//virtual channel_count_t get_sink_count () const = 0;
+	//virtual channel_count_t get_input_count () const = 0;
 
-	//virtual channel_count_t get_source_count () const = 0;
+	//virtual channel_count_t get_output_count () const = 0;
 
 	//virtual get_current_buffer_size () const;
 	//virtual get_min_buffer_size () const;

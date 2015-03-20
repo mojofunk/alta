@@ -18,7 +18,10 @@ using namespace std;
 using namespace mojo;
 
 int
-callback (count_t frames)
+callback (const float* input_buffer,
+          const float* output_buffer,
+          count_t frames,
+          void* user_data)
 {
 	return AudioDevice::CONTINUE;
 }
@@ -28,9 +31,19 @@ test_device (AudioDeviceSP dev)
 {
 	BOOST_REQUIRE(dev);
 
-	AudioDevice::error_t err = dev->open (callback, 44100);
+	uint32_t input_channels = 0;
+	uint32_t output_channels = 2;
+	uint32_t samplerate = 44100;
+	uint32_t buffersize = 1024;
+
+	AudioDevice::error_t err = dev->open (input_channels,
+	                                      output_channels,
+	                                      samplerate, buffersize,
+	                                      callback);
 
 	BOOST_CHECK(err != AudioDevice::NO_ERROR);
+
+	// usleep(10*1000);
 
 	err = dev->close ();
 
