@@ -15,15 +15,14 @@ def configure(conf):
     pass
 
 
-def build(ctx):
-    gleam_lib = ctx(
-        features="cxx cxxshlib",
+def build(bld):
+    bld.shlib(
         includes='. ..',
         export_includes='..',  # this should probably be .
-        source=ctx.path.ant_glob('*.cpp', excl=posix_files),
+        source=bld.path.ant_glob('*.cpp', excl=posix_files),
         uselib=['GLIBMM-2.4'],
         target='gleam',
         name='GLEAM')
 
-    if ctx.env['BUILD_TESTS']:
-        ctx.recurse('tests')
+    if bld.env['BUILD_TESTS']:
+        bld.recurse('tests')

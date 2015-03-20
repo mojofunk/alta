@@ -5,7 +5,12 @@
 import os
 from waflib import Logs
 
-VERSION = '0.1.0'
+# TODO use version from git tag/describe
+MAJOR_VERSION = '0'
+MINOR_VERSION = '1'
+MICRO_VERSION = '0'
+# these are required by waf for waf dist
+VERSION = MAJOR_VERSION + '.' + MINOR_VERSION + '.' + MICRO_VERSION
 APPNAME = 'Alta'
 
 # these variables are mandatory ('/' are converted automatically)
@@ -22,7 +27,8 @@ def options(opt):
     opt.add_option(
         '--with-target-platform',
         type='string',
-        dest='target_platform')
+        dest='target_platform',
+        help='Target platform options: auto, windows')
     opt.add_option(
         '--with-tests',
         action='store_true',
@@ -87,10 +93,7 @@ def configure(conf):
     conf.load('gnu_dirs')
 
     if conf.options.target_platform:
-        conf.env['build_target'] = conf.options.target_platform
-
-#   conf.define('TARGET_PLATFORM', conf.env['build_target'])
-    conf.env['APPNAME'] = APPNAME
+        conf.env['target_platform'] = conf.options.target_platform
 
     set_compiler_flags(conf)
 
@@ -140,6 +143,14 @@ def configure(conf):
     display_config(conf)
 
 
-def build(ctx):
+def build(bld):
     # process subfolders from here
-    ctx.recurse('src')
+
+    bld.env['PROGRAM_NAME'] = APPNAME
+    bld.env['PROGRAM_EXE_NAME'] = 'alta' + MAJOR_VERSION
+    bld.env['PROGRAM_DIR_NAME'] = bld.env['PROGRAM_EXE_NAME']
+    # redefine LIBDIR so all libs get installed automatically
+    bld.env[
+        'LIBDIR'] = "%s/%s" % (bld.env['LIBDIR'], bld.env['PROGRAM_DIR_NAME'])
+
+    bld.recurse('src')
