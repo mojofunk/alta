@@ -138,8 +138,6 @@ def configure(conf):
 
     conf.recurse('src')
 
-    conf.write_config_header('gmojo_config.h')
-
     display_config(conf)
 
 
