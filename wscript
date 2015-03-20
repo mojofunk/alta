@@ -80,11 +80,11 @@ def set_compiler_flags(conf):
 
 
 def display_config(conf):
-    Logs.info('C++ compiler flags: %s' % conf.env['CXXFLAGS'])
-    Logs.info('Enable shared: %s' % conf.env['ENABLE_SHARED'])
-    Logs.info('Enable static: %s' % conf.env['ENABLE_STATIC'])
-    Logs.info('Enable amalgamation: %s' % conf.env['ENABLE_AMALGAMATION'])
-    Logs.info('Build tests: %s' % conf.env['BUILD_TESTS'])
+    Logs.info('C++ compiler flags: %s' % conf.env.CXXFLAGS)
+    Logs.info('Enable shared: %s' % conf.env.ENABLE_SHARED)
+    Logs.info('Enable static: %s' % conf.env.ENABLE_STATIC)
+    Logs.info('Enable amalgamation: %s' % conf.env.ENABLE_AMALGAMATION)
+    Logs.info('Build tests: %s' % conf.env.BUILD_TESTS)
 
 
 def configure(conf):
@@ -108,21 +108,17 @@ def configure(conf):
 
     _check_required_deps(conf, deps)
 
-    if conf.options.with_tests:
-        conf.env['BUILD_TESTS'] = True
+    conf.env.BUILD_TESTS = conf.options.with_tests
+
+    if conf.env.BUILD_TESTS:
         conf.check(lib='boost_unit_test_framework')
 
-    if conf.options.enable_shared:
-        conf.env['ENABLE_SHARED'] = True
+    conf.env.ENABLE_SHARED = conf.options.enable_shared
+    conf.env.ENABLE_STATIC = conf.options.enable_static
 
-    if conf.options.enable_static:
-        conf.env['ENABLE_STATIC'] = True
+    conf.env.ENABLE_AMALGAMATION = conf.options.enable_amalgamation
 
-    if conf.options.enable_amalgamation:
-        conf.env['ENABLE_AMALGAMATION'] = True
-
-    if conf.options.with_gtkmm_ui:
-        conf.env['WITH_GTKMM_UI'] = True
+    conf.env.WITH_GTKMM_UI = conf.options.with_gtkmm_ui
 
     conf.check(lib='boost_filesystem')
     conf.check(lib='boost_system')
@@ -130,7 +126,7 @@ def configure(conf):
     defines = ['HAVE_CONFIG_H', '_REENTRANT',
                '_LARGEFILE_SOURCE', '_LARGEFILE64_SOURCE']
 
-    if conf.env['BUILD_TESTS']:
+    if conf.env.BUILD_TESTS:
         defines += ['BOOST_TEST_DYN_LINK']
 
     conf.env.append_value('CCDEFINES', defines)
@@ -144,11 +140,10 @@ def configure(conf):
 def build(bld):
     # process subfolders from here
 
-    bld.env['PROGRAM_NAME'] = APPNAME
-    bld.env['PROGRAM_EXE_NAME'] = 'alta' + MAJOR_VERSION
-    bld.env['PROGRAM_DIR_NAME'] = bld.env['PROGRAM_EXE_NAME']
+    bld.env.PROGRAM_NAME = APPNAME
+    bld.env.PROGRAM_EXE_NAME = 'alta' + MAJOR_VERSION
+    bld.env.PROGRAM_DIR_NAME = bld.env.PROGRAM_EXE_NAME
     # redefine LIBDIR so all libs get installed automatically
-    bld.env[
-        'LIBDIR'] = "%s/%s" % (bld.env['LIBDIR'], bld.env['PROGRAM_DIR_NAME'])
+    bld.env.LIBDIR = "%s/%s" % (bld.env.LIBDIR, bld.env.PROGRAM_DIR_NAME)
 
     bld.recurse('src')
