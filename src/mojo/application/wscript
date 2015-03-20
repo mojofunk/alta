@@ -3,24 +3,6 @@
 # Tim Mayberry, 2008
 
 
-uselibs = ['GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
-use_local_shared = [
-    'GLEAM',
-    'MOJO_CORE_SHARED',
-    'MOJO_ARCHIVE_SHARED',
-    'MOJO_AUDIO_DRIVER_SHARED',
-    'MOJO_AUDIO_EFFECT_SHARED',
-    'MOJO_AUDIO_FILE_SHARED']
-
-use_local_static = [
-    'GLEAM',
-    'MOJO_CORE_STATIC',
-    'MOJO_ARCHIVE_STATIC',
-    'MOJO_AUDIO_DRIVER_STATIC',
-    'MOJO_AUDIO_EFFECT_STATIC',
-    'MOJO_AUDIO_FILE_STATIC']
-
-
 def init():
     pass
 
@@ -31,47 +13,48 @@ def configure(conf):
 
 def build(bld):
 
-    if bld.env['ENABLE_AMALGAMATION']:
-        if bld.env['ENABLE_SHARED']:
-            bld.shlib(includes='.',
-                      export_includes='.',
-                      source='mojo-application.cpp',
-                      uselib=uselibs,
-                      use=use_local_shared,
-                      defines='MOJO_APPLICATION_AMALGAMATED',
-                      target='mojo-application-a',
-                      name='MOJO_APPLICATION_SHARED')
+    uselibs = ['GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
+    use_local_shared = [
+        'GLEAM',
+        'MOJO_CORE_SHARED',
+        'MOJO_ARCHIVE_SHARED',
+        'MOJO_AUDIO_DRIVER_SHARED',
+        'MOJO_AUDIO_EFFECT_SHARED',
+        'MOJO_AUDIO_FILE_SHARED']
 
-        if bld.env['ENABLE_STATIC']:
-            bld.stlib(includes='.',
-                      export_includes='.',
-                      source='mojo-application.cpp',
-                      uselib=uselibs,
-                      use=use_local_static,
-                      defines='MOJO_APPLICATION_AMALGAMATED',
-                      target='mojo-application-a',
-                      name='MOJO_APPLICATION_STATIC')
+    use_local_static = [
+        'GLEAM',
+        'MOJO_CORE_STATIC',
+        'MOJO_ARCHIVE_STATIC',
+        'MOJO_AUDIO_DRIVER_STATIC',
+        'MOJO_AUDIO_EFFECT_STATIC',
+        'MOJO_AUDIO_FILE_STATIC']
 
+    if bld.env.ENABLE_AMALGAMATION:
+        source = 'mojo-application.cpp'
+        defines = 'MOJO_APPLICATION_AMALGAMATED'
     else:
+        source = bld.path.ant_glob(
+            '**/*.cpp',
+            excl='mojo-application.cpp')
+        defines = ''
 
-        if bld.env['ENABLE_SHARED']:
-            bld.shlib(includes='.',
-                      export_includes='.',
-                      source=bld.path.ant_glob(
-                          '**/*.cpp',
-                          excl='mojo-application.cpp'),
-                      uselib=uselibs,
-                      use=use_local_shared,
-                      target='mojo-application',
-                      name='MOJO_APPLICATION_SHARED')
+    if bld.env.ENABLE_SHARED:
+        bld.shlib(includes='.',
+                  export_includes='.',
+                  source=source,
+                  uselib=uselibs,
+                  use=use_local_shared,
+                  defines=defines,
+                  target='mojo-application',
+                  name='MOJO_APPLICATION_SHARED')
 
-        if bld.env['ENABLE_STATIC']:
-            bld.stlib(includes='.',
-                      export_includes='.',
-                      source=bld.path.ant_glob(
-                          '**/*.cpp',
-                          excl='mojo-application.cpp'),
-                      uselib=uselibs,
-                      use=use_local_static,
-                      target='mojo-application',
-                      name='MOJO_APPLICATION_STATIC')
+    if bld.env.ENABLE_STATIC:
+        bld.stlib(includes='.',
+                  export_includes='.',
+                  source=source,
+                  uselib=uselibs,
+                  use=use_local_static,
+                  defines=defines,
+                  target='mojo-application',
+                  name='MOJO_APPLICATION_STATIC')

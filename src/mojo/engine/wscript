@@ -2,8 +2,6 @@
 # encoding: utf-8
 # Tim Mayberry, 2008
 
-uselibs = ['GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
-
 
 def init():
     pass
@@ -15,47 +13,35 @@ def configure(conf):
 
 def build(bld):
 
-    if bld.env['ENABLE_AMALGAMATION']:
-        if bld.env['ENABLE_SHARED']:
-            bld.shlib(includes='.',
-                      export_includes='.',
-                      source='mojo-engine.cpp',
-                      uselib=uselibs,
-                      use=['GLEAM', 'MOJO_CORE_SHARED'],
-                      defines='MOJO_ENGINE_AMALGAMATED',
-                      target='mojo-engine-a',
-                      name='MOJO_ENGINE_SHARED')
+    uselibs = ['GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
+    use_local_shared = ['GLEAM', 'MOJO_CORE_SHARED']
+    use_local_static = ['GLEAM', 'MOJO_CORE_STATIC']
 
-        if bld.env['ENABLE_STATIC']:
-            bld.stlib(includes='.',
-                      export_includes='.',
-                      source='mojo-engine.cpp',
-                      uselib=uselibs,
-                      use=['GLEAM', 'MOJO_CORE_STATIC'],
-                      defines='MOJO_ENGINE_AMALGAMATED',
-                      target='mojo-engine-a',
-                      name='MOJO_ENGINE_STATIC')
-
+    if bld.env.ENABLE_AMALGAMATION:
+        source = 'mojo-engine.cpp'
+        defines = 'MOJO_ENGINE_AMALGAMATED'
     else:
+        source = bld.path.ant_glob(
+            '**/*.cpp',
+            excl='mojo-engine.cpp')
+        defines = ''
 
-        if bld.env['ENABLE_SHARED']:
-            bld.shlib(includes='.',
-                      export_includes='.',
-                      source=bld.path.ant_glob(
-                          '**/*.cpp',
-                          excl='mojo-engine.cpp'),
-                      uselib=uselibs,
-                      use=['GLEAM'],
-                      target='mojo-engine',
-                      name='MOJO_ENGINE_SHARED')
+    if bld.env.ENABLE_SHARED:
+        bld.shlib(includes='.',
+                  export_includes='.',
+                  source=source,
+                  uselib=uselibs,
+                  use=use_local_shared,
+                  defines=defines,
+                  target='mojo-engine',
+                  name='MOJO_ENGINE_SHARED')
 
-        if bld.env['ENABLE_STATIC']:
-            bld.stlib(includes='.',
-                      export_includes='.',
-                      source=bld.path.ant_glob(
-                          '**/*.cpp',
-                          excl='mojo-engine.cpp'),
-                      uselib=uselibs,
-                      use=['GLEAM'],
-                      target='mojo-engine',
-                      name='MOJO_ENGINE_STATIC')
+    if bld.env.ENABLE_STATIC:
+        bld.stlib(includes='.',
+                  export_includes='.',
+                  source='mojo-engine.cpp',
+                  uselib=uselibs,
+                  use=use_local_static,
+                  defines=defines,
+                  target='mojo-engine',
+                  name='MOJO_ENGINE_STATIC')
