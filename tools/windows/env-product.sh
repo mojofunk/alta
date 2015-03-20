@@ -1,4 +1,0 @@
-#!/bin/bash
-
-PRODUCT_NAME=${PRODUCT_NAME:=alta}
-PROGRAM_NAME=${PROGRAM_NAME:=Alta}
