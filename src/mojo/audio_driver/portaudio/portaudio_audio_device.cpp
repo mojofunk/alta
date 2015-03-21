@@ -4,8 +4,8 @@ MOJO_DEBUG_DOMAIN(PORTAUDIO_DEVICE)
 
 namespace mojo {
 
-PortaudioAudioDevice::PortaudioAudioDevice (PaDeviceInfo const * info)
-	: m_device_info(info)
+PortaudioAudioDevice::PortaudioAudioDevice (PaDeviceIndex index)
+	: m_device_index(index)
 {
 
 }
@@ -19,7 +19,7 @@ PortaudioAudioDevice::~PortaudioAudioDevice ()
 std::string
 PortaudioAudioDevice::get_name () const
 {
-	return m_device_info->name;
+	return get_device_info()->name;
 }
 
 AudioDevice::error_t
@@ -42,22 +42,28 @@ PortaudioAudioDevice::close ()
 	return AudioDevice::NO_ERROR;
 }
 
+PaDeviceInfo const *
+PortaudioAudioDevice::get_device_info () const
+{
+	return Pa_GetDeviceInfo(m_device_index);
+}
+
 channel_count_t
 PortaudioAudioDevice::get_input_count () const
 {
-	return m_device_info->maxInputChannels;
+	return get_device_info()->maxInputChannels;
 }
 
 channel_count_t
 PortaudioAudioDevice::get_output_count () const
 {
-	return m_device_info->maxOutputChannels;
+	return get_device_info()->maxOutputChannels;
 }
 
 samplerate_t
 PortaudioAudioDevice::get_default_samplerate () const
 {
-	return m_device_info->defaultSampleRate;
+	return get_device_info()->defaultSampleRate;
 }
 
 } // namespace mojo

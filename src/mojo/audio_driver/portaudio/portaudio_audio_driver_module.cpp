@@ -97,12 +97,8 @@ PortaudioAudioDriverModule::discover_devices (AudioDeviceSPSet& devices)
 	}
 
 	for (PaDeviceIndex i = 0; i < device_count; ++i) {
-		const PaDeviceInfo* device_info = Pa_GetDeviceInfo(i);
-
-		if (device_info != NULL) { // can it be ??
-			AudioDeviceSP device(new PortaudioAudioDevice(device_info));
-			devices.insert (device);
-		}
+		AudioDeviceSP device(new PortaudioAudioDevice(i));
+		devices.insert (device);
 	}
 }
 

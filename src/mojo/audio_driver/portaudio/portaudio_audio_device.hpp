@@ -12,7 +12,7 @@ class PortaudioAudioDevice : public AudioDevice
 {
 public: // Constructors
 
-	PortaudioAudioDevice (PaDeviceInfo const *);
+	PortaudioAudioDevice (PaDeviceIndex);
 	~PortaudioAudioDevice ();
 
 public: // AudioDevice interface
@@ -33,10 +33,13 @@ public: // AudioDevice interface
 
 	virtual samplerate_t get_default_samplerate () const;
 
-private:
+private: // methods
 
-	PaDeviceInfo const * const m_device_info;
+	PaDeviceInfo const * get_device_info () const;
 
+private: // member data
+
+	PaDeviceIndex m_device_index;
 };
 
 } // namespace mojo
