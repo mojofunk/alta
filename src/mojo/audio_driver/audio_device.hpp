@@ -36,7 +36,8 @@ public: // interface
 	                       void* user_data);
 
 	enum error_t {
-		NO_ERROR = 0
+		NO_ERROR = 0,
+		UNKNOWN_ERROR = -1000
 	};
 
 	enum callback_result_t {
@@ -47,15 +48,16 @@ public: // interface
 	/// @return The name of the device. unique??
 	virtual std::string get_name () const = 0;
 
-	// input_latency/output_latency??
-	// user_data
 	virtual error_t open (uint32_t input_channels,
 	                      uint32_t output_channels,
 	                      uint32_t samplerate,
 	                      uint32_t buffersize,
 	                      callback_t* cb) = 0;
 
-	// wait till callback completed?
+	virtual error_t start () = 0;
+
+	virtual error_t stop () = 0;
+
 	virtual error_t close () = 0;
 
 	virtual channel_count_t get_input_count () const = 0;
@@ -63,6 +65,10 @@ public: // interface
 	virtual channel_count_t get_output_count () const = 0;
 
 	virtual samplerate_t get_default_samplerate () const = 0;
+
+	//virtual double get_input_latency () = 0;
+
+	//virtual double get_output_latency () = 0;
 
 	//virtual get_current_buffer_size () const;
 	//virtual get_min_buffer_size () const;
@@ -73,8 +79,6 @@ public: // interface
 	//virtual get_min_samplerate () const;
 	//virtual get_max_samplerate () const;
 	
-	//virtual double get_input_latency () = 0;
-	//virtual double get_output_latency () = 0;
 
 };
 

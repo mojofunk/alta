@@ -45,7 +45,15 @@ test_device (AudioDeviceSP dev)
 
 	BOOST_CHECK(err == AudioDevice::NO_ERROR);
 
-	// usleep(10*1000);
+	err = dev->start ();
+
+	BOOST_CHECK(err == AudioDevice::NO_ERROR);
+
+	usleep(1000*10);
+
+	err = dev->stop ();
+
+	BOOST_CHECK(err == AudioDevice::NO_ERROR);
 
 	err = dev->close ();
 

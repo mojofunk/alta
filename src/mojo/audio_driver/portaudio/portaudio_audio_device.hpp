@@ -25,6 +25,10 @@ public: // AudioDevice interface
 	                      uint32_t buffersize,
 	                      callback_t* cb);
 
+	virtual error_t start ();
+
+	virtual error_t stop ();
+
 	virtual error_t close ();
 
 	virtual channel_count_t get_input_count () const;
@@ -37,9 +41,21 @@ private: // methods
 
 	PaDeviceInfo const * get_device_info () const;
 
+	static int portaudio_callback (
+			const void *inputBuffer, void *outputBuffer,
+			unsigned long framesPerBuffer,
+			const PaStreamCallbackTimeInfo* timeInfo,
+			PaStreamCallbackFlags statusFlags,
+			void *userData);
+
 private: // member data
 
 	PaDeviceIndex m_device_index;
+	PaStream *    m_stream;
+
+	float left_phase;
+	float right_phase;
+
 };
 
 } // namespace mojo
