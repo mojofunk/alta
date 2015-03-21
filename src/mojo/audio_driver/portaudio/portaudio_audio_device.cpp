@@ -34,7 +34,7 @@ PortaudioAudioDevice::portaudio_callback (
 		void *userData)
 {
 	MOJO_DEBUG_MSG(PORTAUDIO_DEVICE,
-			compose ("Portaudio Callback"));
+			compose ("Portaudio Callback: frames %", framesPerBuffer));
 	PortaudioAudioDevice* device = static_cast<PortaudioAudioDevice*>(userData);
 	float *out = (float*)outputBuffer;
 	unsigned int i;
@@ -61,14 +61,18 @@ PortaudioAudioDevice::open (uint32_t input_channels,
 	                        uint32_t buffersize,
 	                        callback_t* cb)
 {
-	PaError err = Pa_OpenDefaultStream(&m_stream,
-	                                   0, // inputs
-	                                   2, // outputs
-	                                   paFloat32,
-	                                   44100,
-	                                   256,
-	                                   portaudio_callback,
-	                                   this);
+	PaStreamParameters input_params = get_default_input_params();
+	PaStreamParameters output_params = get_default_output_params();
+
+	input_params.channelCount = input_channels;
+	output_params.channelCount = output_channels;
+
+	PaError err = Pa_OpenStream(&m_stream,
+			input_channels > 0 ? &input_params : NULL,
+			output_channels > 0 ? &output_params : NULL,
+			samplerate, buffersize, paDitherOff | paClipOff,
+			portaudio_callback, this);
+
 	if(err == paNoError) {
 		MOJO_DEBUG_MSG(PORTAUDIO_DEVICE,
 			compose ("Opened audio stream"));
@@ -135,6 +139,30 @@ PortaudioAudioDevice::get_device_info () const
 	return Pa_GetDeviceInfo(m_device_index);
 }
 
+PaStreamParameters
+PortaudioAudioDevice::get_default_input_params () const
+{
+	PaStreamParameters input_params;
+	input_params.device = m_device_index;
+	input_params.channelCount = max_input_channels();
+	input_params.sampleFormat = paFloat32;
+	input_params.suggestedLatency = 0;
+	input_params.hostApiSpecificStreamInfo = 0;
+	return input_params;
+}
+
+PaStreamParameters
+PortaudioAudioDevice::get_default_output_params () const
+{
+	PaStreamParameters output_params;
+	output_params.device = m_device_index;
+	output_params.channelCount = max_output_channels();
+	output_params.sampleFormat = paFloat32;
+	output_params.suggestedLatency = 0;
+	output_params.hostApiSpecificStreamInfo = 0;
+	return output_params;
+}
+
 channel_count_t
 PortaudioAudioDevice::max_input_channels () const
 {
@@ -158,20 +186,8 @@ PortaudioAudioDevice::get_supported_samplerates (
 		std::vector<samplerate_t>& supported_rates) const
 {
 	std::vector<samplerate_t> possible_rates = {44100, 48000, 88200, 96000, 176400, 192000};
-	PaStreamParameters input_params;
-	PaStreamParameters output_params;
-
-	input_params.device = m_device_index;
-	input_params.channelCount = max_input_channels();
-	input_params.sampleFormat = paFloat32;
-	input_params.suggestedLatency = 0;
-	input_params.hostApiSpecificStreamInfo = 0;
-
-	output_params.device = m_device_index;
-	output_params.channelCount = max_output_channels();
-	output_params.sampleFormat = paFloat32;
-	output_params.suggestedLatency = 0;
-	output_params.hostApiSpecificStreamInfo = 0;
+	PaStreamParameters input_params = get_default_input_params();
+	PaStreamParameters output_params = get_default_output_params();
 
 	for (auto const& rate : possible_rates) {
 		if (paFormatIsSupported == Pa_IsFormatSupported(

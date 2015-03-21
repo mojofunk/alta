@@ -43,6 +43,10 @@ private: // methods
 
 	PaDeviceInfo const * get_device_info () const;
 
+	PaStreamParameters get_default_input_params () const;
+
+	PaStreamParameters get_default_output_params () const;
+
 	static int portaudio_callback (
 			const void *inputBuffer, void *outputBuffer,
 			unsigned long framesPerBuffer,

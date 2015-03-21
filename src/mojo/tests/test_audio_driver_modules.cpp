@@ -25,6 +25,7 @@ callback (const float* input_buffer,
           count_t frames,
           void* user_data)
 {
+	BOOST_TEST_MESSAGE(compose ("Test Callback: frames %", frames));
 	return AudioDevice::CONTINUE;
 }
 
@@ -33,14 +34,12 @@ test_device (AudioDeviceSP dev)
 {
 	BOOST_REQUIRE(dev);
 
-	uint32_t input_channels = 0;
-	uint32_t output_channels = 2;
-	uint32_t samplerate = 44100;
 	uint32_t buffersize = 1024;
 
-	AudioDevice::error_t err = dev->open (input_channels,
-	                                      output_channels,
-	                                      samplerate, buffersize,
+	AudioDevice::error_t err = dev->open (dev->max_input_channels(),
+	                                      dev->max_output_channels(),
+	                                      dev->get_default_samplerate(),
+										  buffersize,
 	                                      callback);
 
 	BOOST_CHECK(err == AudioDevice::NO_ERROR);
