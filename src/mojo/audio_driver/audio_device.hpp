@@ -60,11 +60,13 @@ public: // interface
 
 	virtual error_t close () = 0;
 
-	virtual channel_count_t get_input_count () const = 0;
+	virtual channel_count_t max_input_channels () const = 0;
 
-	virtual channel_count_t get_output_count () const = 0;
+	virtual channel_count_t max_output_channels () const = 0;
 
 	virtual samplerate_t get_default_samplerate () const = 0;
+
+	virtual void get_supported_samplerates (std::vector<samplerate_t>&) const = 0;
 
 	//virtual double get_input_latency () = 0;
 

@@ -65,9 +65,18 @@ print_device_info (AudioDeviceSP dev)
 {
 	BOOST_REQUIRE(dev);
 	BOOST_TEST_MESSAGE(compose ("Device name: %", dev->get_name()));
-	BOOST_TEST_MESSAGE(compose ("Input Channels: %", dev->get_input_count()));
-	BOOST_TEST_MESSAGE(compose ("Output Channels: %", dev->get_output_count()));
+	BOOST_TEST_MESSAGE(compose ("Max Input Channels: %", dev->max_input_channels()));
+	BOOST_TEST_MESSAGE(compose ("Max Output Channels: %", dev->max_output_channels()));
 	BOOST_TEST_MESSAGE(compose ("Default Samplerate: %", dev->get_default_samplerate()));
+
+	vector<samplerate_t> rates;
+	dev->get_supported_samplerates (rates);
+
+	ostringstream oss;
+	for (auto const& rate : rates) {
+		oss << " " << rate;
+	}
+	BOOST_TEST_MESSAGE(compose ("Supported Samplerates: %", oss.str()));
 }
 
 void

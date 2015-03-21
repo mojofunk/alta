@@ -136,13 +136,13 @@ PortaudioAudioDevice::get_device_info () const
 }
 
 channel_count_t
-PortaudioAudioDevice::get_input_count () const
+PortaudioAudioDevice::max_input_channels () const
 {
 	return get_device_info()->maxInputChannels;
 }
 
 channel_count_t
-PortaudioAudioDevice::get_output_count () const
+PortaudioAudioDevice::max_output_channels () const
 {
 	return get_device_info()->maxOutputChannels;
 }
@@ -151,6 +151,37 @@ samplerate_t
 PortaudioAudioDevice::get_default_samplerate () const
 {
 	return get_device_info()->defaultSampleRate;
+}
+
+void
+PortaudioAudioDevice::get_supported_samplerates (
+		std::vector<samplerate_t>& supported_rates) const
+{
+	std::vector<samplerate_t> possible_rates = {44100, 48000, 88200, 96000, 176400, 192000};
+	PaStreamParameters input_params;
+	PaStreamParameters output_params;
+
+	input_params.device = m_device_index;
+	input_params.channelCount = max_input_channels();
+	input_params.sampleFormat = paFloat32;
+	input_params.suggestedLatency = 0;
+	input_params.hostApiSpecificStreamInfo = 0;
+
+	output_params.device = m_device_index;
+	output_params.channelCount = max_output_channels();
+	output_params.sampleFormat = paFloat32;
+	output_params.suggestedLatency = 0;
+	output_params.hostApiSpecificStreamInfo = 0;
+
+	for (auto const& rate : possible_rates) {
+		if (paFormatIsSupported == Pa_IsFormatSupported(
+					max_input_channels() > 0 ? &input_params : NULL,
+					max_output_channels() > 0 ? &output_params : NULL,
+					rate))
+		{
+			supported_rates.push_back (rate);
+		}
+	}
 }
 
 } // namespace mojo

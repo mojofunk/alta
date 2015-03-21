@@ -31,11 +31,13 @@ public: // AudioDevice interface
 
 	virtual error_t close ();
 
-	virtual channel_count_t get_input_count () const;
+	virtual channel_count_t max_input_channels () const;
 
-	virtual channel_count_t get_output_count () const;
+	virtual channel_count_t max_output_channels () const;
 
 	virtual samplerate_t get_default_samplerate () const;
+
+	virtual void get_supported_samplerates (std::vector<samplerate_t>&) const;
 
 private: // methods
 
