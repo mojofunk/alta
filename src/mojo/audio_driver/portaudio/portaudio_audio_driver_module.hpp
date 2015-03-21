@@ -25,9 +25,16 @@ public: // AudioDriverModule interface
 
 	AudioDeviceSPSet get_devices () const;
 
+private: // methods
+
+	bool initialize ();
+	bool terminate ();
+
+	static void discover_devices (AudioDeviceSPSet& devices);
+
 private: // member data
 
-
+	bool m_initialized;
 };
 
 } // namespace mojo

@@ -1,18 +1,23 @@
 
 #include "portaudio_audio_driver_module.hpp"
+#include "portaudio_audio_device.hpp"
 
 MOJO_DEBUG_DOMAIN(PORTAUDIO_DRIVER)
+
 
 namespace mojo {
 
 PortaudioAudioDriverModule::PortaudioAudioDriverModule ()
+	: m_initialized(false)
 {
 	MOJO_DEBUG(PORTAUDIO_DRIVER);
+	initialize ();
 }
 
 PortaudioAudioDriverModule::~PortaudioAudioDriverModule ()
 {
 	MOJO_DEBUG(PORTAUDIO_DRIVER);
+	terminate ();
 }
 
 std::string
@@ -36,12 +41,69 @@ PortaudioAudioDriverModule::get_version()
 AudioDeviceSPSet
 PortaudioAudioDriverModule::get_devices () const
 {
-	return AudioDeviceSPSet();
+	AudioDeviceSPSet devices;
+	discover_devices (devices);
+	return devices;
 }
 
 MOJO_CAPI void * mojo_module_factory(void)
 {
 	return new PortaudioAudioDriverModule;
+}
+
+bool
+PortaudioAudioDriverModule::initialize ()
+{
+	if (m_initialized) return true;
+
+	PaError error = Pa_Initialize();
+	if (error == paNoError) {
+		return m_initialized = true;
+	} else {
+		MOJO_DEBUG_MSG(PORTAUDIO_DRIVER,
+			compose ("Unable to Initialize portaudio: %s",
+				Pa_GetErrorText (error)));
+	}
+	return false;
+}
+
+bool
+PortaudioAudioDriverModule::terminate ()
+{
+	if (!m_initialized) return true;
+
+	PaError error = Pa_Terminate();
+	if (error == paNoError) {
+		return m_initialized = false;
+	} else {
+		MOJO_DEBUG_MSG(PORTAUDIO_DRIVER,
+			compose ("Unable to Terminate portaudio: %s",
+				Pa_GetErrorText (error)));
+	}
+	return false;
+}
+
+
+void
+PortaudioAudioDriverModule::discover_devices (AudioDeviceSPSet& devices)
+{
+	int device_count = Pa_GetDeviceCount ();
+
+	if (device_count < 0) {
+		MOJO_DEBUG_MSG(PORTAUDIO_DRIVER,
+			compose ("Invalid device count: %s",
+				Pa_GetErrorText (device_count)));
+		return;
+	}
+
+	for (PaDeviceIndex i = 0; i < device_count; ++i) {
+		const PaDeviceInfo* device_info = Pa_GetDeviceInfo(i);
+
+		if (device_info != NULL) { // can it be ??
+			AudioDeviceSP device(new PortaudioAudioDevice(device_info));
+			devices.insert (device);
+		}
+	}
 }
 
 } // namespace mojo

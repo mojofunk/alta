@@ -8,6 +8,8 @@
 // for command line args
 #include <boost/test/framework.hpp>
 
+#include "mojo/core/string/compose.hpp"
+
 #include "mojo/audio_driver/audio_device.hpp"
 #include "mojo/audio_driver/audio_driver_module.hpp"
 
@@ -41,13 +43,23 @@ test_device (AudioDeviceSP dev)
 	                                      samplerate, buffersize,
 	                                      callback);
 
-	BOOST_CHECK(err != AudioDevice::NO_ERROR);
+	BOOST_CHECK(err == AudioDevice::NO_ERROR);
 
 	// usleep(10*1000);
 
 	err = dev->close ();
 
-	BOOST_CHECK(err != AudioDevice::NO_ERROR);
+	BOOST_CHECK(err == AudioDevice::NO_ERROR);
+}
+
+void
+print_device_info (AudioDeviceSP dev)
+{
+	BOOST_REQUIRE(dev);
+	BOOST_TEST_MESSAGE(compose ("Device name: %", dev->get_name()));
+	BOOST_TEST_MESSAGE(compose ("Input Channels: %", dev->get_input_count()));
+	BOOST_TEST_MESSAGE(compose ("Output Channels: %", dev->get_output_count()));
+	BOOST_TEST_MESSAGE(compose ("Default Samplerate: %", dev->get_default_samplerate()));
 }
 
 void
@@ -63,6 +75,7 @@ test_audio_driver_module (AudioDriverModuleSP mod)
 
 	BOOST_CHECK(!devices.empty());
 
+	for_each (devices.begin(), devices.end(), print_device_info);
 	for_each (devices.begin(), devices.end(), test_device);
 }
 
