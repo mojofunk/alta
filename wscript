@@ -77,7 +77,9 @@ def set_compiler_flags(conf):
     if conf.options.optimize:
         conf.env.append_value('CFLAGS', '-DNDEBUG')
         conf.env.append_value('CXXFLAGS', '-DNDEBUG')
-
+    else:
+        conf.env.append_value('CFLAGS', '-g')
+        conf.env.append_value('CXXFLAGS', '-g')
 
 def display_config(conf):
     Logs.info('C++ compiler flags: %s' % conf.env.CXXFLAGS)
