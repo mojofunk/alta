@@ -39,7 +39,7 @@ def build(bld):
                   export_includes='.',
                   source=source,
                   uselib=uselib,
-                  use=['GLEAM_SHARED'],
+                  use=['GLEAM_STATIC'],
                   defines=defines,
                   target='mojo-core',
                   name='MOJO_CORE_STATIC')

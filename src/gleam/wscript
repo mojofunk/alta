@@ -26,5 +26,14 @@ def build(bld):
             target='gleam',
             name='GLEAM_SHARED')
 
+    if bld.env.ENABLE_STATIC:
+        bld.shlib(
+            includes='. ..',
+            export_includes='..',  # this should probably be .
+            source=bld.path.ant_glob('*.cpp', excl=posix_files),
+            uselib=['GLIBMM-2.4'],
+            target='gleam',
+            name='GLEAM_STATIC')
+
     if bld.env['BUILD_TESTS']:
         bld.recurse('tests')
