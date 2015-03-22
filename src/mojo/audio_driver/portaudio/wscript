@@ -18,16 +18,16 @@ def configure(conf):
 
 def build(bld):
 
-    source=bld.path.ant_glob('*.cpp')
-    uselib=[
+    source = bld.path.ant_glob('*.cpp')
+    uselib = [
         'GMODULE-2.0',
         'BOOST_FILESYSTEM',
         'BOOST_SYSTEM',
         'PORTAUDIO-2.0']
-    target='mojo-audio-driver-portaudio'
+    target = 'mojo-audio-driver-portaudio'
 
     if bld.env.ENABLE_SHARED:
-        use_shared=[
+        use_shared = [
             'GLEAM',
             'MOJO_AUDIO_DRIVER_SHARED',
             'MOJO_CORE_SHARED']
@@ -39,7 +39,7 @@ def build(bld):
                   name='MOJO_AUDIO_DRIVER_PORTAUDIO_SHARED')
 
     if bld.env.ENABLE_STATIC:
-        use_static=[
+        use_static = [
             'GLEAM',
             'MOJO_AUDIO_DRIVER_STATIC',
             'MOJO_CORE_STATIC']
