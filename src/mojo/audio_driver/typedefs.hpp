@@ -10,6 +10,7 @@
 namespace mojo {
 
 MOJO_DEFINE_ALL_TYPEDEFS(AudioDevice)
+MOJO_DEFINE_ALL_TYPEDEFS(AudioDriver)
 MOJO_DEFINE_ALL_TYPEDEFS(AudioDriverModule)
 
 } // namespace mojo

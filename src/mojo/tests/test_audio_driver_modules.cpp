@@ -10,8 +10,7 @@
 
 #include "mojo/core/string/compose.hpp"
 
-#include "mojo/audio_driver/audio_device.hpp"
-#include "mojo/audio_driver/audio_driver_module.hpp"
+#include "mojo/audio_driver/mojo-audio-driver.hpp"
 
 #include "mojo/application/application.hpp"
 
@@ -87,7 +86,8 @@ test_audio_driver_module (AudioDriverModuleSP mod)
 	BOOST_TEST_MESSAGE(mod->get_description());
 	BOOST_TEST_MESSAGE(mod->get_version());
 
-	AudioDeviceSPSet devices = mod->get_devices();
+	AudioDriverSP driver = mod->create_driver();
+	AudioDeviceSPSet devices = driver->get_devices();
 
 	BOOST_CHECK(!devices.empty());
 

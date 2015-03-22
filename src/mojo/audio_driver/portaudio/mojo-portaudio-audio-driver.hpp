@@ -17,6 +17,7 @@
 #include <portaudio.h>
 
 #include <mojo/audio_driver/portaudio/portaudio_audio_device.hpp>
+#include <mojo/audio_driver/portaudio/portaudio_audio_driver.hpp>
 #include <mojo/audio_driver/portaudio/portaudio_audio_driver_module.hpp>
 
 #endif // MOJO_MOJO_PORTAUDIO_AUDIO_DRIVER_H

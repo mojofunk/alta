@@ -19,6 +19,7 @@
 #include <mojo/audio_driver/typedefs.hpp>
 
 #include <mojo/audio_driver/audio_device.hpp>
+#include <mojo/audio_driver/audio_driver.hpp>
 #include <mojo/audio_driver/audio_driver_module.hpp>
 
 #endif // MOJO_MOJO_AUDIO_DRIVER_H

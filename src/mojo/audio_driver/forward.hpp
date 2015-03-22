@@ -4,6 +4,7 @@
 namespace mojo {
 
 class AudioDevice;
+class AudioDriver;
 class AudioDriverModule;
 
 } // namespace mojo

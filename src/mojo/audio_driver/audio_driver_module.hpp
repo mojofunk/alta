@@ -16,7 +16,7 @@ public: // ctors
 
 public: // interface
 
-	virtual AudioDeviceSPSet get_devices () const = 0;
+	virtual AudioDriverSP create_driver () const = 0;
 
 protected: // ctors
 

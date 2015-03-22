@@ -13,6 +13,8 @@ public: // constructors
 	PortaudioAudioDriverModule();
 	~PortaudioAudioDriverModule();
 
+	AudioDriverSP create_driver () const;
+
 public: // Module interface
 
 	virtual std::string get_author ();
@@ -21,20 +23,6 @@ public: // Module interface
 
 	virtual std::string get_version ();
 
-public: // AudioDriverModule interface
-
-	AudioDeviceSPSet get_devices () const;
-
-private: // methods
-
-	bool initialize ();
-	bool terminate ();
-
-	static void discover_devices (AudioDeviceSPSet& devices);
-
-private: // member data
-
-	bool m_initialized;
 };
 
 } // namespace mojo
