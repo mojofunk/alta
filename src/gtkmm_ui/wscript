@@ -36,7 +36,10 @@ def build(bld):
             source=bld.path.ant_glob('*.cpp'),
             includes='.',
             uselib=uselibs,
-            use=['GLEAM_SHARED', 'MOJO_APPLICATION_SHARED', 'MOJO_CORE_SHARED'],
+            use=[
+                'GLEAM_SHARED',
+                'MOJO_APPLICATION_SHARED',
+                'MOJO_CORE_SHARED'],
             target=bld.env['APPNAME'])
 
     if bld.env.ENABLE_STATIC:
@@ -44,5 +47,8 @@ def build(bld):
             source=bld.path.ant_glob('*.cpp'),
             includes='.',
             uselib=uselibs,
-            use=['GLEAM_STATIC', 'MOJO_APPLICATION_STATIC', 'MOJO_CORE_STATIC'],
+            use=[
+                'GLEAM_STATIC',
+                'MOJO_APPLICATION_STATIC',
+                'MOJO_CORE_STATIC'],
             target=bld.env['APPNAME'] + '-static')

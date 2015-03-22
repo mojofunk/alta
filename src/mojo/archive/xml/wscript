@@ -20,7 +20,10 @@ def build(bld):
                       'GMODULE-2.0',
                       'BOOST_FILESYSTEM',
                       'BOOST_SYSTEM'],
-                  use=['GLEAM_SHARED', 'MOJO_ARCHIVE_SHARED', 'MOJO_CORE_SHARED'],
+                  use=[
+                      'GLEAM_SHARED',
+                      'MOJO_ARCHIVE_SHARED',
+                      'MOJO_CORE_SHARED'],
                   target='mojo-archive-xml',
                   name='MOJO_ARCHIVE_XML')
 
@@ -31,6 +34,9 @@ def build(bld):
                       'GMODULE-2.0',
                       'BOOST_FILESYSTEM',
                       'BOOST_SYSTEM'],
-                  use=['GLEAM_STATIC', 'MOJO_ARCHIVE_STATIC', 'MOJO_CORE_STATIC'],
+                  use=[
+                      'GLEAM_STATIC',
+                      'MOJO_ARCHIVE_STATIC',
+                      'MOJO_CORE_STATIC'],
                   target='mojo-archive-xml',
                   name='MOJO_ARCHIVE_XML')

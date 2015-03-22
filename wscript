@@ -81,6 +81,7 @@ def set_compiler_flags(conf):
         conf.env.append_value('CFLAGS', '-g')
         conf.env.append_value('CXXFLAGS', '-g')
 
+
 def display_config(conf):
     Logs.info('C++ compiler flags: %s' % conf.env.CXXFLAGS)
     Logs.info('Enable shared: %s' % conf.env.ENABLE_SHARED)
