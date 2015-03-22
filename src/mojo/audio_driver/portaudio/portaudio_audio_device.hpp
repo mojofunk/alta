@@ -2,9 +2,7 @@
 #ifndef PORTAUDIO_AUDIO_DEVICE
 #define PORTAUDIO_AUDIO_DEVICE
 
-#include <mojo-audio-driver.hpp>
-
-#include "portaudio.h"
+#include <mojo-portaudio-audio-driver.hpp>
 
 namespace mojo {
 

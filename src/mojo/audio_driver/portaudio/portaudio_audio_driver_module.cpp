@@ -1,6 +1,5 @@
 
-#include "portaudio_audio_driver_module.hpp"
-#include "portaudio_audio_device.hpp"
+#include <mojo-portaudio-audio-driver.hpp>
 
 MOJO_DEBUG_DOMAIN(PORTAUDIO_DRIVER)
 
