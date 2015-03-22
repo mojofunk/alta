@@ -9,6 +9,7 @@
 .lock-wscript
 .lock-waf*
 .waf-*
+.waf3-*
 gmojo-*win*
 build/
 doc/doxygen/Doxyfile
