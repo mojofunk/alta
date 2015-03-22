@@ -8,7 +8,7 @@ def init():
 
 
 def configure(conf):
-    print "configure mojo-audio-driver-portaudio"
+    print ("configure mojo-audio-driver-portaudio")
     conf.check_cfg(
         package='portaudio-2.0',
         atleast_version='19',

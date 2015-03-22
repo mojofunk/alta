@@ -62,7 +62,7 @@ def options(opt):
 
 
 def _check_required_deps(conf, deps):
-    for pkg, version in deps.iteritems():
+    for pkg, version in deps.items():
         conf.check_cfg(package=pkg, atleast_version=version, mandatory=1)
         conf.check_cfg(package=pkg, args='--cflags --libs')
 

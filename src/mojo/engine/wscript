@@ -8,7 +8,7 @@ def init():
 
 
 def configure(conf):
-    print "configure mojo-engine"
+    print ("configure mojo-engine")
 
 
 def build(bld):
