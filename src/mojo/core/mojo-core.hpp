@@ -6,6 +6,8 @@
 
 //////
 
+#include "audio/types.hpp"
+
 #include "object/signals.hpp"
 #include "object/property.hpp"
 #include "object/properties.hpp"
@@ -30,7 +32,6 @@
 #include "logging/log.hpp"
 
 #include "typesystem/smart_pointer_macros.hpp"
-#include "typesystem/types.hpp"
 #include "typesystem/type_names.hpp"
 #include "typesystem/forward.hpp"
 #include "typesystem/typedefs.hpp"

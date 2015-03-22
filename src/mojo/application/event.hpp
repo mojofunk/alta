@@ -2,8 +2,7 @@
 #define MOJO_EVENT_H
 
 #ifndef MOJO_APPLICATION_AMALGAMATED
-#include "mojo/core/typesystem/types.hpp"
-
+#include "mojo/core/audio/types.hpp"
 #include "mojo/core/object/object.hpp"
 #endif
 

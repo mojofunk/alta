@@ -1,5 +1,5 @@
-#ifndef MOJO_CORE_TYPES_H
-#define MOJO_CORE_TYPES_H
+#ifndef MOJO_CORE_AUDIO_TYPES_H
+#define MOJO_CORE_AUDIO_TYPES_H
 
 #ifndef MOJO_CORE_AMALGAMATED
 #include "mojo/core/config/common_header_includes.hpp"
@@ -13,4 +13,4 @@ typedef uint32_t    samplerate_t;
 
 } // namespace mojo
 
-#endif // MOJO_CORE_TYPES_H
+#endif // MOJO_CORE_AUDIO_TYPES_H

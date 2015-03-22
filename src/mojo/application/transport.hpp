@@ -2,7 +2,7 @@
 #define MOJO_TRANSPORT_H
 
 #ifndef MOJO_APPLICATION_AMALGAMATED
-#include "mojo/core/typesystem/types.hpp"
+#include "mojo/core/audio/types.hpp"
 #endif
 
 namespace mojo {

@@ -1,10 +1,6 @@
 #ifndef MOJO_API_TYPES_H
 #define MOJO_API_TYPES_H
 
-#ifndef MOJO_APPLICATION_AMALGAMATED
-#include "mojo/core/typesystem/types.hpp"
-#endif
-
 namespace mojo {
 
 enum Error {

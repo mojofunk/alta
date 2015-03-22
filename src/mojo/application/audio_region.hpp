@@ -2,10 +2,8 @@
 #define MOJO_AUDIO_REGION_H
 
 #ifndef MOJO_APPLICATION_AMALGAMATED
-#include "mojo/core/typesystem/types.hpp"
-
+#include "mojo/core/audio/types.hpp"
 #include "mojo/core/object/object.hpp"
-
 #include "typedefs.hpp"
 #endif
 
