@@ -15,5 +15,5 @@ def build(ctx):
             includes='.',
             defines='BOOST_TEST_DYN_LINK=1',
             uselib='BOOST_UNIT_TEST_FRAMEWORK',
-            use='GLEAM',
+            use='GLEAM_SHARED',
             target=test)

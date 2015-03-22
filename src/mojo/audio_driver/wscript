@@ -26,7 +26,7 @@ def build(bld):
                       'GMODULE-2.0',
                       'BOOST_FILESYSTEM',
                       'BOOST_SYSTEM'],
-                  use=['GLEAM', 'MOJO_CORE_SHARED'],
+                  use=['GLEAM_SHARED', 'MOJO_CORE_SHARED'],
                   target='mojo-audio-driver',
                   name='MOJO_AUDIO_DRIVER_SHARED')
 
@@ -38,7 +38,7 @@ def build(bld):
                       'GMODULE-2.0',
                       'BOOST_FILESYSTEM',
                       'BOOST_SYSTEM'],
-                  use=['GLEAM', 'MOJO_CORE_STATIC'],
+                  use=['GLEAM_SHARED', 'MOJO_CORE_STATIC'],
                   target='mojo-audio-driver',
                   name='MOJO_AUDIO_DRIVER_STATIC')
 

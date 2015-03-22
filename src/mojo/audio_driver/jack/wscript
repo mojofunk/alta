@@ -21,7 +21,7 @@ def build(bld):
                       'BOOST_FILESYSTEM',
                       'BOOST_SYSTEM'],
                   use=[
-                      'GLEAM',
+                      'GLEAM_SHARED',
                       'MOJO_AUDIO_DRIVER_SHARED',
                       'MOJO_CORE_SHARED'],
                   target='mojo-audio-driver-jack',
@@ -35,7 +35,7 @@ def build(bld):
                       'BOOST_FILESYSTEM',
                       'BOOST_SYSTEM'],
                   use=[
-                      'GLEAM',
+                      'GLEAM_SHARED',
                       'MOJO_AUDIO_DRIVER_STATIC',
                       'MOJO_CORE_STATIC'],
                   target='mojo-audio-driver-jack',

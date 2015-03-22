@@ -15,7 +15,7 @@ def build(bld):
 
     uselibs = ['GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
     use_local_shared = [
-        'GLEAM',
+        'GLEAM_SHARED',
         'MOJO_CORE_SHARED',
         'MOJO_ARCHIVE_SHARED',
         'MOJO_AUDIO_DRIVER_SHARED',
@@ -23,7 +23,7 @@ def build(bld):
         'MOJO_AUDIO_FILE_SHARED']
 
     use_local_static = [
-        'GLEAM',
+        'GLEAM_SHARED',
         'MOJO_CORE_STATIC',
         'MOJO_ARCHIVE_STATIC',
         'MOJO_AUDIO_DRIVER_STATIC',
