@@ -17,21 +17,24 @@ def configure(conf):
 
 def build(bld):
 
+    uselib=['GLIBMM-2.4' ]
+    source=bld.path.ant_glob('*.cpp', excl=posix_files)
+
     if bld.env.ENABLE_SHARED:
         bld.shlib(
             includes='. ..',
             export_includes='..',  # this should probably be .
-            source=bld.path.ant_glob('*.cpp', excl=posix_files),
-            uselib=['GLIBMM-2.4'],
+            source=source,
+            uselib=uselib,
             target='gleam',
             name='GLEAM_SHARED')
 
     if bld.env.ENABLE_STATIC:
-        bld.shlib(
+        bld.stlib(
             includes='. ..',
             export_includes='..',  # this should probably be .
-            source=bld.path.ant_glob('*.cpp', excl=posix_files),
-            uselib=['GLIBMM-2.4'],
+            source=source,
+            uselib=uselib,
             target='gleam',
             name='GLEAM_STATIC')
 
