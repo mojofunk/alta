@@ -30,26 +30,19 @@ def configure(conf):
         mandatory=1)
 
 
-def build_shared(bld):
-    bld.program(
-        source=bld.path.ant_glob('*.cpp'),
-        includes='.',
-        uselib=uselibs,
-        use=['GLEAM', 'MOJO_APPLICATION_SHARED', 'MOJO_CORE_SHARED'],
-        target=bld.env['APPNAME'])
-
-
-def build_static(bld):
-    bld.program(
-        source=bld.path.ant_glob('*.cpp'),
-        includes='.',
-        uselib=uselibs,
-        use=['GLEAM', 'MOJO_APPLICATION_STATIC', 'MOJO_CORE_STATIC'],
-        target=bld.env['APPNAME'] + '-static')
-
-
 def build(bld):
-    if bld.env['ENABLE_SHARED']:
-        build_shared(bld)
-    if bld.env['ENABLE_STATIC']:
-        build_static(bld)
+    if bld.env.ENABLE_SHARED:
+        bld.program(
+            source=bld.path.ant_glob('*.cpp'),
+            includes='.',
+            uselib=uselibs,
+            use=['GLEAM', 'MOJO_APPLICATION_SHARED', 'MOJO_CORE_SHARED'],
+            target=bld.env['APPNAME'])
+
+    if bld.env.ENABLE_STATIC:
+        bld.program(
+            source=bld.path.ant_glob('*.cpp'),
+            includes='.',
+            uselib=uselibs,
+            use=['GLEAM', 'MOJO_APPLICATION_STATIC', 'MOJO_CORE_STATIC'],
+            target=bld.env['APPNAME'] + '-static')
