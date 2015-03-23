@@ -37,6 +37,3 @@ def build(bld):
             uselib=uselib,
             target='gleam',
             name='GLEAM_STATIC')
-
-    if bld.env['BUILD_TESTS']:
-        bld.recurse('tests')

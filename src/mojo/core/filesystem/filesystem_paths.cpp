@@ -8,9 +8,55 @@
 namespace mojo {
 
 fs::path
+get_user_config_directory ()
+{
+	return g_get_user_config_dir();
+}
+
+fs::path
+get_user_data_directory ()
+{
+	return g_get_user_data_dir();
+}
+
+paths_t
+get_system_data_directories ()
+{
+	paths_t tmp;
+	const char * const * dirs;
+
+	dirs = g_get_system_data_dirs ();
+
+	if (dirs == NULL) return tmp;
+
+	for (int i = 0; dirs[i] != NULL; i++) {
+		tmp.push_back( dirs[i] );
+	}
+
+	return tmp;
+}
+
+paths_t
+get_system_config_directories ()
+{
+	paths_t tmp;
+	const char * const * dirs;
+
+	dirs = g_get_system_config_dirs ();
+
+	if (dirs == NULL) return tmp;
+
+	for (int i = 0; dirs[i] != NULL; i++) {
+		tmp.push_back ( dirs[i] );
+	}
+
+	return tmp;
+}
+
+fs::path
 user_config_directory()
 {
-	return fs::path(gleam::get_user_config_directory ()) / "mojo";
+	return fs::path(get_user_config_directory ()) / "mojo";
 }
 
 Searchpath
@@ -22,7 +68,7 @@ mojo_search_path()
 Searchpath
 system_config_search_path()
 {
-	Searchpath sp(gleam::get_system_config_directories ());
+	Searchpath sp(get_system_config_directories ());
 	sp / "mojo";
 	return sp;
 }
@@ -30,7 +76,7 @@ system_config_search_path()
 Searchpath
 system_data_search_path()
 {
-	Searchpath sp(gleam::get_system_data_directories ());
+	Searchpath sp(get_system_data_directories ());
 	sp / "mojo";
 	return sp;
 }

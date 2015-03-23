@@ -26,8 +26,6 @@
 
 #include <gmodule.h>
 
-#include <gleam/filesystem_paths.hpp>
-
 #include <boost/tokenizer.hpp>
 
 #endif
