@@ -26,6 +26,7 @@
 #include "modules/module_utils.cpp"
 
 #include "system/resource.cpp"
+#include "system/utils.cpp"
 
 #include "typesystem/type_names.cpp"
 #include "typesystem/type_system.cpp"

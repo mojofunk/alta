@@ -2,8 +2,7 @@
 
 #include <glib.h>
 
-#include "gleam/utils.hpp"
-
+#include "mojo/core/system/utils.hpp"
 #include "mojo/core/filesystem/filesystem_paths.hpp"
 
 #include "test_common.hpp"
@@ -15,7 +14,7 @@ Searchpath
 test_search_path ()
 {
 	Searchpath test_path(system_data_search_path());
-	return Searchpath(gleam::getenv("MOJO_TEST_PATH")) + test_path;
+	return Searchpath(mojo::getenv("MOJO_TEST_PATH")) + test_path;
 }
 
 fs::path

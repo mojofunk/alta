@@ -2,7 +2,6 @@
 #include <boost/bind.hpp>
 #include <boost/tokenizer.hpp>
 
-#include "gleam/utils.hpp"
 
 #ifndef MOJO_APPLICATION_AMALGAMATED
 #include "application.hpp"
@@ -15,6 +14,8 @@
 #include "mojo/core/typesystem/template_type_factory.hpp"
 
 #include "mojo/core/filesystem/filesystem_paths.hpp"
+
+#include "mojo/core/system/utils.hpp"
 
 #include "mojo/core/object/object_collection.hpp"
 
@@ -41,7 +42,7 @@ set_debugging_from_env_var ()
 {
 	using tokenizer = boost::tokenizer<boost::char_separator<char> >;
 	boost::char_separator<char> sep (",");
-	tokenizer tokens (gleam::getenv("MOJO_DEBUG"), sep);
+	tokenizer tokens (mojo::getenv("MOJO_DEBUG"), sep);
 
 	for (auto& t : tokens) {
 		mojo::debug::set_enabled (

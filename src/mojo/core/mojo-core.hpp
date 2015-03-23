@@ -47,6 +47,7 @@
 #include "modules/glib_library.hpp"
 
 #include "system/resource.hpp"
+#include "system/utils.hpp"
 
 #include "string/compose.hpp"
 #include "string/convert.hpp"

@@ -1,6 +1,7 @@
 #ifndef MOJO_CORE_AMALGAMATED
 #include "mojo/core/config/common_source_includes.hpp"
 
+#include "mojo/core/system/utils.hpp"
 #include "mojo/core/filesystem/filesystem_paths.hpp"
 #endif
 
@@ -15,7 +16,7 @@ user_config_directory()
 Searchpath
 mojo_search_path()
 {
-	return Searchpath(gleam::getenv ("MOJO_PATH"));
+	return Searchpath(mojo::getenv ("MOJO_PATH"));
 }
 
 Searchpath
