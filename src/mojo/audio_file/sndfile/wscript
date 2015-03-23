@@ -19,8 +19,8 @@ def build(bld):
                   uselib=[
                       'SNDFILE',
                       'GMODULE-2.0',
-                      'BOOST_FILESYSTEM',
-                      'BOOST_SYSTEM'],
+                      'BOOST_FILESYSTEM-MT',
+                      'BOOST_SYSTEM-MT'],
                   use=[
                       'MOJO_AUDIO_FILE_SHARED',
                       'MOJO_CORE_SHARED'],
@@ -33,8 +33,8 @@ def build(bld):
                   uselib=[
                       'SNDFILE',
                       'GMODULE-2.0',
-                      'BOOST_FILESYSTEM',
-                      'BOOST_SYSTEM'],
+                      'BOOST_FILESYSTEM-MT',
+                      'BOOST_SYSTEM-MT'],
                   use=[
                       'MOJO_AUDIO_FILE_STATIC',
                       'MOJO_CORE_STATIC'],

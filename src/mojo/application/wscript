@@ -13,7 +13,7 @@ def configure(conf):
 
 def build(bld):
 
-    uselibs = ['GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
+    uselibs = ['GMODULE-2.0', 'BOOST_FILESYSTEM-MT', 'BOOST_SYSTEM-MT']
     use_local_shared = [
         'MOJO_CORE_SHARED',
         'MOJO_ARCHIVE_SHARED',

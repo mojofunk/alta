@@ -21,8 +21,8 @@ def build(bld):
     source = bld.path.ant_glob('*.cpp')
     uselib = [
         'GMODULE-2.0',
-        'BOOST_FILESYSTEM',
-        'BOOST_SYSTEM',
+        'BOOST_FILESYSTEM-MT',
+        'BOOST_SYSTEM-MT',
         'PORTAUDIO-2.0']
     target = 'mojo-audio-driver-portaudio'
 

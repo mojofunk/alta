@@ -7,8 +7,8 @@ uselibs = [
     'GOOCANVASMM-2.0',
     'GTHREAD-2.0',
     'GMODULE-2.0',
-    'BOOST_SYSTEM',
-    'BOOST_FILESYSTEM'
+    'BOOST_SYSTEM-MT',
+    'BOOST_FILESYSTEM-MT'
 ]
 
 
