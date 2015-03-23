@@ -17,6 +17,8 @@ def configure(conf):
 
 def build(bld):
     # process subfolders from here
+
+    bld(export_includes='.', name='src_include_path')
     bld.recurse(subdirs)
     if bld.env['WITH_GTKMM_UI']:
         bld.recurse('gtkmm_ui')

@@ -21,7 +21,6 @@ def build(bld):
                       'BOOST_FILESYSTEM',
                       'BOOST_SYSTEM'],
                   use=[
-                      'GLEAM_SHARED',
                       'MOJO_AUDIO_EFFECT_SHARED',
                       'MOJO_CORE_SHARED'],
                   target='mojo-audio-effect-ladspa',
@@ -35,7 +34,6 @@ def build(bld):
                       'BOOST_FILESYSTEM',
                       'BOOST_SYSTEM'],
                   use=[
-                      'GLEAM_STATIC',
                       'MOJO_AUDIO_EFFECT_STATIC',
                       'MOJO_CORE_STATIC'],
                   target='mojo-audio-effect-ladspa',

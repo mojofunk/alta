@@ -49,7 +49,6 @@ def build_shared(bld):
         defines='BOOST_TEST_DYN_LINK=1',
         uselib=uselibs,
         use=[
-            'GLEAM_SHARED',
             'MOJO_CORE_SHARED',
             'MOJO_ENGINE_SHARED',
             'MOJO_APPLICATION_SHARED'],
@@ -62,7 +61,6 @@ def build_shared(bld):
             defines='BOOST_TEST_DYN_LINK=1',
             uselib=uselibs,
             use=[
-                'GLEAM_SHARED',
                 'MOJO_CORE_SHARED',
                 'MOJO_ENGINE_SHARED',
                 'MOJO_APPLICATION_SHARED',
@@ -77,7 +75,6 @@ def build_static(bld):
         defines='BOOST_TEST_DYN_LINK=1',
         uselib=uselibs,
         use=[
-            'GLEAM_STATIC',
             'MOJO_CORE_STATIC',
             'MOJO_ENGINE_STATIC',
             'MOJO_APPLICATION_STATIC'],
@@ -90,7 +87,6 @@ def build_static(bld):
             defines='BOOST_TEST_DYN_LINK=1',
             uselib=uselibs,
             use=[
-                'GLEAM_STATIC',
                 'MOJO_CORE_STATIC',
                 'MOJO_ENGINE_STATIC',
                 'MOJO_APPLICATION_STATIC',

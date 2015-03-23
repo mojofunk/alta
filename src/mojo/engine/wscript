@@ -14,8 +14,8 @@ def configure(conf):
 def build(bld):
 
     uselibs = ['GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
-    use_local_shared = ['GLEAM_SHARED', 'MOJO_CORE_SHARED']
-    use_local_static = ['GLEAM_STATIC', 'MOJO_CORE_STATIC']
+    use_local_shared = ['MOJO_CORE_SHARED']
+    use_local_static = ['MOJO_CORE_STATIC']
 
     if bld.env.ENABLE_AMALGAMATION:
         source = 'mojo-engine.cpp'

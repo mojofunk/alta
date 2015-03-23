@@ -28,7 +28,6 @@ def build(bld):
 
     if bld.env.ENABLE_SHARED:
         use_shared = [
-            'GLEAM_SHARED',
             'MOJO_AUDIO_DRIVER_SHARED',
             'MOJO_CORE_SHARED']
         bld.shlib(includes='.',
@@ -40,7 +39,6 @@ def build(bld):
 
     if bld.env.ENABLE_STATIC:
         use_static = [
-            'GLEAM_STATIC',
             'MOJO_AUDIO_DRIVER_STATIC',
             'MOJO_CORE_STATIC']
         bld.stlib(includes='.',
