@@ -53,8 +53,6 @@ Application::Application ()
 	MOJO_DEBUG(APPLICATION);
 	data = std::unique_ptr<internal::ApplicationData>(new internal::ApplicationData);
 
-	mojo::initialize ();
-
 	register_types ();
 
 	data->m_modules = discover_modules (module_search_path ());
@@ -62,8 +60,6 @@ Application::Application ()
 
 Application::~Application ()
 {
-	mojo::terminate ();
-
 	MOJO_DEBUG(APPLICATION);
 }
 

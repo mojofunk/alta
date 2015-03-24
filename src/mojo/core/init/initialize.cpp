@@ -6,6 +6,8 @@
 #include "mojo/core/string/compose.hpp"
 #endif
 
+MOJO_DEBUG_DOMAIN(CORE_INITIALIZER);
+
 #ifndef NDEBUG
 namespace {
 
@@ -27,19 +29,50 @@ set_debugging_from_env_var ()
 
 namespace mojo {
 
+// Possible issue with static init order?
+std::atomic_uint CoreInitializer::m_init_count(0);
+
+CoreInitializer::CoreInitializer ()
+{
+	// check if std::atomic is lock free
+	// and throw?
+
+	if (++m_init_count == 1) {
+		initialize ();
+	}
+}
+
+CoreInitializer::~CoreInitializer ()
+{
+	if (--m_init_count == 0) {
+		deinitialize ();
+	}
+}
+
 bool
-initialize ()
+CoreInitializer::initialized ()
+{
+	return (m_init_count != 0);
+}
+
+bool
+CoreInitializer::initialize ()
 {
 #ifndef NDEBUG
 	set_debugging_from_env_var ();
 #endif
 
+	MOJO_DEBUG_MSG(CORE_INITIALIZER, "Initializing mojo-core");
+
+	// register_builtin_types
 }
 
 void
-terminate ()
+CoreInitializer::deinitialize ()
 {
+	MOJO_DEBUG_MSG(CORE_INITIALIZER, "Deinitializing mojo-core");
 
+	// deregister_builtin_types
 
 }
 

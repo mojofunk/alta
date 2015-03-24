@@ -4,6 +4,7 @@
 #include <thread>
 
 #ifndef MOJO_APPLICATION_AMALGAMATED
+#include "mojo/core/init/initialize.hpp"
 #include "mojo/core/misc/functor_dispatcher.hpp"
 
 #include "typedefs.hpp"
@@ -55,6 +56,8 @@ private:
 
 struct ApplicationData
 {
+	CoreInitializer core_init;
+
 	ProjectSPSet projects;
 
 	Project* active_project;
