@@ -100,8 +100,6 @@ public:
 
 public:
 
-	static Application& get_instance ();
-
 	static void iteration (bool block);
 
 public: // public API
@@ -233,6 +231,8 @@ private: // ctors
 	Application ();
 
 	~Application ();
+
+	static Application& get_instance ();
 
 	std::unique_ptr<internal::ApplicationData> data;
 
