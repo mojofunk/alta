@@ -7,10 +7,10 @@
 #include <glib.h> //remove this
 
 #include "mojo/core/modules/module_utils.hpp"
+#include "mojo/core/filesystem/filesystem_paths.hpp"
+#include "mojo/core/string/compose.hpp"
 
 #include "mojo/audio_file/audio_file_module.hpp"
-
-#include "mojo/core/filesystem/filesystem_paths.hpp"
 
 
 using namespace boost::unit_test;
@@ -20,13 +20,22 @@ using namespace mojo;
 fs::path
 get_sndfile_module_path ()
 {
-	std::string module_name("libsndfile_audio_file");
+	std::string module_name("libmojo-audio-file-sndfile");
 	module_name += '.';
 	module_name += G_MODULE_SUFFIX;
 
-	fs::path module_path = module_search_path().get_paths().front();
+	fs::path module_dir;
 
-	return module_path / module_name;
+	for (auto const& path : module_search_path().get_paths()) {
+		if (path.string().find("sndfile") != std::string::npos) {
+			module_dir = path;
+			break;
+		}
+	}
+
+	BOOST_REQUIRE(!module_dir.empty());
+
+	return module_dir / module_name;
 }
 	
 BOOST_AUTO_TEST_CASE( open_module_test )
