@@ -42,8 +42,7 @@ BOOST_AUTO_TEST_CASE( mojo_test_type_system )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	// this test is actually testing types registered by mojo::Application
-	Application::get_instance();
+	Application::initialize ();
 
 	BOOST_CHECK(test_type_name<int32_t>(int32_type_name));
 	BOOST_CHECK(test_type_name<int64_t>(int64_type_name));
@@ -62,4 +61,6 @@ BOOST_AUTO_TEST_CASE( mojo_test_type_system )
 	BOOST_CHECK_NO_THROW(test_type_factory<MidiTrack>(midi_track_type_name));
 	BOOST_CHECK_NO_THROW(test_type_factory<AudioSequence>(audio_sequence_type_name));
 	BOOST_CHECK_NO_THROW(test_type_factory<AudioEvent>(audio_event_type_name));
+
+	Application::deinitialize ();
 }

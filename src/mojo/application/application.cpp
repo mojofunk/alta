@@ -33,13 +33,36 @@
 
 MOJO_DEBUG_DOMAIN(APPLICATION);
 
+namespace {
+
+std::atomic_uint m_init_count(0);
+mojo::Application* s_instance = 0;
+
+}
+
 namespace mojo {
+
+bool
+Application::initialize ()
+{
+	if (++m_init_count == 1) {
+		s_instance = new Application;
+	}
+}
+
+void
+Application::deinitialize ()
+{
+	if (--m_init_count == 0) {
+		delete s_instance;
+		s_instance = 0;
+	}
+}
 
 mojo::Application&
 Application::get_instance ()
 {
-	static mojo::Application s_instance;
-	return s_instance;
+	return *s_instance;
 }
 
 void

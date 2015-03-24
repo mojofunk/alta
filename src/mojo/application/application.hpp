@@ -94,15 +94,15 @@ class Application
 {
 public:
 
+	static bool initialize ();
+
+	static void deinitialize ();
+
+public:
+
 	static Application& get_instance ();
 
 	static void iteration (bool block);
-
-private: // ctors
-
-	Application ();
-
-	~Application ();
 
 public: // public API
 
@@ -228,7 +228,11 @@ public: // modules
 
 	static ArchiveSP create_archive ();
 
-private:
+private: // ctors
+
+	Application ();
+
+	~Application ();
 
 	std::unique_ptr<internal::ApplicationData> data;
 

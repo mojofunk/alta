@@ -100,9 +100,11 @@ BOOST_AUTO_TEST_CASE( audio_driver_module_test )
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
+	Application::initialize ();
 	AudioDriverModuleSPSet modules = Application::get_audio_driver_modules();
 
 	BOOST_CHECK(!modules.empty());
 
 	for_each (modules.begin(), modules.end(), test_audio_driver_module);
+	Application::deinitialize ();
 }
