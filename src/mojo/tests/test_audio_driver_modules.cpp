@@ -47,7 +47,7 @@ test_device (AudioDeviceSP dev)
 
 	BOOST_CHECK(err == AudioDevice::NO_ERROR);
 
-	usleep(1000*10);
+	mojo::usleep(1000*10);
 
 	err = dev->stop ();
 
