@@ -4,7 +4,7 @@
 
 tests = '''
 test_application
-test_core_initializer
+test_core_initialize
 test_debug
 test_resource
 test_sequence

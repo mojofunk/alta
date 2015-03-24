@@ -19,15 +19,19 @@ void
 init_thread ()
 {
 	while (!s_exit) {
-		std::list<std::unique_ptr<CoreInitializer>> init_list;
+		for (int i = 0; i < 100; ++i) {
+			core::initialize ();
+		}
 
-		init_list.push_back (std::unique_ptr<CoreInitializer>(new CoreInitializer));
+		for (int i = 0; i < 100; ++i) {
+			core::deinitialize ();
+		}
 	}
 }
 
 BOOST_AUTO_TEST_CASE( test_core_initializer )
 {
-	BOOST_REQUIRE(!CoreInitializer::initialized());
+	BOOST_REQUIRE(!core::initialized());
 
 	std::thread thread1(init_thread);
 	std::thread thread2(init_thread);
@@ -39,5 +43,5 @@ BOOST_AUTO_TEST_CASE( test_core_initializer )
 	thread1.join();
 	thread2.join();
 
-	BOOST_CHECK(!CoreInitializer::initialized());
+	BOOST_CHECK(!core::initialized());
 }

@@ -94,7 +94,7 @@ class Application
 {
 public:
 
-	static bool initialize ();
+	static void initialize ();
 
 	static void deinitialize ();
 

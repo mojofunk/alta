@@ -56,8 +56,6 @@ private:
 
 struct ApplicationData
 {
-	CoreInitializer core_init;
-
 	ProjectSPSet projects;
 
 	Project* active_project;

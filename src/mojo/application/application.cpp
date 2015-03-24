@@ -42,21 +42,21 @@ mojo::Application* s_instance = 0;
 
 namespace mojo {
 
-bool
+void
 Application::initialize ()
 {
-	if (++m_init_count == 1) {
-		s_instance = new Application;
-	}
+	if (++m_init_count != 1) return;
+	core::initialize ();
+	s_instance = new Application;
 }
 
 void
 Application::deinitialize ()
 {
-	if (--m_init_count == 0) {
-		delete s_instance;
-		s_instance = 0;
-	}
+	if (--m_init_count != 0) return;
+	delete s_instance;
+	s_instance = 0;
+	core::deinitialize ();
 }
 
 mojo::Application&
