@@ -13,6 +13,10 @@ class TypeSystem
 {
 public:
 
+	static void initialize ();
+
+	static void deinitialize ();
+
 	static void register_type (TypeFactorySP type);
 	
 	/**

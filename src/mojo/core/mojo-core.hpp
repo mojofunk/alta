@@ -39,6 +39,7 @@
 #include "typesystem/typedefs.hpp"
 #include "typesystem/type_factory.hpp"
 #include "typesystem/template_type_factory.hpp"
+#include "typesystem/type_registry.hpp"
 #include "typesystem/type_system.hpp"
 
 #include "modules/forward.hpp"
