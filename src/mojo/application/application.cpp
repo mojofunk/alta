@@ -2,7 +2,6 @@
 #include <boost/bind.hpp>
 #include <boost/tokenizer.hpp>
 
-
 #ifndef MOJO_APPLICATION_AMALGAMATED
 #include "application.hpp"
 
@@ -34,25 +33,6 @@
 
 MOJO_DEBUG_DOMAIN(APPLICATION);
 
-#ifndef NDEBUG
-namespace {
-
-void
-set_debugging_from_env_var ()
-{
-	using tokenizer = boost::tokenizer<boost::char_separator<char> >;
-	boost::char_separator<char> sep (",");
-	tokenizer tokens (mojo::getenv("MOJO_DEBUG"), sep);
-
-	for (auto& t : tokens) {
-		mojo::debug::set_enabled (
-			mojo::debug::get_domain_index(t.c_str()), true);
-	}
-}
-
-}
-#endif
-
 namespace mojo {
 
 mojo::Application&
@@ -73,17 +53,17 @@ Application::Application ()
 	MOJO_DEBUG(APPLICATION);
 	data = std::unique_ptr<internal::ApplicationData>(new internal::ApplicationData);
 
-	register_types ();
+	mojo::initialize ();
 
-#ifndef NDEBUG
-	set_debugging_from_env_var ();
-#endif
+	register_types ();
 
 	data->m_modules = discover_modules (module_search_path ());
 }
 
 Application::~Application ()
 {
+	mojo::terminate ();
+
 	MOJO_DEBUG(APPLICATION);
 }
 

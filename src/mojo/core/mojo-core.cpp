@@ -10,6 +10,8 @@
 #include "filesystem/filesystem_paths.cpp"
 #include "filesystem/file_utils.cpp"
 
+#include "init/initialize.cpp"
+
 #include "time/time.cpp"
 #include "time/timing.cpp"
 

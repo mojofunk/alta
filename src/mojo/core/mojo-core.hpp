@@ -8,6 +8,8 @@
 
 #include "audio/types.hpp"
 
+#include "init/initialize.hpp"
+
 #include "object/signals.hpp"
 #include "object/property.hpp"
 #include "object/properties.hpp"
