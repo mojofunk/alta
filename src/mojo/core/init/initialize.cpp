@@ -47,7 +47,7 @@ initialize ()
 
 	MOJO_DEBUG_MSG(CORE_INITIALIZE, "Initializing mojo-core");
 
-	TypeSystem::initialize ();
+	types::initialize ();
 }
 
 bool
@@ -63,7 +63,7 @@ deinitialize ()
 
 	MOJO_DEBUG_MSG(CORE_INITIALIZE, "Deinitializing mojo-core");
 
-	TypeSystem::deinitialize ();
+	types::deinitialize ();
 }
 
 } // namespace core

@@ -4,7 +4,6 @@
 namespace mojo {
 
 class TypeFactory;
-class TypeSystem;
 
 } // namespace mojo
 

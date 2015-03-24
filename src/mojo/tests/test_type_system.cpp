@@ -23,14 +23,14 @@ template <class T>
 bool
 test_type_name (const string& type_name)
 {
-	return (TypeSystem::get_type_name (typeid(T)) == type_name);
+	return (types::get_type_name (typeid(T)) == type_name);
 }
 
 template <class T>
 void
 test_type_factory (const string& type_name)
 {
-	T* instance = boost::any_cast<T*>(TypeSystem::create_type(type_name));
+	T* instance = boost::any_cast<T*>(types::create_type(type_name));
 
 	BOOST_REQUIRE(instance);
 

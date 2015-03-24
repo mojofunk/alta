@@ -17,7 +17,7 @@ DummyArchive::read (const fs::path& file_path, Properties& props)
 void
 DummyArchive::write_object(std::ostream& os, const ObjectSP& obj)
 {
-	const string type_name = TypeSystem::get_type_name(typeid(*obj));
+	const string type_name = types::get_type_name(typeid(*obj));
 
 	os << " Type: " << type_name << " ";
 
@@ -55,7 +55,7 @@ DummyArchive::write_object_collection(std::ostream& os, const ObjectCollection& 
 void
 DummyArchive::write_property (std::ostream& os, const Property& prop)
 {
-	string type_name = TypeSystem::get_type_name(prop.value.type());
+	string type_name = types::get_type_name(prop.value.type());
 
 	os << "Name: " << prop.get_name_string () << " Type: " << type_name << " Value: ";
 

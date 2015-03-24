@@ -8,30 +8,27 @@
 
 namespace mojo {
 
-// namespace?
-class TypeSystem
-{
-public:
+namespace types {
 
-	static void initialize ();
+	void initialize ();
 
-	static void deinitialize ();
+	void deinitialize ();
 
-	static void register_type (TypeFactorySP type);
+	void register_type (TypeFactorySP type);
 	
 	/**
 	 * because std::type_info.name() is not portable between compilers
 	 * etc, use a standard mapping of names to types.
 	 */
-	static const std::string get_type_name (const std::type_info& info);
+	const std::string get_type_name (const std::type_info& info);
 
 	/**
 	 * Given a portable type name create a specific instance of that
 	 * type
 	 */
-	static boost::any create_type (const std::string& type_name);
+	boost::any create_type (const std::string& type_name);
 
-};
+} // namespace types
 
 } // namespace mojo
 
