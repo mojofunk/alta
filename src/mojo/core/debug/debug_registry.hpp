@@ -9,7 +9,7 @@ namespace mojo {
 
 class DebugRegistry
 {
-public: // types
+private: // types
 
 	using DomainMapType = std::map<std::string, uint32_t>;
 
