@@ -55,6 +55,25 @@ BOOST_AUTO_TEST_CASE( test_tmp_writable_directory )
 	BOOST_CHECK(m_tmp_dirs.size() == num_dirs);
 
 	for (auto const& path : m_tmp_dirs) {
-		BOOST_CHECK(fs::remove (path) == 1);
+		BOOST_CHECK_NO_THROW(fs::remove (path) == 1);
 	}
+}
+
+BOOST_AUTO_TEST_CASE( test_copy_i18n_files )
+{
+	fs::path i18n_dir_path;
+
+	BOOST_CHECK(find_directory_in_test_path ("i18n_test", i18n_dir_path));
+
+	fs::path top_output_dir = tmp_writable_directory ("mojo-test", "i18n_test");
+
+	fs::path output_dir = top_output_dir / "i18n_copy";
+
+	BOOST_CHECK(!exists (output_dir));
+
+	BOOST_CHECK_NO_THROW(fs::copy_directory(i18n_dir_path, output_dir));
+
+	BOOST_CHECK_NO_THROW(fs::remove_all(output_dir));
+
+	BOOST_CHECK_NO_THROW(fs::remove(top_output_dir));
 }
