@@ -28,16 +28,9 @@ BOOST_AUTO_TEST_CASE( audio_clip )
 	fs::path project_path;
 	fs::path audiofile_path;
 
-	Searchpath tsp = test_search_path();
+	BOOST_CHECK(find_directory_in_test_path ("projects", project_path));
 
-	tsp.add_subdirectory_to_paths ("projects");
-	tsp.add_subdirectory_to_paths ("motronic");
-	
-	project_path = tsp.get_paths().front();
-
-	BOOST_TEST_MESSAGE(project_path);
-
-	BOOST_CHECK(is_directory (project_path));
+	project_path = project_path / "motronic";
 
 	ProjectDirectory pdir(project_path);
 
