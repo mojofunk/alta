@@ -14,7 +14,7 @@ void
 log_paths(const paths_t& paths)
 {
 	for (auto const& i : paths) {
-		BOOST_MESSAGE( i );
+		BOOST_TEST_MESSAGE( i );
 	}
 }
 
