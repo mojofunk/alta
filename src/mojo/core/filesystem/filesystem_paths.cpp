@@ -66,7 +66,12 @@ user_config_directory()
 fs::path
 installation_directory()
 {
+#ifdef MOJO_WINDOWS
 	return g_win32_get_package_installation_directory_of_module(NULL);
+#else
+	// TODO?
+	return fs::path();
+#endif
 }
 
 Searchpath
