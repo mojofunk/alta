@@ -17,11 +17,11 @@ using namespace mojo;
 
 BOOST_AUTO_TEST_CASE( test_get_non_existant_file_path )
 {
-	BOOST_CHECK (fs::exists (test_search_path().get_paths().front()));
+	fs::path project_path;
 
-	fs::path project_path = test_search_path().get_paths().front();
+	BOOST_CHECK(find_directory_in_test_path ("projects", project_path));
 
-	project_path = project_path / "projects" / "motronic";
+	project_path = project_path / "motronic";
 
 	fs::path project_audiofile_dir = ProjectDirectory(project_path).audiofiles_path();
 
