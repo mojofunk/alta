@@ -165,7 +165,7 @@ tmp_writable_directory (const char* domain, const string& prefix)
 		oss << g_random_int ();
 		dir_name = oss.str();
 		new_test_dir = tmp_dir / dir_name;
-	} while (!fs::is_directory(new_test_dir) && !fs::create_directories (new_test_dir));
+	} while (!fs::create_directories (new_test_dir));
 	return new_test_dir;
 }
 
