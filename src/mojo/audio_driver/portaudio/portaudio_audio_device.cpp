@@ -7,8 +7,7 @@ namespace mojo {
 PortaudioAudioDevice::PortaudioAudioDevice (PaDeviceIndex index)
 	: m_device_index(index)
 	, m_stream(0)
-	, left_phase(0)
-	, right_phase(0)
+	, m_user_data(0)
 {
 
 }
@@ -27,45 +26,42 @@ PortaudioAudioDevice::get_name () const
 
 int
 PortaudioAudioDevice::portaudio_callback (
-		const void *inputBuffer, void *outputBuffer,
-		unsigned long framesPerBuffer,
-		const PaStreamCallbackTimeInfo* timeInfo,
-		PaStreamCallbackFlags statusFlags,
-		void *userData)
+		const void *input_buffer, void *output_buffer,
+		unsigned long frames_per_buffer,
+		const PaStreamCallbackTimeInfo* time_info,
+		PaStreamCallbackFlags status_flags,
+		void *user_data)
 {
 	MOJO_DEBUG_MSG(PORTAUDIO_DEVICE,
-			compose ("Portaudio Callback: frames %", framesPerBuffer));
-	PortaudioAudioDevice* device = static_cast<PortaudioAudioDevice*>(userData);
-	float *out = (float*)outputBuffer;
-	unsigned int i;
-	(void) inputBuffer;
-	for( i=0; i<framesPerBuffer; i++ )
-	{
-		*out++ = device->left_phase;
-		*out++ = device->right_phase;
-		/* Generate simple sawtooth phaser that ranges between -1.0 and 1.0. */
-		device->left_phase += 0.01f;
-		/* When signal reaches top, drop back down. */
-		if( device->left_phase >= 1.0f ) device->left_phase -= 2.0f;
-		/* higher pitch so we can distinguish left and right. */
-		device->right_phase += 0.03f;
-		if( device->right_phase >= 1.0f ) device->right_phase -= 2.0f;
-	}
-	return 0;
+	               compose ("Portaudio Callback: frames %", frames_per_buffer));
+	PortaudioAudioDevice* device = static_cast<PortaudioAudioDevice*>(user_data);
+
+	callback_result_t result = device->m_callback ((float*)input_buffer,
+	                                               (float*)output_buffer,
+	                                               frames_per_buffer,
+	                                               device->m_user_data);
+
+	if (result == CONTINUE) return 0;
+
+	return 1;
 }
 
 AudioDevice::error_t
 PortaudioAudioDevice::open (uint32_t input_channels,
-	                        uint32_t output_channels,
-	                        uint32_t samplerate,
-	                        uint32_t buffersize,
-	                        callback_t* cb)
+                            uint32_t output_channels,
+                            uint32_t samplerate,
+                            uint32_t buffersize,
+                            callback_t* cb,
+                            void* user_data)
 {
 	PaStreamParameters input_params = get_default_input_params();
 	PaStreamParameters output_params = get_default_output_params();
 
 	input_params.channelCount = input_channels;
 	output_params.channelCount = output_channels;
+
+	m_callback = cb;
+	m_user_data = user_data;
 
 	PaError err = Pa_OpenStream(&m_stream,
 			input_channels > 0 ? &input_params : NULL,
@@ -82,7 +78,7 @@ PortaudioAudioDevice::open (uint32_t input_channels,
 			compose ("Unable to open stream: %s",
 				Pa_GetErrorText (err)));
 	}
-	return AudioDevice::UNKNOWN_ERROR;
+	return (AudioDevice::error_t)err;
 }
 
 AudioDevice::error_t
@@ -131,6 +127,12 @@ PortaudioAudioDevice::close ()
 				Pa_GetErrorText (err)));
 	}
 	return AudioDevice::UNKNOWN_ERROR;
+}
+
+std::string
+PortaudioAudioDevice::get_error_string (error_t err)
+{
+	return Pa_GetErrorText (err);
 }
 
 PaDeviceInfo const *

@@ -21,13 +21,16 @@ public: // AudioDevice interface
 	                      uint32_t output_channels,
 	                      uint32_t samplerate,
 	                      uint32_t buffersize,
-	                      callback_t* cb);
+	                      callback_t* cb,
+	                      void* user_data);
 
 	virtual error_t start ();
 
 	virtual error_t stop ();
 
 	virtual error_t close ();
+
+	virtual std::string get_error_string (error_t);
 
 	virtual channel_count_t max_input_channels () const;
 
@@ -46,19 +49,19 @@ private: // methods
 	PaStreamParameters get_default_output_params () const;
 
 	static int portaudio_callback (
-			const void *inputBuffer, void *outputBuffer,
-			unsigned long framesPerBuffer,
-			const PaStreamCallbackTimeInfo* timeInfo,
-			PaStreamCallbackFlags statusFlags,
-			void *userData);
+			const void *input_buffer, void *output_buffer,
+			unsigned long frames_per_buffer,
+			const PaStreamCallbackTimeInfo* time_info,
+			PaStreamCallbackFlags status_flags,
+			void *user_data);
 
 private: // member data
 
 	PaDeviceIndex m_device_index;
-	PaStream *    m_stream;
+	PaStream*    m_stream;
 
-	float left_phase;
-	float right_phase;
+	callback_t*  m_callback;
+	void*        m_user_data;
 
 };
 

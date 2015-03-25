@@ -27,20 +27,22 @@ public: // ctors
 
 public: // interface
 
-	typedef int callback_t(const float* input_buffer,
-	                       const float* output_buffer,
-	                       count_t frames,
-	                       void* user_data);
+	enum callback_result_t {
+		CONTINUE = 0,
+		ABORT
+	};
 
 	enum error_t {
 		NO_ERROR = 0,
 		UNKNOWN_ERROR = -1000
 	};
 
-	enum callback_result_t {
-		CONTINUE = 0,
-		ABORT
-	};
+	using callback_t = callback_result_t (const float* input_buffer,
+	                                      const float* output_buffer,
+	                                      count_t frames,
+	                                      void* user_data);
+
+
 
 	/// @return The name of the device. unique??
 	virtual std::string get_name () const = 0;
@@ -49,13 +51,16 @@ public: // interface
 	                      uint32_t output_channels,
 	                      uint32_t samplerate,
 	                      uint32_t buffersize,
-	                      callback_t* cb) = 0;
+	                      callback_t* cb,
+	                      void* user_data) = 0;
 
 	virtual error_t start () = 0;
 
 	virtual error_t stop () = 0;
 
 	virtual error_t close () = 0;
+
+	virtual std::string get_error_string (error_t) = 0;
 
 	virtual channel_count_t max_input_channels () const = 0;
 

@@ -18,13 +18,39 @@ using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
 
-int
+namespace {
+
+float left_phase(0);
+float right_phase(0);
+
+}
+
+AudioDevice::callback_result_t
 callback (const float* input_buffer,
           const float* output_buffer,
           count_t frames,
           void* user_data)
 {
 	BOOST_TEST_MESSAGE(compose ("Test Callback: frames %", frames));
+
+	float *out = (float*)output_buffer;
+
+	BOOST_REQUIRE(out);
+
+	unsigned int i;
+	(void) input_buffer;
+	for(i=0; i<frames; i++)
+	{
+		*out++ = left_phase;
+		*out++ = right_phase;
+		/* Generate simple sawtooth phaser that ranges between -1.0 and 1.0. */
+		left_phase += 0.01f;
+		/* When signal reaches top, drop back down. */
+		if (left_phase >= 1.0f) left_phase -= 2.0f;
+		/* higher pitch so we can distinguish left and right. */
+		right_phase += 0.03f;
+		if (right_phase >= 1.0f) right_phase -= 2.0f;
+	}
 	return AudioDevice::CONTINUE;
 }
 
@@ -35,19 +61,30 @@ test_device (AudioDeviceSP dev)
 
 	uint32_t buffersize = 1024;
 
+	if (dev->max_output_channels() < 2) {
+		BOOST_TEST_MESSAGE (compose("Device % has % outputs, at least 2 required for tests",
+		                    dev->get_name(), dev->max_output_channels()));
+		return;
+	}
+
 	AudioDevice::error_t err = dev->open (dev->max_input_channels(),
 	                                      dev->max_output_channels(),
 	                                      dev->get_default_samplerate(),
-										  buffersize,
-	                                      callback);
+	                                      buffersize,
+	                                      callback,
+	                                      NULL);
 
-	BOOST_CHECK(err == AudioDevice::NO_ERROR);
+	if (err != AudioDevice::NO_ERROR) {
+		BOOST_TEST_MESSAGE (compose("Unable to open device: %",
+		                            dev->get_error_string (err)));
+		return;
+	}
 
 	err = dev->start ();
 
 	BOOST_CHECK(err == AudioDevice::NO_ERROR);
 
-	mojo::usleep(1000*10);
+	mojo::usleep(2*1000000);
 
 	err = dev->stop ();
 
