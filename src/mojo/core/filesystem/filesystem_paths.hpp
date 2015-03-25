@@ -19,6 +19,8 @@ namespace mojo {
 
 	fs::path user_config_directory();
 
+	fs::path installation_directory();
+
 	Searchpath mojo_search_path();
 
 	Searchpath system_config_search_path();

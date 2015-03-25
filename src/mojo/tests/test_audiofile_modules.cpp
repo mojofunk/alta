@@ -8,7 +8,7 @@
 // for command line args
 #include <boost/test/framework.hpp>
 
-#include <boost/format.hpp>
+#include "mojo/core/string/compose.hpp"
 
 #include "mojo/audio_file/audio_file.hpp"
 #include "mojo/audio_file/audio_file_format.hpp"
@@ -22,8 +22,6 @@
 using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
-
-#define fmt boost::format
 
 void
 test_audiofile_format (AudioFileFormatSP format)
@@ -40,7 +38,7 @@ test_read_audiofile (AudioFileSP af)
 	const unsigned int frame_count = 4096U;
 	const unsigned int buffer_size = frame_count * af->channels();
 
-	BOOST_TEST_MESSAGE(fmt("Using buffer size: %1% ") % buffer_size);
+	BOOST_TEST_MESSAGE(compose("Using buffer size: %", buffer_size));
 
 	float* buffer = new float[buffer_size];
 
@@ -56,7 +54,7 @@ test_read_audiofile (AudioFileSP af)
 	{
 		frames_read += af->read_frames (buffer, frame_count);
 
-		BOOST_TEST_MESSAGE(fmt("Frames read: %1%") % frames_read);
+		BOOST_TEST_MESSAGE(compose("Frames read: %", frames_read));
 
 		BOOST_CHECK_EQUAL(af->seek (frames_read), frames_read);
 	}
@@ -69,13 +67,19 @@ test_read_audiofile (AudioFileSP af)
 void
 test_open_existing_file (AudioFileModuleSP mod)
 {
-	BOOST_CHECK (fs::exists (test_search_path().get_paths().front()));
+	fs::path project_path;
 
-	fs::path project_path = test_search_path().get_paths().front();
+	BOOST_CHECK(find_directory_in_test_path("projects", project_path));
 
-	project_path = project_path / "projects" / "motronic";
+	project_path = project_path / "motronic";
+
+	BOOST_TEST_MESSAGE(compose ("project_path: %", project_path));
+
+	BOOST_CHECK (fs::exists (project_path));
 
 	fs::path audiofile_path = ProjectDirectory(project_path).audiofiles_path() / "notify.wav";
+
+	BOOST_CHECK (fs::exists (audiofile_path));
 
 	AudioFileSP af = mod->open(audiofile_path.string());
 

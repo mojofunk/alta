@@ -60,7 +60,13 @@ get_system_config_directories ()
 fs::path
 user_config_directory()
 {
-	return fs::path(get_user_config_directory ()) / "mojo";
+	return fs::path(get_user_config_directory ()) / PROGRAM_DIR_NAME;
+}
+
+fs::path
+installation_directory()
+{
+	return g_win32_get_package_installation_directory_of_module(NULL);
 }
 
 Searchpath
@@ -73,7 +79,7 @@ Searchpath
 system_config_search_path()
 {
 	Searchpath sp(get_system_config_directories ());
-	sp / "mojo";
+	sp / PROGRAM_DIR_NAME;
 	return sp;
 }
 
@@ -81,7 +87,7 @@ Searchpath
 system_data_search_path()
 {
 	Searchpath sp(get_system_data_directories ());
-	sp / "mojo";
+	sp / PROGRAM_DIR_NAME;
 	return sp;
 }
 
@@ -89,13 +95,7 @@ Searchpath
 module_search_path ()
 {
 #ifdef MOJO_WINDOWS
-
-	std::string win32_install_dir = g_win32_get_package_installation_directory_of_module(NULL);
-
-	MOJO_DEBUG_MSG(FILESYSTEM_PATHS, compose("win32_install_dir: %", win32_install_dir));
-
-	Searchpath module_path(win32_install_dir);
-	return module_path / "bin";
+	return installation_directory () / "bin";
 #else
 	return mojo_search_path ();
 #endif

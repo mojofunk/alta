@@ -37,6 +37,13 @@ public:
 	Searchpath (const std::string& search_path);
 
 	/**
+	 * Initialize Searchpath from a single fs::path
+	 *
+	 * @param search_path A path string.
+	 */
+	Searchpath (const fs::path& search_path);
+
+	/**
 	 * Initialize Searchpath from a vector of paths that may or may
 	 * not exist.
 	 *

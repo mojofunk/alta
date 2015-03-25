@@ -39,6 +39,11 @@ Searchpath::Searchpath (const std::string& path)
 	}
 }
 
+Searchpath::Searchpath (const fs::path& path)
+{
+	add_directory (path);
+}
+
 Searchpath::Searchpath (const paths_t& paths)
 {
 	std::copy (paths.begin(), paths.end(), std::back_inserter(m_dirs));
