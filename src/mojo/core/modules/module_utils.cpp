@@ -39,10 +39,10 @@ discover_modules (const Searchpath& sp)
 
 	ModuleSPSet modules;
 
-	std::transform (module_paths.begin(),
-			module_paths.end(),
-			std::insert_iterator<ModuleSPSet>(modules, modules.begin()),
-			open_module);
+	for (auto const& path : module_paths) {
+		ModuleSP mod = open_module (path);
+		if (mod) modules.insert (mod);
+	}
 
 	return modules;
 }
