@@ -1,9 +1,13 @@
 #ifndef MOJO_CORE_AMALGAMATED
 #include "mojo/core/config/common_source_includes.hpp"
 
+#include "mojo/core/debug/debug.hpp"
+#include "mojo/core/string/compose.hpp"
 #include "mojo/core/system/utils.hpp"
 #include "mojo/core/filesystem/filesystem_paths.hpp"
 #endif
+
+MOJO_DEBUG_DOMAIN(FILESYSTEM_PATHS);
 
 namespace mojo {
 
@@ -84,7 +88,17 @@ system_data_search_path()
 Searchpath
 module_search_path ()
 {
+#ifdef MOJO_WINDOWS
+
+	std::string win32_install_dir = g_win32_get_package_installation_directory_of_module(NULL);
+
+	MOJO_DEBUG_MSG(FILESYSTEM_PATHS, compose("win32_install_dir: %", win32_install_dir));
+
+	Searchpath module_path(win32_install_dir);
+	return module_path / "bin";
+#else
 	return mojo_search_path ();
+#endif
 }
 
 } // namespace mojo
