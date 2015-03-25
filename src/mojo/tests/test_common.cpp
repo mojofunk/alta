@@ -42,17 +42,3 @@ find_directory_in_test_path (const std::string& dirname, fs::path& result)
 	}
 	return false;
 }
-
-fs::path
-new_test_output_dir ()
-{
-	fs::path tmp_dir(g_get_tmp_dir());
-	tmp_dir /= "mojo_test";
-	string dir_name;
-	do {
-		ostringstream oss;
-		oss << g_random_int ();
-		dir_name = oss.str();
-	} while (!fs::create_directories (tmp_dir / dir_name));
-	return tmp_dir / dir_name;
-}
