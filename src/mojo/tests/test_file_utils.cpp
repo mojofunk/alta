@@ -4,6 +4,8 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
 
+#include "mojo/core/string/compose.hpp"
+
 #include "mojo/core/filesystem/filesystem.hpp"
 #include "mojo/core/filesystem/file_utils.hpp"
 
@@ -38,4 +40,21 @@ BOOST_AUTO_TEST_CASE( test_get_non_existant_file_path )
 	const fs::path expected_path(project_audiofile_dir / "notify-1.wav");
 
 	BOOST_CHECK_EQUAL(new_path, expected_path);
+}
+
+BOOST_AUTO_TEST_CASE( test_tmp_writable_directory )
+{
+	std::set<fs::path> m_tmp_dirs;
+
+	const int num_dirs = 1000;
+
+	for (int i = 0; i < num_dirs; ++i) {
+		m_tmp_dirs.insert (tmp_writable_directory ("mojo-test", "tmp"));
+	}
+
+	BOOST_CHECK(m_tmp_dirs.size() == num_dirs);
+
+	for (auto const& path : m_tmp_dirs) {
+		BOOST_CHECK(fs::remove (path) == 1);
+	}
 }

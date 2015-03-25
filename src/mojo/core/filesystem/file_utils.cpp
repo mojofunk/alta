@@ -152,4 +152,21 @@ get_non_existent_file_path (const fs::path& desired_file_path)
 	return final_path;
 }
 
+fs::path
+tmp_writable_directory (const char* domain, const string& prefix)
+{
+	fs::path tmp_dir = fs::path(g_get_tmp_dir()) / domain;
+
+	std::string dir_name;
+	fs::path new_test_dir;
+	do {
+		std::ostringstream oss;
+		oss << prefix;
+		oss << g_random_int ();
+		dir_name = oss.str();
+		new_test_dir = tmp_dir / dir_name;
+	} while (!fs::is_directory(new_test_dir) && !fs::create_directories (new_test_dir));
+	return new_test_dir;
+}
+
 } // namespace mojo

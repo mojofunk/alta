@@ -47,6 +47,9 @@ find_matching_file (const fs::path& paths,
  */
 const fs::path get_non_existent_file_path (const fs::path& file_path);
 
+fs::path
+tmp_writable_directory (const char* domain, const std::string& prefix);
+
 } // namespace mojo
 
 #endif // MOJO_FILE_UTILS_H
