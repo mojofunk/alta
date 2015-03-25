@@ -20,22 +20,28 @@ using namespace mojo;
 fs::path
 get_sndfile_module_path ()
 {
+#ifdef MOJO_WINDOWS
+	std::string module_name("mojo-audio-file-sndfile");
+#else
 	std::string module_name("libmojo-audio-file-sndfile");
+#endif
 	module_name += '.';
 	module_name += G_MODULE_SUFFIX;
 
-	fs::path module_dir;
+	fs::path module_path;
 
 	for (auto const& path : module_search_path().get_paths()) {
-		if (path.string().find("sndfile") != std::string::npos) {
-			module_dir = path;
-			break;
+		if (fs::is_directory (path)) {
+
+			module_path = path / module_name;
+			if (fs::exists (module_path)) break;
 		}
 	}
 
-	BOOST_REQUIRE(!module_dir.empty());
+	BOOST_TEST_MESSAGE(module_path);
+	BOOST_CHECK(fs::exists(module_path));
 
-	return module_dir / module_name;
+	return module_path;
 }
 	
 BOOST_AUTO_TEST_CASE( open_module_test )
