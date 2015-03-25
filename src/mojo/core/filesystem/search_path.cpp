@@ -6,7 +6,7 @@
 
 namespace {
 
-#ifdef WIN32
+#ifdef MOJO_WINDOWS
 const char * const path_delimiter = ";";
 #else
 const char * const path_delimiter = ":";
