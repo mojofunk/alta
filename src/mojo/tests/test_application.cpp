@@ -17,27 +17,26 @@ using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
 
-BOOST_AUTO_TEST_CASE( test_application )
+BOOST_AUTO_TEST_CASE(test_application)
 {
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	Application::initialize ();
+	Application::initialize();
 	std::unique_ptr<ExampleApplication> app(new ExampleApplication());
 
-	Application::new_project ();
+	Application::new_project();
 
-	Application::iteration (true);
+	Application::iteration(true);
 
-	Application::new_project ();
-	Application::new_project ();
+	Application::new_project();
+	Application::new_project();
 
-	app->close_projects ();
-	Application::deinitialize ();
+	app->close_projects();
+	Application::deinitialize();
 }
 
-void
-test_module (const ModuleSP& mod)
+void test_module(const ModuleSP& mod)
 {
 	BOOST_REQUIRE(mod);
 
@@ -46,14 +45,14 @@ test_module (const ModuleSP& mod)
 	BOOST_TEST_MESSAGE(mod->get_version());
 }
 
-BOOST_AUTO_TEST_CASE( test_get_modules )
+BOOST_AUTO_TEST_CASE(test_get_modules)
 {
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	Application::initialize ();
+	Application::initialize();
 	ModuleSPSet modules = Application::get_modules();
 
-	for_each (modules.begin(), modules.end(), test_module);
-	Application::deinitialize ();
+	for_each(modules.begin(), modules.end(), test_module);
+	Application::deinitialize();
 }

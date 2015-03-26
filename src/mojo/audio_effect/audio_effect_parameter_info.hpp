@@ -7,12 +7,11 @@
 
 namespace mojo {
 
-struct AudioEffectParameterInfo
-{
+struct AudioEffectParameterInfo {
 	std::string name;
 	float min_value;
 	float max_value;
-	float default_value;	
+	float default_value;
 };
 
 } // namespace mojo

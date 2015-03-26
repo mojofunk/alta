@@ -4,7 +4,6 @@
 namespace mojo {
 
 class Object;
-
 };
 
 #endif // MOJO_CORE_OBJECT_FORWARD_H

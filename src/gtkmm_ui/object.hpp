@@ -8,10 +8,7 @@ namespace ui {
  * The Object class is the base class for all ui classes that
  * represent an instance of class in the project
  */
-class Object
-{
-
-
+class Object {
 }
 
 } // namespace ui

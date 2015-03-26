@@ -6,9 +6,6 @@
 
 namespace mojo {
 
-AudioEffect::~AudioEffect ()
-{
-
-}
+AudioEffect::~AudioEffect() {}
 
 } // namespace mojo

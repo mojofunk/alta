@@ -16,11 +16,11 @@ namespace mojo {
  * different hardware devices. The names associated with the
  * hardware devices will change but they should be stored with
  * the project so that for the common case where the project
- * being reloaded on the system that it was last 
+ * being reloaded on the system that it was last
  * configured/used on all the connections will be automatic.
  *
  * The Project class contains the tracks and other data needed
- * to reconstruct a project. The additional methods to 
+ * to reconstruct a project. The additional methods to
  * get/set_properties should be for convenience.
  *
  * The Project class is not tied to any on disk format
@@ -39,51 +39,43 @@ namespace mojo {
  *
  *
  */
-class Project : Object
-{
+class Project : Object {
 public: // Object interface
+	virtual void get_properties(Properties& props) const;
 
-	virtual void get_properties (Properties& props) const;
-
-	virtual void set_properties (const Properties& props);
+	virtual void set_properties(const Properties& props);
 
 public: // convenience methods
+	AudioTrackSP new_audio_track(const std::string& name = "");
 
-	AudioTrackSP new_audio_track (const std::string& name = "");
+	MidiTrackSP new_midi_track(const std::string& name = "");
 
-	MidiTrackSP new_midi_track (const std::string& name = "");
+	TrackSPSet get_tracks() const { return m_tracks; }
 
-	TrackSPSet get_tracks () const { return m_tracks; }
+	void add_track(const TrackSP&);
 
-	void add_track (const TrackSP&);
-
-	void remove_track (const TrackSP&);
+	void remove_track(const TrackSP&);
 
 public: // signals
-
-	using TrackAddedASyncSignal = signals::signal<void (Track*)>;
-	using TrackRemovedSyncSignal = signals::signal<void (Track*)>;
+	using TrackAddedASyncSignal = signals::signal<void(Track*)>;
+	using TrackRemovedSyncSignal = signals::signal<void(Track*)>;
 	using TrackAddedFunc = TrackAddedASyncSignal::slot_type;
 	using TrackRemovedFunc = TrackRemovedSyncSignal::slot_type;
 
-	signals::connection connect_track_added (const TrackAddedFunc& slot);
+	signals::connection connect_track_added(const TrackAddedFunc& slot);
 
-	signals::connection connect_track_removed (const TrackRemovedFunc& slot);
+	signals::connection connect_track_removed(const TrackRemovedFunc& slot);
 
 private: // signal members
-
-	TrackAddedASyncSignal       m_track_added;
-	TrackRemovedSyncSignal      m_track_removed;
+	TrackAddedASyncSignal m_track_added;
+	TrackRemovedSyncSignal m_track_removed;
 
 private: // member data
-
-	std::string                   m_name;
-	TrackSPSet                    m_tracks;
+	std::string m_name;
+	TrackSPSet m_tracks;
 
 private: // property names
-	
 	static const char* const s_property_tracks;
-
 };
 
 } // namespace mojo

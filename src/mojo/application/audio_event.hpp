@@ -7,21 +7,17 @@
 
 namespace mojo {
 
-class AudioEvent : public Event
-{
+class AudioEvent : public Event {
 public:
-
 	AudioEvent();
 
 	AudioEvent(const count_t& pos, const count_t& dur);
 
 public:
-
 	// Object interface
-	virtual void get_properties (Properties& props) const;
+	virtual void get_properties(Properties& props) const;
 
-	virtual void set_properties (const Properties& props);
-
+	virtual void set_properties(const Properties& props);
 };
 
 } // namespace mojo

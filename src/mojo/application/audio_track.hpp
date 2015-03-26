@@ -20,32 +20,25 @@ namespace mojo {
  * - the state of the connections to and from the track.
  * - reference to any buffers, they are passed in for processing
  */
-class AudioTrack : public Track
-{
+class AudioTrack : public Track {
 public:
-
 	// constructors
-	AudioTrack ();
+	AudioTrack();
 
 public:
-
 	// Object interface
-	virtual void get_properties (Properties& props) const;
+	virtual void get_properties(Properties& props) const;
 
-	virtual void set_properties (const Properties& props);
+	virtual void set_properties(const Properties& props);
 
 public:
-
-	AudioSequenceSP get_audio_sequence ();
+	AudioSequenceSP get_audio_sequence();
 
 private:
-
 	AudioSequenceSP m_audio_sequence;
 
 private:
-
 	static const char* const s_property_audio_sequence;
-	
 };
 
 } // namespace mojo

@@ -12,14 +12,11 @@ const char* const title_separator = " - ";
 namespace ui {
 
 WindowTitle::WindowTitle(const string& title)
-	:
-		m_title(title)
+    : m_title(title)
 {
-
 }
 
-void
-WindowTitle::operator+= (const string& element)
+void WindowTitle::operator+=(const string& element)
 {
 	m_title = m_title + title_separator + element;
 }

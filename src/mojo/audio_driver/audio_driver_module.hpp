@@ -8,20 +8,15 @@ namespace mojo {
 /**
  *
  */
-class AudioDriverModule : public Module
-{
+class AudioDriverModule : public Module {
 public: // ctors
-
-	virtual ~AudioDriverModule ();
+	virtual ~AudioDriverModule();
 
 public: // interface
-
-	virtual AudioDriverSP create_driver () const = 0;
+	virtual AudioDriverSP create_driver() const = 0;
 
 protected: // ctors
-
-	AudioDriverModule ();
-
+	AudioDriverModule();
 };
 
 } // namespace mojo

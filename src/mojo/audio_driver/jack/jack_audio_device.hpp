@@ -6,20 +6,15 @@
 
 namespace mojo {
 
-class JackAudioDevice : public AudioDevice
-{
+class JackAudioDevice : public AudioDevice {
 public: // Constructors
-
-        JackAudioDevice ();
-        ~JackAudioDevice ();
+	JackAudioDevice();
+	~JackAudioDevice();
 
 public: // AudioDevice interface
+	virtual error_t open(callback_t* cb, samplerate_t samplerate);
 
-	virtual error_t open (callback_t* cb,
-			samplerate_t samplerate);
-
-	virtual error_t close ();
-
+	virtual error_t close();
 };
 
 } // namespace mojo

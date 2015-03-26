@@ -9,10 +9,7 @@
 namespace mojo {
 
 class transition {
-
-
 };
-
 }
 
 #endif // MOJO_TRANSITION_H

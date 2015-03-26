@@ -5,67 +5,49 @@
 
 namespace mojo {
 
-GlibLibrary::GlibLibrary (const fs::path& library_path)
-	: m_filepath(library_path)
-	, m_module(NULL)
-{ }
-
-fs::path
-GlibLibrary::get_filepath () const
+GlibLibrary::GlibLibrary(const fs::path& library_path)
+    : m_filepath(library_path)
+    , m_module(NULL)
 {
-	return m_filepath;
 }
 
-bool
-GlibLibrary::open ()
-{
-	m_module = g_module_open(m_filepath.string().c_str(),
-		       	G_MODULE_BIND_LAZY);
+fs::path GlibLibrary::get_filepath() const { return m_filepath; }
 
-	if (m_module == NULL)
-	{
+bool GlibLibrary::open()
+{
+	m_module = g_module_open(m_filepath.string().c_str(), G_MODULE_BIND_LAZY);
+
+	if (m_module == NULL) {
 		return false;
-	} 
+	}
 
 	return true;
 }
 
-bool
-GlibLibrary::close ()
-{
-	return g_module_close (m_module);
-}
+bool GlibLibrary::close() { return g_module_close(m_module); }
 
-std::string
-GlibLibrary::get_error_string () const
-{
-	return g_module_error ();
-}
+std::string GlibLibrary::get_error_string() const { return g_module_error(); }
 
-void *
-GlibLibrary::resolve (const std::string& symbol_name)
+void* GlibLibrary::resolve(const std::string& symbol_name)
 {
-	if (!open ()) return NULL;
+	if (!open()) return NULL;
 
 	gpointer func;
 
-	if (g_module_symbol(m_module, symbol_name.c_str(), &func) == FALSE)
-	{
+	if (g_module_symbol(m_module, symbol_name.c_str(), &func) == FALSE) {
 		return NULL;
 	}
 
-	if (func == NULL)
-	{
+	if (func == NULL) {
 		return NULL;
 	}
 
 	return func;
 }
 
-bool
-GlibLibrary::is_library (const fs::path& filepath)
+bool GlibLibrary::is_library(const fs::path& filepath)
 {
-	return (fs::extension (filepath) == "." G_MODULE_SUFFIX);
+	return (fs::extension(filepath) == "." G_MODULE_SUFFIX);
 }
 
 } // namespace mojo

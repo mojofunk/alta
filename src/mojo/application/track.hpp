@@ -7,40 +7,34 @@
 
 namespace mojo {
 
-class Track : public Object
-{
+class Track : public Object {
 public:
-
 	// constructors
-	Track ();
+	Track();
 
 public: // Object Interface
+	virtual void get_properties(Properties& props) const;
 
-	virtual void get_properties (Properties& props) const;
-
-	virtual void set_properties (const Properties& props);
+	virtual void set_properties(const Properties& props);
 
 public:
+	std::string get_name() const;
 
-	std::string get_name () const;
+	void set_name(const std::string& name);
 
-	void set_name (const std::string& name);
+	// virtual InputBusSP get_input_bus () const = 0;
 
-	//virtual InputBusSP get_input_bus () const = 0;
+	// virtual void set_input_bus (InputBusSP) const = 0;
 
-	//virtual void set_input_bus (InputBusSP) const = 0;
-	
-	//virtual OutputBusSP get_output_bus () const = 0;
+	// virtual OutputBusSP get_output_bus () const = 0;
 
-	//virtual void set_output_bus (OutputBusSP) const = 0;
-	
+	// virtual void set_output_bus (OutputBusSP) const = 0;
+
 private:
-
 	// member data
 	std::string m_name;
 
 public:
-
 	static PropertyID const s_property_name_id;
 };
 

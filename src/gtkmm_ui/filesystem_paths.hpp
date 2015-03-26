@@ -7,13 +7,13 @@
 
 namespace ui {
 
-	mojo::Searchpath gmojo_search_path();
+mojo::Searchpath gmojo_search_path();
 
-	mojo::Searchpath system_config_search_path();
+mojo::Searchpath system_config_search_path();
 
-	mojo::Searchpath system_data_search_path();
+mojo::Searchpath system_data_search_path();
 
-	std::string get_ui_filepath (const std::string& filename);
+std::string get_ui_filepath(const std::string& filename);
 
 } // namespace ui
 

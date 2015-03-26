@@ -13,32 +13,29 @@ class Node;
 // void mojo_graph_destroy (mojo_graph_t* graph);
 // mojo_status_t mojo_graph_add_node (mojo_graph_t* graph, node_t* node);
 // mojo_status_t mojo_graph_remove_node (mojo_graph_t* graph, node_t* node);
-// mojo_status_t mojo_graph_connect_nodes (mojo_graph_t* graph, node_t* n1, node_t* n2);
+// mojo_status_t mojo_graph_connect_nodes (mojo_graph_t* graph, node_t* n1,
+// node_t* n2);
 // void mojo_graph_get_nodes (mojo_graph_t* graph, vector<node_t*> nodes);
 
-class Graph
-{
+class Graph {
 public:
-
 	// Node* create_node(callback_func_t, void* user_data);
 	// destroy_node(Node*);
 
-	void insert (Node*);
+	void insert(Node*);
 
-	void erase (Node*);
+	void erase(Node*);
 
 	// size ()
 
-	void connect (Node* n1, Node* n2);
+	void connect(Node* n1, Node* n2);
 
-	void disconnect (Node* n1, Node* n2);
+	void disconnect(Node* n1, Node* n2);
 
-	set<Node*> get_nodes () const;
+	set<Node*> get_nodes() const;
 
 private:
-
 	set<Node*> m_nodes;
-
 };
 
 } // namespace mojo

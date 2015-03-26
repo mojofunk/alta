@@ -7,8 +7,7 @@
 
 namespace mojo {
 
-void log (const char* log_domain, const std::string& msg);
-
+void log(const char* log_domain, const std::string& msg);
 }
 
 #endif // MOJO_CORE_LOG_H

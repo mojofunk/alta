@@ -9,35 +9,25 @@
 
 namespace mojo {
 
-const char * const AudioSequence::s_property_audio_events = "audio-events";
+const char* const AudioSequence::s_property_audio_events = "audio-events";
 
-AudioSequence::AudioSequence ()
+AudioSequence::AudioSequence() {}
+
+void AudioSequence::get_properties(Properties& props) const
 {
-
+	props.set_property(s_property_audio_events, m_audio_events);
 }
 
-void
-AudioSequence::get_properties (Properties& props) const
+void AudioSequence::set_properties(const Properties& props) {}
+
+std::pair<AudioSequence::iterator, bool> AudioSequence::insert(AudioEventSP ae)
 {
-	props.set_property (s_property_audio_events, m_audio_events);
+	return m_audio_events.insert(ae);
 }
 
-void
-AudioSequence::set_properties (const Properties& props)
+AudioSequence::size_type AudioSequence::erase(AudioEventSP ae)
 {
-
-}
-
-std::pair<AudioSequence::iterator, bool>
-AudioSequence::insert (AudioEventSP ae)
-{
-	return m_audio_events.insert (ae);
-}
-
-AudioSequence::size_type
-AudioSequence::erase (AudioEventSP ae)
-{
-	return m_audio_events.erase (ae);
+	return m_audio_events.erase(ae);
 }
 
 } // namespace mojo

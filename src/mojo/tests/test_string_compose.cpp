@@ -10,7 +10,7 @@ using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
 
-BOOST_AUTO_TEST_CASE( string_compose )
+BOOST_AUTO_TEST_CASE(string_compose)
 {
 	const char* const cstr = "Substitution";
 	BOOST_TEST_MESSAGE(compose("Testing const char* %", cstr));

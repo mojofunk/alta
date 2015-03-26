@@ -15,28 +15,27 @@ using namespace mojo;
 
 std::atomic_bool s_exit(false);
 
-void
-init_thread ()
+void init_thread()
 {
 	while (!s_exit) {
 		for (int i = 0; i < 100; ++i) {
-			core::initialize ();
+			core::initialize();
 		}
 
 		for (int i = 0; i < 100; ++i) {
-			core::deinitialize ();
+			core::deinitialize();
 		}
 	}
 }
 
-BOOST_AUTO_TEST_CASE( test_core_initializer )
+BOOST_AUTO_TEST_CASE(test_core_initializer)
 {
 	BOOST_REQUIRE(!core::initialized());
 
 	std::thread thread1(init_thread);
 	std::thread thread2(init_thread);
 
-	mojo::usleep(10*1000000);
+	mojo::usleep(10 * 1000000);
 
 	s_exit = true;
 

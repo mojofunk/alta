@@ -10,12 +10,12 @@ using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
 
-BOOST_AUTO_TEST_CASE( audio_sequence )
+BOOST_AUTO_TEST_CASE(audio_sequence)
 {
 	AudioSequence seq;
 
 	AudioEventSP ae1(new AudioEvent);
 
-	BOOST_CHECK(seq.insert (ae1).second);
-	BOOST_CHECK(seq.erase (ae1) == 1);
+	BOOST_CHECK(seq.insert(ae1).second);
+	BOOST_CHECK(seq.erase(ae1) == 1);
 }

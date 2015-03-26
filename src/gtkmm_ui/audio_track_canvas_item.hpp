@@ -10,36 +10,30 @@
 
 namespace ui {
 
-class AudioTrackCanvasItem : public TrackCanvasItem
-{
+class AudioTrackCanvasItem : public TrackCanvasItem {
 protected:
-
-	AudioTrackCanvasItem (mojo::Track*);
-
-public:
-
-	static Glib::RefPtr<AudioTrackCanvasItem> create (mojo::Track*);
+	AudioTrackCanvasItem(mojo::Track*);
 
 public:
+	static Glib::RefPtr<AudioTrackCanvasItem> create(mojo::Track*);
 
-	virtual void set_height (int height);
+public:
+	virtual void set_height(int height);
 
-	virtual uint32_t get_height () const;
+	virtual uint32_t get_height() const;
 
-	virtual void set_width (int width);
+	virtual void set_width(int width);
 
-	virtual uint32_t get_width () const;
+	virtual uint32_t get_width() const;
 
-	virtual void set_selected (bool);
+	virtual void set_selected(bool);
 
-	virtual bool get_selected () const;
+	virtual bool get_selected() const;
 
 private:
-
 	mojo::Track* m_audio_track;
 
 	Glib::RefPtr<Goocanvas::Rect> m_rect;
-
 };
 
 } // namespace ui

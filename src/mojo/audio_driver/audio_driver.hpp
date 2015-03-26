@@ -5,20 +5,15 @@
 
 namespace mojo {
 
-class AudioDriver 
-{
+class AudioDriver {
 public: // ctors
-
-	virtual ~AudioDriver ();
+	virtual ~AudioDriver();
 
 public: // interface
-
-	virtual AudioDeviceSPSet get_devices () const = 0;
+	virtual AudioDeviceSPSet get_devices() const = 0;
 
 protected: // ctors
-
-	AudioDriver ();
-
+	AudioDriver();
 };
 
 } // namespace mojo

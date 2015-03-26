@@ -8,18 +8,14 @@
 
 namespace mojo {
 
-class AudioEffectInfo
-{
+class AudioEffectInfo {
 public: // Constructors
-
-	virtual ~AudioEffectInfo ();
+	virtual ~AudioEffectInfo();
 
 public: // AudioEffectInfo interface
+	virtual std::string get_name() const = 0;
 
-	virtual std::string get_name () const = 0;
-
-	virtual fs::path get_path () const = 0;
-
+	virtual fs::path get_path() const = 0;
 };
 
 } // namespace mojo

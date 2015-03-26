@@ -13,46 +13,38 @@
 
 namespace ui {
 
-class Dispatcher
-{
+class Dispatcher {
 public: // typedefs
-
 	typedef sigc::slot<void> function_t;
 
 public: // ctor
-
-	Dispatcher ();
+	Dispatcher();
 
 public: // api
+	void call_sync(const function_t& func);
 
-	void call_sync (const function_t& func);
-
-	void call_async (const function_t& func);
+	void call_async(const function_t& func);
 
 private:
+	void run();
 
-	void run ();
-
-	void do_work ();
+	void do_work();
 
 	void iteration(bool block = false);
 
-	void queue (const function_t& func);
+	void queue(const function_t& func);
 
-	void process_queue ();
+	void process_queue();
 
 private: // members
+	Glib::Mutex m_iter_mtx;
+	Glib::Mutex m_queue_lock;
+	Glib::Cond m_cond;
 
-	Glib::Mutex                     m_iter_mtx;
-	Glib::Mutex                     m_queue_lock;
-	Glib::Cond                      m_cond;
+	gleam::Semaphore m_iter_sema;
 
-	gleam::Semaphore                m_iter_sema;
-
-	std::queue<function_t>          m_queue;
-
+	std::queue<function_t> m_queue;
 };
-
 
 } // namespace ui
 

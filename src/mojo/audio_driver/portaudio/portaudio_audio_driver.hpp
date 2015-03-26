@@ -6,26 +6,21 @@
 
 namespace mojo {
 
-class PortaudioAudioDriver : public AudioDriver
-{
+class PortaudioAudioDriver : public AudioDriver {
 public: // constructors
-
 	PortaudioAudioDriver();
 	~PortaudioAudioDriver();
 
 public: // AudioDriver interface
-
-	AudioDeviceSPSet get_devices () const;
+	AudioDeviceSPSet get_devices() const;
 
 private: // methods
+	bool initialize();
+	bool terminate();
 
-	bool initialize ();
-	bool terminate ();
-
-	static void discover_devices (AudioDeviceSPSet& devices);
+	static void discover_devices(AudioDeviceSPSet& devices);
 
 private: // member data
-
 	bool m_initialized;
 };
 

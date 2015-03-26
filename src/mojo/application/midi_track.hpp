@@ -5,20 +5,16 @@
 
 namespace mojo {
 
-class MidiTrack : public Track
-{
+class MidiTrack : public Track {
 public:
-
 	// constructors
-	MidiTrack ();
+	MidiTrack();
 
 public:
-
 	// Object interface
-	virtual void get_properties (Properties& props) const;
+	virtual void get_properties(Properties& props) const;
 
-	virtual void set_properties (const Properties& props);
-
+	virtual void set_properties(const Properties& props);
 };
 
 } // namespace mojo

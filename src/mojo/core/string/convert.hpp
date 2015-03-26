@@ -11,8 +11,7 @@
 namespace mojo {
 
 template <class T>
-bool
-string_to (const std::string& str, T& val)
+bool string_to(const std::string& str, T& val)
 {
 	std::istringstream iss(str);
 	iss.imbue(std::locale::classic());
@@ -21,21 +20,14 @@ string_to (const std::string& str, T& val)
 }
 
 template <>
-inline
-bool
-string_to (const std::string& str, bool& val)
+inline bool string_to(const std::string& str, bool& val)
 {
-	if (str.empty())
-	{
+	if (str.empty()) {
 		return false;
-	}
-	else if (str == "true")
-	{
+	} else if (str == "true") {
 		val = true;
 		return true;
-	}
-	else if (str == "false")
-	{
+	} else if (str == "false") {
 		val = false;
 		return true;
 	}
@@ -43,9 +35,7 @@ string_to (const std::string& str, bool& val)
 }
 
 template <>
-inline
-bool
-string_to (const std::string& str, float& val)
+inline bool string_to(const std::string& str, float& val)
 {
 	std::istringstream iss(str);
 	iss.imbue(std::locale::classic());
@@ -54,9 +44,7 @@ string_to (const std::string& str, float& val)
 }
 
 template <>
-inline
-bool
-string_to (const std::string& str, double& val)
+inline bool string_to(const std::string& str, double& val)
 {
 	std::istringstream iss(str);
 	iss.imbue(std::locale::classic());
@@ -65,9 +53,7 @@ string_to (const std::string& str, double& val)
 }
 
 template <class T>
-inline
-bool
-to_string (T val, std::string& str)
+inline bool to_string(T val, std::string& str)
 {
 	std::ostringstream oss;
 	oss.imbue(std::locale::classic());
@@ -77,19 +63,17 @@ to_string (T val, std::string& str)
 }
 
 template <>
-inline
-bool
-to_string (bool val, std::string& str)
+inline bool to_string(bool val, std::string& str)
 {
-	if (val) str = "true";
-	else str = "false";
+	if (val)
+		str = "true";
+	else
+		str = "false";
 	return true;
 }
 
 template <>
-inline
-bool
-to_string (float val, std::string& str)
+inline bool to_string(float val, std::string& str)
 {
 	std::ostringstream oss;
 	oss.imbue(std::locale::classic());
@@ -99,11 +83,8 @@ to_string (float val, std::string& str)
 	return true;
 }
 
-
 template <>
-inline
-bool
-to_string (double val, std::string& str)
+inline bool to_string(double val, std::string& str)
 {
 	std::ostringstream oss;
 	oss.imbue(std::locale::classic());
@@ -116,4 +97,3 @@ to_string (double val, std::string& str)
 } // namespace mojo
 
 #endif // MOJO_CORE_STRING_CONVERT_H
-

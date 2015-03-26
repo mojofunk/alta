@@ -5,18 +5,17 @@
 
 using namespace ui;
 
-int
-main(int argc, char* argv[])
+int main(int argc, char* argv[])
 {
-	Glib::thread_init ();
+	Glib::thread_init();
 
-	Gtk::Main app (argc, argv);
+	Gtk::Main app(argc, argv);
 
-	App::init (argc, argv);
+	App::init(argc, argv);
 
-	App::run ();
+	App::run();
 
-	App::cleanup ();
+	App::cleanup();
 
 	return 0;
 }

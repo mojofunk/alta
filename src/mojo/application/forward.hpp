@@ -24,7 +24,6 @@ namespace internal {
 class ApplicationData;
 
 } // namespace internal
-
 };
 
 #endif // MOJO_API_FORWARD_H

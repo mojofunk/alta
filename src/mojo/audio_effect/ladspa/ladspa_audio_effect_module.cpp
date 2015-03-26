@@ -8,127 +8,102 @@
 
 namespace mojo {
 
-LADSPAAudioEffectModule::LADSPAAudioEffectModule ()
+LADSPAAudioEffectModule::LADSPAAudioEffectModule()
 {
-	m_plugin_dirs.push_back ("/usr/local/lib64/ladspa");
-	m_plugin_dirs.push_back ("/usr/local/lib/ladspa");
-	m_plugin_dirs.push_back ("/usr/lib64/ladspa");
-	m_plugin_dirs.push_back ("/usr/lib/ladspa");
+	m_plugin_dirs.push_back("/usr/local/lib64/ladspa");
+	m_plugin_dirs.push_back("/usr/local/lib/ladspa");
+	m_plugin_dirs.push_back("/usr/lib64/ladspa");
+	m_plugin_dirs.push_back("/usr/lib/ladspa");
 }
 
-LADSPAAudioEffectModule::~LADSPAAudioEffectModule () { }
+LADSPAAudioEffectModule::~LADSPAAudioEffectModule() {}
 
-std::string
-LADSPAAudioEffectModule::get_author()
-{
-	return "Tim Mayberry";
-}
+std::string LADSPAAudioEffectModule::get_author() { return "Tim Mayberry"; }
 
-std::string
-LADSPAAudioEffectModule::get_description()
+std::string LADSPAAudioEffectModule::get_description()
 {
 	return "LADSPA module";
 }
 
-std::string
-LADSPAAudioEffectModule::get_version()
-{
-	return "0.0.1";
-}
+std::string LADSPAAudioEffectModule::get_version() { return "0.0.1"; }
 
-AudioEffectSP
-LADSPAAudioEffectModule::open (AudioEffectInfoSP info, samplerate_t rate)
+AudioEffectSP LADSPAAudioEffectModule::open(AudioEffectInfoSP info,
+                                            samplerate_t rate)
 {
-	LADSPAAudioEffectInfoSP ladspa_info = boost::dynamic_pointer_cast<LADSPAAudioEffectInfo>(info);
+	LADSPAAudioEffectInfoSP ladspa_info =
+	    boost::dynamic_pointer_cast<LADSPAAudioEffectInfo>(info);
 	AudioEffectSP aeffect;
 
 	if (!ladspa_info) return aeffect;
 
-	try
-	{
-		aeffect = AudioEffectSP(new LADSPAAudioEffect (ladspa_info, rate));
+	try {
+		aeffect = AudioEffectSP(new LADSPAAudioEffect(ladspa_info, rate));
 	}
-	catch (...)
-	{
-		//  
+	catch (...) {
+		//
 	}
 	return aeffect;
 }
 
-paths_t
-LADSPAAudioEffectModule::get_plugin_directory_paths () const
+paths_t LADSPAAudioEffectModule::get_plugin_directory_paths() const
 {
 	return m_plugin_dirs;
 }
 
-void
-LADSPAAudioEffectModule::set_plugin_directory_paths (const paths_t& paths)
+void LADSPAAudioEffectModule::set_plugin_directory_paths(const paths_t& paths)
 {
-
 }
 
-paths_t
-LADSPAAudioEffectModule::get_preset_directory_paths () const
+paths_t LADSPAAudioEffectModule::get_preset_directory_paths() const
 {
 	return paths_t();
 }
 
-void
-LADSPAAudioEffectModule::set_preset_directory_paths (const paths_t& paths)
+void LADSPAAudioEffectModule::set_preset_directory_paths(const paths_t& paths)
 {
-
 }
 
-void
-LADSPAAudioEffectModule::get_info (const fs::path& path, AudioEffectInfoSPSet& info_set)
+void LADSPAAudioEffectModule::get_info(const fs::path& path,
+                                       AudioEffectInfoSPSet& info_set)
 {
 	LADSPA_Descriptor_Function ladspa_func = NULL;
-	
-	LibrarySP lib = create_library (path);
+
+	LibrarySP lib = create_library(path);
 
 	if (!lib) return;
-		
+
 	ladspa_func = (LADSPA_Descriptor_Function)lib->resolve("ladspa_descriptor");
 
 	const LADSPA_Descriptor* descriptor = NULL;
-	
-	for (uint32_t index = 0;
-		       	(descriptor = ladspa_func(index));
-		       	++index)
-	{
+
+	for (uint32_t index = 0; (descriptor = ladspa_func(index)); ++index) {
 		AudioEffectInfoSP info(new LADSPAAudioEffectInfo(path, index));
-		if (info)
-		{
-			info_set.insert (info);
+		if (info) {
+			info_set.insert(info);
 		}
 	}
 }
 
-
-AudioEffectInfoSPSet
-LADSPAAudioEffectModule::get_plugin_info ()
+AudioEffectInfoSPSet LADSPAAudioEffectModule::get_plugin_info()
 {
 	paths_t paths;
-	find_matching_files (m_plugin_dirs, is_library, paths);
+	find_matching_files(m_plugin_dirs, is_library, paths);
 
 	AudioEffectInfoSPSet info_set;
 
-	for (paths_t::const_iterator i = paths.begin ();
-			i != paths.end(); ++i)
-	{
-		get_info (*i, info_set);
+	for (paths_t::const_iterator i = paths.begin(); i != paths.end(); ++i) {
+		get_info(*i, info_set);
 	}
-	
+
 	return info_set;
 }
 
-std::string
-LADSPAAudioEffectModule::get_plugin_api_name () const
+std::string LADSPAAudioEffectModule::get_plugin_api_name() const
 {
 	return "LADSPA";
 }
 
-MOJO_CAPI void * mojo_module_factory(void)
+MOJO_CAPI void* mojo_module_factory(void)
 {
 	return new LADSPAAudioEffectModule;
 }

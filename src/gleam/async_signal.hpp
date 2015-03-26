@@ -11,19 +11,18 @@
 
 namespace gleam {
 
-using namespace sigc;	
+using namespace sigc;
 
 using std::queue;
 
 template <class T>
-class AsyncSignal
-{
+class AsyncSignal {
 public:
 	AsyncSignal();
 
 	void send(const T&);
 
-	sigc::signal<void, const T*>	signal_async() { return m_signal; }
+	sigc::signal<void, const T*> signal_async() { return m_signal; }
 
 	bool caller_is_my_thread() const
 	{
@@ -35,58 +34,53 @@ public:
 	}
 
 private:
+	sigc::signal<void, const T*> m_signal;
 
-	sigc::signal<void, const T*>	m_signal;
+	Glib::Dispatcher m_dispatcher;
+	Glib::Mutex m_mutex;
+	const Glib::Thread* const m_thread;
 
-	Glib::Dispatcher                m_dispatcher;
-	Glib::Mutex                     m_mutex;
-	const Glib::Thread* const       m_thread;
-
-	queue<T>                        m_event_queue;
+	queue<T> m_event_queue;
 
 	void dispatch_handler();
 };
 
 template <class T>
 AsyncSignal<T>::AsyncSignal()
-:
-	m_thread(Glib::Thread::self())
+    : m_thread(Glib::Thread::self())
 {
 	m_dispatcher.connect(mem_fun(*this, &AsyncSignal<T>::dispatch_handler));
 }
 
 template <class T>
-void
-AsyncSignal<T>::send (const T& event)
+void AsyncSignal<T>::send(const T& event)
 {
-	if(caller_is_my_thread()) {
+	if (caller_is_my_thread()) {
 		// no need to copy
-		m_signal (&event);
+		m_signal(&event);
 	} else {
-		Glib::Mutex::Lock	guard(m_mutex);
-		
-		m_event_queue.push (event);
+		Glib::Mutex::Lock guard(m_mutex);
+
+		m_event_queue.push(event);
 
 		m_dispatcher.emit();
 	}
 }
 
 template <class T>
-void
-AsyncSignal<T>::dispatch_handler()
+void AsyncSignal<T>::dispatch_handler()
 {
-	Glib::Mutex::Lock	guard (m_mutex);
+	Glib::Mutex::Lock guard(m_mutex);
 
-	while (!m_event_queue.empty())
-	{
+	while (!m_event_queue.empty()) {
 		const T event = m_event_queue.front();
 		m_event_queue.pop();
-	
+
 		m_mutex.unlock();
 
-		m_signal (&event);
-		
-		m_mutex.lock ();
+		m_signal(&event);
+
+		m_mutex.lock();
 	}
 }
 

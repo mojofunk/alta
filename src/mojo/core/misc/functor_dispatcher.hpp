@@ -13,28 +13,25 @@ namespace mojo {
  * be called in another thread.
  *
  */
-class FunctorDispatcher : public Worker
-{
+class FunctorDispatcher : public Worker {
 public:
 	typedef boost::function<void()> function_t;
 
-	FunctorDispatcher ();
+	FunctorDispatcher();
 
-	void call_sync (const function_t& func);
+	void call_sync(const function_t& func);
 
-	void call_async (const function_t& func);
+	void call_async(const function_t& func);
 
 private:
+	virtual void do_work();
 
-	virtual void do_work ();
+	void queue(const function_t& func);
 
-	void queue (const function_t& func);
-
-	void process_queue ();
+	void process_queue();
 
 	std::queue<function_t> m_queue;
 	std::mutex m_queue_mutex;
-
 };
 
 } // namespace mojo

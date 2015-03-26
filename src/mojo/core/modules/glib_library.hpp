@@ -11,35 +11,28 @@ typedef struct _GModule GModule;
 
 namespace mojo {
 
-class GlibLibrary : public Library
-{
+class GlibLibrary : public Library {
 public: // constructors
-
-	GlibLibrary (const fs::path& filepath);
+	GlibLibrary(const fs::path& filepath);
 
 public: // Library Interface
+	fs::path get_filepath() const;
 
-	fs::path get_filepath () const;
+	bool open();
+	bool close();
 
-	bool open ();
-	bool close ();
+	std::string get_error_string() const;
 
-	std::string get_error_string () const;
+	void* resolve(const std::string& symbol_name);
 
-	void * resolve (const std::string& symbol_name);
-
-	bool is_library (const fs::path& filepath);
+	bool is_library(const fs::path& filepath);
 
 private:
-
 	fs::path m_filepath;
 
 	GModule* m_module;
-
 };
-
 
 } // namespace mojo
 
 #endif // MOJO_GLIB_LIBRARY_H
-

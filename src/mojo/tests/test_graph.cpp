@@ -10,31 +10,19 @@ using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
 
-struct Processor : public Node
-{
+struct Processor : public Node {
 	string name;
 
 protected:
-
-	virtual void on_activate()
-	{
-		BOOST_MESSAGE(name);
-	}
-
+	virtual void on_activate() { BOOST_MESSAGE(name); }
 };
 
-bool
-graph_contains_node (Node*)
-{
+bool graph_contains_node(Node*) { return true; }
 
-
-	return true;
-}
-
-BOOST_AUTO_TEST_CASE( test_graph_application )
+BOOST_AUTO_TEST_CASE(test_graph_application)
 {
 	Graph g;
-	
+
 	Processor* p1 = new Processor;
 	Processor* p2 = new Processor;
 
@@ -46,6 +34,5 @@ BOOST_AUTO_TEST_CASE( test_graph_application )
 
 	// check nodes have been added to the graph
 
-	g.connect(p1,p2);
-
+	g.connect(p1, p2);
 }

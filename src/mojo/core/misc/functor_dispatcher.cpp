@@ -8,56 +8,48 @@ MOJO_DEBUG_DOMAIN(FUNCTOR_DISPATCHER);
 
 namespace mojo {
 
-FunctorDispatcher::FunctorDispatcher ()
-{
+FunctorDispatcher::FunctorDispatcher() {}
 
-}
-
-void
-FunctorDispatcher::call_sync (const function_t& func)
+void FunctorDispatcher::call_sync(const function_t& func)
 {
 	MOJO_DEBUG(FUNCTOR_DISPATCHER);
-	queue (func);
+	queue(func);
 	iteration(true);
 }
 
-void
-FunctorDispatcher::call_async (const function_t& func)
+void FunctorDispatcher::call_async(const function_t& func)
 {
 	MOJO_DEBUG(FUNCTOR_DISPATCHER);
-	queue (func);
+	queue(func);
 	iteration(false);
 }
 
-void
-FunctorDispatcher::queue (const function_t& func)
+void FunctorDispatcher::queue(const function_t& func)
 {
 	std::unique_lock<std::mutex> lock(m_queue_mutex);
-	m_queue.push (func);
+	m_queue.push(func);
 }
 
-void
-FunctorDispatcher::do_work ()
+void FunctorDispatcher::do_work()
 {
 	MOJO_DEBUG(FUNCTOR_DISPATCHER);
 	process_queue();
 }
 
-void
-FunctorDispatcher::process_queue ()
+void FunctorDispatcher::process_queue()
 {
 	std::unique_lock<std::mutex> lock(m_queue_mutex);
 
 	while (!m_queue.empty()) {
 
-		function_t func = m_queue.front ();
-		m_queue.pop ();
+		function_t func = m_queue.front();
+		m_queue.pop();
 
 		// unlock while executing
-		lock.unlock ();
+		lock.unlock();
 		MOJO_DEBUG(FUNCTOR_DISPATCHER);
 		func();
-		lock.lock ();
+		lock.lock();
 	}
 }
 

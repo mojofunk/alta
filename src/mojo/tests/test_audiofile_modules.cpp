@@ -23,8 +23,7 @@ using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
 
-void
-test_audiofile_format (AudioFileFormatSP format)
+void test_audiofile_format(AudioFileFormatSP format)
 {
 	BOOST_REQUIRE(format);
 
@@ -32,8 +31,7 @@ test_audiofile_format (AudioFileFormatSP format)
 	BOOST_TEST_MESSAGE(format->extension());
 }
 
-void
-test_read_audiofile (AudioFileSP af)
+void test_read_audiofile(AudioFileSP af)
 {
 	const unsigned int frame_count = 4096U;
 	const unsigned int buffer_size = frame_count * af->channels();
@@ -49,23 +47,21 @@ test_read_audiofile (AudioFileSP af)
 
 	count_t frames_read = 0;
 	count_t total_frames = af->frames();
-	
-	while (frames_read < total_frames)
-	{
-		frames_read += af->read_frames (buffer, frame_count);
+
+	while (frames_read < total_frames) {
+		frames_read += af->read_frames(buffer, frame_count);
 
 		BOOST_TEST_MESSAGE(compose("Frames read: %", frames_read));
 
-		BOOST_CHECK_EQUAL(af->seek (frames_read), frames_read);
+		BOOST_CHECK_EQUAL(af->seek(frames_read), frames_read);
 	}
 
 	BOOST_CHECK_EQUAL(frames_read, total_frames);
 
-	delete [] buffer;
+	delete[] buffer;
 }
 
-void
-test_open_existing_file (AudioFileModuleSP mod)
+void test_open_existing_file(AudioFileModuleSP mod)
 {
 	fs::path project_path;
 
@@ -73,13 +69,14 @@ test_open_existing_file (AudioFileModuleSP mod)
 
 	project_path = project_path / "motronic";
 
-	BOOST_TEST_MESSAGE(compose ("project_path: %", project_path));
+	BOOST_TEST_MESSAGE(compose("project_path: %", project_path));
 
-	BOOST_CHECK (fs::exists (project_path));
+	BOOST_CHECK(fs::exists(project_path));
 
-	fs::path audiofile_path = ProjectDirectory(project_path).audiofiles_path() / "notify.wav";
+	fs::path audiofile_path =
+	    ProjectDirectory(project_path).audiofiles_path() / "notify.wav";
 
-	BOOST_CHECK (fs::exists (audiofile_path));
+	BOOST_CHECK(fs::exists(audiofile_path));
 
 	AudioFileSP af = mod->open(audiofile_path.string());
 
@@ -89,21 +86,19 @@ test_open_existing_file (AudioFileModuleSP mod)
 	BOOST_CHECK_EQUAL(af->channels(), 2U);
 	BOOST_CHECK_EQUAL(af->frames(), 29835U);
 
-	test_audiofile_format (af->format());
+	test_audiofile_format(af->format());
 
-	test_read_audiofile (af);
+	test_read_audiofile(af);
 }
 
-void
-test_formats (const AudioFileFormatSPSet& formats)
+void test_formats(const AudioFileFormatSPSet& formats)
 {
 	BOOST_CHECK(!formats.empty());
 
-	for_each (formats.begin(), formats.end(), test_audiofile_format);
+	for_each(formats.begin(), formats.end(), test_audiofile_format);
 }
 
-void
-test_audiofile_module (AudioFileModuleSP mod)
+void test_audiofile_module(AudioFileModuleSP mod)
 {
 	BOOST_REQUIRE(mod);
 
@@ -111,23 +106,23 @@ test_audiofile_module (AudioFileModuleSP mod)
 	BOOST_TEST_MESSAGE(mod->get_description());
 	BOOST_TEST_MESSAGE(mod->get_version());
 
-	test_open_existing_file (mod);
+	test_open_existing_file(mod);
 
-	test_formats (mod->get_readable_formats ());
+	test_formats(mod->get_readable_formats());
 
-	test_formats (mod->get_writable_formats ());
+	test_formats(mod->get_writable_formats());
 }
 
-BOOST_AUTO_TEST_CASE( audiofile_module_test )
+BOOST_AUTO_TEST_CASE(audiofile_module_test)
 {
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	Application::initialize ();
+	Application::initialize();
 	AudioFileModuleSPSet modules = Application::get_audiofile_modules();
 
 	BOOST_CHECK(!modules.empty());
 
-	for_each (modules.begin(), modules.end(), test_audiofile_module);
-	Application::deinitialize ();
+	for_each(modules.begin(), modules.end(), test_audiofile_module);
+	Application::deinitialize();
 }

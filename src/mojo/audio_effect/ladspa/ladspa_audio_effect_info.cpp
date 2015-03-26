@@ -6,55 +6,40 @@
 
 namespace mojo {
 
-LADSPAAudioEffectInfo::LADSPAAudioEffectInfo (const fs::path& path,
-		uint32_t index)
-	: m_path(path)
-	, m_index(index)
+LADSPAAudioEffectInfo::LADSPAAudioEffectInfo(const fs::path& path,
+                                             uint32_t index)
+    : m_path(path)
+    , m_index(index)
 {
 	LADSPA_Descriptor_Function ladspa_func = NULL;
 
-	LibrarySP lib = create_library (path);
+	LibrarySP lib = create_library(path);
 
 	const LADSPA_Descriptor* descriptor = NULL;
 
-	if (!lib) 
-	{
+	if (!lib) {
 		throw;
 	}
 
 	ladspa_func = (LADSPA_Descriptor_Function)lib->resolve("ladspa_descriptor");
 
-	if (ladspa_func == NULL)
-	{
+	if (ladspa_func == NULL) {
 		throw;
 	}
 
 	descriptor = ladspa_func(index);
 
-	if (!descriptor)
-	{
+	if (!descriptor) {
 		throw;
 	}
 
 	m_name = descriptor->Name;
 }
 
-std::string
-LADSPAAudioEffectInfo::get_name () const
-{
-	return m_name;
-}
+std::string LADSPAAudioEffectInfo::get_name() const { return m_name; }
 
-fs::path
-LADSPAAudioEffectInfo::get_path () const
-{
-	return m_path;
-}
+fs::path LADSPAAudioEffectInfo::get_path() const { return m_path; }
 
-uint32_t
-LADSPAAudioEffectInfo::get_index () const
-{
-	return m_index;
-}
+uint32_t LADSPAAudioEffectInfo::get_index() const { return m_index; }
 
 } // namespace mojo

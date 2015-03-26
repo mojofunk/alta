@@ -12,23 +12,18 @@ class TrackListItem;
  * same size as the TrackCanvasItem. A Gtkmm::SizeGroup would be useful
  * if it worked for CanvasItems.
  */
-class TrackList : public Gtk::VBox
-{
+class TrackList : public Gtk::VBox {
 public:
-
-	TrackList ();
+	TrackList();
 
 public:
+	void add(TrackListItem* item);
 
-	void add (TrackListItem* item);
-
-	void remove (TrackListItem* item);
+	void remove(TrackListItem* item);
 
 private:
-
 	static const int s_min_width = 100;
 	static const int s_min_height = 300;
-
 };
 
 } // namespace ui

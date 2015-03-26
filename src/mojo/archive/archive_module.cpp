@@ -6,6 +6,6 @@
 
 namespace mojo {
 
-ArchiveModule::~ArchiveModule () { }
+ArchiveModule::~ArchiveModule() {}
 
 } // namespace mojo

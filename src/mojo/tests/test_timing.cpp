@@ -14,7 +14,7 @@ using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
 
-BOOST_AUTO_TEST_CASE( test_cpp_clocks )
+BOOST_AUTO_TEST_CASE(test_cpp_clocks)
 {
 	BOOST_TEST_MESSAGE("system_clock");
 	BOOST_TEST_MESSAGE(chrono::system_clock::period::num);
@@ -32,7 +32,7 @@ BOOST_AUTO_TEST_CASE( test_cpp_clocks )
 	BOOST_TEST_MESSAGE(chrono::steady_clock::is_steady);
 }
 
-BOOST_AUTO_TEST_CASE( test_timing )
+BOOST_AUTO_TEST_CASE(test_timing)
 {
 	Timing t1;
 

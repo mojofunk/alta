@@ -9,7 +9,7 @@ using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
 
-BOOST_AUTO_TEST_CASE( audition_test )
+BOOST_AUTO_TEST_CASE(audition_test)
 {
 	/*
 	 * A Application is needed to audition an audio file

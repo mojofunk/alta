@@ -5,13 +5,10 @@ namespace mojo {
 
 namespace internal {
 
-struct null_deleter
-{
-	void operator()(void const *) const { }
+struct null_deleter {
+	void operator()(void const*) const {}
 };
-
 }
-
 }
 
 #endif // MOJO_NULL_DELETER_H

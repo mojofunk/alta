@@ -6,23 +6,19 @@
 
 namespace mojo {
 
-class PortaudioAudioDriverModule : public AudioDriverModule
-{
+class PortaudioAudioDriverModule : public AudioDriverModule {
 public: // constructors
-
 	PortaudioAudioDriverModule();
 	~PortaudioAudioDriverModule();
 
-	AudioDriverSP create_driver () const;
+	AudioDriverSP create_driver() const;
 
 public: // Module interface
+	virtual std::string get_author();
 
-	virtual std::string get_author ();
+	virtual std::string get_description();
 
-	virtual std::string get_description ();
-
-	virtual std::string get_version ();
-
+	virtual std::string get_version();
 };
 
 } // namespace mojo

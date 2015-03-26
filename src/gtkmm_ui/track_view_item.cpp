@@ -3,9 +3,6 @@
 
 namespace ui {
 
-TrackViewItem::~TrackViewItem ()
-{
-
-}
+TrackViewItem::~TrackViewItem() {}
 
 } // namespace ui

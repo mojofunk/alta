@@ -8,16 +8,14 @@
 
 namespace gleam {
 
-class Dispatcher
-{
+class Dispatcher {
 public:
-
 	/**
-	 * Create a new Dispatcher, run() must be called to actually 
+	 * Create a new Dispatcher, run() must be called to actually
 	 * create the new thread and start the main loop.
 	 */
 	Dispatcher(const char* const name);
-	
+
 	/**
 	 * assert that quit() has been called.
 	 */
@@ -40,17 +38,15 @@ public:
 	const char* const name() { return m_name; }
 
 protected:
-
 	/// name used to identify the dispatcher
-	const char* const                  m_name;
-	
+	const char* const m_name;
+
 	/**
 	 * on_run is called just before entering the main thread
 	 * loop, this is the chance to create thread private data
 	 * and register handlers with the main context.
 	 */
 	virtual void on_run() = 0;
-
 
 	/**
 	 * on_quit is called after exiting the main thread loop,
@@ -63,36 +59,33 @@ protected:
 	/**
 	 * \short returns the wrapped Glib::Thread pointer
 	 */
-	Glib::Thread* threadobj() const
-	{ return m_thread; }
+	Glib::Thread* threadobj() const { return m_thread; }
 
 	/**
 	 * \short access the thread's maincontext
 	 */
 	Glib::RefPtr<Glib::MainContext> get_main_context();
 
-	virtual void main_loop ();
+	virtual void main_loop();
 
 	/**
 	 * \return true if thread is able to run.
 	 */
-	bool can_run ();
-	
-	Glib::Mutex                     m_iter_mtx;
+	bool can_run();
 
-	Glib::Cond                      m_cond;
+	Glib::Mutex m_iter_mtx;
 
-	bool				            m_quit;
+	Glib::Cond m_cond;
 
-	Glib::Thread*			        m_thread;
+	bool m_quit;
+
+	Glib::Thread* m_thread;
 
 private:
-
-	void thread_main ();
+	void thread_main();
 
 	struct ThreadData;
-	Glib::Private<ThreadData>       m_thread_data;
-
+	Glib::Private<ThreadData> m_thread_data;
 };
 
 } // namespace gleam

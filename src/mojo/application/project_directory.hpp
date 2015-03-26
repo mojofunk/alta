@@ -13,13 +13,12 @@ namespace mojo {
 using std::string;
 using std::vector;
 
-class ProjectDirectory
-{
+class ProjectDirectory {
 public:
 	/**
 	 * @param project_path An absolute path to a project directory.
 	 */
-	ProjectDirectory (const fs::path& project_path);
+	ProjectDirectory(const fs::path& project_path);
 
 	/**
 	 * @return the absolute path to the root directory of the project
@@ -27,22 +26,22 @@ public:
 	const fs::path root_path() const { return m_root_path; }
 
 	/**
-	 * @return the absolute path to the directory in which 
+	 * @return the absolute path to the directory in which
 	 * the project stores audio files.
 	 */
-	const fs::path audiofiles_path () const;
+	const fs::path audiofiles_path() const;
 
 	/**
 	 * @return The absolute path to the directory in which all
 	 * peak files are stored for a project.
 	 */
-	const fs::path peak_path () const;
+	const fs::path peak_path() const;
 
 	/**
-	 * @return true if project directory and all the required 
+	 * @return true if project directory and all the required
 	 * subdirectories exist.
 	 */
-	bool is_valid () const;
+	bool is_valid() const;
 
 	/**
 	 * Create the project directory and all the subdirectories.
@@ -55,14 +54,13 @@ public:
 	 *
 	 * @post is_valid ()
 	 */
-	bool create ();
+	bool create();
 
 protected:
-
 	/**
 	 * @return a vector containing the fullpath of all subdirectories.
 	 */
-	const vector<fs::path> sub_directories () const;
+	const vector<fs::path> sub_directories() const;
 
 	/// The path to the root of the project directory.
 	const fs::path m_root_path;

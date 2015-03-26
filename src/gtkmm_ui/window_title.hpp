@@ -12,10 +12,8 @@ namespace ui {
  * Each std::string element that is added to the window title will
  * be separated by a hyphen.
  */
-class WindowTitle
-{
+class WindowTitle {
 public:
-
 	/**
 	 * \param title The first string/element of the window title
 	 * which will may be the application name or the document
@@ -26,15 +24,13 @@ public:
 	/**
 	 * Add an string element to the window title.
 	 */
-	void operator+= (const std::string&);
+	void operator+=(const std::string&);
 
 	/// @return The window title string.
-	const std::string& get_string () { return m_title;}
+	const std::string& get_string() { return m_title; }
 
 private:
-
-	std::string                         m_title;
-
+	std::string m_title;
 };
 
 } // ui

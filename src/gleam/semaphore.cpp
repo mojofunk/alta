@@ -3,36 +3,31 @@
 
 namespace gleam {
 
-Semaphore::Semaphore (gint initial_val)
-	:
-		m_counter(initial_val)
-{ }
-
-void
-Semaphore::wait ()
+Semaphore::Semaphore(gint initial_val)
+    : m_counter(initial_val)
 {
-	Glib::Mutex::Lock guard (m_mutex);
+}
+
+void Semaphore::wait()
+{
+	Glib::Mutex::Lock guard(m_mutex);
 
 	while (m_counter.get() < 1) {
 
 		m_cond.wait(m_mutex);
-
 	}
 
 	--m_counter;
 }
 
-bool
-Semaphore::try_wait ()
+bool Semaphore::try_wait()
 {
-	if (!m_mutex.trylock())
-	{
+	if (!m_mutex.trylock()) {
 		return false;
 	}
 	// lock successful
 	while (m_counter.get() < 1) {
 		m_cond.wait(m_mutex);
-
 	}
 
 	--m_counter;
@@ -40,8 +35,7 @@ Semaphore::try_wait ()
 	return true;
 }
 
-void
-Semaphore::post ()
+void Semaphore::post()
 {
 	++m_counter;
 	m_cond.signal();

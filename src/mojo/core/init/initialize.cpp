@@ -16,54 +16,45 @@ std::atomic_uint s_init_core_count(0);
 using namespace mojo;
 
 #ifndef NDEBUG
-void
-set_debugging_from_env_var ()
+void set_debugging_from_env_var()
 {
-	using tokenizer = boost::tokenizer<boost::char_separator<char> >;
-	boost::char_separator<char> sep (",");
-	tokenizer tokens (mojo::getenv("MOJO_DEBUG"), sep);
+	using tokenizer = boost::tokenizer<boost::char_separator<char>>;
+	boost::char_separator<char> sep(",");
+	tokenizer tokens(mojo::getenv("MOJO_DEBUG"), sep);
 
 	for (auto& t : tokens) {
-		mojo::debug::set_enabled (
-			mojo::debug::get_domain_index(t.c_str()), true);
+		mojo::debug::set_enabled(mojo::debug::get_domain_index(t.c_str()), true);
 	}
 }
 #endif
-
 }
 
 namespace mojo {
 
 namespace core {
 
-void
-initialize ()
+void initialize()
 {
 	if (++s_init_core_count != 1) return;
 
 #ifndef NDEBUG
-	set_debugging_from_env_var ();
+	set_debugging_from_env_var();
 #endif
 
 	MOJO_DEBUG_MSG(CORE_INITIALIZE, "Initializing mojo-core");
 
-	types::initialize ();
+	types::initialize();
 }
 
-bool
-initialized ()
-{
-	return (s_init_core_count != 0);
-}
+bool initialized() { return (s_init_core_count != 0); }
 
-void
-deinitialize ()
+void deinitialize()
 {
 	if (--s_init_core_count != 0) return;
 
 	MOJO_DEBUG_MSG(CORE_INITIALIZE, "Deinitializing mojo-core");
 
-	types::deinitialize ();
+	types::deinitialize();
 }
 
 } // namespace core

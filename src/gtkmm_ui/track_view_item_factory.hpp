@@ -10,10 +10,9 @@ namespace ui {
 
 class Track;
 
-class TrackViewItemFactory
-{
+class TrackViewItemFactory {
 public:
-	static TrackViewItem* create (mojo::Track* track);
+	static TrackViewItem* create(mojo::Track* track);
 };
 
 } // namespace ui

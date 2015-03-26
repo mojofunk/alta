@@ -8,16 +8,14 @@
 
 namespace mojo {
 
-class Worker
-{
+class Worker {
 public:
-
 	/**
 	 * Create a new Worker, run() must be called to start
 	 * the main loop.
 	 */
 	Worker();
-	
+
 	/**
 	 * assert that quit() has been called.
 	 */
@@ -30,25 +28,23 @@ public:
 
 	void quit();
 
-	void iteration (bool block = false);
+	void iteration(bool block = false);
 
 protected:
-
-	virtual void do_work () = 0;
+	virtual void do_work() = 0;
 
 	/**
 	 * \return true if thread is able to run.
 	 */
-	bool can_run ();
-	
-	std::mutex                      m_iter_mtx;
+	bool can_run();
 
-	std::condition_variable         m_cond;
+	std::mutex m_iter_mtx;
 
-	std::atomic<bool>               m_quit;
+	std::condition_variable m_cond;
 
-	Semaphore                       m_iter_sema;
+	std::atomic<bool> m_quit;
 
+	Semaphore m_iter_sema;
 };
 
 } // namespace mojo

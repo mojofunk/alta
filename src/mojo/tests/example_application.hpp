@@ -6,27 +6,22 @@
 
 #include "mojo-application.hpp"
 
-class ExampleApplication
-{
+class ExampleApplication {
 public: // ctors
+	ExampleApplication();
 
-	ExampleApplication ();
-
-	~ExampleApplication ();
+	~ExampleApplication();
 
 public: // methods
+	void on_project_added(mojo::Project* p);
 
-	void on_project_added (mojo::Project* p);
+	void on_project_removed(mojo::Project* p);
 
-	void on_project_removed (mojo::Project* p);
-
-	void close_projects ();
+	void close_projects();
 
 private: // member data
-
-	std::set<mojo::Project*>    m_projects;
-	std::mutex                  m_mutex;
-
+	std::set<mojo::Project*> m_projects;
+	std::mutex m_mutex;
 };
 
 #endif

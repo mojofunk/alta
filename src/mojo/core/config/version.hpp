@@ -11,6 +11,7 @@
 #define MOJO_MINOR_VERSION 1
 #define MOJO_MICRO_VERSION 1
 
-#define MOJO_VERSION ((MOJO_MAJOR_VERSION << 16) + (MOJO_MINOR_VERSION << 8) + MOJO_MICRO_VERSION)
+#define MOJO_VERSION                                                           \
+	((MOJO_MAJOR_VERSION << 16) + (MOJO_MINOR_VERSION << 8) + MOJO_MICRO_VERSION)
 
 #endif // MOJO_CORE_VERSION_H

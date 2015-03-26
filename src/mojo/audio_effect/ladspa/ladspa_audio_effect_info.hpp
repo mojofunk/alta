@@ -6,28 +6,23 @@
 
 namespace mojo {
 
-class LADSPAAudioEffectInfo : public AudioEffectInfo
-{
+class LADSPAAudioEffectInfo : public AudioEffectInfo {
 public:
-
-	LADSPAAudioEffectInfo (const fs::path&, uint32_t index);
+	LADSPAAudioEffectInfo(const fs::path&, uint32_t index);
 
 public: // AudioEffectInfo Inferface
+	virtual std::string get_name() const;
 
-	virtual std::string get_name () const;
+	virtual fs::path get_path() const;
 
-	virtual fs::path get_path () const;
-
-	uint32_t get_index () const;
+	uint32_t get_index() const;
 
 private:
-
 	const fs::path m_path;
 
 	std::string m_name;
 
 	const uint32_t m_index;
-
 };
 
 } // namespace mojo

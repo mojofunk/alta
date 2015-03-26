@@ -19,22 +19,19 @@ namespace mojo {
 
   Each object has a unique id number
 
-  A collection contains references to types defined elsewhere 
+  A collection contains references to types defined elsewhere
 
   Should an Object be defined where it is first referenced, or should references
   by inserted and the object defined elsewhere.
 
   Archives are only expected to know about the Object class so all references
-  must be stored as objectref types and then referenced by id 
+  must be stored as objectref types and then referenced by id
  */
-class XMLArchive : public Archive
-{
+class XMLArchive : public Archive {
 public:
+	virtual void write(const fs::path& file_path, const Properties& props);
 
-	virtual void write (const fs::path& file_path, const Properties& props);
-	
-	virtual void read (const fs::path& file_path, Properties& props);
-
+	virtual void read(const fs::path& file_path, Properties& props);
 };
 
 } // namespace mojo

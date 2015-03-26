@@ -8,12 +8,9 @@
 
 namespace ui {
 
-class TrackCanvasToolkit : public Toolkit
-{
+class TrackCanvasToolkit : public Toolkit {
 public:
-
-	TrackCanvasToolkit ();
-
+	TrackCanvasToolkit();
 };
 
 } // namespace ui

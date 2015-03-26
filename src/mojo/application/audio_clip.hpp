@@ -21,7 +21,7 @@ namespace mojo {
  * for each file that it references as that could mean exhausting
  * the number of open file descriptors available to the process.
  *
- * Processes such as Stretching, Shrinking and Pitch shifting 
+ * Processes such as Stretching, Shrinking and Pitch shifting
  * an AudioClip should use original audio sources rather than
  * using previously processed audio to create new audio
  * sources.
@@ -29,28 +29,23 @@ namespace mojo {
  * How to write to AudioClip in buffer size chunks and
  * signal that a write has been completed?
  */
-class AudioClip : public Object
-{
+class AudioClip : public Object {
 public:
-
 	/**
 	 * Create a new AudioClip from an existing audiofile
 	 */
-	AudioClip (const std::string& audiofile);
+	AudioClip(const std::string& audiofile);
 
-	AudioClip ();
+	AudioClip();
 
 public:
-
 	// Object interface
-	virtual void get_properties (Properties& props) const;
+	virtual void get_properties(Properties& props) const;
 
-	virtual void set_properties (const Properties& props);
+	virtual void set_properties(const Properties& props);
 
 private:
-
 	std::string m_audiofile;
-
 };
 
 } // namespace mojo

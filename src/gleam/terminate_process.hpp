@@ -5,7 +5,7 @@
 namespace gleam {
 
 /**
- * Portable way of terminating the current process. This function 
+ * Portable way of terminating the current process. This function
  * does not return.
  */
 void terminate_process(int status);

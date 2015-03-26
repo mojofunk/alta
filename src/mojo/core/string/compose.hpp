@@ -9,21 +9,19 @@ namespace mojo {
 
 namespace internal {
 
-inline
-void
-compose_oss(const char* format, std::stringstream& oss)
+inline void compose_oss(const char* format, std::stringstream& oss)
 {
 	oss << format;
 }
 
-template<typename T, typename... Targs>
+template <typename T, typename... Targs>
 void
-compose_oss (const char* format, std::stringstream& oss, T value, Targs...Fargs)
+compose_oss(const char* format, std::stringstream& oss, T value, Targs... Fargs)
 {
 	while (*format != '\0') {
 		if (*format == '%') {
 			oss << value;
-			compose_oss(format+1, oss, Fargs...); // recurse
+			compose_oss(format + 1, oss, Fargs...); // recurse
 			return;
 		}
 		oss << *format;
@@ -33,12 +31,11 @@ compose_oss (const char* format, std::stringstream& oss, T value, Targs...Fargs)
 
 } // namespace internal
 
-template<typename... Targs>
-std::string
-compose (const char* format, Targs...Fargs)
+template <typename... Targs>
+std::string compose(const char* format, Targs... Fargs)
 {
 	std::stringstream oss;
-	internal::compose_oss (format, oss, Fargs...);
+	internal::compose_oss(format, oss, Fargs...);
 	return oss.str();
 }
 

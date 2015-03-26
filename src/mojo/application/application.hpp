@@ -23,12 +23,16 @@
 namespace mojo {
 
 /**
- * If access to the worker thread is through the application and all Object classes
- * use the worker thread then changes to the Application class will cause a total
- * recompile. Better to have a singleton WorkerThread that accessed through a private
+ * If access to the worker thread is through the application and all Object
+ *classes
+ * use the worker thread then changes to the Application class will cause a
+ *total
+ * recompile. Better to have a singleton WorkerThread that accessed through a
+ *private
  * header.
  *
- * The application state is stored in a separate file to the project and contains
+ * The application state is stored in a separate file to the project and
+ *contains
  * nothing project specific.
  *
  * A application manages a task thread that asyncronously runs all tasks that
@@ -78,37 +82,38 @@ namespace mojo {
  * accessed/referenced by the application. This makes it much easier to ensure
  * that only one thread modifies the objects.
  *
- * The Engine does not reference the Project. The Application negotiates communication
+ * The Engine does not reference the Project. The Application negotiates
+ *communication
  * between the Engine and the Project.
  *
- * The Engine runs in a different context/thread than the Application(ApplicationDispatcher)
+ * The Engine runs in a different context/thread than the
+ *Application(ApplicationDispatcher)
  *
- * Should only be one Application class per process so makes sense to make all methods
+ * Should only be one Application class per process so makes sense to make all
+ *methods
  * static(might as well be a C API...)
  *
- * If the worker context is exposed in a private header(perhaps in core) then the clients should
- * be able to access the project class directly and the classes can then defer some/all modification
+ * If the worker context is exposed in a private header(perhaps in core) then
+ *the clients should
+ * be able to access the project class directly and the classes can then defer
+ *some/all modification
  * calls to the worker thread.
  */
-class Application
-{
+class Application {
 public:
+	static void initialize();
 
-	static void initialize ();
-
-	static void deinitialize ();
+	static void deinitialize();
 
 public:
-
-	static void iteration (bool block);
+	static void iteration(bool block);
 
 public: // public API
-
-	/**
-	 * Create a new project.
-	 * Async
-	 */
-	static void new_project ();
+	       /**
+	        * Create a new project.
+	        * Async
+	        */
+	static void new_project();
 
 	/**
 	 * If the native samplerate of the project
@@ -118,12 +123,12 @@ public: // public API
 	 *
 	 * Async
 	 */
-	static void open_project (const std::string& project_file);
+	static void open_project(const std::string& project_file);
 
 	/**
 	 * Async
 	 */
-	static void save_project_as (Project*, const std::string& filename);
+	static void save_project_as(Project*, const std::string& filename);
 
 	/**
 	 * Will send an error to the application event_handler if the if
@@ -131,13 +136,13 @@ public: // public API
 	 *
 	 * Async
 	 */
-	static void save_project (Project*);
+	static void save_project(Project*);
 
 	/**
 	 * should return status
 	 * Async
 	 */
-	static void close_project (Project*);
+	static void close_project(Project*);
 
 	/**
 	 * Set the project as the current active project.
@@ -148,14 +153,14 @@ public: // public API
 	 *
 	 * Async
 	 */
-	static void set_active_project (Project*);
+	static void set_active_project(Project*);
 
 	/**
 	 * Get the current active project
 	 *
 	 * Sync...could this be a problem?
 	 */
-	static Project* get_active_project ();
+	static Project* get_active_project();
 
 	/**
 	 * A client should only need to request tracks when a
@@ -168,20 +173,20 @@ public: // public API
 	 * This should be a more general mechanism to get properties
 	 *
 	 */
-	//void get_tracks (Project*, std::set<Track*>);
+	// void get_tracks (Project*, std::set<Track*>);
 
 	/**
 	 *
 	 * Async
 	 */
-	static void add_track (Project*, const TrackOptions&);
+	static void add_track(Project*, const TrackOptions&);
 
 	/**
 	 * Async
 	 */
-	static void remove_track (Project*, Track*);
+	static void remove_track(Project*, Track*);
 
-	static bool is_audio_track (Track*);
+	static bool is_audio_track(Track*);
 
 	/**
 	 * task_t is an identifier for a particular task
@@ -197,55 +202,52 @@ public: // public API
 	 * The files are added to the project that is active for the application
 	 *
 	 */
-	//task_t import_audiofiles (const paths& files, const ImportOptions&)
+	// task_t import_audiofiles (const paths& files, const ImportOptions&)
 
 public: // signals
-
-	using ProjectAddedASyncSignal = signals::signal<void (Project*)>;
-	using ProjectRemovedSyncSignal = signals::signal<void (Project*)>;
+	using ProjectAddedASyncSignal = signals::signal<void(Project*)>;
+	using ProjectRemovedSyncSignal = signals::signal<void(Project*)>;
 	using ProjectAddedFunc = ProjectAddedASyncSignal::slot_type;
 	using ProjectRemovedFunc = ProjectRemovedSyncSignal::slot_type;
 
-	static signals::connection connect_project_added (const ProjectAddedFunc& slot);
+	static signals::connection connect_project_added(const ProjectAddedFunc& slot);
 
-	static signals::connection connect_project_removed (const ProjectAddedFunc& slot);
+	static signals::connection
+	connect_project_removed(const ProjectAddedFunc& slot);
 
 public: // modules
+	static AudioFileSP open_audiofile(const fs::path& p);
 
-	static AudioFileSP open_audiofile (const fs::path& p);
+	static ModuleSPSet get_modules();
 
-	static ModuleSPSet get_modules ();
+	static AudioFileModuleSPSet get_audiofile_modules();
 
-	static AudioFileModuleSPSet get_audiofile_modules ();
+	static AudioDriverModuleSPSet get_audio_driver_modules();
 
-	static AudioDriverModuleSPSet get_audio_driver_modules ();
+	static AudioEffectModuleSPSet get_audio_effect_modules();
 
-	static AudioEffectModuleSPSet get_audio_effect_modules ();
+	static ArchiveModuleSPSet get_archive_modules();
 
-	static ArchiveModuleSPSet get_archive_modules ();
-
-	static ArchiveSP create_archive ();
+	static ArchiveSP create_archive();
 
 private: // ctors
+	Application();
 
-	Application ();
+	~Application();
 
-	~Application ();
-
-	static Application& get_instance ();
+	static Application& get_instance();
 
 	std::unique_ptr<internal::ApplicationData> data;
 
-	void register_types ();
+	void register_types();
 
-	void new_project_internal ();
-	void open_project_internal (const std::string&);
-	void close_project_internal (Project*);
-	void set_active_project_internal (Project*);
+	void new_project_internal();
+	void open_project_internal(const std::string&);
+	void close_project_internal(Project*);
+	void set_active_project_internal(Project*);
 
-	void add_track_internal (Project*, const TrackOptions&);
-	void remove_track_internal (Project*, Track*);
-
+	void add_track_internal(Project*, const TrackOptions&);
+	void remove_track_internal(Project*, Track*);
 };
 
 } // namespace mojo

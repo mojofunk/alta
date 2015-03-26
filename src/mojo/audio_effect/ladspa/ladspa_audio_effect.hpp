@@ -10,34 +10,31 @@
 
 namespace mojo {
 
-class LADSPAAudioEffect : public AudioEffect
-{
+class LADSPAAudioEffect : public AudioEffect {
 public: // ctors
+	LADSPAAudioEffect(LADSPAAudioEffectInfoSP info, samplerate_t);
 
-	LADSPAAudioEffect (LADSPAAudioEffectInfoSP info, samplerate_t);
-
-	virtual ~LADSPAAudioEffect ();
+	virtual ~LADSPAAudioEffect();
 
 public: // AudioEffect interface
+	virtual AudioEffectInfoSP get_info() const;
 
-	virtual AudioEffectInfoSP get_info () const;
+	virtual ParameterList get_parameter_list() const;
 
-	virtual ParameterList get_parameter_list () const;
+	virtual void get_parameter_info(uint32_t param_id,
+	                                AudioEffectParameterInfo& info) const;
 
-	virtual void get_parameter_info (uint32_t param_id, AudioEffectParameterInfo& info) const;
+	virtual float get_parameter(uint32_t param_id) const;
 
-	virtual float get_parameter (uint32_t param_id) const;
+	virtual void set_parameter(uint32_t param_id, float value);
 
-	virtual void set_parameter (uint32_t param_id, float value);
+	virtual void activate();
 
-	virtual void activate ();
+	virtual void deactivate();
 
-	virtual void deactivate ();
-
-	virtual void set_block_size (uint32_t frames);
+	virtual void set_block_size(uint32_t frames);
 
 private:
-
 	LibrarySP m_library;
 
 	const LADSPA_Descriptor* m_descriptor;
@@ -47,7 +44,6 @@ private:
 	LADSPA_Handle m_handle;
 
 	ParameterList m_parameters;
-
 };
 
 } // namespace mojo

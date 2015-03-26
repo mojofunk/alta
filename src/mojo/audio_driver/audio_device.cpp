@@ -2,6 +2,6 @@
 
 namespace mojo {
 
-AudioDevice::~AudioDevice () { }
+AudioDevice::~AudioDevice() {}
 
 } // namespace mojo

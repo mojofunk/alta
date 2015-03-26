@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2007 Tim Mayberry 
+    Copyright (C) 2007 Tim Mayberry
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -25,13 +25,13 @@
 
 namespace ui {
 
-sigc::connection slow_timer_connect (const sigc::slot<void>& slot);
+sigc::connection slow_timer_connect(const sigc::slot<void>& slot);
 
-sigc::connection fast_timer_connect (const sigc::slot<void>& slot);
+sigc::connection fast_timer_connect(const sigc::slot<void>& slot);
 
-sigc::connection rapid_timer_connect (const sigc::slot<void>& slot);
+sigc::connection rapid_timer_connect(const sigc::slot<void>& slot);
 
-sigc::connection blink_timer_connect (const sigc::slot<void, bool>& slot);
+sigc::connection blink_timer_connect(const sigc::slot<void, bool>& slot);
 
 } // namespace ui
 

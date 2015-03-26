@@ -7,9 +7,9 @@
 
 namespace mojo {
 
-typedef int64_t     count_t;
-typedef uint32_t    channel_count_t;
-typedef uint32_t    samplerate_t;
+typedef int64_t count_t;
+typedef uint32_t channel_count_t;
+typedef uint32_t samplerate_t;
 
 } // namespace mojo
 

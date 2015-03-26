@@ -6,21 +6,15 @@
 namespace mojo {
 
 Worker::Worker()
-       	: m_quit(false)
+    : m_quit(false)
 {
-
 }
-	
-Worker::~Worker()
-{
 
-}
-	
-void
-Worker::run()
+Worker::~Worker() {}
+
+void Worker::run()
 {
-	while(can_run())
-	{
+	while (can_run()) {
 		m_iter_sema.wait();
 
 		do_work();
@@ -33,14 +27,13 @@ Worker::run()
 	}
 }
 
-void
-Worker::quit ()
+void Worker::quit()
 {
 	std::unique_lock<std::mutex> lock(m_iter_mtx);
 
 	m_quit = true;
 
-	iteration (false);
+	iteration(false);
 
 	// wait for the iteration to complete
 	// which can only happen when m_iter_mtx
@@ -48,34 +41,28 @@ Worker::quit ()
 	m_cond.wait(lock);
 }
 
-bool
-Worker::can_run()
+bool Worker::can_run()
 {
 	std::unique_lock<std::mutex> lock(m_iter_mtx);
 
-	if(m_quit)
-	{
+	if (m_quit) {
 		m_cond.notify_one();
 		return false;
 	}
 	return true;
 }
 
-void
-Worker::iteration (bool block)
+void Worker::iteration(bool block)
 {
-	if(block)
-	{
+	if (block) {
 		std::unique_lock<std::mutex> lock(m_iter_mtx);
 
-		//signal worker to run
+		// signal worker to run
 		m_iter_sema.post();
 
 		// wait for one iteration to complete
 		m_cond.wait(lock);
-	}
-	else
-	{
+	} else {
 		m_iter_sema.post();
 	}
 }

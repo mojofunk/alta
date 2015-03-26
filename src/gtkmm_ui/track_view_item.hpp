@@ -8,15 +8,13 @@ namespace ui {
 
 class TrackListItem;
 
-class TrackViewItem
-{
+class TrackViewItem {
 public:
+	virtual ~TrackViewItem();
 
-	virtual ~TrackViewItem ();
+	virtual TrackListItem* get_track_list_item() = 0;
 
-	virtual TrackListItem* get_track_list_item () = 0;
-
-	virtual Glib::RefPtr<TrackCanvasItem> get_track_canvas_item () = 0;
+	virtual Glib::RefPtr<TrackCanvasItem> get_track_canvas_item() = 0;
 };
 
 } // namespace ui

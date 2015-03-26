@@ -7,21 +7,18 @@
 
 namespace mojo {
 
-class Semaphore
-{
+class Semaphore {
 public:
-
 	// prevent copying and assignment
 	Semaphore(const Semaphore& sema) = delete;
-	Semaphore& operator= (const Semaphore& sema) = delete;
+	Semaphore& operator=(const Semaphore& sema) = delete;
 
 public:
-
 	/**
 	 * \param initial_val The initial value of the semaphore,
 	 * defaults to 1(binary semaphore)
 	 */
-	Semaphore (uint32_t initial_val = 1);
+	Semaphore(uint32_t initial_val = 1);
 
 	/**
 	 * Aquire a "permit" from the semaphore, if one is
@@ -30,7 +27,7 @@ public:
 	 * then the thread will be put into a blocked state
 	 * until another thread calls release.
 	 */
-	void wait ();
+	void wait();
 
 	/**
 	 * Try and aquire a permit. This is a non-blocking operation.
@@ -38,21 +35,19 @@ public:
 	 * \return true if a permit was able to be aquired, false
 	 * if otherwise.
 	 */
-	bool try_wait ();
+	bool try_wait();
 
 	/**
 	 * Release a permit increasing the number of permits
 	 * by one. This is a non-blocking operation.
 	 */
-	void post ();
+	void post();
 
 private:
-
 	// counter is atomic so post doesn't need to take lock to post/notify
-	std::atomic<uint32_t>    m_counter;
-	std::condition_variable  m_cond;
-	std::mutex               m_mutex;
-
+	std::atomic<uint32_t> m_counter;
+	std::condition_variable m_cond;
+	std::mutex m_mutex;
 };
 
 } // namespace mojo

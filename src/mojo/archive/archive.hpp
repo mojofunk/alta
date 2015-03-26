@@ -14,7 +14,7 @@ namespace mojo {
  * that memory usage can be minimalized.
  *
  * An archive does not have to know about all class types. It just
- * has to know about any fundamental types it supports and the 
+ * has to know about any fundamental types it supports and the
  * mojo::Object class
  *
  * An archive implementation uses the type system to get a name
@@ -24,18 +24,14 @@ namespace mojo {
  *
  * Archive needs to be more explicit in what types are supported
  */
-class Archive
-{
+class Archive {
 public: // ctors
-
 	virtual ~Archive();
 
 public: // Interface
+	virtual void write(const fs::path& file_path, const Properties& props) = 0;
 
-	virtual void write (const fs::path& file_path, const Properties& props) = 0;
-	
-	virtual void read (const fs::path& file_path, Properties& props) = 0;
-
+	virtual void read(const fs::path& file_path, Properties& props) = 0;
 };
 
 } // namespace mojo

@@ -6,35 +6,29 @@
 
 namespace ui {
 
-ImportDialog::ImportDialog ()
+ImportDialog::ImportDialog()
 {
 	LOG;
 
-	try
-	{
-		m_builder = Gtk::Builder::create_from_file (get_ui_filepath ("import_dialog.ui"));
+	try {
+		m_builder =
+		    Gtk::Builder::create_from_file(get_ui_filepath("import_dialog.ui"));
 	}
-	catch(const Glib::FileError& ex)
-	{
+	catch (const Glib::FileError& ex) {
 		std::cerr << "FileError: " << ex.what() << std::endl;
 		return;
 	}
-	catch(const Gtk::BuilderError& ex)
-	{
+	catch (const Gtk::BuilderError& ex) {
 		std::cerr << "BuilderError: " << ex.what() << std::endl;
 		return;
 	}
 
-	m_builder->get_widget ("import-dialog", m_dialog);
+	m_builder->get_widget("import-dialog", m_dialog);
 }
 
-ImportDialog::~ImportDialog ()
-{
-	delete m_dialog;
-}
+ImportDialog::~ImportDialog() { delete m_dialog; }
 
-int
-ImportDialog::run ()
+int ImportDialog::run()
 {
 	LOG;
 	return m_dialog->run();

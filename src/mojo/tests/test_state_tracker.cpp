@@ -11,7 +11,7 @@ using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
 
-BOOST_AUTO_TEST_CASE( test_state_tracker )
+BOOST_AUTO_TEST_CASE(test_state_tracker)
 {
 
 	StateTrackerSP st(new StateTracker());

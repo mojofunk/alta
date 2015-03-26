@@ -8,24 +8,20 @@
 
 namespace ui {
 
-class ProjectSetupDialog
-{
+class ProjectSetupDialog {
 public:
+	ProjectSetupDialog(mojo::Project* proj);
 
-	ProjectSetupDialog (mojo::Project* proj);
+	~ProjectSetupDialog();
 
-	~ProjectSetupDialog ();
-
-	int run ();
+	int run();
 
 private:
-
 	mojo::Project* m_project;
 
 	BuilderGPtr m_builder;
 
 	Gtk::Dialog* m_window;
-
 };
 
 } // namespace ui

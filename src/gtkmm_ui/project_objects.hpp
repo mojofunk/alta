@@ -18,23 +18,18 @@ class ProjectWindow;
  *
  * not so sure about the name
  */
-class ProjectObjects : public sigc::trackable
-{
+class ProjectObjects : public sigc::trackable {
 public:
+	ProjectObjects(mojo::Project* p);
 
-	ProjectObjects (mojo::Project* p);
-
-        mojo::Project const * get_project () const
-        { return m_project; }
+	mojo::Project const* get_project() const { return m_project; }
 
 private:
-
-        mojo::Project const * m_project;
+	mojo::Project const* m_project;
 
 	boost::shared_ptr<ProjectWindow> m_project_window;
 
 	// mixer window
-
 };
 
 } // namespace ui

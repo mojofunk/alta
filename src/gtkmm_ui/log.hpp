@@ -5,7 +5,6 @@
 
 #include <glib.h>
 
-#define LOG \
-	std::cerr << G_STRFUNC << " " << std::endl;
+#define LOG std::cerr << G_STRFUNC << " " << std::endl;
 
 #endif

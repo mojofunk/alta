@@ -8,17 +8,15 @@
 
 namespace mojo {
 
-inline
-void
-spinwait (uint64_t usecs)
+inline void spinwait(uint64_t usecs)
 {
 	mojo::Timing timing;
 
 	uint64_t i = 0;
 	do {
-		timing.update ();
+		timing.update();
 		++i;
-	} while (timing.elapsed () < usecs);
+	} while (timing.elapsed() < usecs);
 }
 
 } // namespace mojo

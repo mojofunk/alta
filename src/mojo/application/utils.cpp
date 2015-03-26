@@ -4,15 +4,11 @@
 
 namespace mojo {
 
-std::string
-track_type_to_string (TrackType type)
+std::string track_type_to_string(TrackType type)
 {
-	if (type == AUDIO)
-	{
+	if (type == AUDIO) {
 		return "Audio";
-	}
-	else if (type == MIDI)
-	{
+	} else if (type == MIDI) {
 		return "Midi";
 	}
 

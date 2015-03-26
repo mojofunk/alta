@@ -1,5 +1,4 @@
 #ifndef MOJO_CORE_COMPILER_DEFINES_H
 #define MOJO_CORE_COMPILER_DEFINES_H
 
-
 #endif

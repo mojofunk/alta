@@ -8,10 +8,9 @@
 
 namespace ui {
 
-class TrackViewFactory
-{
+class TrackViewFactory {
 public:
-	static TrackView* create (mojo::Project* proj);
+	static TrackView* create(mojo::Project* proj);
 };
 
 } // namespace ui

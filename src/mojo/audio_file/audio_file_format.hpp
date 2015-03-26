@@ -9,10 +9,8 @@ namespace mojo {
 
 using std::string;
 
-class AudioFileFormat
-{
+class AudioFileFormat {
 public:
-
 	virtual ~AudioFileFormat();
 
 	virtual string name() const = 0;
@@ -20,9 +18,7 @@ public:
 	virtual string extension() const = 0;
 
 protected:
-
 	AudioFileFormat();
-
 };
 
 } // namespace mojo

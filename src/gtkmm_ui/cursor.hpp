@@ -6,19 +6,15 @@
 
 namespace ui {
 
-class Cursor : public Goocanvas::Polyline
-{
+class Cursor : public Goocanvas::Polyline {
 public:
+	static Glib::RefPtr<Cursor> create();
 
-	static Glib::RefPtr<Cursor> create ();
-
-	void set_position (double pos);
-	void set_height (double height);
+	void set_position(double pos);
+	void set_height(double height);
 
 private:
-
-	Cursor ();
-
+	Cursor();
 };
 
 } // namespace ui

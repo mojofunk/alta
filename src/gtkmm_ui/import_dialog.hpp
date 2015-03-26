@@ -6,18 +6,15 @@
 
 namespace ui {
 
-class ImportDialog
-{
+class ImportDialog {
 public:
+	ImportDialog();
 
-	ImportDialog ();
+	~ImportDialog();
 
-	~ImportDialog ();
-
-	int run ();
+	int run();
 
 private:
-
 	BuilderGPtr m_builder;
 
 	Gtk::Dialog* m_dialog;

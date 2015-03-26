@@ -7,17 +7,14 @@ class Node;
 
 class Edge {
 public:
+	Edge(const Node* from, const Node* to);
 
-	Edge (const Node* from, const Node* to);
+	void set_user_data(void*);
 
-	void set_user_data (void*);
-
-	void get_user_data (void*);
+	void get_user_data(void*);
 
 private:
-
 	void* m_user_data;
-
 };
 
 } // namespace mojo

@@ -9,14 +9,11 @@
 
 namespace ui {
 
-class ProjectWindowToolbar : public Gtk::HBox
-{
+class ProjectWindowToolbar : public Gtk::HBox {
 public:
-
-	ProjectWindowToolbar (mojo::Project*);
+	ProjectWindowToolbar(mojo::Project*);
 
 private:
-
 	mojo::Project* m_project;
 
 	Gtk::ToggleButton m_activate_project_button;
@@ -32,10 +29,8 @@ private:
 	// m_project_window_tools;
 
 private:
-
-	void on_activate_project_button_toggled ();
-	void on_activate_project_changed (mojo::Project*);
-
+	void on_activate_project_button_toggled();
+	void on_activate_project_changed(mojo::Project*);
 };
 
 } // namespace ui

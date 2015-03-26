@@ -3,32 +3,29 @@
 
 MOJO_DEBUG_DOMAIN(PORTAUDIO_DRIVER)
 
-
 namespace mojo {
 
-PortaudioAudioDriver::PortaudioAudioDriver ()
-	: m_initialized(false)
+PortaudioAudioDriver::PortaudioAudioDriver()
+    : m_initialized(false)
 {
 	MOJO_DEBUG(PORTAUDIO_DRIVER);
-	initialize ();
+	initialize();
 }
 
-PortaudioAudioDriver::~PortaudioAudioDriver ()
+PortaudioAudioDriver::~PortaudioAudioDriver()
 {
 	MOJO_DEBUG(PORTAUDIO_DRIVER);
-	terminate ();
+	terminate();
 }
 
-AudioDeviceSPSet
-PortaudioAudioDriver::get_devices () const
+AudioDeviceSPSet PortaudioAudioDriver::get_devices() const
 {
 	AudioDeviceSPSet devices;
-	discover_devices (devices);
+	discover_devices(devices);
 	return devices;
 }
 
-bool
-PortaudioAudioDriver::initialize ()
+bool PortaudioAudioDriver::initialize()
 {
 	if (m_initialized) return true;
 
@@ -36,15 +33,14 @@ PortaudioAudioDriver::initialize ()
 	if (error == paNoError) {
 		return m_initialized = true;
 	} else {
-		MOJO_DEBUG_MSG(PORTAUDIO_DRIVER,
-			compose ("Unable to Initialize portaudio: %s",
-				Pa_GetErrorText (error)));
+		MOJO_DEBUG_MSG(
+		    PORTAUDIO_DRIVER,
+		    compose("Unable to Initialize portaudio: %s", Pa_GetErrorText(error)));
 	}
 	return false;
 }
 
-bool
-PortaudioAudioDriver::terminate ()
+bool PortaudioAudioDriver::terminate()
 {
 	if (!m_initialized) return true;
 
@@ -52,29 +48,27 @@ PortaudioAudioDriver::terminate ()
 	if (error == paNoError) {
 		return m_initialized = false;
 	} else {
-		MOJO_DEBUG_MSG(PORTAUDIO_DRIVER,
-			compose ("Unable to Terminate portaudio: %s",
-				Pa_GetErrorText (error)));
+		MOJO_DEBUG_MSG(
+		    PORTAUDIO_DRIVER,
+		    compose("Unable to Terminate portaudio: %s", Pa_GetErrorText(error)));
 	}
 	return false;
 }
 
-
-void
-PortaudioAudioDriver::discover_devices (AudioDeviceSPSet& devices)
+void PortaudioAudioDriver::discover_devices(AudioDeviceSPSet& devices)
 {
-	int device_count = Pa_GetDeviceCount ();
+	int device_count = Pa_GetDeviceCount();
 
 	if (device_count < 0) {
-		MOJO_DEBUG_MSG(PORTAUDIO_DRIVER,
-			compose ("Invalid device count: %s",
-				Pa_GetErrorText (device_count)));
+		MOJO_DEBUG_MSG(
+		    PORTAUDIO_DRIVER,
+		    compose("Invalid device count: %s", Pa_GetErrorText(device_count)));
 		return;
 	}
 
 	for (PaDeviceIndex i = 0; i < device_count; ++i) {
 		AudioDeviceSP device(new PortaudioAudioDevice(i));
-		devices.insert (device);
+		devices.insert(device);
 	}
 }
 

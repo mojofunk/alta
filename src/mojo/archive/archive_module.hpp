@@ -9,19 +9,15 @@
 
 namespace mojo {
 
-class ArchiveModule : public Module
-{
+class ArchiveModule : public Module {
 public: // ctors
-
 	virtual ~ArchiveModule();
 
 public: // Interface
-
-	/**
-	 * return new Archive or 0 on failure
-	 */
-	virtual ArchiveSP create_archive () = 0;
-
+	       /**
+	        * return new Archive or 0 on failure
+	        */
+	virtual ArchiveSP create_archive() = 0;
 };
 
 } // namespace mojo

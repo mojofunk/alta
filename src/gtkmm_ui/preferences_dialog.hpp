@@ -6,22 +6,18 @@
 
 namespace ui {
 
-class PreferencesDialog
-{
+class PreferencesDialog {
 public:
+	PreferencesDialog();
 
-	PreferencesDialog ();
+	~PreferencesDialog();
 
-	~PreferencesDialog ();
-
-	int run ();
+	int run();
 
 private:
-
 	BuilderGPtr m_builder;
 
 	Gtk::Dialog* m_dialog;
-
 };
 
 } // namespace ui

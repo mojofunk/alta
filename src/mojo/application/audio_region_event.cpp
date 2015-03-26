@@ -6,29 +6,25 @@
 
 namespace mojo {
 
-const char * const AudioRegionEvent::s_property_audio_region = "audioregion";
+const char* const AudioRegionEvent::s_property_audio_region = "audioregion";
 
-AudioRegionEvent::AudioRegionEvent () : AudioEvent() { }
-
-AudioRegionEvent::AudioRegionEvent (const count_t& pos, const count_t& dur)
-	:
-		AudioEvent(pos, dur)
+AudioRegionEvent::AudioRegionEvent()
+    : AudioEvent()
 {
-
 }
 
-void
-AudioRegionEvent::get_properties (Properties& props) const
+AudioRegionEvent::AudioRegionEvent(const count_t& pos, const count_t& dur)
+    : AudioEvent(pos, dur)
 {
-	AudioEvent::get_properties (props);
-
-	props.set_property (s_property_audio_region, m_audio_region);
 }
 
-void
-AudioRegionEvent::set_properties (const Properties& props)
+void AudioRegionEvent::get_properties(Properties& props) const
 {
+	AudioEvent::get_properties(props);
 
+	props.set_property(s_property_audio_region, m_audio_region);
 }
+
+void AudioRegionEvent::set_properties(const Properties& props) {}
 
 } // namespace mojo

@@ -13,7 +13,7 @@
 
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, 
+   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
    MA  02110-1301, USA.
 */
 
@@ -23,36 +23,29 @@
 
 namespace gleam {
 
-struct Dispatcher::ThreadData
-{
+struct Dispatcher::ThreadData {
 	Glib::RefPtr<Glib::MainContext> m_context;
 };
 
 Dispatcher::Dispatcher(const char* const name)
-	:
-		m_name(name),
-		m_quit(false),
-		m_thread(),
-		m_thread_data() 
+    : m_name(name)
+    , m_quit(false)
+    , m_thread()
+    , m_thread_data()
 {
-
 }
-	
+
 Dispatcher::~Dispatcher()
 {
 	g_assert(!m_thread);
 
 	m_thread = 0;
 }
-	
-void
-Dispatcher::run()
+
+void Dispatcher::run()
 {
-	const sigc::slot<void> main_func = sigc::mem_fun
-		(
-			*this,
-			&Dispatcher::thread_main
-		);
+	const sigc::slot<void> main_func =
+	    sigc::mem_fun(*this, &Dispatcher::thread_main);
 
 	{
 		Glib::Mutex::Lock guard(m_iter_mtx);
@@ -64,8 +57,7 @@ Dispatcher::run()
 	}
 }
 
-void
-Dispatcher::quit ()
+void Dispatcher::quit()
 {
 	g_assert(m_thread);
 
@@ -83,28 +75,26 @@ Dispatcher::quit ()
 	m_thread = 0;
 }
 
-Glib::RefPtr<Glib::MainContext>
-Dispatcher::get_main_context()
+Glib::RefPtr<Glib::MainContext> Dispatcher::get_main_context()
 {
 	return m_thread_data.get()->m_context;
 }
 
-void
-Dispatcher::thread_main ()
+void Dispatcher::thread_main()
 {
 	ThreadData* pdata = new ThreadData;
 	m_thread_data.set(pdata);
 
 	pdata->m_context = Glib::MainContext::create();
-	
+
 	/**
-	 * This is the chance for inheriting thread classes 
+	 * This is the chance for inheriting thread classes
 	 * attach event sources to the Glib::MainContext.
 	 */
 	on_run();
-			
+
 	{
-		Glib::Mutex::Lock	guard (m_iter_mtx);
+		Glib::Mutex::Lock guard(m_iter_mtx);
 		m_cond.signal();
 	}
 
@@ -114,24 +104,20 @@ Dispatcher::thread_main ()
 	on_quit();
 }
 
-bool
-Dispatcher::can_run()
+bool Dispatcher::can_run()
 {
-	Glib::Mutex::Lock	guard (m_iter_mtx);
+	Glib::Mutex::Lock guard(m_iter_mtx);
 
-	if(m_quit)
-	{
+	if (m_quit) {
 		m_cond.signal();
 		return false;
 	}
 	return true;
 }
 
-void
-Dispatcher::main_loop()
+void Dispatcher::main_loop()
 {
-	while(can_run())
-	{
+	while (can_run()) {
 		get_main_context()->iteration(true);
 	}
 }

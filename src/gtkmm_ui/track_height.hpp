@@ -11,14 +11,13 @@ enum Height {
 	HeightLargest
 };
 
-int get_height_in_pixels (Height);
+int get_height_in_pixels(Height);
 
-void set_default_height (Height);
+void set_default_height(Height);
 
-Height get_default_height ();
+Height get_default_height();
 
-std::string get_height_name (Height);
-
+std::string get_height_name(Height);
 }
 
 #endif
