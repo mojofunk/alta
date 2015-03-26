@@ -28,9 +28,9 @@ test_audio_effect_modules
 '''.split()
 
 uselibs = [
-    'BOOST_UNIT_TEST_FRAMEWORK-MT',
-    'BOOST_FILESYSTEM-MT',
-    'BOOST_SYSTEM-MT',
+    'BOOST_UNIT_TEST_FRAMEWORK',
+    'BOOST_FILESYSTEM',
+    'BOOST_SYSTEM',
     'GLIB-2.0',
     'GMODULE-2.0']
 

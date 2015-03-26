@@ -18,8 +18,8 @@ def build(bld):
                   source=bld.path.ant_glob('*.cpp'),
                   uselib=[
                       'GMODULE-2.0',
-                      'BOOST_FILESYSTEM-MT',
-                      'BOOST_SYSTEM-MT'],
+                      'BOOST_FILESYSTEM',
+                      'BOOST_SYSTEM'],
                   use=[
                       'MOJO_AUDIO_EFFECT_SHARED',
                       'MOJO_CORE_SHARED'],
@@ -31,8 +31,8 @@ def build(bld):
                   source=bld.path.ant_glob('*.cpp'),
                   uselib=[
                       'GMODULE-2.0',
-                      'BOOST_FILESYSTEM-MT',
-                      'BOOST_SYSTEM-MT'],
+                      'BOOST_FILESYSTEM',
+                      'BOOST_SYSTEM'],
                   use=[
                       'MOJO_AUDIO_EFFECT_STATIC',
                       'MOJO_CORE_STATIC'],
