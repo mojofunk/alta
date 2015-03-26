@@ -100,7 +100,18 @@ namespace mojo {
  * calls to the worker thread.
  */
 class Application {
-public:
+public: // Initialization
+	class Initializer {
+	public:
+		Initializer () {
+			Application::initialize();
+		}
+
+		~Initializer () {
+			Application::deinitialize();
+		}
+	};
+
 	static void initialize();
 
 	static void deinitialize();

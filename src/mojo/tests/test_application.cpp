@@ -22,7 +22,7 @@ BOOST_AUTO_TEST_CASE(test_application)
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	Application::initialize();
+	Application::Initializer init;
 	std::unique_ptr<ExampleApplication> app(new ExampleApplication());
 
 	Application::new_project();
@@ -33,7 +33,6 @@ BOOST_AUTO_TEST_CASE(test_application)
 	Application::new_project();
 
 	app->close_projects();
-	Application::deinitialize();
 }
 
 void test_module(const ModuleSP& mod)
