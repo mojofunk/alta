@@ -164,12 +164,10 @@ samplerate_t PortaudioAudioDevice::get_default_samplerate() const
 void PortaudioAudioDevice::get_supported_samplerates(
     std::vector<samplerate_t>& supported_rates) const
 {
-	std::vector<samplerate_t> possible_rates = { 44100, 48000,  88200,
-		                                            96000, 176400, 192000 };
 	PaStreamParameters input_params = get_default_input_params();
 	PaStreamParameters output_params = get_default_output_params();
 
-	for (auto const& rate : possible_rates) {
+	for (auto const& rate : get_common_samplerates()) {
 		if (paFormatIsSupported ==
 		    Pa_IsFormatSupported(max_input_channels() > 0 ? &input_params : NULL,
 		                         max_output_channels() > 0 ? &output_params : NULL,

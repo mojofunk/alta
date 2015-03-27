@@ -7,6 +7,7 @@
 //////
 
 #include "audio/types.hpp"
+#include "audio/utils.hpp"
 
 #include "init/initialize.hpp"
 

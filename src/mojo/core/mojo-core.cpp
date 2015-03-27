@@ -1,8 +1,10 @@
 #include "mojo-core.hpp"
 
-/////
-
 #include "config/common_source_includes.hpp"
+
+// Now include all source files
+
+#include "audio/utils.cpp"
 
 #include "debug/debug.cpp"
 
