@@ -12,34 +12,32 @@ def init():
 
 
 def configure(conf):
-    print ("configure mojo-driver")
+    print ("configure mojo-audio-driver")
     conf.recurse(subdirs)
 
 
 def build(bld):
 
-    if bld.env['ENABLE_SHARED']:
+    uselib=[ 'GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
+    target='mojo-audio-driver'
+    source=bld.path.ant_glob('*.cpp')
+
+    if bld.env.ENABLE_SHARED:
         bld.shlib(includes='.',
                   export_includes='.',
-                  source=bld.path.ant_glob('*.cpp'),
-                  uselib=[
-                      'GMODULE-2.0',
-                      'BOOST_FILESYSTEM',
-                      'BOOST_SYSTEM'],
+                  source=source,
+                  uselib=uselib,
                   use=['MOJO_CORE_SHARED'],
-                  target='mojo-audio-driver',
+                  target=target,
                   name='MOJO_AUDIO_DRIVER_SHARED')
 
-    if bld.env['ENABLE_STATIC']:
+    if bld.env.ENABLE_STATIC:
         bld.stlib(includes='.',
                   export_includes='.',
-                  source=bld.path.ant_glob('*.cpp'),
-                  uselib=[
-                      'GMODULE-2.0',
-                      'BOOST_FILESYSTEM',
-                      'BOOST_SYSTEM'],
+                  source=source,
+                  uselib=uselib,
                   use=['MOJO_CORE_STATIC'],
-                  target='mojo-audio-driver',
+                  target=target,
                   name='MOJO_AUDIO_DRIVER_STATIC')
 
     bld.recurse(subdirs)
