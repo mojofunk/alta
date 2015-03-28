@@ -21,9 +21,17 @@ public: // AudioDevice interface
 	                     callback_t* cb,
 	                     void* user_data);
 
+	virtual bool is_open ();
+
 	virtual error_t start();
 
+	virtual bool is_active();
+
 	virtual error_t stop();
+
+	virtual bool is_stopped();
+
+	virtual error_t abort();
 
 	virtual error_t close();
 
@@ -36,6 +44,14 @@ public: // AudioDevice interface
 	virtual samplerate_t get_default_samplerate() const;
 
 	virtual void get_supported_samplerates(std::vector<samplerate_t>&) const;
+
+	virtual double get_input_latency ();
+
+	virtual double get_output_latency ();
+
+	virtual uint32_t get_current_samplerate () const;
+
+	virtual double get_cpu_load () const;
 
 private: // methods
 	PaDeviceInfo const* get_device_info() const;

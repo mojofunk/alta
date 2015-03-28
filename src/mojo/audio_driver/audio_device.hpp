@@ -6,17 +6,6 @@
 namespace mojo {
 
 /**
- * An AudioDevice has a number of input or output streams
- *
- * Each stream can be either an input stream(source) or a output stream(sink)
- *
- * Each stream can have a number of channels
- *
- * Each stream can have a channel map
- *
- * Each stream has a number of ports
- *
- * Each Port has a buffer
  *
  */
 class AudioDevice {
@@ -43,9 +32,17 @@ public: // interface
 	                     callback_t* cb,
 	                     void* user_data) = 0;
 
+	virtual bool is_open () = 0;
+
 	virtual error_t start() = 0;
 
+	virtual bool is_active() = 0;
+
 	virtual error_t stop() = 0;
+
+	virtual bool is_stopped() = 0;
+
+	virtual error_t abort() = 0;
 
 	virtual error_t close() = 0;
 
@@ -59,18 +56,20 @@ public: // interface
 
 	virtual void get_supported_samplerates(std::vector<samplerate_t>&) const = 0;
 
-	// virtual double get_input_latency () = 0;
+	// virtual uint32_t get_default_buffersize() const = 0;
 
-	// virtual double get_output_latency () = 0;
+	// virtual void get_supported_buffer_sizes(std::vector<uint32_t>&) const = 0;
 
-	// virtual get_current_buffer_size () const;
+	virtual double get_input_latency() = 0;
+
+	virtual double get_output_latency() = 0;
+
+	virtual uint32_t get_current_samplerate() const = 0;
+
+	virtual double get_cpu_load() const = 0;
+
 	// virtual get_min_buffer_size () const;
 	// virtual get_max_buffer_size () const;
-
-	// virtual get_current_samplerate () const;
-
-	// virtual get_min_samplerate () const;
-	// virtual get_max_samplerate () const;
 };
 
 } // namespace mojo

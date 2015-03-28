@@ -78,19 +78,30 @@ void test_device(AudioDeviceSP dev)
 		return;
 	}
 
+	BOOST_CHECK(dev->is_open());
+
 	err = dev->start();
 
 	BOOST_CHECK(err == AudioDevice::NO_ERROR);
+	BOOST_CHECK(dev->is_active());
 
 	mojo::usleep(2 * 1000000);
+
+	BOOST_TEST_MESSAGE(compose("Input Latency: %", dev->get_input_latency()));
+	BOOST_TEST_MESSAGE(compose("Output Latency: %", dev->get_output_latency()));
+	BOOST_TEST_MESSAGE(compose("CPU Load: %", dev->get_cpu_load()));
 
 	err = dev->stop();
 
 	BOOST_CHECK(err == AudioDevice::NO_ERROR);
 
+	BOOST_CHECK(dev->is_stopped());
+
 	err = dev->close();
 
 	BOOST_CHECK(err == AudioDevice::NO_ERROR);
+
+	BOOST_CHECK(!dev->is_open());
 }
 
 void print_device_info(AudioDeviceSP dev)

@@ -36,7 +36,6 @@ int PortaudioAudioDevice::portaudio_callback(
 	                                              device->m_user_data);
 
 	if (result == CONTINUE) return 0;
-
 	return 1;
 }
 
@@ -66,51 +65,93 @@ AudioDevice::error_t PortaudioAudioDevice::open(uint32_t input_channels,
 	                            this);
 
 	if (err == paNoError) {
-		MOJO_DEBUG_MSG(PORTAUDIO_DEVICE, compose("Opened audio stream"));
+		MOJO_DEBUG_MSG(PORTAUDIO_DEVICE, "Opened audio stream");
 		return AudioDevice::NO_ERROR;
-	} else {
-		MOJO_DEBUG_MSG(PORTAUDIO_DEVICE,
-		               compose("Unable to open stream: %s", Pa_GetErrorText(err)));
 	}
+	MOJO_DEBUG_MSG(PORTAUDIO_DEVICE,
+			compose("Unable to open stream: %s", Pa_GetErrorText(err)));
 	return (AudioDevice::error_t)err;
 }
+
+bool PortaudioAudioDevice::is_open() { return m_stream != NULL; }
 
 AudioDevice::error_t PortaudioAudioDevice::start()
 {
 	PaError err = Pa_StartStream(m_stream);
 	if (err == paNoError) {
-		MOJO_DEBUG_MSG(PORTAUDIO_DEVICE, compose("Started audio stream"));
+		MOJO_DEBUG_MSG(PORTAUDIO_DEVICE, "Started audio stream");
 		return AudioDevice::NO_ERROR;
-	} else {
-		MOJO_DEBUG_MSG(PORTAUDIO_DEVICE,
-		               compose("Unable to start stream: %s", Pa_GetErrorText(err)));
 	}
+	MOJO_DEBUG_MSG(PORTAUDIO_DEVICE,
+			compose("Unable to start stream: %s", Pa_GetErrorText(err)));
 	return AudioDevice::UNKNOWN_ERROR;
+}
+
+bool PortaudioAudioDevice::is_active()
+{
+	if (m_stream == NULL) return false;
+
+	PaError err = Pa_IsStreamActive(m_stream);
+
+	if (err == 1) return true;
+	if (err != 0) {
+		compose("Error: %", Pa_GetErrorText(err));
+		MOJO_DEBUG_MSG(PORTAUDIO_DEVICE, "Stopped audio stream");
+	}
+	return false;
 }
 
 AudioDevice::error_t PortaudioAudioDevice::stop()
 {
 	PaError err = Pa_StopStream(m_stream);
 	if (err == paNoError) {
-		MOJO_DEBUG_MSG(PORTAUDIO_DEVICE, compose("Stopped audio stream"));
+		MOJO_DEBUG_MSG(PORTAUDIO_DEVICE, "Stopped audio stream");
 		return AudioDevice::NO_ERROR;
-	} else {
-		MOJO_DEBUG_MSG(PORTAUDIO_DEVICE,
-		               compose("Unable to stop stream: %s", Pa_GetErrorText(err)));
 	}
+	MOJO_DEBUG_MSG(PORTAUDIO_DEVICE,
+	               compose("Unable to stop stream: %s", Pa_GetErrorText(err)));
 	return AudioDevice::UNKNOWN_ERROR;
+}
+
+bool PortaudioAudioDevice::is_stopped()
+{
+	if (m_stream == NULL) return false;
+
+	PaError err = Pa_IsStreamStopped(m_stream);
+
+	if (err == 1) return true;
+	if (err != 0) {
+		compose("Error: %", Pa_GetErrorText(err));
+		MOJO_DEBUG_MSG(PORTAUDIO_DEVICE, "Stopped audio stream");
+	}
+	return false;
 }
 
 AudioDevice::error_t PortaudioAudioDevice::close()
 {
 	PaError err = Pa_CloseStream(m_stream);
 	if (err == paNoError) {
-		MOJO_DEBUG_MSG(PORTAUDIO_DEVICE, compose("Closed audio stream"));
+		MOJO_DEBUG_MSG(PORTAUDIO_DEVICE, "Closed audio stream");
+		m_stream = NULL;
 		return AudioDevice::NO_ERROR;
-	} else {
-		MOJO_DEBUG_MSG(PORTAUDIO_DEVICE,
-		               compose("Unable to close stream: %s", Pa_GetErrorText(err)));
 	}
+	MOJO_DEBUG_MSG(PORTAUDIO_DEVICE,
+			compose("Unable to close stream: %s", Pa_GetErrorText(err)));
+	m_stream = NULL;
+	return AudioDevice::UNKNOWN_ERROR;
+}
+
+AudioDevice::error_t PortaudioAudioDevice::abort()
+{
+	PaError err = Pa_AbortStream(m_stream);
+	if (err == paNoError) {
+		MOJO_DEBUG_MSG(PORTAUDIO_DEVICE, "Aborted audio stream");
+		m_stream = NULL;
+		return AudioDevice::NO_ERROR;
+	}
+	MOJO_DEBUG_MSG(PORTAUDIO_DEVICE,
+			compose("Unable to abort stream: %s", Pa_GetErrorText(err)));
+	m_stream = NULL;
 	return AudioDevice::UNKNOWN_ERROR;
 }
 
@@ -175,6 +216,47 @@ void PortaudioAudioDevice::get_supported_samplerates(
 			supported_rates.push_back(rate);
 		}
 	}
+}
+
+double PortaudioAudioDevice::get_input_latency()
+{
+	if (m_stream == NULL) return 0.0;
+
+	const PaStreamInfo* info = Pa_GetStreamInfo(m_stream);
+
+	if (info == NULL) return 0.0;
+
+	return info->inputLatency;
+}
+
+double PortaudioAudioDevice::get_output_latency()
+{
+	if (m_stream == NULL) return 0.0;
+
+	const PaStreamInfo* info = Pa_GetStreamInfo(m_stream);
+
+	if (info == NULL) return 0.0;
+
+	return info->outputLatency;
+}
+
+
+uint32_t PortaudioAudioDevice::get_current_samplerate() const
+{
+	if (m_stream == NULL) return 0.0;
+
+	const PaStreamInfo* info = Pa_GetStreamInfo(m_stream);
+
+	if (info == NULL) return 0.0;
+
+	return info->sampleRate;
+}
+
+double PortaudioAudioDevice::get_cpu_load() const
+{
+	if (m_stream == NULL) return 0.0;
+
+	return Pa_GetStreamCpuLoad(m_stream);
 }
 
 } // namespace mojo
