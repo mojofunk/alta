@@ -35,7 +35,7 @@ bool PortaudioAudioDriver::initialize()
 	} else {
 		MOJO_DEBUG_MSG(
 		    PORTAUDIO_DRIVER,
-		    compose("Unable to Initialize portaudio: %s", Pa_GetErrorText(error)));
+		    compose("Unable to Initialize portaudio: %", Pa_GetErrorText(error)));
 	}
 	return false;
 }
@@ -50,7 +50,7 @@ bool PortaudioAudioDriver::terminate()
 	} else {
 		MOJO_DEBUG_MSG(
 		    PORTAUDIO_DRIVER,
-		    compose("Unable to Terminate portaudio: %s", Pa_GetErrorText(error)));
+		    compose("Unable to Terminate portaudio: %", Pa_GetErrorText(error)));
 	}
 	return false;
 }
@@ -62,7 +62,7 @@ void PortaudioAudioDriver::discover_devices(AudioDeviceSPSet& devices)
 	if (device_count < 0) {
 		MOJO_DEBUG_MSG(
 		    PORTAUDIO_DRIVER,
-		    compose("Invalid device count: %s", Pa_GetErrorText(device_count)));
+		    compose("Invalid device count: %", Pa_GetErrorText(device_count)));
 		return;
 	}
 

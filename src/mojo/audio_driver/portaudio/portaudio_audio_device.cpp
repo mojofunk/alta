@@ -69,7 +69,7 @@ AudioDevice::error_t PortaudioAudioDevice::open(uint32_t input_channels,
 		return AudioDevice::NO_ERROR;
 	}
 	MOJO_DEBUG_MSG(PORTAUDIO_DEVICE,
-			compose("Unable to open stream: %s", Pa_GetErrorText(err)));
+			compose("Unable to open stream: %", Pa_GetErrorText(err)));
 	return (AudioDevice::error_t)err;
 }
 
@@ -83,7 +83,7 @@ AudioDevice::error_t PortaudioAudioDevice::start()
 		return AudioDevice::NO_ERROR;
 	}
 	MOJO_DEBUG_MSG(PORTAUDIO_DEVICE,
-			compose("Unable to start stream: %s", Pa_GetErrorText(err)));
+			compose("Unable to start stream: %", Pa_GetErrorText(err)));
 	return AudioDevice::UNKNOWN_ERROR;
 }
 
@@ -109,7 +109,7 @@ AudioDevice::error_t PortaudioAudioDevice::stop()
 		return AudioDevice::NO_ERROR;
 	}
 	MOJO_DEBUG_MSG(PORTAUDIO_DEVICE,
-	               compose("Unable to stop stream: %s", Pa_GetErrorText(err)));
+	               compose("Unable to stop stream: %", Pa_GetErrorText(err)));
 	return AudioDevice::UNKNOWN_ERROR;
 }
 
@@ -136,7 +136,7 @@ AudioDevice::error_t PortaudioAudioDevice::close()
 		return AudioDevice::NO_ERROR;
 	}
 	MOJO_DEBUG_MSG(PORTAUDIO_DEVICE,
-			compose("Unable to close stream: %s", Pa_GetErrorText(err)));
+			compose("Unable to close stream: %", Pa_GetErrorText(err)));
 	m_stream = NULL;
 	return AudioDevice::UNKNOWN_ERROR;
 }
@@ -150,7 +150,7 @@ AudioDevice::error_t PortaudioAudioDevice::abort()
 		return AudioDevice::NO_ERROR;
 	}
 	MOJO_DEBUG_MSG(PORTAUDIO_DEVICE,
-			compose("Unable to abort stream: %s", Pa_GetErrorText(err)));
+			compose("Unable to abort stream: %", Pa_GetErrorText(err)));
 	m_stream = NULL;
 	return AudioDevice::UNKNOWN_ERROR;
 }
