@@ -25,6 +25,10 @@ public: // interface
 
 	virtual std::string get_name() const;
 
+	virtual bool is_input() const;
+
+	virtual bool is_output() const;
+
 private: // methods
 	PmDeviceInfo const* get_device_info() const;
 

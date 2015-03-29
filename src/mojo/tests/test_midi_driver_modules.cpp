@@ -19,6 +19,7 @@ using namespace std;
 using namespace mojo;
 
 namespace {
+
 }
 
 void test_device(MIDIDeviceSP dev) { BOOST_REQUIRE(dev); }
@@ -27,6 +28,8 @@ void print_device_info(MIDIDeviceSP dev)
 {
 	BOOST_REQUIRE(dev);
 	BOOST_TEST_MESSAGE(compose("Device name: %", dev->get_name()));
+	BOOST_TEST_MESSAGE(compose("Input device: %", dev->is_input()));
+	BOOST_TEST_MESSAGE(compose("Output device: %", dev->is_output()));
 }
 
 void test_midi_driver_module(MIDIDriverModuleSP mod)

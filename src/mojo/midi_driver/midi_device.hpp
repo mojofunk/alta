@@ -24,6 +24,11 @@ public: // interface
 
 	/// @return The name of the device. unique??
 	virtual std::string get_name() const = 0;
+
+	virtual bool is_input() const = 0;
+
+	virtual bool is_output() const = 0;
+
 };
 
 } // namespace mojo
