@@ -23,6 +23,7 @@
 #include "mojo/audio_file/audio_file_module.hpp"
 #include "mojo/audio_driver/audio_driver_module.hpp"
 #include "mojo/audio_effect/audio_effect_module.hpp"
+#include "mojo/midi_driver/midi_driver_module.hpp"
 
 #include "mojo/application/audio_track.hpp"
 #include "mojo/application/midi_track.hpp"
@@ -172,6 +173,11 @@ AudioDriverModuleSPSet Application::get_audio_driver_modules()
 AudioEffectModuleSPSet Application::get_audio_effect_modules()
 {
 	return get_modules_of_type<AudioEffectModule>(get_modules());
+}
+
+MIDIDriverModuleSPSet Application::get_midi_driver_modules()
+{
+	return get_modules_of_type<MIDIDriverModule>(get_modules());
 }
 
 ArchiveModuleSPSet Application::get_archive_modules()

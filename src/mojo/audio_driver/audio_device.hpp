@@ -32,7 +32,7 @@ public: // interface
 	                     callback_t* cb,
 	                     void* user_data) = 0;
 
-	virtual bool is_open () = 0;
+	virtual bool is_open() = 0;
 
 	virtual error_t start() = 0;
 

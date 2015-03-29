@@ -25,7 +25,8 @@ $BUILD_DIR/src/mojo/archive/dummy:\
 $BUILD_DIR/src/mojo/audio_effect/ladspa:\
 $BUILD_DIR/src/mojo/audio_file/sndfile:\
 $BUILD_DIR/src/mojo/audio_driver/jack:\
-$BUILD_DIR/src/mojo/audio_driver/portaudio:
+$BUILD_DIR/src/mojo/audio_driver/portaudio:\
+$BUILD_DIR/src/mojo/midi_driver/portmidi:
 
 export MOJO_PATH
 
@@ -37,7 +38,8 @@ $BUILD_DIR/src/mojo/engine:\
 $BUILD_DIR/src/mojo/archive:\
 $BUILD_DIR/src/mojo/audio_driver:\
 $BUILD_DIR/src/mojo/audio_effect:\
-$BUILD_DIR/src/mojo/audio_file:
+$BUILD_DIR/src/mojo/audio_file:\
+$BUILD_DIR/src/mojo/midi_driver:
 
 MOJO_TEST_LIBRARY_PATH=$BUILD_DIR/src/mojo/tests:
 

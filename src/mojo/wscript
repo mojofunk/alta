@@ -10,6 +10,7 @@ archive
 audio_driver
 audio_effect
 audio_file
+midi_driver
 '''
 
 

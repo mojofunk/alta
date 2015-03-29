@@ -1,0 +1,45 @@
+#! /usr/bin/env python
+# encoding: utf-8
+# Tim Mayberry, 2008
+
+
+def init():
+    pass
+
+
+def configure(conf):
+    print ("configure mojo-midi-driver-portmidi")
+    conf.check_cc(function_name='Pm_Initialize', header_name='portmidi.h', lib='portmidi', uselib_store='PORTMIDI')
+
+
+def build(bld):
+
+    source = bld.path.ant_glob('*.cpp')
+    uselib = [
+        'GMODULE-2.0',
+        'BOOST_FILESYSTEM',
+        'BOOST_SYSTEM',
+        'PORTMIDI']
+    target = 'mojo-midi-driver-portmidi'
+
+    if bld.env.ENABLE_SHARED:
+        use_shared = [
+            'MOJO_MIDI_DRIVER_SHARED',
+            'MOJO_CORE_SHARED']
+        bld.shlib(includes='.',
+                  source=source,
+                  uselib=uselib,
+                  use=use_shared,
+                  target=target,
+                  name='MOJO_MIDI_DRIVER_PORTMIDI_SHARED')
+
+    if bld.env.ENABLE_STATIC:
+        use_static = [
+            'MOJO_MIDI_DRIVER_STATIC',
+            'MOJO_CORE_STATIC']
+        bld.stlib(includes='.',
+                  source=source,
+                  uselib=uselib,
+                  use=use_static,
+                  target=target,
+                  name='MOJO_MIDI_DRIVER_PORTMIDI_STATIC')

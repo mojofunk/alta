@@ -14,6 +14,7 @@
 #include "mojo/audio_driver/typedefs.hpp"
 #include "mojo/audio_effect/typedefs.hpp"
 #include "mojo/audio_file/typedefs.hpp"
+#include "mojo/midi_driver/typedefs.hpp"
 
 #include "typedefs.hpp"
 #include "types.hpp"
@@ -103,13 +104,9 @@ class Application {
 public: // Initialization
 	class Initializer {
 	public:
-		Initializer () {
-			Application::initialize();
-		}
+		Initializer() { Application::initialize(); }
 
-		~Initializer () {
-			Application::deinitialize();
-		}
+		~Initializer() { Application::deinitialize(); }
 	};
 
 	static void initialize();
@@ -236,6 +233,8 @@ public: // modules
 	static AudioDriverModuleSPSet get_audio_driver_modules();
 
 	static AudioEffectModuleSPSet get_audio_effect_modules();
+
+	static MIDIDriverModuleSPSet get_midi_driver_modules();
 
 	static ArchiveModuleSPSet get_archive_modules();
 

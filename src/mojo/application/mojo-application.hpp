@@ -17,6 +17,7 @@
 #include <mojo-audio-driver.hpp>
 #include <mojo-audio-effect.hpp>
 #include <mojo-audio-file.hpp>
+#include <mojo-midi-driver.hpp>
 
 #include <mojo/application/types.hpp>
 
