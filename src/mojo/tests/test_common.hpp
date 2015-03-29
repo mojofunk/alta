@@ -10,6 +10,4 @@ bool find_file_in_test_path(const std::string& filename, fs::path& result);
 bool find_directory_in_test_path(const std::string& directory,
                                  fs::path& result);
 
-fs::path new_test_output_dir();
-
 #endif // MOJO_TEST_COMMON_H
