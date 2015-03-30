@@ -19,17 +19,22 @@ using namespace std;
 using namespace mojo;
 
 namespace {
-
 }
 
-void test_device(MIDIDeviceSP dev) { BOOST_REQUIRE(dev); }
+void test_input_device(MIDIDeviceSP dev) { BOOST_REQUIRE(dev); }
 
-void print_device_info(MIDIDeviceSP dev)
+void test_output_device(MIDIDeviceSP dev) { BOOST_REQUIRE(dev); }
+
+void print_input_device_info(MIDIInputDeviceSP input_dev)
 {
-	BOOST_REQUIRE(dev);
-	BOOST_TEST_MESSAGE(compose("Device name: %", dev->get_name()));
-	BOOST_TEST_MESSAGE(compose("Input device: %", dev->is_input()));
-	BOOST_TEST_MESSAGE(compose("Output device: %", dev->is_output()));
+	BOOST_REQUIRE(input_dev);
+	BOOST_TEST_MESSAGE(compose("Input Device name: %", input_dev->get_name()));
+}
+
+void print_output_device_info(MIDIOutputDeviceSP output_dev)
+{
+	BOOST_REQUIRE(output_dev);
+	BOOST_TEST_MESSAGE(compose("Output Device name: %", output_dev->get_name()));
 }
 
 void test_midi_driver_module(MIDIDriverModuleSP mod)
@@ -41,12 +46,23 @@ void test_midi_driver_module(MIDIDriverModuleSP mod)
 	BOOST_TEST_MESSAGE(mod->get_version());
 
 	MIDIDriverSP driver = mod->create_driver();
-	MIDIDeviceSPSet devices = driver->get_devices();
+	MIDIInputDeviceSPSet input_devices = driver->get_input_devices();
 
-	BOOST_CHECK(!devices.empty());
+	BOOST_CHECK(!input_devices.empty());
 
-	for_each(devices.begin(), devices.end(), print_device_info);
-	for_each(devices.begin(), devices.end(), test_device);
+	BOOST_TEST_MESSAGE(compose("Input device count: %", input_devices.size()));
+
+	for_each(input_devices.begin(), input_devices.end(), print_input_device_info);
+	for_each(input_devices.begin(), input_devices.end(), test_input_device);
+
+	MIDIOutputDeviceSPSet output_devices = driver->get_output_devices();
+
+	BOOST_CHECK(!output_devices.empty());
+	BOOST_TEST_MESSAGE(compose("Output device count: %", output_devices.size()));
+
+	for_each(
+	    output_devices.begin(), output_devices.end(), print_output_device_info);
+	for_each(output_devices.begin(), output_devices.end(), test_output_device);
 }
 
 BOOST_AUTO_TEST_CASE(midi_driver_module_test)

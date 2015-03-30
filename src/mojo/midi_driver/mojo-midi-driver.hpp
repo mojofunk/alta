@@ -17,6 +17,8 @@
 #include <mojo/midi_driver/forward.hpp>
 #include <mojo/midi_driver/typedefs.hpp>
 #include <mojo/midi_driver/midi_device.hpp>
+#include <mojo/midi_driver/midi_input_device.hpp>
+#include <mojo/midi_driver/midi_output_device.hpp>
 #include <mojo/midi_driver/midi_driver.hpp>
 #include <mojo/midi_driver/midi_driver_module.hpp>
 

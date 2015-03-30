@@ -10,17 +10,23 @@ public: // ctors
 	PortmidiMIDIDriver();
 	~PortmidiMIDIDriver();
 
-public: // AudioDriver interface
-	MIDIDeviceSPSet get_devices() const;
+public: // MIDIDriver interface
+	MIDIInputDeviceSPSet get_input_devices();
+
+	MIDIOutputDeviceSPSet get_output_devices();
 
 private: // methods
 	bool initialize();
 	bool terminate();
 
-	static void discover_devices(MIDIDeviceSPSet& devices);
+	void refresh_devices();
 
 private: // member data
 	bool m_initialized;
+
+	MIDIInputDeviceSPSet m_inputs;
+
+	MIDIOutputDeviceSPSet m_outputs;
 };
 
 } // namespace mojo

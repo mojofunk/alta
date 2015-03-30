@@ -4,6 +4,8 @@
 namespace mojo {
 
 class MIDIDevice;
+class MIDIInputDevice;
+class MIDIOutputDevice;
 class MIDIDriver;
 class MIDIDriverModule;
 

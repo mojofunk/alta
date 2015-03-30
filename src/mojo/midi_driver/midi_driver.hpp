@@ -10,7 +10,9 @@ public: // ctors
 	virtual ~MIDIDriver();
 
 public: // interface
-	virtual MIDIDeviceSPSet get_devices() const = 0;
+	virtual MIDIInputDeviceSPSet get_input_devices() = 0;
+
+	virtual MIDIOutputDeviceSPSet get_output_devices() = 0;
 
 protected: // ctors
 	MIDIDriver();

@@ -1,4 +1,3 @@
-
 #include "mojo-portmidi-midi-driver.hpp"
 
 MOJO_DEBUG_DOMAIN(PORTMIDI_DRIVER);
@@ -10,6 +9,7 @@ PortmidiMIDIDriver::PortmidiMIDIDriver()
 {
 	MOJO_DEBUG(PORTMIDI_DRIVER);
 	initialize();
+	refresh_devices();
 }
 
 PortmidiMIDIDriver::~PortmidiMIDIDriver()
@@ -18,11 +18,14 @@ PortmidiMIDIDriver::~PortmidiMIDIDriver()
 	terminate();
 }
 
-MIDIDeviceSPSet PortmidiMIDIDriver::get_devices() const
+MIDIInputDeviceSPSet PortmidiMIDIDriver::get_input_devices()
 {
-	MIDIDeviceSPSet devices;
-	discover_devices(devices);
-	return devices;
+	return m_inputs;
+}
+
+MIDIOutputDeviceSPSet PortmidiMIDIDriver::get_output_devices()
+{
+	return m_outputs;
 }
 
 bool PortmidiMIDIDriver::initialize()
@@ -55,13 +58,32 @@ bool PortmidiMIDIDriver::terminate()
 	return false;
 }
 
-void PortmidiMIDIDriver::discover_devices(MIDIDeviceSPSet& devices)
+void PortmidiMIDIDriver::refresh_devices()
 {
 	int device_count = Pm_CountDevices();
 
+	// clear devices? or
+	// remove devices no longer present?
+	// what about devices in use?
+
 	for (PmDeviceID i = 0; i < device_count; ++i) {
-		MIDIDeviceSP device(new PortmidiMIDIDevice(i));
-		devices.insert(device);
+		const PmDeviceInfo* info = Pm_GetDeviceInfo(i);
+
+		if (info == NULL) { // assert?
+			MOJO_DEBUG_MSG(PORTMIDI_DRIVER, "Unable to get device info");
+			continue;
+		}
+
+		if (info->input) {
+			MIDIInputDeviceSP device(new PortmidiMIDIInputDevice(i));
+			m_inputs.insert(device);
+		} else if (info->output) {
+			MIDIOutputDeviceSP device(new PortmidiMIDIOutputDevice(i));
+			m_outputs.insert(device);
+		} else { // assert?
+			MOJO_DEBUG_MSG(PORTMIDI_DRIVER,
+			               "Midi device neither input or output device");
+		}
 	}
 }
 

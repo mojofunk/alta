@@ -15,8 +15,11 @@
 #include <mojo-midi-driver.hpp>
 
 #include <portmidi.h>
+#include <pmutil.h>
+#include <porttime.h>
 
-#include <mojo/midi_driver/portmidi/portmidi_midi_device.hpp>
+#include <mojo/midi_driver/portmidi/portmidi_midi_input_device.hpp>
+#include <mojo/midi_driver/portmidi/portmidi_midi_output_device.hpp>
 #include <mojo/midi_driver/portmidi/portmidi_midi_driver.hpp>
 #include <mojo/midi_driver/portmidi/portmidi_midi_driver_module.hpp>
 
