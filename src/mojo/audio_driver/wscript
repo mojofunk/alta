@@ -18,9 +18,9 @@ def configure(conf):
 
 def build(bld):
 
-    uselib=[ 'GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
-    target='mojo-audio-driver'
-    source=bld.path.ant_glob('*.cpp')
+    uselib = ['GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
+    target = 'mojo-audio-driver'
+    source = bld.path.ant_glob('*.cpp')
 
     if bld.env.ENABLE_SHARED:
         bld.shlib(includes='.',

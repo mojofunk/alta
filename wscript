@@ -114,8 +114,11 @@ def configure(conf):
     conf.env.BUILD_TESTS = conf.options.with_tests
 
     if conf.env.BUILD_TESTS:
-        if not conf.check(lib='boost_unit_test_framework-mt', uselib_store='BOOST_UNIT_TEST_FRAMEWORK', mandatory=False):
-            conf.check(lib='boost_unit_test_framework', uselib_store='BOOST_UNIT_TEST_FRAMEWORK')
+        if not conf.check(lib='boost_unit_test_framework-mt',
+                          uselib_store='BOOST_UNIT_TEST_FRAMEWORK', mandatory=False):
+            conf.check(
+                lib='boost_unit_test_framework',
+                uselib_store='BOOST_UNIT_TEST_FRAMEWORK')
 
     conf.env.ENABLE_SHARED = conf.options.enable_shared
     conf.env.ENABLE_STATIC = conf.options.enable_static
@@ -124,10 +127,12 @@ def configure(conf):
 
     conf.env.WITH_GTKMM_UI = conf.options.with_gtkmm_ui
 
-    if not conf.check(lib='boost_filesystem-mt', uselib_store='BOOST_FILESYSTEM', mandatory=False):
+    if not conf.check(
+            lib='boost_filesystem-mt', uselib_store='BOOST_FILESYSTEM', mandatory=False):
         conf.check(lib='boost_filesystem', uselib_store='BOOST_FILESYSTEM')
 
-    if not conf.check(lib='boost_system-mt', uselib_store='BOOST_SYSTEM', mandatory=False):
+    if not conf.check(
+            lib='boost_system-mt', uselib_store='BOOST_SYSTEM', mandatory=False):
         conf.check(lib='boost_system', uselib_store='BOOST_SYSTEM')
 
     defines = ['HAVE_CONFIG_H', '_REENTRANT',
