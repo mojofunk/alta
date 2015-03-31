@@ -144,11 +144,8 @@ AudioFileSP Application::open_audiofile(const fs::path& p)
 {
 	AudioFileModuleSPSet modules = get_audiofile_modules();
 
-	for (AudioFileModuleSPSet::const_iterator i = modules.begin();
-	     i != modules.end();
-	     ++i) {
-		AudioFileSP af = (*i)->open(p.string());
-
+	for (auto const& module : modules) {
+		AudioFileSP af = module->open(p.string());
 		if (af) return af;
 	}
 
