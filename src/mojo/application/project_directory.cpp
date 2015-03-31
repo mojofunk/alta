@@ -15,11 +15,8 @@ bool ProjectDirectory::create()
 {
 	bool is_new = false;
 
-	vector<fs::path> sub_dirs = sub_directories();
-	for (vector<fs::path>::const_iterator i = sub_dirs.begin();
-	     i != sub_dirs.end();
-	     ++i) {
-		if (fs::create_directories(*i)) {
+	for (auto const& sub_dir : sub_directories()) {
+		if (fs::create_directories(sub_dir)) {
 			is_new = true;
 		}
 	}
@@ -31,11 +28,8 @@ bool ProjectDirectory::is_valid() const
 {
 	if (!fs::is_directory(m_root_path)) return false;
 
-	vector<fs::path> sub_dirs = sub_directories();
-
-	for (vector<fs::path>::iterator i = sub_dirs.begin(); i != sub_dirs.end();
-	     ++i) {
-		if (!fs::is_directory(*i)) {
+	for (auto const& sub_dir : sub_directories()) {
+		if (!fs::is_directory(sub_dir)) {
 			return false;
 		}
 	}
