@@ -19,11 +19,78 @@ using namespace std;
 using namespace mojo;
 
 namespace {
+
+MIDIDevice::timestamp_t midi_time_callback(void* user_data)
+{
+	static MIDIDevice::timestamp_t time = mojo::get_monotonic_time() / 1000;
+
+	time = get_monotonic_time() / 1000;
+	BOOST_TEST_MESSAGE(compose("midi_time_callback time : %", time));
+	return time;
+}
 }
 
-void test_input_device(MIDIDeviceSP dev) { BOOST_REQUIRE(dev); }
+void test_input_device(MIDIDeviceSP dev)
+{
+	BOOST_REQUIRE(dev);
 
-void test_output_device(MIDIDeviceSP dev) { BOOST_REQUIRE(dev); }
+	MIDIInputDeviceSP input_dev = dynamic_pointer_cast<MIDIInputDevice>(dev);
+
+	BOOST_REQUIRE(input_dev);
+
+	MIDIDevice::error_t err = input_dev->open(midi_time_callback, NULL);
+
+	BOOST_CHECK(err == MIDIDevice::NO_ERROR);
+
+	if (err != MIDIDevice::NO_ERROR) {
+		BOOST_TEST_MESSAGE(compose("Unable to open input device: %",
+		                           input_dev->get_error_string(err)));
+		return;
+	}
+
+	mojo::usleep(2 * 1000000);
+
+	err = input_dev->close();
+
+	BOOST_CHECK(err == MIDIDevice::NO_ERROR);
+
+	if (err != MIDIDevice::NO_ERROR) {
+		BOOST_TEST_MESSAGE(compose("Unable to close input device: %",
+		                           input_dev->get_error_string(err)));
+		return;
+	}
+}
+
+void test_output_device(MIDIDeviceSP dev)
+{
+	BOOST_REQUIRE(dev);
+
+	MIDIOutputDeviceSP output_dev = dynamic_pointer_cast<MIDIOutputDevice>(dev);
+
+	BOOST_REQUIRE(output_dev);
+
+	MIDIDevice::error_t err = output_dev->open(midi_time_callback, NULL);
+
+	BOOST_CHECK(err == MIDIDevice::NO_ERROR);
+
+	if (err != MIDIDevice::NO_ERROR) {
+		BOOST_TEST_MESSAGE(compose("Unable to open output device: %",
+		                           output_dev->get_error_string(err)));
+		return;
+	}
+
+	mojo::usleep(2 * 1000000);
+
+	err = output_dev->close();
+
+	BOOST_CHECK(err == MIDIDevice::NO_ERROR);
+
+	if (err != MIDIDevice::NO_ERROR) {
+		BOOST_TEST_MESSAGE(compose("Unable to close output device: %",
+		                           output_dev->get_error_string(err)));
+		return;
+	}
+}
 
 void print_input_device_info(MIDIInputDeviceSP input_dev)
 {
