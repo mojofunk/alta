@@ -1,5 +1,6 @@
-
+#ifndef MOJO_SINGLE_TEST_EXE
 #define BOOST_TEST_MODULE mojo_file_utils
+#endif
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>

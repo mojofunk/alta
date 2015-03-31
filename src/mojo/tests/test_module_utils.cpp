@@ -1,5 +1,6 @@
-
+#ifndef MOJO_SINGLE_TEST_EXE
 #define BOOST_TEST_MODULE mojo_module_utils
+#endif
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
@@ -67,12 +68,6 @@ BOOST_AUTO_TEST_CASE(module_typeinfo_test)
 	    boost::dynamic_pointer_cast<AudioFileModule>(mod);
 
 	BOOST_CHECK(audio_module);
-}
-
-void test_path(const fs::path& p)
-{
-	BOOST_REQUIRE(!p.empty());
-	BOOST_TEST_MESSAGE(p);
 }
 
 void test_module(const ModuleSP& mod)

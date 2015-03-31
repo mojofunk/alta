@@ -28,6 +28,13 @@ test_audio_effect_modules
 test_midi_driver_modules
 '''.split()
 
+all_test_sources = []
+
+for test in tests:
+    all_test_sources.append(test + '.cpp')
+
+common_sources = ['test_common.cpp', 'example_application.cpp']
+
 uselibs = [
     'BOOST_UNIT_TEST_FRAMEWORK',
     'BOOST_FILESYSTEM',
@@ -35,71 +42,124 @@ uselibs = [
     'GLIB-2.0',
     'GMODULE-2.0']
 
+use_shared = [
+    'MOJO_CORE_SHARED',
+    'MOJO_ENGINE_SHARED',
+    'MOJO_APPLICATION_SHARED']
+
+use_static = [
+    'MOJO_CORE_STATIC',
+    'MOJO_ENGINE_STATIC',
+    'MOJO_APPLICATION_STATIC']
+
 
 def init():
     pass
 
 
 def configure(conf):
+    if not conf.env.BUILD_TESTS:
+        return
+
     print ("configure mojo tests")
 
 
-def build_shared(bld):
+def build_single_tests_shared(bld):
     bld.shlib(
-        source=['test_common.cpp', 'example_application.cpp'],
+        source=common_sources,
         includes='.',
         defines='BOOST_TEST_DYN_LINK=1',
         uselib=uselibs,
-        use=[
-            'MOJO_CORE_SHARED',
-            'MOJO_ENGINE_SHARED',
-            'MOJO_APPLICATION_SHARED'],
-        target='mojo-test-common',
+        use=use_shared,
+        target='mojo-test-common-shared',
         name='MOJO_TEST_COMMON_SHARED')
+
     for test in tests:
         bld.program(
             source=test + '.cpp',
             includes='.',
             defines='BOOST_TEST_DYN_LINK=1',
             uselib=uselibs,
-            use=[
-                'MOJO_CORE_SHARED',
-                'MOJO_ENGINE_SHARED',
-                'MOJO_APPLICATION_SHARED',
-                'MOJO_TEST_COMMON_SHARED'],
+            use=use_shared + ['MOJO_TEST_COMMON_SHARED'],
             target=test)
 
 
-def build_static(bld):
+def build_tests_shared(bld):
+    defines = ['BOOST_TEST_DYN_LINK=1',
+               'MOJO_SINGLE_TEST_EXE=1']
+    if bld.env.ENABLE_AMALGAMATION:
+        defines += ['MOJO_TEST_AMALGAMATED']
+        source = ['test_main.cpp']
+    else:
+        source = all_test_sources + common_sources + ['test_main.cpp']
+
+    bld.program(
+        includes='.',
+        source=source,
+        defines=defines,
+        uselib=uselibs,
+        use=use_shared,
+        target='mojo-tests')
+
+
+def build_shared(bld):
+    if bld.env.SINGLE_TESTS:
+        build_single_tests_shared(bld)
+    else:
+        build_tests_shared(bld)
+
+
+def build_single_tests_static(bld):
     bld.stlib(
-        source=['test_common.cpp', 'example_application.cpp'],
+        source=common_sources,
         includes='.',
         defines='BOOST_TEST_DYN_LINK=1',
         uselib=uselibs,
-        use=[
-            'MOJO_CORE_STATIC',
-            'MOJO_ENGINE_STATIC',
-            'MOJO_APPLICATION_STATIC'],
-        target='mojo-test-common',
+        use=use_static,
+        target='mojo-test-common-static',
         name='MOJO_TEST_COMMON_STATIC')
+
     for test in tests:
         bld.program(
             source=test + '.cpp',
             includes='.',
             defines='BOOST_TEST_DYN_LINK=1',
             uselib=uselibs,
-            use=[
-                'MOJO_CORE_STATIC',
-                'MOJO_ENGINE_STATIC',
-                'MOJO_APPLICATION_STATIC',
-                'MOJO_TEST_COMMON_STATIC'],
+            use=use_static + ['MOJO_TEST_COMMON_STATIC'],
             target=test + '-static')
 
 
-def build(bld):
+def build_tests_static(bld):
+    defines = ['BOOST_TEST_DYN_LINK=1',
+               'MOJO_SINGLE_TEST_EXE=1']
+    if bld.env.ENABLE_AMALGAMATION:
+        defines += ['MOJO_TEST_AMALGAMATED']
+        source = ['test_main.cpp']
+    else:
+        source = all_test_sources + common_sources + ['test_main.cpp']
 
-    if bld.env['ENABLE_SHARED']:
+    bld.program(
+        includes='.',
+        source=source,
+        defines=defines,
+        uselib=uselibs,
+        use=use_static,
+        target='mojo-tests-static')
+
+
+def build_static(bld):
+    if bld.env.SINGLE_TESTS:
+        build_single_tests_static(bld)
+    else:
+        build_tests_static(bld)
+
+
+def build(bld):
+    if not bld.env.BUILD_TESTS:
+        return
+
+    if bld.env.ENABLE_SHARED:
         build_shared(bld)
 
-    if bld.env['ENABLE_STATIC']:
+    if bld.env.ENABLE_STATIC:
         build_static(bld)

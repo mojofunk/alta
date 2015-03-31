@@ -1,5 +1,6 @@
-
+#ifndef MOJO_SINGLE_TEST_EXE
 #define BOOST_TEST_MODULE mojo_application
+#endif
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
@@ -35,7 +36,7 @@ BOOST_AUTO_TEST_CASE(test_application)
 	app->close_projects();
 }
 
-void test_module(const ModuleSP& mod)
+void test_application_module(const ModuleSP& mod)
 {
 	BOOST_REQUIRE(mod);
 
@@ -52,6 +53,6 @@ BOOST_AUTO_TEST_CASE(test_get_modules)
 	Application::initialize();
 	ModuleSPSet modules = Application::get_modules();
 
-	for_each(modules.begin(), modules.end(), test_module);
+	for_each(modules.begin(), modules.end(), test_application_module);
 	Application::deinitialize();
 }

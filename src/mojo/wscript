@@ -11,6 +11,7 @@ audio_driver
 audio_effect
 audio_file
 midi_driver
+tests
 '''
 
 
@@ -22,5 +23,3 @@ def configure(conf):
 def build(bld):
     # process subfolders from here
     bld.recurse(subdirs)
-    if bld.env['BUILD_TESTS']:
-        bld.recurse('tests')

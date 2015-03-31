@@ -35,6 +35,11 @@ def options(opt):
         default=False,
         help='Enable Testsuite')
     opt.add_option(
+        '--with-single-tests',
+        action='store_true',
+        default=False,
+        help='Build each test as single executable')
+    opt.add_option(
         '--optimize',
         action='store_true',
         default=False,
@@ -88,6 +93,7 @@ def display_config(conf):
     Logs.info('Enable static: %s' % conf.env.ENABLE_STATIC)
     Logs.info('Enable amalgamation: %s' % conf.env.ENABLE_AMALGAMATION)
     Logs.info('Build tests: %s' % conf.env.BUILD_TESTS)
+    Logs.info('Build single tests: %s' % conf.env.BUILD_SINGLE_TESTS)
 
 
 def configure(conf):
@@ -112,6 +118,10 @@ def configure(conf):
     _check_required_deps(conf, deps)
 
     conf.env.BUILD_TESTS = conf.options.with_tests
+    conf.env.BUILD_SINGLE_TESTS = conf.options.with_single_tests
+
+    if conf.env.BUILD_SINGLE_TESTS:
+        conf.env.BUILD_TESTS = True
 
     if conf.env.BUILD_TESTS:
         if not conf.check(lib='boost_unit_test_framework-mt',

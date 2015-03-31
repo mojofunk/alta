@@ -1,5 +1,6 @@
-
+#ifndef MOJO_SINGLE_TEST_EXE
 #define BOOST_TEST_MODULE mojo_audio_effect
+#endif
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
@@ -18,7 +19,7 @@ using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
 
-void test_path(const fs::path& path)
+void test_plugin_path(const fs::path& path)
 {
 	BOOST_REQUIRE(!path.empty());
 	BOOST_TEST_MESSAGE(path.string());
@@ -66,7 +67,7 @@ void test_audio_effect_module(AudioEffectModuleSP mod)
 
 	BOOST_CHECK(!plugin_dirs.empty());
 
-	for_each(plugin_dirs.begin(), plugin_dirs.end(), test_path);
+	for_each(plugin_dirs.begin(), plugin_dirs.end(), test_plugin_path);
 
 	AudioEffectInfoSPSet info = mod->get_plugin_info();
 
