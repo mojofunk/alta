@@ -11,10 +11,8 @@ std::size_t find_matching_files(const vector<fs::path>& paths,
                                 FileMatchFunc match_func,
                                 vector<fs::path>& result)
 {
-	for (vector<fs::path>::const_iterator iter = paths.begin(), end = paths.end();
-	     iter != end;
-	     ++iter) {
-		find_matching_files(*iter, match_func, result);
+	for (auto const& path : paths) {
+		find_matching_files(path, match_func, result);
 	}
 
 	return result.size();
@@ -42,10 +40,8 @@ std::size_t find_matching_file(const vector<fs::path>& paths,
                                const std::string& filename,
                                vector<fs::path>& result)
 {
-	for (vector<fs::path>::const_iterator iter = paths.begin(), end = paths.end();
-	     iter != end;
-	     ++iter) {
-		find_matching_file(*iter, filename, result);
+	for (auto const& path : paths) {
+		find_matching_file(path, filename, result);
 	}
 
 	return result.size();
