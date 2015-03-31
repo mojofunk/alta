@@ -79,7 +79,27 @@ void test_output_device(MIDIDeviceSP dev)
 		return;
 	}
 
+	MIDIDevice::Event event;
+
+	// Note On, Channel 1, Middle C, Vel 127
+	event.message = 0x903C7F00;
+	event.timestamp = 0; // ignored, sent immediately
+
+	BOOST_TEST_MESSAGE("Sending Note On");
+
+	output_dev->write(&event, 1);
+
 	mojo::usleep(2 * 1000000);
+
+	// Note Off, Channel 1, Middle C, Vel 0
+	event.message = 0x803F0000;
+	event.timestamp = 0; // ignored, sent immediately
+
+	BOOST_TEST_MESSAGE("Sending Note Off");
+
+	output_dev->write(&event, 1);
+
+	mojo::usleep(1 * 1000000);
 
 	err = output_dev->close();
 
