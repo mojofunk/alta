@@ -45,6 +45,11 @@ MIDIDevice::error_t PortmidiMIDIInputDevice::close()
 	return (MIDIDevice::error_t)err;
 }
 
+std::string PortmidiMIDIInputDevice::get_error_string(error_t err)
+{
+	return Pm_GetErrorText((PmError)err);
+}
+
 uint32_t PortmidiMIDIInputDevice::read(Event* buffer, int32_t size)
 {
 	int read = Pm_Read(m_stream, (PmEvent*)buffer, size);

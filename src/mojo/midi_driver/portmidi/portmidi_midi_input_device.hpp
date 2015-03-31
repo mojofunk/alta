@@ -20,6 +20,8 @@ public: // MIDIDevice interface
 
 	virtual error_t close();
 
+	virtual std::string get_error_string(error_t);
+
 public: // MIDIInputDevice interface
 	virtual uint32_t read(Event* buffer, int32_t size);
 

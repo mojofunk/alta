@@ -53,6 +53,11 @@ MIDIDevice::error_t PortmidiMIDIOutputDevice::close()
 	return (MIDIDevice::error_t)err;
 }
 
+std::string PortmidiMIDIOutputDevice::get_error_string(error_t err)
+{
+	return Pm_GetErrorText((PmError)err);
+}
+
 MIDIDevice::error_t PortmidiMIDIOutputDevice::write(Event* buffer, int32_t size)
 {
 	PmError err = Pm_Write(m_stream, (PmEvent*)buffer, size);

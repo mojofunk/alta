@@ -32,6 +32,8 @@ public: // MIDIDevice interface
 	virtual error_t open(time_callback_t*, void* user_data) = 0;
 
 	virtual error_t close() = 0;
+
+	virtual std::string get_error_string(error_t) = 0;
 };
 
 } // namespace mojo
