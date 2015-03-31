@@ -29,7 +29,10 @@ void AudioTrackCanvasItem::set_height(int height)
 	m_signal_height_changed();
 }
 
-uint32_t AudioTrackCanvasItem::get_height() const { return property_height(); }
+uint32_t AudioTrackCanvasItem::get_height() const
+{
+	return property_height();
+}
 
 void AudioTrackCanvasItem::set_width(int width)
 {
@@ -37,10 +40,17 @@ void AudioTrackCanvasItem::set_width(int width)
 	m_rect->property_width() = width;
 }
 
-uint32_t AudioTrackCanvasItem::get_width() const { return property_width(); }
+uint32_t AudioTrackCanvasItem::get_width() const
+{
+	return property_width();
+}
 
-void AudioTrackCanvasItem::set_selected(bool) {}
+void AudioTrackCanvasItem::set_selected(bool)
+{
+}
 
-bool AudioTrackCanvasItem::get_selected() const {}
+bool AudioTrackCanvasItem::get_selected() const
+{
+}
 
 } // namespace ui

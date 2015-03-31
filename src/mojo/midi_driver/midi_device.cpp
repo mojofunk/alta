@@ -2,6 +2,8 @@
 
 namespace mojo {
 
-MIDIDevice::~MIDIDevice() {}
+MIDIDevice::~MIDIDevice()
+{
+}
 
 } // namespace mojo

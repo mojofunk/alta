@@ -5,7 +5,9 @@
 
 namespace ui {
 
-Dispatcher::Dispatcher() {}
+Dispatcher::Dispatcher()
+{
+}
 
 void Dispatcher::run()
 {

@@ -26,7 +26,10 @@ ProjectSetupDialog::ProjectSetupDialog(mojo::Project* proj)
 	m_builder->get_widget("projectsetup", m_window);
 }
 
-ProjectSetupDialog::~ProjectSetupDialog() { delete m_window; }
+ProjectSetupDialog::~ProjectSetupDialog()
+{
+	delete m_window;
+}
 
 int ProjectSetupDialog::run()
 {

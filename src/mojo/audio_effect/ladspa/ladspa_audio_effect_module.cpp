@@ -16,16 +16,24 @@ LADSPAAudioEffectModule::LADSPAAudioEffectModule()
 	m_plugin_dirs.push_back("/usr/lib/ladspa");
 }
 
-LADSPAAudioEffectModule::~LADSPAAudioEffectModule() {}
+LADSPAAudioEffectModule::~LADSPAAudioEffectModule()
+{
+}
 
-std::string LADSPAAudioEffectModule::get_author() { return "Tim Mayberry"; }
+std::string LADSPAAudioEffectModule::get_author()
+{
+	return "Tim Mayberry";
+}
 
 std::string LADSPAAudioEffectModule::get_description()
 {
 	return "LADSPA module";
 }
 
-std::string LADSPAAudioEffectModule::get_version() { return "0.0.1"; }
+std::string LADSPAAudioEffectModule::get_version()
+{
+	return "0.0.1";
+}
 
 AudioEffectSP LADSPAAudioEffectModule::open(AudioEffectInfoSP info,
                                             samplerate_t rate)

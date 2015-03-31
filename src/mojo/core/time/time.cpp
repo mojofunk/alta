@@ -12,6 +12,9 @@ uint64_t get_monotonic_time()
 	return duration_cast<microseconds>(duration.time_since_epoch()).count();
 }
 
-void usleep(uint64_t microseconds) { g_usleep(microseconds); }
+void usleep(uint64_t microseconds)
+{
+	g_usleep(microseconds);
+}
 
 } // namespace mojo

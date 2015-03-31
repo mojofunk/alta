@@ -40,6 +40,9 @@ string SndfileAudioFileFormat::extension() const
 	return string(".") + info.extension;
 }
 
-int SndfileAudioFileFormat::format() const { return m_format; }
+int SndfileAudioFileFormat::format() const
+{
+	return m_format;
+}
 
 } // namespace mojo

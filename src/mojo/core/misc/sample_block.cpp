@@ -38,7 +38,10 @@ float* sample_block_calloc(size_t block_size)
 	return s;
 }
 
-void sample_block_free(float* block) { free(block); }
+void sample_block_free(float* block)
+{
+	free(block);
+}
 
 void sample_blocks_realloc(std::vector<float*>& blocks, size_t new_block_size)
 {

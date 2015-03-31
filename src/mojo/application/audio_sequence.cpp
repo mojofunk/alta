@@ -11,14 +11,18 @@ namespace mojo {
 
 const char* const AudioSequence::s_property_audio_events = "audio-events";
 
-AudioSequence::AudioSequence() {}
+AudioSequence::AudioSequence()
+{
+}
 
 void AudioSequence::get_properties(Properties& props) const
 {
 	props.set_property(s_property_audio_events, m_audio_events);
 }
 
-void AudioSequence::set_properties(const Properties& props) {}
+void AudioSequence::set_properties(const Properties& props)
+{
+}
 
 std::pair<AudioSequence::iterator, bool> AudioSequence::insert(AudioEventSP ae)
 {

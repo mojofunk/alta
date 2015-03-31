@@ -21,7 +21,10 @@ void App::init(int argc, char* argv[])
 	s_app = new App(argc, argv);
 }
 
-void App::cleanup() { delete s_app; }
+void App::cleanup()
+{
+	delete s_app;
+}
 
 App::App(int argc, char* argv[])
 {
@@ -31,7 +34,9 @@ App::App(int argc, char* argv[])
 	    boost::bind(&App::on_project_removed_handler, _1));
 }
 
-App::~App() {}
+App::~App()
+{
+}
 
 void App::run()
 {
@@ -46,7 +51,10 @@ void App::quit()
 	Gtk::Main::quit();
 }
 
-void App::open_project() { LOG; }
+void App::open_project()
+{
+	LOG;
+}
 
 void App::new_project()
 {
@@ -99,7 +107,10 @@ void App::close_project(mojo::Project* p)
 	mojo::Application::close_project(p);
 }
 
-void App::save_project(mojo::Project* p) { mojo::Application::save_project(p); }
+void App::save_project(mojo::Project* p)
+{
+	mojo::Application::save_project(p);
+}
 
 void App::add_track(mojo::Project* p)
 {
@@ -132,6 +143,9 @@ void App::open_import_dialog()
 	dialog.run();
 }
 
-Dispatcher& App::get_dispatcher() { return s_app->m_dispatcher; }
+Dispatcher& App::get_dispatcher()
+{
+	return s_app->m_dispatcher;
+}
 
 } // namespace ui

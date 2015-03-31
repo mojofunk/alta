@@ -26,7 +26,10 @@ ImportDialog::ImportDialog()
 	m_builder->get_widget("import-dialog", m_dialog);
 }
 
-ImportDialog::~ImportDialog() { delete m_dialog; }
+ImportDialog::~ImportDialog()
+{
+	delete m_dialog;
+}
 
 int ImportDialog::run()
 {

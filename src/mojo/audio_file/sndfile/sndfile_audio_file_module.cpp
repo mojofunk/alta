@@ -17,7 +17,9 @@ SndfileAudioFileModule::SndfileAudioFileModule()
 	get_writable_formats(m_writable_formats);
 }
 
-SndfileAudioFileModule::~SndfileAudioFileModule() {}
+SndfileAudioFileModule::~SndfileAudioFileModule()
+{
+}
 
 void SndfileAudioFileModule::get_readable_formats(AudioFileFormatSPSet& formats)
 {
@@ -58,14 +60,20 @@ void SndfileAudioFileModule::get_writable_formats(AudioFileFormatSPSet& formats)
 	    new SndfileAudioFileFormat(SF_FORMAT_WAV | SF_FORMAT_FLOAT)));
 }
 
-std::string SndfileAudioFileModule::get_author() { return "Tim Mayberry"; }
+std::string SndfileAudioFileModule::get_author()
+{
+	return "Tim Mayberry";
+}
 
 std::string SndfileAudioFileModule::get_description()
 {
 	return "libsndfile module";
 }
 
-std::string SndfileAudioFileModule::get_version() { return "0.0.1"; }
+std::string SndfileAudioFileModule::get_version()
+{
+	return "0.0.1";
+}
 
 AudioFileSP SndfileAudioFileModule::open(const std::string& path)
 {
@@ -98,6 +106,9 @@ AudioFileFormatSPSet SndfileAudioFileModule::get_writable_formats() const
 	return m_writable_formats;
 }
 
-MOJO_CAPI void* mojo_module_factory(void) { return new SndfileAudioFileModule; }
+MOJO_CAPI void* mojo_module_factory(void)
+{
+	return new SndfileAudioFileModule;
+}
 
 } // namespace mojo

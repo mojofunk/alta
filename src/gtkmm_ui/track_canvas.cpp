@@ -68,7 +68,9 @@ double TrackCanvas::get_y_position_for_new_track()
 	return new_y_pos;
 }
 
-void TrackCanvas::remove(Glib::RefPtr<TrackCanvasItem> item) {}
+void TrackCanvas::remove(Glib::RefPtr<TrackCanvasItem> item)
+{
+}
 
 void TrackCanvas::on_track_canvas_item_height_changed(
     Glib::RefPtr<TrackCanvasItem> ptr)

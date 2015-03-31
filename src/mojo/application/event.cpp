@@ -34,6 +34,8 @@ void Event::get_properties(Properties& props) const
 	props.set_property(s_property_duration_id, duration);
 }
 
-void Event::set_properties(const Properties& props) {}
+void Event::set_properties(const Properties& props)
+{
+}
 
 } // namespace mojo

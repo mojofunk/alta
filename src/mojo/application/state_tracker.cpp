@@ -5,9 +5,15 @@
 
 namespace mojo {
 
-StateTracker::StateTracker() {}
+StateTracker::StateTracker()
+{
+}
 
-void StateTracker::get_properties(Properties& props) const {}
+void StateTracker::get_properties(Properties& props) const
+{
+}
 
-void StateTracker::set_properties(const Properties& props) {}
+void StateTracker::set_properties(const Properties& props)
+{
+}
 }

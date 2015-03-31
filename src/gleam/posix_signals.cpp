@@ -30,9 +30,15 @@ gleam::TraceMode stack_trace_mode = gleam::STACK_TRACE_QUERY;
 
 namespace gleam {
 
-TraceMode get_trace_mode() { return stack_trace_mode; }
+TraceMode get_trace_mode()
+{
+	return stack_trace_mode;
+}
 
-void set_trace_mode(TraceMode mode) { stack_trace_mode = mode; }
+void set_trace_mode(TraceMode mode)
+{
+	stack_trace_mode = mode;
+}
 
 PosixSignalHandlerFunc
 signal(int sig_num, PosixSignalHandlerFunc handler, int flags)

@@ -27,7 +27,9 @@ TrackView::TrackView(mojo::Project* p)
 	pack2(*m_canvas);
 }
 
-TrackView::~TrackView() {}
+TrackView::~TrackView()
+{
+}
 
 void TrackView::on_track_added_handler(mojo::Track* track)
 {
@@ -53,6 +55,9 @@ void TrackView::on_track_added(mojo::Track* track)
 	m_canvas->add(tvi->get_track_canvas_item());
 }
 
-void TrackView::on_track_removed(mojo::Track* track) { LOG; }
+void TrackView::on_track_removed(mojo::Track* track)
+{
+	LOG;
+}
 
 } // namespace ui

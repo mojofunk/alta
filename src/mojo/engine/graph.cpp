@@ -3,9 +3,15 @@
 
 namespace mojo {
 
-void Graph::insert(Node* node) { m_nodes.insert(node); }
+void Graph::insert(Node* node)
+{
+	m_nodes.insert(node);
+}
 
-void Graph::erase(Node* node) { m_nodes.erase(node); }
+void Graph::erase(Node* node)
+{
+	m_nodes.erase(node);
+}
 
 void Graph::connect(Node* n1, Node* n2)
 {
@@ -13,8 +19,13 @@ void Graph::connect(Node* n1, Node* n2)
 	// add an incoming edge to n2 from n2
 }
 
-void Graph::disconnect(Node* n1, Node* n2) {}
+void Graph::disconnect(Node* n1, Node* n2)
+{
+}
 
-set<Node*> Graph::get_nodes() const { return m_nodes; }
+set<Node*> Graph::get_nodes() const
+{
+	return m_nodes;
+}
 
 } // namespace mojo

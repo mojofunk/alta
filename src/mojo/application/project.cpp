@@ -17,7 +17,9 @@ void Project::get_properties(Properties& props) const
 	props.set_property(s_property_tracks, m_tracks);
 }
 
-void Project::set_properties(const Properties& props) {}
+void Project::set_properties(const Properties& props)
+{
+}
 
 AudioTrackSP Project::new_audio_track(const std::string& name)
 {

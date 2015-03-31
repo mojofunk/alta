@@ -24,8 +24,12 @@ uint32_t AudioTrackListItem::get_height() const
 	return get_allocation().get_height();
 }
 
-void AudioTrackListItem::set_selected(bool) {}
+void AudioTrackListItem::set_selected(bool)
+{
+}
 
-bool AudioTrackListItem::get_selected() const {}
+bool AudioTrackListItem::get_selected() const
+{
+}
 
 } // namespace ui

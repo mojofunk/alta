@@ -8,7 +8,9 @@ MOJO_DEBUG_DOMAIN(FUNCTOR_DISPATCHER);
 
 namespace mojo {
 
-FunctorDispatcher::FunctorDispatcher() {}
+FunctorDispatcher::FunctorDispatcher()
+{
+}
 
 void FunctorDispatcher::call_sync(const function_t& func)
 {

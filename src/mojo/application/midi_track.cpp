@@ -5,7 +5,9 @@
 
 namespace mojo {
 
-MidiTrack::MidiTrack() {}
+MidiTrack::MidiTrack()
+{
+}
 
 void MidiTrack::get_properties(Properties& props) const
 {

@@ -10,7 +10,9 @@ Worker::Worker()
 {
 }
 
-Worker::~Worker() {}
+Worker::~Worker()
+{
+}
 
 void Worker::run()
 {

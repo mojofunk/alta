@@ -10,7 +10,9 @@ PortmidiMIDIOutputDevice::PortmidiMIDIOutputDevice(PmDeviceID id)
 {
 }
 
-PortmidiMIDIOutputDevice::~PortmidiMIDIOutputDevice() {}
+PortmidiMIDIOutputDevice::~PortmidiMIDIOutputDevice()
+{
+}
 
 std::string PortmidiMIDIOutputDevice::get_name() const
 {

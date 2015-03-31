@@ -8,7 +8,9 @@ namespace mojo {
 
 using namespace std;
 
-void DummyArchive::read(const fs::path& file_path, Properties& props) {}
+void DummyArchive::read(const fs::path& file_path, Properties& props)
+{
+}
 
 void DummyArchive::write_object(std::ostream& os, const ObjectSP& obj)
 {

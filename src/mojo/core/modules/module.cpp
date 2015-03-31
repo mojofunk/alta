@@ -6,6 +6,8 @@
 
 namespace mojo {
 
-Module::~Module() {}
+Module::~Module()
+{
+}
 
 } // namespace mojo

@@ -11,7 +11,9 @@ PortaudioAudioDevice::PortaudioAudioDevice(PaDeviceIndex index)
 {
 }
 
-PortaudioAudioDevice::~PortaudioAudioDevice() {}
+PortaudioAudioDevice::~PortaudioAudioDevice()
+{
+}
 
 std::string PortaudioAudioDevice::get_name() const
 {
@@ -73,7 +75,10 @@ AudioDevice::error_t PortaudioAudioDevice::open(uint32_t input_channels,
 	return (AudioDevice::error_t)err;
 }
 
-bool PortaudioAudioDevice::is_open() { return m_stream != NULL; }
+bool PortaudioAudioDevice::is_open()
+{
+	return m_stream != NULL;
+}
 
 AudioDevice::error_t PortaudioAudioDevice::start()
 {

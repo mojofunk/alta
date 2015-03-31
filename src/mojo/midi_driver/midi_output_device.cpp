@@ -2,6 +2,8 @@
 
 namespace mojo {
 
-MIDIOutputDevice::~MIDIOutputDevice() {}
+MIDIOutputDevice::~MIDIOutputDevice()
+{
+}
 
 } // namespace mojo

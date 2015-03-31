@@ -11,7 +11,9 @@ PortmidiMIDIInputDevice::PortmidiMIDIInputDevice(PmDeviceID id)
 {
 }
 
-PortmidiMIDIInputDevice::~PortmidiMIDIInputDevice() {}
+PortmidiMIDIInputDevice::~PortmidiMIDIInputDevice()
+{
+}
 
 std::string PortmidiMIDIInputDevice::get_name() const
 {

@@ -46,7 +46,10 @@ void initialize()
 	types::initialize();
 }
 
-bool initialized() { return (s_init_core_count != 0); }
+bool initialized()
+{
+	return (s_init_core_count != 0);
+}
 
 void deinitialize()
 {

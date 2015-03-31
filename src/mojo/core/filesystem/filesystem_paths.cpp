@@ -11,9 +11,15 @@ MOJO_DEBUG_DOMAIN(FILESYSTEM_PATHS);
 
 namespace mojo {
 
-fs::path get_user_config_directory() { return g_get_user_config_dir(); }
+fs::path get_user_config_directory()
+{
+	return g_get_user_config_dir();
+}
 
-fs::path get_user_data_directory() { return g_get_user_data_dir(); }
+fs::path get_user_data_directory()
+{
+	return g_get_user_data_dir();
+}
 
 paths_t get_system_data_directories()
 {
@@ -62,7 +68,10 @@ fs::path installation_directory()
 #endif
 }
 
-Searchpath mojo_search_path() { return Searchpath(mojo::getenv("MOJO_PATH")); }
+Searchpath mojo_search_path()
+{
+	return Searchpath(mojo::getenv("MOJO_PATH"));
+}
 
 Searchpath system_config_search_path()
 {

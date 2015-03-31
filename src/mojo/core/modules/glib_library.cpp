@@ -11,7 +11,10 @@ GlibLibrary::GlibLibrary(const fs::path& library_path)
 {
 }
 
-fs::path GlibLibrary::get_filepath() const { return m_filepath; }
+fs::path GlibLibrary::get_filepath() const
+{
+	return m_filepath;
+}
 
 bool GlibLibrary::open()
 {
@@ -24,9 +27,15 @@ bool GlibLibrary::open()
 	return true;
 }
 
-bool GlibLibrary::close() { return g_module_close(m_module); }
+bool GlibLibrary::close()
+{
+	return g_module_close(m_module);
+}
 
-std::string GlibLibrary::get_error_string() const { return g_module_error(); }
+std::string GlibLibrary::get_error_string() const
+{
+	return g_module_error();
+}
 
 void* GlibLibrary::resolve(const std::string& symbol_name)
 {

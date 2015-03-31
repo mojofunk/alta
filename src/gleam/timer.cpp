@@ -16,7 +16,10 @@ gboolean Timer::_timeout_handler(void* data)
 	return timer->timeout_handler();
 }
 
-unsigned int Timer::get_interval() const { return m_timeout_interval; }
+unsigned int Timer::get_interval() const
+{
+	return m_timeout_interval;
+}
 
 void Timer::set_interval(unsigned int new_interval)
 {
@@ -65,7 +68,10 @@ void Timer::stop()
 	}
 }
 
-bool Timer::timeout_handler() { return on_elapsed(); }
+bool Timer::timeout_handler()
+{
+	return on_elapsed();
+}
 
 StandardTimer::StandardTimer(
     unsigned int interval, const Glib::RefPtr<Glib::MainContext>& main_context)

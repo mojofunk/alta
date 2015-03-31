@@ -53,7 +53,10 @@ void Application::deinitialize()
 	core::deinitialize();
 }
 
-mojo::Application& Application::get_instance() { return *s_instance; }
+mojo::Application& Application::get_instance()
+{
+	return *s_instance;
+}
 
 void Application::iteration(bool block)
 {
@@ -71,7 +74,10 @@ Application::Application()
 	data->m_modules = discover_modules(module_search_path());
 }
 
-Application::~Application() { MOJO_DEBUG(APPLICATION); }
+Application::~Application()
+{
+	MOJO_DEBUG(APPLICATION);
+}
 
 void Application::new_project()
 {
@@ -89,9 +95,13 @@ void Application::open_project(const std::string& project_file)
 	                project_file));
 }
 
-void Application::save_project_as(Project*, const std::string& filename) {}
+void Application::save_project_as(Project*, const std::string& filename)
+{
+}
 
-void Application::save_project(Project*) {}
+void Application::save_project(Project*)
+{
+}
 
 void Application::set_active_project(Project* p)
 {

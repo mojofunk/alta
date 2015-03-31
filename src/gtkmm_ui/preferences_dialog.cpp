@@ -30,7 +30,10 @@ PreferencesDialog::PreferencesDialog()
 	m_builder->get_widget("preferences-dialog", m_dialog);
 }
 
-PreferencesDialog::~PreferencesDialog() { delete m_dialog; }
+PreferencesDialog::~PreferencesDialog()
+{
+	delete m_dialog;
+}
 
 int PreferencesDialog::run()
 {

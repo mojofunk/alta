@@ -3,6 +3,8 @@
 
 namespace ui {
 
-TrackListItem::~TrackListItem() {}
+TrackListItem::~TrackListItem()
+{
+}
 
 } // namespace ui

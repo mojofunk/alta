@@ -6,7 +6,9 @@
 
 namespace mojo {
 
-Library::~Library() {}
+Library::~Library()
+{
+}
 
 LibrarySP create_library(const fs::path& filepath)
 {

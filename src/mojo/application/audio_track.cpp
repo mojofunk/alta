@@ -27,6 +27,9 @@ void AudioTrack::set_properties(const Properties& props)
 	// XXX
 }
 
-AudioSequenceSP AudioTrack::get_audio_sequence() { return m_audio_sequence; }
+AudioSequenceSP AudioTrack::get_audio_sequence()
+{
+	return m_audio_sequence;
+}
 
 } // namespace mojo

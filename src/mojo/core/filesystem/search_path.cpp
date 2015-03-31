@@ -15,7 +15,9 @@ const char* const path_delimiter = ":";
 
 namespace mojo {
 
-Searchpath::Searchpath() {}
+Searchpath::Searchpath()
+{
+}
 
 Searchpath::Searchpath(const std::string& path)
 {
@@ -31,7 +33,10 @@ Searchpath::Searchpath(const std::string& path)
 	}
 }
 
-Searchpath::Searchpath(const fs::path& path) { add_directory(path); }
+Searchpath::Searchpath(const fs::path& path)
+{
+	add_directory(path);
+}
 
 Searchpath::Searchpath(const paths_t& paths)
 {

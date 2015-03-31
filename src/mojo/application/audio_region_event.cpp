@@ -25,6 +25,8 @@ void AudioRegionEvent::get_properties(Properties& props) const
 	props.set_property(s_property_audio_region, m_audio_region);
 }
 
-void AudioRegionEvent::set_properties(const Properties& props) {}
+void AudioRegionEvent::set_properties(const Properties& props)
+{
+}
 
 } // namespace mojo

@@ -5,7 +5,9 @@
 
 namespace ui {
 
-ObjectSelectionTool::ObjectSelectionTool() {}
+ObjectSelectionTool::ObjectSelectionTool()
+{
+}
 
 const std::string ObjectSelectionTool::get_name() const
 {

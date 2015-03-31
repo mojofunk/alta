@@ -15,9 +15,14 @@ SndfileAudioFile::SndfileAudioFile(const string& path)
 	m_format = AudioFileFormatSP(new SndfileAudioFileFormat(m_info.format));
 }
 
-SndfileAudioFile::~SndfileAudioFile() {}
+SndfileAudioFile::~SndfileAudioFile()
+{
+}
 
-AudioFileFormatSP SndfileAudioFile::format() { return m_format; }
+AudioFileFormatSP SndfileAudioFile::format()
+{
+	return m_format;
+}
 
 count_t SndfileAudioFile::read_frames(float* buf, count_t frame_count)
 {
@@ -46,8 +51,14 @@ count_t SndfileAudioFile::frames() const
 	return frames;
 }
 
-samplerate_t SndfileAudioFile::samplerate() const { return m_info.samplerate; }
+samplerate_t SndfileAudioFile::samplerate() const
+{
+	return m_info.samplerate;
+}
 
-channel_count_t SndfileAudioFile::channels() const { return m_info.channels; }
+channel_count_t SndfileAudioFile::channels() const
+{
+	return m_info.channels;
+}
 
 } // namespace mojo

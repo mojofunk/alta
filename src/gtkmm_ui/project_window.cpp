@@ -93,7 +93,10 @@ void ProjectWindow::pack_children()
 	vbox1->reorder_child(*tv, 2);
 }
 
-ProjectWindow::~ProjectWindow() { delete m_window; }
+ProjectWindow::~ProjectWindow()
+{
+	delete m_window;
+}
 
 bool ProjectWindow::on_delete_event(GdkEventAny*)
 {

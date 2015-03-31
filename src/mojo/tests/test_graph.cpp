@@ -19,7 +19,10 @@ protected:
 	virtual void on_activate() { BOOST_MESSAGE(name); }
 };
 
-bool graph_contains_node(Node*) { return true; }
+bool graph_contains_node(Node*)
+{
+	return true;
+}
 
 BOOST_AUTO_TEST_CASE(test_graph_application)
 {
