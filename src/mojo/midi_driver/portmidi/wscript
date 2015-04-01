@@ -9,15 +9,17 @@ def init():
 
 def configure(conf):
     print ("configure mojo-midi-driver-portmidi")
-    conf.check_cc(
+    conf.env.HAVE_PORTMIDI = conf.check_cc(
         function_name='Pm_Initialize',
         header_name='portmidi.h',
         lib='portmidi',
-        uselib_store='PORTMIDI')
+        uselib_store='PORTMIDI',
+        mandatory=0)
 
 
 def build(bld):
-
+    if not bld.env.HAVE_PORTMIDI:
+        return
     source = bld.path.ant_glob('*.cpp')
     uselib = [
         'GMODULE-2.0',
