@@ -103,7 +103,7 @@ def build_tests_shared(bld):
 
 
 def build_shared(bld):
-    if bld.env.SINGLE_TESTS:
+    if bld.env.BUILD_SINGLE_TESTS:
         build_single_tests_shared(bld)
     else:
         build_tests_shared(bld)
@@ -148,7 +148,7 @@ def build_tests_static(bld):
 
 
 def build_static(bld):
-    if bld.env.SINGLE_TESTS:
+    if bld.env.BUILD_SINGLE_TESTS:
         build_single_tests_static(bld)
     else:
         build_tests_static(bld)
