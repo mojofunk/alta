@@ -1,10 +1,7 @@
 
 #include "filesystem_paths.hpp"
 
-#include <gleam/filesystem_paths.hpp>
-#include <gleam/utils.hpp>
-
-#include "mojo/core/filesystem/file_utils.hpp"
+#include <mojo-core.hpp>
 
 namespace ui {
 
@@ -12,19 +9,19 @@ using namespace mojo;
 
 Searchpath gmojo_search_path()
 {
-	return Searchpath(gleam::getenv("GMOJO_PATH"));
+	return Searchpath(mojo::getenv("GMOJO_PATH"));
 }
 
 Searchpath system_config_search_path()
 {
-	Searchpath sp(gleam::get_system_config_directories());
+	Searchpath sp(mojo::get_system_config_directories());
 	sp / "gmojo";
 	return sp;
 }
 
 Searchpath system_data_search_path()
 {
-	Searchpath sp(gleam::get_system_data_directories());
+	Searchpath sp(mojo::get_system_data_directories());
 	sp / "gmojo";
 	return sp;
 }
