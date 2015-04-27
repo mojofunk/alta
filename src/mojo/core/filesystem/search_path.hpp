@@ -127,12 +127,12 @@ public:
 	/**
 	 * Concatenate another Searchpath onto this.
 	 */
-	Searchpath& operator+(const Searchpath& other);
+	const Searchpath operator+(const Searchpath& other);
 
 	/**
 	 * Add another path to the search path.
 	 */
-	Searchpath& operator+(const fs::path& directory_path);
+	const Searchpath operator+(const fs::path& directory_path);
 
 	/**
 	 * Add a sub-directory to each path in the search path.

@@ -91,17 +91,14 @@ Searchpath& Searchpath::operator+=(const fs::path& directory_path)
 	return *this;
 }
 
-Searchpath& Searchpath::operator+(const fs::path& directory_path)
+const Searchpath Searchpath::operator+(const fs::path& directory_path)
 {
-	add_directory(directory_path);
-	return *this;
+	return Searchpath (*this) += directory_path;
 }
 
-Searchpath& Searchpath::operator+(const Searchpath& spath)
+const Searchpath Searchpath::operator+(const Searchpath& spath)
 {
-	// concatenate paths into new Searchpath
-	m_dirs.insert(m_dirs.end(), spath.m_dirs.begin(), spath.m_dirs.end());
-	return *this;
+	return Searchpath (*this) += spath;
 }
 
 Searchpath& Searchpath::add_subdirectory_to_paths(const std::string& subdir)
