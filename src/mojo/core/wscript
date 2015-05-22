@@ -2,6 +2,10 @@
 # encoding: utf-8
 # Tim Mayberry, 2008
 
+windows_sources = '''
+native/windows_mmcss.cpp
+'''.split()
+
 
 def init():
     pass
@@ -21,6 +25,8 @@ def build(bld):
         source = bld.path.ant_glob(
             '**/*.cpp',
             excl='mojo-core.cpp')
+        if bld.env['target_platform'] == 'windows':
+            source += windows_sources
 
     uselib = ['GLIB-2.0', 'GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
 

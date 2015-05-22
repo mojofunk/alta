@@ -28,10 +28,11 @@ test_audio_effect_modules
 test_midi_driver_modules
 '''.split()
 
-all_test_sources = []
+windows_tests = '''
+test_windows_mmcss
+'''.split()
 
-for test in tests:
-    all_test_sources.append(test + '.cpp')
+all_test_sources = []
 
 common_sources = ['test_common.cpp', 'example_application.cpp']
 
@@ -157,6 +158,14 @@ def build_static(bld):
 def build(bld):
     if not bld.env.BUILD_TESTS:
         return
+
+    local_tests = tests
+
+    if bld.env['target_platform'] == 'windows':
+        local_tests += windows_tests
+
+    for test in local_tests:
+        all_test_sources.append(test + '.cpp')
 
     if bld.env.ENABLE_SHARED:
         build_shared(bld)

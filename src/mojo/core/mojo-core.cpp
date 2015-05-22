@@ -34,3 +34,8 @@
 
 #include "typesystem/type_names.cpp"
 #include "typesystem/type_system.cpp"
+
+#ifdef MOJO_WINDOWS
+#include "native/windows_source_includes.hpp"
+#include "native/windows_mmcss.cpp"
+#endif

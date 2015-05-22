@@ -64,4 +64,8 @@
 #include "object/object.hpp"
 #include "object/object_collection.hpp"
 
+#ifdef MOJO_WINDOWS
+#include "native/windows_mmcss.hpp"
+#endif
+
 #endif // MOJO_CORE_H

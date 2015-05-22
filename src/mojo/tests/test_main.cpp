@@ -8,6 +8,8 @@
 
 #ifdef MOJO_TEST_AMALGAMATED
 
+#include "mojo/config/common_header_includes.hpp"
+
 // common test sources
 #include "example_application.cpp"
 #include "test_common.cpp"
@@ -37,5 +39,11 @@
 #include "test_string_convert.cpp"
 #include "test_timing.cpp"
 #include "test_type_system.cpp"
+
+// native tests
+
+#ifdef MOJO_WINDOWS
+#include "test_native_mmcss.cpp"
+#endif
 
 #endif
