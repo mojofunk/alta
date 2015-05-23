@@ -66,6 +66,7 @@
 
 #ifdef MOJO_WINDOWS
 #include "native/windows_mmcss.hpp"
+#include "native/windows_time_utils.hpp"
 #endif
 
 #endif // MOJO_CORE_H

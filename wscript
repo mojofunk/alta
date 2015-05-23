@@ -145,6 +145,9 @@ def configure(conf):
             lib='boost_system-mt', uselib_store='BOOST_SYSTEM', mandatory=False):
         conf.check(lib='boost_system', uselib_store='BOOST_SYSTEM')
 
+    if conf.env.TARGET_PLATFORM == 'windows':
+        conf.check(lib='winmm', uselib_store='WINMM')
+
     defines = ['HAVE_CONFIG_H', '_REENTRANT',
                '_LARGEFILE_SOURCE', '_LARGEFILE64_SOURCE']
 

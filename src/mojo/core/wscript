@@ -4,6 +4,7 @@
 
 windows_sources = '''
 native/windows_mmcss.cpp
+native/windows_time_utils.cpp
 '''.split()
 
 
@@ -16,6 +17,10 @@ def configure(conf):
 
 
 def build(bld):
+    uselib = ['GLIB-2.0', 'GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
+
+    if bld.env.TARGET_PLATFORM == 'windows':
+        uselib += ['WINMM']
 
     defines = ['PROGRAM_DIR_NAME="' + bld.env.PROGRAM_DIR_NAME + '"']
     if bld.env.ENABLE_AMALGAMATION:
@@ -27,8 +32,6 @@ def build(bld):
             excl='mojo-core.cpp')
         if bld.env.TARGET_PLATFORM == 'windows':
             source += windows_sources
-
-    uselib = ['GLIB-2.0', 'GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
 
     if bld.env.ENABLE_SHARED:
         bld.shlib(includes='.',

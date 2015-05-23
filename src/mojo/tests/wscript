@@ -30,6 +30,7 @@ test_midi_driver_modules
 
 windows_tests = '''
 test_windows_mmcss
+test_windows_time_utils
 '''.split()
 
 all_test_sources = []

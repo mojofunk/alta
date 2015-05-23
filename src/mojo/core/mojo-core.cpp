@@ -38,4 +38,5 @@
 #ifdef MOJO_WINDOWS
 #include "native/windows_source_includes.hpp"
 #include "native/windows_mmcss.cpp"
+#include "native/windows_time_utils.cpp"
 #endif
