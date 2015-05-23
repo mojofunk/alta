@@ -161,7 +161,7 @@ def build(bld):
 
     local_tests = tests
 
-    if bld.env['target_platform'] == 'windows':
+    if bld.env.TARGET_PLATFORM == 'windows':
         local_tests += windows_tests
 
     for test in local_tests:

@@ -25,7 +25,7 @@ def build(bld):
         source = bld.path.ant_glob(
             '**/*.cpp',
             excl='mojo-core.cpp')
-        if bld.env['target_platform'] == 'windows':
+        if bld.env.TARGET_PLATFORM == 'windows':
             source += windows_sources
 
     uselib = ['GLIB-2.0', 'GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']

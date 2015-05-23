@@ -28,6 +28,7 @@ def options(opt):
         '--with-target-platform',
         type='string',
         dest='target_platform',
+        default='auto',
         help='Target platform options: auto, windows')
     opt.add_option(
         '--with-tests',
@@ -101,8 +102,7 @@ def configure(conf):
     conf.load('compiler_c')
     conf.load('gnu_dirs')
 
-    if conf.options.target_platform:
-        conf.env['target_platform'] = conf.options.target_platform
+    conf.env.TARGET_PLATFORM = conf.options.target_platform
 
     set_compiler_flags(conf)
 
