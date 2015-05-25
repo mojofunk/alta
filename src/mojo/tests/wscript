@@ -26,6 +26,7 @@ test_audiofile_modules
 test_audio_driver_modules
 test_audio_effect_modules
 test_midi_driver_modules
+test_cycle_timer
 '''.split()
 
 windows_tests = '''
