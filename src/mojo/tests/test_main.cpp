@@ -8,7 +8,7 @@
 
 #ifdef MOJO_TEST_AMALGAMATED
 
-#include "mojo/config/common_header_includes.hpp"
+#include "mojo/core/config/common_header_includes.hpp"
 
 // common test sources
 #include "example_application.cpp"
