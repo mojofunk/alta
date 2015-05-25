@@ -13,8 +13,8 @@ typedef HANDLE(WINAPI* AvSetMmThreadCharacteristicsA_t)(LPCSTR TaskName,
 
 typedef WINBOOL(WINAPI* AvRevertMmThreadCharacteristics_t)(HANDLE AvrtHandle);
 
-typedef WINBOOL(WINAPI* AvSetMmThreadPriority_t)(HANDLE AvrtHandle,
-                                                 mmcss::AVRT_PRIORITY Priority);
+typedef WINBOOL(WINAPI* AvSetMmThreadPriority_t)(
+    HANDLE AvrtHandle, mojo::mmcss::AVRT_PRIORITY Priority);
 
 static HMODULE avrt_dll = NULL;
 
