@@ -1,10 +1,10 @@
 #!/bin/sh
 
-# --log_level=test_suite, all, message, warning, nothing
+# --log_level=test_suite, all, message, warning, nothing, error
 
 . ./env.sh
 
-LOG_LEVEL='error' # error is the default
+LOG_LEVEL='all' # error is the default
 
 for file in `find $BUILD_DIR -name "mojo-tests" -type f -perm /u+x`;
 do
