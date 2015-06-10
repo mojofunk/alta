@@ -60,8 +60,7 @@ class Node;
  *
  * To make the Engine versatile and ignorant of Node implementations I think
  * Nodes must be added and removed from the Engine. This would mean Node is just
- *an
- * interface that a class would implement.
+ * an interface that a class would implement.
  *
  * The Engine would still have to manage connections between the Nodes and be
  * responsible for syncronizing thread access to buffers during the process
