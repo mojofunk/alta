@@ -6,6 +6,7 @@ tests = '''
 test_application
 test_core_initialize
 test_debug
+test_engine
 test_resource
 test_sequence
 test_spinwait

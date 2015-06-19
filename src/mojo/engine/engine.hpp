@@ -1,11 +1,13 @@
 #ifndef MOJO_ENGINE_H
 #define MOJO_ENGINE_H
 
-#include "mojo/audio_driver/forward.hpp"
+#ifndef MOJO_ENGINE_AMALGAMATED
+#include "mojo/core/config/common_header_includes.hpp"
+#include "mojo/engine/node.hpp"
+#include "mojo/engine/clock_source.hpp"
+#endif
 
 namespace mojo {
-
-class Node;
 
 /**
  * Engine recieves events from the Application and processes them, for instance
@@ -36,8 +38,6 @@ class Node;
  *
  * The Application registers an event handler callback to recieve all the events
  * issued by the engine and then processes them.
- *
- * The AudioDevice interface hides the implementation of the audio driver
  *
  * The Engine needs to return a reference to a structure that represents an
  * internal representation of a track
@@ -87,12 +87,11 @@ public: // Interface
 	void remove_node(Node* node);
 
 	/**
-	 * This must stop the Engine, change devices
-	 * and restart?
+	 * This must stop the Engine and restart?
 	 */
-	void set_audio_device(AudioDevice* dev);
+	void set_clock_source(ClockSource* clock);
 
-	AudioDevice* get_audio_device() const;
+	ClockSource* get_audio_device() const;
 };
 
 } // namespace mojo
