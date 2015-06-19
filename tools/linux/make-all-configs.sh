@@ -15,6 +15,8 @@
 ./clean.sh
 ./configure-debug-single-tests-static.sh && ./build.sh -j2 || exit 1
 ./clean.sh
+./configure-debug-single-tests-amalgamated.sh && ./build.sh -j2 || exit 1
+./clean.sh
 #./configure-debug-gtkmm-ui.sh && ./build.sh -j2 || exit 1
 #./clean.sh
 #./configure-debug-gtkmm-ui-static.sh && ./build.sh -j2 || exit 1
