@@ -1,7 +1,7 @@
 #ifndef MOJO_OBJECT_H
 #define MOJO_OBJECT_H
 
-#ifndef MOJO_APPLICATION_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 #include "mojo/core/config/common_header_includes.hpp"
 #include "mojo/core/object/change_set.hpp"
 #include "mojo/core/object/properties.hpp"

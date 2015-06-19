@@ -1,7 +1,7 @@
 #ifndef MOJO_TRANSPORT_H
 #define MOJO_TRANSPORT_H
 
-#ifndef MOJO_APPLICATION_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 #include "mojo/core/audio/types.hpp"
 #endif
 

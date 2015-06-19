@@ -1,5 +1,5 @@
 
-#ifndef MOJO_APPLICATION_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 #include "state_tracker.hpp"
 #endif
 

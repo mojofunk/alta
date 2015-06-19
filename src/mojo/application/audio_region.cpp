@@ -1,5 +1,5 @@
 
-#ifndef MOJO_APPLICATION_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 #include "audio_clip.hpp"
 #include "audio_region.hpp"
 #endif

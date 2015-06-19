@@ -1,5 +1,5 @@
 
-#ifndef MOJO_APPLICATION_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 #include "audio_track.hpp"
 #include "audio_sequence.hpp"
 #endif

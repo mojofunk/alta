@@ -3,7 +3,7 @@
 
 #include <string>
 
-#ifndef MOJO_APPLICATION_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 #include "mojo/core/object/object.hpp"
 #include "typedefs.hpp"
 #endif

@@ -6,7 +6,7 @@
 #include <boost/test/unit_test_log.hpp>
 #include <boost/test/framework.hpp>
 
-#ifdef MOJO_TEST_AMALGAMATED
+#ifdef MOJO_AMALGAMATED
 
 #include "mojo/core/config/common_header_includes.hpp"
 

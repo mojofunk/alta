@@ -3,7 +3,7 @@
 
 #include <thread>
 
-#ifndef MOJO_APPLICATION_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 #include "mojo/core/init/initialize.hpp"
 #include "mojo/core/misc/functor_dispatcher.hpp"
 

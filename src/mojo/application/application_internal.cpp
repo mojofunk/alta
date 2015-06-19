@@ -1,4 +1,4 @@
-#ifndef MOJO_APPLICATION_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 
 #include "mojo/core/debug/debug.hpp"
 #include "mojo/core/misc/null_deleter.hpp"

@@ -1,7 +1,7 @@
 #ifndef MOJO_CORE_SYSTEM_UTILS_H
 #define MOJO_CORE_SYSTEM_UTILS_H
 
-#ifndef MOJO_CORE_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 #include <string>
 #endif
 

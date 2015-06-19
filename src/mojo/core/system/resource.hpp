@@ -1,7 +1,7 @@
 #ifndef MOJO_RESOURCE_H
 #define MOJO_RESOURCE_H
 
-#ifndef MOJO_CORE_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 #include <cstdint>
 #endif
 

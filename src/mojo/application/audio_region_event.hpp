@@ -1,7 +1,7 @@
 #ifndef MOJO_AUDIO_REGION_EVENT_H
 #define MOJO_AUDIO_REGION_EVENT_H
 
-#ifndef MOJO_APPLICATION_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 #include "typedefs.hpp"
 #include "audio_event.hpp"
 #endif

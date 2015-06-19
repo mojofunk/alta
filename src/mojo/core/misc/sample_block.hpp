@@ -1,7 +1,7 @@
 #ifndef MOJO_SAMPLE_BLOCK_H
 #define MOJO_SAMPLE_BLOCK_H
 
-#ifndef MOJO_CORE_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 #include "mojo/core/config/common_header_includes.hpp"
 #endif
 

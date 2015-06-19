@@ -1,5 +1,5 @@
 
-#ifndef MOJO_APPLICATION_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 #include "directory_names.hpp"
 #include "project_directory.hpp"
 #endif

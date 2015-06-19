@@ -6,7 +6,7 @@
  * in mojo-core.
  *
  * The only other headers included by source files should be internal
- * headers and then only when MOJO_CORE_AMALGAMATED is not defined.
+ * headers and then only when MOJO_AMALGAMATED is not defined.
  */
 
 #include "mojo/core/config/common_header_includes.hpp"

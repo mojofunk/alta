@@ -1,7 +1,7 @@
 #ifndef MOJO_AUDIO_FILE_FORMAT_H
 #define MOJO_AUDIO_FILE_FORMAT_H
 
-#ifndef MOJO_CORE_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 #include "mojo/core/config/common_header_includes.hpp"
 #endif
 

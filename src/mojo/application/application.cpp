@@ -1,4 +1,4 @@
-#ifndef MOJO_APPLICATION_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 #include "application.hpp"
 
 #include "mojo/core/debug/debug.hpp"
@@ -26,7 +26,7 @@
 #include "mojo/application/audio_sequence.hpp"
 #include "mojo/application/audio_event.hpp"
 #include "mojo/application/application_data.hpp"
-#endif // MOJO_APPLICATION_AMALGAMATED
+#endif // MOJO_AMALGAMATED
 
 MOJO_DEBUG_DOMAIN(APPLICATION);
 

@@ -20,7 +20,7 @@ def build(bld):
     defines = ['PROGRAM_DIR_NAME="' + bld.env.PROGRAM_DIR_NAME + '"']
     if bld.env.ENABLE_AMALGAMATION:
         source = 'mojo-core.cpp'
-        defines += ['MOJO_CORE_AMALGAMATED']
+        defines += ['MOJO_AMALGAMATED']
     else:
         source = bld.path.ant_glob(
             '**/*.cpp',

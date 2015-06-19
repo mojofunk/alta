@@ -1,7 +1,7 @@
 #ifndef MOJO_SEARCH_PATH_H
 #define MOJO_SEARCH_PATH_H
 
-#ifndef MOJO_CORE_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 #include "mojo/core/config/common_header_includes.hpp"
 
 #include "mojo/core/filesystem/filesystem.hpp"

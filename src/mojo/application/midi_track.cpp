@@ -1,5 +1,5 @@
 
-#ifndef MOJO_APPLICATION_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 #include "midi_track.hpp"
 #endif
 

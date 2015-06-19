@@ -1,7 +1,7 @@
 #ifndef MOJO_API_WORKER_H
 #define MOJO_API_WORKER_H
 
-#ifndef MOJO_CORE_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 #include "mojo/core/config/common_header_includes.hpp"
 #include "mojo/core/misc/semaphore.hpp"
 #endif

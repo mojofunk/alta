@@ -1,7 +1,7 @@
 #ifndef MOJO_ARCHIVE_MODULE_H
 #define MOJO_ARCHIVE_MODULE_H
 
-#ifndef MOJO_CORE_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 #include "mojo/core/config/common_header_includes.hpp"
 #include "mojo/core/modules/module.hpp"
 #include "mojo/archive/typedefs.hpp"

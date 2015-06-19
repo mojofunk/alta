@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#ifndef MOJO_APPLICATION_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 #include "mojo/core/filesystem/filesystem.hpp"
 #endif
 

@@ -4,7 +4,7 @@
 #include <string>
 #include <memory>
 
-#ifndef MOJO_APPLICATION_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 
 #include "mojo/core/object/signals.hpp"
 #include "mojo/core/modules/typedefs.hpp"

@@ -19,7 +19,7 @@ def build(bld):
 
     if bld.env.ENABLE_AMALGAMATION:
         source = 'mojo-engine.cpp'
-        defines = 'MOJO_ENGINE_AMALGAMATED'
+        defines = 'MOJO_AMALGAMATED'
     else:
         source = bld.path.ant_glob(
             '**/*.cpp',

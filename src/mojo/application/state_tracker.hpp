@@ -1,7 +1,7 @@
 #ifndef MOJO_STATE_TRACKER_H
 #define MOJO_STATE_TRACKER_H
 
-#ifndef MOJO_APPLICATION_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 #include "mojo/core/object/object.hpp"
 #endif
 

@@ -1,4 +1,4 @@
-#ifndef MOJO_CORE_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 #include "mojo/core/config/common_header_includes.hpp"
 #include "mojo/core/time/time.hpp"
 #endif

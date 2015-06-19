@@ -1,9 +1,9 @@
-#ifndef MOJO_CORE_AMALGAMATED
+#ifndef MOJO_AMALGAMATED
 #include "mojo/core/config/common_source_includes.hpp"
 
 #include "mojo/core/filesystem/file_utils.hpp"
 
-#endif // MOJO_CORE_AMALGAMATED
+#endif // MOJO_AMALGAMATED
 
 namespace mojo {
 
