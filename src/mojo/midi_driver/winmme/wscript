@@ -1,0 +1,53 @@
+#! /usr/bin/env python
+# encoding: utf-8
+# Tim Mayberry, 2008
+
+
+def init():
+    pass
+
+
+def configure(conf):
+    print ("configure mojo-midi-driver-winmme")
+    conf.env.HAVE_WINMM = conf.check_cc(
+        fragment='''
+        #include <windows.h>
+        #include <mmsystem.h>
+        int main(void) { return 0; }''',
+        lib='winmm',
+        uselib_store='WINMM',
+        mandatory=0)
+
+
+def build(bld):
+    if not bld.env.HAVE_WINMM:
+        return
+    source = bld.path.ant_glob('*.cpp')
+    uselib = [
+        'GMODULE-2.0',
+        'BOOST_FILESYSTEM',
+        'BOOST_SYSTEM',
+        'WINMM']
+    target = 'mojo-midi-driver-winmme'
+
+    if bld.env.ENABLE_SHARED:
+        use_shared = [
+            'MOJO_MIDI_DRIVER_SHARED',
+            'MOJO_CORE_SHARED']
+        bld.shlib(includes='.',
+                  source=source,
+                  uselib=uselib,
+                  use=use_shared,
+                  target=target,
+                  name='MOJO_MIDI_DRIVER_WINMME_SHARED')
+
+    if bld.env.ENABLE_STATIC:
+        use_static = [
+            'MOJO_MIDI_DRIVER_STATIC',
+            'MOJO_CORE_STATIC']
+        bld.stlib(includes='.',
+                  source=source,
+                  uselib=uselib,
+                  use=use_static,
+                  target=target,
+                  name='MOJO_MIDI_DRIVER_WINMME_STATIC')

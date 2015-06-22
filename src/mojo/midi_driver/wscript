@@ -4,6 +4,7 @@
 
 subdirs = '''
 portmidi
+winmme
 '''
 
 
