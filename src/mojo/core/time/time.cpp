@@ -17,4 +17,9 @@ void usleep(uint64_t microseconds)
 	g_usleep(microseconds);
 }
 
+void sleep(uint32_t seconds)
+{
+	g_usleep(seconds * 1000000);
+}
+
 } // namespace mojo
