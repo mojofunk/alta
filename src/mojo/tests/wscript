@@ -8,6 +8,7 @@ test_core_initialize
 test_debug
 test_engine
 test_resource
+test_ring_buffer
 test_sequence
 test_spinwait
 test_state_tracker
