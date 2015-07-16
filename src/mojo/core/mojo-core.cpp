@@ -6,6 +6,8 @@
 
 #include "audio/utils.cpp"
 
+#include "midi/midi_util.cpp"
+
 #include "debug/debug.cpp"
 
 #include "filesystem/search_path.cpp"

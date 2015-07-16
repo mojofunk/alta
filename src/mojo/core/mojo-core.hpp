@@ -9,6 +9,8 @@
 #include "audio/types.hpp"
 #include "audio/utils.hpp"
 
+#include "midi/midi_util.hpp"
+
 #include "init/initialize.hpp"
 
 #include "object/signals.hpp"
