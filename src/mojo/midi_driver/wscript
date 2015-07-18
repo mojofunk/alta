@@ -19,9 +19,16 @@ def configure(conf):
 
 def build(bld):
 
+    if bld.env.ENABLE_AMALGAMATION:
+        source = 'mojo-midi-driver.cpp'
+        defines = 'MOJO_AMALGAMATED'
+    else:
+        source = bld.path.ant_glob('*.cpp',
+                    excl='mojo-midi-driver.cpp')
+        defines = ''
+
     uselib = ['GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
     target = 'mojo-midi-driver'
-    source = bld.path.ant_glob('*.cpp')
 
     if bld.env.ENABLE_SHARED:
         bld.shlib(includes='.',
@@ -29,6 +36,7 @@ def build(bld):
                   source=source,
                   uselib=uselib,
                   use=['MOJO_CORE_SHARED'],
+                  defines=defines,
                   target=target,
                   name='MOJO_MIDI_DRIVER_SHARED')
 
@@ -38,6 +46,7 @@ def build(bld):
                   source=source,
                   uselib=uselib,
                   use=['MOJO_CORE_STATIC'],
+                  defines=defines,
                   target=target,
                   name='MOJO_MIDI_DRIVER_STATIC')
 

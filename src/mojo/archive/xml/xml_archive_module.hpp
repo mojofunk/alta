@@ -1,8 +1,7 @@
+#ifndef MOJO_XML_ARCHIVE_MODULE_H
+#define MOJO_XML_ARCHIVE_MODULE_H
 
-#ifndef MOJO_XML_ARCHIVE_MODULE
-#define MOJO_XML_ARCHIVE_MODULE
-
-#include "mojo-archive.hpp"
+#include "mojo-xml-archive.hpp"
 
 namespace mojo {
 
@@ -27,4 +26,4 @@ public: // ArchiveModule Interface
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_XML_ARCHIVE_MODULE_H

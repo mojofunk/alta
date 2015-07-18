@@ -1,8 +1,10 @@
+#ifndef MOJO_DUMMY_ARCHIVE_H
+#define MOJO_DUMMY_ARCHIVE_H
 
-#ifndef MOJO_DUMMY_ARCHIVE
-#define MOJO_DUMMY_ARCHIVE
-
-#include "mojo-archive.hpp"
+#ifndef MOJO_AMALGAMATED
+#include "mojo/archive/archive.hpp"
+#include "mojo/core/object/object_collection.hpp"
+#endif
 
 namespace mojo {
 
@@ -20,4 +22,4 @@ private:
 
 } // namespace mojo
 
-#endif
+#endif // MOJO_DUMMY_ARCHIVE_H

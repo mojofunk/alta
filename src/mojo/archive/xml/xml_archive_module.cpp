@@ -1,8 +1,4 @@
-
-#include "xml_archive.hpp"
-#include "xml_archive_module.hpp"
-
-#include "mojo-archive.hpp"
+#include "mojo-xml-archive.hpp"
 
 namespace mojo {
 

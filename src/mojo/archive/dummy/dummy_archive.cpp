@@ -1,8 +1,14 @@
+#ifndef MOJO_AMALGAMATED
+#include "dummy_archive.hpp"
 
 #include <iostream>
 #include <fstream>
 
-#include "dummy_archive.hpp"
+#include <mojo/core/object/object.hpp>
+#include <mojo/core/typesystem/type_system.hpp>
+#include <mojo/core/string/convert.hpp>
+
+#endif
 
 namespace mojo {
 

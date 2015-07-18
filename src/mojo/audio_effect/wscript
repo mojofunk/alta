@@ -17,27 +17,34 @@ def configure(conf):
 
 def build(bld):
 
+    if bld.env.ENABLE_AMALGAMATION:
+        source = 'mojo-audio-effect.cpp'
+        defines = 'MOJO_AMALGAMATED'
+    else:
+        source = bld.path.ant_glob('*.cpp',
+                    excl='mojo-audio-effect.cpp')
+        defines = ''
+
+    uselib = ['GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
+    target = 'mojo-audio-effect'
+
     if bld.env['ENABLE_SHARED']:
         bld.shlib(includes='.',
                   export_includes='.',
-                  source=bld.path.ant_glob('*.cpp'),
-                  uselib=[
-                      'GMODULE-2.0',
-                      'BOOST_FILESYSTEM',
-                      'BOOST_SYSTEM'],
+                  source=source,
+                  uselib=uselib,
                   use=['MOJO_CORE_SHARED'],
+                  defines=defines,
                   target='mojo-audio-effect',
                   name='MOJO_AUDIO_EFFECT_SHARED')
 
     if bld.env['ENABLE_STATIC']:
         bld.stlib(includes='.',
                   export_includes='.',
-                  source=bld.path.ant_glob('*.cpp'),
-                  uselib=[
-                      'GMODULE-2.0',
-                      'BOOST_FILESYSTEM',
-                      'BOOST_SYSTEM'],
+                  source=source,
+                  uselib=uselib,
                   use=['MOJO_CORE_STATIC'],
+                  defines=defines,
                   target='mojo-audio-effect',
                   name='MOJO_AUDIO_EFFECT_STATIC')
 
