@@ -1,7 +1,9 @@
 #ifndef MOJO_XML_ARCHIVE_MODULE_H
 #define MOJO_XML_ARCHIVE_MODULE_H
 
-#include "mojo-xml-archive.hpp"
+#ifndef MOJO_AMALGAMATED
+#include "mojo/archive/archive_module.hpp"
+#endif
 
 namespace mojo {
 

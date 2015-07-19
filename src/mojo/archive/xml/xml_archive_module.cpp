@@ -1,4 +1,8 @@
-#include "mojo-xml-archive.hpp"
+#ifndef MOJO_AMALGAMATED
+#include "xml_archive_module.hpp"
+
+#include "xml_archive.hpp"
+#endif
 
 namespace mojo {
 
