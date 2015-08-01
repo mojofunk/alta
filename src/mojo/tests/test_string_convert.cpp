@@ -117,3 +117,135 @@ BOOST_AUTO_TEST_CASE(bool_conversion)
 	BOOST_CHECK(mojo::string_to(str, val));
 	BOOST_CHECK_EQUAL(val, false);
 }
+
+static const double s_test_double = 31459.265359;
+static const int s_iter_count = 100000;
+
+namespace {
+
+bool check_au_stream()
+{
+// There is no point testing another thread on windows with gcc/mingw-w64 as
+// check_c_stream seems to not be MT safe
+#ifndef MOJO_WINDOWS
+	std::ostringstream os;
+
+	BOOST_REQUIRE_NO_THROW(os.imbue(std::locale("en_AU")));
+	os << s_test_double;
+	bool found_decimal_point = os.str().find('.') != std::string::npos;
+	bool found_thousands_comma = os.str().find(',') != std::string::npos;
+	return found_decimal_point && found_thousands_comma;
+#else
+	return true;
+#endif
+}
+
+bool check_c_stream()
+{
+	std::ostringstream os;
+#ifdef MOJO_WINDOWS
+	//std::locale::classic() does not not work with c++03 with gcc/mingw-w64
+	//BOOST_REQUIRE_NO_THROW(os.imbue(std::locale("C")));
+	BOOST_REQUIRE_NO_THROW(os.imbue(std::locale::classic()));
+#else
+	BOOST_REQUIRE_NO_THROW(os.imbue(std::locale::classic()));
+#endif
+	os << s_test_double;
+	return os.str().find('.') != std::string::npos;
+}
+
+bool check_fr_printf()
+{
+	char buf[32];
+	snprintf(buf, sizeof(buf), "%.12g", s_test_double);
+	bool found = (strchr(buf, ',') != NULL);
+	return found;
+}
+
+void* check_au_stream_thread(void*)
+{
+	for (int n = 0; n < s_iter_count; n++) {
+		BOOST_CHECK(check_au_stream());
+	}
+
+	return NULL;
+}
+
+void* check_c_stream_thread(void*)
+{
+	for (int n = 0; n < s_iter_count; n++) {
+		BOOST_CHECK(check_c_stream());
+	}
+
+	return NULL;
+}
+
+void* check_fr_printf_thread(void*)
+{
+	for (int n = 0; n < s_iter_count; n++) {
+		BOOST_CHECK(check_fr_printf());
+	}
+
+	return NULL;
+}
+
+} // anon namespace
+
+// This test is to check that calling std::ios::imbue using a non-global locale
+// is thread safe. Apparently it is not on some older gcc versions used by
+// apple and the test doesn't pass with gcc/mingw-w64 as the test aborts,
+// usually with : exception thrown by os.imbue(std::locale::classic())
+// TODO: Use std::thread instead of pthreads
+BOOST_AUTO_TEST_CASE(imbue_thread_safety)
+{
+
+#ifdef MOJO_WINDOWS
+	const std::string fr_locale("French_France.1252");
+#else
+	const std::string fr_locale("fr_FR");
+#endif
+
+	const char* previous_locale = setlocale(LC_ALL, NULL);
+
+	std::cerr << std::endl;
+	std::cerr << "Previous locale was: " << previous_locale << std::endl;
+
+	BOOST_CHECK(previous_locale != NULL);
+
+	const char* fr_FR_locale = setlocale(LC_ALL, fr_locale.c_str());
+
+	BOOST_CHECK(fr_FR_locale != NULL);
+
+	BOOST_CHECK(fr_locale == fr_FR_locale);
+
+	std::cerr << "Current C locale is: " << fr_locale << std::endl;
+
+	std::cerr << "Checking conversions" << std::endl;
+
+	BOOST_CHECK(check_c_stream());
+	BOOST_CHECK(check_au_stream());
+	BOOST_CHECK(check_fr_printf());
+
+	pthread_t c_stream_thread;
+	pthread_t au_stream_thread;
+	pthread_t fr_printf_thread;
+
+	std::cerr << "Starting conversion threads" << std::endl;
+
+	BOOST_CHECK(
+	    pthread_create(&c_stream_thread, NULL, check_c_stream_thread, NULL) == 0);
+	BOOST_CHECK(pthread_create(
+	                &au_stream_thread, NULL, check_au_stream_thread, NULL) == 0);
+	BOOST_CHECK(pthread_create(
+	                &fr_printf_thread, NULL, check_fr_printf_thread, NULL) == 0);
+
+	void* return_value;
+
+	std::cerr << "Joining conversion threads" << std::endl;
+
+	BOOST_CHECK(pthread_join(c_stream_thread, &return_value) == 0);
+	BOOST_CHECK(pthread_join(au_stream_thread, &return_value) == 0);
+	BOOST_CHECK(pthread_join(fr_printf_thread, &return_value) == 0);
+
+	BOOST_CHECK(setlocale(LC_ALL, previous_locale) != NULL);
+}
