@@ -51,8 +51,13 @@ BOOST_AUTO_TEST_CASE(int64_conversion)
 	BOOST_CHECK_EQUAL(numeric_limits<int64_t>::min(), val);
 }
 
+#ifdef MOJO_WINDOWS
+#define MAX_FLOAT "3.40282347e+038"
+#define MIN_FLOAT "1.17549435e-038"
+#else
 #define MAX_FLOAT "3.40282347e+38"
 #define MIN_FLOAT "1.17549435e-38"
+#endif
 
 BOOST_AUTO_TEST_CASE(float_conversion)
 {
