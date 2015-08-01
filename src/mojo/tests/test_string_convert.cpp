@@ -189,6 +189,46 @@ void* check_fr_printf_thread(void*)
 	return NULL;
 }
 
+// RAII class that sets the global C locale to fr_FR and then resets it
+class FrenchLocaleGuard
+{
+public:
+
+	FrenchLocaleGuard ()
+	{
+#ifdef MOJO_WINDOWS
+		const std::string fr_locale("French_France.1252");
+#else
+		const std::string fr_locale("fr_FR");
+#endif
+
+		m_previous_locale = setlocale(LC_ALL, NULL);
+
+		std::cerr << std::endl;
+		std::cerr << "Previous locale was: " << m_previous_locale << std::endl;
+
+		BOOST_CHECK(m_previous_locale != NULL);
+
+		const char* fr_FR_locale = setlocale(LC_ALL, fr_locale.c_str());
+
+		BOOST_CHECK(fr_FR_locale != NULL);
+
+		BOOST_CHECK(fr_locale == fr_FR_locale);
+
+		std::cerr << "Current C locale is: " << fr_locale << std::endl;
+	}
+
+	~FrenchLocaleGuard()
+	{
+		BOOST_CHECK(setlocale(LC_ALL, m_previous_locale) != NULL);
+	}
+
+private:
+
+	const char* m_previous_locale;
+
+};
+
 } // anon namespace
 
 // This test is to check that calling std::ios::imbue using a non-global locale
@@ -198,27 +238,7 @@ void* check_fr_printf_thread(void*)
 // TODO: Use std::thread instead of pthreads
 BOOST_AUTO_TEST_CASE(imbue_thread_safety)
 {
-
-#ifdef MOJO_WINDOWS
-	const std::string fr_locale("French_France.1252");
-#else
-	const std::string fr_locale("fr_FR");
-#endif
-
-	const char* previous_locale = setlocale(LC_ALL, NULL);
-
-	std::cerr << std::endl;
-	std::cerr << "Previous locale was: " << previous_locale << std::endl;
-
-	BOOST_CHECK(previous_locale != NULL);
-
-	const char* fr_FR_locale = setlocale(LC_ALL, fr_locale.c_str());
-
-	BOOST_CHECK(fr_FR_locale != NULL);
-
-	BOOST_CHECK(fr_locale == fr_FR_locale);
-
-	std::cerr << "Current C locale is: " << fr_locale << std::endl;
+	FrenchLocaleGuard guard;
 
 	std::cerr << "Checking conversions" << std::endl;
 
@@ -246,6 +266,4 @@ BOOST_AUTO_TEST_CASE(imbue_thread_safety)
 	BOOST_CHECK(pthread_join(c_stream_thread, &return_value) == 0);
 	BOOST_CHECK(pthread_join(au_stream_thread, &return_value) == 0);
 	BOOST_CHECK(pthread_join(fr_printf_thread, &return_value) == 0);
-
-	BOOST_CHECK(setlocale(LC_ALL, previous_locale) != NULL);
 }
