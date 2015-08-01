@@ -2,6 +2,8 @@
 #define BOOST_TEST_MODULE mojo_string_convert
 #endif
 
+#include <thread>
+
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
 #include <boost/test/floating_point_comparison.hpp>
@@ -162,31 +164,25 @@ bool check_fr_printf()
 	return found;
 }
 
-void* check_au_stream_thread(void*)
+void check_au_stream_thread()
 {
 	for (int n = 0; n < s_iter_count; n++) {
 		BOOST_CHECK(check_au_stream());
 	}
-
-	return NULL;
 }
 
-void* check_c_stream_thread(void*)
+void check_c_stream_thread()
 {
 	for (int n = 0; n < s_iter_count; n++) {
 		BOOST_CHECK(check_c_stream());
 	}
-
-	return NULL;
 }
 
-void* check_fr_printf_thread(void*)
+void check_fr_printf_thread()
 {
 	for (int n = 0; n < s_iter_count; n++) {
 		BOOST_CHECK(check_fr_printf());
 	}
-
-	return NULL;
 }
 
 // RAII class that sets the global C locale to fr_FR and then resets it
@@ -235,7 +231,6 @@ private:
 // is thread safe. Apparently it is not on some older gcc versions used by
 // apple and the test doesn't pass with gcc/mingw-w64 as the test aborts,
 // usually with : exception thrown by os.imbue(std::locale::classic())
-// TODO: Use std::thread instead of pthreads
 BOOST_AUTO_TEST_CASE(imbue_thread_safety)
 {
 	FrenchLocaleGuard guard;
@@ -246,24 +241,15 @@ BOOST_AUTO_TEST_CASE(imbue_thread_safety)
 	BOOST_CHECK(check_au_stream());
 	BOOST_CHECK(check_fr_printf());
 
-	pthread_t c_stream_thread;
-	pthread_t au_stream_thread;
-	pthread_t fr_printf_thread;
-
 	std::cerr << "Starting conversion threads" << std::endl;
 
-	BOOST_CHECK(
-	    pthread_create(&c_stream_thread, NULL, check_c_stream_thread, NULL) == 0);
-	BOOST_CHECK(pthread_create(
-	                &au_stream_thread, NULL, check_au_stream_thread, NULL) == 0);
-	BOOST_CHECK(pthread_create(
-	                &fr_printf_thread, NULL, check_fr_printf_thread, NULL) == 0);
-
-	void* return_value;
+	std::thread c_stream_thread(check_c_stream_thread);
+	std::thread au_stream_thread(check_au_stream_thread);
+	std::thread fr_printf_thread(check_fr_printf_thread);
 
 	std::cerr << "Joining conversion threads" << std::endl;
 
-	BOOST_CHECK(pthread_join(c_stream_thread, &return_value) == 0);
-	BOOST_CHECK(pthread_join(au_stream_thread, &return_value) == 0);
-	BOOST_CHECK(pthread_join(fr_printf_thread, &return_value) == 0);
+	c_stream_thread.join();
+	au_stream_thread.join();
+	fr_printf_thread.join();
 }
