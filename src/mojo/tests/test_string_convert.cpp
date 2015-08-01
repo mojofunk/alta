@@ -253,3 +253,44 @@ BOOST_AUTO_TEST_CASE(imbue_thread_safety)
 	au_stream_thread.join();
 	fr_printf_thread.join();
 }
+
+namespace {
+
+void check_string_to_thread()
+{
+	for (int n = 0; n < s_iter_count; n++) {
+		string str;
+
+		BOOST_CHECK(mojo::to_string(numeric_limits<double>::max(), str));
+
+		double val = 0.0f;
+		BOOST_CHECK(mojo::string_to(str, val));
+		BOOST_CHECK_CLOSE(
+		    numeric_limits<double>::max(), val, numeric_limits<double>::epsilon());
+
+		BOOST_CHECK(mojo::to_string(numeric_limits<double>::min(), str));
+
+		BOOST_CHECK(mojo::string_to(str, val));
+		BOOST_CHECK_CLOSE(
+		    numeric_limits<double>::min(), val, numeric_limits<double>::epsilon());
+	}
+}
+
+} // anon namespace
+
+BOOST_AUTO_TEST_CASE(string_to_thread_safety)
+{
+	FrenchLocaleGuard guard;
+
+	BOOST_CHECK(check_fr_printf());
+
+	std::cerr << "Starting conversion threads" << std::endl;
+
+	std::thread string_to_thread(check_string_to_thread);
+	std::thread fr_printf_thread(check_fr_printf_thread);
+
+	std::cerr << "Joining conversion threads" << std::endl;
+
+	string_to_thread.join();
+	fr_printf_thread.join();
+}
