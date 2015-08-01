@@ -231,6 +231,7 @@ private:
 // is thread safe. Apparently it is not on some older gcc versions used by
 // apple and the test doesn't pass with gcc/mingw-w64 as the test aborts,
 // usually with : exception thrown by os.imbue(std::locale::classic())
+#ifndef MOJO_WINDOWS
 BOOST_AUTO_TEST_CASE(imbue_thread_safety)
 {
 	FrenchLocaleGuard guard;
@@ -253,6 +254,7 @@ BOOST_AUTO_TEST_CASE(imbue_thread_safety)
 	au_stream_thread.join();
 	fr_printf_thread.join();
 }
+#endif
 
 namespace {
 
@@ -278,6 +280,7 @@ void check_string_to_thread()
 
 } // anon namespace
 
+#ifndef MOJO_WINDOWS
 BOOST_AUTO_TEST_CASE(string_to_thread_safety)
 {
 	FrenchLocaleGuard guard;
@@ -294,3 +297,4 @@ BOOST_AUTO_TEST_CASE(string_to_thread_safety)
 	string_to_thread.join();
 	fr_printf_thread.join();
 }
+#endif
