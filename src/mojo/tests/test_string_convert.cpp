@@ -183,7 +183,7 @@ void check_c_stream_thread()
 void check_fr_printf_thread()
 {
 	for (int n = 0; n < s_iter_count; n++) {
-		BOOST_CHECK(check_fr_printf());
+		assert(check_fr_printf());
 	}
 }
 
@@ -322,7 +322,10 @@ glib_string_to_double (const std::string& str, double& val)
 #define GLIB_MAX_DOUBLE_STR "1.7976931348623157e+308"
 #define GLIB_MIN_DOUBLE_STR "2.2250738585072014e-308"
 
-BOOST_AUTO_TEST_CASE(g_ascii_double_conversion)
+namespace {
+
+void
+check_glib_double_conversion()
 {
 	std::string str;
 
@@ -341,4 +344,41 @@ BOOST_AUTO_TEST_CASE(g_ascii_double_conversion)
 	BOOST_CHECK(glib_string_to_double(str, val));
 	BOOST_CHECK_CLOSE(
 	    numeric_limits<double>::min(), val, numeric_limits<double>::epsilon());
+}
+
+} // anon namespace
+
+BOOST_AUTO_TEST_CASE(g_ascii_double_conversion)
+{
+	FrenchLocaleGuard guard;
+
+	check_glib_double_conversion();
+}
+
+namespace {
+
+void check_glib_double_conversion_thread()
+{
+	for (int n = 0; n < s_iter_count; n++) {
+		check_glib_double_conversion();
+	}
+}
+
+} // anon namespace
+
+BOOST_AUTO_TEST_CASE(g_ascii_double_conversion_thread_safety)
+{
+	FrenchLocaleGuard guard;
+
+	BOOST_CHECK(check_fr_printf());
+
+	std::cerr << "Starting conversion threads" << std::endl;
+
+	std::thread glib_double_conversion_thread(check_glib_double_conversion_thread);
+	std::thread fr_printf_thread(check_fr_printf_thread);
+
+	std::cerr << "Joining conversion threads" << std::endl;
+
+	glib_double_conversion_thread.join();
+	fr_printf_thread.join();
 }
