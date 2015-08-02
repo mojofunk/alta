@@ -19,6 +19,8 @@
 #include "time/time.cpp"
 #include "time/timing.cpp"
 
+#include "string/convert.cpp"
+
 #include "misc/semaphore.cpp"
 #include "misc/worker.cpp"
 #include "misc/functor_dispatcher.cpp"

@@ -4,10 +4,7 @@
 
 #include <thread>
 
-#ifndef __STDC_FORMAT_MACROS
-#define __STDC_FORMAT_MACROS 1
-#endif
-#include <inttypes.h>
+#include <cinttypes>
 
 #include <glib.h>
 
@@ -20,111 +17,204 @@
 using namespace boost::unit_test;
 using namespace std;
 
-#define MAX_INT32_T "2147483647"
-#define MIN_INT32_T "-2147483648"
+#define MAX_INT32_STR "2147483647"
+#define MIN_INT32_STR "-2147483648"
 
 BOOST_AUTO_TEST_CASE(int32_conversion)
 {
 	string str;
-	BOOST_CHECK(mojo::to_string(numeric_limits<int32_t>::max(), str));
-	BOOST_CHECK_EQUAL(MAX_INT32_T, str);
+	BOOST_CHECK(mojo::int32_to_string(numeric_limits<int32_t>::max(), str));
+	BOOST_CHECK_EQUAL(MAX_INT32_STR, str);
 
 	int32_t val = 0;
-	BOOST_CHECK(mojo::string_to(str, val));
+	BOOST_CHECK(mojo::string_to_int32(str, val));
 	BOOST_CHECK_EQUAL(numeric_limits<int32_t>::max(), val);
 
-	BOOST_CHECK(mojo::to_string(numeric_limits<int32_t>::min(), str));
-	BOOST_CHECK_EQUAL(MIN_INT32_T, str);
+	BOOST_CHECK(mojo::int32_to_string(numeric_limits<int32_t>::min(), str));
+	BOOST_CHECK_EQUAL(MIN_INT32_STR, str);
 
-	BOOST_CHECK(mojo::string_to(str, val));
+	BOOST_CHECK(mojo::string_to_int32(str, val));
 	BOOST_CHECK_EQUAL(numeric_limits<int32_t>::min(), val);
+
+	// test the string_to/to_string templates
+	int32_t max = numeric_limits<int32_t>::max();
+	BOOST_CHECK_EQUAL(max, mojo::string_to<int32_t>(mojo::to_string(max)));
+
+	int32_t min = numeric_limits<int32_t>::min();
+	BOOST_CHECK_EQUAL(min, mojo::string_to<int32_t>(mojo::to_string(min)));
 }
 
-#define MAX_INT64_T "9223372036854775807"
-#define MIN_INT64_T "-9223372036854775808"
+#define MAX_UINT32_STR "4294967295"
+#define MIN_UINT32_STR "0"
+
+BOOST_AUTO_TEST_CASE(uint32_conversion)
+{
+	string str;
+	BOOST_CHECK(mojo::uint32_to_string(numeric_limits<uint32_t>::max(), str));
+	BOOST_CHECK_EQUAL(MAX_UINT32_STR, str);
+
+	uint32_t val = 0;
+	BOOST_CHECK(mojo::string_to_uint32(str, val));
+	BOOST_CHECK_EQUAL(numeric_limits<uint32_t>::max(), val);
+
+	BOOST_CHECK(mojo::uint32_to_string(numeric_limits<uint32_t>::min(), str));
+	BOOST_CHECK_EQUAL(MIN_UINT32_STR, str);
+
+	BOOST_CHECK(mojo::string_to_uint32(str, val));
+	BOOST_CHECK_EQUAL(numeric_limits<uint32_t>::min(), val);
+
+	// test the string_to/to_string templates
+	uint32_t max = numeric_limits<uint32_t>::max();
+	BOOST_CHECK_EQUAL(max, mojo::string_to<uint32_t>(mojo::to_string(max)));
+
+	uint32_t min = numeric_limits<uint32_t>::min();
+	BOOST_CHECK_EQUAL(min, mojo::string_to<uint32_t>(mojo::to_string(min)));
+}
+
+#define MAX_INT64_STR "9223372036854775807"
+#define MIN_INT64_STR "-9223372036854775808"
 
 BOOST_AUTO_TEST_CASE(int64_conversion)
 {
 	string str;
-	BOOST_CHECK(mojo::to_string(numeric_limits<int64_t>::max(), str));
-	BOOST_CHECK_EQUAL(MAX_INT64_T, str);
+	BOOST_CHECK(mojo::int64_to_string(numeric_limits<int64_t>::max(), str));
+	BOOST_CHECK_EQUAL(MAX_INT64_STR, str);
 
 	int64_t val = 0;
-	BOOST_CHECK(mojo::string_to(str, val));
+	BOOST_CHECK(mojo::string_to_int64(str, val));
 	BOOST_CHECK_EQUAL(numeric_limits<int64_t>::max(), val);
 
-	BOOST_CHECK(mojo::to_string(numeric_limits<int64_t>::min(), str));
-	BOOST_CHECK_EQUAL(MIN_INT64_T, str);
+	BOOST_CHECK(mojo::int64_to_string(numeric_limits<int64_t>::min(), str));
+	BOOST_CHECK_EQUAL(MIN_INT64_STR, str);
 
-	BOOST_CHECK(mojo::string_to(str, val));
+	BOOST_CHECK(mojo::string_to_int64(str, val));
 	BOOST_CHECK_EQUAL(numeric_limits<int64_t>::min(), val);
+
+	// test the string_to/to_string templates
+	int64_t max = numeric_limits<int64_t>::max();
+	BOOST_CHECK_EQUAL(max, mojo::string_to<int64_t>(mojo::to_string(max)));
+
+	int64_t min = numeric_limits<int64_t>::min();
+	BOOST_CHECK_EQUAL(min, mojo::string_to<int64_t>(mojo::to_string(min)));
 }
 
-#ifdef MOJO_WINDOWS
-#define MAX_FLOAT "3.40282347e+038"
-#define MIN_FLOAT "1.17549435e-038"
-#else
-#define MAX_FLOAT "3.40282347e+38"
-#define MIN_FLOAT "1.17549435e-38"
-#endif
+#define MAX_FLOAT_WIN "3.4028234663852886e+038"
+#define MIN_FLOAT_WIN "1.1754943508222875e-038"
+#define MAX_FLOAT_STR "3.4028234663852886e+38"
+#define MIN_FLOAT_STR "1.1754943508222875e-38"
 
 BOOST_AUTO_TEST_CASE(float_conversion)
 {
+	// check float to string and back again for min and max float values
 	string str;
-
-	BOOST_CHECK(mojo::to_string(numeric_limits<float>::max(), str));
-	BOOST_CHECK_EQUAL(MAX_FLOAT, str);
+	BOOST_CHECK(mojo::float_to_string(numeric_limits<float>::max(), str));
+#ifdef MOJO_WINDOWS
+	BOOST_CHECK_EQUAL(MAX_FLOAT_WIN, str);
+#else
+	BOOST_CHECK_EQUAL(MAX_FLOAT_STR, str);
+#endif
 
 	float val = 0.0f;
-	BOOST_CHECK(mojo::string_to(str, val));
+	BOOST_CHECK(mojo::string_to_float(str, val));
 	BOOST_CHECK_CLOSE(
 	    numeric_limits<float>::max(), val, numeric_limits<float>::epsilon());
 
-	BOOST_CHECK(mojo::to_string(numeric_limits<float>::min(), str));
-	BOOST_CHECK_EQUAL(MIN_FLOAT, str);
+	BOOST_CHECK(mojo::float_to_string(numeric_limits<float>::min(), str));
+#ifdef MOJO_WINDOWS
+	BOOST_CHECK_EQUAL(MIN_FLOAT_WIN, str);
+#else
+	BOOST_CHECK_EQUAL(MIN_FLOAT_STR, str);
+#endif
 
-	BOOST_CHECK(mojo::string_to(str, val));
+	BOOST_CHECK(mojo::string_to_float(str, val));
 	BOOST_CHECK_CLOSE(
 	    numeric_limits<float>::min(), val, numeric_limits<float>::epsilon());
+
+	// test the string_to/to_string templates
+	float max = numeric_limits<float>::max();
+	BOOST_CHECK_EQUAL(max, mojo::string_to<float>(mojo::to_string(max)));
+
+	float min = numeric_limits<float>::min();
+	BOOST_CHECK_EQUAL(min, mojo::string_to<float>(mojo::to_string(min)));
+
+	// check that parsing the windows float string representation with the
+	// difference in the exponent part parses correctly on other platforms
+	// and vice versa
+#ifdef MOJO_WINDOWS
+	BOOST_CHECK(mojo::string_to_float(MAX_FLOAT_STR, val));
+	BOOST_CHECK_CLOSE(
+	    numeric_limits<float>::max(), val, numeric_limits<float>::epsilon());
+
+	BOOST_CHECK(mojo::string_to_float(MIN_FLOAT_STR, val));
+	BOOST_CHECK_CLOSE(
+	    numeric_limits<float>::min(), val, numeric_limits<float>::epsilon());
+#else
+	BOOST_CHECK(mojo::string_to_float(MAX_FLOAT_WIN, val));
+	BOOST_CHECK_CLOSE(
+	    numeric_limits<float>::max(), val, numeric_limits<float>::epsilon());
+
+	BOOST_CHECK(mojo::string_to_float(MIN_FLOAT_WIN, val));
+	BOOST_CHECK_CLOSE(
+	    numeric_limits<float>::min(), val, numeric_limits<float>::epsilon());
+#endif
 }
 
-#define MAX_DOUBLE "1.79769313486232e+308"
-#define MIN_DOUBLE "2.2250738585072e-308"
+#define MAX_DOUBLE_STR "1.7976931348623157e+308"
+#define MIN_DOUBLE_STR "2.2250738585072014e-308"
 
 BOOST_AUTO_TEST_CASE(double_conversion)
 {
 	string str;
-
-	BOOST_CHECK(mojo::to_string(numeric_limits<double>::max(), str));
+	BOOST_CHECK(mojo::double_to_string(numeric_limits<double>::max(), str));
+	BOOST_CHECK_EQUAL(MAX_DOUBLE_STR, str);
 
 	double val = 0.0;
-	BOOST_CHECK(mojo::string_to(str, val));
+	BOOST_CHECK(mojo::string_to_double(str, val));
 	BOOST_CHECK_CLOSE(
 	    numeric_limits<double>::max(), val, numeric_limits<double>::epsilon());
 
-	BOOST_CHECK(mojo::to_string(numeric_limits<double>::min(), str));
+	BOOST_CHECK(mojo::double_to_string(numeric_limits<double>::min(), str));
+	BOOST_CHECK_EQUAL(MIN_DOUBLE_STR, str);
 
-	BOOST_CHECK(mojo::string_to(str, val));
+	BOOST_CHECK(mojo::string_to_double(str, val));
 	BOOST_CHECK_CLOSE(
 	    numeric_limits<double>::min(), val, numeric_limits<double>::epsilon());
+
+	// test the string_to/to_string templates
+	double max = numeric_limits<double>::max();
+	BOOST_CHECK_EQUAL(max, mojo::string_to<double>(mojo::to_string(max)));
+
+	double min = numeric_limits<double>::min();
+	BOOST_CHECK_EQUAL(min, mojo::string_to<double>(mojo::to_string(min)));
 }
 
 BOOST_AUTO_TEST_CASE(bool_conversion)
 {
 	string str;
 
-	BOOST_CHECK(mojo::to_string(true, str));
+	// check the normal cases
+	BOOST_CHECK(mojo::bool_to_string(true, str));
 	BOOST_CHECK_EQUAL("true", str);
 
 	bool val = false;
-	BOOST_CHECK(mojo::string_to(str, val));
+	BOOST_CHECK(mojo::string_to_bool(str, val));
 	BOOST_CHECK_EQUAL(val, true);
 
-	BOOST_CHECK(mojo::to_string(false, str));
+	BOOST_CHECK(mojo::bool_to_string(false, str));
 	BOOST_CHECK_EQUAL("false", str);
 
-	BOOST_CHECK(mojo::string_to(str, val));
+	BOOST_CHECK(mojo::string_to_bool(str, val));
 	BOOST_CHECK_EQUAL(val, false);
+
+	BOOST_CHECK(mojo::string_to_bool(str, val));
+
+	// test some junk
+	BOOST_CHECK(!mojo::string_to_bool("some junk", val));
+
+	// test the string_to/to_string templates
+	BOOST_CHECK_EQUAL(true, mojo::string_to<bool>(mojo::to_string(true)));
+
+	BOOST_CHECK_EQUAL(false, mojo::string_to<bool>(mojo::to_string(false)));
 }
 
 static const double s_test_double = 31459.265359;
@@ -275,16 +365,16 @@ void check_string_to_thread()
 	for (int n = 0; n < s_iter_count; n++) {
 		string str;
 
-		BOOST_CHECK(mojo::to_string(numeric_limits<double>::max(), str));
+		BOOST_CHECK(mojo::double_to_string(numeric_limits<double>::max(), str));
 
 		double val = 0.0;
-		BOOST_CHECK(mojo::string_to(str, val));
+		BOOST_CHECK(mojo::string_to_double(str, val));
 		BOOST_CHECK_CLOSE(
 		    numeric_limits<double>::max(), val, numeric_limits<double>::epsilon());
 
-		BOOST_CHECK(mojo::to_string(numeric_limits<double>::min(), str));
+		BOOST_CHECK(mojo::double_to_string(numeric_limits<double>::min(), str));
 
-		BOOST_CHECK(mojo::string_to(str, val));
+		BOOST_CHECK(mojo::string_to_double(str, val));
 		BOOST_CHECK_CLOSE(
 		    numeric_limits<double>::min(), val, numeric_limits<double>::epsilon());
 	}
@@ -424,7 +514,7 @@ check_g_snprintf_sscanf_int32_conversion()
 	// convert int32 to string using snprintf
 	string str;
 	BOOST_CHECK(int32_to_string(numeric_limits<int32_t>::max(), str));
-	BOOST_CHECK_EQUAL(MAX_INT32_T, str);
+	BOOST_CHECK_EQUAL(MAX_INT32_STR, str);
 
 	// convert string back to int32 using sscanf and check for equality
 	int32_t val = 0;
@@ -432,7 +522,7 @@ check_g_snprintf_sscanf_int32_conversion()
 	BOOST_CHECK_EQUAL(numeric_limits<int32_t>::max(), val);
 
 	BOOST_CHECK(int32_to_string(numeric_limits<int32_t>::min(), str));
-	BOOST_CHECK_EQUAL(MIN_INT32_T, str);
+	BOOST_CHECK_EQUAL(MIN_INT32_STR, str);
 
 	BOOST_CHECK(string_to_int32(str, val));
 	BOOST_CHECK_EQUAL(numeric_limits<int32_t>::min(), val);

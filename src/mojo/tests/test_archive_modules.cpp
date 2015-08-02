@@ -74,7 +74,7 @@ BOOST_AUTO_TEST_CASE(archive_module_test)
 
 	for (auto& mod : modules) {
 		string file_extension;
-		BOOST_CHECK(mojo::to_string(g_random_int(), file_extension));
+		BOOST_CHECK(mojo::int32_to_string(g_random_int(), file_extension));
 		string file_name = string(typeid(*mod).name()) + "." + file_extension;
 
 		BOOST_TEST_MESSAGE(mod->get_author());

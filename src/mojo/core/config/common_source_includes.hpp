@@ -15,6 +15,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <chrono>
+#include <cinttypes>
 
 #ifdef MOJO_WINDOWS
 #include <stdio.h>
