@@ -4,6 +4,8 @@
 
 #include <thread>
 
+#include <glib.h>
+
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
 #include <boost/test/floating_point_comparison.hpp>
@@ -298,3 +300,45 @@ BOOST_AUTO_TEST_CASE(string_to_thread_safety)
 	fr_printf_thread.join();
 }
 #endif
+
+bool
+glib_double_to_string (const double& val, std::string& str)
+{
+	char buffer[G_ASCII_DTOSTR_BUF_SIZE];
+
+	str = g_ascii_dtostr(buffer, sizeof(buffer), val);
+	// TODO can we check for errors in a thread-safe way
+	return true;
+}
+
+bool
+glib_string_to_double (const std::string& str, double& val)
+{
+	val = g_ascii_strtod(str.c_str(), NULL);
+	// TODO can we check for errors in a thread-safe way
+	return true;
+}
+
+#define GLIB_MAX_DOUBLE_STR "1.7976931348623157e+308"
+#define GLIB_MIN_DOUBLE_STR "2.2250738585072014e-308"
+
+BOOST_AUTO_TEST_CASE(g_ascii_double_conversion)
+{
+	std::string str;
+
+	BOOST_CHECK(glib_double_to_string(numeric_limits<double>::max(), str));
+	BOOST_CHECK_EQUAL(GLIB_MAX_DOUBLE_STR, str);
+
+	double val = 0.0;
+	BOOST_CHECK(glib_string_to_double(str, val));
+
+	BOOST_CHECK_CLOSE(
+		    numeric_limits<double>::max(), val, numeric_limits<double>::epsilon());
+
+	BOOST_CHECK(glib_double_to_string(numeric_limits<double>::min(), str));
+	BOOST_CHECK_EQUAL(GLIB_MIN_DOUBLE_STR, str);
+
+	BOOST_CHECK(glib_string_to_double(str, val));
+	BOOST_CHECK_CLOSE(
+	    numeric_limits<double>::min(), val, numeric_limits<double>::epsilon());
+}
