@@ -90,7 +90,7 @@ BOOST_AUTO_TEST_CASE(double_conversion)
 
 	BOOST_CHECK(mojo::to_string(numeric_limits<double>::max(), str));
 
-	double val = 0.0f;
+	double val = 0.0;
 	BOOST_CHECK(mojo::string_to(str, val));
 	BOOST_CHECK_CLOSE(
 	    numeric_limits<double>::max(), val, numeric_limits<double>::epsilon());
@@ -265,7 +265,7 @@ void check_string_to_thread()
 
 		BOOST_CHECK(mojo::to_string(numeric_limits<double>::max(), str));
 
-		double val = 0.0f;
+		double val = 0.0;
 		BOOST_CHECK(mojo::string_to(str, val));
 		BOOST_CHECK_CLOSE(
 		    numeric_limits<double>::max(), val, numeric_limits<double>::epsilon());
