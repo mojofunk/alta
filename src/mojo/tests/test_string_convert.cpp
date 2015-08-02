@@ -4,6 +4,11 @@
 
 #include <thread>
 
+#ifndef __STDC_FORMAT_MACROS
+#define __STDC_FORMAT_MACROS 1
+#endif
+#include <inttypes.h>
+
 #include <glib.h>
 
 #include <boost/test/unit_test.hpp>
@@ -380,5 +385,89 @@ BOOST_AUTO_TEST_CASE(g_ascii_double_conversion_thread_safety)
 	std::cerr << "Joining conversion threads" << std::endl;
 
 	glib_double_conversion_thread.join();
+	fr_printf_thread.join();
+}
+
+namespace {
+
+bool
+int32_to_string (const int32_t& val, std::string& str)
+{
+	char buffer[32];
+
+	int retval = g_snprintf(buffer, sizeof(buffer), "%" PRIi32, val);
+
+	if (retval <= 0 || retval >= sizeof(buffer)) {
+		return false;
+	}
+	str = buffer;
+	return true;
+}
+
+bool
+string_to_int32 (std::string& str, int32_t& val)
+{
+	if (sscanf(str.c_str(), "%" SCNi32, &val) != 1) {
+		return false;
+	}
+	return true;
+}
+
+void
+check_g_snprintf_sscanf_int32_conversion()
+{
+	// convert int32 to string using snprintf
+	string str;
+	BOOST_CHECK(int32_to_string(numeric_limits<int32_t>::max(), str));
+	BOOST_CHECK_EQUAL(MAX_INT32_T, str);
+
+	// convert string back to int32 using sscanf and check for equality
+	int32_t val = 0;
+	BOOST_CHECK(string_to_int32(str, val));
+	BOOST_CHECK_EQUAL(numeric_limits<int32_t>::max(), val);
+
+	BOOST_CHECK(int32_to_string(numeric_limits<int32_t>::min(), str));
+	BOOST_CHECK_EQUAL(MIN_INT32_T, str);
+
+	BOOST_CHECK(string_to_int32(str, val));
+	BOOST_CHECK_EQUAL(numeric_limits<int32_t>::min(), val);
+}
+
+void
+check_g_snprintf_sscanf_int32_conversion_thread()
+{
+	for (int n = 0; n < s_iter_count; n++) {
+		check_g_snprintf_sscanf_int32_conversion();
+	}
+}
+
+} // anon namespace
+
+BOOST_AUTO_TEST_CASE(g_int32_conversion)
+{
+	FrenchLocaleGuard guard;
+
+	check_g_snprintf_sscanf_int32_conversion();
+}
+
+BOOST_AUTO_TEST_CASE(g_int32_conversion_thread_safety)
+{
+	// Setting the locale to French should have no impact on the behaviour of
+	// printf/sscanf for integers as it should not need to access to the locale
+	// but run the tests concurrently anyway to check that it does not.
+	FrenchLocaleGuard guard;
+
+	BOOST_CHECK(check_fr_printf());
+	check_g_snprintf_sscanf_int32_conversion();
+
+	std::cerr << "Starting conversion threads" << std::endl;
+
+	std::thread g_int32_conversion_thread(
+	    check_g_snprintf_sscanf_int32_conversion_thread);
+	std::thread fr_printf_thread(check_fr_printf_thread);
+
+	std::cerr << "Joining conversion threads" << std::endl;
+
+	g_int32_conversion_thread.join();
 	fr_printf_thread.join();
 }
