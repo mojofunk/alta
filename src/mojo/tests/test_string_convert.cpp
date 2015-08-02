@@ -134,31 +134,36 @@ namespace {
 
 bool check_au_stream()
 {
-// There is no point testing another thread on windows with gcc/mingw-w64 as
-// check_c_stream seems to not be MT safe
-#ifndef MOJO_WINDOWS
 	std::ostringstream os;
 
-	BOOST_REQUIRE_NO_THROW(os.imbue(std::locale("en_AU")));
+	try {
+		// This is not a valid locale on Windows but that doesn't matter as
+		// this test is not run on Windows as it is known to fail
+		os.imbue(std::locale("en_AU"));
+	} catch (...) {
+		std::cerr << "Unable to imbue stream with en_AU locale" << std::endl;
+		return false;
+	}
+
 	os << s_test_double;
 	bool found_decimal_point = os.str().find('.') != std::string::npos;
 	bool found_thousands_comma = os.str().find(',') != std::string::npos;
 	return found_decimal_point && found_thousands_comma;
-#else
-	return true;
-#endif
 }
 
 bool check_c_stream()
 {
 	std::ostringstream os;
-#ifdef MOJO_WINDOWS
-	//std::locale::classic() does not not work with c++03 with gcc/mingw-w64
-	//BOOST_REQUIRE_NO_THROW(os.imbue(std::locale("C")));
-	BOOST_REQUIRE_NO_THROW(os.imbue(std::locale::classic()));
-#else
-	BOOST_REQUIRE_NO_THROW(os.imbue(std::locale::classic()));
-#endif
+
+	try {
+		// std::locale::classic() does not not work with c++03 with gcc/mingw-w64
+		// but std::locale("C") does
+		//os.imbue(std::locale("C"));
+		os.imbue(std::locale::classic());
+	} catch(...) {
+		std::cerr << "Unable to imbue stream with std::locale::classic()" << std::endl;
+		return false;
+	}
 	os << s_test_double;
 	return os.str().find('.') != std::string::npos;
 }
@@ -174,14 +179,14 @@ bool check_fr_printf()
 void check_au_stream_thread()
 {
 	for (int n = 0; n < s_iter_count; n++) {
-		BOOST_CHECK(check_au_stream());
+		assert(check_au_stream());
 	}
 }
 
 void check_c_stream_thread()
 {
 	for (int n = 0; n < s_iter_count; n++) {
-		BOOST_CHECK(check_c_stream());
+		assert(check_c_stream());
 	}
 }
 
@@ -236,8 +241,8 @@ private:
 
 // This test is to check that calling std::ios::imbue using a non-global locale
 // is thread safe. Apparently it is not on some older gcc versions used by
-// apple and the test doesn't pass with gcc/mingw-w64 as the test aborts,
-// usually with : exception thrown by os.imbue(std::locale::classic())
+// apple and the test doesn't pass with gcc/mingw-w64 as the test usually hits
+// an assertion as check_fr_printf fails.
 #ifndef MOJO_WINDOWS
 BOOST_AUTO_TEST_CASE(imbue_thread_safety)
 {
