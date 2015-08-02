@@ -566,3 +566,75 @@ BOOST_AUTO_TEST_CASE(g_int32_conversion_thread_safety)
 	g_int32_conversion_thread.join();
 	fr_printf_thread.join();
 }
+
+namespace {
+
+bool
+check_int_convert ()
+{
+	int32_t num = g_random_int ();
+	return (num == mojo::string_to<int32_t>(mojo::to_string(num)));
+}
+
+bool
+check_float_convert ()
+{
+	float num = (float) g_random_double ();
+	return (num == mojo::string_to<float>(mojo::to_string(num)));
+}
+
+bool
+check_double_convert ()
+{
+	double num = g_random_double ();
+	return (num == mojo::string_to<double>(mojo::to_string(num)));
+}
+
+void check_int_convert_thread()
+{
+	for (int n = 0; n < s_iter_count; n++) {
+		assert(check_int_convert());
+	}
+}
+
+void check_float_convert_thread()
+{
+	for (int n = 0; n < s_iter_count; n++) {
+		assert(check_float_convert());
+	}
+}
+
+void check_double_convert_thread()
+{
+	for (int n = 0; n < s_iter_count; n++) {
+		assert(check_double_convert());
+	}
+}
+
+} // anon namespace
+
+BOOST_AUTO_TEST_CASE(convert_thread_safety)
+{
+	FrenchLocaleGuard guard;
+
+	std::cerr << "Checking conversions" << std::endl;
+
+	BOOST_CHECK(check_int_convert());
+	BOOST_CHECK(check_float_convert());
+	BOOST_CHECK(check_double_convert());
+	BOOST_CHECK(check_fr_printf());
+
+	std::cerr << "Starting conversion threads" << std::endl;
+
+	std::thread convert_int_thread(check_int_convert_thread);
+	std::thread convert_float_thread(check_float_convert_thread);
+	std::thread convert_double_thread(check_double_convert_thread);
+	std::thread fr_printf_thread(check_fr_printf_thread);
+
+	std::cerr << "Joining conversion threads" << std::endl;
+
+	convert_int_thread.join();
+	convert_float_thread.join();
+	convert_double_thread.join();
+	fr_printf_thread.join();
+}
