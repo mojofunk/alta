@@ -98,6 +98,33 @@ BOOST_AUTO_TEST_CASE(int64_conversion)
 	BOOST_CHECK_EQUAL(min, mojo::string_to<int64_t>(mojo::to_string(min)));
 }
 
+#define MAX_UINT64_STR "18446744073709551615"
+#define MIN_UINT64_STR "0"
+
+BOOST_AUTO_TEST_CASE(uint64_conversion)
+{
+	string str;
+	BOOST_CHECK(mojo::uint64_to_string(numeric_limits<uint64_t>::max(), str));
+	BOOST_CHECK_EQUAL(MAX_UINT64_STR, str);
+
+	uint64_t val = 0;
+	BOOST_CHECK(mojo::string_to_uint64(str, val));
+	BOOST_CHECK_EQUAL(numeric_limits<uint64_t>::max(), val);
+
+	BOOST_CHECK(mojo::uint64_to_string(numeric_limits<uint64_t>::min(), str));
+	BOOST_CHECK_EQUAL(MIN_UINT64_STR, str);
+
+	BOOST_CHECK(mojo::string_to_uint64(str, val));
+	BOOST_CHECK_EQUAL(numeric_limits<uint64_t>::min(), val);
+
+	// test the string_to/to_string templates
+	uint64_t max = numeric_limits<uint64_t>::max();
+	BOOST_CHECK_EQUAL(max, mojo::string_to<uint64_t>(mojo::to_string(max)));
+
+	uint64_t min = numeric_limits<uint64_t>::min();
+	BOOST_CHECK_EQUAL(min, mojo::string_to<uint64_t>(mojo::to_string(min)));
+}
+
 #define MAX_FLOAT_WIN "3.4028234663852886e+038"
 #define MIN_FLOAT_WIN "1.1754943508222875e-038"
 #define MAX_FLOAT_STR "3.4028234663852886e+38"
