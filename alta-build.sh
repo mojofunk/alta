@@ -110,6 +110,7 @@ function install ()
 
 function clean ()
 {
+	echo "Removing directory $CONFIG_BUILD_DIR"
 	cd $CONFIG_BUILD_DIR || exit 1
 	rm -rf $CONFIG_WAF_BUILD_DIR
 }
