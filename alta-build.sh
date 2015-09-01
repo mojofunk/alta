@@ -41,7 +41,10 @@ function print_usage ()
 function print_configs ()
 {
 	echo "Possible build configurations: "
-	echo "${!config[@]}"
+	for conf in "${!config[@]}"
+	do
+		echo "$conf"
+	done
 }
 
 OPTIND=1
@@ -66,6 +69,7 @@ shift "$((OPTIND-1))"
 if [ -z "$1" ] || [ -z "$2" ]; then
 	print_usage
 	echo "You must specify command and build config"
+	print_configs
 	exit 1
 fi
 
