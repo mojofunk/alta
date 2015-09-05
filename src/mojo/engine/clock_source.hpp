@@ -9,8 +9,7 @@ namespace mojo {
 
 class ClockSource {
 public:
-	virtual ~ClockSource ();
-
+	virtual ~ClockSource();
 };
 
 } // namespace mojo

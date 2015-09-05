@@ -19,7 +19,7 @@ struct MidiEventHeader {
 
 // rename to get_midi_message_size?
 // @return -1 to indicate error
-int get_midi_msg_length (uint8_t status_byte);
+int get_midi_msg_length(uint8_t status_byte);
 
 } // namespace mojo
 

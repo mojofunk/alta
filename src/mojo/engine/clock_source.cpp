@@ -6,7 +6,8 @@
 
 namespace mojo {
 
-ClockSource::~ClockSource ()
-{ }
+ClockSource::~ClockSource()
+{
+}
 
 } // namespace mojo
