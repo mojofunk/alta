@@ -17,11 +17,112 @@
 using namespace boost::unit_test;
 using namespace std;
 
-#define MAX_INT32_STR "2147483647"
-#define MIN_INT32_STR "-2147483648"
+#ifdef MOJO_WINDOWS
+static const std::string french_locale_name("French_France.1252");
+static const std::string italian_locale_name("Italian_Italy.1252");
+#else
+static const std::string french_locale_name("fr_FR");
+static const std::string italian_locale_name("it_IT");
+#endif
+
+static const std::string MAX_INT16_STR("32767");
+static const std::string MIN_INT16_STR("-32768");
+
+namespace {
+
+class LocaleGuard {
+public:
+	LocaleGuard(const std::string& locale)
+	{
+		m_previous_locale = setlocale(LC_ALL, NULL);
+
+		std::cerr << std::endl;
+		std::cerr << "Previous C locale was: " << m_previous_locale << std::endl;
+
+		BOOST_CHECK(m_previous_locale != NULL);
+
+		const char* new_locale = setlocale(LC_ALL, locale.c_str());
+
+		BOOST_CHECK(new_locale != NULL);
+
+		BOOST_CHECK(locale == new_locale);
+
+		std::cerr << "Current C locale is: " << new_locale << std::endl;
+	}
+
+	~LocaleGuard() { BOOST_CHECK(setlocale(LC_ALL, m_previous_locale) != NULL); }
+
+private:
+	const char* m_previous_locale;
+};
+
+} // anon namespace
+
+// Execute the test in the Italian locale as the format for integers uses
+// thousands separators in the number format. Test that this has no impact on
+// the string conversions which are expected to be the same as in the C locale.
+BOOST_AUTO_TEST_CASE(int16_conversion)
+{
+	LocaleGuard guard(italian_locale_name);
+
+	string str;
+	BOOST_CHECK(mojo::int16_to_string(numeric_limits<int16_t>::max(), str));
+	BOOST_CHECK_EQUAL(MAX_INT16_STR, str);
+
+	int16_t val = 0;
+	BOOST_CHECK(mojo::string_to_int16(str, val));
+	BOOST_CHECK_EQUAL(numeric_limits<int16_t>::max(), val);
+
+	BOOST_CHECK(mojo::int16_to_string(numeric_limits<int16_t>::min(), str));
+	BOOST_CHECK_EQUAL(MIN_INT16_STR, str);
+
+	BOOST_CHECK(mojo::string_to_int16(str, val));
+	BOOST_CHECK_EQUAL(numeric_limits<int16_t>::min(), val);
+
+	// test the string_to/to_string templates
+	int16_t max = numeric_limits<int16_t>::max();
+	BOOST_CHECK_EQUAL(max, mojo::string_to<int16_t>(mojo::to_string(max)));
+
+	int16_t min = numeric_limits<int16_t>::min();
+	BOOST_CHECK_EQUAL(min, mojo::string_to<int16_t>(mojo::to_string(min)));
+}
+
+static const std::string MAX_UINT16_STR("65535");
+static const std::string MIN_UINT16_STR("0");
+
+BOOST_AUTO_TEST_CASE(uint16_conversion)
+{
+	LocaleGuard guard(italian_locale_name);
+
+	string str;
+	BOOST_CHECK(mojo::uint16_to_string(numeric_limits<uint16_t>::max(), str));
+	BOOST_CHECK_EQUAL(MAX_UINT16_STR, str);
+
+	uint16_t val = 0;
+	BOOST_CHECK(mojo::string_to_uint16(str, val));
+	BOOST_CHECK_EQUAL(numeric_limits<uint16_t>::max(), val);
+
+	BOOST_CHECK(mojo::uint16_to_string(numeric_limits<uint16_t>::min(), str));
+	BOOST_CHECK_EQUAL(MIN_UINT16_STR, str);
+
+	BOOST_CHECK(mojo::string_to_uint16(str, val));
+	BOOST_CHECK_EQUAL(numeric_limits<uint16_t>::min(), val);
+
+	// test the string_to/to_string templates
+	uint16_t max = numeric_limits<uint16_t>::max();
+	BOOST_CHECK_EQUAL(max, mojo::string_to<uint16_t>(mojo::to_string(max)));
+
+	uint16_t min = numeric_limits<uint16_t>::min();
+	BOOST_CHECK_EQUAL(min, mojo::string_to<uint16_t>(mojo::to_string(min)));
+}
+
+static const std::string MAX_INT32_STR("2147483647");
+static const std::string MIN_INT32_STR("-2147483648");
 
 BOOST_AUTO_TEST_CASE(int32_conversion)
 {
+	LocaleGuard guard(italian_locale_name);
+
 	string str;
 	BOOST_CHECK(mojo::int32_to_string(numeric_limits<int32_t>::max(), str));
 	BOOST_CHECK_EQUAL(MAX_INT32_STR, str);
@@ -44,11 +145,13 @@ BOOST_AUTO_TEST_CASE(int32_conversion)
 	BOOST_CHECK_EQUAL(min, mojo::string_to<int32_t>(mojo::to_string(min)));
 }
 
-#define MAX_UINT32_STR "4294967295"
-#define MIN_UINT32_STR "0"
+static const std::string MAX_UINT32_STR("4294967295");
+static const std::string MIN_UINT32_STR("0");
 
 BOOST_AUTO_TEST_CASE(uint32_conversion)
 {
+	LocaleGuard guard(italian_locale_name);
+
 	string str;
 	BOOST_CHECK(mojo::uint32_to_string(numeric_limits<uint32_t>::max(), str));
 	BOOST_CHECK_EQUAL(MAX_UINT32_STR, str);
@@ -71,11 +174,13 @@ BOOST_AUTO_TEST_CASE(uint32_conversion)
 	BOOST_CHECK_EQUAL(min, mojo::string_to<uint32_t>(mojo::to_string(min)));
 }
 
-#define MAX_INT64_STR "9223372036854775807"
-#define MIN_INT64_STR "-9223372036854775808"
+static const std::string MAX_INT64_STR("9223372036854775807");
+static const std::string MIN_INT64_STR("-9223372036854775808");
 
 BOOST_AUTO_TEST_CASE(int64_conversion)
 {
+	LocaleGuard guard(italian_locale_name);
+
 	string str;
 	BOOST_CHECK(mojo::int64_to_string(numeric_limits<int64_t>::max(), str));
 	BOOST_CHECK_EQUAL(MAX_INT64_STR, str);
@@ -98,11 +203,13 @@ BOOST_AUTO_TEST_CASE(int64_conversion)
 	BOOST_CHECK_EQUAL(min, mojo::string_to<int64_t>(mojo::to_string(min)));
 }
 
-#define MAX_UINT64_STR "18446744073709551615"
-#define MIN_UINT64_STR "0"
+static const std::string MAX_UINT64_STR("18446744073709551615");
+static const std::string MIN_UINT64_STR("0");
 
 BOOST_AUTO_TEST_CASE(uint64_conversion)
 {
+	LocaleGuard guard(italian_locale_name);
+
 	string str;
 	BOOST_CHECK(mojo::uint64_to_string(numeric_limits<uint64_t>::max(), str));
 	BOOST_CHECK_EQUAL(MAX_UINT64_STR, str);
@@ -125,13 +232,15 @@ BOOST_AUTO_TEST_CASE(uint64_conversion)
 	BOOST_CHECK_EQUAL(min, mojo::string_to<uint64_t>(mojo::to_string(min)));
 }
 
-#define MAX_FLOAT_WIN "3.4028234663852886e+038"
-#define MIN_FLOAT_WIN "1.1754943508222875e-038"
-#define MAX_FLOAT_STR "3.4028234663852886e+38"
-#define MIN_FLOAT_STR "1.1754943508222875e-38"
+static const std::string MAX_FLOAT_WIN("3.4028234663852886e+038");
+static const std::string MIN_FLOAT_WIN("1.1754943508222875e-038");
+static const std::string MAX_FLOAT_STR("3.4028234663852886e+38");
+static const std::string MIN_FLOAT_STR("1.1754943508222875e-38");
 
 BOOST_AUTO_TEST_CASE(float_conversion)
 {
+	LocaleGuard guard(french_locale_name);
+
 	// check float to string and back again for min and max float values
 	string str;
 	BOOST_CHECK(mojo::float_to_string(numeric_limits<float>::max(), str));
@@ -186,11 +295,13 @@ BOOST_AUTO_TEST_CASE(float_conversion)
 #endif
 }
 
-#define MAX_DOUBLE_STR "1.7976931348623157e+308"
-#define MIN_DOUBLE_STR "2.2250738585072014e-308"
+static const std::string MAX_DOUBLE_STR("1.7976931348623157e+308");
+static const std::string MIN_DOUBLE_STR("2.2250738585072014e-308");
 
 BOOST_AUTO_TEST_CASE(double_conversion)
 {
+	LocaleGuard guard(french_locale_name);
+
 	string str;
 	BOOST_CHECK(mojo::double_to_string(numeric_limits<double>::max(), str));
 	BOOST_CHECK_EQUAL(MAX_DOUBLE_STR, str);
@@ -215,28 +326,58 @@ BOOST_AUTO_TEST_CASE(double_conversion)
 	BOOST_CHECK_EQUAL(min, mojo::string_to<double>(mojo::to_string(min)));
 }
 
+static const std::string BOOL_TRUE_STR("true");
+static const std::string BOOL_FALSE_STR("false");
+
 BOOST_AUTO_TEST_CASE(bool_conversion)
 {
+	// does it matter what locale?
 	string str;
 
-	// check the normal cases
+	// check the normal case for true/false
 	BOOST_CHECK(mojo::bool_to_string(true, str));
-	BOOST_CHECK_EQUAL("true", str);
+	BOOST_CHECK_EQUAL(BOOL_TRUE_STR, str);
 
 	bool val = false;
 	BOOST_CHECK(mojo::string_to_bool(str, val));
 	BOOST_CHECK_EQUAL(val, true);
 
 	BOOST_CHECK(mojo::bool_to_string(false, str));
-	BOOST_CHECK_EQUAL("false", str);
+	BOOST_CHECK_EQUAL(BOOL_FALSE_STR, str);
 
+	val = true;
 	BOOST_CHECK(mojo::string_to_bool(str, val));
 	BOOST_CHECK_EQUAL(val, false);
 
-	BOOST_CHECK(mojo::string_to_bool(str, val));
+	// now check the other accepted values for true and false
+	// when converting from a string to bool
+
+	val = false;
+	BOOST_CHECK(mojo::string_to_bool("1", val));
+	BOOST_CHECK_EQUAL(val, true);
+
+	val = true;
+	BOOST_CHECK(mojo::string_to_bool("0", val));
+	BOOST_CHECK_EQUAL(val, false);
+
+	val = false;
+	BOOST_CHECK(mojo::string_to_bool("Y", val));
+	BOOST_CHECK_EQUAL(val, true);
+
+	val = true;
+	BOOST_CHECK(mojo::string_to_bool("N", val));
+	BOOST_CHECK_EQUAL(val, false);
+
+	val = false;
+	BOOST_CHECK(mojo::string_to_bool("y", val));
+	BOOST_CHECK_EQUAL(val, true);
+
+	val = true;
+	BOOST_CHECK(mojo::string_to_bool("n", val));
+	BOOST_CHECK_EQUAL(val, false);
 
 	// test some junk
-	BOOST_CHECK(!mojo::string_to_bool("some junk", val));
+	BOOST_CHECK(!mojo::string_to_bool("01234someYNtrueyesno junk0123", val));
 
 	// test the string_to/to_string templates
 	BOOST_CHECK_EQUAL(true, mojo::string_to<bool>(mojo::to_string(true)));
@@ -317,42 +458,6 @@ void check_fr_printf_thread()
 	}
 }
 
-// RAII class that sets the global C locale to fr_FR and then resets it
-class FrenchLocaleGuard {
-public:
-	FrenchLocaleGuard()
-	{
-#ifdef MOJO_WINDOWS
-		const std::string fr_locale("French_France.1252");
-#else
-		const std::string fr_locale("fr_FR");
-#endif
-
-		m_previous_locale = setlocale(LC_ALL, NULL);
-
-		std::cerr << std::endl;
-		std::cerr << "Previous locale was: " << m_previous_locale << std::endl;
-
-		BOOST_CHECK(m_previous_locale != NULL);
-
-		const char* fr_FR_locale = setlocale(LC_ALL, fr_locale.c_str());
-
-		BOOST_CHECK(fr_FR_locale != NULL);
-
-		BOOST_CHECK(fr_locale == fr_FR_locale);
-
-		std::cerr << "Current C locale is: " << fr_locale << std::endl;
-	}
-
-	~FrenchLocaleGuard()
-	{
-		BOOST_CHECK(setlocale(LC_ALL, m_previous_locale) != NULL);
-	}
-
-private:
-	const char* m_previous_locale;
-};
-
 } // anon namespace
 
 // This test is to check that calling std::ios::imbue using a non-global locale
@@ -362,7 +467,7 @@ private:
 #ifndef MOJO_WINDOWS
 BOOST_AUTO_TEST_CASE(imbue_thread_safety)
 {
-	FrenchLocaleGuard guard;
+	LocaleGuard guard(french_locale_name);
 
 	std::cerr << "Checking conversions" << std::endl;
 
@@ -411,7 +516,7 @@ void check_string_to_thread()
 #ifndef MOJO_WINDOWS
 BOOST_AUTO_TEST_CASE(string_to_thread_safety)
 {
-	FrenchLocaleGuard guard;
+	LocaleGuard guard(french_locale_name);
 
 	BOOST_CHECK(check_fr_printf());
 
@@ -473,7 +578,7 @@ void check_glib_double_conversion()
 
 BOOST_AUTO_TEST_CASE(g_ascii_double_conversion)
 {
-	FrenchLocaleGuard guard;
+	LocaleGuard guard(french_locale_name);
 
 	check_glib_double_conversion();
 }
@@ -491,7 +596,7 @@ void check_glib_double_conversion_thread()
 
 BOOST_AUTO_TEST_CASE(g_ascii_double_conversion_thread_safety)
 {
-	FrenchLocaleGuard guard;
+	LocaleGuard guard(french_locale_name);
 
 	BOOST_CHECK(check_fr_printf());
 
@@ -559,7 +664,7 @@ void check_g_snprintf_sscanf_int32_conversion_thread()
 
 BOOST_AUTO_TEST_CASE(g_int32_conversion)
 {
-	FrenchLocaleGuard guard;
+	LocaleGuard guard(french_locale_name);
 
 	check_g_snprintf_sscanf_int32_conversion();
 }
@@ -569,7 +674,7 @@ BOOST_AUTO_TEST_CASE(g_int32_conversion_thread_safety)
 	// Setting the locale to French should have no impact on the behaviour of
 	// printf/sscanf for integers as it should not need to access to the locale
 	// but run the tests concurrently anyway to check that it does not.
-	FrenchLocaleGuard guard;
+	LocaleGuard guard(french_locale_name);
 
 	BOOST_CHECK(check_fr_printf());
 	check_g_snprintf_sscanf_int32_conversion();
@@ -631,7 +736,7 @@ void check_double_convert_thread()
 
 BOOST_AUTO_TEST_CASE(convert_thread_safety)
 {
-	FrenchLocaleGuard guard;
+	LocaleGuard guard(french_locale_name);
 
 	std::cerr << "Checking conversions" << std::endl;
 
