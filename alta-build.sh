@@ -163,7 +163,6 @@ function build ()
 
 function install ()
 {
-	sync
 	cd $CONFIG_BUILD_DIR || exit 1
 	./waf install "$@"
 }
