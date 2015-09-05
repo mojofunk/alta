@@ -28,7 +28,7 @@ def build(bld):
         defines = 'MOJO_AMALGAMATED'
     else:
         source = bld.path.ant_glob('*.cpp',
-                    excl='mojo-winmme-midi-driver.cpp')
+                                   excl='mojo-winmme-midi-driver.cpp')
         defines = ''
 
     uselib = [

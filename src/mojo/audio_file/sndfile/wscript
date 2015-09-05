@@ -18,7 +18,7 @@ def build(bld):
         defines = 'MOJO_AMALGAMATED'
     else:
         source = bld.path.ant_glob('*.cpp',
-                    excl='mojo-sndfile-audio-file.cpp')
+                                   excl='mojo-sndfile-audio-file.cpp')
         defines = ''
 
     uselib = [
