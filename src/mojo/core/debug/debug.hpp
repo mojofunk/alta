@@ -28,17 +28,7 @@ void log_message(const char* file,
 
 } // namespace mojo
 
-#ifdef NDEBUG
-
-#define MOJO_DEBUG_DOMAIN(domain_name)
-#define MOJO_DEBUG_MSG(domain, str)
-#define MOJO_DEBUG(domain)
-
-#define MOJO_DEBUG_TIMING_START(domain, td)
-#define MOJO_DEBUG_TIMING_ADD_ELAPSED(domain, td)
-#define MOJO_DEBUG_TIMING_RESET(domain, td)
-
-#else // DEBUG
+#ifdef MOJO_ENABLE_DEBUG_LOGGING
 
 #define MOJO_DEBUG_DOMAIN(domain_name)                                         \
 	namespace {                                                                   \
@@ -67,6 +57,16 @@ void log_message(const char* file,
 	if (mojo::debug::get_enabled(domain)) {                                       \
 		td.reset();                                                                  \
 	}
+
+#else // debug logging disabled
+
+#define MOJO_DEBUG_DOMAIN(domain_name)
+#define MOJO_DEBUG_MSG(domain, str)
+#define MOJO_DEBUG(domain)
+
+#define MOJO_DEBUG_TIMING_START(domain, td)
+#define MOJO_DEBUG_TIMING_ADD_ELAPSED(domain, td)
+#define MOJO_DEBUG_TIMING_RESET(domain, td)
 
 #endif
 

@@ -46,6 +46,11 @@ def options(opt):
         default=False,
         help='Enable Optimization')
     opt.add_option(
+        '--disable-debug-logging',
+        action='store_false',
+        default=False,
+        help='Disable logging of debug messages')
+    opt.add_option(
         '--enable-shared',
         action='store_true',
         default=True,
@@ -87,6 +92,10 @@ def set_compiler_flags(conf):
         conf.env.append_value('CFLAGS', '-g')
         conf.env.append_value('CXXFLAGS', '-g')
 
+    if not conf.options.disable_debug_logging:
+        conf.env.append_value('CFLAGS', '-DMOJO_ENABLE_DEBUG_LOGGING')
+        conf.env.append_value('CXXFLAGS', '-DMOJO_ENABLE_DEBUG_LOGGING')
+
 
 def display_config(conf):
     Logs.info('C++ compiler flags: %s' % conf.env.CXXFLAGS)
@@ -95,6 +104,7 @@ def display_config(conf):
     Logs.info('Enable amalgamation: %s' % conf.env.ENABLE_AMALGAMATION)
     Logs.info('Build tests: %s' % conf.env.BUILD_TESTS)
     Logs.info('Build single tests: %s' % conf.env.BUILD_SINGLE_TESTS)
+    Logs.info('Enable debug logging: %s' % conf.env.DEBUG_LOGGING)
 
 
 def configure(conf):
@@ -134,6 +144,8 @@ def configure(conf):
     conf.env.ENABLE_STATIC = conf.options.enable_static
 
     conf.env.ENABLE_AMALGAMATION = conf.options.enable_amalgamation
+
+    conf.env.DEBUG_LOGGING = not conf.options.disable_debug_logging
 
     conf.env.WITH_GTKMM_UI = conf.options.with_gtkmm_ui
 
