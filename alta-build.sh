@@ -29,8 +29,9 @@ config["release"]="$STATIC $AMALGAMATE $OPTIMIZE"
 
 function print_usage ()
 {
-	echo "usage: alta-build.sh [-l] [-h] <command> <config>"
-	echo " "
+	echo "usage: alta-build.sh [-l] [-v] <command> <config>"
+	echo " -l list configs"
+	echo " -v verbose"
 	echo "The commands are:"
 	echo "    configure"
 	echo "    build"
