@@ -10,6 +10,7 @@ SINGLE_TESTS="--with-single-tests"
 GUI="--with-gtkmm-ui"
 AMALGAMATE="--enable-amalgamation"
 OPTIMIZE="--optimize"
+DISABLE_DEBUG_LOGGING="--disable-debug-logging"
 
 declare -A config
 config["debug"]=""
@@ -25,7 +26,8 @@ config["debug-amalgamated-static"]="$TESTS $AMALGAMATE $STATIC"
 #config["debug-gtkmm-ui"]="$GUI"
 #config["debug-gtkmm-ui-static"]="$GUI $STATIC"
 #config["debug-gtkmm-ui-amalgamated"]="$AMALGAMATE $GUI"
-config["release"]="$STATIC $AMALGAMATE $OPTIMIZE"
+config["release"]="$STATIC $AMALGAMATE $OPTIMIZE $DISABLE_DEBUG_LOGGING"
+config["release-tests"]="$STATIC $AMALGAMATE $OPTIMIZE $TESTS"
 
 function print_usage ()
 {
