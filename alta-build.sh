@@ -22,21 +22,25 @@ config["debug-tests-single-static"]="$SINGLE_TESTS $STATIC"
 config["debug-tests-single-amalgamated"]="$SINGLE_TESTS $AMALGAMATE"
 config["debug-amalgamated"]="$AMALGAMATE"
 config["debug-amalgamated-static"]="$TESTS $AMALGAMATE $STATIC"
-config["debug-gtkmm-ui"]="$GUI"
-config["debug-gtkmm-ui-static"]="$GUI $STATIC"
-config["debug-gtkmm-ui-amalgamated"]="$AMALGAMATE $GUI"
+#config["debug-gtkmm-ui"]="$GUI"
+#config["debug-gtkmm-ui-static"]="$GUI $STATIC"
+#config["debug-gtkmm-ui-amalgamated"]="$AMALGAMATE $GUI"
 config["release"]="$STATIC $AMALGAMATE $OPTIMIZE"
 
 function print_usage ()
 {
-	echo "usage: alta-build.sh [-l] [-v] <command> <config>"
+	echo "Usage for single configuration:"
+	echo ""
+	echo "alta-build.sh [-l] [-v] <command> <config>"
+	echo ""
+	echo "Usage for all configurations:"
+	echo ""
+	echo "alta-build.sh [-l] [-v] -a <command>"
+	echo ""
+	echo "The commands are: configure, build, install, clean"
 	echo " -l list configs"
 	echo " -v verbose"
-	echo "The commands are:"
-	echo "    configure"
-	echo "    build"
-	echo "    install"
-	echo "    clean"
+	echo " -h help"
 }
 
 function print_configs ()
@@ -49,7 +53,7 @@ function print_configs ()
 }
 
 OPTIND=1
-while getopts "h?vl" opt; do
+while getopts "h?vla" opt; do
 	case "$opt" in
 		h)
 			print_usage
@@ -63,27 +67,54 @@ while getopts "h?vl" opt; do
 			print_configs
 			exit 0
 			;;
+		a)
+			BUILD_ALL_CONFIGS=1
+			;;
 	esac
 done
 shift "$((OPTIND-1))"
 
-if [ -z "$1" ] || [ -z "$2" ]; then
-	print_usage
-	echo "You must specify command and build config"
-	print_configs
-	exit 1
-fi
-
-ALTA_BUILD_COMMAND="$1"
-ALTA_BUILD_CONFIG="$2"
-ALTA_BUILD_SCRIPT_PATH=$( cd $(dirname $0) ; pwd -P )
-ALTA_SRC_DIR=$ALTA_BUILD_SCRIPT_PATH
 HOME_DIR_PATH=$( cd ~/ ; pwd -P )
-
+ALTA_BUILD_COMMAND="$1"
+ALTA_BUILD_SCRIPT_PATH=$( cd $(dirname $0) ; pwd -P )
 ALTA_BUILD_ROOT=${ALTA_BUILD_ROOT:=$HOME_DIR_PATH/"alta-build"}
+ALTA_SRC_DIR=$ALTA_BUILD_SCRIPT_PATH
 
+ALTA_BUILD_CONFIG="$2"
 CONFIG_BUILD_DIR="$ALTA_BUILD_ROOT/$ALTA_BRANCH-$ALTA_BUILD_CONFIG"
 CONFIG_WAF_BUILD_DIR="$CONFIG_BUILD_DIR/build"
+
+if [ -z ${BUILD_ALL_CONFIGS+x} ]; then
+	if [ -z "$1" ] || [ -z "$2" ]; then
+		print_usage
+		echo "You must specify command and build config"
+		print_configs
+		exit 1
+	fi
+	if [ "${config["$ALTA_BUILD_CONFIG"]+isset}" ]; then
+		echo "Using configuration: $ALTA_BUILD_CONFIG"
+	else
+		echo "No such configuration: $ALTA_BUILD_CONFIG"
+		print_configs
+		exit 1
+	fi;
+
+	# remove the command and config parameters
+	shift 2
+
+else
+	if [ -z "$1" ]; then
+		print_usage
+		echo "You must specify command and build config"
+		print_configs
+		exit 1
+	fi
+
+	echo "Using $1 command for all build configurations"
+
+	# remove the command parameter
+	shift 1
+fi
 
 mkdir -p $ALTA_BUILD_ROOT || exit 1
 
@@ -94,16 +125,38 @@ function sync ()
 
 function configure ()
 {
-	sync
-	cd $CONFIG_BUILD_DIR || exit 1
-	./waf configure ${config["$ALTA_BUILD_CONFIG"]} "$@"
+	if [ -z ${BUILD_ALL_CONFIGS+x} ]; then
+		sync
+		cd $CONFIG_BUILD_DIR || exit 1
+		./waf configure ${config["$ALTA_BUILD_CONFIG"]} "$@" || exit 1
+	else
+		for conf in "${!config[@]}"
+		do
+			ALTA_BUILD_CONFIG="$conf"
+			CONFIG_BUILD_DIR="$ALTA_BUILD_ROOT/$ALTA_BRANCH-$ALTA_BUILD_CONFIG"
+			sync
+			cd $CONFIG_BUILD_DIR || exit 1
+			./waf configure ${config["$ALTA_BUILD_CONFIG"]} "$@" || exit 1
+		done
+	fi
 }
 
 function build ()
 {
-	sync
-	cd $CONFIG_BUILD_DIR || exit 1
-	./waf "$@"
+	if [ -z ${BUILD_ALL_CONFIGS+x} ]; then
+		sync
+		cd $CONFIG_BUILD_DIR || exit 1
+		./waf "$@" || exit 1
+	else
+		for conf in "${!config[@]}"
+		do
+			ALTA_BUILD_CONFIG="$conf"
+			CONFIG_BUILD_DIR="$ALTA_BUILD_ROOT/$ALTA_BRANCH-$ALTA_BUILD_CONFIG"
+			sync
+			cd $CONFIG_BUILD_DIR || exit 1
+			./waf "$@" || exit 1
+		done
+	fi
 }
 
 function install ()
@@ -115,21 +168,22 @@ function install ()
 
 function clean ()
 {
-	echo "Removing directory $CONFIG_BUILD_DIR"
-	cd $CONFIG_BUILD_DIR || exit 1
-	rm -rf $CONFIG_WAF_BUILD_DIR
+	if [ -z ${BUILD_ALL_CONFIGS+x} ]; then
+		echo "Removing directory $CONFIG_BUILD_DIR"
+		cd $CONFIG_BUILD_DIR || exit 1
+		rm -rf $CONFIG_WAF_BUILD_DIR
+	else
+		for conf in "${!config[@]}"
+		do
+			ALTA_BUILD_CONFIG="$conf"
+			CONFIG_BUILD_DIR="$ALTA_BUILD_ROOT/$ALTA_BRANCH-$ALTA_BUILD_CONFIG"
+			CONFIG_WAF_BUILD_DIR="$CONFIG_BUILD_DIR/build"
+			echo "Removing directory $CONFIG_BUILD_DIR"
+			cd $CONFIG_BUILD_DIR || exit 1
+			rm -rf $CONFIG_WAF_BUILD_DIR
+		done
+	fi
 }
-
-if [ "${config["$ALTA_BUILD_CONFIG"]+isset}" ]; then
-	echo "Using configuration: $ALTA_BUILD_CONFIG"
-else
-	echo "No such configuration: $ALTA_BUILD_CONFIG"
-	print_configs
-	exit 1
-fi;
-
-# remove the command and config parameters
-shift 2
 
 case $ALTA_BUILD_COMMAND in
 	configure)
