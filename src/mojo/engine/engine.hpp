@@ -55,6 +55,10 @@ namespace mojo {
  * to have same number of input ports. For instance a Node could take a stereo
  * input using two inputs and have 6 output ports for 5.1 surround sound.
  *
+ * Or a node could have have a input port that recieves a stereo audio signal
+ * in a single port. This means ports will have to have a data type property,
+ * possibly defined by a URI etc.
+ *
  * A Node might also have different types of ports. for instance a midi input
  * port and an audio output port in the case of an Midi Instrument track
  *
@@ -68,6 +72,11 @@ namespace mojo {
  *
  * The Engine isn't responsible for saving and restoring connection state, but
  * sends events to another class to do that.
+ *
+ * The engine may have to expose a sort of transaction interface where a series
+ * of additions and connections can be queued but not actually processed in the
+ * engine thread context until end_transaction() is called.
+ *
  */
 class Engine {
 public: // ctors
@@ -76,14 +85,32 @@ public: // ctors
 	~Engine();
 
 public: // Interface
-	void start();
+
+	/**
+	 * Start the Engine, A clock source must first be set.
+	 */
+	bool start();
 
 	// void is_running ();
 
-	void stop();
+	bool stop();
 
-	void add_node(Node* node);
+	/**
+	 * I think this should be sync call which means the calling thread will
+	 * have to wait until the node is added to the graph.
+	 *
+	 * @return true if the node is successfully added, the node won't be
+	 * inserted and or connected until the next clock event/iteration
+	 */
+	bool add_node(Node* node);
 
+	/**
+	 * I think this should be sync call which means the calling thread will
+	 * have to wait until the node is removed from the graph.
+	 *
+	 * @return true if the node is successfully removed, the node won't be
+	 * removed or disconnected until the next clock event/iteration
+	 */
 	void remove_node(Node* node);
 
 	/**
@@ -91,7 +118,11 @@ public: // Interface
 	 */
 	void set_clock_source(ClockSource* clock);
 
-	ClockSource* get_audio_device() const;
+	ClockSource* get_clock_source() const;
+
+private:
+
+	// TODO Make NonCopyable
 };
 
 } // namespace mojo
