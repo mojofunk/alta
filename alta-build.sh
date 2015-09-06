@@ -169,6 +169,25 @@ function install ()
 	./waf install "$@"
 }
 
+function test ()
+{
+	if [ -z ${BUILD_ALL_CONFIGS+x} ]; then
+		echo "Testing in build directory $CONFIG_BUILD_DIR"
+		cd $CONFIG_BUILD_DIR || exit 1
+		./waf test "$@"
+	else
+		for conf in "${!config[@]}"
+		do
+			ALTA_BUILD_CONFIG="$conf"
+			CONFIG_BUILD_DIR="$ALTA_BUILD_ROOT/$ALTA_BRANCH-$ALTA_BUILD_CONFIG"
+			echo "Testing in build directory $CONFIG_BUILD_DIR"
+			cd $CONFIG_BUILD_DIR || exit 1
+			./tools/linux/run-tests.sh all "$@"
+		done
+	fi
+	cd $CONFIG_BUILD_DIR || exit 1
+}
+
 function clean ()
 {
 	if [ -z ${BUILD_ALL_CONFIGS+x} ]; then
@@ -196,7 +215,10 @@ case $ALTA_BUILD_COMMAND in
 		build $@ || exit 1
 		;;
 	install)
-		install  $@ || exit 1
+		install $@ || exit 1
+		;;
+	test)
+		test $@ || exit 1
 		;;
 	clean)
 		clean || exit 1
