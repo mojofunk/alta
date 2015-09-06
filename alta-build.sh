@@ -200,7 +200,7 @@ function clean ()
 			ALTA_BUILD_CONFIG="$conf"
 			CONFIG_BUILD_DIR="$ALTA_BUILD_ROOT/$ALTA_BRANCH-$ALTA_BUILD_CONFIG"
 			CONFIG_WAF_BUILD_DIR="$CONFIG_BUILD_DIR/build"
-			echo "Removing directory $CONFIG_BUILD_DIR"
+			echo "Removing directory $CONFIG_WAF_BUILD_DIR"
 			cd $CONFIG_BUILD_DIR || exit 1
 			rm -rf $CONFIG_WAF_BUILD_DIR
 		done
