@@ -104,7 +104,7 @@ def build_tests_shared(bld):
         defines=defines,
         uselib=uselibs,
         use=use_shared,
-        target='mojo-tests')
+        target='test_mojo')
 
 
 def build_shared(bld):
@@ -131,7 +131,7 @@ def build_single_tests_static(bld):
             defines='BOOST_TEST_DYN_LINK=1',
             uselib=uselibs,
             use=use_static + ['MOJO_TEST_COMMON_STATIC'],
-            target=test + '-static')
+            target=test + '_static')
 
 
 def build_tests_static(bld):
@@ -149,7 +149,7 @@ def build_tests_static(bld):
         defines=defines,
         uselib=uselibs,
         use=use_static,
-        target='mojo-tests-static')
+        target='test_mojo_static')
 
 
 def build_static(bld):

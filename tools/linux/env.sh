@@ -1,23 +1,21 @@
 #!/bin/bash
 
-BASE=$(readlink -f $0)
-BASE=$(dirname $BASE) # up one
-BASE=$(dirname $BASE) # up one more
-BASE=$(dirname $BASE) # up one more
+ENV_SCRIPT_PATH=$( cd $(dirname $0) ; pwd -P )
+TOP_LEVEL_PATH="$ENV_SCRIPT_PATH/../.."
 
-BUILD_DIR=$BASE/build
-BUILD_CACHE_FILE=$BUILD_DIR/c4che/_cache.py
-TOOLS_DIR=$BASE/tools/linux
+BUILD_DIR="$TOP_LEVEL_PATH/build"
+BUILD_CACHE_FILE="$BUILD_DIR/c4che/_cache.py"
+TOOLS_DIR="$TOP_LEVEL_PATH/tools/linux"
 
-APPNAME=`grep -m 1 '^APPNAME' $BASE/wscript | awk '{print $3}' | sed "s/'//g"`
-VERSION=`grep -m 1 '^VERSION' $BASE/wscript | awk '{print $3}' | sed "s/'//g"`
+APPNAME=`grep -m 1 '^APPNAME' $TOP_LEVEL_PATH/wscript | awk '{print $3}' | sed "s/'//g"`
+VERSION=`grep -m 1 '^VERSION' $TOP_LEVEL_PATH/wscript | awk '{print $3}' | sed "s/'//g"`
 
 PROGRAM_NAME=Alta
 
 EXECUTABLE="$BUILD_DIR/src/gtkmm_ui/$PROGRAM_NAME"
 
 export GMOJO_PATH=data
-export MOJO_TEST_PATH=$BASE/data
+export MOJO_TEST_PATH=$TOP_LEVEL_PATH/data
 
 MOJO_PATH=\
 $BUILD_DIR/src/mojo/archive/xml:\
