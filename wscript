@@ -3,6 +3,7 @@
 # Tim Mayberry, 2008
 
 import os
+import subprocess
 from waflib import Logs
 
 # TODO use version from git tag/describe
@@ -40,6 +41,11 @@ def options(opt):
         action='store_true',
         default=False,
         help='Build each test as single executable')
+    opt.add_option(
+        '--run-tests',
+        action='store_true',
+        default=False,
+        help='Run testsuite after build')
     opt.add_option(
         '--optimize',
         action='store_true',
@@ -129,6 +135,7 @@ def configure(conf):
 
     conf.env.BUILD_TESTS = conf.options.with_tests
     conf.env.BUILD_SINGLE_TESTS = conf.options.with_single_tests
+    conf.env.RUN_TESTS = conf.options.run_tests
 
     if conf.env.BUILD_SINGLE_TESTS:
         conf.env.BUILD_TESTS = True
@@ -184,3 +191,9 @@ def build(bld):
     bld.env.LIBDIR = "%s/%s" % (bld.env.LIBDIR, bld.env.PROGRAM_DIR_NAME)
 
     bld.recurse('src')
+
+    if bld.env['RUN_TESTS']:
+        bld.add_post_fun(test)
+
+def test(bld):
+    subprocess.call("tools/linux/run-tests.sh")
