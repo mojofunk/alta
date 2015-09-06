@@ -25,16 +25,12 @@ namespace mojo {
 
 /**
  * If access to the worker thread is through the application and all Object
- *classes
- * use the worker thread then changes to the Application class will cause a
- *total
- * recompile. Better to have a singleton WorkerThread that accessed through a
- *private
- * header.
+ * classes use the worker thread then changes to the Application class will
+ * cause a total recompile. Better to have a singleton WorkerThread that
+ * accessed through a private header.
  *
  * The application state is stored in a separate file to the project and
- *contains
- * nothing project specific.
+ * contains nothing project specific.
  *
  * A application manages a task thread that asyncronously runs all tasks that
  * have been queued. some of these tasks are:
@@ -84,21 +80,17 @@ namespace mojo {
  * that only one thread modifies the objects.
  *
  * The Engine does not reference the Project. The Application negotiates
- *communication
- * between the Engine and the Project.
+ * communication between the Engine and the Project.
  *
  * The Engine runs in a different context/thread than the
- *Application(ApplicationDispatcher)
+ * Application(ApplicationDispatcher)
  *
  * Should only be one Application class per process so makes sense to make all
- *methods
- * static(might as well be a C API...)
+ * methods static(might as well be a C API...)
  *
  * If the worker context is exposed in a private header(perhaps in core) then
- *the clients should
- * be able to access the project class directly and the classes can then defer
- *some/all modification
- * calls to the worker thread.
+ * the clients should be able to access the project class directly and the
+ * classes can then defer some/all modification calls to the worker thread.
  */
 class Application {
 public: // Initialization
