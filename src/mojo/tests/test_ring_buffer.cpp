@@ -188,13 +188,17 @@ std::atomic_bool s_consumer_exit(false);
 uint32_t total_written = 0;
 uint32_t total_read = 0;
 
+static bool producer_thread_failed = false;
+
 void producer_thread()
 {
 	while (!s_producer_exit) {
 		if (rb.write_space() == 0) {
 			uint32_t sleep_count = g_random_int_range(10, 100);
+#if 0
 			BOOST_TEST_MESSAGE(
 			    compose("Write space 0, sleeping for %(ns)", sleep_count));
+#endif
 			mojo::usleep(sleep_count);
 			continue;
 		}
@@ -202,31 +206,47 @@ void producer_thread()
 		if (write_cnt == 0) continue;
 		uint32_t* write_array = new uint32_t[write_cnt];
 		// write random data
-		BOOST_ASSERT(rb.write(write_array, write_cnt) == write_cnt);
-		total_written += write_cnt;
+		bool success = (rb.write(write_array, write_cnt) == write_cnt);
+		if (success) {
+			total_written += write_cnt;
+		} else {
+			producer_thread_failed = true;
+		}
+#if 0
 		BOOST_TEST_MESSAGE(compose("Wrote % units to RingBuffer, Total Written: %",
 		                           write_cnt,
 		                           total_written));
+#endif
 		delete[] write_array;
 	}
 }
+
+static bool consumer_thread_failed = false;
 
 void consumer_thread()
 {
 	while (!s_consumer_exit) {
 		if (rb.read_count() == 0) {
 			uint32_t sleep_count = g_random_int_range(10, 100);
+#if 0
 			BOOST_TEST_MESSAGE(compose("Read count 0, sleeping for %(ns)", sleep_count));
+#endif
 			mojo::usleep(sleep_count);
 			continue;
 		}
 		size_t read_cnt = g_random_int_range(0, rb.read_count());
 		if (read_cnt == 0) continue;
 		uint32_t* read_array = new uint32_t[read_cnt];
-		BOOST_ASSERT(rb.read(read_array, read_cnt) == read_cnt);
-		total_read += read_cnt;
+		bool success = (rb.read(read_array, read_cnt) == read_cnt);
+		if (success) {
+			total_read += read_cnt;
+		} else {
+			consumer_thread_failed = true;
+		}
+#if 0
 		BOOST_TEST_MESSAGE(compose(
 		    "Read % units from RingBuffer, Total Read: %", read_cnt, total_read));
+#endif
 		delete[] read_array;
 	}
 }
