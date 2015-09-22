@@ -46,12 +46,12 @@ BOOST_AUTO_TEST_CASE(test_ring_buffer_basic)
 {
 	size_t buffer_size = 64;
 	size_t half_buffer_size = buffer_size / 2;
-	size_t max_write_count = buffer_size - 1;
 
 	RingBuffer<float> rbl(buffer_size);
+	size_t max_write_count = rbl.max_write_count();
 
-	BOOST_CHECK(rbl.write_space() == max_write_count);
-	BOOST_CHECK(rbl.read_count() == 0);
+	BOOST_CHECK(rbl.write_available() == max_write_count);
+	BOOST_CHECK(rbl.read_available() == 0);
 
 	size_t write_count = half_buffer_size;
 
@@ -71,7 +71,7 @@ BOOST_AUTO_TEST_CASE(test_ring_buffer_basic)
 	// write junk into ~half the buffer
 	BOOST_CHECK(rbl.write(write_buf.get(), write_count) == write_count);
 
-	BOOST_CHECK(write_count == rbl.read_count());
+	BOOST_CHECK(write_count == rbl.read_available());
 
 	// check read vectors, should only be one
 
@@ -90,7 +90,7 @@ BOOST_AUTO_TEST_CASE(test_ring_buffer_basic)
 	// read junk data and test that it is the same as what was written
 	BOOST_CHECK(rbl.read(read_buf.get(), write_count) == write_count);
 
-	BOOST_CHECK(rbl.read_count() == 0);
+	BOOST_CHECK(rbl.read_available() == 0);
 
 	print_read_vectors(rbl);
 
@@ -124,7 +124,7 @@ BOOST_AUTO_TEST_CASE(test_ring_buffer_basic)
 	BOOST_CHECK(rv.vec2 != nullptr);
 	BOOST_CHECK(rv.size2 != 0);
 
-	BOOST_CHECK(rbl.write_space() == 0);
+	BOOST_CHECK(rbl.write_available() == 0);
 }
 
 BOOST_AUTO_TEST_CASE(test_ring_buffer_bounds)
@@ -141,10 +141,10 @@ BOOST_AUTO_TEST_CASE(test_ring_buffer_random)
 
 	for (int i = 0; i != 10; ++i) {
 
-		size_t write_count = g_random_int_range(1, rbl.write_space());
+		size_t write_count = g_random_int_range(1, rbl.write_available());
 
 		RingBuffer<int>::Vectors wv = rbl.get_write_vectors();
-		BOOST_CHECK(wv.size() == rbl.write_space());
+		BOOST_CHECK(wv.size() == rbl.write_available());
 
 		print_write_vectors(rbl);
 
@@ -156,7 +156,7 @@ BOOST_AUTO_TEST_CASE(test_ring_buffer_random)
 
 		BOOST_CHECK(rbl.write(write_buf.get(), write_count) == write_count);
 
-		BOOST_CHECK(write_count == rbl.read_count());
+		BOOST_CHECK(write_count == rbl.read_available());
 
 		total_write_count += write_count;
 
@@ -168,7 +168,7 @@ BOOST_AUTO_TEST_CASE(test_ring_buffer_random)
 		unique_ptr<int[]> read_buf(new int[write_count]);
 
 		BOOST_CHECK(rbl.read(read_buf.get(), write_count) == write_count);
-		BOOST_CHECK(rbl.read_count() == 0);
+		BOOST_CHECK(rbl.read_available() == 0);
 		total_read_count += write_count;
 
 		for (int i = 0; i < write_count; ++i) {
@@ -193,7 +193,7 @@ static bool producer_thread_failed = false;
 void producer_thread()
 {
 	while (!s_producer_exit) {
-		if (rb.write_space() == 0) {
+		if (rb.write_available() == 0) {
 			uint32_t sleep_count = g_random_int_range(10, 100);
 #if 0
 			BOOST_TEST_MESSAGE(
@@ -202,7 +202,7 @@ void producer_thread()
 			mojo::usleep(sleep_count);
 			continue;
 		}
-		size_t write_cnt = g_random_int_range(0, rb.write_space());
+		size_t write_cnt = g_random_int_range(0, rb.write_available());
 		if (write_cnt == 0) continue;
 		uint32_t* write_array = new uint32_t[write_cnt];
 		// write random data
@@ -226,7 +226,7 @@ static bool consumer_thread_failed = false;
 void consumer_thread()
 {
 	while (!s_consumer_exit) {
-		if (rb.read_count() == 0) {
+		if (rb.read_available() == 0) {
 			uint32_t sleep_count = g_random_int_range(10, 100);
 #if 0
 			BOOST_TEST_MESSAGE(compose("Read count 0, sleeping for %(ns)", sleep_count));
@@ -234,7 +234,7 @@ void consumer_thread()
 			mojo::usleep(sleep_count);
 			continue;
 		}
-		size_t read_cnt = g_random_int_range(0, rb.read_count());
+		size_t read_cnt = g_random_int_range(0, rb.read_available());
 		if (read_cnt == 0) continue;
 		uint32_t* read_array = new uint32_t[read_cnt];
 		bool success = (rb.read(read_array, read_cnt) == read_cnt);
@@ -249,6 +249,16 @@ void consumer_thread()
 #endif
 		delete[] read_array;
 	}
+
+	// read any remaining data
+	size_t read_cnt = rb.read_available();
+	uint32_t* read_array = new uint32_t[read_cnt];
+	bool success = (rb.read(read_array, read_cnt) == read_cnt);
+	if (success) {
+		total_read += read_cnt;
+	} else {
+		consumer_thread_failed = true;
+	}
 }
 
 BOOST_AUTO_TEST_CASE(test_ring_buffer_threaded)
@@ -260,13 +270,6 @@ BOOST_AUTO_TEST_CASE(test_ring_buffer_threaded)
 
 	s_producer_exit = true;
 	producer.join();
-
-	int wait_time = 5;
-
-	while (wait_time-- != 0) {
-		if (total_written == total_read) break;
-		mojo::sleep(1);
-	}
 
 	s_consumer_exit = true;
 	consumer.join();
