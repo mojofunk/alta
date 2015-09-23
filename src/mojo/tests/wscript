@@ -4,6 +4,7 @@
 
 tests = '''
 test_application
+test_boost_lockfree
 test_core_initialize
 test_debug
 test_engine
