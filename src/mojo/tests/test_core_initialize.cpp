@@ -37,7 +37,7 @@ BOOST_AUTO_TEST_CASE(test_core_initializer)
 	std::thread thread1(init_thread);
 	std::thread thread2(init_thread);
 
-	mojo::usleep(10 * 1000000);
+	mojo::sleep(10);
 
 	s_exit = true;
 
