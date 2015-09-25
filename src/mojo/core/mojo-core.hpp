@@ -27,6 +27,7 @@
 #include "time/time.hpp"
 #include "time/timing.hpp"
 
+#include "memory/memory_pool.hpp"
 #include "memory/pool_allocator.hpp"
 
 #include "misc/ring_buffer.hpp"
