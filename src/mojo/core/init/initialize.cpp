@@ -11,7 +11,7 @@ MOJO_DEBUG_DOMAIN(CORE_INITIALIZE);
 
 namespace {
 
-std::atomic_uint s_init_core_count(0);
+std::atomic<uint32_t> s_init_core_count(0);
 
 using namespace mojo;
 

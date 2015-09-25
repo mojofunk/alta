@@ -15,18 +15,19 @@
 
 using namespace mojo;
 
-std::atomic_bool s_exit(false);
+const int iterations = 1e6;
 
 void init_thread()
 {
-	while (!s_exit) {
-		for (int i = 0; i < 100; ++i) {
-			core::initialize();
-		}
+	for (int i = 0; i < iterations; ++i) {
+		core::initialize();
+	}
+}
 
-		for (int i = 0; i < 100; ++i) {
-			core::deinitialize();
-		}
+void deinit_thread()
+{
+	for (int i = 0; i < iterations; ++i) {
+		core::deinitialize();
 	}
 }
 
@@ -34,15 +35,17 @@ BOOST_AUTO_TEST_CASE(test_core_initializer)
 {
 	BOOST_REQUIRE(!core::initialized());
 
-	std::thread thread1(init_thread);
-	std::thread thread2(init_thread);
+	std::thread init_thread1(init_thread);
+	std::thread init_thread2(init_thread);
 
-	mojo::sleep(10);
+	init_thread1.join();
+	init_thread2.join();
 
-	s_exit = true;
+	std::thread deinit_thread1(deinit_thread);
+	std::thread deinit_thread2(deinit_thread);
 
-	thread1.join();
-	thread2.join();
+	deinit_thread1.join();
+	deinit_thread2.join();
 
 	BOOST_CHECK(!core::initialized());
 }
