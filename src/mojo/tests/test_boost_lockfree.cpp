@@ -27,6 +27,8 @@ BOOST_AUTO_TEST_CASE(test_spsc_queue)
 const int queue_size = 100;
 queue<int, capacity<queue_size>> q;
 
+const int iterations = 10000000;
+
 static std::atomic<int> push_count(0);
 static std::atomic<int> pop_count(0);
 
@@ -34,7 +36,7 @@ static std::atomic<bool> done(false);
 
 void produce()
 {
-	while (!done) {
+	for (int i = 0; i != iterations; ++i) {
 		int value = ++push_count;
 		while (!q.push(value))
 			;
@@ -43,21 +45,20 @@ void produce()
 
 void consume()
 {
+	int value = 0;
 	while (!done) {
-		int x;
-		while (q.pop(x)) {
+		while (q.pop(value)) {
 			++pop_count;
 		}
 	}
 
-	int x = 0;
-	while (q.pop(x)) {
+	while (q.pop(value)) {
 		++pop_count;
 	}
 }
 
 void
-check_push_pop_count ()
+test_queue_iteration ()
 {
 	done = false;
 	push_count = 0;
@@ -72,10 +73,10 @@ check_push_pop_count ()
 
 	mojo::sleep(5);
 
-	done = true;
 	t1.join();
 	t2.join();
 	t3.join();
+	done = true;
 	t4.join();
 	t5.join();
 	t6.join();
@@ -91,7 +92,7 @@ BOOST_AUTO_TEST_CASE(test_queue)
 	BOOST_CHECK(q.is_lock_free());
 
 	for (int i = 0; i < 10; ++i) {
-		check_push_pop_count();
+		test_queue_iteration();
 	}
 }
 
