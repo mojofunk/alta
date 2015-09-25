@@ -28,23 +28,15 @@ struct Foo
 
 BOOST_AUTO_TEST_CASE(test_memory_pool_basic)
 {
-	MemoryPool<sizeof(int), 128> int_pool;
+	MemoryPool int_pool(sizeof(int), 128);
 
 	BOOST_CHECK(!int_pool.empty());
-}
-
-BOOST_AUTO_TEST_CASE(test_object_memory_pool)
-{
-	ObjectMemoryPool<Foo, 128> foo_pool;
-	ObjectMemoryPool<char[128], 128> char_array_pool;
-
-	BOOST_CHECK(!foo_pool.empty());
 }
 
 static const unsigned int num = 128;
 static const size_t block_size = sizeof(int);
 
-MemoryPool<block_size, num> threaded_int_pool;
+MemoryPool threaded_int_pool(block_size, num);
 
 boost::lockfree::queue<int*, boost::lockfree::capacity<num>> alloc_queue;
 
@@ -129,21 +121,21 @@ BOOST_AUTO_TEST_CASE(test_memory_pool_threaded)
 
 BOOST_AUTO_TEST_CASE(test_pool_allocator_basic)
 {
-	PoolAllocator<int> p_small_alloc;
+	PoolAllocator<int> p_small_alloc(128);
 
 	p_small_alloc.empty();
 
-	PoolAllocator<int, 256> p_medium_alloc;
+	PoolAllocator<int> p_medium_alloc(256);
 
-	PoolAllocator<Foo, 512> p_large_alloc;
+	PoolAllocator<Foo> p_large_alloc(512);
 }
 
 BOOST_AUTO_TEST_CASE(test_pool_allocator_copy_ctor)
 {
-	PoolAllocator<int, 256> small_alloc1;
+	PoolAllocator<int> small_alloc1(256);
 
 	{
-		std::vector<int, PoolAllocator<int, 256>> v(small_alloc1);
+		std::vector<int, PoolAllocator<int>> v(small_alloc1);
 
 		for (int i = 0; i < 256; ++i) {
 			v.push_back(i);

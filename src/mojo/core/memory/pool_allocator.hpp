@@ -24,7 +24,7 @@ namespace mojo {
 
 namespace alloc {
 
-template <typename T, std::uint16_t size = 128>
+template <typename T>
 class PoolAllocator {
 public:
 	typedef T value_type;
@@ -37,26 +37,22 @@ public:
 
 	typedef std::uint16_t max_size_type;
 
-private:
-
-	typedef ObjectMemoryPool<T, size> object_pool_type;
-
 public:
 	template <typename U>
 	struct rebind {
-		typedef PoolAllocator<U, size> other;
+		typedef PoolAllocator<U> other;
 	};
 
 public:
-
-	inline explicit PoolAllocator()
-	: m_object_pool (new object_pool_type)
-	{}
+	inline explicit PoolAllocator(const uint16_t count)
+	    : m_pool(new MemoryPool(sizeof(T), count))
+	{
+	}
 
 	inline ~PoolAllocator() {}
 
-	inline explicit PoolAllocator(const PoolAllocator<T, size>& other)
-	: m_object_pool(other.m_object_pool)
+	inline explicit PoolAllocator(const PoolAllocator<T>& other)
+	    : m_pool(other.m_pool)
 	{
 	}
 
@@ -103,7 +99,7 @@ public:
 
 private:
 
-	std::shared_ptr<object_pool_type> m_object_pool;
+	std::shared_ptr<MemoryPool> m_pool;
 };
 
 } // namespace alloc

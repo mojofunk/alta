@@ -9,32 +9,32 @@ namespace mojo {
 
 namespace alloc {
 
-template <uint32_t BlockSize, uint32_t Count>
 class MemoryPool
 {
 public:
-	typedef std::size_t size_type;
-
-public:
-	MemoryPool()
-		: m_count(0)
+	MemoryPool(const std::size_t size, const uint32_t count)
+		: m_block(nullptr)
+		, m_size(size)
+		, m_count(count)
+		, m_current_count(0)
+		, m_stack(count)
 	{
-		m_block = (char*)std::malloc (Count * BlockSize);
+		m_block = (char*)std::malloc (m_size * m_count);
 		// if(!m_block) throw std::bad_alloc?
 
-		for (char* tmp = m_block; tmp < end(); tmp += BlockSize) {
+		for (char* tmp = m_block; tmp < end(); tmp += m_size) {
 			bool pushed = m_stack.push(tmp);
 			assert(pushed);
-			m_count++;
+			m_current_count++;
 		}
-		assert(m_count == Count);
+		assert(m_current_count == m_count);
 	}
 
 	~MemoryPool()
 	{
 		std::free(m_block);
 		m_block = nullptr;
-		assert(m_count == Count);
+		assert(m_current_count == m_count);
 	}
 
 	// return true if allocated by pool
@@ -43,53 +43,52 @@ public:
 		return ((char*)ptr >= m_block) && ((char*)ptr < end());
 	}
 
-	bool empty()
-	{
-		m_count == 0;
-	}
+	bool empty() { m_current_count == 0; }
 
-	size_type size() { return BlockSize * Count; }
+	std::size_t size() { return m_size; }
 
-	void* allocate(const size_type bytes)
+	std::size_t count() { return m_count; }
+
+	void* allocate(const std::size_t bytes)
 	{
-		assert(bytes <= BlockSize);
+		if (bytes > size()) {
+			assert(true);
+			return nullptr;
+		}
 		char* mem = nullptr;
 		if (m_stack.pop(mem)) {
-			m_count--;
+			m_current_count--;
 		}
 		return (void*)mem;
 	}
 
 	void deallocate(void* ptr)
 	{
-		assert(is_from(ptr));
+		if (!is_from(ptr)) {
+			assert(true);
+			return;
+		}
 		if (m_stack.push((char*)ptr)) {
-			m_count++;
+			m_current_count++;
 		} else {
 			assert(true);
 		}
 		ptr = nullptr;
 	}
 
-	uint32_t get_count() const { return Count; }
+private: // methods
+	void* end() { return m_block + m_size * m_count; }
 
-	uint32_t get_block_size() const { return BlockSize; }
-
-private:
-
-	void* end() { return m_block + Count*BlockSize; }
-
-private:
-
-	typedef boost::lockfree::stack<char*, boost::lockfree::capacity<Count>> stack_type;
+private: // data
+	typedef boost::lockfree::stack<char*, boost::lockfree::fixed_sized<true>>
+	    stack_type;
 
 	char* m_block;
+	const std::size_t m_size;
+	const uint16_t m_count;
+	std::atomic<uint16_t> m_current_count;
 	stack_type m_stack;
-	std::atomic<uint16_t> m_count;
 };
-
-template <typename T, unsigned int Count>
-class ObjectMemoryPool : public MemoryPool<sizeof(T), Count> { };
 
 } // namespace alloc
 
