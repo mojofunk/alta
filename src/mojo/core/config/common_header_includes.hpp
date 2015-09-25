@@ -40,5 +40,7 @@
 #include <boost/signals2.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
+#include <boost/lockfree/queue.hpp>
+#include <boost/lockfree/stack.hpp>
 
 #endif // MOJO_CORE_COMMON_HEADER_H
