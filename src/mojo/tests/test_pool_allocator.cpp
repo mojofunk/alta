@@ -17,7 +17,7 @@ using std::endl;
 
 using namespace boost::unit_test;
 using namespace std;
-using namespace mojo::alloc;
+using namespace mojo::memory;
 
 struct Foo
 {
@@ -28,7 +28,7 @@ struct Foo
 
 BOOST_AUTO_TEST_CASE(test_memory_pool_basic)
 {
-	MemoryPool int_pool(sizeof(int), 128);
+	Pool int_pool(sizeof(int), 128);
 
 	BOOST_CHECK(!int_pool.empty());
 }
@@ -36,7 +36,7 @@ BOOST_AUTO_TEST_CASE(test_memory_pool_basic)
 static const unsigned int num = 128;
 static const size_t block_size = sizeof(int);
 
-MemoryPool threaded_int_pool(block_size, num);
+Pool threaded_int_pool(block_size, num);
 
 boost::lockfree::queue<int*, boost::lockfree::capacity<num>> alloc_queue;
 

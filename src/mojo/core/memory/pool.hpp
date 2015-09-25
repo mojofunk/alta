@@ -7,12 +7,12 @@
 
 namespace mojo {
 
-namespace alloc {
+namespace memory {
 
-class MemoryPool
+class Pool
 {
 public:
-	MemoryPool(const std::size_t size, const uint32_t count)
+	Pool(const std::size_t size, const uint32_t count)
 		: m_block(nullptr)
 		, m_size(size)
 		, m_count(count)
@@ -30,7 +30,7 @@ public:
 		assert(m_current_count == m_count);
 	}
 
-	~MemoryPool()
+	~Pool()
 	{
 		std::free(m_block);
 		m_block = nullptr;
@@ -90,8 +90,8 @@ private: // data
 	stack_type m_stack;
 };
 
-} // namespace alloc
+} // namespace memory
 
 } // namespace mojo
 
-#endif // MOJO_CORE_POOL_ALLOCATOR_H
+#endif // MOJO_CORE_MEMORY_POOL_H

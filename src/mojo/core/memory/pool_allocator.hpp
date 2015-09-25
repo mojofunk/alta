@@ -1,9 +1,9 @@
-#ifndef MOJO_CORE_POOL_ALLOCATOR_H
-#define MOJO_CORE_POOL_ALLOCATOR_H
+#ifndef MOJO_CORE_MEMORY_POOL_ALLOCATOR_H
+#define MOJO_CORE_MEMORY_POOL_ALLOCATOR_H
 
 #ifndef MOJO_AMALGAMATED
 #include "mojo/core/config/common_header_includes.hpp"
-#include "mojo/core/memory/memory_pool.hpp"
+#include "mojo/core/memory/pool.hpp"
 #endif
 
 /**
@@ -22,7 +22,7 @@
  */
 namespace mojo {
 
-namespace alloc {
+namespace memory {
 
 template <typename T>
 class PoolAllocator {
@@ -45,7 +45,7 @@ public:
 
 public:
 	inline explicit PoolAllocator(const uint16_t count)
-	    : m_pool(new MemoryPool(sizeof(T), count))
+	    : m_pool(new Pool(sizeof(T), count))
 	{
 	}
 
@@ -73,7 +73,7 @@ public:
 	{
 		/**
 		 * TODO return memory allocated from the head but kept in a number of
-		 * stacks/MemoryPools that can be used for various values of cnt.
+		 * stacks/Pools that can be used for various values of cnt.
 		 * A stack for cnt == 1
 		 * A stack for cnt == size/X
 		 */
@@ -99,10 +99,10 @@ public:
 
 private:
 
-	std::shared_ptr<MemoryPool> m_pool;
+	std::shared_ptr<Pool> m_pool;
 };
 
-} // namespace alloc
+} // namespace memory
 
 } // namespace mojo
 
