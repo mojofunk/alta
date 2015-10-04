@@ -8,6 +8,10 @@
 
 namespace mojo {
 
+/**
+ * Use the name Edge rather than Connection as we may want to use that
+ * identifier in another context.
+ */
 class Edge {
 public:
 	Edge(const Node* from, const Node* to);

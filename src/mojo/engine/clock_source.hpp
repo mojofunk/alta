@@ -10,6 +10,11 @@ namespace mojo {
 class ClockSource {
 public:
 	virtual ~ClockSource();
+
+	virtual bool connect (std::function<void>);
+
+	virtual bool disconnect ();
+
 };
 
 } // namespace mojo

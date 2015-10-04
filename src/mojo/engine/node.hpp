@@ -9,8 +9,14 @@ using std::set;
 
 class Node {
 public:
+	/**
+	 * @return true if Node has any output ports/outgoing edges.
+	 */
 	bool is_source() const;
 
+	/**
+	 * @return true if Node has any input ports/incoming edges.
+	 */
 	bool is_sink() const;
 
 	void add_outgoing_edge(Node* sink);
