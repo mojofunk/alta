@@ -1,5 +1,5 @@
 #ifndef MOJO_SINGLE_TEST_EXE
-#define BOOST_TEST_MODULE mojo_memory_pool
+#define BOOST_TEST_MODULE mojo_fixed_size_pool
 #endif
 
 #include <boost/test/unit_test.hpp>
@@ -12,12 +12,12 @@
 using std::cout;
 using std::endl;
 
-#include "mojo/core/memory/pool.hpp"
+#include "mojo/core/memory/fixed_size_pool.hpp"
 #include "mojo/core/time/time.hpp"
 
 using namespace boost::unit_test;
 using namespace std;
-using namespace mojo::memory;
+using namespace mojo;
 
 struct Foo
 {
@@ -26,9 +26,9 @@ struct Foo
 	double m_double;
 };
 
-BOOST_AUTO_TEST_CASE(test_memory_pool_basic)
+BOOST_AUTO_TEST_CASE(test_fixed_size_pool_basic)
 {
-	Pool int_pool(sizeof(int), 128);
+	FixedSizePool int_pool(sizeof(int), 128);
 
 	BOOST_CHECK(!int_pool.empty());
 }
@@ -36,7 +36,7 @@ BOOST_AUTO_TEST_CASE(test_memory_pool_basic)
 static const unsigned int num = 128;
 static const size_t block_size = sizeof(int);
 
-Pool threaded_int_pool(block_size, num);
+FixedSizePool threaded_int_pool(block_size, num);
 
 boost::lockfree::queue<int*, boost::lockfree::capacity<num>> alloc_queue;
 

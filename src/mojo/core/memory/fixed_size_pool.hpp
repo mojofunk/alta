@@ -1,5 +1,5 @@
-#ifndef MOJO_CORE_MEMORY_POOL_H
-#define MOJO_CORE_MEMORY_POOL_H
+#ifndef MOJO_CORE_FIXED_SIZE_POOL_H
+#define MOJO_CORE_FIXED_SIZE_POOL_H
 
 #ifndef MOJO_AMALGAMATED
 #include "mojo/core/config/common_header_includes.hpp"
@@ -7,12 +7,10 @@
 
 namespace mojo {
 
-namespace memory {
-
-class Pool
+class FixedSizePool
 {
 public:
-	Pool(const std::size_t size, const uint32_t count)
+	FixedSizePool(const std::size_t size, const uint32_t count)
 		: m_block(nullptr)
 		, m_size(size)
 		, m_count(count)
@@ -30,7 +28,7 @@ public:
 		assert(m_current_count == m_count);
 	}
 
-	~Pool()
+	~FixedSizePool()
 	{
 		std::free(m_block);
 		m_block = nullptr;
@@ -90,8 +88,6 @@ private: // data
 	stack_type m_stack;
 };
 
-} // namespace memory
-
 } // namespace mojo
 
-#endif // MOJO_CORE_MEMORY_POOL_H
+#endif // MOJO_CORE_FIXED_SIZE_POOL_H

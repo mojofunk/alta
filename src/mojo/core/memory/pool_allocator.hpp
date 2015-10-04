@@ -3,7 +3,7 @@
 
 #ifndef MOJO_AMALGAMATED
 #include "mojo/core/config/common_header_includes.hpp"
-#include "mojo/core/memory/pool.hpp"
+#include "mojo/core/memory/fixed_size_pool.hpp"
 #endif
 
 /**
@@ -45,7 +45,7 @@ public:
 
 public:
 	inline explicit PoolAllocator(const uint16_t count)
-	    : m_pool(new Pool(sizeof(T), count))
+	    : m_pool(new FixedSizePool(sizeof(T), count))
 	{
 	}
 
@@ -99,7 +99,7 @@ public:
 
 private:
 
-	std::shared_ptr<Pool> m_pool;
+	std::shared_ptr<FixedSizePool> m_pool;
 };
 
 } // namespace memory

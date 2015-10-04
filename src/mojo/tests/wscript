@@ -19,7 +19,7 @@ test_timing
 test_type_system
 test_graph
 test_module_utils
-test_memory_pool
+test_fixed_size_pool
 test_project
 test_audio_clip
 test_filesystem_paths
