@@ -4,6 +4,7 @@
 #ifndef MOJO_AMALGAMATED
 #include "mojo/core/config/common_header_includes.hpp"
 #include "mojo/core/memory/fixed_size_pool.hpp"
+#include "mojo/core/memory/fixed_size_object_pool.hpp"
 #endif
 
 /**
@@ -41,14 +42,14 @@ public:
 
 public:
 	inline explicit FixedSizePoolAllocator(const uint16_t size)
-	    : m_pool(new FixedSizePool<T>(size))
+	    : m_object_pool(new FixedSizeObjectPool<T>(size))
 	{
 	}
 
 	inline ~FixedSizePoolAllocator() {}
 
 	inline explicit FixedSizePoolAllocator(const FixedSizePoolAllocator<T>& other)
-	    : m_pool(other.m_pool)
+	    : m_object_pool(other.m_object_pool)
 	{
 	}
 
@@ -59,7 +60,7 @@ public:
 	}
 #endif
 
-	bool empty() { return m_pool->empty() }
+	bool empty() { return m_object_pool->empty(); }
 
 	inline pointer address(reference r) { return &r; }
 	inline const_pointer address(const_reference r) { return &r; }
@@ -70,12 +71,12 @@ public:
 		// only allocations of single count are supported atm
 		if (cnt != 1) return nullptr;
 
-		return m_pool->allocate();
+		return m_object_pool->allocate();
 	}
 
-	inline void deallocate(pointer p, size_type) { return m_pool->deallocate(p); }
+	inline void deallocate(pointer p, size_type) { return m_object_pool->deallocate(p); }
 
-	inline size_type max_size() const { return m_pool->size(); }
+	inline size_type max_size() const { return m_object_pool->count(); }
 
 	inline void construct(pointer p, const T& t) { new (p) T(t); }
 
@@ -86,7 +87,7 @@ public:
 
 private:
 
-	std::shared_ptr<FixedSizePool<T>> m_pool;
+	std::shared_ptr<FixedSizeObjectPool<T>> m_object_pool;
 };
 
 } // namespace mojo

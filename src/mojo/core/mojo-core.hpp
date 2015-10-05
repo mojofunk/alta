@@ -28,7 +28,8 @@
 #include "time/timing.hpp"
 
 #include "memory/fixed_size_pool.hpp"
-#include "memory/pool_allocator.hpp"
+#include "memory/fixed_size_object_pool.hpp"
+#include "memory/fixed_size_pool_allocator.hpp"
 
 #include "misc/ring_buffer.hpp"
 #include "misc/null_deleter.hpp"

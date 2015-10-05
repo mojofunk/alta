@@ -12,7 +12,7 @@
 using std::cout;
 using std::endl;
 
-#include "mojo/core/memory/fixed_size_pool.hpp"
+#include "mojo/core/memory/fixed_size_object_pool.hpp"
 #include "mojo/core/time/time.hpp"
 
 using namespace boost::unit_test;
@@ -28,14 +28,14 @@ struct Foo
 
 BOOST_AUTO_TEST_CASE(test_fixed_size_pool_basic)
 {
-	FixedSizePool<int> int_pool(128);
+	FixedSizeObjectPool<int> int_pool(128);
 
 	BOOST_CHECK(!int_pool.empty());
 }
 
 static const unsigned int num = 128;
 
-FixedSizePool<int> threaded_int_pool(num);
+FixedSizeObjectPool<int> threaded_int_pool(num);
 
 boost::lockfree::queue<int*, boost::lockfree::capacity<num>> alloc_queue;
 
@@ -107,7 +107,7 @@ test_memory_pool_iteration ()
 	std::cerr << "alloc_count = " << alloc_count << std::endl;
 	std::cerr << "dealloc_count = " << dealloc_count << std::endl;
 	BOOST_CHECK(alloc_count == dealloc_count);
-	BOOST_CHECK(threaded_int_pool.empty());
+	BOOST_CHECK(threaded_int_pool.available() == num);
 }
 
 BOOST_AUTO_TEST_CASE(test_memory_pool_threaded)
