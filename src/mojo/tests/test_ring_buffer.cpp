@@ -9,7 +9,7 @@
 
 #include "mojo/core/time/time.hpp"
 
-#include "mojo/core/misc/ring_buffer.hpp"
+#include "mojo/core/lockfree/ring_buffer.hpp"
 #include "mojo/core/string/compose.hpp"
 
 using namespace boost::unit_test;

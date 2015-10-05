@@ -31,7 +31,8 @@
 #include "memory/fixed_size_object_pool.hpp"
 #include "memory/fixed_size_pool_allocator.hpp"
 
-#include "misc/ring_buffer.hpp"
+#include "lockfree/ring_buffer.hpp"
+
 #include "misc/null_deleter.hpp"
 #include "misc/semaphore.hpp"
 #include "misc/worker.hpp"
