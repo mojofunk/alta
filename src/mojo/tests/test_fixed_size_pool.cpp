@@ -28,15 +28,14 @@ struct Foo
 
 BOOST_AUTO_TEST_CASE(test_fixed_size_pool_basic)
 {
-	FixedSizePool int_pool(sizeof(int), 128);
+	FixedSizePool<int> int_pool(128);
 
 	BOOST_CHECK(!int_pool.empty());
 }
 
 static const unsigned int num = 128;
-static const size_t block_size = sizeof(int);
 
-FixedSizePool threaded_int_pool(block_size, num);
+FixedSizePool<int> threaded_int_pool(num);
 
 boost::lockfree::queue<int*, boost::lockfree::capacity<num>> alloc_queue;
 
@@ -52,8 +51,7 @@ std::atomic_bool alloc_is_from_test(true);
 void allocate()
 {
 	while (alloc_count < iterations) {
-		int* int_ptr = nullptr;
-		int_ptr = (int*)threaded_int_pool.allocate(block_size);
+		int* int_ptr = threaded_int_pool.allocate();
 
 		if (int_ptr == nullptr) {
 			continue;

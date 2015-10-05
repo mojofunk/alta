@@ -7,67 +7,55 @@
 
 namespace mojo {
 
-class FixedSizePool
-{
+template <class T>
+class FixedSizePool {
 public:
-	FixedSizePool(const std::size_t size, const uint32_t count)
-		: m_block(nullptr)
-		, m_size(size)
-		, m_count(count)
-		, m_current_count(0)
-		, m_stack(count)
+	FixedSizePool(const uint16_t size)
+	    : m_array(new T[size])
+	    , m_size(size)
+	    , m_available(size)
+	    , m_stack(size)
 	{
-		m_block = (char*)std::malloc (m_size * m_count);
-		// if(!m_block) throw std::bad_alloc?
-
-		for (char* tmp = m_block; tmp < end(); tmp += m_size) {
+		for (T* tmp = m_array; tmp < end(); tmp++) {
 			bool pushed = m_stack.push(tmp);
 			assert(pushed);
-			m_current_count++;
 		}
-		assert(m_current_count == m_count);
 	}
 
 	~FixedSizePool()
 	{
-		std::free(m_block);
-		m_block = nullptr;
-		assert(m_current_count == m_count);
+		assert(m_available == m_size);
+		delete[] m_array;
 	}
 
 	// return true if allocated by pool
-	bool is_from(void* ptr)
+	bool is_from(T* ptr) const { return (ptr >= m_array) && (ptr < end()); }
+
+	uint16_t size() const { return m_size; }
+
+	// not MT safe, just an indication
+	uint16_t available() const { return m_available; }
+
+	// not MT safe, just an indication
+	bool empty() const { m_available == 0; }
+
+	T* allocate()
 	{
-		return ((char*)ptr >= m_block) && ((char*)ptr < end());
+		T* instance = nullptr;
+		if (m_stack.pop(instance)) {
+			m_available--;
+		}
+		return instance;
 	}
 
-	bool empty() { m_current_count == 0; }
-
-	std::size_t size() { return m_size; }
-
-	std::size_t count() { return m_count; }
-
-	void* allocate(const std::size_t bytes)
-	{
-		if (bytes > size()) {
-			assert(true);
-			return nullptr;
-		}
-		char* mem = nullptr;
-		if (m_stack.pop(mem)) {
-			m_current_count--;
-		}
-		return (void*)mem;
-	}
-
-	void deallocate(void* ptr)
+	void deallocate(T* ptr)
 	{
 		if (!is_from(ptr)) {
 			assert(true);
 			return;
 		}
-		if (m_stack.push((char*)ptr)) {
-			m_current_count++;
+		if (m_stack.push(ptr)) {
+			m_available++;
 		} else {
 			assert(true);
 		}
@@ -75,16 +63,15 @@ public:
 	}
 
 private: // methods
-	void* end() { return m_block + m_size * m_count; }
+	T* end() const { return m_array + m_size; }
 
 private: // data
-	typedef boost::lockfree::stack<char*, boost::lockfree::fixed_sized<true>>
+	typedef boost::lockfree::stack<T*, boost::lockfree::fixed_sized<true>>
 	    stack_type;
 
-	char* m_block;
-	const std::size_t m_size;
-	const uint16_t m_count;
-	std::atomic<uint16_t> m_current_count;
+	T* m_array;
+	const uint16_t m_size;
+	std::atomic<uint16_t> m_available;
 	stack_type m_stack;
 };
 

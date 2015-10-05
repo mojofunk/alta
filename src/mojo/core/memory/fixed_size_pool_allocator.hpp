@@ -33,8 +33,6 @@ public:
 	typedef std::size_t size_type;
 	typedef std::ptrdiff_t difference_type;
 
-	typedef std::uint16_t max_size_type;
-
 public:
 	template <typename U>
 	struct rebind {
@@ -42,8 +40,8 @@ public:
 	};
 
 public:
-	inline explicit FixedSizePoolAllocator(const uint16_t count)
-	    : m_pool(new FixedSizePool(sizeof(T), count))
+	inline explicit FixedSizePoolAllocator(const uint16_t size)
+	    : m_pool(new FixedSizePool<T>(size))
 	{
 	}
 
@@ -61,7 +59,7 @@ public:
 	}
 #endif
 
-	bool empty () { return false; }
+	bool empty() { return m_pool->empty() }
 
 	inline pointer address(reference r) { return &r; }
 	inline const_pointer address(const_reference r) { return &r; }
@@ -69,26 +67,17 @@ public:
 	inline pointer allocate(size_type cnt,
 	                        typename std::allocator<void>::const_pointer = 0)
 	{
-		/**
-		 * TODO return memory allocated from the head but kept in a number of
-		 * stacks/Pools that can be used for various values of cnt.
-		 * A stack for cnt == 1
-		 * A stack for cnt == size/X
-		 */
-		return reinterpret_cast<pointer>(::operator new(cnt * sizeof(T)));
+		// only allocations of single count are supported atm
+		if (cnt != 1) return nullptr;
+
+		return m_pool->allocate();
 	}
 
-	inline void deallocate(pointer p, size_type) { ::operator delete(p); }
+	inline void deallocate(pointer p, size_type) { return m_pool->deallocate(p); }
 
-	inline size_type max_size() const
-	{
-		return std::numeric_limits<size_type>::max() / sizeof(T);
-	}
+	inline size_type max_size() const { return m_pool->size(); }
 
-	inline void construct(pointer p, const T& t)
-	{
-		new (p) T(t);
-	}
+	inline void construct(pointer p, const T& t) { new (p) T(t); }
 
 	inline void destroy(pointer p) { p->~T(); }
 
@@ -97,7 +86,7 @@ public:
 
 private:
 
-	std::shared_ptr<FixedSizePool> m_pool;
+	std::shared_ptr<FixedSizePool<T>> m_pool;
 };
 
 } // namespace mojo
