@@ -6,7 +6,6 @@
 #include <mojo/engine/node.hpp>
 #include <mojo/engine/edge.hpp>
 #include <mojo/engine/graph.hpp>
-#include <mojo/engine/clock_source.hpp>
 #include <mojo/engine/engine.hpp>
 
 #endif // MOJO_MOJO_ENGINE_H
