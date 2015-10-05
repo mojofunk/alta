@@ -9,14 +9,10 @@ using std::set;
 
 class Node;
 
-// mojo_graph_t* mojo_graph_create (void);
-// void mojo_graph_destroy (mojo_graph_t* graph);
-// mojo_status_t mojo_graph_add_node (mojo_graph_t* graph, node_t* node);
-// mojo_status_t mojo_graph_remove_node (mojo_graph_t* graph, node_t* node);
-// mojo_status_t mojo_graph_connect_nodes (mojo_graph_t* graph, node_t* n1,
-// node_t* n2);
-// void mojo_graph_get_nodes (mojo_graph_t* graph, vector<node_t*> nodes);
-
+/**
+ * A Graph can be made up of many disconnected directed acyclic graph's(DAG)
+ * where each DAG can be processed by a number of threads.
+ */
 class Graph {
 public:
 	// Node* create_node(callback_func_t, void* user_data);
@@ -33,6 +29,19 @@ public:
 	void disconnect(Node* n1, Node* n2);
 
 	set<Node*> get_nodes() const;
+
+	/**
+	 * Called at the start of the processing cycle before any calls to iterate
+	 * to reset the graph for processing.
+	 */
+	void reset_processing();
+
+	/**
+	 * iterate is called to process the graph. It can be called by many
+	 * threads. If graph processing has finished and each node in the graph has
+	 * been marked as processed then iterate will return.
+	 */
+	void iterate () const;
 
 private:
 	set<Node*> m_nodes;

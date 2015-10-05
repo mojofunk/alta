@@ -28,4 +28,14 @@ set<Node*> Graph::get_nodes() const
 	return m_nodes;
 }
 
+void Graph::reset_processing()
+{
+
+}
+
+void Graph::iterate() const
+{
+
+}
+
 } // namespace mojo
