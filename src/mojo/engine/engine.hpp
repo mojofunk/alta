@@ -5,51 +5,39 @@
 #include "mojo/core/config/common_header_includes.hpp"
 #include "mojo/engine/node.hpp"
 #include "mojo/engine/graph.hpp"
-#include "mojo/engine/clock_source.hpp"
 #endif
 
 namespace mojo {
 
 /**
- * Does the Engine have to be aware of the transport state?
+ * Time taken to process the Engine graph is determined by external means. The
+ * Engine is only concerned with ensuring the nodes are processed in the
+ * correct order and only once per cycle independent of how many threads are
+ * used to process the graph.
  *
- * Port offsets are in units of time(us or ns?) and are unrelated to transport
- * state in that they still exist in a system without a transport system as the
- * engine cycle continues regardless of transport state which suggests
- * transport is external to engine and independent.
+ * Connections between nodes are handled by an external class. The Engine treats
+ * connections between nodes as static while processing the graph. If some
+ * action needs to be performed(perhaps over more than one cycle) externally
+ * before updating the graph with the nodes disconnected/removed/etc
  *
- * When the transport state changes from stopped transport state
- * transitions need to be handled somewhere
+ * Ports and Buffer data offsets are not relevant to the engine
  *
- * Although the Engine processing cycle is driven by the ClockSource the
- * internal processing in the engine may be divided up as  necessary. What
- * units should the engine divisions be based on? time or samples. If time how
- * do we handle rounding etc. I guess rounding happens either way, although it
- * is unlikely that sub-sample accuracy is required.
+ * Transport state changes are not relevant to the engine.
  *
- * so for instance port connections/disconnections can be handled and in an
- * atomic/per cycle fashion which suggests that the engine is somewhat
- * responsible.
+ * The processing is performed by the Engine using a variable number of threads
+ * It is up to an external class to determine the appropriate number of threads
+ * to use for processing. The Engine has a pool of threads used to process the
+ * graph. What class is responsible for creating those threads? Does Engine
+ * need access to an external class to create new threads for flexibility.
  *
- * Engine receives events from the Application and processes them, for instance
- * transport change events. It also sends events to the application, for
- * instance buffer fill and buffer write events
+ * The engine is not concerned by how long it takes to process the
+ * graph(although we will want to measure it). The amount of processing
+ * performed by a class when a node processing callback is entirely up to the
+ * external factors.
  *
- * The state of the Engine reflects the state of the project but the engine does
- * not have access and does not depend on the Project or Application classes.
- * This allows the Engine API to be reusable.
- *
- * The processing is performed by the Engine using the optimal number of
- * threads for the system or a specific number if set.
- *
- * The process cycle starts based on a callback from the clock source which
- * may be a callback from the audio device
- *
- * The Application registers an event handler callback to receive all the events
- * issued by the engine and then processes them.
- *
- * The Engine process cycle is broken up into chunks of data/time which can be
- * different from the chunk size of the AudioDevice callback.
+ * Do we want a more flexible method of processing than threads like
+ * workers/contexts to be able to reduce the total amount of threads...probably
+ * not.
  *
  * The engine contains a number of nodes that are connected to form a graph that
  * determines data flow.
@@ -65,12 +53,24 @@ namespace mojo {
  * A Node might also have different types of ports, for instance a midi input
  * port and an audio output port in the case of an Midi Instrument track
  *
- * The Engine isn't responsible for saving and restoring connection state, but
- * emits a graph changed events to another class to do that.
+ * The Engine isn't responsible for saving and restoring connection state, the
+ * state of the connections and nodes in the engine are a reflection of
+ * external state so it is the responsibility of another class to monitor
+ * changes in that external state and update the Engine's graph to reflect
+ * that.
  *
- * - Removing Nodes doesn't cause clicks.
- * - Export/Render paths are the same as normal processing
- * - Testing of the engine can be performed
+ * Removing a Node should not cause clicks, I think this will be the
+ * responsibility of another class to do this. For instance when a Track is
+ * removed from the graph and it is playing back audio data then it will need
+ * to be set to a state where it is fading out for a period of time before it
+ * can be removed from the graph.
+ *
+ * Export/Render paths should use the same processing paths as normal
+ * processing and be performed in realtime(to capture external sources) and
+ * faster than realtime.
+ *
+ * It is important that testing of the engine can be performed easily and that
+ * the engine is a reusable component that can be used in many applications.
  *
  * When a graph has to be rendered to use in a bounce/freeze does that have to
  * be done while disconnected from audio driver/clock source? I think it would
@@ -102,7 +102,9 @@ public: // Interface
 
 	/**
 	 * Get a copy of the current graph, so that nodes can be added/removed,
-	 * connected/disconnected etc.
+	 * connected/disconnected etc. As a copy is returned changing the graph
+	 * won't change the graph in the engine until a new graph is set with
+	 * set_graph.
 	 */
 	Graph* get_graph ();
 
@@ -114,11 +116,22 @@ public: // Interface
 	void set_graph (Graph*);
 
 	/**
-	 * This must stop the Engine and restart or stop must be called first?
+	 * Process one cycle of the engine.
+	 * @return true on success, false on some error. There will probably need
+	 * to be way of propagating the error.
+	 *
+	 * iterate will always block until the graph has been completely processed
+	 * but there needs to be a way to iterate the graph as fast as possible
+	 * without buffer underrun etc. The current way I'm thinking this could be
+	 * achieved would be the check at the start of the cycle if all the nodes
+	 * have the data they require to perform processing and if not then perform
+	 * some action depending on what the requirements are. For instance if the
+	 * graph is being used for exporting audio then wait for the data to become
+	 * available and then continue processing. For playback of data in realtime
+	 * to an audio device then perhaps declick/fade out whatever audio is in
+	 * the buffers and stop transport.
 	 */
-	bool set_clock_source(ClockSource* clock);
-
-	ClockSource* get_clock_source() const;
+	bool iterate();
 
 private:
 
