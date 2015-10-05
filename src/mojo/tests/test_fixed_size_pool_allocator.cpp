@@ -12,12 +12,12 @@
 using std::cout;
 using std::endl;
 
-#include "mojo/core/memory/pool_allocator.hpp"
+#include "mojo/core/memory/fixed_size_pool_allocator.hpp"
 #include "mojo/core/time/time.hpp"
 
 using namespace boost::unit_test;
 using namespace std;
-using namespace mojo::memory;
+using namespace mojo;
 
 struct Foo
 {
@@ -28,21 +28,21 @@ struct Foo
 
 BOOST_AUTO_TEST_CASE(test_pool_allocator_basic)
 {
-	PoolAllocator<int> p_small_alloc(128);
+	FixedSizePoolAllocator<int> p_small_alloc(128);
 
 	p_small_alloc.empty();
 
-	PoolAllocator<int> p_medium_alloc(256);
+	FixedSizePoolAllocator<int> p_medium_alloc(256);
 
-	PoolAllocator<Foo> p_large_alloc(512);
+	FixedSizePoolAllocator<Foo> p_large_alloc(512);
 }
 
 BOOST_AUTO_TEST_CASE(test_pool_allocator_copy_ctor)
 {
-	PoolAllocator<int> small_alloc1(256);
+	FixedSizePoolAllocator<int> small_alloc1(256);
 
 	{
-		std::vector<int, PoolAllocator<int>> v(small_alloc1);
+		std::vector<int, FixedSizePoolAllocator<int>> v(small_alloc1);
 
 		for (int i = 0; i < 256; ++i) {
 			v.push_back(i);
@@ -55,7 +55,7 @@ BOOST_AUTO_TEST_CASE(test_pool_allocator_copy_ctor)
 
 #if 0
 	{
-		PoolAllocator<int, 256> small_alloc2(small_alloc1);
+		FixedSizePoolAllocator<int, 256> small_alloc2(small_alloc1);
 	}
 #endif
 }

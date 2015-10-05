@@ -20,11 +20,11 @@ test_type_system
 test_graph
 test_module_utils
 test_fixed_size_pool
+test_fixed_size_pool_allocator
 test_project
 test_audio_clip
 test_filesystem_paths
 test_project_directory
-test_pool_allocator
 test_file_utils
 test_archive_modules
 test_audiofile_modules

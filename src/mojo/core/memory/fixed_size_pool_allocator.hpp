@@ -1,5 +1,5 @@
-#ifndef MOJO_CORE_MEMORY_POOL_ALLOCATOR_H
-#define MOJO_CORE_MEMORY_POOL_ALLOCATOR_H
+#ifndef MOJO_CORE_FIXED_SIZE_POOL_ALLOCATOR_H
+#define MOJO_CORE_FIXED_SIZE_POOL_ALLOCATOR_H
 
 #ifndef MOJO_AMALGAMATED
 #include "mojo/core/config/common_header_includes.hpp"
@@ -22,10 +22,8 @@
  */
 namespace mojo {
 
-namespace memory {
-
 template <typename T>
-class PoolAllocator {
+class FixedSizePoolAllocator {
 public:
 	typedef T value_type;
 	typedef value_type* pointer;
@@ -40,25 +38,25 @@ public:
 public:
 	template <typename U>
 	struct rebind {
-		typedef PoolAllocator<U> other;
+		typedef FixedSizePoolAllocator<U> other;
 	};
 
 public:
-	inline explicit PoolAllocator(const uint16_t count)
+	inline explicit FixedSizePoolAllocator(const uint16_t count)
 	    : m_pool(new FixedSizePool(sizeof(T), count))
 	{
 	}
 
-	inline ~PoolAllocator() {}
+	inline ~FixedSizePoolAllocator() {}
 
-	inline explicit PoolAllocator(const PoolAllocator<T>& other)
+	inline explicit FixedSizePoolAllocator(const FixedSizePoolAllocator<T>& other)
 	    : m_pool(other.m_pool)
 	{
 	}
 
 #if 0
 	template <typename U>
-	inline explicit PoolAllocator(const PoolAllocator<U>&)
+	inline explicit FixedSizePoolAllocator(const FixedSizePoolAllocator<U>&)
 	{
 	}
 #endif
@@ -94,16 +92,14 @@ public:
 
 	inline void destroy(pointer p) { p->~T(); }
 
-	inline bool operator==(PoolAllocator const&) { return true; }
-	inline bool operator!=(PoolAllocator const& a) { return !operator==(a); }
+	inline bool operator==(FixedSizePoolAllocator const&) { return true; }
+	inline bool operator!=(FixedSizePoolAllocator const& a) { return !operator==(a); }
 
 private:
 
 	std::shared_ptr<FixedSizePool> m_pool;
 };
 
-} // namespace memory
-
 } // namespace mojo
 
-#endif // MOJO_CORE_POOL_ALLOCATOR_H
+#endif // MOJO_CORE_FIXED_SIZE_POOL_ALLOCATOR_H
