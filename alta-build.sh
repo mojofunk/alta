@@ -124,7 +124,7 @@ mkdir -p $ALTA_BUILD_ROOT || exit 1
 
 function sync ()
 {
-	rsync -av --delete --exclude /build --exclude /.lock* $ALTA_SRC_DIR/ $CONFIG_BUILD_DIR || exit 1
+	rsync -av --delete --exclude /build --exclude /.lock* --exclude /.waf-* $ALTA_SRC_DIR/ $CONFIG_BUILD_DIR || exit 1
 }
 
 function configure ()
