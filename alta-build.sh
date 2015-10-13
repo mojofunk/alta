@@ -29,7 +29,8 @@ config["debug-amalgamated-static"]="$TESTS $AMALGAMATE $STATIC"
 #config["debug-gtkmm-ui-static"]="$GUI $STATIC"
 #config["debug-gtkmm-ui-amalgamated"]="$AMALGAMATE $GUI"
 config["release"]="$STATIC $AMALGAMATE $OPTIMIZE $DISABLE_DEBUG_LOGGING"
-config["release-tests"]="$STATIC $AMALGAMATE $OPTIMIZE $TESTS"
+config["release-tests"]="$AMALGAMATE $OPTIMIZE $TESTS"
+config["release-tests-single"]="$AMALGAMATE $OPTIMIZE $SINGLE_TESTS"
 
 function print_usage ()
 {
