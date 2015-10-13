@@ -12,8 +12,18 @@ FunctorDispatcher::FunctorDispatcher()
 {
 }
 
+FunctorDispatcher::~FunctorDispatcher()
+{
+	assert(m_queue.empty());
+}
+
 void FunctorDispatcher::call_sync(const function_t& func)
 {
+	if (m_quit) {
+		// This should be some sort of error the caller must guarentee that
+		// no more calls functors are queued
+		return;
+	}
 	MOJO_DEBUG(FUNCTOR_DISPATCHER);
 	queue(func);
 	iteration(true);
@@ -21,6 +31,11 @@ void FunctorDispatcher::call_sync(const function_t& func)
 
 void FunctorDispatcher::call_async(const function_t& func)
 {
+	if (m_quit) {
+		// This should be some sort of error the caller must guarentee that
+		// no more calls functors are queued
+		return;
+	}
 	MOJO_DEBUG(FUNCTOR_DISPATCHER);
 	queue(func);
 	iteration(false);

@@ -11,13 +11,14 @@ namespace mojo {
 /**
  * The FunctorDispatcher class accepts worker functions to
  * be called in another thread.
- *
  */
 class FunctorDispatcher : public Worker {
 public:
 	typedef boost::function<void()> function_t;
 
 	FunctorDispatcher();
+
+	~FunctorDispatcher();
 
 	void call_sync(const function_t& func);
 
