@@ -75,6 +75,8 @@ namespace mojo {
  * When a graph has to be rendered to use in a bounce/freeze does that have to
  * be done while disconnected from audio driver/clock source? I think it would
  * simplify things greatly if it did.
+ *
+ * This class perhaps should be called GraphProcessor
  */
 class Engine {
 public: // ctors
