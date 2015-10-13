@@ -91,6 +91,12 @@ namespace mojo {
  * If the worker context is exposed in a private header(perhaps in core) then
  * the clients should be able to access the project class directly and the
  * classes can then defer some/all modification calls to the worker thread.
+ *
+ * The application class should reference and expose TaskProcessor class that
+ * be used by a client to add tasks to be performed. A Task instance will be
+ * returned by the TaskProcessor for the client to keep a track of.
+ *
+ * The Task class will notify the caller when the task is complete.
  */
 class Application {
 public: // Initialization
