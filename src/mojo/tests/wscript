@@ -23,6 +23,7 @@ test_module_utils
 test_fixed_size_object_pool
 test_fixed_size_pool_allocator
 test_project
+test_private_macros
 test_audio_clip
 test_filesystem_paths
 test_project_directory
