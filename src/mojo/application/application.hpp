@@ -1,9 +1,6 @@
 #ifndef MOJO_APPLICATION_H
 #define MOJO_APPLICATION_H
 
-#include <string>
-#include <memory>
-
 #ifndef MOJO_AMALGAMATED
 
 #include "mojo/core/object/signals.hpp"
