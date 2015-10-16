@@ -43,8 +43,8 @@
 #include <mojo/application/transition.hpp>
 #include <mojo/application/transport.hpp>
 
-#include <mojo/application/application_data.hpp>
-
 #include <mojo/application/application.hpp>
+// this internal class should not be in a public header
+#include <mojo/application/application_data.hpp>
 
 #endif // MOJO_MOJO_APPLICATION_H
