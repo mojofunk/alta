@@ -12,9 +12,9 @@
 #include "mojo/core/config/version.hpp"
 
 /**
- * These are the common system includes required by header files
- * in mojo-core. Obviously not all header files require all these
- * includes.
+ * These are the common system includes required by header files in mojo-core.
+ * Not all header files require all these includes but they can rely on them
+ * being already included.
  */
 
 #include <atomic>
@@ -42,5 +42,7 @@
 #include <boost/weak_ptr.hpp>
 #include <boost/lockfree/queue.hpp>
 #include <boost/lockfree/stack.hpp>
+
+#include "cppformat/format.h"
 
 #endif // MOJO_CORE_COMMON_HEADER_H

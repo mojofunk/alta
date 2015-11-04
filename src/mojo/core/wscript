@@ -13,6 +13,8 @@ def configure(conf):
 
 def build(bld):
     uselib = ['GLIB-2.0', 'GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
+    use_local_static = ['src_include_path', 'CPPFORMAT_STATIC']
+    use_local_shared = ['src_include_path', 'CPPFORMAT_SHARED']
 
     if bld.env.TARGET_PLATFORM == 'windows':
         uselib += ['WINMM']
@@ -34,7 +36,7 @@ def build(bld):
                   export_includes='.',
                   source=source,
                   uselib=uselib,
-                  use=['src_include_path'],
+                  use=use_local_shared,
                   defines=defines,
                   target='mojo-core',
                   name='MOJO_CORE_SHARED')
@@ -44,7 +46,7 @@ def build(bld):
                   export_includes='.',
                   source=source,
                   uselib=uselib,
-                  use=['src_include_path'],
+                  use=use_local_static,
                   defines=defines,
                   target='mojo-core',
                   name='MOJO_CORE_STATIC')

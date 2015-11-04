@@ -5,6 +5,7 @@
 subdirs = '''
 gleam
 mojo
+third_party
 '''
 
 

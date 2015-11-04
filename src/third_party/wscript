@@ -1,0 +1,13 @@
+#! /usr/bin/env python
+# encoding: utf-8
+
+subdirs = '''
+cppformat
+'''
+
+def configure(conf):
+    for dir in subdirs.split():
+        conf.recurse(dir)
+
+def build(bld):
+    bld.recurse(subdirs)

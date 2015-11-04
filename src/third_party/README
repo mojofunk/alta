@@ -1,0 +1,2 @@
+The intent is for all third_party source to be submodules eventually when it
+makes sense to go to the effort of doing it.
