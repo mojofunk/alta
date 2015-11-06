@@ -318,6 +318,27 @@ std::unique_ptr<ObjectManager::Impl> ObjectManager::s_impl;
 
 class Route;
 
+/**
+ * I think one possible solution to having to hold an observer lock while the
+ * observer list is being iterated is to hold a weak reference to the observer
+ * and convert it to a shared_ptr during emission or skip if it is invalid.
+ *
+ * This is restrictive in that some classes will not be managed via shared_ptr
+ * so would not normally be able to pass a weak reference to the class instance
+ * being observed. It would also require using enable_shared_from_this and it
+ * would not be possible to connect/disconnect to an "Observable" class during
+ * class construction or destruction as the shared_ptr holding "this" would not
+ * have been created yet.
+ *
+ * One possible way around this limitation would be to define a set of
+ * ObserverMember classes that are members of the class doing the observing and
+ * basically just forwarding callbacks onto the parent class.
+ *
+ * This would allow the ObserverMember class to be held in a shared_ptr that is
+ * valid during class construction/destruction and this should handle automatic
+ * disconnection(I think)
+ */
+
 class RouteObserver {
 public:
 	virtual void mute_enabled_changed(const shared_ptr<Route>&,
