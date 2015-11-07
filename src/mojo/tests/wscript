@@ -19,6 +19,7 @@ test_string_compose
 test_timing
 test_type_system
 test_graph
+test_logging
 test_observer
 test_module_utils
 test_fixed_size_object_pool
