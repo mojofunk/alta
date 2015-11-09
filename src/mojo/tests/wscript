@@ -16,6 +16,7 @@ test_spinwait
 test_state_tracker
 test_string_convert
 test_string_compose
+test_string_pool
 test_timing
 test_type_system
 test_graph

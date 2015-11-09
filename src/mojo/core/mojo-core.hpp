@@ -63,6 +63,7 @@
 
 #include "string/compose.hpp"
 #include "string/convert.hpp"
+#include "string/string_pool.hpp"
 
 #include "debug/debug_registry.hpp"
 #include "debug/debug.hpp"
