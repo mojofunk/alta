@@ -18,20 +18,21 @@
  */
 
 #include <atomic>
-#include <mutex>
 #include <condition_variable>
 #include <cstdint>
-#include <string>
-#include <sstream>
-#include <typeinfo> // could possibly forward declare?
-#include <limits>
 #include <locale>
 #include <list>
-#include <set>
-#include <unordered_set>
+#include <thread>
+#include <typeinfo> // could possibly forward declare?
+#include <limits>
 #include <map>
-#include <vector>
+#include <mutex>
+#include <set>
+#include <string>
+#include <sstream>
+#include <unordered_set>
 #include <queue>
+#include <vector>
 
 #include <glib.h> // for Properties
 
