@@ -195,5 +195,6 @@ def build(bld):
     if bld.env['RUN_TESTS']:
         bld.add_post_fun(test)
 
+
 def test(bld):
     subprocess.call("tools/linux/run-tests.sh")
