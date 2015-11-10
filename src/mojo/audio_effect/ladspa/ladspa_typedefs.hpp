@@ -6,8 +6,8 @@
 
 namespace mojo {
 
-typedef boost::shared_ptr<LADSPAAudioEffectInfo> LADSPAAudioEffectInfoSP;
-typedef boost::weak_ptr<LADSPAAudioEffectInfo> LADSPAAudioEffectInfoWPtr;
+typedef std::shared_ptr<LADSPAAudioEffectInfo> LADSPAAudioEffectInfoSP;
+typedef std::weak_ptr<LADSPAAudioEffectInfo> LADSPAAudioEffectInfoWPtr;
 }
 
 #endif

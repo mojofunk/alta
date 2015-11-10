@@ -5,28 +5,28 @@
 #include "mojo/core/config/common_header_includes.hpp"
 #endif
 
-#define M_DEFINE_POINTER_TYPEDEFS(CLASS)                                       \
-	using CLASS##SP = boost::shared_ptr<CLASS>;                                   \
-	using CLASS##WP = boost::weak_ptr<CLASS>;                                     \
-	using CLASS##ConstSP = boost::shared_ptr<CLASS const>;                        \
-	using CLASS##ConstWP = boost::weak_ptr<CLASS const>;
+#define M_DEFINE_POINTER_TYPEDEFS(Class)                                       \
+	using Class##SP = std::shared_ptr<Class>;                                     \
+	using Class##WP = std::weak_ptr<Class>;                                       \
+	using Class##ConstSP = std::shared_ptr<Class const>;                          \
+	using Class##ConstWP = std::weak_ptr<Class const>;
 
-#define M_DEFINE_POINTER_SET_TYPEDEFS(CLASS)                                   \
-	using CLASS##SPSet = std::set<CLASS##SP>;                                     \
-	using CLASS##WPSet = std::set<CLASS##WP>;
+#define M_DEFINE_POINTER_SET_TYPEDEFS(Class)                                   \
+	using Class##SPSet = std::set<Class##SP>;                                     \
+	using Class##WPSet = std::set<Class##WP>;
 
-#define M_DEFINE_POINTER_LIST_TYPEDEFS(CLASS)                                  \
-	using CLASS##SPList = std::list<CLASS##SP>;                                   \
-	using CLASS##WPList = std::list<CLASS##WP>;
+#define M_DEFINE_POINTER_LIST_TYPEDEFS(Class)                                  \
+	using Class##SPList = std::list<Class##SP>;                                   \
+	using Class##WPList = std::list<Class##WP>;
 
-#define M_DEFINE_POINTER_VECTOR_TYPEDEFS(CLASS)                                \
-	using CLASS##SPVec = std::vector<CLASS##SP>;                                  \
-	using CLASS##WPVec = std::vector<CLASS##WP>;
+#define M_DEFINE_POINTER_VECTOR_TYPEDEFS(Class)                                \
+	using Class##SPVec = std::vector<Class##SP>;                                  \
+	using Class##WPVec = std::vector<Class##WP>;
 
-#define M_DEFINE_ALL_TYPEDEFS(CLASS)                                           \
-	M_DEFINE_POINTER_TYPEDEFS(CLASS)                                              \
-	M_DEFINE_POINTER_SET_TYPEDEFS(CLASS)                                          \
-	M_DEFINE_POINTER_LIST_TYPEDEFS(CLASS)                                         \
-	M_DEFINE_POINTER_VECTOR_TYPEDEFS(CLASS)
+#define M_DEFINE_ALL_TYPEDEFS(Class)                                           \
+	M_DEFINE_POINTER_TYPEDEFS(Class)                                              \
+	M_DEFINE_POINTER_SET_TYPEDEFS(Class)                                          \
+	M_DEFINE_POINTER_LIST_TYPEDEFS(Class)                                         \
+	M_DEFINE_POINTER_VECTOR_TYPEDEFS(Class)
 
 #endif // MOJO_CORE_SMART_POINTERS_H

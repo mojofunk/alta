@@ -39,7 +39,7 @@ AudioEffectSP LADSPAAudioEffectModule::open(AudioEffectInfoSP info,
                                             samplerate_t rate)
 {
 	LADSPAAudioEffectInfoSP ladspa_info =
-	    boost::dynamic_pointer_cast<LADSPAAudioEffectInfo>(info);
+	    std::dynamic_pointer_cast<LADSPAAudioEffectInfo>(info);
 	AudioEffectSP aeffect;
 
 	if (!ladspa_info) return aeffect;

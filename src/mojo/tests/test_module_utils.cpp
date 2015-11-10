@@ -65,7 +65,7 @@ BOOST_AUTO_TEST_CASE(module_typeinfo_test)
 	BOOST_REQUIRE(mod);
 
 	AudioFileModuleSP audio_module =
-	    boost::dynamic_pointer_cast<AudioFileModule>(mod);
+	    std::dynamic_pointer_cast<AudioFileModule>(mod);
 
 	BOOST_CHECK(audio_module);
 }

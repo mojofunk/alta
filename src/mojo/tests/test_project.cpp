@@ -61,7 +61,7 @@ BOOST_AUTO_TEST_CASE(save_open_project_test)
 	BOOST_CHECK(tracks.size() == 9);
 
 	for (auto& x : tracks) {
-		AudioTrackSP audio_track = boost::dynamic_pointer_cast<AudioTrack>(x);
+		AudioTrackSP audio_track = std::dynamic_pointer_cast<AudioTrack>(x);
 
 		if (audio_track) {
 			add_random_events(audio_track->get_audio_sequence());
