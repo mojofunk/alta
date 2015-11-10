@@ -10,6 +10,7 @@
 
 #include "debug/debug.cpp"
 #include "debug/demangle.cpp"
+#include "debug/stack_trace.cpp"
 
 #include "filesystem/search_path.cpp"
 #include "filesystem/filesystem_paths.cpp"

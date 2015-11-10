@@ -70,6 +70,7 @@
 #include "debug/debug_registry.hpp"
 #include "debug/debug.hpp"
 #include "debug/demangle.hpp"
+#include "debug/stack_trace.hpp"
 
 #include "object/forward.hpp"
 #include "object/typedefs.hpp"

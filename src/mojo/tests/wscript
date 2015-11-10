@@ -13,6 +13,7 @@ test_resource
 test_ring_buffer
 test_sequence
 test_spinwait
+test_stack_trace
 test_state_tracker
 test_string_convert
 test_string_compose
