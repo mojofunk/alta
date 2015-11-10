@@ -1,5 +1,5 @@
-#ifndef MOJO_CORE_PRIVATE_MACROS_H
-#define MOJO_CORE_PRIVATE_MACROS_H
+#ifndef MOJO_CORE_PRIVATE_H
+#define MOJO_CORE_PRIVATE_H
 
 template <typename T>
 static inline T* mojo_get_ptr_helper(T* ptr)
@@ -41,4 +41,4 @@ static inline T* mojo_get_ptr_helper(T* ptr)
 #define M_D(Class) Class##Private* const d = d_func()
 #define M_Q(Class) Class* const q = q_func()
 
-#endif // MOJO_CORE_PRIVATE_MACROS_H
+#endif // MOJO_CORE_PRIVATE_H

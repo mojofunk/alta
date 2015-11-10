@@ -9,7 +9,7 @@
 #include <string>
 
 #include "mojo/core/macros/disallow_copy_and_assign.hpp"
-#include "mojo/core/object/private_macros.hpp"
+#include "mojo/core/macros/private.hpp"
 
 class ApplicationPrivate;
 
