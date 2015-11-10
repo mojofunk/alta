@@ -3,15 +3,15 @@
 
 #ifndef MOJO_AMALGAMATED
 #include "mojo/core/config/common_header_includes.hpp"
-#include "mojo/core/typesystem/smart_pointer_macros.hpp"
+#include "mojo/core/macros/smart_pointers.hpp"
 #include "mojo/audio_file/forward.hpp"
 #endif
 
 namespace mojo {
 
-MOJO_DEFINE_ALL_TYPEDEFS(AudioFile)
-MOJO_DEFINE_ALL_TYPEDEFS(AudioFileFormat)
-MOJO_DEFINE_ALL_TYPEDEFS(AudioFileModule)
+M_DEFINE_ALL_TYPEDEFS(AudioFile)
+M_DEFINE_ALL_TYPEDEFS(AudioFileFormat)
+M_DEFINE_ALL_TYPEDEFS(AudioFileModule)
 
 } // namespace mojo
 

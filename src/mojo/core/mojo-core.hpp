@@ -35,6 +35,7 @@
 
 #include "macros/disallow_copy_and_assign.hpp"
 #include "macros/private.hpp"
+#include "macros/smart_pointers.hpp"
 
 #include "misc/null_deleter.hpp"
 #include "misc/semaphore.hpp"
@@ -47,7 +48,6 @@
 
 #include "threads/thread_name_map.hpp"
 
-#include "typesystem/smart_pointer_macros.hpp"
 #include "typesystem/type_names.hpp"
 #include "typesystem/forward.hpp"
 #include "typesystem/typedefs.hpp"

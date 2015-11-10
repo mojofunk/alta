@@ -3,13 +3,13 @@
 
 #ifndef MOJO_AMALGAMATED
 #include "mojo/core/config/common_header_includes.hpp"
-#include "mojo/core/typesystem/smart_pointer_macros.hpp"
+#include "mojo/core/macros/smart_pointers.hpp"
 #include "mojo/core/typesystem/forward.hpp"
 #endif
 
 namespace mojo {
 
-MOJO_DEFINE_POINTER_TYPEDEFS(TypeFactory)
+M_DEFINE_POINTER_TYPEDEFS(TypeFactory)
 
 } // namespace mojo
 
