@@ -3,6 +3,7 @@
 
 subdirs = '''
 cppformat
+pugixml
 '''
 
 

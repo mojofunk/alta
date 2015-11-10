@@ -1,0 +1,34 @@
+#! /usr/bin/env python
+# encoding: utf-8
+
+import os
+
+
+def init():
+    pass
+
+
+def configure(conf):
+    pass
+
+
+def build(bld):
+
+    source_files = os.path.join('pugixml', 'pugixml.cpp')
+    include_dirs = 'pugixml'
+
+    if bld.env.ENABLE_SHARED:
+        bld.shlib(
+            includes=include_dirs,
+            export_includes='.',
+            source=source_files,
+            target='pugixml',
+            name='PUGIXML_SHARED')
+
+    if bld.env.ENABLE_STATIC:
+        bld.stlib(
+            includes=include_dirs,
+            export_includes='.',
+            source=source_files,
+            target='pugixml',
+            name='PUGIXML_STATIC')
