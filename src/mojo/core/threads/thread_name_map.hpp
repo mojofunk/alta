@@ -11,9 +11,9 @@ template <class StringType>
 class ThreadNameMap {
 public:
 	typedef StringType string_type;
-public:
 
-	bool insert_name (const StringType& thread_name)
+public:
+	bool insert_name(const StringType& thread_name)
 	{
 		std::unique_lock<std::mutex> lock(m_thread_name_map_mutex);
 
@@ -21,13 +21,13 @@ public:
 		                                               thread_name)).second;
 	}
 
-	bool erase_name (const StringType& thread_name)
+	bool erase_name(const StringType& thread_name)
 	{
 		std::unique_lock<std::mutex> lock(m_thread_name_map_mutex);
 		return (m_thread_name_map.erase(std::this_thread::get_id()));
 	}
 
-	StringType get_name ()
+	StringType get_name()
 	{
 		std::unique_lock<std::mutex> lock(m_thread_name_map_mutex);
 		typename ThreadNameMapType::const_iterator i =

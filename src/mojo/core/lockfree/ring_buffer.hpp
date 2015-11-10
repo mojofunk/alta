@@ -66,13 +66,13 @@ public:
 	Vectors get_read_vectors();
 	Vectors get_write_vectors();
 
-	void increment_read_index (size_t count)
+	void increment_read_index(size_t count)
 	{
 		// TODO? use load/relaxed and store/release
 		m_read_index = (m_read_index + count) % m_size;
 	}
 
-	void increment_write_index (size_t count)
+	void increment_write_index(size_t count)
 	{
 		// TODO? use load/relaxed and store/release
 		m_write_index = (m_write_index + count) % m_size;
@@ -84,13 +84,12 @@ public:
 	std::atomic<size_t> m_write_index;
 
 protected: // Methods
-
-	bool empty (size_t read_index, size_t write_index)
+	bool empty(size_t read_index, size_t write_index)
 	{
 		return read_index == write_index;
 	}
 
-	size_t read_available (size_t read_index, size_t write_index) const
+	size_t read_available(size_t read_index, size_t write_index) const
 	{
 		if (write_index > read_index) {
 			return write_index - read_index;
@@ -99,7 +98,7 @@ protected: // Methods
 		}
 	}
 
-	size_t write_available (size_t read_index, size_t write_index) const
+	size_t write_available(size_t read_index, size_t write_index) const
 	{
 		if (write_index > read_index) {
 			return ((read_index - write_index + m_size) % m_size) - 1;
@@ -111,7 +110,6 @@ protected: // Methods
 	}
 
 private: // Data
-
 	size_t const m_size;
 };
 
@@ -123,7 +121,7 @@ typename RingBuffer<T>::Vectors RingBuffer<T>::get_read_vectors()
 	const size_t write_index = m_write_index.load(std::memory_order_acquire);
 	const size_t read_index = m_read_index.load(std::memory_order_relaxed);
 
-	size_t read_avail = read_available (read_index, write_index);
+	size_t read_avail = read_available(read_index, write_index);
 
 	if (read_avail == 0) {
 		return v;
@@ -137,7 +135,7 @@ typename RingBuffer<T>::Vectors RingBuffer<T>::get_read_vectors()
 		v.size1 = m_size - read_index;
 		v.vec2 = m_buffer.get();
 		v.size2 = new_read_index % m_size;
-		assert (v.size1 + v.size2 == read_avail);
+		assert(v.size1 + v.size2 == read_avail);
 	} else {
 		// single vector
 		v.vec1 = &m_buffer[read_index];
@@ -155,7 +153,7 @@ typename RingBuffer<T>::Vectors RingBuffer<T>::get_write_vectors()
 	const size_t write_index = m_write_index.load(std::memory_order_relaxed);
 	const size_t read_index = m_read_index.load(std::memory_order_acquire);
 
-	size_t write_avail = write_available (read_index, write_index);
+	size_t write_avail = write_available(read_index, write_index);
 
 	if (write_avail == 0) {
 		return v;
@@ -169,7 +167,7 @@ typename RingBuffer<T>::Vectors RingBuffer<T>::get_write_vectors()
 		v.size1 = m_size - write_index;
 		v.vec2 = m_buffer.get();
 		v.size2 = new_write_index % m_size;
-		assert (v.size1 + v.size2 == write_avail);
+		assert(v.size1 + v.size2 == write_avail);
 	} else {
 		// single vector
 		v.vec1 = &m_buffer[write_index];
@@ -198,7 +196,7 @@ size_t RingBuffer<T>::read(T* dest, size_t count)
 		memcpy(dest + rv.size1, rv.vec2, (count - rv.size1) * sizeof(T));
 	}
 
-	increment_read_index (count);
+	increment_read_index(count);
 
 	return count;
 }
@@ -222,7 +220,7 @@ size_t RingBuffer<T>::write(const T* src, size_t count)
 		memcpy(wv.vec2, src + wv.size1, (count - wv.size1) * sizeof(T));
 	}
 
-	increment_write_index (count);
+	increment_write_index(count);
 
 	return count;
 }

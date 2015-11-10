@@ -57,8 +57,7 @@ void consume()
 	}
 }
 
-void
-test_queue_iteration ()
+void test_queue_iteration()
 {
 	done = false;
 	push_count = 0;

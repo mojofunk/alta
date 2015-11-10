@@ -85,12 +85,11 @@ public: // ctors
 	~Engine();
 
 public: // Interface
-
-	/**
-	 * sync?
-	 *
-	 * Start the Engine, A clock source must first be set.
-	 */
+	       /**
+	        * sync?
+	        *
+	        * Start the Engine, A clock source must first be set.
+	        */
 	bool start();
 
 	// void is_running ();
@@ -108,14 +107,14 @@ public: // Interface
 	 * won't change the graph in the engine until a new graph is set with
 	 * set_graph.
 	 */
-	Graph* get_graph ();
+	Graph* get_graph();
 
 	/**
 	 * Set the graph to be used in the next iteration of the engine processing
 	 * cycle. I guess a graph changed signal/will need to be emitted? or is
 	 * that performed by a higher level class.
 	 */
-	void set_graph (Graph*);
+	void set_graph(Graph*);
 
 	/**
 	 * Process one cycle of the engine.
@@ -136,7 +135,6 @@ public: // Interface
 	bool iterate();
 
 private:
-
 	// TODO Make NonCopyable
 };
 

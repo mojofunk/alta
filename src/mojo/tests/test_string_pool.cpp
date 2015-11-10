@@ -38,5 +38,4 @@ BOOST_AUTO_TEST_CASE(basic_string_pool_test)
 
 BOOST_AUTO_TEST_CASE(test_string_string_pool_test)
 {
-
 }

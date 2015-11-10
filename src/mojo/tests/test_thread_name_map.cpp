@@ -43,8 +43,9 @@ static void thread_name_map_test_do_work()
 {
 	static std::atomic<int> thread_name_count(0);
 
-	while(!thread_name_map_test_exit) {
-		const std::string thread_name = "thread name " + std::to_string(thread_name_count++);
+	while (!thread_name_map_test_exit) {
+		const std::string thread_name =
+		    "thread name " + std::to_string(thread_name_count++);
 		test_thread_map().insert_name(thread_name);
 		// boost test is not thread safe so use assert until figuring out a good
 		// way to return test status from thread

@@ -20,8 +20,8 @@ public:
 	static std::string name();
 	static std::string executable_name();
 
-	static void initialize ();
-	static void deinitialize ();
+	static void initialize();
+	static void deinitialize();
 
 private:
 	Application();
@@ -63,7 +63,7 @@ Application::Application()
 
 void Application::initialize()
 {
-	assert (!instance);
+	assert(!instance);
 	instance = new Application;
 }
 
@@ -96,7 +96,6 @@ std::string Application::executable_name()
 	return d->m_executable_name;
 }
 
-
 BOOST_AUTO_TEST_CASE(private_no_inheritance_test)
 {
 	Application::initialize();
@@ -113,9 +112,9 @@ class BasePrivate;
 
 class Base {
 protected:
-	Base (BasePrivate*);
+	Base(BasePrivate*);
 
-	virtual ~Base () { }
+	virtual ~Base() {}
 
 protected:
 	std::unique_ptr<BasePrivate> d_ptr;
@@ -126,8 +125,10 @@ protected:
 class BasePrivate {
 public:
 	virtual ~BasePrivate() = 0;
+
 public:
 	Base* q_ptr;
+
 private:
 	M_DECLARE_PUBLIC(Base)
 public:
@@ -137,8 +138,8 @@ BasePrivate::~BasePrivate()
 {
 }
 
-Base::Base (BasePrivate* priv_ptr)
-	: d_ptr(priv_ptr)
+Base::Base(BasePrivate* priv_ptr)
+    : d_ptr(priv_ptr)
 {
 	d_ptr->q_ptr = this;
 }
@@ -151,13 +152,12 @@ protected:
 	Derived(DerivedPrivate*);
 
 public:
-	Derived ();
+	Derived();
 };
 
 class DerivedPrivate : public BasePrivate {
 	M_DECLARE_PUBLIC(Derived)
 public:
-
 };
 
 Derived::Derived()
@@ -166,13 +166,11 @@ Derived::Derived()
 }
 
 Derived::Derived(DerivedPrivate* priv)
-	: Base(priv)
+    : Base(priv)
 {
-
 }
 
 BOOST_AUTO_TEST_CASE(private_inheritance_test)
 {
 	Derived derived;
-
 }

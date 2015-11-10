@@ -19,8 +19,7 @@ using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
 
-struct Foo
-{
+struct Foo {
 	int m_int;
 	float m_float;
 	double m_double;
@@ -86,8 +85,7 @@ void deallocate()
 	}
 }
 
-void
-test_memory_pool_iteration ()
+void test_memory_pool_iteration()
 {
 	alloc_count = 0;
 	dealloc_count = 0;

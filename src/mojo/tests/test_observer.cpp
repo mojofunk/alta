@@ -105,7 +105,6 @@ public:
  */
 class Object : public enable_shared_from_this<Object> {
 public:
-
 	/**
 	 * The destructor for an Object must not be called until destroy is called
 	 * to notify the observers to drop references.
@@ -180,24 +179,22 @@ Object::~Object()
 	 * No need to lock as there can be no other reference holders apart from
 	 * the current thread.
 	 */
-//	assert (m_object_observers.empty());
+	//	assert (m_object_observers.empty());
 }
 
 class ObjectGC : public ObjectReferenceOwner {
 public: // ctors
-	virtual ~ObjectGC() { }
+	virtual ~ObjectGC() {}
 
 public: // interface
-	virtual void manage (const shared_ptr<Object>&) = 0;
+	virtual void manage(const shared_ptr<Object>&) = 0;
 
-	//void collect () = 0;
+	// void collect () = 0;
 
-	void drop_references (const shared_ptr<Object>&) = 0;
-
+	void drop_references(const shared_ptr<Object>&) = 0;
 };
 
-class DefaultObjectGC : public ObjectGC
-{
+class DefaultObjectGC : public ObjectGC {
 public:
 	DefaultObjectGC()
 	    : m_thread(std::ref(*this))
@@ -233,7 +230,7 @@ public:
 		m_managed_objects.insert(object);
 	}
 
-	void drop_references (const shared_ptr<Object>& object)
+	void drop_references(const shared_ptr<Object>& object)
 	{
 		std::cout << "DefaultObjectGC::drop_references" << std::endl;
 
@@ -366,7 +363,8 @@ public: // interface
 
 		std::unique_lock<std::mutex> lock(m_route_observers_mutex);
 
-		const shared_ptr<Route> route = static_pointer_cast<Route>(shared_from_this());
+		const shared_ptr<Route> route =
+		    static_pointer_cast<Route>(shared_from_this());
 
 		for (auto const observer : m_route_observers) {
 			observer->mute_enabled_changed(route, m_mute_enabled);
@@ -394,7 +392,8 @@ public: // interface
 		// probably other complications.
 		std::unique_lock<std::mutex> lock(m_route_observers_mutex);
 
-		const shared_ptr<Route> route = static_pointer_cast<Route>(shared_from_this());
+		const shared_ptr<Route> route =
+		    static_pointer_cast<Route>(shared_from_this());
 
 		for (auto const observer : m_route_observers) {
 			observer->solo_enabled_changed(route, m_solo_enabled);
@@ -433,11 +432,9 @@ public:
 
 class Track : public Route {
 public:
-
 	Track()
-	: m_record_enabled(false)
+	    : m_record_enabled(false)
 	{
-
 	}
 
 	void set_record_enabled(bool record_enabled)
@@ -449,7 +446,8 @@ public:
 		m_record_enabled = record_enabled;
 
 		std::unique_lock<std::mutex> lock(m_track_observers_mutex);
-		const shared_ptr<Track> track = static_pointer_cast<Track>(shared_from_this());
+		const shared_ptr<Track> track =
+		    static_pointer_cast<Track>(shared_from_this());
 
 		for (auto const observer : m_track_observers) {
 			observer->record_enabled_changed(track, m_record_enabled);
@@ -487,8 +485,7 @@ public:
 
 class Project : public Object, public ObjectReferenceOwner {
 public:
-
-	bool add_route (const shared_ptr<Route>& route)
+	bool add_route(const shared_ptr<Route>& route)
 	{
 		route->add_reference_owner(this);
 		{
@@ -503,7 +500,7 @@ public:
 		}
 	}
 
-	bool remove_route (const shared_ptr<Route>& route)
+	bool remove_route(const shared_ptr<Route>& route)
 	{
 		route->remove_reference_owner(this);
 		{
@@ -556,7 +553,7 @@ public:
 
 		// The route list should now be empty unless another thread has added
 		// another route in the meantime, which should probably be prevented.
-		//assert(m_routes.empty());
+		// assert(m_routes.empty());
 	}
 
 	void drop_references(const std::shared_ptr<Object>& object)
@@ -606,19 +603,18 @@ public:
 		m_route->add_route_observer(this);
 	}
 
-	~RouteWidget()
-	{
-		m_route->remove_route_observer(this);
-	}
+	~RouteWidget() { m_route->remove_route_observer(this); }
 
 public: // RouteObserver interface
-	virtual void mute_enabled_changed(const shared_ptr<Route>& route, bool mute_enabled)
+	virtual void mute_enabled_changed(const shared_ptr<Route>& route,
+	                                  bool mute_enabled)
 	{
 		std::cout << "RouteWidget::mute_enabled_changed" << std::endl;
 		assert(route == m_route);
 	}
 
-	virtual void solo_enabled_changed(const shared_ptr<Route>& route, bool solo_enabled)
+	virtual void solo_enabled_changed(const shared_ptr<Route>& route,
+	                                  bool solo_enabled)
 	{
 		std::cout << "RouteWidget::solo_enabled_changed" << std::endl;
 		assert(route == m_route);
@@ -640,24 +636,24 @@ public:
 		m_track->add_track_observer(this);
 	}
 
-	~TrackWidget()
-	{
-		m_track->remove_track_observer(this);
-	}
+	~TrackWidget() { m_track->remove_track_observer(this); }
 
 public: // RouteObserver interface
-	virtual void mute_enabled_changed(const std::shared_ptr<Route>& route, bool mute_enabled)
+	virtual void mute_enabled_changed(const std::shared_ptr<Route>& route,
+	                                  bool mute_enabled)
 	{
 		std::cout << "TrackWidget::mute_enabled_changed" << std::endl;
 	}
 
-	virtual void solo_enabled_changed(const std::shared_ptr<Route>& route, bool solo_enabled)
+	virtual void solo_enabled_changed(const std::shared_ptr<Route>& route,
+	                                  bool solo_enabled)
 	{
 		std::cout << "TrackWidget::solo_enabled_changed" << std::endl;
 	}
 
 public: // TrackObserver interface
-	virtual void record_enabled_changed(const std::shared_ptr<Track>& track, bool record_enabled)
+	virtual void record_enabled_changed(const std::shared_ptr<Track>& track,
+	                                    bool record_enabled)
 	{
 		std::cout << "TrackWidget::record_enabled_changed" << std::endl;
 	}
@@ -694,7 +690,7 @@ public:
 
 	void route_added(const shared_ptr<Route>& route)
 	{
-		//std::cout << "ProjectUI route_added" << std::endl;
+		// std::cout << "ProjectUI route_added" << std::endl;
 		shared_ptr<Route> route_ptr(route);
 
 		/**
@@ -703,7 +699,7 @@ public:
 		 * execute the route_removed callback when the Route is either removed
 		 * from the Project or is destroyed.
 		 */
-		//route->add_reference_owner (this);
+		// route->add_reference_owner (this);
 
 		// bind a strong reference into the queue as
 		call_async(std::bind(&ProjectUI::route_added_ui_thread, this, route_ptr));
@@ -715,7 +711,7 @@ public:
 	 */
 	void route_removed(const shared_ptr<Route>& route)
 	{
-		//std::cout << "ProjectUI route_removed" << std::endl;
+		// std::cout << "ProjectUI route_removed" << std::endl;
 		shared_ptr<Route> route_ptr(route);
 
 		/**
@@ -723,7 +719,7 @@ public:
 		 * be held in Route::destroy and trying to remove the reference from
 		 * the observers list. So queue it to be done in the UI thread.
 		 */
-		 //route->remove_reference_owner(this);
+		// route->remove_reference_owner(this);
 
 		// we already hold a strong reference so a std::cref(route) could
 		// be used here?
@@ -749,7 +745,6 @@ public:
 	}
 
 private:
-
 	void call_sync(const function_type& func) { m_dispatcher.call_sync(func); }
 
 	void call_async(const function_type& func) { m_dispatcher.call_async(func); }
@@ -757,8 +752,7 @@ private:
 	void iteration(bool block) { m_dispatcher.iteration(block); }
 
 private:
-
-	void route_added_ui_thread (shared_ptr<Route> route)
+	void route_added_ui_thread(shared_ptr<Route> route)
 	{
 		std::cout << "ProjectUI route_added_ui_thread" << std::endl;
 
@@ -775,7 +769,7 @@ private:
 		}
 	}
 
-	void route_removed_ui_thread (shared_ptr<Route> route)
+	void route_removed_ui_thread(shared_ptr<Route> route)
 	{
 		std::cout << "ProjectUI route_removed_ui_thread" << std::endl;
 
@@ -856,7 +850,7 @@ BOOST_AUTO_TEST_CASE(test_project_ui)
 {
 	ObjectManager::initialize();
 
-	//std::shared_ptr<Project> project = ObjectManager::create<Project>();
+	// std::shared_ptr<Project> project = ObjectManager::create<Project>();
 	std::shared_ptr<Project> project = make_shared<Project>();
 
 	std::list<ProjectUI*> project_ui_list;
@@ -929,6 +923,4 @@ BOOST_AUTO_TEST_CASE(test_add_remove_observers_threaded)
 
 BOOST_AUTO_TEST_CASE(test_circular_references)
 {
-
 }
-

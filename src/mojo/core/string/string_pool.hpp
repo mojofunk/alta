@@ -15,6 +15,7 @@ template <class StringType>
 class StringPool {
 public:
 	using InternedString = const char*;
+
 public:
 	// SFINAE may not work in VS2015?
 	// C++17 required for is_constructible?

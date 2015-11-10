@@ -10,11 +10,9 @@
 using namespace boost::unit_test;
 using namespace mojo;
 
-
 BOOST_AUTO_TEST_CASE(test_engine_basic)
 {
 	Engine engine;
-
 }
 
 BOOST_AUTO_TEST_CASE(test_engine_graph)

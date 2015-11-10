@@ -74,7 +74,10 @@ public:
 		return m_object_pool->allocate();
 	}
 
-	inline void deallocate(pointer p, size_type) { return m_object_pool->deallocate(p); }
+	inline void deallocate(pointer p, size_type)
+	{
+		return m_object_pool->deallocate(p);
+	}
 
 	inline size_type max_size() const { return m_object_pool->count(); }
 
@@ -83,10 +86,12 @@ public:
 	inline void destroy(pointer p) { p->~T(); }
 
 	inline bool operator==(FixedSizePoolAllocator const&) { return true; }
-	inline bool operator!=(FixedSizePoolAllocator const& a) { return !operator==(a); }
+	inline bool operator!=(FixedSizePoolAllocator const& a)
+	{
+		return !operator==(a);
+	}
 
 private:
-
 	std::shared_ptr<FixedSizeObjectPool<T>> m_object_pool;
 };
 

@@ -17,9 +17,8 @@ using namespace std::chrono;
 class GlibTimeStampSource {
 public:
 	static uint64_t get_timestamp_microseconds() { return g_get_monotonic_time(); }
-	//static int64_t get_timestamp_nanoseconds { return g_get_monotonic_time(); }
+	// static int64_t get_timestamp_nanoseconds { return g_get_monotonic_time(); }
 };
-
 
 class ChronoTimeStampSource {
 public:
@@ -51,19 +50,18 @@ private:
 
 class StdThreadMap {
 public:
-
-	void add_thread_name (const std::string& thread_name)
+	void add_thread_name(const std::string& thread_name)
 	{
 		m_thread_name_map.insert(
 		    std::make_pair(std::this_thread::get_id(), thread_name));
 	}
 
-	void remove_thread_name (const std::string& thread_name)
+	void remove_thread_name(const std::string& thread_name)
 	{
 		m_thread_name_map.erase(std::this_thread::get_id());
 	}
 
-	std::string get_thread_name ()
+	std::string get_thread_name()
 	{
 		ThreadNameMapType::const_iterator i =
 		    m_thread_name_map.find(std::this_thread::get_id());
@@ -76,7 +74,6 @@ public:
 	}
 
 private:
-
 	typedef std::map<std::thread::id, const std::string> ThreadNameMapType;
 	ThreadNameMapType m_thread_name_map;
 };
@@ -89,8 +86,8 @@ struct SourceLocation {
 };
 
 /**
- * I think a log message should not take a std::string but rather a char* and a
- * size, or add another ctor. LogStringRef?
+ * I think a log message should not take a std::string argument but rather a
+ * LogString perhaps that is a basic_string with a custom allocator.
  *
  * Taking a begin and end iterators are another option but would force using
  * templates?
@@ -99,12 +96,12 @@ struct SourceLocation {
 class LogRecord {
 public:
 	LogRecord(const std::string& message,
-	           const char* const logger_name,
-	           const std::string& thread_name,
-	           uint64_t timestamp,
-	           int line,
-	           const char* const file_name,
-	           const char* const function_name)
+	          const char* const logger_name,
+	          const std::string& thread_name,
+	          uint64_t timestamp,
+	          int line,
+	          const char* const file_name,
+	          const char* const function_name)
 	    : m_message(message)
 	    , m_logger_name(logger_name)
 	    , m_thread_name(thread_name)
@@ -113,9 +110,6 @@ public:
 	    , m_file_name(file_name)
 	    , m_function_name(function_name)
 	{
-
-
-
 	}
 
 	const std::string m_message;
@@ -123,7 +117,7 @@ public:
 	const char* const m_logger_name;
 
 	/**
-	 * We don't want each message having a copy of the  name
+	 * We don't want each message having a copy of the name
 	 */
 	const std::string m_thread_name;
 
@@ -132,14 +126,13 @@ public:
 	const int m_line;
 	const char* m_file_name;
 	const char* m_function_name;
-
 };
 
 class LogSink {
 public:
 	virtual std::string name() = 0;
 
-	virtual void handle_message (LogRecord& msg) = 0;
+	virtual void handle_message(LogRecord& msg) = 0;
 };
 
 /**
@@ -147,14 +140,12 @@ public:
  */
 class Log {
 public: // add loggers
-
 public:
 	void add_log_sink();
 
 	void remove_log_sink();
 
 public:
-
 	// get loggers
 
 public:
@@ -165,19 +156,16 @@ public:
 	                   int line,
 	                   const char* const file_name,
 	                   const char* const function_name)
-{
+	{
 		std::cout << "Logger: " << logger_name << ", Log Message: " << message
 		          << ", Thread: " << thread_name << " Timestamp: " << timestamp
 		          << ", Line: " << line << ", File Name: " << file_name
 		          << ", Function: " << function_name << std::endl;
 
-		 // allocate a new log record from allocator
+		// allocate a new log record from allocator
 
 		// add log message to queue
-
-
 	}
-
 };
 
 /**
@@ -216,7 +204,6 @@ public:
 	}
 
 private:
-
 	const char* const m_name;
 
 	bool m_enabled; // should probably be atomic
@@ -246,15 +233,13 @@ BOOST_AUTO_TEST_CASE(basic_logging_test)
 	                         G_STRFUNC);
 }
 
-Log&
-get_macro_test_log()
+Log& get_macro_test_log()
 {
 	static Log default_log;
 	return default_log;
 }
 
-StdThreadMap&
-get_macro_test_thread_map()
+StdThreadMap& get_macro_test_thread_map()
 {
 	static StdThreadMap macro_test_map;
 	return macro_test_map;

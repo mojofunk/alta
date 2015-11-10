@@ -6,64 +6,55 @@
 namespace mojo {
 
 template <typename T>
-const char* const
-scanf_format_specifier (const T&)
+const char* const scanf_format_specifier(const T&)
 {
 	return 0;
 }
 
 template <>
-const char* const
-scanf_format_specifier (const int16_t&)
+const char* const scanf_format_specifier(const int16_t&)
 {
 	return "%" SCNi16;
 }
 
 template <>
-const char* const
-scanf_format_specifier (const int32_t&)
+const char* const scanf_format_specifier(const int32_t&)
 {
 	return "%" SCNi32;
 }
 
 template <>
-const char* const
-scanf_format_specifier (const int64_t&)
+const char* const scanf_format_specifier(const int64_t&)
 {
 	return "%" SCNi64;
 }
 
 template <>
-const char* const
-scanf_format_specifier (const uint16_t&)
+const char* const scanf_format_specifier(const uint16_t&)
 {
 	return "%" SCNu16;
 }
 
 template <>
-const char* const
-scanf_format_specifier (const uint32_t&)
+const char* const scanf_format_specifier(const uint32_t&)
 {
 	return "%" SCNu32;
 }
 
 template <>
-const char* const
-scanf_format_specifier (const uint64_t&)
+const char* const scanf_format_specifier(const uint64_t&)
 {
 	return "%" SCNu64;
 }
 
 template <>
-const char* const
-scanf_format_specifier (const float&)
+const char* const scanf_format_specifier(const float&)
 {
 	return "%f";
 }
 
 template <>
-const char* const
-scanf_format_specifier (const double&)
+const char* const scanf_format_specifier(const double&)
 {
 	return "%f";
 }

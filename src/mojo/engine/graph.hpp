@@ -41,7 +41,7 @@ public:
 	 * threads. If graph processing has finished and each node in the graph has
 	 * been marked as processed then iterate will return.
 	 */
-	void iterate () const;
+	void iterate() const;
 
 private:
 	set<Node*> m_nodes;

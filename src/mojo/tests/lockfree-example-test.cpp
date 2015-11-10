@@ -40,7 +40,7 @@ void consumer(void)
 		++consumer_count;
 }
 
-void test_iteration ()
+void test_iteration()
 {
 	producer_count = 0;
 	consumer_count = 0;

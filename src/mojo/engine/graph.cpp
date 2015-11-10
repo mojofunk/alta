@@ -30,12 +30,10 @@ set<Node*> Graph::get_nodes() const
 
 void Graph::reset_processing()
 {
-
 }
 
 void Graph::iterate() const
 {
-
 }
 
 } // namespace mojo

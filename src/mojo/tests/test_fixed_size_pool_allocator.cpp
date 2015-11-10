@@ -19,8 +19,7 @@ using namespace boost::unit_test;
 using namespace std;
 using namespace mojo;
 
-struct Foo
-{
+struct Foo {
 	int m_int;
 	float m_float;
 	double m_double;
@@ -49,9 +48,9 @@ BOOST_AUTO_TEST_CASE(test_pool_allocator_copy_ctor)
 		}
 	}
 
-	// need a test for vector and list
-	// list will allocate in single units? while vector will
-	// allocate/reallocate in contigious chunks
+// need a test for vector and list
+// list will allocate in single units? while vector will
+// allocate/reallocate in contigious chunks
 
 #if 0
 	{

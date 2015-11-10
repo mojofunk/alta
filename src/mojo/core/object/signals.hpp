@@ -8,7 +8,6 @@
 namespace mojo {
 
 namespace signals = boost::signals2;
-
 }
 
 #endif // MOJO_SIGNALS_H
