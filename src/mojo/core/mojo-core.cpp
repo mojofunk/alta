@@ -9,6 +9,7 @@
 #include "midi/midi_util.cpp"
 
 #include "debug/debug.cpp"
+#include "debug/demangle.cpp"
 
 #include "filesystem/search_path.cpp"
 #include "filesystem/filesystem_paths.cpp"

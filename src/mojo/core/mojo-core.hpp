@@ -69,6 +69,7 @@
 
 #include "debug/debug_registry.hpp"
 #include "debug/debug.hpp"
+#include "debug/demangle.hpp"
 
 #include "object/forward.hpp"
 #include "object/typedefs.hpp"
