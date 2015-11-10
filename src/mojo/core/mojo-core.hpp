@@ -42,6 +42,8 @@
 
 #include "logging/log.hpp"
 
+#include "threads/thread_name_map.hpp"
+
 #include "typesystem/smart_pointer_macros.hpp"
 #include "typesystem/type_names.hpp"
 #include "typesystem/forward.hpp"

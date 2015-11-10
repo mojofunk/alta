@@ -17,6 +17,7 @@ test_state_tracker
 test_string_convert
 test_string_compose
 test_string_pool
+test_thread_name_map
 test_timing
 test_type_system
 test_graph
