@@ -3,7 +3,7 @@
 ENV_SCRIPT_PATH=$( cd $(dirname $0) ; pwd -P )
 TOP_LEVEL_PATH="$ENV_SCRIPT_PATH/../.."
 
-BUILD_DIR="$TOP_LEVEL_PATH/build"
+BUILD_DIR="$TOP_LEVEL_PATH/waf-build"
 BUILD_CACHE_FILE="$BUILD_DIR/c4che/_cache.py"
 TOOLS_DIR="$TOP_LEVEL_PATH/tools/linux"
 
