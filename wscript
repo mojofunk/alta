@@ -16,7 +16,7 @@ APPNAME = 'Alta'
 
 # these variables are mandatory ('/' are converted automatically)
 top = '.'
-out = 'build'
+out = 'waf-build'
 
 
 def options(opt):

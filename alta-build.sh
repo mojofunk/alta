@@ -87,7 +87,7 @@ ALTA_SRC_DIR=$ALTA_BUILD_SCRIPT_PATH
 
 ALTA_BUILD_CONFIG="$2"
 CONFIG_BUILD_DIR="$ALTA_BUILD_ROOT/$ALTA_BRANCH-$ALTA_BUILD_CONFIG"
-CONFIG_WAF_BUILD_DIR="$CONFIG_BUILD_DIR/build"
+CONFIG_WAF_BUILD_DIR="$CONFIG_BUILD_DIR/waf-build"
 
 if [ -z ${BUILD_ALL_CONFIGS+x} ]; then
 	if [ -z "$1" ] || [ -z "$2" ]; then
@@ -125,7 +125,7 @@ mkdir -p $ALTA_BUILD_ROOT || exit 1
 
 function sync ()
 {
-	rsync -av --delete --exclude /build --exclude /.lock* --exclude /.waf-* $ALTA_SRC_DIR/ $CONFIG_BUILD_DIR || exit 1
+	rsync -av --delete --exclude /waf-build --exclude /.lock* --exclude /.waf-* $ALTA_SRC_DIR/ $CONFIG_BUILD_DIR || exit 1
 }
 
 function configure ()
@@ -200,7 +200,7 @@ function clean ()
 		do
 			ALTA_BUILD_CONFIG="$conf"
 			CONFIG_BUILD_DIR="$ALTA_BUILD_ROOT/$ALTA_BRANCH-$ALTA_BUILD_CONFIG"
-			CONFIG_WAF_BUILD_DIR="$CONFIG_BUILD_DIR/build"
+			CONFIG_WAF_BUILD_DIR="$CONFIG_BUILD_DIR/waf-build"
 			echo "Removing directory $CONFIG_WAF_BUILD_DIR"
 			cd $CONFIG_BUILD_DIR || exit 1
 			rm -rf $CONFIG_WAF_BUILD_DIR
