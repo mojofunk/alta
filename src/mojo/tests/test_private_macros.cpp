@@ -8,6 +8,7 @@
 #include <iostream>
 #include <string>
 
+#include "mojo/core/macros/disallow_copy_and_assign.hpp"
 #include "mojo/core/object/private_macros.hpp"
 
 class ApplicationPrivate;
@@ -32,6 +33,7 @@ private:
 	std::unique_ptr<ApplicationPrivate> d_ptr;
 
 	M_DECLARE_PRIVATE(Application)
+	M_DISALLOW_COPY_AND_ASSIGN(Application);
 };
 
 class ApplicationPrivate {
@@ -52,6 +54,8 @@ public:
 		// would need to be a path separator etc
 		return m_directory_path + m_executable_name;
 	}
+private:
+	M_DISALLOW_COPY_AND_ASSIGN(ApplicationPrivate);
 };
 
 Application* Application::instance;

@@ -33,6 +33,8 @@
 
 #include "lockfree/ring_buffer.hpp"
 
+#include "macros/disallow_copy_and_assign.hpp"
+
 #include "misc/null_deleter.hpp"
 #include "misc/semaphore.hpp"
 #include "misc/worker.hpp"
