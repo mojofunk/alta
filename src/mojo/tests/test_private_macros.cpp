@@ -54,6 +54,7 @@ public:
 		// would need to be a path separator etc
 		return m_directory_path + m_executable_name;
 	}
+
 private:
 	M_DISALLOW_COPY_AND_ASSIGN(ApplicationPrivate);
 };

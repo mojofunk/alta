@@ -31,13 +31,13 @@ public:
 	 * @param os stream to output stacktrace
 	 * @param start_offset stack frames to offset output
 	 */
-	void to_stream (std::ostream& os, size_t start_offset = 0) const;
+	void to_stream(std::ostream& os, size_t start_offset = 0) const;
 
 	/**
 	 * @param start_offset stack frames to offset output
 	 * @return string containing stacktrace
 	 */
-	std::string to_string (size_t start_offset = 0) const;
+	std::string to_string(size_t start_offset = 0) const;
 
 	/**
 	 * @return true if stacktraces are equivalent
@@ -56,10 +56,7 @@ public:
 		return true;
 	}
 
-	bool operator!=(const StackTrace& other)
-	{
-		return !operator==(other);
-	}
+	bool operator!=(const StackTrace& other) { return !operator==(other); }
 
 private:
 	static const int s_max_traces = 62;
