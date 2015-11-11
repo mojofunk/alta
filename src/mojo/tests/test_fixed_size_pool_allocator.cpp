@@ -58,3 +58,19 @@ BOOST_AUTO_TEST_CASE(test_pool_allocator_copy_ctor)
 	}
 #endif
 }
+
+#if 0
+
+// doesn't work as allocator doesn't have default ctor
+typedef std::basic_string<char,
+                          std::char_traits<char>,
+                          FixedSizePoolAllocator<char>> PoolTestString;
+
+BOOST_AUTO_TEST_CASE(test_pool_allocator_string)
+{
+	FixedSizePoolAllocator<char> small_alloc1(256);
+
+	PoolTestString pool_string(small_alloc1);
+
+}
+#endif
