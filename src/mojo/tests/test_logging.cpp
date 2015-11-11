@@ -5,12 +5,11 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_log.hpp>
 
-#include <glib.h>
+#include "mojo-core.hpp"
 
-#include <map>
-#include <thread>
-#include <chrono>
 #include <iostream>
+
+using namespace mojo;
 
 using namespace std::chrono;
 
@@ -140,7 +139,6 @@ public:
  */
 class Log {
 public: // add loggers
-public:
 	void add_log_sink();
 
 	void remove_log_sink();
@@ -284,4 +282,152 @@ BOOST_AUTO_TEST_CASE(logging_macro_test)
 	T_LOG(macro_test, "This is a test of logging macros");
 
 	T_LOG_CALL(macro_test);
+}
+
+// Total number of bytes that have been allocated using operator new
+std::size_t operator_new_bytes_allocated = 0;
+
+// Current allocations made using operator new that are yet to be deallocated
+std::size_t operator_new_allocation_count = 0;
+
+// Total number of allocations made using operator new
+std::size_t operator_new_allocation_total = 0;
+
+std::atomic<bool> enable_global_debug_allocator_output;
+
+void set_global_debug_allocator_output(bool on_off)
+{
+	enable_global_debug_allocator_output = on_off;
+}
+
+// need per thread allocators/stats
+void* operator new(std::size_t sz) // throw(std::bad_alloc)
+{
+	operator_new_bytes_allocated += sz;
+	if (enable_global_debug_allocator_output) {
+		printf("\nAllocated %zu bytes using ::operator new()\n", sz);
+	}
+	++operator_new_allocation_count;
+	++operator_new_allocation_total;
+	return std::malloc(sz);
+}
+
+void operator delete(void* ptr) throw()
+{
+	--operator_new_allocation_count;
+	std::free(ptr);
+}
+
+void print_operator_new_stats()
+{
+	std::cout << "Total bytes allocated using ::operator new = "
+	          << operator_new_bytes_allocated << '\n';
+
+	std::cout << "Current allocation count ::operator new = "
+	          << operator_new_allocation_count << '\n';
+
+	std::cout << "Total allocation count ::operator new = "
+	          << operator_new_allocation_total << '\n';
+}
+
+struct ScopedDebugAllocatorOutput {
+	ScopedDebugAllocatorOutput() { set_global_debug_allocator_output(true); }
+
+	~ScopedDebugAllocatorOutput() { set_global_debug_allocator_output(false); }
+};
+
+struct AllocData {
+	AllocData(std::size_t bytes = operator_new_bytes_allocated,
+	          std::size_t count = operator_new_allocation_count,
+	          std::size_t total = operator_new_allocation_total)
+	    : m_bytes(bytes)
+	    , m_count(count)
+	    , m_total(total)
+	{
+	}
+
+	AllocData(const AllocData& other) = default;
+
+	const std::size_t m_bytes;
+	const std::size_t m_count;
+	const std::size_t m_total;
+
+	bool operator==(const AllocData& other)
+	{
+		return (m_bytes == other.m_bytes && m_count == other.m_count &&
+		        m_total == other.m_total);
+	}
+
+	bool operator!=(const AllocData& other) { return !operator==(other); }
+};
+
+BOOST_AUTO_TEST_CASE(alloc_data_test)
+{
+	ScopedDebugAllocatorOutput debug_output;
+
+	AllocData alloc_data_before;
+
+	const std::size_t vec_size = 4096;
+	const std::size_t bytes_allocated = vec_size * sizeof(int);
+
+	std::vector<int> int_vec;
+	int_vec.reserve(vec_size);
+
+	AllocData alloc_data_after;
+
+	BOOST_CHECK(alloc_data_before != alloc_data_after);
+
+	BOOST_CHECK(alloc_data_before.m_bytes + bytes_allocated ==
+	            alloc_data_after.m_bytes);
+}
+
+BOOST_AUTO_TEST_CASE(log_string_test)
+{
+	ScopedDebugAllocatorOutput debug_output;
+
+	std::cout << "log_initialize()" << std::endl;
+	log_initialize();
+
+	AllocData alloc_data_before;
+	{
+		std::cout << "create log_string()" << std::endl;
+		LogString log_string("LogString test string");
+
+		std::cout << log_string << std::endl;
+	}
+	AllocData alloc_data_after;
+
+	std::cout << "destroy log_string" << std::endl;
+
+	// check there has been no allocations using operator new
+	BOOST_CHECK(alloc_data_before == alloc_data_after);
+
+	log_deinitialize();
+	print_operator_new_stats();
+}
+
+BOOST_AUTO_TEST_CASE(log_format_test)
+{
+	log_initialize();
+
+	AllocData alloc_data_before;
+
+	{
+		ScopedDebugAllocatorOutput debug_output;
+
+		LogAllocator<char> alloc;
+
+		LogString log_str =
+		    log_format(alloc, "stdout: {}: {}:\n", __LINE__, __FILE__);
+
+		// print to stdout
+		std::cout << log_str << std::endl;
+	}
+
+	AllocData alloc_data_after;
+
+	// check there has been no allocations using operator new
+	BOOST_CHECK(alloc_data_before == alloc_data_after);
+
+	log_deinitialize();
 }

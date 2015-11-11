@@ -7,6 +7,8 @@
 
 #include "mojo-core.hpp"
 
+using namespace mojo;
+
 #include <iostream>
 
 BOOST_AUTO_TEST_CASE(basic_cppformat_test)

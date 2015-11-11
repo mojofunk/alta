@@ -30,6 +30,9 @@
 
 #include "logging/log.cpp"
 
+#include "logging/logging.cpp"
+#include "logging/log_format.cpp"
+
 #include "modules/glib_library.cpp"
 #include "modules/library.cpp"
 #include "modules/module.cpp"

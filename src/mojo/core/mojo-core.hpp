@@ -44,7 +44,13 @@
 #include "misc/sample_block.hpp"
 #include "misc/spinwait.hpp"
 
+// to remove/change
 #include "logging/log.hpp"
+
+#include "logging/logging.hpp"
+#include "logging/log_allocator.hpp"
+#include "logging/log_string.hpp"
+#include "logging/log_format.hpp"
 
 #include "threads/thread_name_map.hpp"
 
