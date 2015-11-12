@@ -47,36 +47,6 @@ private:
 	std::uint64_t m_start_time;
 };
 
-class StdThreadMap {
-public:
-	void add_thread_name(const std::string& thread_name)
-	{
-		m_thread_name_map.insert(
-		    std::make_pair(std::this_thread::get_id(), thread_name));
-	}
-
-	void remove_thread_name(const std::string& thread_name)
-	{
-		m_thread_name_map.erase(std::this_thread::get_id());
-	}
-
-	std::string get_thread_name()
-	{
-		ThreadNameMapType::const_iterator i =
-		    m_thread_name_map.find(std::this_thread::get_id());
-
-		if (i != m_thread_name_map.end()) {
-			return i->second;
-		}
-
-		return "Unknown Thread";
-	}
-
-private:
-	typedef std::map<std::thread::id, const std::string> ThreadNameMapType;
-	ThreadNameMapType m_thread_name_map;
-};
-
 // may not need this class
 struct SourceLocation {
 	const int m_line;
@@ -85,18 +55,13 @@ struct SourceLocation {
 };
 
 /**
- * I think a log message should not take a std::string argument but rather a
- * LogString perhaps that is a basic_string with a custom allocator.
- *
- * Taking a begin and end iterators are another option but would force using
- * templates?
  *
  */
 class LogRecord {
 public:
-	LogRecord(const std::string& message,
+	LogRecord(const LogString& message,
 	          const char* const logger_name,
-	          const std::string& thread_name,
+	          const LogString& thread_name,
 	          uint64_t timestamp,
 	          int line,
 	          const char* const file_name,
@@ -111,14 +76,14 @@ public:
 	{
 	}
 
-	const std::string m_message;
+	const LogString m_message;
 
 	const char* const m_logger_name;
 
 	/**
 	 * We don't want each message having a copy of the name
 	 */
-	const std::string m_thread_name;
+	const LogString m_thread_name;
 
 	const uint64_t m_timestamp;
 
@@ -129,7 +94,7 @@ public:
 
 class LogSink {
 public:
-	virtual std::string name() = 0;
+	virtual LogString name() = 0;
 
 	virtual void handle_message(LogRecord& msg) = 0;
 };
@@ -147,9 +112,9 @@ public:
 	// get loggers
 
 public:
-	void write_message(const std::string& message,
+	void write_message(const LogString& message,
 	                   const char* const logger_name,
-	                   const std::string& thread_name,
+	                   const LogString& thread_name,
 	                   uint64_t timestamp,
 	                   int line,
 	                   const char* const file_name,
@@ -186,8 +151,14 @@ public:
 	bool get_enabled() const { return m_enabled; }
 	void set_enabled(bool enable) { m_enabled = enable; }
 
+	/**
+	 * The logging API could expose a ThreadNameMap<LogString>
+	 * that the Logging classes look up to get the thread name which seems to
+	 * make more sense that allowing callers to specify which thread to log the
+	 * message in as they may get it wrong for some reason.
+	 */
 	void send_message(const char* const msg,
-	                  const std::string& thread_name,
+	                  const LogString& thread_name,
 	                  uint64_t timestamp,
 	                  int line,
 	                  const char* file_name,
@@ -213,22 +184,20 @@ private:
 
 // macros
 
-StdThreadMap s_test_thread_map;
-
 BOOST_AUTO_TEST_CASE(basic_logging_test)
 {
+	log_initialize ();
 	Log test_log;
-
-	s_test_thread_map.add_thread_name("thread");
 
 	Logger test_logger(test_log, "test_logger");
 
 	test_logger.send_message("This is a test message",
-	                         s_test_thread_map.get_thread_name(),
+	                         "test thread",
 	                         GlibTimeStampSource::get_timestamp_microseconds(),
 	                         __LINE__,
 	                         __FILE__,
 	                         G_STRFUNC);
+	log_deinitialize ();
 }
 
 Log& get_macro_test_log()
@@ -237,9 +206,9 @@ Log& get_macro_test_log()
 	return default_log;
 }
 
-StdThreadMap& get_macro_test_thread_map()
+ThreadNameMap<LogString>& get_macro_test_thread_map()
 {
-	static StdThreadMap macro_test_map;
+	static ThreadNameMap<LogString> macro_test_map;
 	return macro_test_map;
 }
 
@@ -256,9 +225,9 @@ T_DECLARE_LOGGER(macro_test)
 
 T_LOGGER(get_macro_test_log(), macro_test)
 
-#define T_LOG(Name, LogString)                                                 \
-	Name_logger().send_message(LogString,                                         \
-	                           get_macro_test_thread_map().get_thread_name(),     \
+#define T_LOG(Name, Message)                                                 \
+	Name_logger().send_message(Message,                                         \
+	                           get_macro_test_thread_map().get_name(),     \
 	                           GlibTimeStampSource::get_timestamp_microseconds(), \
 	                           __LINE__,                                          \
 	                           __FILE__,                                          \
@@ -267,7 +236,7 @@ T_LOGGER(get_macro_test_log(), macro_test)
 // Log a record of a function call
 #define T_LOG_CALL(Name)                                                       \
 	Name_logger().send_message("Timestamp",                                       \
-	                           get_macro_test_thread_map().get_thread_name(),     \
+	                           get_macro_test_thread_map().get_name(),     \
 	                           GlibTimeStampSource::get_timestamp_microseconds(), \
 	                           __LINE__,                                          \
 	                           __FILE__,                                          \
@@ -275,14 +244,19 @@ T_LOGGER(get_macro_test_log(), macro_test)
 
 BOOST_AUTO_TEST_CASE(logging_macro_test)
 {
-	get_macro_test_thread_map().add_thread_name("logging_macro_test_thread");
+	log_initialize();
+	get_macro_test_thread_map().insert_name("logging_macro_test_thread");
 
 	T_LOG_CALL(macro_test);
 
 	T_LOG(macro_test, "This is a test of logging macros");
 
 	T_LOG_CALL(macro_test);
+	get_macro_test_thread_map().erase_name("logging_macro_test_thread");
+	log_deinitialize();
 }
+
+
 
 // Total number of bytes that have been allocated using operator new
 std::size_t operator_new_bytes_allocated = 0;
@@ -430,4 +404,13 @@ BOOST_AUTO_TEST_CASE(log_format_test)
 	BOOST_CHECK(alloc_data_before == alloc_data_after);
 
 	log_deinitialize();
+}
+
+BOOST_AUTO_TEST_CASE(logging_no_cache_test)
+{
+	/**
+	 * Test that logging still works without using a cache for logging strings
+	 * etc. call log_initialize with empty CacheOptions/LogNoCacheOption
+	 */
+
 }
