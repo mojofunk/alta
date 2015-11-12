@@ -7,6 +7,10 @@
 
 namespace mojo {
 
+/**
+ * Ideally this would be lock-free or at least use a ReadWriteLock/RCU or
+ * perhaps TLS, but this will do for now.
+ */
 template <class StringType>
 class ThreadNameMap {
 public:
@@ -27,6 +31,11 @@ public:
 		return (m_thread_name_map.erase(std::this_thread::get_id()));
 	}
 
+	/**
+	 * If the thread is not known should the id be converted to a string rather
+	 * than returning a fixed string as at least that will allow differentiating
+	 * between threads.
+	 */
 	StringType get_name()
 	{
 		std::unique_lock<std::mutex> lock(m_thread_name_map_mutex);
