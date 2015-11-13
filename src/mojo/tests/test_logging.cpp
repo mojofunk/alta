@@ -2,14 +2,9 @@
 #define BOOST_TEST_MODULE mojo_logging
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
-
-#include "mojo-core.hpp"
+#include "test_includes.hpp"
 
 #include <iostream>
-
-using namespace mojo;
 
 using namespace std::chrono;
 

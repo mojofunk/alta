@@ -1,11 +1,6 @@
 #include "example_application.hpp"
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
-
-using namespace boost::unit_test;
-using namespace std;
-using namespace mojo;
+#include "test_includes.hpp"
 
 ExampleApplication::ExampleApplication()
 {

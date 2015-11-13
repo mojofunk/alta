@@ -2,21 +2,11 @@
 #define BOOST_TEST_MODULE mojo_application
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
+#include "test_includes.hpp"
 
-// for command line args
-#include <boost/test/framework.hpp>
-
-#include "mojo/core/modules/module.hpp"
-
-#include "mojo/application/application.hpp"
+#include "mojo-application.hpp"
 
 #include "example_application.hpp"
-
-using namespace boost::unit_test;
-using namespace std;
-using namespace mojo;
 
 BOOST_AUTO_TEST_CASE(test_application)
 {

@@ -2,21 +2,9 @@
 #define BOOST_TEST_MODULE mojo_file_utils
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
+#include "test_includes.hpp"
 
-#include "mojo/core/string/compose.hpp"
-
-#include "mojo/core/filesystem/filesystem.hpp"
-#include "mojo/core/filesystem/file_utils.hpp"
-
-#include "mojo/application/project_directory.hpp"
-
-#include "test_common.hpp"
-
-using namespace boost::unit_test;
-using namespace std;
-using namespace mojo;
+#include "mojo-application.hpp"
 
 BOOST_AUTO_TEST_CASE(test_get_non_existant_file_path)
 {

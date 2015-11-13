@@ -2,12 +2,7 @@
 #define BOOST_TEST_MODULE mojo_thread_name_map
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
-
-#include "mojo/core/threads/thread_name_map.hpp"
-
-using namespace mojo;
+#include "test_includes.hpp"
 
 static ThreadNameMap<std::string>& test_thread_map()
 {

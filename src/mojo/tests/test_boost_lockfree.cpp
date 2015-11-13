@@ -2,30 +2,24 @@
 #define BOOST_TEST_MODULE mojo_boost_lockfree
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
+#include "test_includes.hpp"
 
-#include <thread>
-#include <atomic>
 #include <iostream>
 
 #include <boost/lockfree/spsc_queue.hpp>
 #include <boost/lockfree/queue.hpp>
 #include <boost/lockfree/stack.hpp>
 
-#include "mojo/core/time/time.hpp"
-
-using namespace boost::unit_test;
-using namespace boost::lockfree;
+using namespace boost;
 
 BOOST_AUTO_TEST_CASE(test_spsc_queue)
 {
 	const int count = 100;
-	spsc_queue<int, capacity<count>> spsc_queue;
+	lockfree::spsc_queue<int, lockfree::capacity<count>> spsc_queue;
 }
 
 const int queue_size = 100;
-queue<int, capacity<queue_size>> q;
+lockfree::queue<int, lockfree::capacity<queue_size>> q;
 
 const int iterations = 10000000;
 
@@ -98,5 +92,5 @@ BOOST_AUTO_TEST_CASE(test_queue)
 BOOST_AUTO_TEST_CASE(test_stack)
 {
 	const int count = 100;
-	stack<int, capacity<count>> stack;
+	lockfree::stack<int, lockfree::capacity<count>> stack;
 }

@@ -2,14 +2,11 @@
 #define BOOST_TEST_MODULE mojo_audition
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
+#include "test_includes.hpp"
 
-#include <mojo/mojo-internal.hpp>
-
-using namespace boost::unit_test;
-using namespace std;
-using namespace mojo;
+// not sure exactly what headers will be needed atm
+#include "mojo-application.hpp"
+#include "mojo-audio-file.hpp"
 
 BOOST_AUTO_TEST_CASE(audition_test)
 {

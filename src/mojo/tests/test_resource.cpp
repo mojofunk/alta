@@ -2,19 +2,7 @@
 #define BOOST_TEST_MODULE mojo_resource
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
-
-// for command line args
-#include <boost/test/framework.hpp>
-
-#include "mojo/core/system/resource.hpp"
-#include "mojo/core/string/compose.hpp"
-
-#include "test_common.hpp"
-
-using namespace boost::unit_test;
-using namespace mojo;
+#include "test_includes.hpp"
 
 BOOST_AUTO_TEST_CASE(open_files_resource_limit_test)
 {

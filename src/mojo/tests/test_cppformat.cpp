@@ -2,12 +2,7 @@
 #define BOOST_TEST_MODULE mojo_cppformat
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
-
-#include "mojo-core.hpp"
-
-using namespace mojo;
+#include "test_includes.hpp"
 
 #include <iostream>
 

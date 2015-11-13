@@ -2,17 +2,9 @@
 #define BOOST_TEST_MODULE mojo_stack_trace
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
-#include <boost/test/floating_point_comparison.hpp>
-
-#include "mojo/core/debug/stack_trace.hpp"
+#include "test_includes.hpp"
 
 #include <iostream>
-
-using namespace boost::unit_test;
-using namespace std;
-using namespace mojo;
 
 BOOST_AUTO_TEST_CASE(test_stack_trace_print)
 {

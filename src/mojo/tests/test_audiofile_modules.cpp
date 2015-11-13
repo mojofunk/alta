@@ -2,27 +2,10 @@
 #define BOOST_TEST_MODULE mojo_audiofile_modules
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
-//#include <boost/test/test_tools.hpp>
+#include "test_includes.hpp"
 
-// for command line args
-#include <boost/test/framework.hpp>
-
-#include "mojo/core/string/compose.hpp"
-
-#include "mojo/audio_file/audio_file.hpp"
-#include "mojo/audio_file/audio_file_format.hpp"
-#include "mojo/audio_file/audio_file_module.hpp"
-
-#include "mojo/application/application.hpp"
-#include "mojo/application/project_directory.hpp"
-
-#include "test_common.hpp"
-
-using namespace boost::unit_test;
-using namespace std;
-using namespace mojo;
+#include "mojo-audio-file.hpp"
+#include "mojo-application.hpp"
 
 void test_audiofile_format(AudioFileFormatSP format)
 {

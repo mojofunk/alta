@@ -2,14 +2,9 @@
 #define BOOST_TEST_MODULE mojo_private_macros
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
+#include "test_includes.hpp"
 
 #include <iostream>
-#include <string>
-
-#include "mojo/core/macros/disallow_copy_and_assign.hpp"
-#include "mojo/core/macros/private.hpp"
 
 class ApplicationPrivate;
 

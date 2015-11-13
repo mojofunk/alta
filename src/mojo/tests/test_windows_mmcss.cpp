@@ -2,18 +2,9 @@
 #define BOOST_TEST_MODULE mojo_windows_mmcss
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
-
-// for command line args
-#include <boost/test/framework.hpp>
-
-#include "mojo/core/time/time.hpp"
-#include "mojo/core/native/windows_mmcss.hpp"
+#include "test_includes.hpp"
 
 #include <windows.h>
-
-using namespace mojo;
 
 BOOST_AUTO_TEST_CASE(test_windows_mmcss)
 {

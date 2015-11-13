@@ -2,17 +2,9 @@
 #define BOOST_TEST_MODULE mojo_sdplog
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
+#include "test_includes.hpp"
 
-#include "mojo/core/spdlog/spdlog.h"
-#include "mojo/core/string/compose.hpp"
-
-#include "test_common.hpp"
-
-using namespace boost::unit_test;
-using namespace std;
-using namespace mojo;
+#include "spdlog/spdlog.h"
 
 #include <iostream>
 

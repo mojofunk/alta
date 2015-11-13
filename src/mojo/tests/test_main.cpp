@@ -2,13 +2,9 @@
 #define BOOST_TEST_MODULE mojo_tests
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
-#include <boost/test/framework.hpp>
+#include "test_includes.hpp"
 
 #ifdef MOJO_AMALGAMATED
-
-#include "mojo/core/config/common_header_includes.hpp"
 
 // common test sources
 #include "example_application.cpp"
@@ -46,4 +42,4 @@
 #include "test_native_mmcss.cpp"
 #endif
 
-#endif
+#endif // MOJO_AMALGAMATED

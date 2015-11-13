@@ -2,68 +2,51 @@
 #define BOOST_TEST_MODULE mojo_observer
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
+#include "test_includes.hpp"
 
-// for command line args
-#include <boost/test/framework.hpp>
-
-#include "mojo/core/misc/functor_dispatcher.hpp"
-#include "mojo/core/time/time.hpp"
-
-#include <atomic>
 #include <iostream>
-#include <cstdint>
-#include <list>
-#include <set>
-#include <thread>
-#include <mutex>
 
-using namespace boost::unit_test;
-using namespace std;
-using namespace mojo;
+class TestObject;
 
-class Object;
-
-class ObjectReferenceOwner {
+class TestObjectReferenceOwner {
 public:
-	virtual ~ObjectReferenceOwner() {}
+	virtual ~TestObjectReferenceOwner() {}
 
-	virtual void drop_references(const std::shared_ptr<Object>&) = 0;
+	virtual void drop_references(const std::shared_ptr<TestObject>&) = 0;
 };
 
 /**
- * An instance of a class deriving from Object must be held in a
- * std::shared_ptr as Object derives from std::enable_shared_from_this<Object>
+ * An instance of a class deriving from TestObject must be held in a
+ * std::shared_ptr as TestObject derives from std::enable_shared_from_this<TestObject>
  *
- * The lifetime of a class deriving from Object can be controlled in two ways.
+ * The lifetime of a class deriving from TestObject can be controlled in two ways.
  *
  * The shared_ptr is created by client code and the lifetime of the object is
  * controlled by the number of shared_ptr instances. When the last shared_ptr
- * instance is destructed the Object derived destructor is called as per usual
+ * instance is destructed the TestObject derived destructor is called as per usual
  * shared_ptr usage.
  *
- * Or the shared_ptr is created via ObjectManager::create<Type>() factory
- * interface in which case the ObjectManager holds an extra strong reference.
- * The Object manager will periodically check if it is the only reference
- * holder to the Object instance and if so drop its reference so the destructor
- * is called. The other situation is when an Object instance is forcefully
+ * Or the shared_ptr is created via TestObjectManager::create<Type>() factory
+ * interface in which case the TestObjectManager holds an extra strong reference.
+ * The TestObject manager will periodically check if it is the only reference
+ * holder to the TestObject instance and if so drop its reference so the destructor
+ * is called. The other situation is when an TestObject instance is forcefully
  * destroyed with object->destroy() which indicates to strong reference holders
  * to drop their references. The manager will receive the drop_references
  * callback and will know that it should soon be the only reference holder to
- * the Object instance and if the reference count doesn't drop to 1 within a
+ * the TestObject instance and if the reference count doesn't drop to 1 within a
  * certain period of time there may be a strong reference that isn't going out
  * of scope when it should.
  *
- * An ObjectManager is used to be able to control when and in which thread an
- * Object instance is deleted.
+ * An TestObjectManager is used to be able to control when and in which thread an
+ * TestObject instance is deleted.
  *
- * The Object destructor should only be called when there are no other
- * reference holders. As long as references to Object instances are held in
+ * The TestObject destructor should only be called when there are no other
+ * reference holders. As long as references to TestObject instances are held in
  * shared_ptr and any raw pointer usage is only while holding a strong
  * reference then there should be no dangling references...
  *
- * We also want to be able to forcefully destroy an Object instance, which
+ * We also want to be able to forcefully destroy an TestObject instance, which
  * means all reference holders will have to drop their references. In order to
  * facilitate that, the reference holders must register a callback when they
  * acquire the reference that can be executed to signal to drop any references
@@ -75,63 +58,63 @@ public:
  *
  * If the dropping of references is performed in a asynchronous manner then the
  * reference holder queues for the reference to be dropped in whatever threads
- * it knows may hold a reference to the Object instance.
+ * it knows may hold a reference to the TestObject instance.
  *
- * In the case of a single threaded GUI where an Object instance is created in
+ * In the case of a single threaded GUI where an TestObject instance is created in
  * a non-GUI thread and a callback is executed to tell the GUI about the new
- * Object the GUI code must immediately register a callback to handle forceful
- * destruction and then queue the new Object to be handled by the GUI thread.
+ * TestObject the GUI code must immediately register a callback to handle forceful
+ * destruction and then queue the new TestObject to be handled by the GUI thread.
  * This ensures that if a forceful destruction of the instance occurs before
- * the GUI has processed the new Object it can still queue the reference to be
+ * the GUI has processed the new TestObject it can still queue the reference to be
  * dropped and it won't miss the forceful destruction signal.
  *
- * Using the ObjectManager class should be optional for Object derived classes
- * and the Object class should not hold a reference to the ObjectManager class
+ * Using the TestObjectManager class should be optional for TestObject derived classes
+ * and the TestObject class should not hold a reference to the TestObjectManager class
  *
- * This implies that Object creation should occur through a central factory
- * interface where Object instances are created and then registered with the
- * ObjectManager instance.
+ * This implies that TestObject creation should occur through a central factory
+ * interface where TestObject instances are created and then registered with the
+ * TestObjectManager instance.
  *
- * Using the ObjectManager class is a form of garbage collection that we can
+ * Using the TestObjectManager class is a form of garbage collection that we can
  * use to control when the destruction of class instances occur. For instance
  * we may want to handle object destruction in a low priority thread and or
  * only run the thread for a maximum period of time etc.
  *
- * If the destroy method is called on an Object instance the ObjectManager will
- * queue that instance for final destruction. The ObjectManager can easily
+ * If the destroy method is called on an TestObject instance the TestObjectManager will
+ * queue that instance for final destruction. The TestObjectManager can easily
  * detect if any references are being held when they shouldn't if the reference
  * count is still > 1 after a sufficient period of time has elapsed for all
  * threads to have run and removed their reference.
  */
-class Object : public enable_shared_from_this<Object> {
+class TestObject : public enable_shared_from_this<TestObject> {
 public:
 	/**
-	 * The destructor for an Object must not be called until destroy is called
+	 * The destructor for an TestObject must not be called until destroy is called
 	 * to notify the observers to drop references.
 	 */
-	virtual ~Object();
+	virtual ~TestObject();
 
 	// property interface
 
 	/**
 	 * Request that hold references to this class drop their references. This
 	 * may not leave the caller with the only valid reference if the object is
-	 * also being managed by an ObjectManager.
+	 * also being managed by an TestObjectManager.
 	 */
 	void destroy()
 	{
-		std::cout << "Object::destroy" << std::endl;
+		std::cout << "TestObject::destroy" << std::endl;
 
 		std::unique_lock<std::mutex> lock(m_reference_owner_mutex);
 
 		for (auto const reference_owner : m_reference_owners) {
-			const shared_ptr<Object> obj_ptr = shared_from_this();
+			const shared_ptr<TestObject> obj_ptr = shared_from_this();
 			reference_owner->drop_references(obj_ptr);
 		}
 		// clear reference_owner list?
 	}
 
-	void add_reference_owner(ObjectReferenceOwner* reference_owner)
+	void add_reference_owner(TestObjectReferenceOwner* reference_owner)
 	{
 		std::unique_lock<std::mutex> lock(m_reference_owner_mutex);
 
@@ -146,12 +129,12 @@ public:
 	}
 
 	/**
-	 * The ObjectReferenceOwner must still hold at least one strong reference to
+	 * The TestObjectReferenceOwner must still hold at least one strong reference to
 	 * this instance when calling remove_reference_owner. It is assumed that the
 	 * first thing they do after calling remove_reference is actually dropping
 	 * all the strong references they do hold.
 	 */
-	void remove_reference_owner(ObjectReferenceOwner* reference_owner)
+	void remove_reference_owner(TestObjectReferenceOwner* reference_owner)
 	{
 		std::unique_lock<std::mutex> lock(m_reference_owner_mutex);
 
@@ -166,11 +149,11 @@ public:
 	}
 
 private:
-	std::set<ObjectReferenceOwner*> m_reference_owners;
+	std::set<TestObjectReferenceOwner*> m_reference_owners;
 	std::mutex m_reference_owner_mutex;
 };
 
-Object::~Object()
+TestObject::~TestObject()
 {
 	/**
 	 * If there are any observers still in the observer list then it is an
@@ -182,35 +165,35 @@ Object::~Object()
 	//	assert (m_object_observers.empty());
 }
 
-class ObjectGC : public ObjectReferenceOwner {
+class TestObjectGC : public TestObjectReferenceOwner {
 public: // ctors
-	virtual ~ObjectGC() {}
+	virtual ~TestObjectGC() {}
 
 public: // interface
-	virtual void manage(const shared_ptr<Object>&) = 0;
+	virtual void manage(const shared_ptr<TestObject>&) = 0;
 
 	// void collect () = 0;
 
-	void drop_references(const shared_ptr<Object>&) = 0;
+	void drop_references(const shared_ptr<TestObject>&) = 0;
 };
 
-class DefaultObjectGC : public ObjectGC {
+class DefaultTestObjectGC : public TestObjectGC {
 public:
-	DefaultObjectGC()
+	DefaultTestObjectGC()
 	    : m_thread(std::ref(*this))
 	{
-		std::cout << "DefaultObjectGC::ctor" << std::endl;
+		std::cout << "DefaultTestObjectGC::ctor" << std::endl;
 	}
 
-	~DefaultObjectGC()
+	~DefaultTestObjectGC()
 	{
-		std::cout << "DefaultObjectGC::dtor" << std::endl;
+		std::cout << "DefaultTestObjectGC::dtor" << std::endl;
 		m_thread.join();
 	}
 
-	void manage(const shared_ptr<Object>& object)
+	void manage(const shared_ptr<TestObject>& object)
 	{
-		std::cout << "DefaultObjectGC::manage" << std::endl;
+		std::cout << "DefaultTestObjectGC::manage" << std::endl;
 		/**
 		 * Add the reference immediately in the event that object is destroyed.
 		 * It is assumed that the caller ensures that no calls to
@@ -230,9 +213,9 @@ public:
 		m_managed_objects.insert(object);
 	}
 
-	void drop_references(const shared_ptr<Object>& object)
+	void drop_references(const shared_ptr<TestObject>& object)
 	{
-		std::cout << "DefaultObjectGC::drop_references" << std::endl;
+		std::cout << "DefaultTestObjectGC::drop_references" << std::endl;
 
 		/**
 		 * The object instance could be queued here to be dropped in the GC thread
@@ -244,12 +227,12 @@ public:
 
 	void operator()()
 	{
-		std::cout << "DefaultObjectGC running cleanup" << std::endl;
+		std::cout << "DefaultTestObjectGC running cleanup" << std::endl;
 
 		std::unique_lock<std::mutex> lock(m_managed_objects_mutex);
 		for (auto object : m_managed_objects) {
 			if (object.unique()) {
-				std::cout << "Object ref count 1, dropping reference" << std::endl;
+				std::cout << "TestObject ref count 1, dropping reference" << std::endl;
 				m_managed_objects.erase(object);
 			}
 		}
@@ -261,22 +244,22 @@ private:
 	std::thread m_thread;
 
 	std::mutex m_managed_objects_mutex;
-	std::set<shared_ptr<Object>> m_managed_objects;
+	std::set<shared_ptr<TestObject>> m_managed_objects;
 };
 
-class ObjectManager {
+class TestObjectManager {
 public:
 	static void initialize();
 
 	static void deinitialize();
 
-	static void set_gc(std::unique_ptr<ObjectGC> gc)
+	static void set_gc(std::unique_ptr<TestObjectGC> gc)
 	{
 		// set a custom GC
 		// transfer managed objects?
 	}
 
-	static ObjectGC& get_gc();
+	static TestObjectGC& get_gc();
 
 	template <class T>
 	static shared_ptr<T> create()
@@ -291,27 +274,27 @@ private:
 	static unique_ptr<Impl> s_impl;
 };
 
-struct ObjectManager::Impl {
-	std::unique_ptr<ObjectGC> m_gc;
+struct TestObjectManager::Impl {
+	std::unique_ptr<TestObjectGC> m_gc;
 };
 
-void ObjectManager::initialize()
+void TestObjectManager::initialize()
 {
 	s_impl = unique_ptr<Impl>(new Impl);
-	s_impl->m_gc = unique_ptr<ObjectGC>(new DefaultObjectGC);
+	s_impl->m_gc = unique_ptr<TestObjectGC>(new DefaultTestObjectGC);
 }
 
-void ObjectManager::deinitialize()
+void TestObjectManager::deinitialize()
 {
 	s_impl.reset();
 }
 
-ObjectGC& ObjectManager::get_gc()
+TestObjectGC& TestObjectManager::get_gc()
 {
 	return *(s_impl->m_gc.get());
 }
 
-std::unique_ptr<ObjectManager::Impl> ObjectManager::s_impl;
+std::unique_ptr<TestObjectManager::Impl> TestObjectManager::s_impl;
 
 class Route;
 
@@ -344,7 +327,7 @@ public:
 	                                  bool solo_enabled) = 0;
 };
 
-class Route : public Object {
+class Route : public TestObject {
 public: // ctors
 	Route()
 	    : m_mute_enabled(false)
@@ -483,7 +466,7 @@ public:
 	virtual void route_removed(const shared_ptr<Route>& track) = 0;
 };
 
-class Project : public Object, public ObjectReferenceOwner {
+class Project : public TestObject, public TestObjectReferenceOwner {
 public:
 	bool add_route(const shared_ptr<Route>& route)
 	{
@@ -556,7 +539,7 @@ public:
 		// assert(m_routes.empty());
 	}
 
-	void drop_references(const std::shared_ptr<Object>& object)
+	void drop_references(const std::shared_ptr<TestObject>& object)
 	{
 		const std::shared_ptr<Route> route = static_pointer_cast<Route>(object);
 		{
@@ -667,7 +650,7 @@ class UI;
 
 class ProjectUI : public Widget,
                   public ProjectObserver,
-                  public ObjectReferenceOwner {
+                  public TestObjectReferenceOwner {
 public:
 	ProjectUI(const shared_ptr<Project>& project, int id)
 	    : m_thread(std::ref(*this))
@@ -726,7 +709,7 @@ public:
 		call_async(std::bind(&ProjectUI::route_removed_ui_thread, this, route_ptr));
 	}
 
-	void drop_references(const shared_ptr<Object>& project)
+	void drop_references(const shared_ptr<TestObject>& project)
 	{
 		std::cout << "ProjectUI drop references" << std::endl;
 
@@ -783,7 +766,7 @@ private:
 		/**
 		 * The project doesn't hold a reference to the Route but it is the
 		 * reference owner so it is responsible for dropping all references to
-		 * the route when the Object's destroy callback is executed.
+		 * the route when the TestObject's destroy callback is executed.
 		 *
 		 * The RouteWidget instance holds the reference to the Route so destroy
 		 * the RouteWidget that holds a reference to the route.
@@ -832,9 +815,9 @@ BOOST_AUTO_TEST_CASE(test_track_observer)
 
 BOOST_AUTO_TEST_CASE(test_object_manager_create)
 {
-	ObjectManager::initialize();
+	TestObjectManager::initialize();
 
-	std::shared_ptr<Track> track = ObjectManager::create<Track>();
+	std::shared_ptr<Track> track = TestObjectManager::create<Track>();
 	std::unique_ptr<TrackWidget> track_widget(new TrackWidget(track));
 
 	track->set_solo_enabled(true);
@@ -843,14 +826,14 @@ BOOST_AUTO_TEST_CASE(test_object_manager_create)
 
 	track->destroy();
 
-	ObjectManager::deinitialize();
+	TestObjectManager::deinitialize();
 }
 
 BOOST_AUTO_TEST_CASE(test_project_ui)
 {
-	ObjectManager::initialize();
+	TestObjectManager::initialize();
 
-	// std::shared_ptr<Project> project = ObjectManager::create<Project>();
+	// std::shared_ptr<Project> project = TestObjectManager::create<Project>();
 	std::shared_ptr<Project> project = make_shared<Project>();
 
 	std::list<ProjectUI*> project_ui_list;
@@ -863,8 +846,8 @@ BOOST_AUTO_TEST_CASE(test_project_ui)
 	std::cout << "Adding tracks to project" << std::endl;
 
 	for (int i = 0; i < 1000; ++i) {
-		std::shared_ptr<Route> route = ObjectManager::create<Route>();
-		std::shared_ptr<Track> track = ObjectManager::create<Track>();
+		std::shared_ptr<Route> route = TestObjectManager::create<Route>();
+		std::shared_ptr<Track> track = TestObjectManager::create<Track>();
 
 		project->add_route(track);
 		project->add_route(route);
@@ -879,8 +862,8 @@ BOOST_AUTO_TEST_CASE(test_project_ui)
 	std::cout << "Adding tracks to project again" << std::endl;
 
 	for (int i = 0; i < 1000; ++i) {
-		std::shared_ptr<Route> route = ObjectManager::create<Route>();
-		std::shared_ptr<Track> track = ObjectManager::create<Track>();
+		std::shared_ptr<Route> route = TestObjectManager::create<Route>();
+		std::shared_ptr<Track> track = TestObjectManager::create<Track>();
 
 		project->add_route(track);
 		project->add_route(route);
@@ -896,7 +879,7 @@ BOOST_AUTO_TEST_CASE(test_project_ui)
 		delete project_ui;
 	}
 
-	ObjectManager::deinitialize();
+	TestObjectManager::deinitialize();
 }
 
 BOOST_AUTO_TEST_CASE(test_add_remove_observers)
@@ -904,7 +887,7 @@ BOOST_AUTO_TEST_CASE(test_add_remove_observers)
 }
 
 /**
- * Test connecting to an Object derived class, then destroying/deleting
+ * Test connecting to an TestObject derived class, then destroying/deleting
  * the instance in another thread.
  */
 BOOST_AUTO_TEST_CASE(test_drop_references_threaded)
@@ -914,7 +897,7 @@ BOOST_AUTO_TEST_CASE(test_drop_references_threaded)
 }
 
 /**
- * Test connecting and disconnecting a signal/event of an Object derived
+ * Test connecting and disconnecting a signal/event of an TestObject derived
  * instance from another thread.
  */
 BOOST_AUTO_TEST_CASE(test_add_remove_observers_threaded)

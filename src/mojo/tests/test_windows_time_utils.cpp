@@ -2,19 +2,7 @@
 #define BOOST_TEST_MODULE mojo_windows_time_utils
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
-
-// for command line args
-#include <boost/test/framework.hpp>
-
-#include "mojo/core/string/compose.hpp"
-
-#include "mojo/core/native/windows_time_utils.hpp"
-
-using namespace boost::unit_test;
-using namespace std;
-using namespace mojo;
+#include "test_includes.hpp"
 
 BOOST_AUTO_TEST_CASE(test_windows_time_utils_basic)
 {

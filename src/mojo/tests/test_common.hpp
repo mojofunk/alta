@@ -1,7 +1,7 @@
 #ifndef MOJO_TEST_COMMON_H
 #define MOJO_TEST_COMMON_H
 
-#include "mojo/core/filesystem/search_path.hpp"
+#include "mojo-core.hpp"
 
 mojo::Searchpath test_search_path();
 

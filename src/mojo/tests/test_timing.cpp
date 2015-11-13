@@ -2,19 +2,7 @@
 #define BOOST_TEST_MODULE mojo_timing
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
-
-// for command line args
-#include <boost/test/framework.hpp>
-
-#include <chrono>
-
-#include "mojo/core/time/timing.hpp"
-
-using namespace boost::unit_test;
-using namespace std;
-using namespace mojo;
+#include "test_includes.hpp"
 
 BOOST_AUTO_TEST_CASE(test_cpp_clocks)
 {

@@ -2,13 +2,7 @@
 #define BOOST_TEST_MODULE mojo_debug
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
-
-#include "mojo/core/debug/debug.hpp"
-
-using namespace boost::unit_test;
-using namespace std;
+#include "test_includes.hpp"
 
 MOJO_DEBUG_DOMAIN(TEST_DOMAIN_ONE);
 MOJO_DEBUG_DOMAIN(TEST_DOMAIN_TWO);

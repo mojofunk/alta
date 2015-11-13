@@ -2,19 +2,7 @@
 #define BOOST_TEST_MODULE mojo_ring_buffer
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
-
-#include <thread>
-
-#include "mojo/core/time/time.hpp"
-
-#include "mojo/core/lockfree/ring_buffer.hpp"
-#include "mojo/core/string/compose.hpp"
-
-using namespace boost::unit_test;
-using namespace std;
-using namespace mojo;
+#include "test_includes.hpp"
 
 template <class T>
 void print_read_vectors(RingBuffer<T>& rb)

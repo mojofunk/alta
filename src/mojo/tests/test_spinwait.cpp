@@ -2,13 +2,7 @@
 #define BOOST_TEST_MODULE spinwait
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
-
-#include "mojo/core/misc/spinwait.hpp"
-
-using namespace boost::unit_test;
-using namespace std;
+#include "test_includes.hpp"
 
 BOOST_AUTO_TEST_CASE(test_spinwait)
 {

@@ -2,21 +2,9 @@
 #define BOOST_TEST_MODULE mojo_audio_clip
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
+#include "test_includes.hpp"
 
-// for command line args
-#include <boost/test/framework.hpp>
-
-#include "mojo/core/filesystem/file_utils.hpp"
-
-#include "mojo/application/project_directory.hpp"
-#include "mojo/application/application.hpp"
-
-#include "test_common.hpp"
-
-using namespace boost::unit_test;
-using namespace mojo;
+#include "mojo-application.hpp"
 
 BOOST_AUTO_TEST_CASE(audio_clip)
 {

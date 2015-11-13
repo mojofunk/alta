@@ -2,22 +2,10 @@
 #define BOOST_TEST_MODULE mojo_audio_effect
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
+#include "test_includes.hpp"
 
-// for command line args
-#include <boost/test/framework.hpp>
-
-#include "mojo/application/application.hpp"
-
-#include "mojo/audio_effect/audio_effect.hpp"
-#include "mojo/audio_effect/audio_effect_info.hpp"
-#include "mojo/audio_effect/audio_effect_parameter_info.hpp"
-#include "mojo/audio_effect/audio_effect_module.hpp"
-
-using namespace boost::unit_test;
-using namespace std;
-using namespace mojo;
+#include "mojo-application.hpp"
+#include "mojo-audio-effect.hpp"
 
 void test_plugin_path(const fs::path& path)
 {

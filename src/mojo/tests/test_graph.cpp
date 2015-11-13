@@ -1,16 +1,10 @@
 #ifndef MOJO_SINGLE_TEST_EXE
-#define BOOST_TEST_MODULE graph
+#define BOOST_TEST_MODULE mojo_graph
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
+#include "test_includes.hpp"
 
-#include "mojo/engine/graph.hpp"
-#include "mojo/engine/node.hpp"
-
-using namespace boost::unit_test;
-using namespace std;
-using namespace mojo;
+#include "mojo-engine.hpp"
 
 struct Processor : public Node {
 	string name;

@@ -2,22 +2,12 @@
 #define BOOST_TEST_MODULE mojo_pool_allocator
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
+#include "test_includes.hpp"
 
-#include <thread>
-#include <atomic>
 #include <iostream>
 
 using std::cout;
 using std::endl;
-
-#include "mojo/core/memory/fixed_size_pool_allocator.hpp"
-#include "mojo/core/time/time.hpp"
-
-using namespace boost::unit_test;
-using namespace std;
-using namespace mojo;
 
 struct Foo {
 	int m_int;

@@ -2,22 +2,9 @@
 #define BOOST_TEST_MODULE mojo_type_system
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
+#include "test_includes.hpp"
 
-#include "mojo/core/typesystem/type_names.hpp"
-
-#include "mojo/application/application.hpp"
-#include "mojo/application/audio_event.hpp"
-#include "mojo/application/audio_sequence.hpp"
-#include "mojo/application/audio_track.hpp"
-#include "mojo/application/midi_track.hpp"
-
-#include "mojo/core/typesystem/type_system.hpp"
-
-using namespace boost::unit_test;
-using namespace std;
-using namespace mojo;
+#include "mojo-application.hpp"
 
 template <class T>
 bool test_type_name(const string& type_name)

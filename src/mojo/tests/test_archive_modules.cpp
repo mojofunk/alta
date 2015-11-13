@@ -2,23 +2,10 @@
 #define BOOST_TEST_MODULE mojo_archive_modules
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
+#include "test_includes.hpp"
 
-#include "mojo/core/object/properties.hpp"
-
-#include "mojo/archive/archive_module.hpp"
-#include "mojo/archive/archive.hpp"
-
-#include "mojo/application/application.hpp"
-
-#include "mojo/core/string/convert.hpp"
-
-#include <glib.h>
-
-using namespace boost::unit_test;
-using namespace std;
-using namespace mojo;
+#include "mojo-archive.hpp"
+#include "mojo-application.hpp"
 
 template <class T>
 void check_property(const Properties& props,

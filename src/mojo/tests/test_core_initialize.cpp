@@ -2,18 +2,7 @@
 #define BOOST_TEST_MODULE mojo_core_initializer
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
-
-// for command line args
-#include <boost/test/framework.hpp>
-
-#include <thread>
-
-#include "mojo/core/init/initialize.hpp"
-#include "mojo/core/time/time.hpp"
-
-using namespace mojo;
+#include "test_includes.hpp"
 
 const int iterations = 1e6;
 

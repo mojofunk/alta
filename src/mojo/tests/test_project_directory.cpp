@@ -2,19 +2,9 @@
 #define BOOST_TEST_MODULE mojo_project_directory
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
+#include "test_includes.hpp"
 
-// for command line args
-#include <boost/test/framework.hpp>
-
-#include "mojo/application/project_directory.hpp"
-
-#include "test_common.hpp"
-
-using namespace boost::unit_test;
-using namespace std;
-using namespace mojo;
+#include "mojo-application.hpp"
 
 BOOST_AUTO_TEST_CASE(test_project_directory)
 {

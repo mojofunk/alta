@@ -2,19 +2,9 @@
 #define BOOST_TEST_MODULE mojo_project
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
+#include "test_includes.hpp"
 
-#include "mojo/application/audio_event.hpp"
-#include "mojo/application/audio_sequence.hpp"
-#include "mojo/application/audio_track.hpp"
-#include "mojo/application/project.hpp"
-
-#include <glib.h>
-
-using namespace boost::unit_test;
-using namespace std;
-using namespace mojo;
+#include "mojo-application.hpp"
 
 const string project_filename = "project1";
 

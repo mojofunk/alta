@@ -2,20 +2,9 @@
 #define BOOST_TEST_MODULE mojo_module_utils
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
+#include "test_includes.hpp"
 
-#include <glib.h> //remove this
-
-#include "mojo/core/modules/module_utils.hpp"
-#include "mojo/core/filesystem/filesystem_paths.hpp"
-#include "mojo/core/string/compose.hpp"
-
-#include "mojo/audio_file/audio_file_module.hpp"
-
-using namespace boost::unit_test;
-using namespace std;
-using namespace mojo;
+#include "mojo-audio-file.hpp"
 
 fs::path get_sndfile_module_path()
 {

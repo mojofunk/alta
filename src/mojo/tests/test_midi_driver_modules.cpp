@@ -2,22 +2,10 @@
 #define BOOST_TEST_MODULE mojo_midi_driver_module
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
-//#include <boost/test/test_tools.hpp>
+#include "test_includes.hpp"
 
-// for command line args
-#include <boost/test/framework.hpp>
-
-#include "mojo/core/string/compose.hpp"
-
-#include "mojo/midi_driver/mojo-midi-driver.hpp"
-
-#include "mojo/application/application.hpp"
-
-using namespace boost::unit_test;
-using namespace std;
-using namespace mojo;
+#include "mojo-midi-driver.hpp"
+#include "mojo-application.hpp"
 
 namespace {
 

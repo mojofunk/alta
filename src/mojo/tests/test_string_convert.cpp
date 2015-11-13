@@ -2,21 +2,10 @@
 #define BOOST_TEST_MODULE mojo_string_convert
 #endif
 
-#include <thread>
+#include "test_includes.hpp"
+
 #include <iostream>
-
 #include <cinttypes>
-
-#include <glib.h>
-
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
-#include <boost/test/floating_point_comparison.hpp>
-
-#include "mojo/core/string/convert.hpp"
-
-using namespace boost::unit_test;
-using namespace std;
 
 #ifdef MOJO_WINDOWS
 static const std::string french_locale_name("French_France.1252");

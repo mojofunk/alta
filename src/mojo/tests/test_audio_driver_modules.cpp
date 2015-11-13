@@ -2,25 +2,12 @@
 #define BOOST_TEST_MODULE mojo_audio_driver_module
 #endif
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_log.hpp>
-//#include <boost/test/test_tools.hpp>
+#include "test_includes.hpp"
 
-// for command line args
-#include <boost/test/framework.hpp>
-
-#include "mojo/core/string/compose.hpp"
-
-#include "mojo/audio_driver/mojo-audio-driver.hpp"
-
-#include "mojo/application/application.hpp"
-
-using namespace boost::unit_test;
-using namespace std;
-using namespace mojo;
+#include "mojo-audio-driver.hpp"
+#include "mojo-application.hpp"
 
 namespace {
-
 float left_phase(0);
 float right_phase(0);
 }
