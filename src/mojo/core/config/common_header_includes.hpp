@@ -50,4 +50,6 @@
 
 #include "cppformat/format.h"
 
+#include "moodycamel/concurrentqueue.h"
+
 #endif // MOJO_CORE_COMMON_HEADER_H

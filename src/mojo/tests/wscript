@@ -25,6 +25,7 @@ test_graph
 test_logging
 test_observer
 test_module_utils
+test_moodycamel_queue
 test_fixed_size_object_pool
 test_fixed_size_pool_allocator
 test_project

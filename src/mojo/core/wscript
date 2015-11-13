@@ -15,8 +15,8 @@ def configure(conf):
 
 def build(bld):
     uselib = ['GLIB-2.0', 'GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
-    use_local_static = ['src_include_path', 'CPPFORMAT_STATIC']
-    use_local_shared = ['src_include_path', 'CPPFORMAT_SHARED']
+    use_local_static = ['src_include_path', 'CPPFORMAT_STATIC', 'MOODYCAMEL']
+    use_local_shared = ['src_include_path', 'CPPFORMAT_SHARED', 'MOODYCAMEL']
 
     if bld.env.TARGET_PLATFORM == 'windows':
         uselib += ['WINMM']
