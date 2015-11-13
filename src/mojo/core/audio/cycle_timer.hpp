@@ -1,9 +1,11 @@
 #ifndef MOJO_AUDIO_CYCLE_TIMER_H
 #define MOJO_AUDIO_CYCLE_TIMER_H
 
-#include <cstdint>
-#include <cmath>
-#include <algorithm>
+#ifndef MOJO_AMALGAMATED
+#include "mojo/core/config/common_header_includes.hpp"
+#endif
+
+namespace mojo {
 
 class CycleTimer {
 public:
@@ -77,5 +79,7 @@ private:
 	uint32_t m_samplerate;
 	uint32_t m_samples_per_cycle;
 };
+
+} // namespace mojo
 
 #endif // MOJO_AUDIO_CYCLE_TIMER_H

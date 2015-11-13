@@ -8,6 +8,7 @@
 
 #include "audio/types.hpp"
 #include "audio/utils.hpp"
+#include "audio/cycle_timer.hpp"
 
 #include "midi/midi_util.hpp"
 
