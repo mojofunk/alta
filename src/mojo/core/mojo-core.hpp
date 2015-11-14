@@ -6,6 +6,10 @@
 
 //////
 
+#include "macros/disallow_copy_and_assign.hpp"
+#include "macros/private.hpp"
+#include "macros/smart_pointers.hpp"
+
 #include "audio/types.hpp"
 #include "audio/utils.hpp"
 #include "audio/cycle_timer.hpp"
@@ -28,15 +32,12 @@
 #include "time/time.hpp"
 #include "time/timing.hpp"
 
+#include "memory/garbage_collector.hpp"
 #include "memory/fixed_size_pool.hpp"
 #include "memory/fixed_size_object_pool.hpp"
 #include "memory/fixed_size_pool_allocator.hpp"
 
 #include "lockfree/ring_buffer.hpp"
-
-#include "macros/disallow_copy_and_assign.hpp"
-#include "macros/private.hpp"
-#include "macros/smart_pointers.hpp"
 
 #include "misc/null_deleter.hpp"
 #include "misc/semaphore.hpp"

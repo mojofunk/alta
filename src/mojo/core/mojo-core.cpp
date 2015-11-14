@@ -23,6 +23,8 @@
 
 #include "string/convert.cpp"
 
+#include "memory/garbage_collector.cpp"
+
 #include "misc/semaphore.cpp"
 #include "misc/worker.cpp"
 #include "misc/functor_dispatcher.cpp"
