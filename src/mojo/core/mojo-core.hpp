@@ -29,6 +29,8 @@
 #include "filesystem/filesystem_paths.hpp"
 #include "filesystem/file_utils.hpp"
 
+#include "time/chrono_timestamp.hpp"
+#include "time/elapsed_timer.hpp"
 #include "time/time.hpp"
 #include "time/timing.hpp"
 

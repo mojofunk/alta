@@ -14,34 +14,6 @@ public:
 	// static int64_t get_timestamp_nanoseconds { return g_get_monotonic_time(); }
 };
 
-class ChronoTimeStampSource {
-public:
-	static uint64_t get_timestamp_microseconds()
-	{
-		auto duration = high_resolution_clock::now();
-		return duration_cast<microseconds>(duration.time_since_epoch()).count();
-	}
-};
-
-template <class T>
-class ElapsedTimer {
-public:
-	ElapsedTimer()
-	    : m_start_time(T::get_timestamp_microseconds())
-	{
-	}
-
-	void restart() { m_start_time = T::get_timestamp_microseconds(); }
-
-	std::uint64_t elapsed_usecs() const
-	{
-		return T::get_timestamp_microseconds() - m_start_time;
-	}
-
-private:
-	std::uint64_t m_start_time;
-};
-
 // may not need this class
 struct SourceLocation {
 	const int m_line;
