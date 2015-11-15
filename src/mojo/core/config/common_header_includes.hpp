@@ -22,6 +22,7 @@
 
 #include <atomic>
 #include <condition_variable>
+#include <chrono>
 #include <cstdint>
 #include <locale>
 #include <list>
