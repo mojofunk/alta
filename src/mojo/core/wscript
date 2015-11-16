@@ -9,9 +9,13 @@ def init():
 
 def configure(conf):
     print ("configure mojo-core")
-    conf.check(header_name='execinfo.h', define_name='HAVE_EXECINFO', mandatory=False)
+    conf.check(
+        header_name='execinfo.h',
+        define_name='HAVE_EXECINFO',
+        mandatory=False)
 
     conf.write_config_header('config/config.hpp')
+
 
 def build(bld):
     uselib = ['GLIB-2.0', 'GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
