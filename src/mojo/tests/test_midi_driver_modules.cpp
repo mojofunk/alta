@@ -146,11 +146,10 @@ BOOST_AUTO_TEST_CASE(midi_driver_module_test)
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	Application::initialize();
+	Application app;
 	MIDIDriverModuleSPSet modules = Application::get_midi_driver_modules();
 
 	BOOST_CHECK(!modules.empty());
 
 	for_each(modules.begin(), modules.end(), test_midi_driver_module);
-	Application::deinitialize();
 }

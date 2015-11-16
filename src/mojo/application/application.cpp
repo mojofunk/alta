@@ -1,41 +1,14 @@
 MOJO_DEBUG_DOMAIN(APPLICATION);
 
-namespace {
-
-std::atomic_uint m_init_count(0);
-mojo::Application* s_instance = 0;
-}
-
 namespace mojo {
 
-void Application::initialize()
-{
-	if (++m_init_count != 1) return;
-	core::initialize();
-	s_instance = new Application;
-}
-
-void Application::deinitialize()
-{
-	if (--m_init_count != 0) return;
-	delete s_instance;
-	s_instance = 0;
-	core::deinitialize();
-}
-
-mojo::Application& Application::get_instance()
-{
-	return *s_instance;
-}
-
-void Application::iteration(bool block)
-{
-	get_instance().data->worker.iteration(block);
-}
+Application* Application::s_instance = 0;
 
 Application::Application()
 {
-	MOJO_DEBUG(APPLICATION);
+	core::initialize();
+	s_instance = this;
+
 	data =
 	    std::unique_ptr<internal::ApplicationData>(new internal::ApplicationData);
 
@@ -46,22 +19,28 @@ Application::Application()
 
 Application::~Application()
 {
-	MOJO_DEBUG(APPLICATION);
+	s_instance = 0;
+	core::deinitialize();
+}
+
+void Application::iteration(bool block)
+{
+	s_instance->data->worker.iteration(block);
 }
 
 void Application::new_project()
 {
 	MOJO_DEBUG(APPLICATION);
-	get_instance().data->worker.call_async(boost::bind(
-	    &Application::new_project_internal, boost::ref(get_instance())));
+	s_instance->data->worker.call_async(boost::bind(
+	    &Application::new_project_internal, boost::ref(*s_instance)));
 }
 
 void Application::open_project(const std::string& project_file)
 {
 	MOJO_DEBUG(APPLICATION);
-	get_instance().data->worker.call_async(
+	s_instance->data->worker.call_async(
 	    boost::bind(&Application::open_project_internal,
-	                boost::ref(get_instance()),
+	                boost::ref(*s_instance),
 	                project_file));
 }
 
@@ -75,40 +54,40 @@ void Application::save_project(Project*)
 
 void Application::set_active_project(Project* p)
 {
-	if (get_instance().data->active_project == p) return;
-	get_instance().data->worker.call_async(boost::bind(
-	    &Application::set_active_project_internal, boost::ref(get_instance()), p));
+	if (s_instance->data->active_project == p) return;
+	s_instance->data->worker.call_async(boost::bind(
+	    &Application::set_active_project_internal, boost::ref(*s_instance), p));
 }
 
 Project* Application::get_active_project()
 {
-	return get_instance().data->active_project;
+	return s_instance->data->active_project;
 }
 
 void Application::close_project(Project* p)
 {
 	MOJO_DEBUG(APPLICATION);
-	get_instance().data->worker.call_async(boost::bind(
-	    &Application::close_project_internal, boost::ref(get_instance()), p));
+	s_instance->data->worker.call_async(boost::bind(
+	    &Application::close_project_internal, boost::ref(*s_instance), p));
 }
 
 signals::connection
 Application::connect_project_added(const ProjectAddedFunc& slot)
 {
-	return get_instance().data->m_project_added.connect(slot);
+	return s_instance->data->m_project_added.connect(slot);
 }
 
 signals::connection
 Application::connect_project_removed(const ProjectRemovedFunc& slot)
 {
-	return get_instance().data->m_project_removed.connect(slot);
+	return s_instance->data->m_project_removed.connect(slot);
 }
 
 void Application::add_track(Project* p, const TrackOptions& options)
 {
 	MOJO_DEBUG(APPLICATION);
-	get_instance().data->worker.call_async(boost::bind(
-	    &Application::add_track_internal, boost::ref(get_instance()), p, options));
+	s_instance->data->worker.call_async(boost::bind(
+	    &Application::add_track_internal, boost::ref(*s_instance), p, options));
 }
 
 bool Application::is_audio_track(Track* t)
@@ -130,7 +109,7 @@ AudioFileSP Application::open_audiofile(const fs::path& p)
 
 ModuleSPSet Application::get_modules()
 {
-	return get_instance().data->m_modules;
+	return s_instance->data->m_modules;
 }
 
 AudioFileModuleSPSet Application::get_audiofile_modules()

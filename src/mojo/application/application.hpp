@@ -79,17 +79,10 @@ namespace mojo {
  * The Task class will notify the caller when the task is complete.
  */
 class Application {
-public: // Initialization
-	class Initializer {
-	public:
-		Initializer() { Application::initialize(); }
+public: // ctors
+	Application();
 
-		~Initializer() { Application::deinitialize(); }
-	};
-
-	static void initialize();
-
-	static void deinitialize();
+	~Application();
 
 public:
 	static void iteration(bool block);
@@ -218,14 +211,7 @@ public: // modules
 
 	static ArchiveSP create_archive();
 
-private: // ctors
-	Application();
-
-	~Application();
-
-	static Application& get_instance();
-
-	std::unique_ptr<internal::ApplicationData> data;
+private: // methods
 
 	void register_types();
 
@@ -236,6 +222,11 @@ private: // ctors
 
 	void add_track_internal(Project*, const TrackOptions&);
 	void remove_track_internal(Project*, Track*);
+
+private: // data
+	static Application* s_instance;
+
+	std::unique_ptr<internal::ApplicationData> data;
 };
 
 } // namespace mojo

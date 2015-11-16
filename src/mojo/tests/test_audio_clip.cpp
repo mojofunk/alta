@@ -11,7 +11,7 @@ BOOST_AUTO_TEST_CASE(audio_clip)
 	int argc = framework::master_test_suite().argc;
 	char** argv = framework::master_test_suite().argv;
 
-	Application::initialize();
+	Application app;
 	// given a file path create an AudioFile
 
 	fs::path project_path;
@@ -39,5 +39,4 @@ BOOST_AUTO_TEST_CASE(audio_clip)
 
 	// The AudioClip has the same properties as the
 	// AudioFile, file format, channel format, samplerate, length
-	Application::deinitialize();
 }
