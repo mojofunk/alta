@@ -1,7 +1,3 @@
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/midi/midi_util.hpp"
-#endif
-
 namespace mojo {
 
 int get_midi_msg_length(uint8_t status_byte)

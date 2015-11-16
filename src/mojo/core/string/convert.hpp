@@ -1,10 +1,6 @@
 #ifndef MOJO_CORE_STRING_CONVERT_H
 #define MOJO_CORE_STRING_CONVERT_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#endif
-
 /**
  * Locale independent and thread-safe string conversion utility functions.
  *

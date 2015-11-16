@@ -1,10 +1,6 @@
 #ifndef MOJO_CORE_MIDI_UTIL_H
 #define MOJO_CORE_MIDI_UTIL_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#endif
-
 namespace mojo {
 
 struct MidiEventHeader {

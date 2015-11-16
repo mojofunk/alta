@@ -13,14 +13,7 @@ def configure(conf):
 
 def build(bld):
 
-    if bld.env.ENABLE_AMALGAMATION:
-        source = 'mojo-xml-archive.cpp'
-        defines = 'MOJO_AMALGAMATED'
-    else:
-        source = bld.path.ant_glob('*.cpp',
-                                   excl='mojo-xml-archive.cpp')
-        defines = ''
-
+    source = 'mojo-xml-archive.cpp'
     uselib = ['GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
     target = 'mojo-xml-archive'
 
@@ -31,7 +24,6 @@ def build(bld):
                   use=[
                       'MOJO_ARCHIVE_SHARED',
                       'MOJO_CORE_SHARED'],
-                  defines=defines,
                   target=target,
                   name='MOJO_ARCHIVE_XML')
 
@@ -42,6 +34,5 @@ def build(bld):
                   use=[
                       'MOJO_ARCHIVE_STATIC',
                       'MOJO_CORE_STATIC'],
-                  defines=defines,
                   target=target,
                   name='MOJO_ARCHIVE_XML')

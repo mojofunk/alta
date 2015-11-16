@@ -1,5 +1,3 @@
-#include "mojo-winmme-midi-driver.hpp"
-
 namespace mojo {
 
 WinMMEMIDIDriverModule::~WinMMEMIDIDriverModule()

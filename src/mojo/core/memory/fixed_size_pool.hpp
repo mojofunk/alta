@@ -1,10 +1,6 @@
 #ifndef MOJO_CORE_FIXED_SIZE_POOL_H
 #define MOJO_CORE_FIXED_SIZE_POOL_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#endif
-
 namespace mojo {
 
 class FixedSizePool {

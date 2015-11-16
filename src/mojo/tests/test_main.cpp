@@ -4,8 +4,6 @@
 
 #include "test_includes.hpp"
 
-#ifdef MOJO_AMALGAMATED
-
 // common test sources
 #include "example_application.cpp"
 #include "test_common.cpp"
@@ -41,5 +39,3 @@
 #ifdef MOJO_WINDOWS
 #include "test_native_mmcss.cpp"
 #endif
-
-#endif // MOJO_AMALGAMATED

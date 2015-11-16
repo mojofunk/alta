@@ -1,8 +1,6 @@
 #ifndef MOJO_PORTMIDI_MIDI_OUTPUT_DEVICE_H
 #define MOJO_PORTMIDI_MIDI_OUTPUT_DEVICE_H
 
-#include "mojo-portmidi-midi-driver.hpp"
-
 namespace mojo {
 
 /**

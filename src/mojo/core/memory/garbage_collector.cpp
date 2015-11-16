@@ -1,8 +1,3 @@
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_source_includes.hpp"
-#include "mojo/core/memory/garbage_collector.hpp"
-#endif
-
 namespace mojo {
 
 // TODO proper logging

@@ -18,14 +18,7 @@ def configure(conf):
 
 def build(bld):
 
-    if bld.env.ENABLE_AMALGAMATION:
-        source = 'mojo-archive.cpp'
-        defines = 'MOJO_AMALGAMATED'
-    else:
-        source = bld.path.ant_glob('*.cpp',
-                                   excl='mojo-archive.cpp')
-        defines = ''
-
+    source = 'mojo-archive.cpp'
     uselib = ['GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
     target = 'mojo-archive'
 

@@ -1,10 +1,6 @@
 #ifndef MOJO_CHRONO_TIMESTAMP_H
 #define MOJO_CHRONO_TIMESTAMP_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#endif
-
 namespace mojo {
 
 class ChronoTimeStamp {

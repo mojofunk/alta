@@ -1,8 +1,3 @@
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#include "mojo/core/debug/demangle.hpp"
-#endif
-
 #if defined(__GLIBCXX__)
 #include <cxxabi.h>
 #endif

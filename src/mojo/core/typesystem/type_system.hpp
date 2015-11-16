@@ -1,11 +1,6 @@
 #ifndef MOJO_TYPE_SYSTEM_H
 #define MOJO_TYPE_SYSTEM_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#include "mojo/core/typesystem/typedefs.hpp"
-#endif
-
 namespace mojo {
 
 namespace types {

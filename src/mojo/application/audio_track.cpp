@@ -1,9 +1,3 @@
-
-#ifndef MOJO_AMALGAMATED
-#include "audio_track.hpp"
-#include "audio_sequence.hpp"
-#endif
-
 namespace mojo {
 
 const char* const AudioTrack::s_property_audio_sequence = "audio-sequence";

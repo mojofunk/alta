@@ -1,13 +1,3 @@
-
-#ifndef MOJO_AMALGAMATED
-
-#include "mojo/core/object/object_collection.hpp"
-
-#include "audio_track.hpp"
-#include "midi_track.hpp"
-#include "project.hpp"
-#endif
-
 namespace mojo {
 
 const char* const Project::s_property_tracks = "tracks";

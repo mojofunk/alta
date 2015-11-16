@@ -1,11 +1,6 @@
 #ifndef MOJO_ENGINE_EDGE_H
 #define MOJO_ENGINE_EDGE_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#include "mojo/engine/node.hpp"
-#endif
-
 namespace mojo {
 
 /**

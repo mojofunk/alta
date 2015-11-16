@@ -1,11 +1,3 @@
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_source_includes.hpp"
-#include "mojo/core/modules/module_utils.hpp"
-#include "mojo/core/modules/module.hpp"
-#include "mojo/core/modules/library.hpp"
-#include "mojo/core/filesystem/file_utils.hpp"
-#endif
-
 namespace mojo {
 
 ModuleSP open_module(const fs::path& module_path)

@@ -23,6 +23,7 @@
 #include <atomic>
 #include <condition_variable>
 #include <chrono>
+#include <cinttypes>
 #include <cstdint>
 #include <locale>
 #include <list>

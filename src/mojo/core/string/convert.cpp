@@ -1,10 +1,3 @@
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_source_includes.hpp"
-#include "mojo/core/string/compose.hpp"
-#include "mojo/core/string/convert.hpp"
-#include "mojo/core/debug/debug.hpp"
-#endif
-
 MOJO_DEBUG_DOMAIN(STRING_CONVERT);
 
 #define CONVERT_BUF_SIZE 32

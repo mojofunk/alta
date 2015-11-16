@@ -104,11 +104,7 @@ def build_single_tests_shared(bld):
 def build_tests_shared(bld):
     defines = ['BOOST_TEST_DYN_LINK=1',
                'MOJO_SINGLE_TEST_EXE=1']
-    if bld.env.ENABLE_AMALGAMATION:
-        defines += ['MOJO_AMALGAMATED']
-        source = ['test_main.cpp']
-    else:
-        source = all_test_sources + common_sources + ['test_main.cpp']
+    source = ['test_main.cpp']
 
     bld.program(
         includes='.',
@@ -149,11 +145,7 @@ def build_single_tests_static(bld):
 def build_tests_static(bld):
     defines = ['BOOST_TEST_DYN_LINK=1',
                'MOJO_SINGLE_TEST_EXE=1']
-    if bld.env.ENABLE_AMALGAMATION:
-        defines += ['MOJO_AMALGAMATED']
-        source = ['test_main.cpp']
-    else:
-        source = all_test_sources + common_sources + ['test_main.cpp']
+    source = ['test_main.cpp']
 
     bld.program(
         includes='.',

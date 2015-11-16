@@ -1,5 +1,3 @@
-#include <mojo-portaudio-audio-driver.hpp>
-
 MOJO_DEBUG_DOMAIN(PORTAUDIO_DEVICE)
 
 namespace mojo {

@@ -1,11 +1,6 @@
 #ifndef MOJO_CORE_FIXED_SIZE_OBJECT_POOL_H
 #define MOJO_CORE_FIXED_SIZE_OBJECT_POOL_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#include "mojo/core/memory/fixed_size_pool.hpp"
-#endif
-
 namespace mojo {
 
 template <class T>

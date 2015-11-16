@@ -1,12 +1,6 @@
 #ifndef MOJO_PROJECT_TYPEDEFS_H
 #define MOJO_PROJECT_TYPEDEFS_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/macros/smart_pointers.hpp"
-
-#include "forward.hpp"
-#endif
-
 namespace mojo {
 
 M_DEFINE_ALL_TYPEDEFS(Object)

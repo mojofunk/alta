@@ -1,10 +1,6 @@
 #ifndef MOJO_CORE_STACK_TRACE_H
 #define MOJO_CORE_STACK_TRACE_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#endif
-
 namespace mojo {
 
 class MOJO_API StackTrace {

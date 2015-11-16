@@ -1,8 +1,6 @@
 #ifndef MOJO_MIDI_TRACK_H
 #define MOJO_MIDI_TRACK_H
 
-#include "track.hpp"
-
 namespace mojo {
 
 class MidiTrack : public Track {

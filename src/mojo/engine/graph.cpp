@@ -1,6 +1,3 @@
-
-#include "graph.hpp"
-
 namespace mojo {
 
 void Graph::insert(Node* node)
@@ -23,7 +20,7 @@ void Graph::disconnect(Node* n1, Node* n2)
 {
 }
 
-set<Node*> Graph::get_nodes() const
+std::set<Node*> Graph::get_nodes() const
 {
 	return m_nodes;
 }

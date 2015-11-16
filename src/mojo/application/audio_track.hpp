@@ -1,11 +1,6 @@
 #ifndef MOJO_AUDIO_TRACK_H
 #define MOJO_AUDIO_TRACK_H
 
-#ifndef MOJO_AMALGAMATED
-#include "track.hpp"
-#include "typedefs.hpp"
-#endif
-
 namespace mojo {
 
 /**

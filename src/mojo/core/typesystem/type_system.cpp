@@ -1,12 +1,3 @@
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#include "mojo/core/typesystem/type_names.hpp"
-#include "mojo/core/typesystem/type_system.hpp"
-#include "mojo/core/typesystem/type_registry.hpp"
-#include "mojo/core/typesystem/type_factory.hpp"
-#include "mojo/core/typesystem/template_type_factory.hpp"
-#endif
-
 using Types = std::set<mojo::TypeFactorySP>;
 
 namespace {

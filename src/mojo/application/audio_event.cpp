@@ -1,8 +1,3 @@
-
-#ifndef MOJO_AMALGAMATED
-#include "audio_event.hpp"
-#endif
-
 namespace mojo {
 
 AudioEvent::AudioEvent()

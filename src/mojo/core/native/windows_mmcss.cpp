@@ -1,11 +1,3 @@
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_source_includes.hpp"
-#include "mojo/core/debug/debug.hpp"
-#include "mojo/core/string/compose.hpp"
-#include "mojo/core/native/windows_source_includes.hpp"
-#include "mojo/core/native/windows_mmcss.hpp"
-#endif
-
 MOJO_DEBUG_DOMAIN(WINDOWS_MMCSS)
 
 typedef HANDLE(WINAPI* AvSetMmThreadCharacteristicsA_t)(LPCSTR TaskName,

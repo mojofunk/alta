@@ -1,12 +1,3 @@
-
-#ifndef MOJO_AMALGAMATED
-
-#include "mojo/core/object/object_collection.hpp"
-
-#include "audio_sequence.hpp"
-#include "audio_event.hpp"
-#endif
-
 namespace mojo {
 
 const char* const AudioSequence::s_property_audio_events = "audio-events";

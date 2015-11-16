@@ -1,13 +1,6 @@
 #ifndef MOJO_PROJECT_DIRECTORY_H
 #define MOJO_PROJECT_DIRECTORY_H
 
-#include <string>
-#include <vector>
-
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/filesystem/filesystem.hpp"
-#endif
-
 namespace mojo {
 
 using std::string;

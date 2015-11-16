@@ -1,8 +1,4 @@
 
-#ifndef MOJO_AMALGAMATED
-#include "event.hpp"
-#endif
-
 namespace {
 
 const char* const s_property_position = "position";

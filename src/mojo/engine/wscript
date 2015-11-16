@@ -13,18 +13,10 @@ def configure(conf):
 
 def build(bld):
 
+    source = 'mojo-engine.cpp'
     uselibs = ['GMODULE-2.0', 'BOOST_FILESYSTEM', 'BOOST_SYSTEM']
     use_local_shared = ['MOJO_CORE_SHARED']
     use_local_static = ['MOJO_CORE_STATIC']
-
-    if bld.env.ENABLE_AMALGAMATION:
-        source = 'mojo-engine.cpp'
-        defines = 'MOJO_AMALGAMATED'
-    else:
-        source = bld.path.ant_glob(
-            '**/*.cpp',
-            excl='mojo-engine.cpp')
-        defines = ''
 
     if bld.env.ENABLE_SHARED:
         bld.shlib(includes='.',
@@ -32,7 +24,6 @@ def build(bld):
                   source=source,
                   uselib=uselibs,
                   use=use_local_shared,
-                  defines=defines,
                   target='mojo-engine',
                   name='MOJO_ENGINE_SHARED')
 
@@ -42,6 +33,5 @@ def build(bld):
                   source='mojo-engine.cpp',
                   uselib=uselibs,
                   use=use_local_static,
-                  defines=defines,
                   target='mojo-engine',
                   name='MOJO_ENGINE_STATIC')

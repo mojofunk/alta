@@ -1,15 +1,3 @@
-#ifndef MOJO_AMALGAMATED
-#include "dummy_archive.hpp"
-
-#include <iostream>
-#include <fstream>
-
-#include <mojo/core/object/object.hpp>
-#include <mojo/core/typesystem/type_system.hpp>
-#include <mojo/core/string/convert.hpp>
-
-#endif
-
 namespace mojo {
 
 using namespace std;

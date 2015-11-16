@@ -2,12 +2,6 @@
 #ifndef MOJO_LADSPA_AUDIO_EFFECT
 #define MOJO_LADSPA_AUDIO_EFFECT
 
-#include <ladspa.h>
-
-#include "mojo-audio-effect.hpp"
-
-#include "ladspa_typedefs.hpp"
-
 namespace mojo {
 
 class LADSPAAudioEffect : public AudioEffect {

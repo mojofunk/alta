@@ -1,10 +1,6 @@
 #ifndef MOJO_PROPERTY_H
 #define MOJO_PROPERTY_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#endif
-
 namespace mojo {
 
 typedef GQuark PropertyID;

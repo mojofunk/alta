@@ -1,10 +1,6 @@
 #ifndef MOJO_CORE_SMART_POINTERS_H
 #define MOJO_CORE_SMART_POINTERS_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#endif
-
 #define M_DEFINE_POINTER_TYPEDEFS(Class)                                       \
 	using Class##SP = std::shared_ptr<Class>;                                     \
 	using Class##WP = std::weak_ptr<Class>;                                       \

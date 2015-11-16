@@ -1,6 +1,3 @@
-
-#include "mojo-portmidi-midi-driver.hpp"
-
 MOJO_DEBUG_DOMAIN(PORTMIDI_INPUT_DEVICE)
 
 namespace mojo {

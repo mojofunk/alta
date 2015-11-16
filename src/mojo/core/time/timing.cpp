@@ -1,8 +1,3 @@
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_source_includes.hpp"
-#include "mojo/core/time/timing.hpp"
-#endif
-
 namespace mojo {
 
 bool get_min_max_avg_total(const std::vector<uint64_t>& values,

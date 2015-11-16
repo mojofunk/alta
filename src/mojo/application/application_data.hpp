@@ -1,15 +1,6 @@
 #ifndef MOJO_APPLICATION_DATA_H
 #define MOJO_APPLICATION_DATA_H
 
-#include <thread>
-
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/init/initialize.hpp"
-#include "mojo/core/misc/functor_dispatcher.hpp"
-
-#include "typedefs.hpp"
-#endif
-
 namespace mojo {
 
 namespace internal {

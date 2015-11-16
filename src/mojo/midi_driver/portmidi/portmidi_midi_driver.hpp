@@ -1,8 +1,6 @@
 #ifndef MOJO_PORTMIDI_MIDI_DRIVER_H
 #define MOJO_PORTMIDI_MIDI_DRIVER_H
 
-#include "mojo-portmidi-midi-driver.hpp"
-
 namespace mojo {
 
 class PortmidiMIDIDriver : public MIDIDriver {

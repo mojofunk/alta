@@ -1,10 +1,6 @@
 #ifndef MOJO_TYPE_FACTORY_H
 #define MOJO_TYPE_FACTORY_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#endif
-
 namespace mojo {
 
 class TypeFactory {

@@ -21,14 +21,7 @@ def build(bld):
     if not bld.env.HAVE_PORTMIDI:
         return
 
-    if bld.env.ENABLE_AMALGAMATION:
-        source = 'mojo-portmidi-midi-driver.cpp'
-        defines = 'MOJO_AMALGAMATED'
-    else:
-        source = bld.path.ant_glob('*.cpp',
-                                   excl='mojo-portmidi-midi-driver.cpp')
-        defines = ''
-
+    source = 'mojo-portmidi-midi-driver.cpp'
     uselib = [
         'GMODULE-2.0',
         'BOOST_FILESYSTEM',
@@ -44,7 +37,6 @@ def build(bld):
                   source=source,
                   uselib=uselib,
                   use=use_shared,
-                  defines=defines,
                   target=target,
                   name='MOJO_MIDI_DRIVER_PORTMIDI_SHARED')
 
@@ -56,6 +48,5 @@ def build(bld):
                   source=source,
                   uselib=uselib,
                   use=use_static,
-                  defines=defines,
                   target=target,
                   name='MOJO_MIDI_DRIVER_PORTMIDI_STATIC')

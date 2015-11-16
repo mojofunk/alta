@@ -1,4 +1,3 @@
-
 #ifndef MOJO_LADSPA_FORWARD
 #define MOJO_LADSPA_FORWARD
 

@@ -1,9 +1,3 @@
-
-#ifndef MOJO_AMALGAMATED
-#include "audio_region.hpp"
-#include "audio_region_event.hpp"
-#endif
-
 namespace mojo {
 
 const char* const AudioRegionEvent::s_property_audio_region = "audioregion";

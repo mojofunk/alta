@@ -1,11 +1,6 @@
 #ifndef MOJO_CORE_GARBAGE_COLLECTOR_H
 #define MOJO_CORE_GARBAGE_COLLECTOR_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#include "mojo/core/macros/disallow_copy_and_assign.hpp"
-#endif
-
 namespace mojo {
 
 class GarbageCollector {

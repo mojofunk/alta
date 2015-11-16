@@ -26,16 +26,7 @@ def build(bld):
         uselib += ['WINMM']
 
     defines = ['PROGRAM_DIR_NAME="' + bld.env.PROGRAM_DIR_NAME + '"']
-    if bld.env.ENABLE_AMALGAMATION:
-        source = 'mojo-core.cpp'
-        defines += ['MOJO_AMALGAMATED']
-    else:
-        source = bld.path.ant_glob(
-            '**/*.cpp',
-            excl=['mojo-core.cpp', 'native'])
-        if bld.env.TARGET_PLATFORM == 'windows':
-            source += bld.path.ant_glob(
-                'native/windows*.cpp')
+    source = 'mojo-core.cpp'
 
     if bld.env.ENABLE_SHARED:
         bld.shlib(includes='.',

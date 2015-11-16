@@ -1,14 +1,3 @@
-
-#include "sndfile_audio_file_module.hpp"
-#include "sndfile_audio_file.hpp"
-#include "sndfile_audio_file_format.hpp"
-
-#include <cstring>
-#include <algorithm>
-
-#include <iostream>
-using namespace std;
-
 namespace mojo {
 
 SndfileAudioFileModule::SndfileAudioFileModule()

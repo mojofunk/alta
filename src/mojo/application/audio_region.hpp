@@ -1,12 +1,6 @@
 #ifndef MOJO_AUDIO_REGION_H
 #define MOJO_AUDIO_REGION_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/audio/types.hpp"
-#include "mojo/core/object/object.hpp"
-#include "typedefs.hpp"
-#endif
-
 namespace mojo {
 
 /**

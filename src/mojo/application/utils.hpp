@@ -1,12 +1,6 @@
 #ifndef MOJO_API_UTILS_H
 #define MOJO_API_UTILS_H
 
-#include <string>
-
-#ifndef MOJO_AMALGAMATED
-#include "types.hpp"
-#endif
-
 namespace mojo {
 
 std::string track_type_to_string(TrackType);

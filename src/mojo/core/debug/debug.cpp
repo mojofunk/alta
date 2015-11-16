@@ -1,10 +1,3 @@
-
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_source_includes.hpp"
-#include "mojo/core/debug/debug.hpp"
-#include "mojo/core/string/compose.hpp"
-#endif
-
 namespace mojo {
 
 namespace debug {

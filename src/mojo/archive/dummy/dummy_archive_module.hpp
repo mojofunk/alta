@@ -1,10 +1,6 @@
 #ifndef MOJO_DUMMY_ARCHIVE_MODULE_H
 #define MOJO_DUMMY_ARCHIVE_MODULE_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/archive/archive_module.hpp"
-#endif
-
 namespace mojo {
 
 class DummyArchiveModule : public ArchiveModule {

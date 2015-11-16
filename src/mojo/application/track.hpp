@@ -1,10 +1,6 @@
 #ifndef MOJO_TRACK_H
 #define MOJO_TRACK_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/object/object.hpp"
-#endif
-
 namespace mojo {
 
 class Track : public Object {

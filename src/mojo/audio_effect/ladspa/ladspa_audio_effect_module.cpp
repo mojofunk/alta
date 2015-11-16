@@ -1,11 +1,3 @@
-
-#include "ladspa_audio_effect_module.hpp"
-#include "ladspa_audio_effect.hpp"
-#include "ladspa_audio_effect_info.hpp"
-#include "ladspa_typedefs.hpp"
-
-#include "mojo-audio-effect.hpp"
-
 namespace mojo {
 
 LADSPAAudioEffectModule::LADSPAAudioEffectModule()

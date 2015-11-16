@@ -1,10 +1,6 @@
 #ifndef MOJO_XML_ARCHIVE_H
 #define MOJO_XML_ARCHIVE_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/archive/archive.hpp"
-#endif
-
 namespace mojo {
 
 /**

@@ -1,9 +1,3 @@
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_source_includes.hpp"
-#include "mojo/core/debug/debug.hpp"
-#include "mojo/core/misc/functor_dispatcher.hpp"
-#endif
-
 MOJO_DEBUG_DOMAIN(FUNCTOR_DISPATCHER);
 
 namespace mojo {

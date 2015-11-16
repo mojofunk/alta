@@ -1,23 +1,6 @@
 #ifndef MOJO_APPLICATION_H
 #define MOJO_APPLICATION_H
 
-#ifndef MOJO_AMALGAMATED
-
-#include "mojo/core/object/signals.hpp"
-#include "mojo/core/modules/typedefs.hpp"
-#include "mojo/core/filesystem/filesystem.hpp"
-
-#include "mojo/archive/typedefs.hpp"
-#include "mojo/audio_driver/typedefs.hpp"
-#include "mojo/audio_effect/typedefs.hpp"
-#include "mojo/audio_file/typedefs.hpp"
-#include "mojo/midi_driver/typedefs.hpp"
-
-#include "typedefs.hpp"
-#include "types.hpp"
-
-#endif
-
 namespace mojo {
 
 /**

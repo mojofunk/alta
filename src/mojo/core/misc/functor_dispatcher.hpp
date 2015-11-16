@@ -1,11 +1,6 @@
 #ifndef MOJO_FUNCTOR_DISPATCHER_H
 #define MOJO_FUNCTOR_DISPATCHER_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#include "mojo/core/misc/worker.hpp"
-#endif
-
 namespace mojo {
 
 /**

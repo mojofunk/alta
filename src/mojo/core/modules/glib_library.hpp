@@ -1,11 +1,6 @@
 #ifndef MOJO_GLIB_LIBRARY_H
 #define MOJO_GLIB_LIBRARY_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#include "mojo/core/modules/library.hpp"
-#endif
-
 // forward declaration
 typedef struct _GModule GModule;
 

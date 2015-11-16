@@ -1,8 +1,3 @@
-#ifndef MOJO_AMALGAMATED
-#include "dummy_archive.hpp"
-#include "dummy_archive_module.hpp"
-#endif
-
 namespace mojo {
 
 DummyArchiveModule::DummyArchiveModule()

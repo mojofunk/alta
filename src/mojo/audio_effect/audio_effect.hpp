@@ -1,12 +1,6 @@
 #ifndef MOJO_AUDIO_EFFECT_H
 #define MOJO_AUDIO_EFFECT_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#include "mojo/core/audio/types.hpp"
-#include "mojo/audio_effect/typedefs.hpp"
-#endif
-
 namespace mojo {
 
 class AudioEffect {

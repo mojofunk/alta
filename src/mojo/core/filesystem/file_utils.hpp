@@ -1,12 +1,6 @@
 #ifndef MOJO_FILE_UTILS_H
 #define MOJO_FILE_UTILS_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-
-#include "mojo/core/filesystem/filesystem.hpp"
-#endif
-
 namespace mojo {
 
 using std::vector;

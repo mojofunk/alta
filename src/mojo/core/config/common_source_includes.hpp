@@ -4,9 +4,6 @@
 /**
  * These are the common system/external includes required for source files
  * in mojo-core.
- *
- * The only other headers included by source files should be internal
- * headers and then only when MOJO_AMALGAMATED is not defined.
  */
 
 #include "mojo/core/config/common_header_includes.hpp"
@@ -14,8 +11,6 @@
 #include <cstring>
 #include <cstdlib>
 #include <iostream>
-#include <chrono>
-#include <cinttypes>
 
 #ifdef MOJO_WINDOWS
 #include <stdio.h>

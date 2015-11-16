@@ -1,6 +1,3 @@
-#include "ladspa_audio_effect.hpp"
-#include "ladspa_audio_effect_info.hpp"
-
 namespace mojo {
 
 LADSPAAudioEffect::LADSPAAudioEffect(LADSPAAudioEffectInfoSP info,

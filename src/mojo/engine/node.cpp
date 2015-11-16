@@ -1,6 +1,3 @@
-
-#include "node.hpp"
-
 namespace mojo {
 
 bool Node::is_source() const

@@ -1,12 +1,6 @@
 #ifndef MOJO_ENGINE_H
 #define MOJO_ENGINE_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#include "mojo/engine/node.hpp"
-#include "mojo/engine/graph.hpp"
-#endif
-
 namespace mojo {
 
 /**

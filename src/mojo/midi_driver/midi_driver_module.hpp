@@ -1,8 +1,6 @@
 #ifndef MOJO_MIDI_DRIVER_MODULE_H
 #define MOJO_MIDI_DRIVER_MODULE_H
 
-#include "mojo-midi-driver.hpp"
-
 namespace mojo {
 
 /**

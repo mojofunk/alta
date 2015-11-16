@@ -1,12 +1,6 @@
 #ifndef MOJO_CORE_FIXED_SIZE_POOL_ALLOCATOR_H
 #define MOJO_CORE_FIXED_SIZE_POOL_ALLOCATOR_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#include "mojo/core/memory/fixed_size_pool.hpp"
-#include "mojo/core/memory/fixed_size_object_pool.hpp"
-#endif
-
 /**
  * All Pool allocators should be MT safe.
  *

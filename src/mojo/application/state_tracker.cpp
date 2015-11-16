@@ -1,8 +1,3 @@
-
-#ifndef MOJO_AMALGAMATED
-#include "state_tracker.hpp"
-#endif
-
 namespace mojo {
 
 StateTracker::StateTracker()

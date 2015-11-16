@@ -1,8 +1,5 @@
-
-#ifndef MOJO_SNDFILE_AUDIO_FILE_MODULE
-#define MOJO_SNDFILE_AUDIO_FILE_MODULE
-
-#include "mojo-audio-file.hpp"
+#ifndef MOJO_SNDFILE_AUDIO_FILE_MODULE_H
+#define MOJO_SNDFILE_AUDIO_FILE_MODULE_H
 
 namespace mojo {
 

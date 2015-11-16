@@ -1,11 +1,6 @@
 #ifndef MOJO_CORE_LOG_ALLOCATOR_H
 #define MOJO_CORE_LOG_ALLOCATOR_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#include "mojo/core/logging/logging.hpp"
-#endif
-
 namespace mojo {
 
 template <typename T>

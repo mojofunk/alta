@@ -1,8 +1,3 @@
-
-#ifndef MOJO_AMALGAMATED
-#include "track.hpp"
-#endif
-
 namespace {
 
 const char* const property_name = "name";

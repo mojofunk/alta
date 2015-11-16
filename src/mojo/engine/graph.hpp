@@ -1,11 +1,7 @@
 #ifndef MOJO_GRAPH_H
 #define MOJO_GRAPH_H
 
-#include <set>
-
 namespace mojo {
-
-using std::set;
 
 class Node;
 
@@ -28,7 +24,7 @@ public:
 
 	void disconnect(Node* n1, Node* n2);
 
-	set<Node*> get_nodes() const;
+	std::set<Node*> get_nodes() const;
 
 	/**
 	 * Called at the start of the processing cycle before any calls to iterate
@@ -44,7 +40,7 @@ public:
 	void iterate() const;
 
 private:
-	set<Node*> m_nodes;
+	std::set<Node*> m_nodes;
 };
 
 } // namespace mojo

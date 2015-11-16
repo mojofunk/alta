@@ -18,14 +18,7 @@ def configure(conf):
 
 def build(bld):
 
-    if bld.env.ENABLE_AMALGAMATION:
-        source = 'mojo-portaudio-audio-driver.cpp'
-        defines = 'MOJO_AMALGAMATED'
-    else:
-        source = bld.path.ant_glob('*.cpp',
-                                   excl='mojo-portaudio-audio-driver.cpp')
-        defines = ''
-
+    source = 'mojo-portaudio-audio-driver.cpp'
     uselib = [
         'GMODULE-2.0',
         'BOOST_FILESYSTEM',
@@ -41,7 +34,6 @@ def build(bld):
                   source=source,
                   uselib=uselib,
                   use=use_shared,
-                  defines=defines,
                   target=target,
                   name='MOJO_AUDIO_DRIVER_PORTAUDIO_SHARED')
 
@@ -53,6 +45,5 @@ def build(bld):
                   source=source,
                   uselib=uselib,
                   use=use_static,
-                  defines=defines,
                   target=target,
                   name='MOJO_AUDIO_DRIVER_PORTAUDIO_STATIC')

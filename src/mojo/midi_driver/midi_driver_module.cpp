@@ -1,5 +1,3 @@
-#include "mojo-midi-driver.hpp"
-
 namespace mojo {
 
 MIDIDriverModule::~MIDIDriverModule()

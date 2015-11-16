@@ -1,8 +1,3 @@
-
-#ifndef MOJO_AMALGAMATED
-#include "midi_track.hpp"
-#endif
-
 namespace mojo {
 
 MidiTrack::MidiTrack()

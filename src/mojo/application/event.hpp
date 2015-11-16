@@ -1,11 +1,6 @@
 #ifndef MOJO_EVENT_H
 #define MOJO_EVENT_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/audio/types.hpp"
-#include "mojo/core/object/object.hpp"
-#endif
-
 namespace mojo {
 
 class Event : public Object {

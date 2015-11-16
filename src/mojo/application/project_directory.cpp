@@ -1,9 +1,3 @@
-
-#ifndef MOJO_AMALGAMATED
-#include "directory_names.hpp"
-#include "project_directory.hpp"
-#endif
-
 namespace mojo {
 
 ProjectDirectory::ProjectDirectory(const fs::path& project_path)

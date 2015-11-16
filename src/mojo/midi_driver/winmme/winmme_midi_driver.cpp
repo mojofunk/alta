@@ -1,5 +1,3 @@
-#include "mojo-winmme-midi-driver.hpp"
-
 MOJO_DEBUG_DOMAIN(WINMME_DRIVER);
 
 namespace mojo {

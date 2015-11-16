@@ -1,9 +1,4 @@
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_source_includes.hpp"
-#include "mojo/core/typesystem/type_names.hpp"
-#endif
-
 namespace mojo {
 
 const char* const int32_type_name = "int32_t";

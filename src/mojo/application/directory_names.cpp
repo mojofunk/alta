@@ -1,8 +1,4 @@
 
-#ifndef MOJO_AMALGAMATED
-#include "directory_names.hpp"
-#endif
-
 namespace mojo {
 
 const char* const template_dir_name = "templates";

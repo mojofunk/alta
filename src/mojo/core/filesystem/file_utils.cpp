@@ -1,10 +1,3 @@
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_source_includes.hpp"
-
-#include "mojo/core/filesystem/file_utils.hpp"
-
-#endif // MOJO_AMALGAMATED
-
 namespace mojo {
 
 std::size_t find_matching_files(const vector<fs::path>& paths,

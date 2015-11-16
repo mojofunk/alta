@@ -1,12 +1,3 @@
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_source_includes.hpp"
-
-#include "mojo/core/debug/debug.hpp"
-#include "mojo/core/string/compose.hpp"
-#include "mojo/core/system/utils.hpp"
-#include "mojo/core/filesystem/filesystem_paths.hpp"
-#endif
-
 MOJO_DEBUG_DOMAIN(FILESYSTEM_PATHS);
 
 namespace mojo {

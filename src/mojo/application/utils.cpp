@@ -1,7 +1,3 @@
-#ifndef MOJO_AMALGAMATED
-#include "utils.hpp"
-#endif
-
 namespace mojo {
 
 std::string track_type_to_string(TrackType type)

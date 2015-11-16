@@ -1,10 +1,3 @@
-
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_source_includes.hpp"
-#include "mojo/core/debug/stack_trace.hpp"
-#include "mojo/core/debug/demangle.hpp"
-#endif
-
 #ifdef HAVE_EXECINFO
 #include <execinfo.h>
 #endif

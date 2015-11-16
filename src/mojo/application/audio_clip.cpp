@@ -1,7 +1,3 @@
-#ifndef MOJO_AMALGAMATED
-#include "audio_clip.hpp"
-#endif
-
 namespace mojo {
 
 AudioClip::AudioClip(const std::string& audiofile)

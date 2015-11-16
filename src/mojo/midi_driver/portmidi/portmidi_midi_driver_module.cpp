@@ -1,5 +1,3 @@
-#include "mojo-portmidi-midi-driver.hpp"
-
 namespace mojo {
 
 PortmidiMIDIDriverModule::~PortmidiMIDIDriverModule()

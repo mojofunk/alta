@@ -1,12 +1,6 @@
 #ifndef MOJO_FILESYSTEM_PATHS_H
 #define MOJO_FILESYSTEM_PATHS_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-
-#include "mojo/core/filesystem/search_path.hpp"
-#endif
-
 namespace mojo {
 
 fs::path get_user_data_directory();

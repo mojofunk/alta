@@ -1,11 +1,6 @@
 #ifndef MOJO_TEMPLATE_TYPE_FACTORY_H
 #define MOJO_TEMPLATE_TYPE_FACTORY_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#include "mojo/core/typesystem/type_factory.hpp"
-#endif
-
 namespace mojo {
 
 template <class T>

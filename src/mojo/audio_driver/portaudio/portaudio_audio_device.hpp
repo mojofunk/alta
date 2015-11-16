@@ -2,8 +2,6 @@
 #ifndef PORTAUDIO_AUDIO_DEVICE
 #define PORTAUDIO_AUDIO_DEVICE
 
-#include <mojo-portaudio-audio-driver.hpp>
-
 namespace mojo {
 
 class PortaudioAudioDevice : public AudioDevice {

@@ -1,10 +1,6 @@
 #ifndef MOJO_AUDIO_CYCLE_TIMER_H
 #define MOJO_AUDIO_CYCLE_TIMER_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#endif
-
 namespace mojo {
 
 class CycleTimer {

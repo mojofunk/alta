@@ -3,6 +3,8 @@
 
 #include <mojo-audio-effect.hpp>
 
+#include <ladspa.h>
+
 #include <mojo/audio_effect/ladspa/ladspa_forward.hpp>
 
 #include <mojo/audio_effect/ladspa/ladspa_typedefs.hpp>

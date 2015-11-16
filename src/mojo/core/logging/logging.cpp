@@ -1,9 +1,3 @@
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_source_includes.hpp"
-#include "mojo/core/logging/logging.hpp"
-#include "mojo/core/memory/fixed_size_pool.hpp"
-#endif
-
 static mojo::FixedSizePool* s_log_mem_pool;
 
 namespace mojo {

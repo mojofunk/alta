@@ -1,8 +1,3 @@
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_source_includes.hpp"
-#include "mojo/core/system/resource.hpp"
-#endif
-
 namespace mojo {
 
 bool get_resource_limit(ResourceType resource, ResourceLimit& limit)

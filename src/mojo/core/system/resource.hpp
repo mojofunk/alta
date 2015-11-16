@@ -1,10 +1,6 @@
 #ifndef MOJO_RESOURCE_H
 #define MOJO_RESOURCE_H
 
-#ifndef MOJO_AMALGAMATED
-#include <cstdint>
-#endif
-
 namespace mojo {
 
 typedef uint64_t rlimit_t;

@@ -1,8 +1,6 @@
 #ifndef MOJO_AUDIO_DRIVER_MODULE_H
 #define MOJO_AUDIO_DRIVER_MODULE_H
 
-#include "mojo-audio-driver.hpp"
-
 namespace mojo {
 
 /**

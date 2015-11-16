@@ -1,11 +1,6 @@
 #ifndef MOJO_CORE_TIMING_H
 #define MOJO_CORE_TIMING_H
 
-#ifndef MOJO_AMALGAMATED
-#include "mojo/core/config/common_header_includes.hpp"
-#include "mojo/core/time/time.hpp"
-#endif
-
 namespace mojo {
 
 MOJO_API bool get_min_max_avg_total(const std::vector<uint64_t>& values,
