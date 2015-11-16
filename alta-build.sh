@@ -20,21 +20,21 @@ DEBUG="$TESTS $SINGLE_TESTS"
 RELEASE="$OPTIMIZE $DISABLE_DEBUG_LOGGING"
 
 declare -A gcc_config
-gcc_config["gcc-debug"]="$DEBUG"
+gcc_config["gcc-debug-shared"]="$DEBUG"
 gcc_config["gcc-debug-static"]="$DEBUG $STATIC"
-gcc_config["gcc-release"]="$RELEASE"
+gcc_config["gcc-release-shared"]="$RELEASE"
 gcc_config["gcc-release-static"]="$RELEASE $STATIC"
 
 declare -A clang_config
-clang_config["clang-debug"]="$CLANG_TOOLSET $DEBUG"
+clang_config["clang-debug-shared"]="$CLANG_TOOLSET $DEBUG"
 clang_config["clang-debug-static"]="$CLANG_TOOLSET $DEBUG $STATIC"
-clang_config["clang-release"]="$CLANG_TOOLSET $RELEASE"
+clang_config["clang-release-shared"]="$CLANG_TOOLSET $RELEASE"
 clang_config["clang-release-static"]="$CLANG_TOOLSET $RELEASE $STATIC"
 
 declare -A msvc_config
-msvc_config["msvc-debug"]="$MSVC_TOOLKIT $DEBUG"
+msvc_config["msvc-debug-shared"]="$MSVC_TOOLKIT $DEBUG"
 msvc_config["msvc-debug-static"]="$MSVC_TOOLKIT $DEBUG $STATIC"
-msvc_config["msvc-release"]="$MSVC_TOOLKIT $RELEASE"
+msvc_config["msvc-release-shared"]="$MSVC_TOOLKIT $RELEASE"
 msvc_config["msvc-release-static"]="$MSVC_TOOLKIT $RELEASE $STATIC"
 
 declare -A config
