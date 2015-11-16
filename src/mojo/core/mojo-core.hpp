@@ -8,9 +8,10 @@
 
 #include "macros/disallow_copy_and_assign.hpp"
 #include "macros/private.hpp"
+#include "macros/namespace.hpp"
 #include "macros/smart_pointers.hpp"
 
-namespace mojo {
+MOJO_BEGIN_NAMESPACE
 
 #include "audio/types.hpp"
 #include "audio/utils.hpp"
@@ -97,6 +98,6 @@ namespace mojo {
 #include "native/windows_time_utils.hpp"
 #endif
 
-} // namespace mojo
+MOJO_END_NAMESPACE
 
 #endif // MOJO_CORE_H
