@@ -4,6 +4,7 @@
 
 import os
 import subprocess
+import sys
 from waflib import Logs
 
 # TODO use version from git tag/describe
@@ -27,8 +28,8 @@ def options(opt):
         '--toolset',
         type='string',
         dest='toolset',
-        default='auto',
-        help='Compiler and Toolset options: auto(default), gcc, clang, msvc')
+        default='gcc',
+        help='Compiler and Toolset options: gcc(default), clang, msvc')
     opt.add_option(
         '--target-platform',
         type='string',
@@ -129,6 +130,9 @@ def configure(conf):
         conf.load('clang++')
     elif conf.env.TOOLSET == 'msvc':
         conf.load('msvc')
+    else:
+        print ("Unsupported Toolset option")
+        sys.exit(1)
 
     conf.load('gnu_dirs')
 
