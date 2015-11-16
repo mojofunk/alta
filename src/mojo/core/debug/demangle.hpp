@@ -1,8 +1,6 @@
 #ifndef MOJO_CORE_DEMANGLE_H
 #define MOJO_CORE_DEMANGLE_H
 
-namespace mojo {
-
 /**
  * @param symbol a mangled symbol/name
  * @return a demangled symbol/name
@@ -21,7 +19,5 @@ std::string demangled_name(T const& obj)
 {
 	return demangle_symbol(typeid(obj).name());
 }
-
-} // namespace mojo
 
 #endif // MOJO_CORE_DEMANGLE_H

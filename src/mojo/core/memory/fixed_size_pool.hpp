@@ -1,8 +1,6 @@
 #ifndef MOJO_CORE_FIXED_SIZE_POOL_H
 #define MOJO_CORE_FIXED_SIZE_POOL_H
 
-namespace mojo {
-
 class FixedSizePool {
 public:
 	// Add an alignment argument
@@ -86,7 +84,5 @@ private: // data
 	std::atomic<uint16_t> m_available;
 	stack_type m_stack;
 };
-
-} // namespace mojo
 
 #endif // MOJO_CORE_FIXED_SIZE_POOL_H

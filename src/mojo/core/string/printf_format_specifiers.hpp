@@ -1,10 +1,6 @@
 #ifndef MOJO_PRINTF_FORMAT_SPECIFIERS_H
 #define MOJO_PRINTF_FORMAT_SPECIFIERS_H
 
-#include <cinttypes>
-
-namespace mojo {
-
 template <typename T>
 const char* const printf_format_specifier(const T&)
 {
@@ -60,7 +56,5 @@ const char* const printf_format_specifier(const double&)
 	// make sure full precision is retained.
 	return "%.12g";
 }
-
-} // namespace mojo
 
 #endif // MOJO_PRINTF_FORMAT_SPECIFIERS_H

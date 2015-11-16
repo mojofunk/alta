@@ -1,8 +1,6 @@
 #ifndef MOJO_MODULE_H
 #define MOJO_MODULE_H
 
-namespace mojo {
-
 /**
  * Base class for all modules
  *
@@ -22,7 +20,5 @@ public: // Module Interface
 
 	virtual std::string get_version() = 0;
 };
-
-} // namespace mojo
 
 #endif // MOJO_MODULE_H

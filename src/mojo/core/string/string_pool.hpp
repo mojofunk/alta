@@ -1,8 +1,6 @@
 #ifndef MOJO_CORE_STRING_POOL_H
 #define MOJO_CORE_STRING_POOL_H
 
-namespace mojo {
-
 /**
  * A template parameter for the container type could be added to test
  * performance of set vs unordered_set
@@ -26,7 +24,5 @@ public:
 private:
 	std::unordered_set<StringType> m_interned;
 };
-
-} // namespace mojo
 
 #endif // MOJO_CORE_STRING_POOL_H

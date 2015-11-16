@@ -1,8 +1,6 @@
 #ifndef MOJO_CORE_FIXED_SIZE_OBJECT_POOL_H
 #define MOJO_CORE_FIXED_SIZE_OBJECT_POOL_H
 
-namespace mojo {
-
 template <class T>
 class FixedSizeObjectPool {
 public:
@@ -32,7 +30,5 @@ public:
 private:
 	FixedSizePool m_fixed_pool;
 };
-
-} // namespace mojo
 
 #endif // MOJO_CORE_FIXED_SIZE_OBJECT_POOL_H

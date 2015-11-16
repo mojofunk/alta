@@ -1,8 +1,6 @@
 #ifndef MOJO_CORE_TYPE_REGISTRY_H
 #define MOJO_CORE_TYPE_REGISTRY_H
 
-namespace mojo {
-
 class TypeRegistry {
 public:
 	void set_type_name(const std::type_info& info, const std::string& type_name)
@@ -34,7 +32,5 @@ private:
 
 	TypeNameMap m_type_names;
 };
-
-} // namespace mojo
 
 #endif

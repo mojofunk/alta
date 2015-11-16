@@ -1,8 +1,6 @@
 #ifndef MOJO_API_WORKER_H
 #define MOJO_API_WORKER_H
 
-namespace mojo {
-
 class Worker {
 public:
 	/**
@@ -41,7 +39,5 @@ protected:
 
 	Semaphore m_iter_sema;
 };
-
-} // namespace mojo
 
 #endif // MOJO_API_WORKER_H

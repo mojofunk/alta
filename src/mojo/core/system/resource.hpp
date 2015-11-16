@@ -1,7 +1,7 @@
 #ifndef MOJO_RESOURCE_H
 #define MOJO_RESOURCE_H
 
-namespace mojo {
+// TODO make into class
 
 typedef uint64_t rlimit_t;
 
@@ -24,7 +24,5 @@ bool set_resource_limit(ResourceType resource, const ResourceLimit& limit);
 
 /// @return The amount of physical memory in bytes
 int64_t physical_memory_size();
-
-} // namespace mojo
 
 #endif // MOJO_RESOURCE_H

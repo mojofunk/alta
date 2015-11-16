@@ -1,5 +1,3 @@
-namespace mojo {
-
 namespace debug {
 
 DebugRegistry& get_registry()
@@ -30,5 +28,3 @@ log_message(const char* file, int line, uint32_t domain, const std::string& str)
 }
 
 } // namespace debug
-
-} // namespace mojo

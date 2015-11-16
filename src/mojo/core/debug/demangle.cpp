@@ -1,8 +1,6 @@
-#if defined(__GLIBCXX__)
+#if defined(__GLIBCXX__) // TODO move to common source includes or...
 #include <cxxabi.h>
 #endif
-
-namespace mojo {
 
 std::string demangle_symbol(const std::string& mangled_symbol)
 {
@@ -42,5 +40,3 @@ std::string demangle(std::string const& str)
 
 	return demangle_symbol(symbol);
 }
-
-} // namespace mojo

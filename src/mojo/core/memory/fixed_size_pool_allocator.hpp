@@ -15,8 +15,6 @@
  * The maximum number of instances in the pool is
  * std::numeric_limits<std::uint16_t>::max() as result of boost::lockfree
  */
-namespace mojo {
-
 template <typename T>
 class FixedSizePoolAllocator {
 public:
@@ -88,7 +86,5 @@ public:
 private:
 	std::shared_ptr<FixedSizeObjectPool<T>> m_object_pool;
 };
-
-} // namespace mojo
 
 #endif // MOJO_CORE_FIXED_SIZE_POOL_ALLOCATOR_H

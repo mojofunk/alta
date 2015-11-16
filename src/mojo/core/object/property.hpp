@@ -1,8 +1,6 @@
 #ifndef MOJO_PROPERTY_H
 #define MOJO_PROPERTY_H
 
-namespace mojo {
-
 typedef GQuark PropertyID;
 
 struct Property {
@@ -41,7 +39,5 @@ struct Property {
 	PropertyID name;
 	boost::any value;
 };
-
-} // namespace mojo
 
 #endif // MOJO_PROPERTY_H

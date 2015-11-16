@@ -1,7 +1,5 @@
 MOJO_DEBUG_DOMAIN(FILESYSTEM_PATHS);
 
-namespace mojo {
-
 fs::path get_user_config_directory()
 {
 	return g_get_user_config_dir();
@@ -86,5 +84,3 @@ Searchpath module_search_path()
 	return mojo_search_path();
 #endif
 }
-
-} // namespace mojo

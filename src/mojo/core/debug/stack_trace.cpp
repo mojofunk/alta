@@ -2,8 +2,6 @@
 #include <execinfo.h>
 #endif
 
-namespace mojo {
-
 StackTrace::StackTrace()
     : m_count(0)
 {
@@ -47,5 +45,3 @@ std::string StackTrace::to_string(size_t start_offset) const
 	to_stream(oss, start_offset);
 	return oss.str();
 }
-
-} // namespace mojo

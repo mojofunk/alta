@@ -1,8 +1,6 @@
 #ifndef MOJO_CORE_STACK_TRACE_H
 #define MOJO_CORE_STACK_TRACE_H
 
-namespace mojo {
-
 class MOJO_API StackTrace {
 public:
 	/**
@@ -61,7 +59,5 @@ private:
 
 	size_t m_count;
 };
-
-} // namespace mojo
 
 #endif // MOJO_CORE_STACK_TRACE_H

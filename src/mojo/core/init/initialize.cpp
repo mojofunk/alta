@@ -1,10 +1,6 @@
 MOJO_DEBUG_DOMAIN(CORE_INITIALIZE);
 
-namespace {
-
 std::atomic<uint32_t> s_init_core_count(0);
-
-using namespace mojo;
 
 #ifndef NDEBUG
 void set_debugging_from_env_var()
@@ -18,9 +14,6 @@ void set_debugging_from_env_var()
 	}
 }
 #endif
-}
-
-namespace mojo {
 
 namespace core {
 
@@ -52,5 +45,3 @@ void deinitialize()
 }
 
 } // namespace core
-
-} // namespace mojo

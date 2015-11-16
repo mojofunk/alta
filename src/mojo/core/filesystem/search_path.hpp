@@ -1,8 +1,6 @@
 #ifndef MOJO_SEARCH_PATH_H
 #define MOJO_SEARCH_PATH_H
 
-namespace mojo {
-
 /**
  * @class The Searchpath class is a helper class for getting a
  * vector of paths contained in a search path string where a
@@ -144,7 +142,5 @@ protected:
 
 	paths_t m_dirs;
 };
-
-} // namespace mojo
 
 #endif // MOJO_SEARCH_PATH_H

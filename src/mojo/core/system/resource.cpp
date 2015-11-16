@@ -1,4 +1,4 @@
-namespace mojo {
+using namespace mojo;
 
 bool get_resource_limit(ResourceType resource, ResourceLimit& limit)
 {
@@ -72,5 +72,3 @@ int64_t physical_memory_size()
 
 	return 0;
 }
-
-} // namespace mojo

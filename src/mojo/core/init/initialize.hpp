@@ -1,8 +1,6 @@
 #ifndef MOJO_CORE_CORE_INITIALIZE_H
 #define MOJO_CORE_CORE_INITIALIZE_H
 
-namespace mojo {
-
 namespace core {
 
 /**
@@ -27,7 +25,5 @@ bool initialized();
 void deinitialize();
 
 } // namespace core
-
-} // namespace mojo
 
 #endif // MOJO_CORE_CORE_INITIALIZE_H

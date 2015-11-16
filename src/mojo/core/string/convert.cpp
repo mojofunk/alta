@@ -2,8 +2,6 @@ MOJO_DEBUG_DOMAIN(STRING_CONVERT);
 
 #define CONVERT_BUF_SIZE 32
 
-namespace mojo {
-
 bool string_to_bool(const std::string& str, bool& val)
 {
 	if (str.empty()) {
@@ -255,5 +253,3 @@ bool double_to_string(double val, std::string& str)
 	str = d_cstr;
 	return true;
 }
-
-} // namespace mojo

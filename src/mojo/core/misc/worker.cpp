@@ -1,5 +1,3 @@
-namespace mojo {
-
 Worker::Worker()
     : m_quit(false)
 {
@@ -63,5 +61,3 @@ void Worker::iteration(bool block)
 		m_iter_sema.post();
 	}
 }
-
-} // namespace mojo

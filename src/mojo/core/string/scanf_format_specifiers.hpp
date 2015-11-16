@@ -1,10 +1,6 @@
 #ifndef MOJO_SCANF_FORMAT_SPECIFIERS_H
 #define MOJO_SCANF_FORMAT_SPECIFIERS_H
 
-#include <cinttypes>
-
-namespace mojo {
-
 template <typename T>
 const char* const scanf_format_specifier(const T&)
 {
@@ -58,7 +54,5 @@ const char* const scanf_format_specifier(const double&)
 {
 	return "%f";
 }
-
-} // namespace mojo
 
 #endif // MOJO_SCANF_FORMAT_SPECIFIERS_H

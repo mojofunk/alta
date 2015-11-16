@@ -1,5 +1,3 @@
-namespace mojo {
-
 Semaphore::Semaphore(uint32_t initial_val)
     : m_counter(initial_val)
 {
@@ -42,5 +40,3 @@ void Semaphore::post()
 	++m_counter;
 	m_cond.notify_one();
 }
-
-} // namespace mojo

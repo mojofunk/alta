@@ -1,11 +1,6 @@
 #ifndef MOJO_GLIB_LIBRARY_H
 #define MOJO_GLIB_LIBRARY_H
 
-// forward declaration
-typedef struct _GModule GModule;
-
-namespace mojo {
-
 class GlibLibrary : public Library {
 public: // constructors
 	GlibLibrary(const fs::path& filepath);
@@ -27,7 +22,5 @@ private:
 
 	GModule* m_module;
 };
-
-} // namespace mojo
 
 #endif // MOJO_GLIB_LIBRARY_H

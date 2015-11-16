@@ -1,8 +1,6 @@
 #ifndef MOJO_TYPE_FACTORY_H
 #define MOJO_TYPE_FACTORY_H
 
-namespace mojo {
-
 class TypeFactory {
 public:
 	virtual std::string type_name() const = 0;
@@ -16,7 +14,5 @@ public:
 protected:
 	virtual ~TypeFactory() {}
 };
-
-} // namespace mojo
 
 #endif // MOJO_TYPE_FACTORY_H

@@ -1,8 +1,6 @@
 #ifndef MOJO_LIBRARY_H
 #define MOJO_LIBRARY_H
 
-namespace mojo {
-
 class Library {
 public:
 	virtual ~Library();
@@ -23,7 +21,5 @@ public:
 LibrarySP create_library(const fs::path& filepath);
 
 bool is_library(const fs::path& filepath);
-
-} // namespace mojo
 
 #endif // MOJO_LIBRARY_H

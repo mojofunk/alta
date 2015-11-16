@@ -1,8 +1,6 @@
 #ifndef MOJO_OBJECT_COLLECTION_H
 #define MOJO_OBJECT_COLLECTION_H
 
-namespace mojo {
-
 class ObjectCollection {
 public:
 	typedef std::list<ObjectSP> container_t;
@@ -29,7 +27,5 @@ public:
 protected:
 	container_t m_list;
 };
-
-} // namespace mojo
 
 #endif // MOJO_OBJECT_COLLECTION_H

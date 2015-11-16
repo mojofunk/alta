@@ -1,5 +1,3 @@
-namespace mojo {
-
 std::string getenv(const std::string& name)
 {
 	const char* const env = g_getenv(name.c_str());
@@ -8,5 +6,3 @@ std::string getenv(const std::string& name)
 	else
 		return std::string();
 }
-
-} // namespace mojo

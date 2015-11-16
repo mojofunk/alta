@@ -1,9 +1,5 @@
 using Types = std::set<mojo::TypeFactorySP>;
 
-namespace {
-
-using namespace mojo;
-
 std::atomic_uint s_init_typesystem_count(0);
 
 Types* s_types(0);
@@ -13,18 +9,14 @@ TypeRegistry* s_type_registry(0);
 void register_builtin_types()
 {
 	types::register_type(
-	    TypeFactorySP(new TemplateTypeFactory<int32_t>(int32_type_name)));
+	    TypeFactorySP(new TemplateTypeFactory<int32_t>(TypeNames::int32_type_name)));
 	types::register_type(
-	    TypeFactorySP(new TemplateTypeFactory<int64_t>(int64_type_name)));
+	    TypeFactorySP(new TemplateTypeFactory<int64_t>(TypeNames::int64_type_name)));
 	types::register_type(
-	    TypeFactorySP(new TemplateTypeFactory<float>(float_type_name)));
+	    TypeFactorySP(new TemplateTypeFactory<float>(TypeNames::float_type_name)));
 	types::register_type(
-	    TypeFactorySP(new TemplateTypeFactory<std::string>(string_type_name)));
+	    TypeFactorySP(new TemplateTypeFactory<std::string>(TypeNames::string_type_name)));
 }
-
-} // anon namespace
-
-namespace mojo {
 
 namespace types {
 
@@ -66,5 +58,3 @@ boost::any create_type(const std::string& type_name)
 }
 
 } // namespace types
-
-} // namespace mojo

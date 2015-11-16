@@ -13,7 +13,7 @@
 #include "test_common.hpp"
 
 using namespace boost::unit_test;
-using namespace mojo;
 using namespace std;
+
 
 #endif // MOJO_TEST_INLCLUDES_H

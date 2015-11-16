@@ -1,8 +1,6 @@
 #ifndef MOJO_CHRONO_TIMESTAMP_H
 #define MOJO_CHRONO_TIMESTAMP_H
 
-namespace mojo {
-
 class ChronoTimeStamp {
 public:
 	static uint64_t get_microseconds()
@@ -12,7 +10,5 @@ public:
 		           duration.time_since_epoch()).count();
 	}
 };
-
-} // namespace mojo
 
 #endif // MOJO_CHRONO_TIMESTAMP_H

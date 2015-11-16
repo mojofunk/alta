@@ -1,8 +1,6 @@
 #ifndef MOJO_SAMPLE_BLOCK_H
 #define MOJO_SAMPLE_BLOCK_H
 
-namespace mojo {
-
 float* sample_block_alloc(size_t block_size);
 
 /// allocate and silence block
@@ -15,7 +13,5 @@ void sample_blocks_realloc(std::vector<float*>& blocks, size_t new_block_size);
 void sample_block_silence(float* block, size_t block_size);
 
 void sample_blocks_silence(std::vector<float*>& blocks, size_t block_size);
-
-} // namespace mojo
 
 #endif // MOJO_SAMPLE_BLOCK_H

@@ -1,5 +1,3 @@
-namespace mojo {
-
 ModuleSP open_module(const fs::path& module_path)
 {
 	Module::factory_func_t factory = 0;
@@ -34,5 +32,3 @@ ModuleSPSet discover_modules(const Searchpath& sp)
 
 	return modules;
 }
-
-} // namespace mojo

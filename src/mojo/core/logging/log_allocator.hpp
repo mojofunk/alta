@@ -1,8 +1,6 @@
 #ifndef MOJO_CORE_LOG_ALLOCATOR_H
 #define MOJO_CORE_LOG_ALLOCATOR_H
 
-namespace mojo {
-
 template <typename T>
 class LogAllocator {
 public:
@@ -86,7 +84,5 @@ inline bool operator!=(const LogAllocator<U1>& x,
 {
 	return !(x == y);
 }
-
-} // namespace mojo
 
 #endif // MOJO_CORE_LOG_ALLOCATOR_H

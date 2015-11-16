@@ -29,24 +29,24 @@ BOOST_AUTO_TEST_CASE(mojo_test_type_system)
 
 	Application::initialize();
 
-	BOOST_CHECK(test_type_name<int32_t>(int32_type_name));
-	BOOST_CHECK(test_type_name<int64_t>(int64_type_name));
-	BOOST_CHECK(test_type_name<float>(float_type_name));
-	BOOST_CHECK(test_type_name<string>(string_type_name));
-	BOOST_CHECK(test_type_name<AudioTrack>(audio_track_type_name));
-	BOOST_CHECK(test_type_name<MidiTrack>(midi_track_type_name));
-	BOOST_CHECK(test_type_name<AudioSequence>(audio_sequence_type_name));
-	BOOST_CHECK(test_type_name<AudioEvent>(audio_event_type_name));
+	BOOST_CHECK(test_type_name<int32_t>(TypeNames::int32_type_name));
+	BOOST_CHECK(test_type_name<int64_t>(TypeNames::int64_type_name));
+	BOOST_CHECK(test_type_name<float>(TypeNames::float_type_name));
+	BOOST_CHECK(test_type_name<string>(TypeNames::string_type_name));
+	BOOST_CHECK(test_type_name<AudioTrack>(TypeNames::audio_track_type_name));
+	BOOST_CHECK(test_type_name<MidiTrack>(TypeNames::midi_track_type_name));
+	BOOST_CHECK(test_type_name<AudioSequence>(TypeNames::audio_sequence_type_name));
+	BOOST_CHECK(test_type_name<AudioEvent>(TypeNames::audio_event_type_name));
 
-	BOOST_CHECK_NO_THROW(test_type_factory<int32_t>(int32_type_name));
-	BOOST_CHECK_NO_THROW(test_type_factory<int64_t>(int64_type_name));
-	BOOST_CHECK_NO_THROW(test_type_factory<float>(float_type_name));
-	BOOST_CHECK_NO_THROW(test_type_factory<string>(string_type_name));
-	BOOST_CHECK_NO_THROW(test_type_factory<AudioTrack>(audio_track_type_name));
-	BOOST_CHECK_NO_THROW(test_type_factory<MidiTrack>(midi_track_type_name));
+	BOOST_CHECK_NO_THROW(test_type_factory<int32_t>(TypeNames::int32_type_name));
+	BOOST_CHECK_NO_THROW(test_type_factory<int64_t>(TypeNames::int64_type_name));
+	BOOST_CHECK_NO_THROW(test_type_factory<float>(TypeNames::float_type_name));
+	BOOST_CHECK_NO_THROW(test_type_factory<string>(TypeNames::string_type_name));
+	BOOST_CHECK_NO_THROW(test_type_factory<AudioTrack>(TypeNames::audio_track_type_name));
+	BOOST_CHECK_NO_THROW(test_type_factory<MidiTrack>(TypeNames::midi_track_type_name));
 	BOOST_CHECK_NO_THROW(
-	    test_type_factory<AudioSequence>(audio_sequence_type_name));
-	BOOST_CHECK_NO_THROW(test_type_factory<AudioEvent>(audio_event_type_name));
+	    test_type_factory<AudioSequence>(TypeNames::audio_sequence_type_name));
+	BOOST_CHECK_NO_THROW(test_type_factory<AudioEvent>(TypeNames::audio_event_type_name));
 
 	Application::deinitialize();
 }

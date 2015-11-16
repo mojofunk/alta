@@ -1,5 +1,3 @@
-namespace mojo {
-
 GlibLibrary::GlibLibrary(const fs::path& library_path)
     : m_filepath(library_path)
     , m_module(NULL)
@@ -53,5 +51,3 @@ bool GlibLibrary::is_library(const fs::path& filepath)
 {
 	return (fs::extension(filepath) == "." G_MODULE_SUFFIX);
 }
-
-} // namespace mojo

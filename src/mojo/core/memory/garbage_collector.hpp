@@ -1,8 +1,6 @@
 #ifndef MOJO_CORE_GARBAGE_COLLECTOR_H
 #define MOJO_CORE_GARBAGE_COLLECTOR_H
 
-namespace mojo {
-
 class GarbageCollector {
 public:
 	/**
@@ -92,7 +90,5 @@ private:
 private:
 	M_DISALLOW_COPY_AND_ASSIGN(GarbageCollector);
 };
-
-} // namespace mojo
 
 #endif // MOJO_CORE_GARBAGE_COLLECTOR_H

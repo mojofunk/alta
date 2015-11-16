@@ -7,8 +7,6 @@
  * All conversions are done as if they were performed in the C locale without
  * actually changing the current locale.
  */
-namespace mojo {
-
 bool bool_to_string(bool val, std::string& str);
 
 bool int16_to_string(int16_t val, std::string& str);
@@ -204,7 +202,5 @@ inline double string_to(const std::string& str)
 	string_to_double(str, tmp);
 	return tmp;
 }
-
-} // namespace mojo
 
 #endif // MOJO_CORE_STRING_CONVERT_H

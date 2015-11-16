@@ -1,5 +1,3 @@
-namespace mojo {
-
 Library::~Library()
 {
 }
@@ -14,5 +12,3 @@ bool is_library(const fs::path& filepath)
 	LibrarySP tmp = create_library("");
 	return tmp->is_library(filepath);
 }
-
-} // namespace mojo

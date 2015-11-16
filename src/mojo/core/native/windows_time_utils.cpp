@@ -18,8 +18,6 @@ UINT& old_timer_resolution()
 
 } // anon namespace
 
-namespace mojo {
-
 namespace utils {
 
 bool get_mm_timer_resolution(uint32_t& timer_resolution_ms)
@@ -89,5 +87,3 @@ uint64_t performance_counter_us()
 }
 
 } // namespace utils
-
-} // namespace mojo

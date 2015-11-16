@@ -1,8 +1,6 @@
 #ifndef MOJO_THREAD_NAME_MAP_H
 #define MOJO_THREAD_NAME_MAP_H
 
-namespace mojo {
-
 /**
  * Ideally this would be lock-free or at least use a ReadWriteLock/RCU or
  * perhaps TLS, but this will do for now.
@@ -52,7 +50,5 @@ private:
 	ThreadNameMapType m_thread_name_map;
 	std::mutex m_thread_name_map_mutex;
 };
-
-} // namespace mojo
 
 #endif // MOJO_THREAD_NAME_MAP_H

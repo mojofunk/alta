@@ -1,8 +1,6 @@
 #ifndef MOJO_AUDIO_CYCLE_TIMER_H
 #define MOJO_AUDIO_CYCLE_TIMER_H
 
-namespace mojo {
-
 class CycleTimer {
 public:
 	CycleTimer()
@@ -75,7 +73,5 @@ private:
 	uint32_t m_samplerate;
 	uint32_t m_samples_per_cycle;
 };
-
-} // namespace mojo
 
 #endif // MOJO_AUDIO_CYCLE_TIMER_H

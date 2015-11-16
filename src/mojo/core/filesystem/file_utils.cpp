@@ -1,8 +1,6 @@
-namespace mojo {
-
-std::size_t find_matching_files(const vector<fs::path>& paths,
+std::size_t find_matching_files(const std::vector<fs::path>& paths,
                                 FileMatchFunc match_func,
-                                vector<fs::path>& result)
+                                std::vector<fs::path>& result)
 {
 	for (auto const& path : paths) {
 		find_matching_files(path, match_func, result);
@@ -13,7 +11,7 @@ std::size_t find_matching_files(const vector<fs::path>& paths,
 
 std::size_t find_matching_files(const fs::path& dir_path,
                                 FileMatchFunc match_func,
-                                vector<fs::path>& result)
+                                std::vector<fs::path>& result)
 {
 	if (!exists(dir_path)) return 0;
 
@@ -29,9 +27,9 @@ std::size_t find_matching_files(const fs::path& dir_path,
 	return result.size();
 }
 
-std::size_t find_matching_file(const vector<fs::path>& paths,
+std::size_t find_matching_file(const std::vector<fs::path>& paths,
                                const std::string& filename,
-                               vector<fs::path>& result)
+                               std::vector<fs::path>& result)
 {
 	for (auto const& path : paths) {
 		find_matching_file(path, filename, result);
@@ -42,7 +40,7 @@ std::size_t find_matching_file(const vector<fs::path>& paths,
 
 std::size_t find_matching_file(const fs::path& dir_path,
                                const std::string& filename,
-                               vector<fs::path>& result)
+                               std::vector<fs::path>& result)
 {
 	if (!exists(dir_path)) return 0;
 
@@ -62,7 +60,7 @@ bool find_matching_file(const fs::path& dir_path,
                         const std::string& filename,
                         fs::path& result)
 {
-	vector<fs::path> paths;
+	std::vector<fs::path> paths;
 
 	bool found = find_matching_file(dir_path, filename, paths);
 
@@ -81,8 +79,8 @@ const fs::path get_non_existent_file_path(const fs::path& desired_file_path)
 
 	fs::path final_path(desired_file_path.branch_path());
 
-	const string filename_no_extension = fs::basename(desired_file_path);
-	const string extension = fs::extension(desired_file_path);
+	const std::string filename_no_extension = fs::basename(desired_file_path);
+	const std::string extension = fs::extension(desired_file_path);
 
 	for (std::size_t num = 1; num < std::numeric_limits<std::size_t>::max();
 	     ++num) {
@@ -104,7 +102,7 @@ const fs::path get_non_existent_file_path(const fs::path& desired_file_path)
 	return final_path;
 }
 
-fs::path tmp_writable_directory(const char* domain, const string& prefix)
+fs::path tmp_writable_directory(const char* domain, const std::string& prefix)
 {
 	fs::path tmp_dir = fs::path(g_get_tmp_dir()) / domain;
 
@@ -119,5 +117,3 @@ fs::path tmp_writable_directory(const char* domain, const string& prefix)
 	} while (!fs::create_directories(new_test_dir));
 	return new_test_dir;
 }
-
-} // namespace mojo

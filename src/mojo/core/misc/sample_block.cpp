@@ -8,8 +8,6 @@ namespace {
 const size_t BYTE_ALIGNMENT = 16;
 }
 
-namespace mojo {
-
 float* sample_block_alloc(size_t block_size)
 {
 	float* p = NULL;
@@ -63,5 +61,3 @@ void sample_blocks_silence(std::vector<float*>& blocks, size_t block_size)
 		sample_block_silence(*iter, block_size);
 	}
 }
-
-} // namespace mojo

@@ -1,8 +1,6 @@
 #ifndef MOJO_MODULE_UTILS_H
 #define MOJO_MODULE_UTILS_H
 
-namespace mojo {
-
 ModuleSP open_module(const fs::path& filepath);
 
 ModuleSPSet discover_modules(const Searchpath& sp);
@@ -21,7 +19,5 @@ std::set<std::shared_ptr<T>> get_modules_of_type(const ModuleSPSet& modules)
 	}
 	return mods;
 }
-
-} // namespace mojo
 
 #endif // MOJO_MODULE_UTILS_H

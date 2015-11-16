@@ -2,6 +2,8 @@
 
 #include "config/common_source_includes.hpp"
 
+namespace mojo {
+
 // Now include all source files
 
 #include "audio/utils.cpp"
@@ -35,10 +37,10 @@
 #include "logging/logging.cpp"
 #include "logging/log_format.cpp"
 
-#include "modules/glib_library.cpp"
-#include "modules/library.cpp"
 #include "modules/module.cpp"
 #include "modules/module_utils.cpp"
+#include "modules/library.cpp"
+#include "modules/glib_library.cpp"
 
 #include "system/resource.cpp"
 #include "system/utils.cpp"
@@ -51,3 +53,5 @@
 #include "native/windows_mmcss.cpp"
 #include "native/windows_time_utils.cpp"
 #endif
+
+} // namespace mojo

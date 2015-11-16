@@ -1,8 +1,6 @@
 #ifndef MOJO_CORE_TIMING_H
 #define MOJO_CORE_TIMING_H
 
-namespace mojo {
-
 MOJO_API bool get_min_max_avg_total(const std::vector<uint64_t>& values,
                                     uint64_t& min,
                                     uint64_t& max,
@@ -145,7 +143,5 @@ public:
 private:
 	TimingData& m_data;
 };
-
-} // namespace mojo
 
 #endif // MOJO_CORE_TIMING_H

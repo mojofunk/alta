@@ -10,6 +10,8 @@
 #include "macros/private.hpp"
 #include "macros/smart_pointers.hpp"
 
+namespace mojo {
+
 #include "audio/types.hpp"
 #include "audio/utils.hpp"
 #include "audio/cycle_timer.hpp"
@@ -58,9 +60,9 @@
 
 #include "threads/thread_name_map.hpp"
 
-#include "typesystem/type_names.hpp"
 #include "typesystem/forward.hpp"
 #include "typesystem/typedefs.hpp"
+#include "typesystem/type_names.hpp"
 #include "typesystem/type_factory.hpp"
 #include "typesystem/template_type_factory.hpp"
 #include "typesystem/type_registry.hpp"
@@ -94,5 +96,7 @@
 #include "native/windows_mmcss.hpp"
 #include "native/windows_time_utils.hpp"
 #endif
+
+} // namespace mojo
 
 #endif // MOJO_CORE_H

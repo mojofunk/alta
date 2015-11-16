@@ -1,5 +1,3 @@
-namespace mojo {
-
 bool get_min_max_avg_total(const std::vector<uint64_t>& values,
                            uint64_t& min,
                            uint64_t& max,
@@ -39,5 +37,3 @@ std::string timing_summary(const std::vector<uint64_t>& values)
 	}
 	return oss.str();
 }
-
-} // namespace mojo

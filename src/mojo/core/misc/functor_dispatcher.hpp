@@ -1,8 +1,6 @@
 #ifndef MOJO_FUNCTOR_DISPATCHER_H
 #define MOJO_FUNCTOR_DISPATCHER_H
 
-namespace mojo {
-
 /**
  * The FunctorDispatcher class accepts worker functions to
  * be called in another thread.
@@ -29,7 +27,5 @@ private:
 	std::queue<function_t> m_queue;
 	std::mutex m_queue_mutex;
 };
-
-} // namespace mojo
 
 #endif // MOJO_FUNCTOR_DISPATCHER_H

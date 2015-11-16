@@ -1,7 +1,7 @@
 #ifndef MOJO_TYPE_SYSTEM_H
 #define MOJO_TYPE_SYSTEM_H
 
-namespace mojo {
+// TODO make into TypeSystem class
 
 namespace types {
 
@@ -24,7 +24,5 @@ const std::string get_type_name(const std::type_info& info);
 boost::any create_type(const std::string& type_name);
 
 } // namespace types
-
-} // namespace mojo
 
 #endif // MOJO_TYPE_SYSTEM_H

@@ -1,8 +1,6 @@
 #ifndef MOJO_ELAPSED_TIMER_H
 #define MOJO_ELAPSED_TIMER_H
 
-namespace mojo {
-
 template <class T>
 class ElapsedTimer {
 public:
@@ -21,7 +19,5 @@ public:
 private:
 	std::uint64_t m_start_time;
 };
-
-} // namespace mojo
 
 #endif // MOJO_ELAPSED_TIMER_H

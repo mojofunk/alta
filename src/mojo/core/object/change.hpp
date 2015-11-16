@@ -1,8 +1,6 @@
 #ifndef MOJO_CHANGE_H
 #define MOJO_CHANGE_H
 
-namespace mojo {
-
 /**
  * A Change contains the information relating
  * to a state change in an Object class.
@@ -39,7 +37,5 @@ public:
 	Property old_value;
 	Property new_value;
 };
-
-} // namespace mojo
 
 #endif // MOJO_CHANGE_H

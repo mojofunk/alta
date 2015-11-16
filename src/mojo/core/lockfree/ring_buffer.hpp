@@ -1,8 +1,6 @@
 #ifndef MOJO_CORE_RING_BUFFER_H
 #define MOJO_CORE_RING_BUFFER_H
 
-namespace mojo {
-
 // TODO use allocator
 template <class T>
 class RingBuffer {
@@ -220,7 +218,5 @@ size_t RingBuffer<T>::write(const T* src, size_t count)
 
 	return count;
 }
-
-} // namespace mojo
 
 #endif // MOJO_CORE_RING_BUFFER_H

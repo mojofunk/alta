@@ -1,8 +1,6 @@
 #ifndef MOJO_CORE_SEMAPHORE_H
 #define MOJO_CORE_SEMAPHORE_H
 
-namespace mojo {
-
 class Semaphore {
 public:
 	// prevent copying and assignment
@@ -45,7 +43,5 @@ private:
 	std::condition_variable m_cond;
 	std::mutex m_mutex;
 };
-
-} // namespace mojo
 
 #endif // MOJO_CORE_SEMAPHORE_H

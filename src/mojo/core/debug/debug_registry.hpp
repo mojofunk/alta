@@ -1,8 +1,6 @@
 #ifndef MOJO_CORE_DEBUG_REGISTRY_H
 #define MOJO_CORE_DEBUG_REGISTRY_H
 
-namespace mojo {
-
 class DebugRegistry {
 private: // types
 	using DomainMapType = std::map<std::string, uint32_t>;
@@ -52,7 +50,5 @@ private:
 
 	std::vector<bool> m_enabled_index;
 };
-
-} // namespace mojo
 
 #endif // MOJO_CORE_DEBUG_REGISTRY_H

@@ -1,8 +1,5 @@
 #include "test_common.hpp"
 
-using namespace std;
-using namespace mojo;
-
 Searchpath test_search_path()
 {
 	Searchpath test_path(system_data_search_path());

@@ -1,8 +1,6 @@
 #ifndef MOJO_CORE_WINDOWS_MMCSS_H
 #define MOJO_CORE_WINDOWS_MMCSS_H
 
-namespace mojo {
-
 namespace mmcss {
 
 enum AVRT_PRIORITY {
@@ -25,7 +23,5 @@ bool revert_thread_characteristics(void* task_handle);
 bool set_thread_priority(void*, AVRT_PRIORITY);
 
 } // namespace mmcss
-
-} // namespace mojo
 
 #endif // MOJO_CORE_WINDOWS_MMCSS_H

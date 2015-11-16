@@ -1,8 +1,6 @@
 #ifndef MOJO_CORE_DEBUG_H
 #define MOJO_CORE_DEBUG_H
 
-namespace mojo {
-
 namespace debug {
 
 DebugRegistry& get_registry();
@@ -19,8 +17,6 @@ void log_message(const char* file,
                  const std::string& str);
 
 } // namespace debug
-
-} // namespace mojo
 
 #ifdef MOJO_ENABLE_DEBUG_LOGGING
 

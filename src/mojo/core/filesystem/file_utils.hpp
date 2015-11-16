@@ -1,30 +1,25 @@
 #ifndef MOJO_FILE_UTILS_H
 #define MOJO_FILE_UTILS_H
 
-namespace mojo {
-
-using std::vector;
-using std::string;
-
 /**
  * \return true if the file matches
  */
 typedef bool (*FileMatchFunc)(const fs::path& file_path);
 
-std::size_t find_matching_files(const vector<fs::path>& directory_paths,
+std::size_t find_matching_files(const std::vector<fs::path>& directory_paths,
                                 FileMatchFunc match_functor,
-                                vector<fs::path>& result);
+                                std::vector<fs::path>& result);
 
 std::size_t find_matching_files(const fs::path& directory_path,
                                 FileMatchFunc match_functor,
-                                vector<fs::path>& result);
-std::size_t find_matching_file(const vector<fs::path>& paths,
+                                std::vector<fs::path>& result);
+std::size_t find_matching_file(const std::vector<fs::path>& paths,
                                const std::string& filename,
-                               vector<fs::path>& result);
+                               std::vector<fs::path>& result);
 
 std::size_t find_matching_file(const fs::path& paths,
                                const std::string& filename,
-                               vector<fs::path>& result);
+                               std::vector<fs::path>& result);
 
 bool find_matching_file(const fs::path& paths,
                         const std::string& filename,
@@ -37,7 +32,5 @@ bool find_matching_file(const fs::path& paths,
 const fs::path get_non_existent_file_path(const fs::path& file_path);
 
 fs::path tmp_writable_directory(const char* domain, const std::string& prefix);
-
-} // namespace mojo
 
 #endif // MOJO_FILE_UTILS_H

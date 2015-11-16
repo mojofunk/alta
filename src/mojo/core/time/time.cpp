@@ -1,5 +1,3 @@
-namespace mojo {
-
 uint64_t get_monotonic_time()
 {
 	using namespace std::chrono;
@@ -16,5 +14,3 @@ void sleep(uint32_t seconds)
 {
 	g_usleep(seconds * 1000000);
 }
-
-} // namespace mojo

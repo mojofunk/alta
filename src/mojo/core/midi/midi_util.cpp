@@ -1,5 +1,3 @@
-namespace mojo {
-
 int get_midi_msg_length(uint8_t status_byte)
 {
 	// define these with meaningful names
@@ -33,5 +31,3 @@ int get_midi_msg_length(uint8_t status_byte)
 	}
 	return -1;
 }
-
-} // namespace mojo

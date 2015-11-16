@@ -1,5 +1,3 @@
-namespace mojo {
-
 // TODO proper logging
 void GarbageCollector::run()
 {
@@ -38,5 +36,3 @@ void GarbageCollector::run()
 	}
 	//std::cout << "GC::run reenqueued count: " << reenqueue_count << std::endl;
 }
-
-} // namespace mojo

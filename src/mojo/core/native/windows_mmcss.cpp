@@ -14,8 +14,6 @@ static AvSetMmThreadCharacteristicsA_t AvSetMmThreadCharacteristicsA = NULL;
 static AvRevertMmThreadCharacteristics_t AvRevertMmThreadCharacteristics = NULL;
 static AvSetMmThreadPriority_t AvSetMmThreadPriority = NULL;
 
-namespace mojo {
-
 namespace mmcss {
 
 bool initialize()
@@ -138,5 +136,3 @@ bool set_thread_priority(void* task_handle, AVRT_PRIORITY priority)
 }
 
 } // namespace mmcss
-
-} // namespace mojo

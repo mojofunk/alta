@@ -1,8 +1,6 @@
 #ifndef MOJO_CORE_SPINWAIT_H
 #define MOJO_CORE_SPINWAIT_H
 
-namespace mojo {
-
 inline void spinwait(uint64_t usecs)
 {
 	mojo::Timing timing;
@@ -13,7 +11,5 @@ inline void spinwait(uint64_t usecs)
 		++i;
 	} while (timing.elapsed() < usecs);
 }
-
-} // namespace mojo
 
 #endif // MOJO_CORE_SPINWAIT_H

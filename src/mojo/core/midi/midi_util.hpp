@@ -1,8 +1,6 @@
 #ifndef MOJO_CORE_MIDI_UTIL_H
 #define MOJO_CORE_MIDI_UTIL_H
 
-namespace mojo {
-
 struct MidiEventHeader {
 	uint64_t time;
 	size_t size;
@@ -16,7 +14,5 @@ struct MidiEventHeader {
 // rename to get_midi_message_size?
 // @return -1 to indicate error
 int get_midi_msg_length(uint8_t status_byte);
-
-} // namespace mojo
 
 #endif // MOJO_CORE_MIDI_UTIL_H

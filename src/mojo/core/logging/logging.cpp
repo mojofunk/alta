@@ -1,7 +1,5 @@
 static mojo::FixedSizePool* s_log_mem_pool;
 
-namespace mojo {
-
 void log_initialize()
 {
 	s_log_mem_pool = new FixedSizePool(128, 1024);
@@ -44,5 +42,3 @@ void log_free(void* ptr)
 		::operator delete(ptr);
 	}
 }
-
-} // namespace mojo

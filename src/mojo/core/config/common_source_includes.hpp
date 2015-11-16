@@ -20,8 +20,6 @@
 #include <sys/resource.h>
 #endif
 
-#include <gmodule.h>
-
 #include <boost/tokenizer.hpp>
 
 #endif

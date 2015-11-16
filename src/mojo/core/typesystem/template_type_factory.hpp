@@ -1,8 +1,6 @@
 #ifndef MOJO_TEMPLATE_TYPE_FACTORY_H
 #define MOJO_TEMPLATE_TYPE_FACTORY_H
 
-namespace mojo {
-
 template <class T>
 class TemplateTypeFactory : public TypeFactory {
 public:
@@ -20,7 +18,5 @@ public:
 private:
 	const std::string m_type_name;
 };
-
-} // namespace mojo
 
 #endif // MOJO_TEMPLATE_TYPE_FACTORY_H

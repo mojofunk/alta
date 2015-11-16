@@ -1,8 +1,6 @@
 #ifndef MOJO_CORE_STRING_COMPOSE_H
 #define MOJO_CORE_STRING_COMPOSE_H
 
-namespace mojo {
-
 namespace internal {
 
 inline void compose_oss(const char* format, std::stringstream& oss)
@@ -34,7 +32,5 @@ std::string compose(const char* format, Targs... Fargs)
 	internal::compose_oss(format, oss, Fargs...);
 	return oss.str();
 }
-
-} // namespace mojo
 
 #endif // MOJO_CORE_STRING_COMPOSE_H

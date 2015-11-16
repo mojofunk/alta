@@ -1,8 +1,6 @@
 #ifndef MOJO_PROPERTIES_H
 #define MOJO_PROPERTIES_H
 
-namespace mojo {
-
 class Properties {
 public:
 	typedef std::set<Property> container_t;
@@ -65,7 +63,5 @@ public:
 private:
 	container_t m_properties;
 };
-
-} // namespace mojo
 
 #endif // MOJO_PROPERTIES_H

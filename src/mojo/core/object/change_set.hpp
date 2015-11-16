@@ -1,8 +1,6 @@
 #ifndef MOJO_CHANGE_SET_H
 #define MOJO_CHANGE_SET_H
 
-namespace mojo {
-
 /**
  * A ChangeSet is a collection of related property changes
  *
@@ -38,7 +36,5 @@ public:
 private:
 	container_t m_changes;
 };
-
-} // namespace mojo
 
 #endif // MOJO_CHANGE_SET_H

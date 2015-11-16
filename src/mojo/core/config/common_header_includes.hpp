@@ -40,6 +40,7 @@
 #include <vector>
 
 #include <glib.h> // for Properties
+#include <gmodule.h> // for GlibModule
 
 #include <boost/any.hpp>
 #include <boost/filesystem.hpp>

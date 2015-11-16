@@ -13,6 +13,7 @@ OPTIMIZE="--optimize"
 DISABLE_DEBUG_LOGGING="--disable-debug-logging"
 MSVC_TOOLSET="--toolset=msvc"
 CLANG_TOOLSET="--toolset=clang"
+# for release debug?
 BACKTRACE=""
 PROFILE=""
 

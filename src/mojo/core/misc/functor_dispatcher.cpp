@@ -1,7 +1,5 @@
 MOJO_DEBUG_DOMAIN(FUNCTOR_DISPATCHER);
 
-namespace mojo {
-
 FunctorDispatcher::FunctorDispatcher()
 {
 }
@@ -63,5 +61,3 @@ void FunctorDispatcher::process_queue()
 		lock.lock();
 	}
 }
-
-} // namespace mojo
