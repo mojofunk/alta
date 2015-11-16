@@ -64,18 +64,13 @@ def options(opt):
     opt.add_option(
         '--enable-shared',
         action='store_true',
-        default=True,
+        default=False,
         help='Build shared libraries')
     opt.add_option(
         '--enable-static',
         action='store_true',
         default=False,
         help='Build static libraries')
-    opt.add_option(
-        '--enable-amalgamation',
-        action='store_true',
-        default=False,
-        help='Amalgamate files when building libraries')
     opt.add_option(
         '--with-gtkmm-ui',
         action='store_true',
@@ -112,7 +107,6 @@ def display_config(conf):
     Logs.info('C++ compiler flags: %s' % conf.env.CXXFLAGS)
     Logs.info('Enable shared: %s' % conf.env.ENABLE_SHARED)
     Logs.info('Enable static: %s' % conf.env.ENABLE_STATIC)
-    Logs.info('Enable amalgamation: %s' % conf.env.ENABLE_AMALGAMATION)
     Logs.info('Build tests: %s' % conf.env.BUILD_TESTS)
     Logs.info('Build single tests: %s' % conf.env.BUILD_SINGLE_TESTS)
     Logs.info('Enable debug logging: %s' % conf.env.DEBUG_LOGGING)
@@ -168,7 +162,11 @@ def configure(conf):
     conf.env.ENABLE_SHARED = conf.options.enable_shared
     conf.env.ENABLE_STATIC = conf.options.enable_static
 
-    conf.env.ENABLE_AMALGAMATION = conf.options.enable_amalgamation
+    if not conf.env.ENABLE_SHARED and not conf.env.ENABLE_STATIC:
+        # needed because of the weird waf options design
+        conf.env.ENABLE_SHARED = True
+
+    conf.env.ENABLE_AMALGAMATION = True
 
     conf.env.DEBUG_LOGGING = not conf.options.disable_debug_logging
 
