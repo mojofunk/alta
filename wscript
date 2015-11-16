@@ -21,10 +21,14 @@ out = 'waf-build'
 
 def options(opt):
     # options provided by the modules
-    opt.load('compiler_cxx')
-    opt.load('compiler_c')
     opt.load('gnu_dirs')
 
+    opt.add_option(
+        '--toolset',
+        type='string',
+        dest='toolset',
+        default='auto',
+        help='Compiler and Toolset options: auto(default), gcc, msvc')
     opt.add_option(
         '--with-target-platform',
         type='string',
@@ -114,8 +118,15 @@ def display_config(conf):
 
 
 def configure(conf):
-    conf.load('compiler_cxx')
-    conf.load('compiler_c')
+
+    conf.env.TOOLSET = conf.options.toolset
+
+    if conf.env.TOOLSET == 'gcc':
+        conf.load('gcc')
+        conf.load('g++')
+    elif conf.env.TOOLSET == 'msvc':
+        conf.load('msvc')
+
     conf.load('gnu_dirs')
 
     conf.env.TARGET_PLATFORM = conf.options.target_platform
