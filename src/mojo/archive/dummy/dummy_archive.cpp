@@ -1,14 +1,10 @@
-namespace mojo {
-
-using namespace std;
-
 void DummyArchive::read(const fs::path& file_path, Properties& props)
 {
 }
 
 void DummyArchive::write_object(std::ostream& os, const ObjectSP& obj)
 {
-	const string type_name = types::get_type_name(typeid(*obj));
+	const std::string type_name = types::get_type_name(typeid(*obj));
 
 	os << " Type: " << type_name << " ";
 
@@ -39,7 +35,7 @@ void DummyArchive::write_object_collection(std::ostream& os,
 
 void DummyArchive::write_property(std::ostream& os, const Property& prop)
 {
-	string type_name = types::get_type_name(prop.value.type());
+	const std::string type_name = types::get_type_name(prop.value.type());
 
 	os << "Name: " << prop.get_name_string() << " Type: " << type_name
 	   << " Value: ";
@@ -78,5 +74,3 @@ void DummyArchive::write(const fs::path& file_path, const Properties& props)
 
 	// write all non mojo::Object properties to the archive
 }
-
-} // namespace mojo

@@ -1,8 +1,6 @@
 #ifndef MOJO_XML_ARCHIVE_MODULE_H
 #define MOJO_XML_ARCHIVE_MODULE_H
 
-namespace mojo {
-
 class XMLArchiveModule : public ArchiveModule {
 public: // constructors
 	XMLArchiveModule();
@@ -21,7 +19,5 @@ public: // ArchiveModule Interface
 	        */
 	virtual ArchiveSP create_archive();
 };
-
-} // namespace mojo
 
 #endif // MOJO_XML_ARCHIVE_MODULE_H

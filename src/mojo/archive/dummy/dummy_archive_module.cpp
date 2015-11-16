@@ -1,5 +1,3 @@
-namespace mojo {
-
 DummyArchiveModule::DummyArchiveModule()
 {
 }
@@ -32,5 +30,3 @@ MOJO_CAPI void* mojo_module_factory(void)
 {
 	return new DummyArchiveModule;
 }
-
-} // namespace mojo

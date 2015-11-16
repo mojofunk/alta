@@ -1,8 +1,6 @@
 #ifndef MOJO_DUMMY_ARCHIVE_MODULE_H
 #define MOJO_DUMMY_ARCHIVE_MODULE_H
 
-namespace mojo {
-
 class DummyArchiveModule : public ArchiveModule {
 public: // constructors
 	DummyArchiveModule();
@@ -21,7 +19,5 @@ public: // ArchiveModule Interface
 	        */
 	virtual ArchiveSP create_archive();
 };
-
-} // namespace mojo
 
 #endif // MOJO_DUMMY_ARCHIVE_MODULE_H

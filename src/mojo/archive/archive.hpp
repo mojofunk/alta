@@ -1,8 +1,6 @@
 #ifndef MOJO_CORE_ARCHIVE_H
 #define MOJO_CORE_ARCHIVE_H
 
-namespace mojo {
-
 /**
  * An archive needs to be able to support incremental writing so
  * that memory usage can be minimalized.
@@ -27,7 +25,5 @@ public: // Interface
 
 	virtual void read(const fs::path& file_path, Properties& props) = 0;
 };
-
-} // namespace mojo
 
 #endif // MOJO_CORE_ARCHIVE_H

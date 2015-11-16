@@ -1,8 +1,6 @@
 #ifndef MOJO_XML_ARCHIVE_H
 #define MOJO_XML_ARCHIVE_H
 
-namespace mojo {
-
 /**
 
   Top level elements must have a name attribute
@@ -30,7 +28,5 @@ public:
 
 	virtual void read(const fs::path& file_path, Properties& props);
 };
-
-} // namespace mojo
 
 #endif

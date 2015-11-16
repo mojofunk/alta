@@ -14,11 +14,15 @@
 
 #include <mojo-core.hpp>
 
+MOJO_BEGIN_NAMESPACE
+
 #include <mojo/archive/forward.hpp>
 
 #include <mojo/archive/typedefs.hpp>
 
 #include <mojo/archive/archive.hpp>
 #include <mojo/archive/archive_module.hpp>
+
+MOJO_END_NAMESPACE
 
 #endif // MOJO_MOJO_ARCHIVE_H
