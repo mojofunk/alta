@@ -30,7 +30,7 @@ def options(opt):
         default='auto',
         help='Compiler and Toolset options: auto(default), gcc, clang, msvc')
     opt.add_option(
-        '--with-target-platform',
+        '--target-platform',
         type='string',
         dest='target_platform',
         default='auto',
