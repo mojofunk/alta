@@ -1,8 +1,6 @@
 #ifndef MOJO_MIDI_TRACK_H
 #define MOJO_MIDI_TRACK_H
 
-namespace mojo {
-
 class MidiTrack : public Track {
 public:
 	// constructors
@@ -14,7 +12,5 @@ public:
 
 	virtual void set_properties(const Properties& props);
 };
-
-} // namespace mojo
 
 #endif // MOJO_MIDI_TRACK_H

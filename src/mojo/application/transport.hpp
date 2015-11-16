@@ -1,8 +1,6 @@
 #ifndef MOJO_TRANSPORT_H
 #define MOJO_TRANSPORT_H
 
-namespace mojo {
-
 class Transport {
 public:
 	void start();
@@ -24,7 +22,5 @@ private:
 	count_t position;
 	bool record;
 };
-
-} // namespace mojo
 
 #endif // MOJO_TRANPSPORT_H

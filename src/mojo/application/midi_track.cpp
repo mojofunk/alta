@@ -1,5 +1,3 @@
-namespace mojo {
-
 MidiTrack::MidiTrack()
 {
 }
@@ -18,5 +16,3 @@ void MidiTrack::set_properties(const Properties& props)
 
 	// XXX
 }
-
-} // namespace mojo

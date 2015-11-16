@@ -1,8 +1,6 @@
 #ifndef MOJO_PROJECT_TYPEDEFS_H
 #define MOJO_PROJECT_TYPEDEFS_H
 
-namespace mojo {
-
 M_DEFINE_ALL_TYPEDEFS(Object)
 
 M_DEFINE_ALL_TYPEDEFS(AudioClip)
@@ -14,7 +12,5 @@ M_DEFINE_ALL_TYPEDEFS(MidiTrack)
 M_DEFINE_ALL_TYPEDEFS(Project)
 M_DEFINE_ALL_TYPEDEFS(StateTracker)
 M_DEFINE_ALL_TYPEDEFS(Track)
-
-} // namespace mojo
 
 #endif // MOJO_PROJECT_TYPEDEFS_H

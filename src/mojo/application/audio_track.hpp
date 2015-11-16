@@ -1,8 +1,6 @@
 #ifndef MOJO_AUDIO_TRACK_H
 #define MOJO_AUDIO_TRACK_H
 
-namespace mojo {
-
 /**
  * An AudioTrack can contain:
  *
@@ -35,7 +33,5 @@ private:
 private:
 	static const char* const s_property_audio_sequence;
 };
-
-} // namespace mojo
 
 #endif // MOJO_AUDIO_TRACK_H

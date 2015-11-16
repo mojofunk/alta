@@ -1,8 +1,6 @@
 #ifndef MOJO_STATE_TRACKER_H
 #define MOJO_STATE_TRACKER_H
 
-namespace mojo {
-
 /**
  * The StateTracker class monitors Objects for property changes
  * and then stores the property changes in an Archive
@@ -18,7 +16,5 @@ public:
 
 private:
 };
-
-} // namespace mojo
 
 #endif // MOJO_STATE_TRACKER_H

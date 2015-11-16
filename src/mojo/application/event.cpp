@@ -5,8 +5,6 @@ const char* const s_property_position = "position";
 const char* const s_property_duration = "duration";
 }
 
-namespace mojo {
-
 PropertyID const Event::s_property_position_id =
     g_quark_from_static_string(s_property_position);
 PropertyID const Event::s_property_duration_id =
@@ -33,5 +31,3 @@ void Event::get_properties(Properties& props) const
 void Event::set_properties(const Properties& props)
 {
 }
-
-} // namespace mojo

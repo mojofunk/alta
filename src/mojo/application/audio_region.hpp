@@ -1,8 +1,6 @@
 #ifndef MOJO_AUDIO_REGION_H
 #define MOJO_AUDIO_REGION_H
 
-namespace mojo {
-
 /**
  * An AudioRegion is a section within a clip with an offset and duration
  * and a snap point.
@@ -36,7 +34,5 @@ private:
 	static const char* const s_property_offset;
 	static const char* const s_property_duration;
 };
-
-} // namespace mojo
 
 #endif // MOJO_AUDIO_REGION_H

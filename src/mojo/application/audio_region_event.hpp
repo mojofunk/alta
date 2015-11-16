@@ -1,8 +1,6 @@
 #ifndef MOJO_AUDIO_REGION_EVENT_H
 #define MOJO_AUDIO_REGION_EVENT_H
 
-namespace mojo {
-
 class AudioRegionEvent : public AudioEvent {
 public:
 	AudioRegionEvent();
@@ -26,7 +24,5 @@ private:
 private:
 	static const char* const s_property_audio_region;
 };
-
-} // namespace mojo
 
 #endif // MOJO_AUDIO_REGION_EVENT_H

@@ -1,5 +1,3 @@
-namespace mojo {
-
 const char* const AudioRegion::s_property_audio_clip = "audioclip";
 const char* const AudioRegion::s_property_offset = "offset";
 const char* const AudioRegion::s_property_duration = "duration";
@@ -22,5 +20,3 @@ void AudioRegion::get_properties(Properties& props) const
 void AudioRegion::set_properties(const Properties& props)
 {
 }
-
-} // namespace mojo

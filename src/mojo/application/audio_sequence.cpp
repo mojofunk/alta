@@ -1,5 +1,3 @@
-namespace mojo {
-
 const char* const AudioSequence::s_property_audio_events = "audio-events";
 
 AudioSequence::AudioSequence()
@@ -24,5 +22,3 @@ AudioSequence::size_type AudioSequence::erase(AudioEventSP ae)
 {
 	return m_audio_events.erase(ae);
 }
-
-} // namespace mojo

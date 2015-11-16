@@ -1,5 +1,3 @@
-namespace mojo {
-
 const char* const Project::s_property_tracks = "tracks";
 
 void Project::get_properties(Properties& props) const
@@ -50,5 +48,3 @@ signals::connection Project::connect_track_removed(const TrackRemovedFunc& slot)
 {
 	return m_track_removed.connect(slot);
 }
-
-} // namespace mojo

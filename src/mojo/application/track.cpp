@@ -3,8 +3,6 @@ namespace {
 const char* const property_name = "name";
 }
 
-namespace mojo {
-
 PropertyID const Track::s_property_name_id =
     g_quark_from_static_string(property_name);
 
@@ -37,5 +35,3 @@ void Track::set_name(const std::string& new_name)
 		signal_changes(name_change);
 	}
 }
-
-} // namespace mojo

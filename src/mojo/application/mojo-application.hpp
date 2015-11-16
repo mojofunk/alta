@@ -19,10 +19,10 @@
 #include <mojo-audio-file.hpp>
 #include <mojo-midi-driver.hpp>
 
+MOJO_BEGIN_NAMESPACE
+
 #include <mojo/application/types.hpp>
-
 #include <mojo/application/forward.hpp>
-
 #include <mojo/application/typedefs.hpp>
 
 #include <mojo/application/utils.hpp>
@@ -44,7 +44,10 @@
 #include <mojo/application/transport.hpp>
 
 #include <mojo/application/application.hpp>
+
 // this internal class should not be in a public header
 #include <mojo/application/application_data.hpp>
+
+MOJO_END_NAMESPACE
 
 #endif // MOJO_MOJO_APPLICATION_H

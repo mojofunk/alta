@@ -1,8 +1,6 @@
 #ifndef MOJO_PROJECT_H
 #define MOJO_PROJECT_H
 
-namespace mojo {
-
 /**
  * The bus names that represent physical inputs and outputs won't change when
  * the project moves between systems with different hardware devices. The names
@@ -68,7 +66,5 @@ private: // member data
 private: // property names
 	static const char* const s_property_tracks;
 };
-
-} // namespace mojo
 
 #endif // MOJO_PROJECT_H

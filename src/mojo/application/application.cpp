@@ -1,7 +1,5 @@
 MOJO_DEBUG_DOMAIN(APPLICATION);
 
-namespace mojo {
-
 Application* Application::s_instance = 0;
 
 Application::Application()
@@ -164,5 +162,3 @@ void Application::register_types()
 	types::register_type(
 	    TypeFactorySP(new TemplateTypeFactory<AudioEvent>(TypeNames::audio_event_type_name)));
 }
-
-} // namespace mojo

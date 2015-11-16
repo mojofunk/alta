@@ -1,5 +1,3 @@
-namespace mojo {
-
 std::string track_type_to_string(TrackType type)
 {
 	if (type == AUDIO) {
@@ -11,5 +9,3 @@ std::string track_type_to_string(TrackType type)
 	// error
 	return "Unknown Track Type";
 }
-
-} // namespace mojo

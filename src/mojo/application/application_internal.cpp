@@ -1,7 +1,5 @@
 MOJO_DEBUG_DOMAIN(APPLICATION_INTERNAL);
 
-namespace mojo {
-
 void Application::new_project_internal()
 {
 	ProjectSP pi(new Project);
@@ -75,5 +73,3 @@ void Application::add_track_internal(Project* p, const TrackOptions& options)
 
 	// signal async
 }
-
-} // namespace mojo

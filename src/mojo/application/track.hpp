@@ -1,8 +1,6 @@
 #ifndef MOJO_TRACK_H
 #define MOJO_TRACK_H
 
-namespace mojo {
-
 class Track : public Object {
 public:
 	// constructors
@@ -33,7 +31,5 @@ private:
 public:
 	static PropertyID const s_property_name_id;
 };
-
-} // namespace mojo
 
 #endif // MOJO_TRACK_H

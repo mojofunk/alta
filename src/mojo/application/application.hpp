@@ -1,8 +1,6 @@
 #ifndef MOJO_APPLICATION_H
 #define MOJO_APPLICATION_H
 
-namespace mojo {
-
 /**
  * If access to the worker thread is through the application and all Object
  * classes use the worker thread then changes to the Application class will
@@ -228,7 +226,5 @@ private: // data
 
 	std::unique_ptr<internal::ApplicationData> data;
 };
-
-} // namespace mojo
 
 #endif // MOJO_APPLICATION_H

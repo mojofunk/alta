@@ -1,8 +1,6 @@
 #ifndef MOJO_APPLICATION_DATA_H
 #define MOJO_APPLICATION_DATA_H
 
-namespace mojo {
-
 namespace internal {
 
 class WorkerThread {
@@ -54,7 +52,5 @@ struct ApplicationData {
 };
 
 } // namespace internal
-
-} // namespace mojo
 
 #endif // MOJO_APPLICATION_DATA_H

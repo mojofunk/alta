@@ -1,8 +1,6 @@
 #ifndef MOJO_API_TYPES_H
 #define MOJO_API_TYPES_H
 
-namespace mojo {
-
 enum Error {
 
 };
@@ -32,7 +30,5 @@ struct TrackOptions {
 	{
 	}
 };
-
-} // namespace mojo
 
 #endif // MOJO_API_TYPES_H

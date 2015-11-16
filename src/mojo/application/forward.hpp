@@ -1,8 +1,6 @@
 #ifndef MOJO_API_FORWARD_H
 #define MOJO_API_FORWARD_H
 
-namespace mojo {
-
 class Object;
 
 class AudioClip;
@@ -24,6 +22,5 @@ namespace internal {
 class ApplicationData;
 
 } // namespace internal
-};
 
 #endif // MOJO_API_FORWARD_H

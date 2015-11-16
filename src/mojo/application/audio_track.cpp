@@ -1,5 +1,3 @@
-namespace mojo {
-
 const char* const AudioTrack::s_property_audio_sequence = "audio-sequence";
 
 AudioTrack::AudioTrack()
@@ -25,5 +23,3 @@ AudioSequenceSP AudioTrack::get_audio_sequence()
 {
 	return m_audio_sequence;
 }
-
-} // namespace mojo

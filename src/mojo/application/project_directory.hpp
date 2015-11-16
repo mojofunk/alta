@@ -1,11 +1,6 @@
 #ifndef MOJO_PROJECT_DIRECTORY_H
 #define MOJO_PROJECT_DIRECTORY_H
 
-namespace mojo {
-
-using std::string;
-using std::vector;
-
 class ProjectDirectory {
 public:
 	/**
@@ -53,12 +48,10 @@ protected:
 	/**
 	 * @return a vector containing the fullpath of all subdirectories.
 	 */
-	const vector<fs::path> sub_directories() const;
+	const std::vector<fs::path> sub_directories() const;
 
 	/// The path to the root of the project directory.
 	const fs::path m_root_path;
 };
 
-} // namespace mojo
-
-#endif
+#endif // MOJO_PROJECT_DIRECTORY_H

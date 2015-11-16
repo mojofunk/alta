@@ -1,8 +1,6 @@
 #ifndef MOJO_AUDIO_SEQUENCE_H
 #define MOJO_AUDIO_SEQUENCE_H
 
-namespace mojo {
-
 class AudioSequence : public Object {
 public: // typedefs
 	typedef AudioEventSPSet::iterator iterator;
@@ -28,7 +26,5 @@ private: // member data
 private:
 	static const char* const s_property_audio_events;
 };
-
-} // namespace mojo
 
 #endif // MOJO_AUDIO_SEQUENCE_H

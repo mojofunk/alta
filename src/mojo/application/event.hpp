@@ -1,8 +1,6 @@
 #ifndef MOJO_EVENT_H
 #define MOJO_EVENT_H
 
-namespace mojo {
-
 class Event : public Object {
 public:
 	Event();
@@ -35,7 +33,5 @@ private:
 	static PropertyID const s_property_position_id;
 	static PropertyID const s_property_duration_id;
 };
-
-} // namespace mojo
 
 #endif // MOJO_EVENT_H

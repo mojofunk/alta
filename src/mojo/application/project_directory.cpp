@@ -1,5 +1,3 @@
-namespace mojo {
-
 ProjectDirectory::ProjectDirectory(const fs::path& project_path)
     : m_root_path(project_path)
 {
@@ -40,14 +38,12 @@ const fs::path ProjectDirectory::peak_path() const
 	return m_root_path / peak_dir_name;
 }
 
-const vector<fs::path> ProjectDirectory::sub_directories() const
+const std::vector<fs::path> ProjectDirectory::sub_directories() const
 {
-	vector<fs::path> tmp_paths;
+	std::vector<fs::path> tmp_paths;
 
 	tmp_paths.push_back(audiofiles_path());
 	tmp_paths.push_back(peak_path());
 
 	return tmp_paths;
 }
-
-} // namespace mojo

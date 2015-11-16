@@ -1,8 +1,6 @@
 #ifndef MOJO_AUDIO_CLIP_H
 #define MOJO_AUDIO_CLIP_H
 
-namespace mojo {
-
 /**
  * A new AudioClip only references one audio file
  *
@@ -43,7 +41,5 @@ public:
 private:
 	std::string m_audiofile;
 };
-
-} // namespace mojo
 
 #endif // MOJO_AUDIO_CLIP_H

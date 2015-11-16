@@ -1,8 +1,6 @@
 #ifndef MOJO_AUDIO_EVENT_H
 #define MOJO_AUDIO_EVENT_H
 
-namespace mojo {
-
 class AudioEvent : public Event {
 public:
 	AudioEvent();
@@ -15,7 +13,5 @@ public:
 
 	virtual void set_properties(const Properties& props);
 };
-
-} // namespace mojo
 
 #endif // MOJO_AUDIO_EVENT_H

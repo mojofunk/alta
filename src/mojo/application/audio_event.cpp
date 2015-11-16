@@ -1,5 +1,3 @@
-namespace mojo {
-
 AudioEvent::AudioEvent()
     : Event()
 {
@@ -18,5 +16,3 @@ void AudioEvent::get_properties(Properties& props) const
 void AudioEvent::set_properties(const Properties& props)
 {
 }
-
-} // namespace mojo

@@ -2,6 +2,8 @@
 
 //////
 
+MOJO_BEGIN_NAMESPACE
+
 #include "event.cpp"
 
 #include "utils.cpp"
@@ -23,3 +25,5 @@
 
 #include "application.cpp"
 #include "application_internal.cpp"
+
+MOJO_END_NAMESPACE

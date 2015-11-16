@@ -1,5 +1,3 @@
-namespace mojo {
-
 const char* const AudioRegionEvent::s_property_audio_region = "audioregion";
 
 AudioRegionEvent::AudioRegionEvent()
@@ -22,5 +20,3 @@ void AudioRegionEvent::get_properties(Properties& props) const
 void AudioRegionEvent::set_properties(const Properties& props)
 {
 }
-
-} // namespace mojo
