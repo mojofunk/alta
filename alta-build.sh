@@ -9,33 +9,57 @@ TESTS="--with-tests"
 SINGLE_TESTS="--with-single-tests"
 RUN_TESTS="--run-tests"
 GUI="--with-gtkmm-ui"
-AMALGAMATE="--enable-amalgamation"
 OPTIMIZE="--optimize"
 DISABLE_DEBUG_LOGGING="--disable-debug-logging"
 MSVC_TOOLSET="--toolset=msvc"
 CLANG_TOOLSET="--toolset=clang"
+BACKTRACE=""
+PROFILE=""
 
+DEBUG="$TESTS $SINGLE_TESTS"
+RELEASE="$OPTIMIZE $DISABLE_DEBUG_LOGGING"
+
+declare -A gcc_config
+gcc_config["gcc-debug"]="$DEBUG"
+gcc_config["gcc-debug-static"]="$DEBUG $STATIC"
+gcc_config["gcc-release"]="$RELEASE"
+gcc_config["gcc-release-static"]="$RELEASE $STATIC"
+
+declare -A clang_config
+clang_config["clang-debug"]="$CLANG_TOOLSET $DEBUG"
+clang_config["clang-debug-static"]="$CLANG_TOOLSET $DEBUG $STATIC"
+clang_config["clang-release"]="$CLANG_TOOLSET $RELEASE"
+clang_config["clang-release-static"]="$CLANG_TOOLSET $RELEASE $STATIC"
+
+declare -A msvc_config
+msvc_config["msvc-debug"]="$MSVC_TOOLKIT $DEBUG"
+msvc_config["msvc-debug-static"]="$MSVC_TOOLKIT $DEBUG $STATIC"
+msvc_config["msvc-release"]="$MSVC_TOOLKIT $RELEASE"
+msvc_config["msvc-release-static"]="$MSVC_TOOLKIT $RELEASE $STATIC"
 
 declare -A config
-config["debug"]=""
-config["debug-tests"]="$TESTS"
-config["debug-tests-run-tests"]="$TESTS $RUN_TESTS"
-config["debug-tests-amalgamated"]="$SINGLE_TESTS $AMALGAMATE"
-config["debug-tests-static"]="$TESTS $STATIC"
-config["debug-tests-static-amalgamated"]="$TESTS $STATIC $AMALGAMATE"
-config["debug-tests-single"]="$SINGLE_TESTS"
-config["debug-tests-single-static"]="$SINGLE_TESTS $STATIC"
-config["debug-tests-single-amalgamated"]="$SINGLE_TESTS $AMALGAMATE"
-config["debug-amalgamated"]="$AMALGAMATE"
-config["debug-amalgamated-static"]="$TESTS $AMALGAMATE $STATIC"
-config["msvc-debug"]="$MSVC_TOOLSET"
-config["clang-debug"]="$CLANG_TOOLSET"
-#config["debug-gtkmm-ui"]="$GUI"
-#config["debug-gtkmm-ui-static"]="$GUI $STATIC"
-#config["debug-gtkmm-ui-amalgamated"]="$AMALGAMATE $GUI"
-config["release"]="$STATIC $AMALGAMATE $OPTIMIZE $DISABLE_DEBUG_LOGGING"
-config["release-tests"]="$AMALGAMATE $OPTIMIZE $TESTS"
-config["release-tests-single"]="$AMALGAMATE $OPTIMIZE $SINGLE_TESTS"
+
+for key in "${!gcc_config[@]}"
+	do
+  config["$key"]="${gcc_config["$key"]}"
+  # or: config+=( ["$key"]="${OTHERARRAY["$key"]}" )
+done
+
+UNAME=`uname`
+
+if [ "$UNAME" == 'Linux' ]; then
+	for key in "${!clang_config[@]}"
+		do
+		config["$key"]="${clang_config["$key"]}"
+		# or: config+=( ["$key"]="${OTHERARRAY["$key"]}" )
+	done
+else # Windows
+	for key in "${!msvc_config[@]}"
+		do
+		config["$key"]="${msvc_config["$key"]}"
+		# or: config+=( ["$key"]="${OTHERARRAY["$key"]}" )
+	done
+fi
 
 function print_usage ()
 {
