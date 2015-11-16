@@ -28,7 +28,7 @@ def options(opt):
         type='string',
         dest='toolset',
         default='auto',
-        help='Compiler and Toolset options: auto(default), gcc, msvc')
+        help='Compiler and Toolset options: auto(default), gcc, clang, msvc')
     opt.add_option(
         '--with-target-platform',
         type='string',
@@ -124,6 +124,9 @@ def configure(conf):
     if conf.env.TOOLSET == 'gcc':
         conf.load('gcc')
         conf.load('g++')
+    elif conf.env.TOOLSET == 'clang':
+        conf.load('clang')
+        conf.load('clang++')
     elif conf.env.TOOLSET == 'msvc':
         conf.load('msvc')
 
