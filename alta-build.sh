@@ -13,6 +13,7 @@ AMALGAMATE="--enable-amalgamation"
 OPTIMIZE="--optimize"
 DISABLE_DEBUG_LOGGING="--disable-debug-logging"
 MSVC_TOOLSET="--toolset=msvc"
+CLANG_TOOLSET="--toolset=clang"
 
 
 declare -A config
@@ -28,6 +29,7 @@ config["debug-tests-single-amalgamated"]="$SINGLE_TESTS $AMALGAMATE"
 config["debug-amalgamated"]="$AMALGAMATE"
 config["debug-amalgamated-static"]="$TESTS $AMALGAMATE $STATIC"
 config["msvc-debug"]="$MSVC_TOOLSET"
+config["clang-debug"]="$CLANG_TOOLSET"
 #config["debug-gtkmm-ui"]="$GUI"
 #config["debug-gtkmm-ui-static"]="$GUI $STATIC"
 #config["debug-gtkmm-ui-amalgamated"]="$AMALGAMATE $GUI"
