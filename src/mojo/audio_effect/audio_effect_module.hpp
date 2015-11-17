@@ -1,8 +1,6 @@
 #ifndef MOJO_AUDIO_EFFECT_MODULE_H
 #define MOJO_AUDIO_EFFECT_MODULE_H
 
-namespace mojo {
-
 /**
  * The AudioEffectModule interface enables support
  * for different plugin AudioEffect API's such as VST, LADSPA,
@@ -30,7 +28,5 @@ public: // Interface
 
 	virtual std::string get_plugin_api_name() const = 0;
 };
-
-} // namespace mojo
 
 #endif // MOJO_AUDIO_EFFECT_MODULE_H

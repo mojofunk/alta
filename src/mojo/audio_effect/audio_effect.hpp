@@ -1,8 +1,6 @@
 #ifndef MOJO_AUDIO_EFFECT_H
 #define MOJO_AUDIO_EFFECT_H
 
-namespace mojo {
-
 class AudioEffect {
 public:
 	typedef std::set<uint32_t> ParameterList;
@@ -32,7 +30,5 @@ public: // AudioEffect interface
 
 	virtual void set_block_size(uint32_t frames) = 0;
 };
-
-} // namespace mojo
 
 #endif // MOJO_AUDIO_EFFECT_H

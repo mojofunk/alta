@@ -1,5 +1,3 @@
-namespace mojo {
-
 LADSPAAudioEffect::LADSPAAudioEffect(LADSPAAudioEffectInfoSP info,
                                      samplerate_t rate)
     : m_library(create_library(info->get_path()))
@@ -79,5 +77,3 @@ void LADSPAAudioEffect::deactivate()
 void LADSPAAudioEffect::set_block_size(uint32_t frames)
 {
 }
-
-} // namespace mojo

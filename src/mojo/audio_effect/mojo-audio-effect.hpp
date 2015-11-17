@@ -14,13 +14,15 @@
 
 #include <mojo-core.hpp>
 
+MOJO_BEGIN_NAMESPACE
+
 #include <mojo/audio_effect/forward.hpp>
-
 #include <mojo/audio_effect/typedefs.hpp>
-
 #include <mojo/audio_effect/audio_effect.hpp>
 #include <mojo/audio_effect/audio_effect_info.hpp>
 #include <mojo/audio_effect/audio_effect_parameter_info.hpp>
 #include <mojo/audio_effect/audio_effect_module.hpp>
+
+MOJO_END_NAMESPACE
 
 #endif // MOJO_MOJO_AUDIO_EFFECT_H

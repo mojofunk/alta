@@ -1,5 +1,3 @@
-namespace mojo {
-
 LADSPAAudioEffectModule::LADSPAAudioEffectModule()
 {
 	m_plugin_dirs.push_back("/usr/local/lib64/ladspa");
@@ -107,5 +105,3 @@ MOJO_CAPI void* mojo_module_factory(void)
 {
 	return new LADSPAAudioEffectModule;
 }
-
-} // namespace mojo

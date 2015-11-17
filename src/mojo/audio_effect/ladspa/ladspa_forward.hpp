@@ -1,10 +1,6 @@
-#ifndef MOJO_LADSPA_FORWARD
-#define MOJO_LADSPA_FORWARD
-
-namespace mojo {
+#ifndef MOJO_LADSPA_FORWARD_H
+#define MOJO_LADSPA_FORWARD_H
 
 class LADSPAAudioEffectInfo;
 
-} // namespace mojo
-
-#endif
+#endif // MOJO_LADSPA_FORWARD_H

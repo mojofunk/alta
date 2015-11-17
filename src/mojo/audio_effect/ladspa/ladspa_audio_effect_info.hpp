@@ -1,8 +1,6 @@
 #ifndef MOJO_LADSPA_AUDIO_EFFECT_INFO_H
 #define MOJO_LADSPA_AUDIO_EFFECT_INFO_H
 
-namespace mojo {
-
 class LADSPAAudioEffectInfo : public AudioEffectInfo {
 public:
 	LADSPAAudioEffectInfo(const fs::path&, uint32_t index);
@@ -22,6 +20,4 @@ private:
 	const uint32_t m_index;
 };
 
-} // namespace mojo
-
-#endif
+#endif // MOJO_LADSPA_AUDIO_EFFECT_INFO_H

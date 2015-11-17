@@ -1,5 +1,3 @@
-namespace mojo {
-
 LADSPAAudioEffectInfo::LADSPAAudioEffectInfo(const fs::path& path,
                                              uint32_t index)
     : m_path(path)
@@ -44,5 +42,3 @@ uint32_t LADSPAAudioEffectInfo::get_index() const
 {
 	return m_index;
 }
-
-} // namespace mojo

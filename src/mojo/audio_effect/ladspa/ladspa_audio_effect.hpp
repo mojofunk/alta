@@ -1,8 +1,5 @@
-
-#ifndef MOJO_LADSPA_AUDIO_EFFECT
-#define MOJO_LADSPA_AUDIO_EFFECT
-
-namespace mojo {
+#ifndef MOJO_LADSPA_AUDIO_EFFECT_H
+#define MOJO_LADSPA_AUDIO_EFFECT_H
 
 class LADSPAAudioEffect : public AudioEffect {
 public: // ctors
@@ -40,6 +37,4 @@ private:
 	ParameterList m_parameters;
 };
 
-} // namespace mojo
-
-#endif
+#endif // MOJO_LADSPA_AUDIO_EFFECT_H

@@ -1,8 +1,6 @@
 #ifndef MOJO_LADSPA_AUDIO_EFFECT_MODULE_H
 #define MOJO_LADSPA_AUDIO_EFFECT_MODULE_H
 
-namespace mojo {
-
 class LADSPAAudioEffectModule : public AudioEffectModule {
 public: // constructors
 	LADSPAAudioEffectModule();
@@ -37,6 +35,4 @@ private:
 	paths_t m_plugin_dirs;
 };
 
-} // namespace mojo
-
-#endif
+#endif // MOJO_LADSPA_AUDIO_EFFECT_MODULE_H
