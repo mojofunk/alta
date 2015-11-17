@@ -1,8 +1,6 @@
 #ifndef MOJO_AUDIO_DEVICE_H
 #define MOJO_AUDIO_DEVICE_H
 
-namespace mojo {
-
 /**
  *
  */
@@ -69,7 +67,5 @@ public: // interface
 	// virtual get_min_buffer_size () const;
 	// virtual get_max_buffer_size () const;
 };
-
-} // namespace mojo
 
 #endif // MOJO_AUDIO_DEVICE_H

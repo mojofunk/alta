@@ -1,7 +1,5 @@
 MOJO_DEBUG_DOMAIN(PORTAUDIO_DEVICE)
 
-namespace mojo {
-
 PortaudioAudioDevice::PortaudioAudioDevice(PaDeviceIndex index)
     : m_device_index(index)
     , m_stream(0)
@@ -260,5 +258,3 @@ double PortaudioAudioDevice::get_cpu_load() const
 
 	return Pa_GetStreamCpuLoad(m_stream);
 }
-
-} // namespace mojo

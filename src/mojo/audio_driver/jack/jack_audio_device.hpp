@@ -4,8 +4,6 @@
 
 #include <mojo-audio-driver.hpp>
 
-namespace mojo {
-
 class JackAudioDevice : public AudioDevice {
 public: // Constructors
 	JackAudioDevice();
@@ -16,7 +14,5 @@ public: // AudioDevice interface
 
 	virtual error_t close();
 };
-
-} // namespace mojo
 
 #endif

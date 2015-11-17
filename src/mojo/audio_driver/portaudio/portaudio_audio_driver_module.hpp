@@ -4,8 +4,6 @@
 
 #include <mojo-portaudio-audio-driver.hpp>
 
-namespace mojo {
-
 class PortaudioAudioDriverModule : public AudioDriverModule {
 public: // constructors
 	PortaudioAudioDriverModule();
@@ -21,7 +19,5 @@ public: // Module interface
 public: // AudioDriverModule interface
 	AudioDriverSP create_driver() const;
 };
-
-} // namespace mojo
 
 #endif

@@ -2,8 +2,6 @@
 #ifndef PORTAUDIO_AUDIO_DEVICE
 #define PORTAUDIO_AUDIO_DEVICE
 
-namespace mojo {
-
 class PortaudioAudioDevice : public AudioDevice {
 public: // Constructors
 	PortaudioAudioDevice(PaDeviceIndex);
@@ -72,7 +70,5 @@ private: // member data
 	callback_t* m_callback;
 	void* m_user_data;
 };
-
-} // namespace mojo
 
 #endif

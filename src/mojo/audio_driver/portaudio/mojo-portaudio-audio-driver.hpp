@@ -16,8 +16,12 @@
 
 #include <portaudio.h>
 
+MOJO_BEGIN_NAMESPACE
+
 #include <mojo/audio_driver/portaudio/portaudio_audio_device.hpp>
 #include <mojo/audio_driver/portaudio/portaudio_audio_driver.hpp>
 #include <mojo/audio_driver/portaudio/portaudio_audio_driver_module.hpp>
+
+MOJO_END_NAMESPACE
 
 #endif // MOJO_MOJO_PORTAUDIO_AUDIO_DRIVER_H

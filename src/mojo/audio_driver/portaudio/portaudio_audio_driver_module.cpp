@@ -1,8 +1,6 @@
 
 #include <mojo-portaudio-audio-driver.hpp>
 
-namespace mojo {
-
 PortaudioAudioDriverModule::PortaudioAudioDriverModule()
 {
 }
@@ -35,5 +33,3 @@ MOJO_CAPI void* mojo_module_factory(void)
 {
 	return new PortaudioAudioDriverModule;
 }
-
-} // namespace mojo

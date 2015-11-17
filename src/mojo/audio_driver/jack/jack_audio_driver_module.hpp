@@ -4,8 +4,6 @@
 
 #include "mojo-audio-driver.hpp"
 
-namespace mojo {
-
 class JACKAudioDriverModule : public AudioDriverModule {
 public: // constructors
 	JACKAudioDriverModule();
@@ -23,7 +21,5 @@ public: // AudioDriverModule interface
 
 private: // member data
 };
-
-} // namespace mojo
 
 #endif

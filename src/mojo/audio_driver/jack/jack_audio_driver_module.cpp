@@ -1,8 +1,6 @@
 
 #include "jack_audio_driver_module.hpp"
 
-namespace mojo {
-
 JACKAudioDriverModule::JACKAudioDriverModule()
 {
 }
@@ -35,5 +33,3 @@ MOJO_CAPI void* mojo_module_factory(void)
 {
 	return new JACKAudioDriverModule;
 }
-
-} // namespace mojo

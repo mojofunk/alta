@@ -1,7 +1,5 @@
 MOJO_DEBUG_DOMAIN(PORTAUDIO_DRIVER)
 
-namespace mojo {
-
 PortaudioAudioDriver::PortaudioAudioDriver()
     : m_initialized(false)
 {
@@ -68,5 +66,3 @@ void PortaudioAudioDriver::discover_devices(AudioDeviceSPSet& devices)
 		devices.insert(device);
 	}
 }
-
-} // namespace mojo

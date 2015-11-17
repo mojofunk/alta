@@ -1,8 +1,6 @@
 #ifndef MOJO_AUDIO_DRIVER_MODULE_H
 #define MOJO_AUDIO_DRIVER_MODULE_H
 
-namespace mojo {
-
 /**
  *
  */
@@ -23,7 +21,5 @@ public: // interface
 protected: // ctors
 	AudioDriverModule();
 };
-
-} // namespace mojo
 
 #endif // MOJO_AUDIO_DRIVER_MODULE_H

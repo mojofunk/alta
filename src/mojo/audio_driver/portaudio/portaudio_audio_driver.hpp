@@ -1,8 +1,6 @@
 #ifndef PORTAUDIO_AUDIO_DRIVER_H
 #define PORTAUDIO_AUDIO_DRIVER_H
 
-namespace mojo {
-
 class PortaudioAudioDriver : public AudioDriver {
 public: // constructors
 	PortaudioAudioDriver();
@@ -20,7 +18,5 @@ private: // methods
 private: // member data
 	bool m_initialized;
 };
-
-} // namespace mojo
 
 #endif
