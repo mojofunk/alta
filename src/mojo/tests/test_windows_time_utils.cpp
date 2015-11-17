@@ -4,19 +4,156 @@
 
 #include "test_includes.hpp"
 
-BOOST_AUTO_TEST_CASE(test_windows_time_utils_basic)
+#include <windows.h>
+
+BOOST_AUTO_TEST_CASE(test_windows_qpc_timer)
 {
-	uint32_t orig_res = 0;
-	BOOST_CHECK(utils::get_mm_timer_resolution(orig_res));
+	// performs basically the same test
+	BOOST_CHECK (qpc::check_timer_valid());
 
-	BOOST_TEST_MESSAGE(compose("Original min MM timer resolution: %", orig_res));
+	int64_t last_timer_val = qpc::get_microseconds ();
+	BOOST_CHECK (last_timer_val >= 0);
 
-	BOOST_CHECK(utils::set_mm_timer_resolution(1));
+	int64_t min_interval = 1000000;
+	int64_t max_interval = 0;
 
-	BOOST_CHECK(utils::reset_mm_timer_resolution());
-	uint32_t current_res = 0;
+	for (int i = 0; i < 10000; ++i) {
+		int64_t timer_val = qpc::get_microseconds ();
+		BOOST_CHECK (timer_val >= 0);
+		// try and test for non-syncronized TSC(AMD K8/etc)
+		BOOST_CHECK (timer_val >= last_timer_val);
+		min_interval = std::min (min_interval, timer_val - last_timer_val);
+		// We may get swapped out so a max interval is not so informative
+		max_interval = std::max (max_interval, timer_val - last_timer_val);
+		last_timer_val = timer_val;
+	}
 
-	// check that reset was successful
-	BOOST_CHECK(utils::get_mm_timer_resolution(current_res));
-	BOOST_CHECK(current_res == orig_res);
+	cout << endl;
+	cout << "Min QPC interval = " << min_interval << endl;
+	cout << "Max QPC interval = " << max_interval << endl;
+}
+
+namespace {
+
+void get_tgt_granularity(uint32_t& min_elapsed,
+                         uint32_t& max_elapsed,
+                         uint32_t& avg_elapsed)
+{
+	min_elapsed = 1000;
+	max_elapsed = 0;
+	uint32_t count = 64;
+	uint32_t total_elapsed = 0;
+
+	uint32_t last_time_ms = timeGetTime();
+	for (uint32_t i = 0; i < count;) {
+		uint32_t current_time_ms = timeGetTime();
+		if (current_time_ms == last_time_ms) continue;
+		uint32_t elapsed = current_time_ms - last_time_ms;
+		cout << "TGT elapsed = " << elapsed << endl;
+		min_elapsed = std::min (min_elapsed, elapsed);
+		max_elapsed = std::max (max_elapsed, elapsed);
+		total_elapsed += elapsed;
+		last_time_ms = current_time_ms;
+		++i;
+	}
+	avg_elapsed = total_elapsed / count;
+}
+
+void get_sleep_granularity(uint32_t& min_elapsed,
+                           uint32_t& max_elapsed,
+                           uint32_t& avg_elapsed)
+{
+	min_elapsed = 1000;
+	max_elapsed = 0;
+	uint32_t count = 64;
+	uint32_t total_elapsed = 0;
+
+	uint32_t last_time_ms = timeGetTime();
+	for (uint32_t i = 0; i < count; ++i) {
+		Sleep(1);
+		uint32_t current_time_ms = timeGetTime();
+		uint32_t elapsed = current_time_ms - last_time_ms;
+		cout << "Sleep elapsed = " << elapsed << endl;
+		min_elapsed = std::min (min_elapsed, elapsed);
+		max_elapsed = std::max (max_elapsed, elapsed);
+		total_elapsed += elapsed;
+		last_time_ms = current_time_ms;
+	}
+	// the rounding here doesn't matter, we aren't interested in
+	// accurate measurements
+	avg_elapsed = total_elapsed / count;
+}
+
+void
+test_tgt_granularity (const std::string& test_name, uint32_t& tgt_avg_elapsed)
+{
+	uint32_t tgt_min_elapsed = 0;
+	uint32_t tgt_max_elapsed = 0;
+
+	get_tgt_granularity(
+	    tgt_min_elapsed, tgt_max_elapsed, tgt_avg_elapsed);
+
+	cout << endl;
+	cout << "TGT " << test_name << " min elapsed = " << tgt_min_elapsed << endl;
+	cout << "TGT " << test_name << " max elapsed = " << tgt_max_elapsed << endl;
+	cout << "TGT " << test_name << " avg elapsed = " << tgt_avg_elapsed << endl;
+}
+
+void
+test_sleep_granularity (const std::string& test_name, uint32_t& sleep_avg_elapsed)
+{
+	uint32_t sleep_min_elapsed = 0;
+	uint32_t sleep_max_elapsed = 0;
+
+	get_sleep_granularity(
+	    sleep_min_elapsed, sleep_max_elapsed, sleep_avg_elapsed);
+
+	cout << endl;
+	cout << "Sleep " << test_name << " min elapsed = " << sleep_min_elapsed << endl;
+	cout << "Sleep " << test_name << " max elapsed = " << sleep_max_elapsed << endl;
+	cout << "Sleep " << test_name << " avg elapsed = " << sleep_avg_elapsed << endl;
+}
+
+} // namespace
+
+BOOST_AUTO_TEST_CASE(test_windows_mmtimers)
+{
+	uint32_t min_timer_res = 0;
+	BOOST_CHECK (mmtimers::get_min_resolution (min_timer_res));
+	BOOST_CHECK (min_timer_res == 1);
+
+	uint32_t avg_orig_res_tgt_elapsed = 0;
+
+	test_tgt_granularity ("Original Timer Resolution", avg_orig_res_tgt_elapsed);
+
+	uint32_t avg_orig_res_sleep_elapsed = 0;
+
+	test_sleep_granularity ("Original Timer Resolution", avg_orig_res_sleep_elapsed);
+
+	// set the min timer resolution
+	BOOST_CHECK (mmtimers::set_min_resolution ());
+
+	uint32_t avg_min_res_tgt_elapsed = 0;
+
+	test_tgt_granularity ("Minimum Timer Resolution", avg_min_res_tgt_elapsed);
+
+	// test that it the avg granularity is the same as miniumum resolution
+	BOOST_CHECK (avg_min_res_tgt_elapsed == 1);
+
+	uint32_t avg_min_res_sleep_elapsed = 0;
+
+	test_sleep_granularity ("Minimum Timer Resolution", avg_min_res_sleep_elapsed);
+
+	// In a heavily loaded system and without running this test with raised
+	// scheduling priority we can't assume that the sleep granularity is the
+	// same as the minimum timer resolution so give it 1ms of slack, if it is
+	// greater than that then there likely is a problem that needs
+	// investigating.
+	BOOST_CHECK (avg_min_res_sleep_elapsed <= 2);
+
+	BOOST_CHECK (mmtimers::reset_resolution());
+
+	// You can't test setting the max timer resolution because AFAIR Windows
+	// will use the minimum requested resolution of all the applications on the
+	// system.
 }

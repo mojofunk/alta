@@ -51,7 +51,7 @@ namespace mojo {
 #ifdef MOJO_WINDOWS
 #include "native/windows_source_includes.hpp"
 #include "native/windows_mmcss.cpp"
-#include "native/windows_time_utils.cpp"
+#include "native/windows_timer_utils.cpp"
 #endif
 
 } // namespace mojo

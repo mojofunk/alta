@@ -95,7 +95,7 @@ MOJO_BEGIN_NAMESPACE
 
 #ifdef MOJO_WINDOWS
 #include "native/windows_mmcss.hpp"
-#include "native/windows_time_utils.hpp"
+#include "native/windows_timer_utils.hpp"
 #endif
 
 MOJO_END_NAMESPACE

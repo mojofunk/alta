@@ -78,6 +78,12 @@ def configure(conf):
     if not conf.env.BUILD_TESTS:
         return
 
+    if conf.env.TARGET_PLATFORM == 'windows':
+        conf.check(compiler='c',
+                   lib='winmm',
+                   mandatory=True,
+                   uselib_store='WINMM')
+
     print ("configure mojo tests")
 
 
@@ -171,6 +177,8 @@ def build(bld):
 
     if bld.env.TARGET_PLATFORM == 'windows':
         local_tests += windows_tests
+        global uselibs
+        uselibs += ['WINMM']
 
     for test in local_tests:
         all_test_sources.append(test + '.cpp')
