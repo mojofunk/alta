@@ -1,8 +1,6 @@
 #ifndef MOJO_AUDIO_FILE_H
 #define MOJO_AUDIO_FILE_H
 
-namespace mojo {
-
 class AudioFile {
 public:
 	virtual ~AudioFile();
@@ -31,7 +29,5 @@ public:
 protected:
 	AudioFile();
 };
-
-} // namespace mojo
 
 #endif // MOJO_AUDIO_FILE_H

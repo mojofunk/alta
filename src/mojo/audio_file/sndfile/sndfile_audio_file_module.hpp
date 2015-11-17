@@ -1,8 +1,6 @@
 #ifndef MOJO_SNDFILE_AUDIO_FILE_MODULE_H
 #define MOJO_SNDFILE_AUDIO_FILE_MODULE_H
 
-namespace mojo {
-
 class SndfileAudioFileModule : public AudioFileModule {
 public: // constructors
 	SndfileAudioFileModule();
@@ -38,6 +36,4 @@ private: // member functions
 	static void get_writable_formats(AudioFileFormatSPSet&);
 };
 
-} // namespace mojo
-
-#endif
+#endif // MOJO_SNDFILE_AUDIO_FILE_MODULE_H

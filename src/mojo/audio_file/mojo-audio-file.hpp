@@ -14,12 +14,14 @@
 
 #include <mojo-core.hpp>
 
+MOJO_BEGIN_NAMESPACE
+
 #include <mojo/audio_file/forward.hpp>
-
 #include <mojo/audio_file/typedefs.hpp>
-
 #include <mojo/audio_file/audio_file.hpp>
 #include <mojo/audio_file/audio_file_format.hpp>
 #include <mojo/audio_file/audio_file_module.hpp>
+
+MOJO_END_NAMESPACE
 
 #endif // MOJO_MOJO_AUDIO_FILE_H

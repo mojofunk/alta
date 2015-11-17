@@ -1,5 +1,3 @@
-namespace mojo {
-
 SndfileAudioFileModule::SndfileAudioFileModule()
 {
 	get_readable_formats(m_readable_formats);
@@ -99,5 +97,3 @@ MOJO_CAPI void* mojo_module_factory(void)
 {
 	return new SndfileAudioFileModule;
 }
-
-} // namespace mojo

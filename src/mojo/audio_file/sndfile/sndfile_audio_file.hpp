@@ -1,8 +1,6 @@
 #ifndef MOJO_SNDFILE_AUDIO_FILE_H
 #define MOJO_SNDFILE_AUDIO_FILE_H
 
-namespace mojo {
-
 class SndfileException : public std::runtime_error {
 public:
 	SndfileException(const std::string& what)
@@ -40,6 +38,4 @@ private:
 	AudioFileFormatSP m_format;
 };
 
-} // namespace mojo
-
-#endif
+#endif // MOJO_SNDFILE_AUDIO_FILE_H

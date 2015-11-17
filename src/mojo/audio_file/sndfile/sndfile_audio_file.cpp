@@ -1,6 +1,4 @@
-namespace mojo {
-
-SndfileAudioFile::SndfileAudioFile(const string& path)
+SndfileAudioFile::SndfileAudioFile(const std::string& path)
     : m_path(path)
     , m_sf(0)
 {
@@ -56,5 +54,3 @@ channel_count_t SndfileAudioFile::channels() const
 {
 	return m_info.channels;
 }
-
-} // namespace mojo

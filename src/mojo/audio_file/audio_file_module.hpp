@@ -1,8 +1,6 @@
 #ifndef MOJO_AUDIO_FILE_MODULE_H
 #define MOJO_AUDIO_FILE_MODULE_H
 
-namespace mojo {
-
 class AudioFileModule : public Module {
 public: // constructors
 	~AudioFileModule();
@@ -37,7 +35,5 @@ public: // interface
 protected: // constructors
 	AudioFileModule();
 };
-
-} // namespace mojo
 
 #endif // MOJO_AUDIO_FILE_MODULE_H
