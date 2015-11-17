@@ -1,8 +1,6 @@
 #ifndef MOJO_ENGINE_H
 #define MOJO_ENGINE_H
 
-namespace mojo {
-
 /**
  * Time taken to process the Engine graph is determined by external means. The
  * Engine is only concerned with ensuring the nodes are processed in the
@@ -131,7 +129,5 @@ public: // Interface
 private:
 	// TODO Make NonCopyable
 };
-
-} // namespace mojo
 
 #endif // MOJO_ENGINE_H

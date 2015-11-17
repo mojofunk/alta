@@ -1,8 +1,6 @@
 #ifndef MOJO_NODE_H
 #define MOJO_NODE_H
 
-namespace mojo {
-
 class Node {
 public:
 	/**
@@ -30,7 +28,5 @@ private:
 	std::set<Node*> m_in_edges;
 	std::set<Node*> m_out_edges;
 };
-
-} // namespace mojo
 
 #endif // MOJO_NODE_H

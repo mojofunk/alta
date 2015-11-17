@@ -1,5 +1,3 @@
-namespace mojo {
-
 void Graph::insert(Node* node)
 {
 	m_nodes.insert(node);
@@ -32,5 +30,3 @@ void Graph::reset_processing()
 void Graph::iterate() const
 {
 }
-
-} // namespace mojo

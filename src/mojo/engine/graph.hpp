@@ -1,8 +1,6 @@
 #ifndef MOJO_GRAPH_H
 #define MOJO_GRAPH_H
 
-namespace mojo {
-
 class Node;
 
 /**
@@ -42,7 +40,5 @@ public:
 private:
 	std::set<Node*> m_nodes;
 };
-
-} // namespace mojo
 
 #endif // MOJO_GRAPH_H

@@ -1,8 +1,6 @@
 #ifndef MOJO_ENGINE_EDGE_H
 #define MOJO_ENGINE_EDGE_H
 
-namespace mojo {
-
 /**
  * Use the name Edge rather than Connection as we may want to use that
  * identifier in another context.
@@ -18,7 +16,5 @@ public:
 private:
 	void* m_user_data;
 };
-
-} // namespace mojo
 
 #endif // MOJO_ENGINE_EDGE_H
