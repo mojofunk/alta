@@ -11,7 +11,7 @@ WinMMEMIDIInputDevice::~WinMMEMIDIInputDevice()
 std::string WinMMEMIDIInputDevice::get_name() const
 {
 	// TODO
-	return string();
+	return std::string();
 }
 
 MIDIDevice::error_t WinMMEMIDIInputDevice::open(time_callback_t* callback,

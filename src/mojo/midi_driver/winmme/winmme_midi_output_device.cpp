@@ -11,7 +11,7 @@ WinMMEMIDIOutputDevice::~WinMMEMIDIOutputDevice()
 std::string WinMMEMIDIOutputDevice::get_name() const
 {
 	// TODO
-	return string();
+	return std::string();
 }
 
 MIDIDevice::error_t WinMMEMIDIOutputDevice::open(time_callback_t* callback,
