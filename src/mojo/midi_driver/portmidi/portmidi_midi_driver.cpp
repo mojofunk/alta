@@ -1,7 +1,5 @@
 MOJO_DEBUG_DOMAIN(PORTMIDI_DRIVER);
 
-namespace mojo {
-
 PortmidiMIDIDriver::PortmidiMIDIDriver()
     : m_initialized(false)
 {
@@ -84,5 +82,3 @@ void PortmidiMIDIDriver::refresh_devices()
 		}
 	}
 }
-
-} // namespace mojo

@@ -1,5 +1,3 @@
-namespace mojo {
-
 PortmidiMIDIDriverModule::~PortmidiMIDIDriverModule()
 {
 }
@@ -32,5 +30,3 @@ MOJO_CAPI void* mojo_module_factory(void)
 {
 	return new PortmidiMIDIDriverModule;
 }
-
-} // namespace mojo

@@ -1,7 +1,5 @@
 MOJO_DEBUG_DOMAIN(WINMME_OUTPUT_DEVICE)
 
-namespace mojo {
-
 WinMMEMIDIOutputDevice::WinMMEMIDIOutputDevice(/* TODO */)
 {
 }
@@ -36,5 +34,3 @@ MIDIDevice::error_t WinMMEMIDIOutputDevice::write(Event* buffer, int32_t size)
 {
 	// TODO
 }
-
-} // namespace mojo

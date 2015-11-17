@@ -1,7 +1,5 @@
 MOJO_DEBUG_DOMAIN(WINMME_DRIVER);
 
-namespace mojo {
-
 WinMMEMIDIDriver::WinMMEMIDIDriver()
     : m_initialized(false)
 {
@@ -45,5 +43,3 @@ void WinMMEMIDIDriver::refresh_devices()
 {
 	// TODO
 }
-
-} // namespace mojo

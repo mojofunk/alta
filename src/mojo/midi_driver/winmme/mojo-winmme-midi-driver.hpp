@@ -14,9 +14,13 @@
 
 #include <mojo-midi-driver.hpp>
 
+MOJO_BEGIN_NAMESPACE
+
 #include <mojo/midi_driver/winmme/winmme_midi_input_device.hpp>
 #include <mojo/midi_driver/winmme/winmme_midi_output_device.hpp>
 #include <mojo/midi_driver/winmme/winmme_midi_driver.hpp>
 #include <mojo/midi_driver/winmme/winmme_midi_driver_module.hpp>
+
+MOJO_END_NAMESPACE
 
 #endif // MOJO_MOJO_WINMME_MIDI_DRIVER_H

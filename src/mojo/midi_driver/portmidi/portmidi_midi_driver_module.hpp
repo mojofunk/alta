@@ -1,8 +1,6 @@
 #ifndef MOJO_PORTMIDI_MIDI_DRIVER_MODULE_H
 #define MOJO_PORTMIDI_MIDI_DRIVER_MODULE_H
 
-namespace mojo {
-
 /**
  *
  */
@@ -21,7 +19,5 @@ public: // Module interface
 public: // interface
 	virtual MIDIDriverSP create_driver() const;
 };
-
-} // namespace mojo
 
 #endif // MOJO_PORTMIDI_MIDI_DRIVER_MODULE_H

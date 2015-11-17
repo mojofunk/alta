@@ -18,9 +18,13 @@
 #include <pmutil.h>
 #include <porttime.h>
 
+MOJO_BEGIN_NAMESPACE
+
 #include <mojo/midi_driver/portmidi/portmidi_midi_input_device.hpp>
 #include <mojo/midi_driver/portmidi/portmidi_midi_output_device.hpp>
 #include <mojo/midi_driver/portmidi/portmidi_midi_driver.hpp>
 #include <mojo/midi_driver/portmidi/portmidi_midi_driver_module.hpp>
+
+MOJO_END_NAMESPACE
 
 #endif // MOJO_MOJO_PORTMIDI_MIDI_DRIVER_H

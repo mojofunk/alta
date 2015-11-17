@@ -1,7 +1,5 @@
 MOJO_DEBUG_DOMAIN(PORTMIDI_OUTPUT_DEVICE)
 
-namespace mojo {
-
 PortmidiMIDIOutputDevice::PortmidiMIDIOutputDevice(PmDeviceID id)
     : m_id(id)
     , m_stream(NULL)
@@ -73,5 +71,3 @@ PmDeviceInfo const* PortmidiMIDIOutputDevice::get_device_info() const
 {
 	return Pm_GetDeviceInfo(m_id);
 }
-
-} // namespace mojo

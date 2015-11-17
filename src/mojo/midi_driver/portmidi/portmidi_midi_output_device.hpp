@@ -1,8 +1,6 @@
 #ifndef MOJO_PORTMIDI_MIDI_OUTPUT_DEVICE_H
 #define MOJO_PORTMIDI_MIDI_OUTPUT_DEVICE_H
 
-namespace mojo {
-
 /**
  *
  */
@@ -30,7 +28,5 @@ private: // data
 	PmDeviceID m_id;
 	PortMidiStream* m_stream;
 };
-
-} // namespace mojo
 
 #endif // MOJO_PORTMIDI_MIDI_OUTPUT_DEVICE_H

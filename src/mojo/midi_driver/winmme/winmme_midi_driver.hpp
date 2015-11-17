@@ -1,8 +1,6 @@
 #ifndef MOJO_WINMME_MIDI_DRIVER_H
 #define MOJO_WINMME_MIDI_DRIVER_H
 
-namespace mojo {
-
 class WinMMEMIDIDriver : public MIDIDriver {
 public: // ctors
 	WinMMEMIDIDriver();
@@ -26,7 +24,5 @@ private: // member data
 
 	MIDIOutputDeviceSPSet m_outputs;
 };
-
-} // namespace mojo
 
 #endif // MOJO_WINMME_MIDI_DRIVER_H

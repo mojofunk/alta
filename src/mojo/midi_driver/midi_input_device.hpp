@@ -1,8 +1,6 @@
 #ifndef MOJO_MIDI_INPUT_DEVICE_H
 #define MOJO_MIDI_INPUT_DEVICE_H
 
-namespace mojo {
-
 /**
  *
  */
@@ -22,7 +20,5 @@ public: // MIDIInputDevice interface
 	// error handling?
 	virtual uint32_t read(Event* buffer, int32_t size) = 0;
 };
-
-} // namespace mojo
 
 #endif // MOJO_MIDI_INPUT_DEVICE_H

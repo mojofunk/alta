@@ -1,8 +1,6 @@
 #ifndef MOJO_MIDI_DEVICE_H
 #define MOJO_MIDI_DEVICE_H
 
-namespace mojo {
-
 /**
  *
  */
@@ -33,7 +31,5 @@ public: // MIDIDevice interface
 
 	virtual std::string get_error_string(error_t) = 0;
 };
-
-} // namespace mojo
 
 #endif // MOJO_MIDI_DEVICE_H

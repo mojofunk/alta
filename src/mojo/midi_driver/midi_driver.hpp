@@ -1,8 +1,6 @@
 #ifndef MOJO_MIDI_DRIVER_H
 #define MOJO_MIDI_DRIVER_H
 
-namespace mojo {
-
 class MIDIDriver {
 public: // ctors
 	virtual ~MIDIDriver();
@@ -15,7 +13,5 @@ public: // interface
 protected: // ctors
 	MIDIDriver();
 };
-
-} // namespace mojo
 
 #endif // MOJO_MIDI_DRIVER_H

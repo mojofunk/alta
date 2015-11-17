@@ -1,8 +1,6 @@
 #ifndef MOJO_WINMME_MIDI_OUTPUT_DEVICE_H
 #define MOJO_WINMME_MIDI_OUTPUT_DEVICE_H
 
-namespace mojo {
-
 /**
  *
  */
@@ -26,7 +24,5 @@ public: // MIDIOutputDevice interface
 private: // methods
 private: // data
 };
-
-} // namespace mojo
 
 #endif // MOJO_WINMME_MIDI_OUTPUT_DEVICE_H

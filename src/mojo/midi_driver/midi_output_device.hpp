@@ -1,8 +1,6 @@
 #ifndef MOJO_MIDI_OUTPUT_DEVICE_H
 #define MOJO_MIDI_OUTPUT_DEVICE_H
 
-namespace mojo {
-
 /**
  *
  */
@@ -20,7 +18,5 @@ public: // MIDIDevice interface
 public: // MIDIOutputDevice interface
 	virtual error_t write(MIDIDevice::Event* buffer, int32_t size) = 0;
 };
-
-} // namespace mojo
 
 #endif // MOJO_MIDI_OUTPUT_DEVICE_H

@@ -1,7 +1,5 @@
 MOJO_DEBUG_DOMAIN(WINMME_INPUT_DEVICE)
 
-namespace mojo {
-
 WinMMEMIDIInputDevice::WinMMEMIDIInputDevice(/* TODO */)
 {
 }
@@ -36,5 +34,3 @@ uint32_t WinMMEMIDIInputDevice::read(Event* buffer, int32_t size)
 {
 	// TODO
 }
-
-} // namespace mojo

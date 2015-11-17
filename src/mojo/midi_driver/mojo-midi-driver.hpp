@@ -14,6 +14,8 @@
 
 #include <mojo-core.hpp>
 
+MOJO_BEGIN_NAMESPACE
+
 #include <mojo/midi_driver/forward.hpp>
 #include <mojo/midi_driver/typedefs.hpp>
 #include <mojo/midi_driver/midi_device.hpp>
@@ -21,5 +23,7 @@
 #include <mojo/midi_driver/midi_output_device.hpp>
 #include <mojo/midi_driver/midi_driver.hpp>
 #include <mojo/midi_driver/midi_driver_module.hpp>
+
+MOJO_END_NAMESPACE
 
 #endif // MOJO_MOJO_MIDI_DRIVER_H
