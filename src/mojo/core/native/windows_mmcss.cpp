@@ -97,6 +97,23 @@ bool set_thread_characteristics(const std::string& task_name,
 		MOJO_DEBUG_MSG(
 		    WINDOWS_MMCSS,
 		    compose("Failed to set Thread Characteristics to %", task_name));
+		DWORD error = GetLastError();
+
+		switch (error) {
+		case ERROR_INVALID_TASK_INDEX:
+			MOJO_DEBUG_MSG(WINDOWS_MMCSS, "Invalid Task Index");
+			break;
+		case ERROR_INVALID_TASK_NAME:
+			MOJO_DEBUG_MSG(WINDOWS_MMCSS, "Invalid Task Name");
+			break;
+		case ERROR_PRIVILEGE_NOT_HELD:
+			MOJO_DEBUG_MSG(WINDOWS_MMCSS, "MMCSS: Privilege not held");
+			break;
+		default:
+			MOJO_DEBUG_MSG(WINDOWS_MMCSS,
+			               "MMCSS: Unknown error setting thread characteristics");
+			break;
+		}
 		return false;
 	}
 
