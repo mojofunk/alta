@@ -17,19 +17,24 @@ public:
 
 /**
  * An instance of a class deriving from TestObject must be held in a
- * std::shared_ptr as TestObject derives from std::enable_shared_from_this<TestObject>
+ * std::shared_ptr as TestObject derives from
+ *std::enable_shared_from_this<TestObject>
  *
- * The lifetime of a class deriving from TestObject can be controlled in two ways.
+ * The lifetime of a class deriving from TestObject can be controlled in two
+ *ways.
  *
  * The shared_ptr is created by client code and the lifetime of the object is
  * controlled by the number of shared_ptr instances. When the last shared_ptr
- * instance is destructed the TestObject derived destructor is called as per usual
+ * instance is destructed the TestObject derived destructor is called as per
+ *usual
  * shared_ptr usage.
  *
  * Or the shared_ptr is created via TestObjectManager::create<Type>() factory
- * interface in which case the TestObjectManager holds an extra strong reference.
+ * interface in which case the TestObjectManager holds an extra strong
+ *reference.
  * The TestObject manager will periodically check if it is the only reference
- * holder to the TestObject instance and if so drop its reference so the destructor
+ * holder to the TestObject instance and if so drop its reference so the
+ *destructor
  * is called. The other situation is when an TestObject instance is forcefully
  * destroyed with object->destroy() which indicates to strong reference holders
  * to drop their references. The manager will receive the drop_references
@@ -38,7 +43,8 @@ public:
  * certain period of time there may be a strong reference that isn't going out
  * of scope when it should.
  *
- * An TestObjectManager is used to be able to control when and in which thread an
+ * An TestObjectManager is used to be able to control when and in which thread
+ *an
  * TestObject instance is deleted.
  *
  * The TestObject destructor should only be called when there are no other
@@ -60,16 +66,22 @@ public:
  * reference holder queues for the reference to be dropped in whatever threads
  * it knows may hold a reference to the TestObject instance.
  *
- * In the case of a single threaded GUI where an TestObject instance is created in
+ * In the case of a single threaded GUI where an TestObject instance is created
+ *in
  * a non-GUI thread and a callback is executed to tell the GUI about the new
- * TestObject the GUI code must immediately register a callback to handle forceful
- * destruction and then queue the new TestObject to be handled by the GUI thread.
+ * TestObject the GUI code must immediately register a callback to handle
+ *forceful
+ * destruction and then queue the new TestObject to be handled by the GUI
+ *thread.
  * This ensures that if a forceful destruction of the instance occurs before
- * the GUI has processed the new TestObject it can still queue the reference to be
+ * the GUI has processed the new TestObject it can still queue the reference to
+ *be
  * dropped and it won't miss the forceful destruction signal.
  *
- * Using the TestObjectManager class should be optional for TestObject derived classes
- * and the TestObject class should not hold a reference to the TestObjectManager class
+ * Using the TestObjectManager class should be optional for TestObject derived
+ *classes
+ * and the TestObject class should not hold a reference to the TestObjectManager
+ *class
  *
  * This implies that TestObject creation should occur through a central factory
  * interface where TestObject instances are created and then registered with the
@@ -80,7 +92,8 @@ public:
  * we may want to handle object destruction in a low priority thread and or
  * only run the thread for a maximum period of time etc.
  *
- * If the destroy method is called on an TestObject instance the TestObjectManager will
+ * If the destroy method is called on an TestObject instance the
+ *TestObjectManager will
  * queue that instance for final destruction. The TestObjectManager can easily
  * detect if any references are being held when they shouldn't if the reference
  * count is still > 1 after a sufficient period of time has elapsed for all
@@ -129,7 +142,8 @@ public:
 	}
 
 	/**
-	 * The TestObjectReferenceOwner must still hold at least one strong reference to
+	 * The TestObjectReferenceOwner must still hold at least one strong reference
+	 * to
 	 * this instance when calling remove_reference_owner. It is assumed that the
 	 * first thing they do after calling remove_reference is actually dropping
 	 * all the strong references they do hold.

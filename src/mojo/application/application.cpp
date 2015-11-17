@@ -29,8 +29,8 @@ void Application::iteration(bool block)
 void Application::new_project()
 {
 	MOJO_DEBUG(APPLICATION);
-	s_instance->data->worker.call_async(boost::bind(
-	    &Application::new_project_internal, boost::ref(*s_instance)));
+	s_instance->data->worker.call_async(
+	    boost::bind(&Application::new_project_internal, boost::ref(*s_instance)));
 }
 
 void Application::open_project(const std::string& project_file)
@@ -148,17 +148,17 @@ ArchiveSP Application::create_archive()
 
 void Application::register_types()
 {
+	types::register_type(TypeFactorySP(new TemplateTypeFactory<ObjectCollection>(
+	    TypeNames::collection_type_name)));
 	types::register_type(TypeFactorySP(
-	    new TemplateTypeFactory<ObjectCollection>(TypeNames::collection_type_name)));
-	types::register_type(
-	    TypeFactorySP(new TemplateTypeFactory<ObjectSP>(TypeNames::object_ref_type_name)));
+	    new TemplateTypeFactory<ObjectSP>(TypeNames::object_ref_type_name)));
 
-	types::register_type(
-	    TypeFactorySP(new TemplateTypeFactory<AudioTrack>(TypeNames::audio_track_type_name)));
-	types::register_type(
-	    TypeFactorySP(new TemplateTypeFactory<MidiTrack>(TypeNames::midi_track_type_name)));
 	types::register_type(TypeFactorySP(
-	    new TemplateTypeFactory<AudioSequence>(TypeNames::audio_sequence_type_name)));
-	types::register_type(
-	    TypeFactorySP(new TemplateTypeFactory<AudioEvent>(TypeNames::audio_event_type_name)));
+	    new TemplateTypeFactory<AudioTrack>(TypeNames::audio_track_type_name)));
+	types::register_type(TypeFactorySP(
+	    new TemplateTypeFactory<MidiTrack>(TypeNames::midi_track_type_name)));
+	types::register_type(TypeFactorySP(new TemplateTypeFactory<AudioSequence>(
+	    TypeNames::audio_sequence_type_name)));
+	types::register_type(TypeFactorySP(
+	    new TemplateTypeFactory<AudioEvent>(TypeNames::audio_event_type_name)));
 }

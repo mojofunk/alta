@@ -153,7 +153,7 @@ private:
 
 BOOST_AUTO_TEST_CASE(basic_logging_test)
 {
-	log_initialize ();
+	log_initialize();
 	Log test_log;
 
 	Logger test_logger(test_log, "test_logger");
@@ -164,7 +164,7 @@ BOOST_AUTO_TEST_CASE(basic_logging_test)
 	                         __LINE__,
 	                         __FILE__,
 	                         G_STRFUNC);
-	log_deinitialize ();
+	log_deinitialize();
 }
 
 Log& get_macro_test_log()
@@ -192,9 +192,9 @@ T_DECLARE_LOGGER(macro_test)
 
 T_LOGGER(get_macro_test_log(), macro_test)
 
-#define T_LOG(Name, Message)                                                 \
-	Name_logger().send_message(Message,                                         \
-	                           get_macro_test_thread_map().get_name(),     \
+#define T_LOG(Name, Message)                                                   \
+	Name_logger().send_message(Message,                                           \
+	                           get_macro_test_thread_map().get_name(),            \
 	                           GlibTimeStampSource::get_timestamp_microseconds(), \
 	                           __LINE__,                                          \
 	                           __FILE__,                                          \
@@ -203,7 +203,7 @@ T_LOGGER(get_macro_test_log(), macro_test)
 // Log a record of a function call
 #define T_LOG_CALL(Name)                                                       \
 	Name_logger().send_message("Timestamp",                                       \
-	                           get_macro_test_thread_map().get_name(),     \
+	                           get_macro_test_thread_map().get_name(),            \
 	                           GlibTimeStampSource::get_timestamp_microseconds(), \
 	                           __LINE__,                                          \
 	                           __FILE__,                                          \
@@ -222,8 +222,6 @@ BOOST_AUTO_TEST_CASE(logging_macro_test)
 	get_macro_test_thread_map().erase_name("logging_macro_test_thread");
 	log_deinitialize();
 }
-
-
 
 // Total number of bytes that have been allocated using operator new
 std::size_t operator_new_bytes_allocated = 0;
@@ -379,5 +377,4 @@ BOOST_AUTO_TEST_CASE(logging_no_cache_test)
 	 * Test that logging still works without using a cache for logging strings
 	 * etc. call log_initialize with empty CacheOptions/LogNoCacheOption
 	 */
-
 }

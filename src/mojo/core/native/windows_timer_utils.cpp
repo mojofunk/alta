@@ -2,9 +2,7 @@ MOJO_DEBUG_DOMAIN(WINDOWS_TIMER_UTILS)
 
 namespace {
 
-static
-UINT&
-mmtimer_resolution ()
+static UINT& mmtimer_resolution()
 {
 	static UINT timer_res_ms = 0;
 	return timer_res_ms;
@@ -14,12 +12,11 @@ mmtimer_resolution ()
 
 namespace mmtimers {
 
-bool
-get_min_resolution (uint32_t& min_resolution_ms)
+bool get_min_resolution(uint32_t& min_resolution_ms)
 {
 	TIMECAPS caps;
 
-	if (timeGetDevCaps (&caps, sizeof(TIMECAPS)) != TIMERR_NOERROR) {
+	if (timeGetDevCaps(&caps, sizeof(TIMECAPS)) != TIMERR_NOERROR) {
 		MOJO_DEBUG_MSG(WINDOWS_TIMER_UTILS, "Could not get timer device capabilities")
 		return false;
 	}
@@ -28,23 +25,21 @@ get_min_resolution (uint32_t& min_resolution_ms)
 	return true;
 }
 
-bool
-set_min_resolution ()
+bool set_min_resolution()
 {
 	uint32_t min_resolution = 0;
 
-	if (!get_min_resolution (min_resolution)) {
+	if (!get_min_resolution(min_resolution)) {
 		return false;
 	}
 
-	if (!set_resolution (min_resolution)) {
+	if (!set_resolution(min_resolution)) {
 		return false;
 	}
 	return true;
 }
 
-bool
-set_resolution (uint32_t timer_resolution_ms)
+bool set_resolution(uint32_t timer_resolution_ms)
 {
 	if (mmtimer_resolution() != 0) {
 		MOJO_DEBUG_MSG(
@@ -61,19 +56,17 @@ set_resolution (uint32_t timer_resolution_ms)
 
 	mmtimer_resolution() = timer_resolution_ms;
 
-	MOJO_DEBUG_MSG(WINDOWS_TIMER_UTILS,
-	               compose("Multimedia timer resolution set to %(ms)",
-	                       timer_resolution_ms));
+	MOJO_DEBUG_MSG(
+	    WINDOWS_TIMER_UTILS,
+	    compose("Multimedia timer resolution set to %(ms)", timer_resolution_ms));
 	return true;
 }
 
-bool
-reset_resolution ()
+bool reset_resolution()
 {
 	// You must match calls to timeBegin/EndPeriod with the same resolution
 	if (timeEndPeriod(mmtimer_resolution()) != TIMERR_NOERROR) {
-		MOJO_DEBUG_MSG(WINDOWS_TIMER_UTILS,
-		               "Could not reset the Timer resolution.");
+		MOJO_DEBUG_MSG(WINDOWS_TIMER_UTILS, "Could not reset the Timer resolution.");
 		return false;
 	}
 	MOJO_DEBUG_MSG(WINDOWS_TIMER_UTILS, "Reset the Timer resolution.");
@@ -87,15 +80,13 @@ namespace {
 
 static double timer_rate_us = 0.0;
 
-static
-bool
-test_qpc_validity ()
+static bool test_qpc_validity()
 {
-	int64_t last_timer_val = qpc::get_microseconds ();
+	int64_t last_timer_val = qpc::get_microseconds();
 	if (last_timer_val < 0) return false;
 
 	for (int i = 0; i < 100000; ++i) {
-		int64_t timer_val = qpc::get_microseconds ();
+		int64_t timer_val = qpc::get_microseconds();
 		if (timer_val < 0) return false;
 		// try and test for non-syncronized TSC(AMD K8/etc)
 		if (timer_val < last_timer_val) return false;
@@ -108,17 +99,15 @@ test_qpc_validity ()
 
 namespace qpc {
 
-bool
-check_timer_valid ()
+bool check_timer_valid()
 {
 	if (!timer_rate_us) {
 		return false;
 	}
-	return test_qpc_validity ();
+	return test_qpc_validity();
 }
 
-bool
-initialize ()
+bool initialize()
 {
 	LARGE_INTEGER freq;
 	if (!QueryPerformanceFrequency(&freq) || freq.QuadPart < 1) {
@@ -132,8 +121,7 @@ initialize ()
 	return !timer_rate_us;
 }
 
-int64_t
-get_microseconds ()
+int64_t get_microseconds()
 {
 	LARGE_INTEGER current_val;
 

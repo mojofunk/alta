@@ -15,5 +15,4 @@
 using namespace boost::unit_test;
 using namespace std;
 
-
 #endif // MOJO_TEST_INLCLUDES_H

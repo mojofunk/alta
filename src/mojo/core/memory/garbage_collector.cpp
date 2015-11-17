@@ -17,7 +17,7 @@ void GarbageCollector::run()
 
 	tmp_ptr.reset();
 
-	//std::cout << "GC::run dequeued: " << vec.size() << std::endl;
+	// std::cout << "GC::run dequeued: " << vec.size() << std::endl;
 
 	int reenqueue_count = 0;
 
@@ -34,5 +34,5 @@ void GarbageCollector::run()
 			m_gc_queue.enqueue(ptr);
 		}
 	}
-	//std::cout << "GC::run reenqueued count: " << reenqueue_count << std::endl;
+	// std::cout << "GC::run reenqueued count: " << reenqueue_count << std::endl;
 }

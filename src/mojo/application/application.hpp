@@ -210,7 +210,6 @@ public: // modules
 	static ArchiveSP create_archive();
 
 private: // methods
-
 	void register_types();
 
 	void new_project_internal();

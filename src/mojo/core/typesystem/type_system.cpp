@@ -8,14 +8,14 @@ TypeRegistry* s_type_registry(0);
 
 void register_builtin_types()
 {
-	types::register_type(
-	    TypeFactorySP(new TemplateTypeFactory<int32_t>(TypeNames::int32_type_name)));
-	types::register_type(
-	    TypeFactorySP(new TemplateTypeFactory<int64_t>(TypeNames::int64_type_name)));
+	types::register_type(TypeFactorySP(
+	    new TemplateTypeFactory<int32_t>(TypeNames::int32_type_name)));
+	types::register_type(TypeFactorySP(
+	    new TemplateTypeFactory<int64_t>(TypeNames::int64_type_name)));
 	types::register_type(
 	    TypeFactorySP(new TemplateTypeFactory<float>(TypeNames::float_type_name)));
-	types::register_type(
-	    TypeFactorySP(new TemplateTypeFactory<std::string>(TypeNames::string_type_name)));
+	types::register_type(TypeFactorySP(
+	    new TemplateTypeFactory<std::string>(TypeNames::string_type_name)));
 }
 
 namespace types {

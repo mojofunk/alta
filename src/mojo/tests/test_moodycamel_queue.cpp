@@ -5,14 +5,14 @@
 #include "test_includes.hpp"
 
 struct InstanceCounter {
-	InstanceCounter () { ++s_count;}
-	InstanceCounter (const InstanceCounter& other) { ++s_count;}
+	InstanceCounter() { ++s_count; }
+	InstanceCounter(const InstanceCounter& other) { ++s_count; }
 
-	~InstanceCounter () { --s_count;}
+	~InstanceCounter() { --s_count; }
 
 	static atomic<int>& count() { return s_count; }
-private:
 
+private:
 	static atomic<int> s_count;
 };
 
@@ -209,7 +209,6 @@ void consume_foo()
 		++pop_count;
 	}
 }
-
 
 void test_queue_iteration_shared_ptr()
 {

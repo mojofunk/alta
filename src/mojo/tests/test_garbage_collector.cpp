@@ -98,11 +98,9 @@ BOOST_AUTO_TEST_CASE(test_garbage_collector_basic)
 BOOST_AUTO_TEST_CASE(test_garbage_collector_try_manage)
 {
 	// test that no allocation takes place using GC::try_manage
-
 }
 
 BOOST_AUTO_TEST_CASE(test_garbage_collector_run_max_duration)
 {
 	// test that GC::run_max_duration takes approx time
-
 }
