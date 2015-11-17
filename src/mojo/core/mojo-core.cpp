@@ -2,7 +2,7 @@
 
 #include "config/common_source_includes.hpp"
 
-namespace mojo {
+MOJO_BEGIN_NAMESPACE
 
 // Now include all source files
 
@@ -54,4 +54,4 @@ namespace mojo {
 #include "native/windows_timer_utils.cpp"
 #endif
 
-} // namespace mojo
+MOJO_END_NAMESPACE
