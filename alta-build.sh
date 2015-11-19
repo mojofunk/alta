@@ -33,10 +33,10 @@ clang_config["clang-release-shared"]="$CLANG_TOOLSET $RELEASE"
 clang_config["clang-release-static"]="$CLANG_TOOLSET $RELEASE $STATIC"
 
 declare -A msvc_config
-msvc_config["msvc-debug-shared"]="$MSVC_TOOLKIT $DEBUG"
-msvc_config["msvc-debug-static"]="$MSVC_TOOLKIT $DEBUG $STATIC"
-msvc_config["msvc-release-shared"]="$MSVC_TOOLKIT $RELEASE"
-msvc_config["msvc-release-static"]="$MSVC_TOOLKIT $RELEASE $STATIC"
+msvc_config["msvc-debug-shared"]="$MSVC_TOOLSET $DEBUG"
+msvc_config["msvc-debug-static"]="$MSVC_TOOLSET $DEBUG $STATIC"
+msvc_config["msvc-release-shared"]="$MSVC_TOOLSET $RELEASE"
+msvc_config["msvc-release-static"]="$MSVC_TOOLSET $RELEASE $STATIC"
 
 declare -A config
 
