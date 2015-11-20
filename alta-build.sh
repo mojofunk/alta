@@ -4,6 +4,7 @@
 
 ALTA_BRANCH=`git rev-parse --abbrev-ref HEAD`
 
+SYSTEM_LIBS="--enable-system-libs"
 STATIC="--enable-static"
 TESTS="--with-tests"
 SINGLE_TESTS="--with-single-tests"
@@ -17,14 +18,20 @@ CLANG_TOOLSET="--toolset=clang"
 BACKTRACE=""
 PROFILE=""
 
-DEBUG="$TESTS $SINGLE_TESTS"
-RELEASE="$OPTIMIZE $DISABLE_DEBUG_LOGGING"
+DEBUG="$SYSTEM_LIBS $TESTS $SINGLE_TESTS"
+RELEASE="$SYSTEM_LIBS $OPTIMIZE $DISABLE_DEBUG_LOGGING"
 
 declare -A gcc_config
 gcc_config["gcc-debug-shared"]="$DEBUG"
 gcc_config["gcc-debug-static"]="$DEBUG $STATIC"
 gcc_config["gcc-release-shared"]="$RELEASE"
 gcc_config["gcc-release-static"]="$RELEASE $STATIC"
+
+declare -A mingw_config
+mingw_config["mingw-debug-shared"]="$DEBUG"
+mingw_config["mingw-debug-static"]="$DEBUG $STATIC"
+mingw_config["mingw-release-shared"]="$RELEASE"
+mingw_config["mingw-release-static"]="$RELEASE $STATIC"
 
 declare -A clang_config
 clang_config["clang-debug-shared"]="$CLANG_TOOLSET $DEBUG"
@@ -52,6 +59,11 @@ if [ "$UNAME" == 'Linux' ]; then
 	for key in "${!clang_config[@]}"
 		do
 		config["$key"]="${clang_config["$key"]}"
+		# or: config+=( ["$key"]="${OTHERARRAY["$key"]}" )
+	done
+	for key in "${!mingw_config[@]}"
+		do
+		config["$key"]="${mingw_config["$key"]}"
 		# or: config+=( ["$key"]="${OTHERARRAY["$key"]}" )
 	done
 else # Windows

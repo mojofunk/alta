@@ -5,6 +5,8 @@
 import os
 import subprocess
 import sys
+import re
+
 from waflib import Logs
 
 # TODO use version from git tag/describe
@@ -28,14 +30,19 @@ def options(opt):
         '--toolset',
         type='string',
         dest='toolset',
-        default='gcc',
-        help='Compiler and Toolset options: gcc(default), clang, msvc')
-    opt.add_option(
-        '--target-platform',
-        type='string',
-        dest='target_platform',
         default='auto',
-        help='Target platform options: auto, windows')
+        help='Compiler and Toolset options: auto, gcc, clang, msvc')
+    opt.add_option(
+        '--target-system',
+        type='string',
+        dest='target_system',
+        default='auto',
+        help='Target system options for cross compiling: auto, linux, windows')
+    opt.add_option(
+        '--enable-system-libs',
+        action='store_true',
+        default=False,
+        help='Use system versions of library dependencies')
     opt.add_option(
         '--with-tests',
         action='store_true',
@@ -47,10 +54,15 @@ def options(opt):
         default=False,
         help='Build each test as single executable')
     opt.add_option(
-        '--run-tests',
+        '--enable-shared',
         action='store_true',
         default=False,
-        help='Run testsuite after build')
+        help='Build shared libraries')
+    opt.add_option(
+        '--enable-static',
+        action='store_true',
+        default=False,
+        help='Build static libraries')
     opt.add_option(
         '--optimize',
         action='store_true',
@@ -62,23 +74,32 @@ def options(opt):
         default=False,
         help='Disable logging of debug messages')
     opt.add_option(
-        '--enable-shared',
-        action='store_true',
-        default=False,
-        help='Build shared libraries')
-    opt.add_option(
-        '--enable-static',
-        action='store_true',
-        default=False,
-        help='Build static libraries')
-    opt.add_option(
         '--with-gtkmm-ui',
         action='store_true',
         default=False,
         help='Build Gtkmm based GUI')
+    opt.add_option(
+        '--run-tests',
+        action='store_true',
+        default=False,
+        help='Run testsuite after build')
 
 
-def _check_required_deps(conf, deps):
+def set_config_env_from_options(conf):
+    # Use same order as above and use all capitals to indicate they are const
+    conf.env.TOOLSET = conf.options.toolset
+    conf.env.TARGET_SYSTEM = conf.options.target_system
+    conf.env.ENABLE_SYSTEM_LIBS = conf.options.enable_system_libs
+    conf.env.BUILD_TESTS = conf.options.with_tests
+    conf.env.BUILD_SINGLE_TESTS = conf.options.with_single_tests
+    conf.env.ENABLE_SHARED = conf.options.enable_shared
+    conf.env.ENABLE_STATIC = conf.options.enable_static
+    conf.env.DEBUG_LOGGING = not conf.options.disable_debug_logging
+    conf.env.WITH_GTKMM_UI = conf.options.with_gtkmm_ui
+    conf.env.RUN_TESTS = conf.options.run_tests
+
+
+def check_required_deps(conf, deps):
     for pkg, version in deps.items():
         conf.check_cfg(package=pkg, atleast_version=version, mandatory=1)
         conf.check_cfg(package=pkg, args='--cflags --libs')
@@ -104,18 +125,22 @@ def set_compiler_flags(conf):
 
 
 def display_config(conf):
+    Logs.info('C compiler flags: %s' % conf.env.CFLAGS)
     Logs.info('C++ compiler flags: %s' % conf.env.CXXFLAGS)
     Logs.info('Enable shared: %s' % conf.env.ENABLE_SHARED)
     Logs.info('Enable static: %s' % conf.env.ENABLE_STATIC)
     Logs.info('Build tests: %s' % conf.env.BUILD_TESTS)
     Logs.info('Build single tests: %s' % conf.env.BUILD_SINGLE_TESTS)
     Logs.info('Enable debug logging: %s' % conf.env.DEBUG_LOGGING)
+    Logs.info('Enable System libraries: %s' % conf.env.ENABLE_SYSTEM_LIBS)
 
 
-def configure(conf):
+def set_default_toolset_for_build_system(conf):
+    conf.load('gcc')
+    conf.load('g++')
 
-    conf.env.TOOLSET = conf.options.toolset
 
+def set_toolset(conf):
     if conf.env.TOOLSET == 'gcc':
         conf.load('gcc')
         conf.load('g++')
@@ -124,17 +149,52 @@ def configure(conf):
         conf.load('clang++')
     elif conf.env.TOOLSET == 'msvc':
         conf.load('msvc')
+    elif conf.env.TOOLSET == 'auto':
+        set_default_toolset_for_build_system(conf)
     else:
         print ("Unsupported Toolset option")
         sys.exit(1)
 
-    conf.load('gnu_dirs')
 
-    conf.env.TARGET_PLATFORM = conf.options.target_platform
+def set_target_system_from_build_system(conf):
+    if re.search('linux', sys.platform) != None:
+        conf.env.TARGET_LINUX = True
+        conf.env.TARGET_WINDOWS = False
+    else:
+        conf.env.TARGET_WINDOWS = True
+        conf.env.TARGET_LINUX = False
 
-    set_compiler_flags(conf)
 
-    deps = \
+def set_target_system(conf):
+    if conf.env.TARGET_SYSTEM == 'auto':
+        set_target_system_from_build_system(conf)
+        return
+    if conf.env.TARGET_SYSTEM == 'windows':
+        conf.env.TARGET_WINDOWS = True
+        conf.env.TARGET_LINUX = False
+    elif conf.env.TARGET_SYSTEM == 'linux':
+        conf.env.TARGET_LINUX = True
+        conf.env.TARGET_WINDOWS = False
+    else:
+        print ("Unsupported Target System option")
+        sys.exit(1)
+
+
+def check_linux_libs(conf):
+    linux_deps = \
+        {
+            'freetype2': '17.2.11',
+        }
+
+    check_required_deps(conf, linux_deps)
+
+
+def check_system_libs(conf):
+
+    if conf.env.TARGET_LINUX:
+        check_linux_libs(conf)
+
+    common_deps = \
         {
             'glib-2.0': '2.10.1',
             'gmodule-2.0': '2.10.1',
@@ -143,11 +203,41 @@ def configure(conf):
             'sndfile': '1.0.20'
         }
 
-    _check_required_deps(conf, deps)
+    check_required_deps(conf, common_deps)
 
-    conf.env.BUILD_TESTS = conf.options.with_tests
-    conf.env.BUILD_SINGLE_TESTS = conf.options.with_single_tests
-    conf.env.RUN_TESTS = conf.options.run_tests
+    if not conf.check(
+            lib='boost_filesystem-mt', uselib_store='BOOST_FILESYSTEM', mandatory=False):
+        conf.check(lib='boost_filesystem', uselib_store='BOOST_FILESYSTEM')
+
+    if not conf.check(
+            lib='boost_system-mt', uselib_store='BOOST_SYSTEM', mandatory=False):
+        conf.check(lib='boost_system', uselib_store='BOOST_SYSTEM')
+
+
+def check_os_libs(conf):
+    # These are the OS level libraries that are required to build that are not
+    # hosted in the source tree
+    if conf.env.TARGET_SYSTEM == 'windows':
+        conf.check(lib='winmm', uselib_store='WINMM')
+
+
+def configure(conf):
+
+    set_config_env_from_options(conf)
+
+    set_toolset(conf)
+
+    conf.load('gnu_dirs')
+
+    set_target_system(conf)
+
+    # need option to override this
+    set_compiler_flags(conf)
+
+    if conf.env.ENABLE_SYSTEM_LIBS:
+        check_system_libs(conf)
+
+    check_os_libs(conf)
 
     if conf.env.BUILD_SINGLE_TESTS:
         conf.env.BUILD_TESTS = True
@@ -159,29 +249,9 @@ def configure(conf):
                 lib='boost_unit_test_framework',
                 uselib_store='BOOST_UNIT_TEST_FRAMEWORK')
 
-    conf.env.ENABLE_SHARED = conf.options.enable_shared
-    conf.env.ENABLE_STATIC = conf.options.enable_static
-
     if not conf.env.ENABLE_SHARED and not conf.env.ENABLE_STATIC:
         # needed because of the weird waf options design
         conf.env.ENABLE_SHARED = True
-
-    conf.env.ENABLE_AMALGAMATION = True
-
-    conf.env.DEBUG_LOGGING = not conf.options.disable_debug_logging
-
-    conf.env.WITH_GTKMM_UI = conf.options.with_gtkmm_ui
-
-    if not conf.check(
-            lib='boost_filesystem-mt', uselib_store='BOOST_FILESYSTEM', mandatory=False):
-        conf.check(lib='boost_filesystem', uselib_store='BOOST_FILESYSTEM')
-
-    if not conf.check(
-            lib='boost_system-mt', uselib_store='BOOST_SYSTEM', mandatory=False):
-        conf.check(lib='boost_system', uselib_store='BOOST_SYSTEM')
-
-    if conf.env.TARGET_PLATFORM == 'windows':
-        conf.check(lib='winmm', uselib_store='WINMM')
 
     defines = ['HAVE_CONFIG_H', '_REENTRANT',
                '_LARGEFILE_SOURCE', '_LARGEFILE64_SOURCE']
