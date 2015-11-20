@@ -277,6 +277,7 @@ def build(bld):
     bld.env.LIBDIR = "%s/%s" % (bld.env.LIBDIR, bld.env.PROGRAM_DIR_NAME)
 
     bld.recurse('src')
+    bld.recurse('ext')
 
     if bld.env['RUN_TESTS']:
         bld.add_post_fun(test)

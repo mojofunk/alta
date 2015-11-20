@@ -1,0 +1,14 @@
+#! /usr/bin/env python
+# encoding: utf-8
+
+subdirs = '''
+JUCE
+'''
+
+def configure(conf):
+    # not sure if configuring external libraries is necessary yet
+    pass
+
+def build(bld):
+    # process subfolders from here
+    bld.recurse(subdirs)
