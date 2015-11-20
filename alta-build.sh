@@ -27,12 +27,6 @@ gcc_config["gcc-debug-static"]="$DEBUG $STATIC"
 gcc_config["gcc-release-shared"]="$RELEASE"
 gcc_config["gcc-release-static"]="$RELEASE $STATIC"
 
-declare -A mingw_config
-mingw_config["mingw-debug-shared"]="$DEBUG"
-mingw_config["mingw-debug-static"]="$DEBUG $STATIC"
-mingw_config["mingw-release-shared"]="$RELEASE"
-mingw_config["mingw-release-static"]="$RELEASE $STATIC"
-
 declare -A clang_config
 clang_config["clang-debug-shared"]="$CLANG_TOOLSET $DEBUG"
 clang_config["clang-debug-static"]="$CLANG_TOOLSET $DEBUG $STATIC"
@@ -59,11 +53,6 @@ if [ "$UNAME" == 'Linux' ]; then
 	for key in "${!clang_config[@]}"
 		do
 		config["$key"]="${clang_config["$key"]}"
-		# or: config+=( ["$key"]="${OTHERARRAY["$key"]}" )
-	done
-	for key in "${!mingw_config[@]}"
-		do
-		config["$key"]="${mingw_config["$key"]}"
 		# or: config+=( ["$key"]="${OTHERARRAY["$key"]}" )
 	done
 else # Windows
