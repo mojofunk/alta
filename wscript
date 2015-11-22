@@ -24,6 +24,7 @@ out = 'waf-build'
 
 def options(opt):
     # options provided by the modules
+
     opt.load('gnu_dirs')
 
     opt.add_option(
@@ -31,7 +32,7 @@ def options(opt):
         type='string',
         dest='toolset',
         default='auto',
-        help='Compiler and Toolset options: auto, gcc, clang, msvc')
+        help='Compiler and Toolset options: auto, gcc, clang, mingw, msvc')
     opt.add_option(
         '--target-system',
         type='string',
@@ -105,7 +106,7 @@ def check_required_deps(conf, deps):
         conf.check_cfg(package=pkg, args='--cflags --libs')
 
 
-def set_compiler_flags(conf):
+def set_gcc_compiler_flags(conf):
     cxx_flags = []
     conf.check_cxx(cxxflags=["-std=c++11"])
     cxx_flags.append('-std=c++11')
@@ -124,6 +125,14 @@ def set_compiler_flags(conf):
         conf.env.append_value('CXXFLAGS', '-DMOJO_ENABLE_DEBUG_LOGGING')
 
 
+def set_msvc_compiler_flags(conf):
+    # much more to do here
+    cxx_flags = []
+    # enable exceptions
+    cxx_flags.append('/EHsc')
+    conf.env.append_value('CXXFLAGS', cxx_flags)
+
+
 def display_config(conf):
     Logs.info('C compiler flags: %s' % conf.env.CFLAGS)
     Logs.info('C++ compiler flags: %s' % conf.env.CXXFLAGS)
@@ -134,23 +143,34 @@ def display_config(conf):
     Logs.info('Enable debug logging: %s' % conf.env.DEBUG_LOGGING)
     Logs.info('Enable System libraries: %s' % conf.env.ENABLE_SYSTEM_LIBS)
 
-
-def set_default_toolset_for_build_system(conf):
+def set_toolset_from_env(conf):
     conf.load('gcc')
     conf.load('g++')
+    conf.env.TOOLSET_GCC = True
+    conf.env.TOOLSET_CLANG = False
+    conf.env.TOOLSET_MSVC = False
 
 
 def set_toolset(conf):
     if conf.env.TOOLSET == 'gcc':
         conf.load('gcc')
         conf.load('g++')
+        conf.env.TOOLSET_GCC = True
+        conf.env.TOOLSET_CLANG = False
+        conf.env.TOOLSET_MSVC = False
     elif conf.env.TOOLSET == 'clang':
         conf.load('clang')
         conf.load('clang++')
+        conf.env.TOOLSET_GCC = False
+        conf.env.TOOLSET_CLANG = True
+        conf.env.TOOLSET_MSVC = False
     elif conf.env.TOOLSET == 'msvc':
         conf.load('msvc')
+        conf.env.TOOLSET_GCC = False
+        conf.env.TOOLSET_CLANG = False
+        conf.env.TOOLSET_MSVC = True
     elif conf.env.TOOLSET == 'auto':
-        set_default_toolset_for_build_system(conf)
+        set_toolset_from_env(conf)
     else:
         print ("Unsupported Toolset option")
         sys.exit(1)
@@ -181,6 +201,7 @@ def set_target_system(conf):
 
 
 def check_linux_libs(conf):
+    # for JUCE
     linux_deps = \
         {
             'freetype2': '17.2.11',
@@ -217,8 +238,20 @@ def check_system_libs(conf):
 def check_os_libs(conf):
     # These are the OS level libraries that are required to build that are not
     # hosted in the source tree
-    if conf.env.TARGET_SYSTEM == 'windows':
+    if conf.env.TARGET_WINDOWS:
         conf.check(lib='winmm', uselib_store='WINMM')
+        conf.check(lib='ole32', uselib_store='OLE32')
+        conf.check(lib='oleaut32', uselib_store='OLEAUT32')
+        conf.check(lib='kernel32', uselib_store='KERNEL32')
+        conf.check(lib='shell32', uselib_store='SHELL32')
+        conf.check(lib='user32', uselib_store='USER32')
+        conf.check(lib='wininet', uselib_store='WININET')
+        conf.check(lib='advapi32', uselib_store='ADVAPI32')
+        conf.check(lib='version', uselib_store='VERSION')
+        conf.check(lib='shlwapi', uselib_store='SHLWAPI')
+        conf.check(lib='gdi32', uselib_store='GDI32')
+        conf.check(lib='comdlg32', uselib_store='COMDLG32')
+        conf.check(lib='wsock32', uselib_store='WSOCK32')
 
 
 def configure(conf):
@@ -231,8 +264,11 @@ def configure(conf):
 
     set_target_system(conf)
 
-    # need option to override this
-    set_compiler_flags(conf)
+    if conf.env.TOOLSET_GCC:
+        set_gcc_compiler_flags(conf)
+    elif conf.env.TOOLSET_MSVC:
+        print('Using MSVC Compile flags')
+        set_msvc_compiler_flags(conf)
 
     if conf.env.ENABLE_SYSTEM_LIBS:
         check_system_libs(conf)
@@ -276,7 +312,7 @@ def build(bld):
     # redefine LIBDIR so all libs get installed automatically
     bld.env.LIBDIR = "%s/%s" % (bld.env.LIBDIR, bld.env.PROGRAM_DIR_NAME)
 
-    bld.recurse('src')
+    #bld.recurse('src')
     bld.recurse('ext')
 
     if bld.env['RUN_TESTS']:

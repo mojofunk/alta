@@ -12,6 +12,8 @@ RUN_TESTS="--run-tests"
 GUI="--with-gtkmm-ui"
 OPTIMIZE="--optimize"
 DISABLE_DEBUG_LOGGING="--disable-debug-logging"
+MINGW_TOOLSET="--toolset=gcc"
+TARGET_WINDOWS="--target-system=windows"
 MSVC_TOOLSET="--toolset=msvc"
 CLANG_TOOLSET="--toolset=clang"
 # for release debug?
@@ -27,6 +29,12 @@ gcc_config["gcc-debug-static"]="$DEBUG $STATIC"
 gcc_config["gcc-release-shared"]="$RELEASE"
 gcc_config["gcc-release-static"]="$RELEASE $STATIC"
 
+declare -A mingw_config
+mingw_config["mingw-debug-shared"]="$MINGW_TOOLSET $TARGET_WINDOWS $DEBUG"
+mingw_config["mingw-debug-static"]="$MINGW_TOOLSET $TARGET_WINDOWS DEBUG $STATIC"
+mingw_config["mingw-release-shared"]="$MINGW_TOOLSET $TARGET_WINDOWS $RELEASE"
+mingw_config["mingw-release-static"]="$MINGW_TOOLSET $TARGET_WINDOWS $RELEASE $STATIC"
+
 declare -A clang_config
 clang_config["clang-debug-shared"]="$CLANG_TOOLSET $DEBUG"
 clang_config["clang-debug-static"]="$CLANG_TOOLSET $DEBUG $STATIC"
@@ -34,28 +42,34 @@ clang_config["clang-release-shared"]="$CLANG_TOOLSET $RELEASE"
 clang_config["clang-release-static"]="$CLANG_TOOLSET $RELEASE $STATIC"
 
 declare -A msvc_config
-msvc_config["msvc-debug-shared"]="$MSVC_TOOLSET $DEBUG"
+msvc_config["msvc-debug-shared"]="$MSVC_TOOLSET $TARGET_WINDOWS $DEBUG"
 msvc_config["msvc-debug-static"]="$MSVC_TOOLSET $DEBUG $STATIC"
 msvc_config["msvc-release-shared"]="$MSVC_TOOLSET $RELEASE"
 msvc_config["msvc-release-static"]="$MSVC_TOOLSET $RELEASE $STATIC"
 
 declare -A config
 
-for key in "${!gcc_config[@]}"
-	do
-  config["$key"]="${gcc_config["$key"]}"
-  # or: config+=( ["$key"]="${OTHERARRAY["$key"]}" )
-done
-
 UNAME=`uname`
 
 if [ "$UNAME" == 'Linux' ]; then
+	for key in "${!gcc_config[@]}"
+		do
+	config["$key"]="${gcc_config["$key"]}"
+	# or: config+=( ["$key"]="${OTHERARRAY["$key"]}" )
+	done
+
 	for key in "${!clang_config[@]}"
 		do
 		config["$key"]="${clang_config["$key"]}"
 		# or: config+=( ["$key"]="${OTHERARRAY["$key"]}" )
 	done
 else # Windows
+	for key in "${!mingw_config[@]}"
+		do
+	config["$key"]="${mingw_config["$key"]}"
+	# or: config+=( ["$key"]="${OTHERARRAY["$key"]}" )
+	done
+
 	for key in "${!msvc_config[@]}"
 		do
 		config["$key"]="${msvc_config["$key"]}"
