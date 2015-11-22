@@ -13,3 +13,4 @@ doc/docbook/*xml*/entities.ent
 *~
 waf-build/
 .lock*
+*.pyc
