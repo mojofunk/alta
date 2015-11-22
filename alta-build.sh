@@ -31,7 +31,7 @@ gcc_config["gcc-release-static"]="$RELEASE $STATIC"
 
 declare -A mingw_config
 mingw_config["mingw-debug-shared"]="$MINGW_TOOLSET $TARGET_WINDOWS $DEBUG"
-mingw_config["mingw-debug-static"]="$MINGW_TOOLSET $TARGET_WINDOWS DEBUG $STATIC"
+mingw_config["mingw-debug-static"]="$MINGW_TOOLSET $TARGET_WINDOWS $DEBUG $STATIC"
 mingw_config["mingw-release-shared"]="$MINGW_TOOLSET $TARGET_WINDOWS $RELEASE"
 mingw_config["mingw-release-static"]="$MINGW_TOOLSET $TARGET_WINDOWS $RELEASE $STATIC"
 
