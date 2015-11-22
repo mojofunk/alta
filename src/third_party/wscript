@@ -5,6 +5,7 @@ subdirs = '''
 cppformat
 pugixml
 moodycamel
+JUCE
 '''
 
 

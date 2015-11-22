@@ -200,20 +200,7 @@ def set_target_system(conf):
         sys.exit(1)
 
 
-def check_linux_libs(conf):
-    # for JUCE
-    linux_deps = \
-        {
-            'freetype2': '17.2.11',
-        }
-
-    check_required_deps(conf, linux_deps)
-
-
 def check_system_libs(conf):
-
-    if conf.env.TARGET_LINUX:
-        check_linux_libs(conf)
 
     common_deps = \
         {
@@ -235,25 +222,6 @@ def check_system_libs(conf):
         conf.check(lib='boost_system', uselib_store='BOOST_SYSTEM')
 
 
-def check_os_libs(conf):
-    # These are the OS level libraries that are required to build that are not
-    # hosted in the source tree
-    if conf.env.TARGET_WINDOWS:
-        conf.check(lib='winmm', uselib_store='WINMM')
-        conf.check(lib='ole32', uselib_store='OLE32')
-        conf.check(lib='oleaut32', uselib_store='OLEAUT32')
-        conf.check(lib='kernel32', uselib_store='KERNEL32')
-        conf.check(lib='shell32', uselib_store='SHELL32')
-        conf.check(lib='user32', uselib_store='USER32')
-        conf.check(lib='wininet', uselib_store='WININET')
-        conf.check(lib='advapi32', uselib_store='ADVAPI32')
-        conf.check(lib='version', uselib_store='VERSION')
-        conf.check(lib='shlwapi', uselib_store='SHLWAPI')
-        conf.check(lib='gdi32', uselib_store='GDI32')
-        conf.check(lib='comdlg32', uselib_store='COMDLG32')
-        conf.check(lib='wsock32', uselib_store='WSOCK32')
-
-
 def configure(conf):
 
     set_config_env_from_options(conf)
@@ -266,14 +234,14 @@ def configure(conf):
 
     if conf.env.TOOLSET_GCC:
         set_gcc_compiler_flags(conf)
+    if conf.env.TOOLSET_CLANG:
+        set_gcc_compiler_flags(conf)
     elif conf.env.TOOLSET_MSVC:
         print('Using MSVC Compile flags')
         set_msvc_compiler_flags(conf)
 
     if conf.env.ENABLE_SYSTEM_LIBS:
         check_system_libs(conf)
-
-    check_os_libs(conf)
 
     if conf.env.BUILD_SINGLE_TESTS:
         conf.env.BUILD_TESTS = True
@@ -312,8 +280,7 @@ def build(bld):
     # redefine LIBDIR so all libs get installed automatically
     bld.env.LIBDIR = "%s/%s" % (bld.env.LIBDIR, bld.env.PROGRAM_DIR_NAME)
 
-    #bld.recurse('src')
-    bld.recurse('ext')
+    bld.recurse('src')
 
     if bld.env['RUN_TESTS']:
         bld.add_post_fun(test)

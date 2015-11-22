@@ -1,0 +1,104 @@
+#!/usr/bin/env python
+
+def check_required_deps(conf, deps):
+    for pkg, version in deps.items():
+        conf.check_cfg(package=pkg, atleast_version=version, mandatory=1)
+        conf.check_cfg(package=pkg, args='--cflags --libs')
+
+def configure(conf):
+
+    if conf.env.TARGET_LINUX:
+        linux_deps = \
+            {
+                'freetype2': '17.2.11',
+            }
+
+        check_required_deps(conf, linux_deps)
+
+    elif conf.env.TARGET_WINDOWS:
+        conf.check(lib='winmm', uselib_store='WINMM')
+        conf.check(lib='ole32', uselib_store='OLE32')
+        conf.check(lib='oleaut32', uselib_store='OLEAUT32')
+        conf.check(lib='kernel32', uselib_store='KERNEL32')
+        conf.check(lib='shell32', uselib_store='SHELL32')
+        conf.check(lib='user32', uselib_store='USER32')
+        conf.check(lib='wininet', uselib_store='WININET')
+        conf.check(lib='advapi32', uselib_store='ADVAPI32')
+        conf.check(lib='version', uselib_store='VERSION')
+        conf.check(lib='shlwapi', uselib_store='SHLWAPI')
+        conf.check(lib='gdi32', uselib_store='GDI32')
+        conf.check(lib='comdlg32', uselib_store='COMDLG32')
+        conf.check(lib='wsock32', uselib_store='WSOCK32')
+
+def build(bld):
+    juce_includes = '''
+    JUCE/modules/juce_audio_basics/juce_audio_basics.h
+    JUCE/modules/juce_audio_devices/juce_audio_devices.h
+    JUCE/modules/juce_audio_formats/juce_audio_formats.h
+    JUCE/modules/juce_audio_processors/juce_audio_processors.h
+    JUCE/modules/juce_audio_utils/juce_audio_utils.h
+    JUCE/modules/juce_core/juce_core.h
+    JUCE/modules/juce_cryptography/juce_cryptography.h
+    JUCE/modules/juce_data_structures/juce_data_structures.h
+    JUCE/modules/juce_events/juce_events.h
+    JUCE/modules/juce_graphics/juce_graphics.h
+    JUCE/modules/juce_gui_basics/juce_gui_basics.h
+    JUCE/modules/juce_gui_extra/juce_gui_extra.h
+    JUCE/modules/juce_opengl/juce_opengl.h
+    JUCE/modules/juce_video/juce_video.h
+    '''
+
+    juce_sources = '''
+    JUCE/modules/juce_audio_basics/juce_audio_basics.cpp
+    JUCE/modules/juce_audio_devices/juce_audio_devices.cpp
+    JUCE/modules/juce_audio_formats/juce_audio_formats.cpp
+    JUCE/modules/juce_audio_processors/juce_audio_processors.cpp
+    JUCE/modules/juce_audio_utils/juce_audio_utils.cpp
+    JUCE/modules/juce_core/juce_core.cpp
+    JUCE/modules/juce_cryptography/juce_cryptography.cpp
+    JUCE/modules/juce_data_structures/juce_data_structures.cpp
+    JUCE/modules/juce_events/juce_events.cpp
+    JUCE/modules/juce_graphics/juce_graphics.cpp
+    JUCE/modules/juce_gui_basics/juce_gui_basics.cpp
+    JUCE/modules/juce_gui_extra/juce_gui_extra.cpp
+    JUCE/modules/juce_opengl/juce_opengl.cpp
+    JUCE/modules/juce_video/juce_video.cpp
+    '''
+
+    windows_includes = ['config/windows']
+    linux_includes = ['config/linux']
+
+    windows_uselibs = ['WINMM', 'OLE32', 'SHELL32', 'KERNEL32', 'GDI32', 'COMDLG32']
+    windows_uselibs += ['USER32', 'WININET', 'ADVAPI32', 'VERSION', 'SHLWAPI']
+    windows_uselibs += ['OLEAUT32', 'WSOCK32']
+
+    linux_uselibs = ['FREETYPE2']
+
+    juce_includes = ['JUCE']
+
+    if bld.env.TARGET_WINDOWS:
+        uselibs = windows_uselibs
+        juce_includes += windows_includes
+    else:
+        uselibs = linux_uselibs
+        juce_includes += linux_includes
+
+    if bld.env.ENABLE_SHARED:
+        bld.shlib(
+            includes=juce_includes,
+            export_includes=juce_includes,
+            uselib=uselibs,
+            source=juce_sources,
+            target='juce',
+            name='JUCE_SHARED'
+            )
+
+    if bld.env.ENABLE_STATIC:
+        bld.stlib(
+            includes=juce_includes,
+            export_includes=juce_includes,
+            uselib=uselibs,
+            source=juce_sources,
+            target='juce',
+            name='JUCE_STATIC'
+            )
