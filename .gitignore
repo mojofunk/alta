@@ -11,3 +11,5 @@ doc/docbook/*html
 doc/docbook/*xml*/entities.ent
 *.swp
 *~
+waf-build/
+.lock*
