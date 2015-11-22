@@ -1,3 +1,0 @@
-[submodule "ext/JUCE"]
-	path = ext/JUCE
-	url = git@github.com:mojofunk/JUCE.git
