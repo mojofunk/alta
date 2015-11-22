@@ -62,6 +62,29 @@ def build_examples(bld):
             target='juce_example_hello_world'
             )
 
+
+    example_demo_source = bld.path.ant_glob('JUCE/examples/Demo/Source/*.cpp')
+    example_demo_source += bld.path.ant_glob('JUCE/examples/Demo/Source/Demos/*.cpp')
+    example_demo_source += bld.path.ant_glob('JUCE/examples/Demo/JuceLibraryCode/*.cpp')
+
+    if bld.env.ENABLE_SHARED:
+        bld.program(
+            includes='.',
+            uselib=juce_linux_uselibs,
+            use=example_use_shared,
+            source=example_demo_source,
+            target='juce_example_demo'
+            )
+
+    if bld.env.ENABLE_STATIC:
+        bld.program(
+            includes='.',
+            uselib=juce_linux_uselibs,
+            use=example_use_static,
+            source=example_demo_source,
+            target='juce_example_demo'
+            )
+
 def build(bld):
     juce_includes = '''
     JUCE/modules/juce_audio_basics/juce_audio_basics.h
@@ -69,6 +92,7 @@ def build(bld):
     JUCE/modules/juce_audio_formats/juce_audio_formats.h
     JUCE/modules/juce_audio_processors/juce_audio_processors.h
     JUCE/modules/juce_audio_utils/juce_audio_utils.h
+    JUCE/modules/juce_box2d/juce_box2d.h
     JUCE/modules/juce_core/juce_core.h
     JUCE/modules/juce_cryptography/juce_cryptography.h
     JUCE/modules/juce_data_structures/juce_data_structures.h
@@ -86,6 +110,7 @@ def build(bld):
     JUCE/modules/juce_audio_formats/juce_audio_formats.cpp
     JUCE/modules/juce_audio_processors/juce_audio_processors.cpp
     JUCE/modules/juce_audio_utils/juce_audio_utils.cpp
+    JUCE/modules/juce_box2d/juce_box2d.cpp
     JUCE/modules/juce_core/juce_core.cpp
     JUCE/modules/juce_cryptography/juce_cryptography.cpp
     JUCE/modules/juce_data_structures/juce_data_structures.cpp

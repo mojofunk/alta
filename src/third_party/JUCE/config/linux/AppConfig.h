@@ -49,7 +49,7 @@
 #endif
 
 #ifndef    JUCE_ALSA
- //#define JUCE_ALSA
+ #define JUCE_ALSA 1
 #endif
 
 #ifndef    JUCE_JACK
@@ -152,11 +152,11 @@
 #endif
 
 #ifndef    JUCE_USE_XSHM
- //#define JUCE_USE_XSHM
+ #define JUCE_USE_XSHM 1
 #endif
 
 #ifndef    JUCE_USE_XRENDER
- //#define JUCE_USE_XRENDER
+ #define JUCE_USE_XRENDER 1
 #endif
 
 #ifndef    JUCE_USE_XCURSOR
@@ -171,7 +171,7 @@
 #endif
 
 #ifndef    JUCE_ENABLE_LIVE_CONSTANT_EDITOR
- //#define JUCE_ENABLE_LIVE_CONSTANT_EDITOR
+ #define JUCE_ENABLE_LIVE_CONSTANT_EDITOR 1
 #endif
 
 //==============================================================================
