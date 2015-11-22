@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+juce_linux_uselibs = ['ALSA', 'DL', 'FREETYPE2', 'GL', 'PTHREAD', 'X11', 'XEXT']
+
 def check_required_deps(conf, deps):
     for pkg, version in deps.items():
         conf.check_cfg(package=pkg, atleast_version=version, mandatory=1)
@@ -10,10 +12,16 @@ def configure(conf):
     if conf.env.TARGET_LINUX:
         linux_deps = \
             {
+                'alsa': '1.0.28',
                 'freetype2': '17.2.11',
+                'gl': '10.4.7',
+                'x11': '1.6.2',
+                'xext': '1.3.3',
             }
 
         check_required_deps(conf, linux_deps)
+        conf.check(compiler='c', lib='pthread', mandatory=True, uselib_store='PTHREAD')
+        conf.check(compiler='c', lib='dl', mandatory=True, uselib_store='DL')
 
     elif conf.env.TARGET_WINDOWS:
         conf.check(lib='winmm', uselib_store='WINMM')
@@ -29,6 +37,30 @@ def configure(conf):
         conf.check(lib='gdi32', uselib_store='GDI32')
         conf.check(lib='comdlg32', uselib_store='COMDLG32')
         conf.check(lib='wsock32', uselib_store='WSOCK32')
+
+def build_examples(bld):
+    
+    example_uselib_linux = ['FREETYPE2']
+
+    example_use_shared = ['JUCE_SHARED']
+    example_use_static = ['JUCE_STATIC']
+
+    if bld.env.ENABLE_SHARED:
+        bld.program(
+            includes='.',
+            use=example_use_shared,
+            source=bld.path.ant_glob('JUCE/examples/HelloWorld/Source/*.cpp'),
+            target='juce_example_hello_world'
+            )
+
+    if bld.env.ENABLE_STATIC:
+        bld.program(
+            includes='.',
+            uselib=juce_linux_uselibs,
+            use=example_use_static,
+            source=bld.path.ant_glob('JUCE/examples/HelloWorld/Source/*.cpp'),
+            target='juce_example_hello_world'
+            )
 
 def build(bld):
     juce_includes = '''
@@ -72,15 +104,13 @@ def build(bld):
     windows_uselibs += ['USER32', 'WININET', 'ADVAPI32', 'VERSION', 'SHLWAPI']
     windows_uselibs += ['OLEAUT32', 'WSOCK32']
 
-    linux_uselibs = ['FREETYPE2']
-
     juce_includes = ['JUCE']
 
     if bld.env.TARGET_WINDOWS:
         uselibs = windows_uselibs
         juce_includes += windows_includes
     else:
-        uselibs = linux_uselibs
+        uselibs = juce_linux_uselibs
         juce_includes += linux_includes
 
     if bld.env.ENABLE_SHARED:
@@ -102,3 +132,5 @@ def build(bld):
             target='juce',
             name='JUCE_STATIC'
             )
+
+    build_examples(bld)
