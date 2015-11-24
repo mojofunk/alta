@@ -134,14 +134,14 @@ def set_msvc_compiler_flags(conf):
 
 
 def display_config(conf):
-    Logs.info('C compiler flags: %s' % conf.env.CFLAGS)
-    Logs.info('C++ compiler flags: %s' % conf.env.CXXFLAGS)
-    Logs.info('Enable shared: %s' % conf.env.ENABLE_SHARED)
-    Logs.info('Enable static: %s' % conf.env.ENABLE_STATIC)
-    Logs.info('Build tests: %s' % conf.env.BUILD_TESTS)
-    Logs.info('Build single tests: %s' % conf.env.BUILD_SINGLE_TESTS)
-    Logs.info('Enable debug logging: %s' % conf.env.DEBUG_LOGGING)
-    Logs.info('Enable System libraries: %s' % conf.env.ENABLE_SYSTEM_LIBS)
+    Logs.info('C compiler flags         : %s' % conf.env.CFLAGS)
+    Logs.info('C++ compiler flags       : %s' % conf.env.CXXFLAGS)
+    Logs.info('Enable shared            : %s' % conf.env.ENABLE_SHARED)
+    Logs.info('Enable static            : %s' % conf.env.ENABLE_STATIC)
+    Logs.info('Build tests              : %s' % conf.env.BUILD_TESTS)
+    Logs.info('Build single tests       : %s' % conf.env.BUILD_SINGLE_TESTS)
+    Logs.info('Enable debug logging     : %s' % conf.env.DEBUG_LOGGING)
+    Logs.info('Enable System libraries  : %s' % conf.env.ENABLE_SYSTEM_LIBS)
 
 def set_toolset_from_env(conf):
     conf.load('gcc')
