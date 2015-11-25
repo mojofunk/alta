@@ -127,10 +127,11 @@ def set_gcc_compiler_flags(conf):
 
 def set_msvc_compiler_flags(conf):
     # much more to do here
-    cxx_flags = []
+    cxx_flags = ['/DEBUG',  '/Zi', '/EHsc']
+    link_flags = ['/DEBUG']
     # enable exceptions
-    cxx_flags.append('/EHsc')
     conf.env.append_value('CXXFLAGS', cxx_flags)
+    conf.env.append_value('LINKFLAGS', link_flags)
 
 
 def display_config(conf):
