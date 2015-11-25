@@ -3,10 +3,10 @@
 # Tim Mayberry, 2008
 
 subdirs = '''
-gleam
-mojo
 third_party
 '''
+#gleam
+#mojo
 
 
 def configure(conf):
