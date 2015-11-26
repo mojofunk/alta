@@ -5,14 +5,17 @@ subdirs = '''
 cppformat
 pugixml
 moodycamel
-JUCE
 '''
 
 
 def configure(conf):
     for dir in subdirs.split():
         conf.recurse(dir)
+    if conf.env.WITH_JUCE:
+        conf.recurse('JUCE')
 
 
 def build(bld):
     bld.recurse(subdirs)
+    if bld.env.WITH_JUCE:
+        bld.recurse('JUCE')

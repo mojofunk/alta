@@ -108,6 +108,11 @@ def options(opt):
         default=False,
         help='Build Gtkmm based GUI')
     opt.add_option(
+        '--with-juce',
+        action='store_true',
+        default=False,
+        help='Build JUCE library')
+    opt.add_option(
         '--run-tests',
         action='store_true',
         default=False,
@@ -125,6 +130,7 @@ def set_config_env_from_options(conf):
     conf.env.ENABLE_STATIC = conf.options.enable_static
     conf.env.DEBUG_LOGGING = not conf.options.disable_debug_logging
     conf.env.WITH_GTKMM_UI = conf.options.with_gtkmm_ui
+    conf.env.WITH_JUCE = conf.options.with_juce
     conf.env.RUN_TESTS = conf.options.run_tests
 
 
@@ -163,6 +169,8 @@ def set_msvc_compiler_flags(conf):
 
 
 def display_config(conf):
+    Logs.info('Target System            : %s' % conf.env.TARGET_SYSTEM)
+    Logs.info('Toolset                  : %s' % conf.env.TOOLSET)
     Logs.info('C compiler flags         : %s' % conf.env.CFLAGS)
     Logs.info('C++ compiler flags       : %s' % conf.env.CXXFLAGS)
     Logs.info('Linker flags             : %s' % conf.env.LINKFLAGS)
@@ -172,6 +180,19 @@ def display_config(conf):
     Logs.info('Build single tests       : %s' % conf.env.BUILD_SINGLE_TESTS)
     Logs.info('Enable debug logging     : %s' % conf.env.DEBUG_LOGGING)
     Logs.info('Enable System libraries  : %s' % conf.env.ENABLE_SYSTEM_LIBS)
+    Logs.info('Enable Gtkmm UI          : %s' % conf.env.WITH_GTKMM_UI)
+    Logs.info('Enable JUCE library      : %s' % conf.env.WITH_JUCE)
+
+def get_toolset_name(conf):
+    if conf.env.TOOLSET_GCC:
+        return 'gcc'
+    elif conf.env.TOOLSET_CLANG:
+        return 'clang'
+    elif conf.env.TOOLSET_MSVC:
+        return 'msvc'
+    else:
+        return 'Unknown Toolset'
+
 
 def set_toolset_from_env(conf):
     conf.load('gcc')
@@ -179,6 +200,7 @@ def set_toolset_from_env(conf):
     conf.env.TOOLSET_GCC = True
     conf.env.TOOLSET_CLANG = False
     conf.env.TOOLSET_MSVC = False
+    conf.env.TOOLSET = 'gcc'
 
 
 def set_toolset(conf):
@@ -217,9 +239,11 @@ def set_target_system_from_build_system(conf):
     if re.search('linux', sys.platform) != None:
         conf.env.TARGET_LINUX = True
         conf.env.TARGET_WINDOWS = False
+        conf.env.TARGET_SYSTEM = 'linux'
     else:
         conf.env.TARGET_WINDOWS = True
         conf.env.TARGET_LINUX = False
+        conf.env.TARGET_SYSTEM = 'windows'
 
 
 def set_target_system(conf):

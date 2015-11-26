@@ -4,9 +4,9 @@
 
 subdirs = '''
 third_party
+gleam
+mojo
 '''
-#gleam
-#mojo
 
 
 def configure(conf):
