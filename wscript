@@ -22,6 +22,34 @@ top = '.'
 out = 'waf-build'
 
 
+def compiler_is_clang(conf):
+    clang_check_source='''
+#ifndef __clang__
+#error
+#endif
+int main() { return 0; }'''
+
+    return conf.check_cxx(fragment = clang_check_source,
+            features = 'cxx',
+            mandatory = False,
+            execute = False,
+            msg = 'Checking for clang compiler')
+
+
+def compiler_is_msvc(conf):
+    msvc_check_source='''
+#ifndef _MSC_VER
+#error
+#endif
+int main() { return 0; }'''
+
+    return conf.check_cxx(fragment = msvc_check_source,
+            features = 'cxx',
+            mandatory = False,
+            execute = False,
+            msg = 'Checking for msvc compiler')
+
+
 def options(opt):
     # options provided by the modules
 
@@ -163,11 +191,18 @@ def set_toolset(conf):
     elif conf.env.TOOLSET == 'clang':
         conf.load('clang')
         conf.load('clang++')
+        if not compiler_is_clang(conf):
+            print ("Clang compiler not detected")
+            sys.exit(1)
         conf.env.TOOLSET_GCC = False
         conf.env.TOOLSET_CLANG = True
         conf.env.TOOLSET_MSVC = False
     elif conf.env.TOOLSET == 'msvc':
         conf.load('msvc')
+        if not compiler_is_msvc(conf):
+            print ("MSVC compiler not detected")
+            sys.exit(1)
+
         conf.env.TOOLSET_GCC = False
         conf.env.TOOLSET_CLANG = False
         conf.env.TOOLSET_MSVC = True
@@ -239,7 +274,6 @@ def configure(conf):
     if conf.env.TOOLSET_CLANG:
         set_gcc_compiler_flags(conf)
     elif conf.env.TOOLSET_MSVC:
-        print('Using MSVC Compile flags')
         set_msvc_compiler_flags(conf)
 
     if conf.env.ENABLE_SYSTEM_LIBS:
