@@ -127,16 +127,17 @@ def set_gcc_compiler_flags(conf):
 
 def set_msvc_compiler_flags(conf):
     # much more to do here
-    cxx_flags = ['/DEBUG',  '/Zi', '/EHsc']
+    cxx_debug_flags = ['/DEBUG', '/Od', '/MD', '/Zi', '/EHsc']
     link_flags = ['/DEBUG']
     # enable exceptions
-    conf.env.append_value('CXXFLAGS', cxx_flags)
+    conf.env.append_value('CXXFLAGS', cxx_debug_flags)
     conf.env.append_value('LINKFLAGS', link_flags)
 
 
 def display_config(conf):
     Logs.info('C compiler flags         : %s' % conf.env.CFLAGS)
     Logs.info('C++ compiler flags       : %s' % conf.env.CXXFLAGS)
+    Logs.info('Linker flags             : %s' % conf.env.LINKFLAGS)
     Logs.info('Enable shared            : %s' % conf.env.ENABLE_SHARED)
     Logs.info('Enable static            : %s' % conf.env.ENABLE_STATIC)
     Logs.info('Build tests              : %s' % conf.env.BUILD_TESTS)
