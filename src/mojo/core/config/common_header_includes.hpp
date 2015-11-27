@@ -46,8 +46,6 @@
 #include <boost/filesystem.hpp>
 #include <boost/function.hpp>
 #include <boost/signals2.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/weak_ptr.hpp>
 #include <boost/lockfree/queue.hpp>
 #include <boost/lockfree/stack.hpp>
 
