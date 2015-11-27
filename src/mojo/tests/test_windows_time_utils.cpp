@@ -6,6 +6,8 @@
 
 #include <windows.h>
 
+#include <iostream>
+
 BOOST_AUTO_TEST_CASE(test_windows_qpc_timer)
 {
 	// performs basically the same test

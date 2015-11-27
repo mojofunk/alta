@@ -37,5 +37,6 @@
 // native tests
 
 #ifdef MOJO_WINDOWS
-#include "test_native_mmcss.cpp"
+#include "test_windows_mmcss.cpp"
+#include "test_windows_time_utils.cpp"
 #endif
