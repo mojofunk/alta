@@ -49,9 +49,24 @@ int main() { return 0; }'''
             execute = False,
             msg = 'Checking for msvc compiler')
 
+def compiler_is_mingw(conf):
+    mingw_check_source='''
+#ifndef __MINGW32__
+#error
+#endif
+int main() { return 0; }'''
+
+    return conf.check_cxx(fragment = mingw_check_source,
+            features = 'cxx',
+            mandatory = False,
+            execute = False,
+            msg = 'Checking for mingw compiler')
+
 
 def options(opt):
     # options provided by the modules
+    opt.load('compiler_c')
+    opt.load('compiler_cxx')
 
     opt.load('gnu_dirs')
 
@@ -61,12 +76,6 @@ def options(opt):
         dest='toolset',
         default='auto',
         help='Compiler and Toolset options: auto, gcc, clang, mingw, msvc')
-    opt.add_option(
-        '--target-system',
-        type='string',
-        dest='target_system',
-        default='auto',
-        help='Target system options for cross compiling: auto, linux, windows')
     opt.add_option(
         '--enable-system-libs',
         action='store_true',
@@ -122,7 +131,6 @@ def options(opt):
 def set_config_env_from_options(conf):
     # Use same order as above and use all capitals to indicate they are const
     conf.env.TOOLSET = conf.options.toolset
-    conf.env.TARGET_SYSTEM = conf.options.target_system
     conf.env.ENABLE_SYSTEM_LIBS = conf.options.enable_system_libs
     conf.env.BUILD_TESTS = conf.options.with_tests
     conf.env.BUILD_SINGLE_TESTS = conf.options.with_single_tests
@@ -132,6 +140,22 @@ def set_config_env_from_options(conf):
     conf.env.WITH_GTKMM_UI = conf.options.with_gtkmm_ui
     conf.env.WITH_JUCE = conf.options.with_juce
     conf.env.RUN_TESTS = conf.options.run_tests
+
+
+def display_config(conf):
+    Logs.info('Target System            : %s' % conf.env.TARGET_SYSTEM)
+    Logs.info('Toolset                  : %s' % conf.env.TOOLSET)
+    Logs.info('C compiler flags         : %s' % conf.env.CFLAGS)
+    Logs.info('C++ compiler flags       : %s' % conf.env.CXXFLAGS)
+    Logs.info('Linker flags             : %s' % conf.env.LINKFLAGS)
+    Logs.info('Enable shared            : %s' % conf.env.ENABLE_SHARED)
+    Logs.info('Enable static            : %s' % conf.env.ENABLE_STATIC)
+    Logs.info('Build tests              : %s' % conf.env.BUILD_TESTS)
+    Logs.info('Build single tests       : %s' % conf.env.BUILD_SINGLE_TESTS)
+    Logs.info('Enable debug logging     : %s' % conf.env.DEBUG_LOGGING)
+    Logs.info('Enable System libraries  : %s' % conf.env.ENABLE_SYSTEM_LIBS)
+    Logs.info('Enable Gtkmm UI          : %s' % conf.env.WITH_GTKMM_UI)
+    Logs.info('Enable JUCE library      : %s' % conf.env.WITH_JUCE)
 
 
 def check_required_deps(conf, deps):
@@ -168,20 +192,6 @@ def set_msvc_compiler_flags(conf):
     conf.env.append_value('LINKFLAGS', link_flags)
 
 
-def display_config(conf):
-    Logs.info('Target System            : %s' % conf.env.TARGET_SYSTEM)
-    Logs.info('Toolset                  : %s' % conf.env.TOOLSET)
-    Logs.info('C compiler flags         : %s' % conf.env.CFLAGS)
-    Logs.info('C++ compiler flags       : %s' % conf.env.CXXFLAGS)
-    Logs.info('Linker flags             : %s' % conf.env.LINKFLAGS)
-    Logs.info('Enable shared            : %s' % conf.env.ENABLE_SHARED)
-    Logs.info('Enable static            : %s' % conf.env.ENABLE_STATIC)
-    Logs.info('Build tests              : %s' % conf.env.BUILD_TESTS)
-    Logs.info('Build single tests       : %s' % conf.env.BUILD_SINGLE_TESTS)
-    Logs.info('Enable debug logging     : %s' % conf.env.DEBUG_LOGGING)
-    Logs.info('Enable System libraries  : %s' % conf.env.ENABLE_SYSTEM_LIBS)
-    Logs.info('Enable Gtkmm UI          : %s' % conf.env.WITH_GTKMM_UI)
-    Logs.info('Enable JUCE library      : %s' % conf.env.WITH_JUCE)
 
 def get_toolset_name(conf):
     if conf.env.TOOLSET_GCC:
@@ -194,71 +204,84 @@ def get_toolset_name(conf):
         return 'Unknown Toolset'
 
 
-def set_toolset_from_env(conf):
-    conf.load('gcc')
-    conf.load('g++')
+def set_toolset_from_compiler_check(conf):
+    print('Setting Toolset from compiler check')
+    if compiler_is_clang(conf):
+        set_toolset_clang(conf)
+    elif compiler_is_msvc(conf):
+        set_toolset_msvc(conf)
+    else:
+        set_toolset_gcc(conf)
+
+
+def set_toolset_gcc(conf):
     conf.env.TOOLSET_GCC = True
     conf.env.TOOLSET_CLANG = False
     conf.env.TOOLSET_MSVC = False
-    conf.env.TOOLSET = 'gcc'
 
 
-def set_toolset(conf):
+def set_toolset_clang(conf):
+    conf.env.TOOLSET_GCC = True
+    conf.env.TOOLSET_CLANG = False
+    conf.env.TOOLSET_MSVC = False
+
+
+def set_toolset_msvc(conf):
+    conf.env.TOOLSET_GCC = True
+    conf.env.TOOLSET_CLANG = False
+    conf.env.TOOLSET_MSVC = False
+
+
+def check_toolset_clang(conf):
+    if not compiler_is_clang(conf):
+        print ("Clang compiler not detected")
+        sys.exit(1)
+
+
+def check_toolset_msvc(conf):
+    if not compiler_is_msvc(conf):
+        print ("MSVC compiler not detected")
+        sys.exit(1)
+
+
+def check_toolset_mingw(conf):
+    if not compiler_is_mingw(conf):
+        print ("MingW compiler/toolset not detected")
+        sys.exit(1)
+
+
+def load_toolset(conf):
     if conf.env.TOOLSET == 'gcc':
         conf.load('gcc')
         conf.load('g++')
-        conf.env.TOOLSET_GCC = True
-        conf.env.TOOLSET_CLANG = False
-        conf.env.TOOLSET_MSVC = False
+        set_toolset_gcc(conf)
     elif conf.env.TOOLSET == 'clang':
         conf.load('clang')
         conf.load('clang++')
-        if not compiler_is_clang(conf):
-            print ("Clang compiler not detected")
-            sys.exit(1)
-        conf.env.TOOLSET_GCC = False
-        conf.env.TOOLSET_CLANG = True
-        conf.env.TOOLSET_MSVC = False
+        set_toolset_clang(conf)
+        check_toolset_clang(conf)
     elif conf.env.TOOLSET == 'msvc':
         conf.load('msvc')
-        if not compiler_is_msvc(conf):
-            print ("MSVC compiler not detected")
-            sys.exit(1)
-
-        conf.env.TOOLSET_GCC = False
-        conf.env.TOOLSET_CLANG = False
-        conf.env.TOOLSET_MSVC = True
+        set_toolset_msvc(conf)
+        check_toolset_msvc(conf)
     elif conf.env.TOOLSET == 'auto':
-        set_toolset_from_env(conf)
+        conf.load('compiler_c')
+        conf.load('compiler_cxx')
+        set_toolset_from_compiler_check(conf)
     else:
         print ("Unsupported Toolset option")
         sys.exit(1)
 
 
-def set_target_system_from_build_system(conf):
-    if re.search('linux', sys.platform) != None:
-        conf.env.TARGET_LINUX = True
-        conf.env.TARGET_WINDOWS = False
-        conf.env.TARGET_SYSTEM = 'linux'
-    else:
-        conf.env.TARGET_WINDOWS = True
-        conf.env.TARGET_LINUX = False
-        conf.env.TARGET_SYSTEM = 'windows'
-
-
 def set_target_system(conf):
-    if conf.env.TARGET_SYSTEM == 'auto':
-        set_target_system_from_build_system(conf)
-        return
-    if conf.env.TARGET_SYSTEM == 'windows':
+    if compiler_is_mingw(conf) or compiler_is_msvc(conf):
+        conf.env.TARGET_SYSTEM = 'Windows'
         conf.env.TARGET_WINDOWS = True
         conf.env.TARGET_LINUX = False
-    elif conf.env.TARGET_SYSTEM == 'linux':
+    else:
+        conf.env.TARGET_SYSTEM = 'Linux'
         conf.env.TARGET_LINUX = True
         conf.env.TARGET_WINDOWS = False
-    else:
-        print ("Unsupported Target System option")
-        sys.exit(1)
 
 
 def check_system_libs(conf):
@@ -287,7 +310,7 @@ def configure(conf):
 
     set_config_env_from_options(conf)
 
-    set_toolset(conf)
+    load_toolset(conf)
 
     conf.load('gnu_dirs')
 
