@@ -77,11 +77,6 @@ def options(opt):
         default='auto',
         help='Compiler and Toolset options: auto, gcc, clang, mingw, msvc')
     opt.add_option(
-        '--enable-system-libs',
-        action='store_true',
-        default=False,
-        help='Use system versions of library dependencies')
-    opt.add_option(
         '--with-tests',
         action='store_true',
         default=False,
@@ -131,7 +126,6 @@ def options(opt):
 def set_config_env_from_options(conf):
     # Use same order as above and use all capitals to indicate they are const
     conf.env.TOOLSET = conf.options.toolset
-    conf.env.ENABLE_SYSTEM_LIBS = conf.options.enable_system_libs
     conf.env.BUILD_TESTS = conf.options.with_tests
     conf.env.BUILD_SINGLE_TESTS = conf.options.with_single_tests
     conf.env.ENABLE_SHARED = conf.options.enable_shared
@@ -284,7 +278,7 @@ def set_target_system(conf):
         conf.env.TARGET_WINDOWS = False
 
 
-def check_system_libs(conf):
+def check_library_dependencies(conf):
 
     common_deps = \
         {
@@ -305,6 +299,13 @@ def check_system_libs(conf):
             lib='boost_system-mt', uselib_store='BOOST_SYSTEM', mandatory=False):
         conf.check(lib='boost_system', uselib_store='BOOST_SYSTEM')
 
+    if conf.env.BUILD_TESTS:
+        if not conf.check(lib='boost_unit_test_framework-mt',
+                          uselib_store='BOOST_UNIT_TEST_FRAMEWORK', mandatory=False):
+            conf.check(
+                lib='boost_unit_test_framework',
+                uselib_store='BOOST_UNIT_TEST_FRAMEWORK')
+
 
 def configure(conf):
 
@@ -323,18 +324,10 @@ def configure(conf):
     elif conf.env.TOOLSET_MSVC:
         set_msvc_compiler_flags(conf)
 
-    if conf.env.ENABLE_SYSTEM_LIBS:
-        check_system_libs(conf)
+    check_library_dependencies(conf)
 
     if conf.env.BUILD_SINGLE_TESTS:
         conf.env.BUILD_TESTS = True
-
-    if conf.env.BUILD_TESTS:
-        if not conf.check(lib='boost_unit_test_framework-mt',
-                          uselib_store='BOOST_UNIT_TEST_FRAMEWORK', mandatory=False):
-            conf.check(
-                lib='boost_unit_test_framework',
-                uselib_store='BOOST_UNIT_TEST_FRAMEWORK')
 
     if not conf.env.ENABLE_SHARED and not conf.env.ENABLE_STATIC:
         # needed because of the weird waf options design
