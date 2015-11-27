@@ -179,18 +179,6 @@ def set_msvc_compiler_flags(conf):
     conf.env.append_value('LINKFLAGS', link_flags)
 
 
-
-def get_toolset_name(conf):
-    if conf.env.TOOLSET_GCC:
-        return 'gcc'
-    elif conf.env.TOOLSET_CLANG:
-        return 'clang'
-    elif conf.env.TOOLSET_MSVC:
-        return 'msvc'
-    else:
-        return 'Unknown Toolset'
-
-
 def set_toolset_from_compiler_check(conf):
     print('Setting Toolset from compiler check')
     if compiler_is_clang(conf):
@@ -202,21 +190,24 @@ def set_toolset_from_compiler_check(conf):
 
 
 def set_toolset_gcc(conf):
+    conf.env.TOOLSET = 'gcc'
     conf.env.TOOLSET_GCC = True
     conf.env.TOOLSET_CLANG = False
     conf.env.TOOLSET_MSVC = False
 
 
 def set_toolset_clang(conf):
-    conf.env.TOOLSET_GCC = True
-    conf.env.TOOLSET_CLANG = False
+    conf.env.TOOLSET = 'clang'
+    conf.env.TOOLSET_GCC = False
+    conf.env.TOOLSET_CLANG = True
     conf.env.TOOLSET_MSVC = False
 
 
 def set_toolset_msvc(conf):
-    conf.env.TOOLSET_GCC = True
+    conf.env.TOOLSET = 'msvc'
+    conf.env.TOOLSET_GCC = False
     conf.env.TOOLSET_CLANG = False
-    conf.env.TOOLSET_MSVC = False
+    conf.env.TOOLSET_MSVC = True
 
 
 def check_toolset_clang(conf):
