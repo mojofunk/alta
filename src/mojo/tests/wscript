@@ -69,6 +69,8 @@ use_static = [
     'MOJO_ENGINE_STATIC',
     'MOJO_APPLICATION_STATIC']
 
+test_includes = ['.']
+test_defines = ['BOOST_TEST_DYN_LINK=1']
 
 def init():
     pass
@@ -90,8 +92,8 @@ def configure(conf):
 def build_single_tests_shared(bld):
     bld.shlib(
         source=common_sources,
-        includes='.',
-        defines='BOOST_TEST_DYN_LINK=1',
+        includes=test_includes,
+        defines=test_defines,
         uselib=uselibs,
         use=use_shared,
         target='mojo-test-common-shared',
@@ -100,20 +102,19 @@ def build_single_tests_shared(bld):
     for test in tests:
         bld.program(
             source=test + '.cpp',
-            includes='.',
-            defines='BOOST_TEST_DYN_LINK=1',
+            includes=test_includes,
+            defines=test_defines,
             uselib=uselibs,
             use=use_shared + ['MOJO_TEST_COMMON_SHARED'],
             target=test)
 
 
 def build_tests_shared(bld):
-    defines = ['BOOST_TEST_DYN_LINK=1',
-               'MOJO_SINGLE_TEST_EXE=1']
+    defines = test_defines + ['MOJO_SINGLE_TEST_EXE=1']
     source = ['test_main.cpp']
 
     bld.program(
-        includes='.',
+        includes=test_includes,
         source=source,
         defines=defines,
         uselib=uselibs,
@@ -129,8 +130,8 @@ def build_shared(bld):
 def build_single_tests_static(bld):
     bld.stlib(
         source=common_sources,
-        includes='.',
-        defines='BOOST_TEST_DYN_LINK=1',
+        includes=test_includes,
+        defines=test_defines,
         uselib=uselibs,
         use=use_static,
         target='mojo-test-common-static',
@@ -139,20 +140,19 @@ def build_single_tests_static(bld):
     for test in tests:
         bld.program(
             source=test + '.cpp',
-            includes='.',
-            defines='BOOST_TEST_DYN_LINK=1',
+            includes=test_includes,
+            defines=test_defines,
             uselib=uselibs,
             use=use_static + ['MOJO_TEST_COMMON_STATIC'],
             target=test + '_static')
 
 
 def build_tests_static(bld):
-    defines = ['BOOST_TEST_DYN_LINK=1',
-               'MOJO_SINGLE_TEST_EXE=1']
+    defines = test_defines + ['MOJO_SINGLE_TEST_EXE=1']
     source = ['test_main.cpp']
 
     bld.program(
-        includes='.',
+        includes=test_includes,
         source=source,
         defines=defines,
         uselib=uselibs,
@@ -171,7 +171,7 @@ def build(bld):
 
     local_tests = tests
 
-    if bld.env.TARGET_PLATFORM == 'windows':
+    if bld.env.TARGET_WINDOWS:
         local_tests += windows_tests
         global uselibs
         uselibs += ['WINMM']
