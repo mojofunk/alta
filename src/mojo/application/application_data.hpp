@@ -5,7 +5,7 @@ namespace internal {
 
 class WorkerThread {
 public:
-	typedef boost::function<void()> function_t;
+	typedef std::function<void()> function_t;
 
 	WorkerThread()
 	    : m_thread(std::ref(*this))

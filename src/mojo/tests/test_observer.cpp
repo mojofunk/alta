@@ -733,7 +733,7 @@ public:
 	}
 
 public:
-	typedef boost::function<void()> function_type;
+	typedef std::function<void()> function_type;
 
 	void operator()()
 	{
