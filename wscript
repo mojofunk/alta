@@ -82,11 +82,6 @@ def options(opt):
         default=False,
         help='Enable Testsuite')
     opt.add_option(
-        '--with-single-tests',
-        action='store_true',
-        default=False,
-        help='Build each test as single executable')
-    opt.add_option(
         '--enable-shared',
         action='store_true',
         default=False,
@@ -126,8 +121,7 @@ def options(opt):
 def set_config_env_from_options(conf):
     # Use same order as above and use all capitals to indicate they are const
     conf.env.TOOLSET = conf.options.toolset
-    conf.env.BUILD_TESTS = conf.options.with_tests
-    conf.env.BUILD_SINGLE_TESTS = conf.options.with_single_tests
+    conf.env.WITH_TESTS = conf.options.with_tests
     conf.env.ENABLE_SHARED = conf.options.enable_shared
     conf.env.ENABLE_STATIC = conf.options.enable_static
     conf.env.DEBUG_LOGGING = not conf.options.disable_debug_logging
@@ -144,8 +138,7 @@ def display_config(conf):
     Logs.info('Linker flags             : %s' % conf.env.LINKFLAGS)
     Logs.info('Enable shared            : %s' % conf.env.ENABLE_SHARED)
     Logs.info('Enable static            : %s' % conf.env.ENABLE_STATIC)
-    Logs.info('Build tests              : %s' % conf.env.BUILD_TESTS)
-    Logs.info('Build single tests       : %s' % conf.env.BUILD_SINGLE_TESTS)
+    Logs.info('Build tests              : %s' % conf.env.WITH_TESTS)
     Logs.info('Enable debug logging     : %s' % conf.env.DEBUG_LOGGING)
     Logs.info('Enable System libraries  : %s' % conf.env.ENABLE_SYSTEM_LIBS)
     Logs.info('Enable Gtkmm UI          : %s' % conf.env.WITH_GTKMM_UI)
@@ -268,6 +261,7 @@ def load_toolset(conf):
 
 
 def set_target_system(conf):
+    print('Setting Target system from compiler check')
     if compiler_is_mingw(conf) or compiler_is_msvc(conf):
         conf.env.TARGET_SYSTEM = 'Windows'
         conf.env.TARGET_WINDOWS = True
@@ -299,7 +293,7 @@ def check_library_dependencies(conf):
             lib='boost_system-mt', uselib_store='BOOST_SYSTEM', mandatory=False):
         conf.check(lib='boost_system', uselib_store='BOOST_SYSTEM')
 
-    if conf.env.BUILD_TESTS:
+    if conf.env.WITH_TESTS:
         if not conf.check(lib='boost_unit_test_framework-mt',
                           uselib_store='BOOST_UNIT_TEST_FRAMEWORK', mandatory=False):
             conf.check(
@@ -326,9 +320,6 @@ def configure(conf):
 
     check_library_dependencies(conf)
 
-    if conf.env.BUILD_SINGLE_TESTS:
-        conf.env.BUILD_TESTS = True
-
     if not conf.env.ENABLE_SHARED and not conf.env.ENABLE_STATIC:
         # needed because of the weird waf options design
         conf.env.ENABLE_SHARED = True
@@ -336,7 +327,7 @@ def configure(conf):
     defines = ['HAVE_CONFIG_H', '_REENTRANT',
                '_LARGEFILE_SOURCE', '_LARGEFILE64_SOURCE']
 
-    if conf.env.BUILD_TESTS:
+    if conf.env.WITH_TESTS:
         defines += ['BOOST_TEST_DYN_LINK']
 
     conf.env.append_value('CCDEFINES', defines)

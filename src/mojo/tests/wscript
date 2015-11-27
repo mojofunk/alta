@@ -75,7 +75,7 @@ def init():
 
 
 def configure(conf):
-    if not conf.env.BUILD_TESTS:
+    if not conf.env.WITH_TESTS:
         return
 
     if conf.env.TARGET_PLATFORM == 'windows':
@@ -122,9 +122,7 @@ def build_tests_shared(bld):
 
 
 def build_shared(bld):
-    if bld.env.BUILD_SINGLE_TESTS:
         build_single_tests_shared(bld)
-    else:
         build_tests_shared(bld)
 
 
@@ -163,14 +161,12 @@ def build_tests_static(bld):
 
 
 def build_static(bld):
-    if bld.env.BUILD_SINGLE_TESTS:
         build_single_tests_static(bld)
-    else:
         build_tests_static(bld)
 
 
 def build(bld):
-    if not bld.env.BUILD_TESTS:
+    if not bld.env.WITH_TESTS:
         return
 
     local_tests = tests
