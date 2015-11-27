@@ -4,10 +4,8 @@
 
 ALTA_BRANCH=`git rev-parse --abbrev-ref HEAD`
 
-SYSTEM_LIBS="--enable-system-libs"
 STATIC="--enable-static"
 TESTS="--with-tests"
-SINGLE_TESTS="--with-single-tests"
 RUN_TESTS="--run-tests"
 GUI="--with-gtkmm-ui"
 OPTIMIZE="--optimize"
@@ -20,8 +18,8 @@ CLANG_TOOLSET="--toolset=clang"
 BACKTRACE=""
 PROFILE=""
 
-DEBUG="$SYSTEM_LIBS $TESTS $SINGLE_TESTS"
-RELEASE="$SYSTEM_LIBS $OPTIMIZE $DISABLE_DEBUG_LOGGING"
+DEBUG="$TESTS"
+RELEASE="$OPTIMIZE $DISABLE_DEBUG_LOGGING"
 
 declare -A gcc_config
 gcc_config["gcc-debug-shared"]="$DEBUG"
