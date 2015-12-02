@@ -1,5 +1,3 @@
-#include "timers.hpp"
-
 MOJO_DEBUG_DOMAIN(GUI_TIMING);
 
 namespace {

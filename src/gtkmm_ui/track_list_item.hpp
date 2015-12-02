@@ -1,4 +1,3 @@
-
 #ifndef UI_TRACK_LIST_ITEM
 #define UI_TRACK_LIST_ITEM
 

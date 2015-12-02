@@ -1,8 +1,3 @@
-#include "track_canvas.hpp"
-#include "tool.hpp"
-
-#include "log.hpp"
-
 namespace ui {
 
 TrackCanvas::TrackCanvas()

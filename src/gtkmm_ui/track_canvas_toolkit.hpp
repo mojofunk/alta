@@ -1,8 +1,5 @@
-
 #ifndef UI_TRACK_CANVAS_TOOLKIT
 #define UI_TRACK_CANVAS_TOOLKIT
-
-#include "toolkit.hpp"
 
 namespace ui {
 

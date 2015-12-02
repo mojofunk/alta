@@ -1,13 +1,3 @@
-#include "track_view.hpp"
-
-#include "app.hpp"
-#include "track_canvas.hpp"
-#include "track_view_item_factory.hpp"
-#include "track_list.hpp"
-#include "track_list_item.hpp"
-
-#include "log.hpp"
-
 namespace ui {
 
 TrackView::TrackView(mojo::Project* p)

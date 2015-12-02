@@ -2,10 +2,6 @@
 #ifndef UI_AUDIO_TRACK_VIEW_ITEM
 #define UI_AUDIO_TRACK_VIEW_ITEM
 
-#include "track_view_item.hpp"
-#include "audio_track_list_item.hpp"
-#include "audio_track_canvas_item.hpp"
-
 namespace ui {
 
 class AudioTrackViewItem : public TrackViewItem {

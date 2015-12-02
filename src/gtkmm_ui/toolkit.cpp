@@ -1,5 +1,3 @@
-#include "toolkit.hpp"
-
 namespace ui {
 
 Toolkit::Toolkit()

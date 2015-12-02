@@ -2,8 +2,6 @@
 #ifndef UI_IMPORT_DIALOG
 #define UI_IMPORT_DIALOG
 
-#include "types.hpp"
-
 namespace ui {
 
 class ImportDialog {

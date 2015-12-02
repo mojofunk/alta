@@ -1,10 +1,3 @@
-#include "app.hpp"
-#include "project_setup_dialog.hpp"
-#include "preferences_dialog.hpp"
-#include "import_dialog.hpp"
-
-#include "log.hpp"
-
 namespace ui {
 
 App* App::s_app = 0;

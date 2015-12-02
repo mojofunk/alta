@@ -1,10 +1,3 @@
-#include "app.hpp"
-#include "project_window.hpp"
-#include "utils.hpp"
-#include "project_window_toolbar.hpp"
-#include "track_view_factory.hpp"
-#include "filesystem_paths.hpp"
-
 namespace ui {
 
 ProjectWindow::ProjectWindow(mojo::Project* proj)

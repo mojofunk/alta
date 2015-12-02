@@ -1,8 +1,5 @@
-
 #ifndef UI_UTILS
 #define UI_UTILS
-
-#include "types.hpp"
 
 namespace ui {
 

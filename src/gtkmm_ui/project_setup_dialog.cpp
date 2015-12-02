@@ -1,8 +1,3 @@
-#include "project_setup_dialog.hpp"
-#include "filesystem_paths.hpp"
-
-#include "log.hpp"
-
 namespace ui {
 
 ProjectSetupDialog::ProjectSetupDialog(mojo::Project* proj)

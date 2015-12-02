@@ -2,8 +2,6 @@
 #ifndef UI_PREFERENCES_DIALOG
 #define UI_PREFERENCES_DIALOG
 
-#include "types.hpp"
-
 namespace ui {
 
 class PreferencesDialog {

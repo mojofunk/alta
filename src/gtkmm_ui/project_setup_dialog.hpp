@@ -2,8 +2,6 @@
 #ifndef UI_PROJECT_SETUP_DIALOG
 #define UI_PROJECT_SETUP_DIALOG
 
-#include "types.hpp"
-
 namespace ui {
 
 class ProjectSetupDialog {

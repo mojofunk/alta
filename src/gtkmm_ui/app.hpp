@@ -1,9 +1,6 @@
 #ifndef UI_APP
 #define UI_APP
 
-#include "dispatcher.hpp"
-#include "project_objects.hpp"
-
 namespace ui {
 
 class App {

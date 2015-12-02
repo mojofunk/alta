@@ -1,8 +1,3 @@
-#include "preferences_dialog.hpp"
-#include "filesystem_paths.hpp"
-
-#include "log.hpp"
-
 using namespace std;
 
 namespace ui {

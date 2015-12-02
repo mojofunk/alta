@@ -1,8 +1,3 @@
-
-#include "project_objects.hpp"
-
-#include "project_window.hpp"
-
 namespace ui {
 
 ProjectObjects::ProjectObjects(mojo::Project* proj)

@@ -1,8 +1,3 @@
-
-#include "dispatcher.hpp"
-
-#include "log.hpp"
-
 namespace ui {
 
 Dispatcher::Dispatcher()

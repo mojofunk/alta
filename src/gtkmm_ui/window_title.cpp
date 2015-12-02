@@ -1,5 +1,3 @@
-#include "window_title.hpp"
-
 using std::string;
 
 namespace {

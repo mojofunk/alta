@@ -1,10 +1,3 @@
-
-#include "track_view_item_factory.hpp"
-
-#include "audio_track_view_item.hpp"
-
-//#include "midi_track_view_item.hpp"
-
 namespace ui {
 
 TrackViewItem* TrackViewItemFactory::create(mojo::Track* track)

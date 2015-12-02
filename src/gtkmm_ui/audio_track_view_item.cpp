@@ -1,6 +1,3 @@
-
-#include "audio_track_view_item.hpp"
-
 namespace ui {
 
 AudioTrackViewItem::AudioTrackViewItem(mojo::Track* at)

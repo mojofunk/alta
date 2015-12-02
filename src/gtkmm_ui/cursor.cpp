@@ -1,8 +1,3 @@
-
-#include "cursor.hpp"
-
-#include "log.hpp"
-
 namespace ui {
 
 Glib::RefPtr<Cursor> Cursor::create()

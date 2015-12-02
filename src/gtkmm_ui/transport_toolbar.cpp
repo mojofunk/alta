@@ -1,7 +1,3 @@
-#include "app.hpp"
-
-#include "transport_toolbar.hpp"
-
 namespace ui {
 
 TransportToolbar::TransportToolbar(mojo::Project* p)

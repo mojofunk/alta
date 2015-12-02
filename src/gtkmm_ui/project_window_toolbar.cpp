@@ -1,10 +1,3 @@
-#include "project_window_toolbar.hpp"
-
-#include "app.hpp"
-#include "transport_toolbar.hpp"
-
-#include "log.hpp"
-
 namespace ui {
 
 ProjectWindowToolbar::ProjectWindowToolbar(mojo::Project* p)

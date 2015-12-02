@@ -1,4 +1,3 @@
-
 #ifndef UI_TRACK_VIEW
 #define UI_TRACK_VIEW
 

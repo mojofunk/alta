@@ -1,8 +1,3 @@
-
-#include "object_selection_tool.hpp"
-
-#include "log.hpp"
-
 namespace ui {
 
 ObjectSelectionTool::ObjectSelectionTool()

@@ -1,6 +1,3 @@
-
-#include "app.hpp"
-
 using namespace ui;
 
 int main(int argc, char* argv[])

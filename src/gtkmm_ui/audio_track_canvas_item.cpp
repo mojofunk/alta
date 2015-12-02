@@ -1,6 +1,3 @@
-
-#include "audio_track_canvas_item.hpp"
-
 namespace ui {
 
 AudioTrackCanvasItem::AudioTrackCanvasItem(mojo::Track* audio_track)

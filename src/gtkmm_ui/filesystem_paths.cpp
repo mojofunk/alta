@@ -1,6 +1,3 @@
-
-#include "filesystem_paths.hpp"
-
 namespace ui {
 
 using namespace mojo;

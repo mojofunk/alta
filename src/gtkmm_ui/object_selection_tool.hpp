@@ -2,8 +2,6 @@
 #ifndef UI_OBJECT_SELECTION_TOOL
 #define UI_OBJECT_SELECTION_TOOL
 
-#include "tool.hpp"
-
 namespace ui {
 
 class ObjectSelectionTool : public Tool {

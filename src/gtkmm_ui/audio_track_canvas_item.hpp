@@ -2,8 +2,6 @@
 #ifndef UI_AUDIO_TRACK_CANVAS_ITEM
 #define UI_AUDIO_TRACK_CANVAS_ITEM
 
-#include "track_canvas_item.hpp"
-
 namespace ui {
 
 class AudioTrackCanvasItem : public TrackCanvasItem {

@@ -1,4 +1,3 @@
-
 #ifndef UI_TOOLKIT
 #define UI_TOOLKIT
 

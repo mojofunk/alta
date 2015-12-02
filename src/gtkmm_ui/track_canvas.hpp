@@ -1,9 +1,5 @@
-
 #ifndef UI_TRACK_CANVAS
 #define UI_TRACK_CANVAS
-
-#include "track_canvas_item.hpp"
-#include "track_canvas_toolkit.hpp"
 
 namespace ui {
 

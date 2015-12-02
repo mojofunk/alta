@@ -1,4 +1,3 @@
-
 #ifndef UI_TYPES
 #define UI_TYPES
 
