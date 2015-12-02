@@ -21,8 +21,7 @@
 
 #include "gleam/timer.hpp"
 
-#include "mojo/core/debug/debug.hpp"
-#include "mojo/core/string/compose.hpp"
+#include "mojo-core.hpp"
 
 MOJO_DEBUG_DOMAIN(GUI_TIMING);
 
