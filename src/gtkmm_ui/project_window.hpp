@@ -2,8 +2,6 @@
 #ifndef UI_PROJECT_WINDOW
 #define UI_PROJECT_WINDOW
 
-#include <mojo-application.hpp>
-
 #include "types.hpp"
 
 namespace ui {

@@ -20,9 +20,6 @@
 #ifndef UI_TIMERS
 #define UI_TIMERS
 
-#include <sigc++/slot.h>
-#include <sigc++/connection.h>
-
 namespace ui {
 
 sigc::connection slow_timer_connect(const sigc::slot<void>& slot);

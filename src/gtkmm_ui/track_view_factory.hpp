@@ -4,8 +4,6 @@
 
 #include "track_view.hpp"
 
-#include <mojo-application.hpp>
-
 namespace ui {
 
 class TrackViewFactory {

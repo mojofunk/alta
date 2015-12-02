@@ -2,10 +2,6 @@
 #ifndef UI_AUDIO_TRACK_LIST_ITEM
 #define UI_AUDIO_TRACK_LIST_ITEM
 
-#include <mojo-application.hpp>
-
-#include <gtkmm/label.h>
-
 #include "track_list_item.hpp"
 
 namespace ui {

@@ -2,10 +2,6 @@
 #ifndef UI_TOOL
 #define UI_TOOL
 
-#include <string>
-
-#include <goocanvasmm/canvas.h>
-
 namespace ui {
 
 class Tool {

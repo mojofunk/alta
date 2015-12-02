@@ -2,15 +2,6 @@
 #ifndef UI_DISPATCHER
 #define UI_DISPATCHER
 
-#include <queue>
-
-#include <sigc++/signal.h>
-
-#include <glibmm/thread.h>
-#include <glibmm/dispatcher.h>
-
-#include <gleam/gleam.hpp>
-
 namespace ui {
 
 class Dispatcher {

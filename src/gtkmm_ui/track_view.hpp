@@ -2,14 +2,6 @@
 #ifndef UI_TRACK_VIEW
 #define UI_TRACK_VIEW
 
-#include <list>
-
-#include <mojo-application.hpp>
-
-#include <gtkmm/paned.h>
-
-#include <boost/shared_ptr.hpp>
-
 namespace ui {
 
 class TrackCanvas;

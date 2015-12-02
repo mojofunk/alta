@@ -2,10 +2,6 @@
 #ifndef UI_AUDIO_TRACK_VIEW_ITEM
 #define UI_AUDIO_TRACK_VIEW_ITEM
 
-#include <mojo-application.hpp>
-
-#include <boost/shared_ptr.hpp>
-
 #include "track_view_item.hpp"
 #include "audio_track_list_item.hpp"
 #include "audio_track_canvas_item.hpp"

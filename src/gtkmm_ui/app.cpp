@@ -1,6 +1,3 @@
-
-#include <gtkmm.h>
-
 #include "app.hpp"
 #include "project_setup_dialog.hpp"
 #include "preferences_dialog.hpp"

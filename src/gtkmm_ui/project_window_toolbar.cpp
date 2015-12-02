@@ -1,4 +1,3 @@
-
 #include "project_window_toolbar.hpp"
 
 #include "app.hpp"

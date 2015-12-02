@@ -1,4 +1,3 @@
-
 #include "track_canvas.hpp"
 #include "tool.hpp"
 

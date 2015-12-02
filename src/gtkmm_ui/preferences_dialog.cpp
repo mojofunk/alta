@@ -1,11 +1,7 @@
-#include <cassert>
-
 #include "preferences_dialog.hpp"
 #include "filesystem_paths.hpp"
 
 #include "log.hpp"
-
-#include <iostream>
 
 using namespace std;
 

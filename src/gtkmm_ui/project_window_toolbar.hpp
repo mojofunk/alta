@@ -2,11 +2,6 @@
 #ifndef UI_PROJECT_WINDOW_TOOLBAR
 #define UI_PROJECT_WINDOW_TOOLBAR
 
-#include <gtkmm/box.h>
-#include <gtkmm/togglebutton.h>
-
-#include <mojo-application.hpp>
-
 namespace ui {
 
 class ProjectWindowToolbar : public Gtk::HBox {

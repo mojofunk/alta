@@ -1,6 +1,4 @@
 
-#include <goocanvasmm/polyline.h>
-
 #ifndef UI_CURSOR
 #define UI_CURSOR
 

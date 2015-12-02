@@ -1,12 +1,6 @@
 #ifndef UI_APP
 #define UI_APP
 
-#include <set>
-
-#include <boost/shared_ptr.hpp>
-
-#include <mojo-application.hpp>
-
 #include "dispatcher.hpp"
 #include "project_objects.hpp"
 

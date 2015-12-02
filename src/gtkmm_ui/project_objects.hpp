@@ -2,12 +2,6 @@
 #ifndef UI_PROJECT_OBJECTS
 #define UI_PROJECT_OBJECTS
 
-#include <mojo-application.hpp>
-
-#include <boost/shared_ptr.hpp>
-
-#include <sigc++/trackable.h>
-
 namespace ui {
 
 class ProjectWindow;

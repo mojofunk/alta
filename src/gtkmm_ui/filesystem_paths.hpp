@@ -2,8 +2,6 @@
 #ifndef UI_FILESYSTEM_PATHS
 #define UI_FILESYSTEM_PATHS
 
-#include "mojo-core.hpp"
-
 namespace ui {
 
 mojo::Searchpath gmojo_search_path();

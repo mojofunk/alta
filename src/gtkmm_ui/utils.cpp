@@ -1,6 +1,3 @@
-
-#include <cassert>
-
 #include "utils.hpp"
 
 namespace ui {

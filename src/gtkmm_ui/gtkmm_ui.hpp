@@ -1,6 +1,8 @@
 #ifndef GTKMM_UI_H
 #define GTKMM_UI_H
 
+#include "gtkmm_ui_header_includes.hpp"
+
 #include "app.hpp"
 #include "audio_track_canvas_item.hpp"
 #include "audio_track_list_item.hpp"
@@ -11,7 +13,6 @@
 #include "filesystem_paths.hpp"
 #include "import_dialog.hpp"
 #include "log.hpp"
-#include "object.hpp"
 #include "object_selection_tool.hpp"
 #include "preferences_dialog.hpp"
 #include "project_objects.hpp"

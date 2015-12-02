@@ -1,3 +1,7 @@
+#include "gtkmm_ui.hpp"
+
+#include "gtkmm_ui_source_includes.hpp"
+
 #include "app.cpp"
 #include "audio_track_canvas_item.cpp"
 #include "audio_track_list_item.cpp"

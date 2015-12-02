@@ -1,8 +1,6 @@
 #ifndef UI_WINDOW_TITLE
 #define UI_WINDOW_TITLE
 
-#include <string>
-
 namespace ui {
 
 /**

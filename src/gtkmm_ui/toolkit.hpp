@@ -2,10 +2,6 @@
 #ifndef UI_TOOLKIT
 #define UI_TOOLKIT
 
-#include <list>
-
-#include <boost/shared_ptr.hpp>
-
 namespace ui {
 
 class Tool;

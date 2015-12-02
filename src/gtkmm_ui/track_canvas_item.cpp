@@ -1,4 +1,3 @@
-
 #include "track_canvas_item.hpp"
 
 namespace ui {

@@ -1,12 +1,6 @@
 #ifndef UI_TRANSPORT_TOOLBAR
 #define UI_TRANSPORT_TOOLBAR
 
-#include <gtkmm/box.h>
-#include <gtkmm/buttonbox.h>
-#include <gtkmm/togglebutton.h>
-
-#include <mojo-application.hpp>
-
 namespace ui {
 
 class TransportToolbar : public Gtk::HBox {

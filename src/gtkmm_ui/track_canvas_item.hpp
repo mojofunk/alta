@@ -2,10 +2,6 @@
 #ifndef UI_TRACK_CANVAS_ITEM
 #define UI_TRACK_CANVAS_ITEM
 
-#include <inttypes.h>
-
-#include <goocanvasmm/group.h>
-
 namespace ui {
 
 class TrackCanvasItem : public Goocanvas::Group {

@@ -2,10 +2,6 @@
 #ifndef UI_AUDIO_TRACK_CANVAS_ITEM
 #define UI_AUDIO_TRACK_CANVAS_ITEM
 
-#include <goocanvasmm/rect.h>
-
-#include <mojo-application.hpp>
-
 #include "track_canvas_item.hpp"
 
 namespace ui {
