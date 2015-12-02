@@ -16,15 +16,12 @@ void App::init(int argc, char* argv[])
 {
 	if (s_app) throw;
 
-	mojo::Application::initialize();
-
 	s_app = new App(argc, argv);
 }
 
 void App::cleanup()
 {
 	delete s_app;
-	mojo::Application::deinitialize();
 }
 
 App::App(int argc, char* argv[])

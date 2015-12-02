@@ -1,4 +1,3 @@
-
 #ifndef UI_APP
 #define UI_APP
 
@@ -69,6 +68,7 @@ private: // member data
 
 	Dispatcher m_dispatcher;
 };
-}
 
-#endif
+} // namespace ui
+
+#endif // UI_APP
