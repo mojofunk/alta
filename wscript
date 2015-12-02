@@ -140,7 +140,6 @@ def display_config(conf):
     Logs.info('Enable static            : %s' % conf.env.ENABLE_STATIC)
     Logs.info('Build tests              : %s' % conf.env.WITH_TESTS)
     Logs.info('Enable debug logging     : %s' % conf.env.DEBUG_LOGGING)
-    Logs.info('Enable System libraries  : %s' % conf.env.ENABLE_SYSTEM_LIBS)
     Logs.info('Enable Gtkmm UI          : %s' % conf.env.WITH_GTKMM_UI)
     Logs.info('Enable JUCE library      : %s' % conf.env.WITH_JUCE)
 
