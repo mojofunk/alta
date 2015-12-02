@@ -315,15 +315,6 @@ def configure(conf):
         # needed because of the weird waf options design
         conf.env.ENABLE_SHARED = True
 
-    defines = ['HAVE_CONFIG_H', '_REENTRANT',
-               '_LARGEFILE_SOURCE', '_LARGEFILE64_SOURCE']
-
-    if conf.env.WITH_TESTS:
-        defines += ['BOOST_TEST_DYN_LINK']
-
-    conf.env.append_value('CCDEFINES', defines)
-    conf.env.append_value('CXXDEFINES', defines)
-
     conf.recurse('src')
 
     display_config(conf)
