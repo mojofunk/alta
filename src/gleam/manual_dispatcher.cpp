@@ -1,5 +1,3 @@
-namespace gleam {
-
 ManualDispatcher::ManualDispatcher(const char* const name)
     : Dispatcher(name)
 {
@@ -47,5 +45,3 @@ void ManualDispatcher::main_loop()
 		}
 	}
 }
-
-} // namespace gleam

@@ -1,8 +1,6 @@
 #ifndef GLEAM_MANUAL_DISPATCHER_H
 #define GLEAM_MANUAL_DISPATCHER_H
 
-namespace gleam {
-
 class ManualDispatcher : public Dispatcher {
 public:
 	ManualDispatcher(const char* const name);
@@ -32,7 +30,5 @@ private:
 
 	Semaphore m_iter_sema;
 };
-
-} // namespace gleam
 
 #endif // GLEAM_MANUAL_DISPATCHER_H

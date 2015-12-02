@@ -1,8 +1,6 @@
 #ifndef GLEAM_ATOMIC_COUNTER
 #define GLEAM_ATOMIC_COUNTER
 
-namespace gleam {
-
 class atomic_counter {
 	/**
 	 * Prevent copying and assignment
@@ -49,7 +47,5 @@ private:
 	// Has to be mutable when using the apple version of gcc.
 	mutable volatile gint m_value;
 };
-
-} // namespace gleam
 
 #endif // GLEAM_ATOMIC_COUNTER

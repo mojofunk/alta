@@ -1,8 +1,6 @@
 #ifndef GLEAM_ATOMIC_PTR
 #define GLEAM_ATOMIC_PTR
 
-namespace gleam {
-
 template <class T>
 class atomic_ptr {
 	typedef atomic_ptr<T> this_type;
@@ -46,7 +44,5 @@ private:
 	// Has to be mutable when using the apple version of gcc.
 	mutable volatile pointer m_ptr;
 };
-
-} // namespace gleam
 
 #endif // GLEAM_ATOMIC_PTR

@@ -1,8 +1,6 @@
 #ifndef GLEAM_ASYNC_SIGNAL_H
 #define GLEAM_ASYNC_SIGNAL_H
 
-namespace gleam {
-
 template <class T>
 class AsyncSignal {
 public:
@@ -71,7 +69,5 @@ void AsyncSignal<T>::dispatch_handler()
 		m_mutex.lock();
 	}
 }
-
-} // namespace gleam
 
 #endif // GLEAM_ASYNC_SIGNAL_H

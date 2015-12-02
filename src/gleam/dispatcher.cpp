@@ -1,5 +1,3 @@
-namespace gleam {
-
 struct Dispatcher::ThreadData {
 	Glib::RefPtr<Glib::MainContext> m_context;
 };
@@ -98,5 +96,3 @@ void Dispatcher::main_loop()
 		get_main_context()->iteration(true);
 	}
 }
-
-} // namespace gleam

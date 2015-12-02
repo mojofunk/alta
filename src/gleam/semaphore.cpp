@@ -1,5 +1,3 @@
-namespace gleam {
-
 Semaphore::Semaphore(gint initial_val)
     : m_counter(initial_val)
 {
@@ -37,5 +35,3 @@ void Semaphore::post()
 	++m_counter;
 	m_cond.signal();
 }
-
-} // namespace gleam

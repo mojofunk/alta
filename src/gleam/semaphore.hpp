@@ -1,8 +1,6 @@
 #ifndef GLEAM_SEMAPHORE_H
 #define GLEAM_SEMAPHORE_H
 
-namespace gleam {
-
 class Semaphore {
 
 	// prevent copying and assignment
@@ -44,7 +42,5 @@ private:
 	Glib::Cond m_cond;
 	Glib::Mutex m_mutex;
 };
-
-} // namespace gleam
 
 #endif // GLEAM_SEMAPHORE_H

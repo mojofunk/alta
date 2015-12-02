@@ -1,5 +1,3 @@
-namespace gleam {
-
 Timer::Timer(unsigned int interval,
              const Glib::RefPtr<Glib::MainContext>& main_context)
     : m_timeout_source(NULL)
@@ -124,5 +122,3 @@ bool BlinkTimer::on_elapsed()
 	m_blink_signal(blink_on = !blink_on);
 	return true;
 }
-
-} // namespace gleam

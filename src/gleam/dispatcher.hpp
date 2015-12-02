@@ -1,8 +1,5 @@
-
-#ifndef GLEAM_DISPATCHER
-#define GLEAM_DISPATCHER
-
-namespace gleam {
+#ifndef GLEAM_DISPATCHER_H
+#define GLEAM_DISPATCHER_H
 
 class Dispatcher {
 public:
@@ -84,6 +81,4 @@ private:
 	Glib::Private<ThreadData> m_thread_data;
 };
 
-} // namespace gleam
-
-#endif // GLEAM_DISPATCHER
+#endif // GLEAM_DISPATCHER_H

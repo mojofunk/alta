@@ -1,8 +1,6 @@
 #ifndef GLEAM_TIMER_H
 #define GLEAM_TIMER_H
 
-namespace gleam {
-
 /**
  * The Timer class is a wrapper around Glib TimeoutSources
  * The Timer will start automatically when the first connection
@@ -75,7 +73,5 @@ protected:
 
 	sigc::signal<void, bool> m_blink_signal;
 };
-
-} // namespace gleam
 
 #endif // GLEAM_TIMER_H
