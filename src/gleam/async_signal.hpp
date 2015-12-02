@@ -1,12 +1,7 @@
-
-#ifndef GLEAM_ASYNC_SIGNAL
-#define GLEAM_ASYNC_SIGNAL
+#ifndef GLEAM_ASYNC_SIGNAL_H
+#define GLEAM_ASYNC_SIGNAL_H
 
 namespace gleam {
-
-using namespace sigc;
-
-using std::queue;
 
 template <class T>
 class AsyncSignal {
@@ -33,7 +28,7 @@ private:
 	Glib::Mutex m_mutex;
 	const Glib::Thread* const m_thread;
 
-	queue<T> m_event_queue;
+	std::queue<T> m_event_queue;
 
 	void dispatch_handler();
 };
@@ -79,4 +74,4 @@ void AsyncSignal<T>::dispatch_handler()
 
 } // namespace gleam
 
-#endif // GLEAM_ASYNC_SIGNAL
+#endif // GLEAM_ASYNC_SIGNAL_H
