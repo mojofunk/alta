@@ -1,8 +1,6 @@
 #ifndef GLEAM_HEADER_INCLUDES_H
 #define GLEAM_HEADER_INCLUDES_H
 
-#include <signal.h>
-
 #include <glib.h>
 
 #include <queue>
