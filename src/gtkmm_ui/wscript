@@ -32,9 +32,11 @@ def configure(conf):
 
 def build(bld):
     defines = ['PROGRAM_DIR_NAME="' + bld.env.PROGRAM_DIR_NAME + '"']
+    source = ['gtkmm_ui.cpp']
+
     if bld.env.ENABLE_SHARED:
         bld.program(
-            source=bld.path.ant_glob('*.cpp'),
+            source=source,
             includes='.',
             uselib=uselibs,
             use=[
@@ -46,7 +48,7 @@ def build(bld):
 
     if bld.env.ENABLE_STATIC:
         bld.program(
-            source=bld.path.ant_glob('*.cpp'),
+            source=source,
             includes='.',
             uselib=uselibs,
             use=[
