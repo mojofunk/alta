@@ -14,7 +14,7 @@ PROGRAM_NAME=Alta
 
 EXECUTABLE="$BUILD_DIR/src/gtkmm_ui/$PROGRAM_NAME"
 
-export GMOJO_PATH=data
+export ALTA_PATH="$TOP_LEVEL_PATH/data"
 export MOJO_TEST_PATH=$TOP_LEVEL_PATH/data
 
 MOJO_PATH=\
