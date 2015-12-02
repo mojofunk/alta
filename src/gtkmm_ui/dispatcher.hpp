@@ -37,11 +37,11 @@ private:
 	void process_queue();
 
 private: // members
-	Glib::Mutex m_iter_mtx;
-	Glib::Mutex m_queue_lock;
-	Glib::Cond m_cond;
+	std::mutex m_iter_mtx;
+	std::mutex m_queue_lock;
+	std::condition_variable m_cond;
 
-	gleam::Semaphore m_iter_sema;
+	mojo::Semaphore m_iter_sema;
 
 	std::queue<function_t> m_queue;
 };

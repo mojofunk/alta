@@ -17,9 +17,9 @@ void Dispatcher::run()
 		do_work();
 
 		{
-			Glib::Mutex::Lock guard(m_iter_mtx);
+			std::unique_lock<std::mutex> lock(m_iter_mtx);
 
-			m_cond.signal();
+			m_cond.notify_one();
 		}
 	}
 }
@@ -27,7 +27,7 @@ void Dispatcher::run()
 void Dispatcher::iteration(bool block)
 {
 	if (block) {
-		Glib::Mutex::Lock guard(m_iter_mtx);
+		std::unique_lock<std::mutex> lock(m_iter_mtx);
 
 		// thread safe?
 		Glib::signal_idle().connect(
@@ -37,7 +37,7 @@ void Dispatcher::iteration(bool block)
 		m_iter_sema.post();
 
 		// wait for one iteration to complete
-		m_cond.wait(m_iter_mtx);
+		m_cond.wait(lock);
 	} else {
 		// thread safe?
 		Glib::signal_idle().connect(
@@ -62,7 +62,7 @@ void Dispatcher::call_async(const function_t& func)
 
 void Dispatcher::queue(const function_t& func)
 {
-	Glib::Mutex::Lock guard(m_queue_lock);
+	std::unique_lock<std::mutex> lock(m_queue_lock);
 	m_queue.push(func);
 }
 
@@ -74,7 +74,7 @@ void Dispatcher::do_work()
 
 void Dispatcher::process_queue()
 {
-	Glib::Mutex::Lock guard(m_queue_lock);
+	std::unique_lock<std::mutex> lock(m_queue_lock);
 
 	while (!m_queue.empty()) {
 
