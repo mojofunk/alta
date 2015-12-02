@@ -42,7 +42,7 @@ def build(bld):
                 'MOJO_APPLICATION_SHARED',
                 'MOJO_CORE_SHARED'],
             defines=defines,
-            target=bld.env.APPNAME)
+            target=bld.env.PROGRAM_NAME)
 
     if bld.env.ENABLE_STATIC:
         bld.program(
@@ -54,4 +54,4 @@ def build(bld):
                 'MOJO_APPLICATION_STATIC',
                 'MOJO_CORE_STATIC'],
             defines=defines,
-            target=bld.env.APPNAME + '-static')
+            target=bld.env.PROGRAM_NAME + '-static')
