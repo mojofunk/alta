@@ -1,8 +1,3 @@
-
-#include <glib.h>
-
-#include <gleam/manual_dispatcher.hpp>
-
 namespace gleam {
 
 ManualDispatcher::ManualDispatcher(const char* const name)

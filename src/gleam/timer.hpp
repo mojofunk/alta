@@ -1,10 +1,6 @@
 #ifndef GLEAM_TIMER_H
 #define GLEAM_TIMER_H
 
-#include <sigc++/signal.h>
-
-#include <glibmm/main.h>
-
 namespace gleam {
 
 /**

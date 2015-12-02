@@ -1,8 +1,6 @@
 #ifndef GLEAM_ATOMIC_COUNTER
 #define GLEAM_ATOMIC_COUNTER
 
-#include <glib.h>
-
 namespace gleam {
 
 class atomic_counter {

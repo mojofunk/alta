@@ -2,10 +2,6 @@
 #ifndef GLEAM_DISPATCHER
 #define GLEAM_DISPATCHER
 
-#include <glibmm/thread.h>
-#include <glibmm/refptr.h>
-#include <glibmm/main.h>
-
 namespace gleam {
 
 class Dispatcher {

@@ -2,13 +2,6 @@
 #ifndef GLEAM_ASYNC_SIGNAL
 #define GLEAM_ASYNC_SIGNAL
 
-#include <queue>
-
-#include <sigc++/signal.h>
-
-#include <glibmm/thread.h>
-#include <glibmm/dispatcher.h>
-
 namespace gleam {
 
 using namespace sigc;

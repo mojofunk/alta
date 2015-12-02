@@ -1,6 +1,3 @@
-
-#include <gleam/semaphore.hpp>
-
 namespace gleam {
 
 Semaphore::Semaphore(gint initial_val)

@@ -1,10 +1,5 @@
-
-#ifndef GLEAM_SEMAPHORE
-#define GLEAM_SEMAPHORE
-
-#include <glibmm/thread.h>
-
-#include <gleam/atomic_counter.hpp>
+#ifndef GLEAM_SEMAPHORE_H
+#define GLEAM_SEMAPHORE_H
 
 namespace gleam {
 
@@ -52,4 +47,4 @@ private:
 
 } // namespace gleam
 
-#endif // GLEAM_SEMAPHORE
+#endif // GLEAM_SEMAPHORE_H

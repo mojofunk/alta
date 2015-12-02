@@ -1,8 +1,6 @@
 #ifndef GLEAM_ATOMIC_PTR
 #define GLEAM_ATOMIC_PTR
 
-#include <glib.h>
-
 namespace gleam {
 
 template <class T>

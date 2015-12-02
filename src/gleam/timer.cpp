@@ -1,5 +1,3 @@
-#include "timer.hpp"
-
 namespace gleam {
 
 Timer::Timer(unsigned int interval,
