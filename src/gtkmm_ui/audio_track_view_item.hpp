@@ -19,7 +19,7 @@ private:
 private:
 	mojo::Track* m_audio_track;
 
-	boost::shared_ptr<AudioTrackListItem> m_audio_track_list_item;
+	std::shared_ptr<AudioTrackListItem> m_audio_track_list_item;
 	Glib::RefPtr<AudioTrackCanvasItem> m_audio_track_canvas_item;
 };
 

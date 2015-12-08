@@ -5,7 +5,7 @@ namespace ui {
 
 class App {
 private: // typedefs
-	typedef std::set<boost::shared_ptr<ProjectObjects>> project_objects_set_t;
+	typedef std::set<std::shared_ptr<ProjectObjects>> project_objects_set_t;
 
 public:
 	static void init(int argc, char* argv[]);

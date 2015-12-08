@@ -14,10 +14,10 @@ class TrackViewItem;
  */
 class TrackView : public Gtk::HPaned {
 public: // typedefs
-	typedef boost::shared_ptr<TrackViewItem> TrackViewItemSPtr;
+	typedef std::shared_ptr<TrackViewItem> TrackViewItemSPtr;
 	typedef std::list<TrackViewItemSPtr> TrackViewItemList;
-	typedef boost::shared_ptr<TrackCanvas> TrackCanvasPtr;
-	typedef boost::shared_ptr<TrackList> TrackListPtr;
+	typedef std::shared_ptr<TrackCanvas> TrackCanvasPtr;
+	typedef std::shared_ptr<TrackList> TrackListPtr;
 
 public: // constructors
 	TrackView(mojo::Project* p);

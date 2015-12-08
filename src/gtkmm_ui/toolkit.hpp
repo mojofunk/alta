@@ -4,7 +4,7 @@
 namespace ui {
 
 class Tool;
-typedef boost::shared_ptr<Tool> ToolSP;
+typedef std::shared_ptr<Tool> ToolSP;
 
 class Toolkit {
 public: // typedefs

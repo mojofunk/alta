@@ -64,7 +64,7 @@ void App::on_project_removed_handler(mojo::Project* p)
 
 void App::on_project_added(mojo::Project* p)
 {
-	boost::shared_ptr<ProjectObjects> po(new ProjectObjects(p));
+	std::shared_ptr<ProjectObjects> po(new ProjectObjects(p));
 
 	s_app->project_objs.insert(po);
 

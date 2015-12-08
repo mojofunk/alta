@@ -21,7 +21,7 @@ public:
 private:
 	mojo::Project const* m_project;
 
-	boost::shared_ptr<ProjectWindow> m_project_window;
+	std::shared_ptr<ProjectWindow> m_project_window;
 
 	// mixer window
 };
