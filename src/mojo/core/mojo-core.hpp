@@ -10,6 +10,7 @@
 #include "macros/private.hpp"
 #include "macros/namespace.hpp"
 #include "macros/smart_pointers.hpp"
+#include "macros/strfunc.hpp"
 
 MOJO_BEGIN_NAMESPACE
 
