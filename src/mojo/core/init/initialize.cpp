@@ -1,6 +1,6 @@
 MOJO_DEBUG_DOMAIN(CORE_INITIALIZE);
 
-std::atomic<uint32_t> s_init_core_count(0);
+static std::atomic<uint32_t> s_init_core_count(0);
 
 #ifndef NDEBUG
 void set_debugging_from_env_var()
