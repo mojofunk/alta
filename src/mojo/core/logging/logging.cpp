@@ -1,12 +1,19 @@
+
+static std::atomic<uint32_t> s_init_logging_count(0);
+
 static mojo::FixedSizePool* s_log_mem_pool;
 
 void log_initialize()
 {
+	if (++s_init_logging_count != 1) return;
+
 	s_log_mem_pool = new FixedSizePool(128, 1024);
 }
 
 void log_deinitialize()
 {
+	if (--s_init_logging_count != 0) return;
+
 	delete s_log_mem_pool;
 	s_log_mem_pool = 0;
 }
