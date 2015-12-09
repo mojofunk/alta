@@ -21,6 +21,8 @@ void initialize()
 {
 	if (++s_init_core_count != 1) return;
 
+	log_initialize ();
+
 #ifndef NDEBUG
 	set_debugging_from_env_var();
 #endif
@@ -42,6 +44,8 @@ void deinitialize()
 	MOJO_DEBUG_MSG(CORE_INITIALIZE, "Deinitializing mojo-core");
 
 	types::deinitialize();
+
+	log_deinitialize ();
 }
 
 } // namespace core
