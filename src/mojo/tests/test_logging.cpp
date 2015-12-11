@@ -21,96 +21,216 @@ struct SourceLocation {
 	const char* m_function;
 };
 
-/**
- *
- */
-class LogRecord {
-public:
-	LogRecord(const LogString& message,
-	          const char* const logger_name,
-	          const LogString& thread_name,
-	          uint64_t timestamp,
-	          int line,
-	          const char* const file_name,
-	          const char* const function_name)
-	    : m_message(message)
-	    , m_logger_name(logger_name)
-	    , m_thread_name(thread_name)
-	    , m_timestamp(timestamp)
-	    , m_line(line)
-	    , m_file_name(file_name)
-	    , m_function_name(function_name)
+struct LogRecord {
+	LogRecord(const LogString& p_message,
+	          const char* const p_logger_name,
+	          const LogString& p_thread_name,
+	          uint64_t p_timestamp,
+	          int p_line,
+	          const char* const p_file_name,
+	          const char* const p_function_name)
+	    : message(p_message)
+	    , logger_name(p_logger_name)
+	    , thread_name(p_thread_name)
+	    , timestamp(p_timestamp)
+	    , line(p_line)
+	    , file_name(p_file_name)
+	    , function_name(p_function_name)
 	{
 	}
 
-	const LogString m_message;
+	const LogString message;
 
-	const char* const m_logger_name;
+	const LogString logger_name;
 
-	/**
-	 * We don't want each message having a copy of the name
-	 */
-	const LogString m_thread_name;
+	const LogString thread_name;
 
-	const uint64_t m_timestamp;
+	const uint64_t timestamp;
 
-	const int m_line;
-	const char* m_file_name;
-	const char* m_function_name;
+	const int line;
+
+	// copy these as if a dll that contains a Logger and is
+	// unloaded the addresses will be invalid...perf impact?
+	const LogString file_name;
+	const LogString function_name;
+
+public: // class new/delete
+
+	void* operator new(size_t size)
+	{
+		std::cout << "new LogRecord" << std::endl;
+		return log_malloc(size);
+	}
+
+	void operator delete(void* ptr)
+	{
+		std::cout << "delete LogRecord" << std::endl;
+		log_free(ptr);
+	}
 };
 
 class LogSink {
 public:
-	virtual LogString name() = 0;
+	virtual std::string name() = 0;
 
-	virtual void handle_message(LogRecord& msg) = 0;
+	/*
+	 * The LogRecord is only valid for the handle_record call.
+	 */
+	virtual void handle_record(LogRecord& record) = 0;
 };
+
+class OStreamLogSink : public LogSink {
+public:
+	std::string name() override { return "OStreamLogSink"; }
+
+	void handle_record(LogRecord& record) override
+	{
+		std::cout << "Logger: " << record.logger_name
+		          << ", Log Message: " << record.message
+		          << ", Thread: " << record.thread_name
+		          << " Timestamp: " << record.timestamp << ", Line: " << record.line
+		          << ", File Name: " << record.file_name
+		          << ", Function: " << record.function_name << std::endl;
+	}
+
+};
+
+class Logger;
 
 /**
  * Log should be an interface class with SyncLog and AsyncLog implementations?
+ *
+ * Or should it be static/singleton and be renamed Logging
  */
-class Log {
-public: // add loggers
-	void add_log_sink();
-
-	void remove_log_sink();
-
+class Log : public mojo::Worker {
 public:
-	// get loggers
-
-public:
-	void write_message(const LogString& message,
-	                   const char* const logger_name,
-	                   const LogString& thread_name,
-	                   uint64_t timestamp,
-	                   int line,
-	                   const char* const file_name,
-	                   const char* const function_name)
+	Log()
+	    : m_record_queue(32768 * 4) // max capacity, max threads
+	    , m_record_processing_thread(&Log::run, this)
 	{
-		std::cout << "Logger: " << logger_name << ", Log Message: " << message
-		          << ", Thread: " << thread_name << " Timestamp: " << timestamp
-		          << ", Line: " << line << ", File Name: " << file_name
-		          << ", Function: " << function_name << std::endl;
-
-		// allocate a new log record from allocator
-
-		// add log message to queue
+		// wait for run loop to start
+		iteration(true);
 	}
+
+	~Log()
+	{
+		// don't allow messages to be queued during destruction
+		quit();
+		m_record_processing_thread.join();
+
+		// process/drop any log messages still left in queue
+		process_records();
+
+	}
+
+public: // add sinks
+	void add_log_sink(LogSink* sink)
+	{
+		std::unique_lock<std::mutex> lock(m_sinks_mutex);
+		m_sinks.insert(sink);
+	}
+
+	void remove_log_sink(LogSink* sink)
+	{
+		std::unique_lock<std::mutex> lock(m_sinks_mutex);
+		m_sinks.erase(sink);
+	}
+
+private:
+
+	// TODO May need a way to signal that a Logger has been removed for listening
+	// classes
+
+	friend class Logger;
+
+	// could probably pass delete handler to shared_ptr to avoid these with
+	// create_logger API
+
+	// @return true if logger with added, false if logger found with same name?
+	bool add_logger (Logger* logger)
+	{
+		std::unique_lock<std::mutex> lock(m_loggers_mutex);
+		m_loggers.insert(logger);
+	}
+
+	// @return true if logger was removed or false if not found?
+	bool remove_logger (Logger* logger)
+	{
+		std::unique_lock<std::mutex> lock(m_loggers_mutex);
+		m_loggers.erase(logger);
+	}
+
+public: // Log interface
+	void write_record(LogRecord* record)
+	{
+		if (m_quit) return;
+
+		if (!m_record_queue.try_enqueue(record)) {
+//#ifdef LOG_DEBUG
+			std::cout << "Unable to enqueue LogRecord using non-blocking API"
+			          << std::endl;
+//#endif
+			m_record_queue.enqueue(record);
+			iteration(false);
+		}
+	}
+
+private: // run loop
+
+	void do_work () override
+	{
+		process_records ();
+	}
+
+	void process_records ()
+	{
+		LogRecord* record = nullptr;
+
+		while (m_record_queue.try_dequeue(record)) {
+			std::unique_lock<std::mutex> lock(m_sinks_mutex);
+			for (auto sink : m_sinks) {
+				sink->handle_record (*record);
+			}
+			delete record;
+		}
+	}
+
+private: // data
+
+	// queue for LogRecords
+	using RecordQueueType = moodycamel::ConcurrentQueue<LogRecord*>;
+	RecordQueueType m_record_queue;
+
+	// set of LogSink
+	std::set<LogSink*> m_sinks;
+	std::mutex m_sinks_mutex;
+
+	// set of Loggers
+	std::set<Logger*> m_loggers;
+	std::mutex m_loggers_mutex;
+
+	std::thread m_record_processing_thread;
 };
 
 /**
  * The Logger class needs a reference to a Log instance to send the log message
- * to.
+ * to or does it just send it to a singleton class/static method in mojo core
  *
  * The Logger class will only send the message if it is enabled.
  */
 class Logger {
 public:
-	Logger(Log& log, const char* const logger_name)
+	Logger(Log& logg, const char* const logger_name)
 	    : m_enabled(true)
 	    , m_name(logger_name)
-	    , m_log(log)
+	    , m_log(logg)
 	{
+		m_log.add_logger(this);
+	}
+
+	~Logger ()
+	{
+		m_log.remove_logger(this);
 	}
 
 	const char* const get_name() const { return m_name; }
@@ -135,8 +255,15 @@ public:
 			return;
 		}
 
-		m_log.write_message(
-		    msg, m_name, thread_name, timestamp, line, file_name, function_name);
+		LogRecord* record = new LogRecord(msg,
+		                                  m_name,
+		                                  thread_name,
+		                                  timestamp,
+		                                  line,
+		                                  file_name,
+		                                  function_name);
+
+		m_log.write_record(record);
 	}
 
 private:
@@ -154,9 +281,15 @@ private:
 BOOST_AUTO_TEST_CASE(basic_logging_test)
 {
 	log_initialize();
+
 	Log test_log;
 
 	Logger test_logger(test_log, "test_logger");
+
+	OStreamLogSink stream_sink;
+	test_log.add_log_sink(&stream_sink);
+
+	// add alloc tracking
 
 	test_logger.send_message("This is a test message",
 	                         "test thread",
@@ -164,6 +297,9 @@ BOOST_AUTO_TEST_CASE(basic_logging_test)
 	                         __LINE__,
 	                         __FILE__,
 	                         G_STRFUNC);
+
+	// need to quit before deinitialize or Records will not be deallocated
+	test_log.quit();
 	log_deinitialize();
 }
 
@@ -220,6 +356,9 @@ BOOST_AUTO_TEST_CASE(logging_macro_test)
 
 	T_LOG_CALL(macro_test);
 	get_macro_test_thread_map().erase_name("logging_macro_test_thread");
+
+	// necessary to process records and free LogRecord
+	get_macro_test_log().quit();
 	log_deinitialize();
 }
 
