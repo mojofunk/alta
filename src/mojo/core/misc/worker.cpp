@@ -24,6 +24,8 @@ void Worker::run()
 
 void Worker::quit()
 {
+	if (m_quit) return;
+
 	std::unique_lock<std::mutex> lock(m_iter_mtx);
 
 	m_quit = true;
