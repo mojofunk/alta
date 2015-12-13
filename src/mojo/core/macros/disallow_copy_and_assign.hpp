@@ -9,4 +9,4 @@
 	TypeName(const TypeName&) = delete;                                           \
 	void operator=(const TypeName&) = delete
 
-#endif // MOJO_CORE_DISSALLOW_COPY_AND_ASSIGN_H
+#endif // MOJO_CORE_DISALLOW_COPY_AND_ASSIGN_H
