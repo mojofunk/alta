@@ -1,8 +1,10 @@
-#ifndef MOJO_CORE_LOG_ALLOCATOR_H
-#define MOJO_CORE_LOG_ALLOCATOR_H
+#ifndef MOJO_LOGGING_ALLOCATOR_H
+#define MOJO_LOGGING_ALLOCATOR_H
+
+namespace logging {
 
 template <typename T>
-class LogAllocator {
+class Allocator {
 public:
 	typedef T value_type;
 	typedef value_type* pointer;
@@ -15,18 +17,18 @@ public:
 public:
 	template <typename U>
 	struct rebind {
-		typedef LogAllocator<U> other;
+		typedef Allocator<U> other;
 	};
 
 public:
-	inline LogAllocator(){}; // = default
+	inline Allocator(){}; // = default
 
-	inline ~LogAllocator() {}
+	inline ~Allocator() {}
 
-	inline explicit LogAllocator(const LogAllocator<T>& other) {}
+	inline explicit Allocator(const Allocator<T>& other) {}
 
 	template <typename U>
-	inline LogAllocator(const LogAllocator<U>&)
+	inline Allocator(const Allocator<U>&)
 	{
 	}
 
@@ -39,7 +41,7 @@ public:
 	                        typename std::allocator<void>::const_pointer = 0)
 	{
 		if (cnt <= std::numeric_limits<std::size_t>::max() / sizeof(T)) {
-			void* ptr = log_malloc(cnt * sizeof(T));
+			void* ptr = logging::allocate(cnt * sizeof(T));
 			if (ptr) {
 				return static_cast<T*>(ptr);
 			}
@@ -47,7 +49,7 @@ public:
 		throw std::bad_alloc();
 	}
 
-	inline void deallocate(pointer ptr, size_type cnt) { log_free(ptr); }
+	inline void deallocate(pointer ptr, size_type cnt) { logging::deallocate(ptr); }
 
 	inline size_type max_size() const
 	{
@@ -59,30 +61,32 @@ public:
 	inline void destroy(pointer p) { p->~T(); }
 
 #if 0
-	inline bool operator==(const LogAllocator&) { return true; }
-	inline bool operator!=(const LogAllocator& a) { return !operator==(a); }
+	inline bool operator==(const Allocator&) { return true; }
+	inline bool operator!=(const Allocator& a) { return !operator==(a); }
 #endif
 
 	template <class U1, class U2>
-	friend bool operator==(const LogAllocator<U1>& x,
-	                       const LogAllocator<U2>& y) noexcept;
+	friend bool operator==(const Allocator<U1>& x,
+	                       const Allocator<U2>& y) noexcept;
 
 	template <class U>
-	friend class LogAllocator;
+	friend class Allocator;
 };
 
 template <class U1, class U2>
-inline bool operator==(const LogAllocator<U1>& x,
-                       const LogAllocator<U2>& y) noexcept
+inline bool operator==(const Allocator<U1>& x,
+                       const Allocator<U2>& y) noexcept
 {
 	return true;
 }
 
 template <class U1, class U2>
-inline bool operator!=(const LogAllocator<U1>& x,
-                       const LogAllocator<U2>& y) noexcept
+inline bool operator!=(const Allocator<U1>& x,
+                       const Allocator<U2>& y) noexcept
 {
 	return !(x == y);
 }
+
+} // namespace logging
 
 #endif // MOJO_CORE_LOG_ALLOCATOR_H

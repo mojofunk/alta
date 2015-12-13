@@ -32,10 +32,14 @@ MOJO_BEGIN_NAMESPACE
 #include "misc/functor_dispatcher.cpp"
 #include "misc/sample_block.cpp"
 
+#include "logging/debug.hpp"
+#include "logging/format.cpp"
+#include "logging/record.cpp"
 #include "logging/log.cpp"
-
+#include "logging/logger.cpp"
+#include "logging/async_log.cpp"
+#include "logging/ostream_sink.cpp"
 #include "logging/logging.cpp"
-#include "logging/log_format.cpp"
 
 #include "modules/module.cpp"
 #include "modules/module_utils.cpp"

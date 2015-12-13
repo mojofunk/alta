@@ -52,13 +52,17 @@ MOJO_BEGIN_NAMESPACE
 #include "misc/sample_block.hpp"
 #include "misc/spinwait.hpp"
 
-// to remove/change
-#include "logging/log.hpp"
-
+#include "logging/fwd.hpp"
 #include "logging/logging.hpp"
-#include "logging/log_allocator.hpp"
-#include "logging/log_string.hpp"
-#include "logging/log_format.hpp"
+#include "logging/allocator.hpp"
+#include "logging/sink.hpp"
+#include "logging/ostream_sink.hpp"
+#include "logging/string.hpp"
+#include "logging/log.hpp"
+#include "logging/logger.hpp"
+#include "logging/format.hpp"
+#include "logging/record.hpp"
+#include "logging/async_log.hpp"
 
 #include "threads/thread_name_map.hpp"
 
