@@ -17,8 +17,9 @@ MOJO_BEGIN_NAMESPACE
 #include "misc/semaphore.hpp"
 #include "misc/worker.hpp"
 
+#include "threads/thread_name_registry.hpp"
+
 #include "logging/fwd.hpp"
-#include "logging/thread_name_registry.hpp"
 #include "logging/timestamp.hpp"
 #include "logging/logging.hpp"
 #include "logging/allocator.hpp"
@@ -55,8 +56,6 @@ MOJO_BEGIN_NAMESPACE
 #include "time/elapsed_timer.hpp"
 #include "time/time.hpp"
 #include "time/timing.hpp"
-
-#include "threads/thread_name_map.hpp"
 
 #include "memory/garbage_collector.hpp"
 #include "memory/fixed_size_pool.hpp"

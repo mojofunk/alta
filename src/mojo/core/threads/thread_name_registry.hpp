@@ -1,7 +1,5 @@
-#ifndef MOJO_LOGGING_THREAD_NAME_REGISTRY_H
-#define MOJO_LOGGING_THREAD_NAME_REGISTRY_H
-
-namespace logging {
+#ifndef MOJO_THREAD_NAME_REGISTRY_H
+#define MOJO_THREAD_NAME_REGISTRY_H
 
 /**
  * Ideally this would be lock-free or at least use a ReadWriteLock/RCU or
@@ -53,6 +51,4 @@ private:
 	std::mutex m_thread_name_map_mutex;
 };
 
-} // namespace logging
-
-#endif // MOJO_LOGGING_THREAD_NAME_REGISTRY_H
+#endif // MOJO_THREAD_NAME_REGISTRY_H
