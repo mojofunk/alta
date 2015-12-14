@@ -65,6 +65,8 @@ BOOST_AUTO_TEST_CASE(basic_logging_enumerate_loggers_test)
 	logging::deinitialize();
 }
 
+M_DECLARE_LOGGER(MacroTest);
+
 M_DEFINE_LOGGER(MacroTest);
 
 BOOST_AUTO_TEST_CASE(logging_macro_test)

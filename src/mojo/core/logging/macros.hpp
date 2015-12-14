@@ -1,7 +1,8 @@
 #ifndef MOJO_LOGGING_MACROS_H
 #define MOJO_LOGGING_MACROS_H
 
-#define M_DECLARE_LOGGER(Name) extern const logging::Logger& Name_logger();
+#define M_DECLARE_LOGGER(Name)                                                 \
+	extern std::shared_ptr<logging::Logger>& Name_logger();
 
 #define M_DEFINE_LOGGER(Name)                                                  \
 	std::shared_ptr<logging::Logger>& Name_logger()                               \
