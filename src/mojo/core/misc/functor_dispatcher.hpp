@@ -26,9 +26,6 @@ private:
 
 	std::queue<function_type> m_queue;
 	std::mutex m_queue_mutex;
-
-public:
-	static std::shared_ptr<logging::Logger>& get_logger();
 };
 
 #endif // MOJO_FUNCTOR_DISPATCHER_H

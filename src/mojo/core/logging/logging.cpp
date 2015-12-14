@@ -20,9 +20,9 @@ void deinitialize()
 	if (--s_init_logging_count != 0) return;
 
 	delete s_thread_name_registry;
-	s_thread_name_registry = 0;
+	s_thread_name_registry = nullptr;
 	delete s_log;
-	s_log = 0;
+	s_log = nullptr;
 	deinitialize_allocator();
 }
 

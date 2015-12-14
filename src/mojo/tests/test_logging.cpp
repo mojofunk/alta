@@ -14,6 +14,15 @@ public:
 	// static int64_t get_timestamp_nanoseconds { return g_get_monotonic_time(); }
 };
 
+BOOST_AUTO_TEST_CASE(test_logging_init)
+{
+	logging::initialize();
+	logging::deinitialize();
+
+	logging::initialize();
+	logging::deinitialize();
+}
+
 BOOST_AUTO_TEST_CASE(basic_logging_test)
 {
 	// use bool arg to indicate sync logging with async default?
@@ -65,10 +74,6 @@ BOOST_AUTO_TEST_CASE(basic_logging_enumerate_loggers_test)
 	logging::deinitialize();
 }
 
-M_DECLARE_LOGGER(MacroTest);
-
-M_DEFINE_LOGGER(MacroTest);
-
 BOOST_AUTO_TEST_CASE(logging_macro_test)
 {
 	const char * const thread_name = "logging_macro_test_thread";
@@ -81,11 +86,13 @@ BOOST_AUTO_TEST_CASE(logging_macro_test)
 
 	BOOST_CHECK(logging::thread_name() == thread_name);
 
-	M_LOG_CALL(MacroTest);
+	auto MacroLogger = logging::make_logger("MacroLogger");
 
-	M_LOG(MacroTest, "This is a test of logging macros");
+	M_LOG_CALL(MacroLogger);
 
-	M_LOG_CALL(MacroTest);
+	M_LOG(MacroLogger, "This is a test of logging macros");
+
+	M_LOG_CALL(MacroLogger);
 
 	mojo::sleep(1);
 

@@ -24,6 +24,9 @@ bool initialized();
  */
 void deinitialize();
 
+extern std::shared_ptr<logging::Logger> Init;
+extern std::shared_ptr<logging::Logger> RunLoop;
+
 } // namespace core
 
 #endif // MOJO_CORE_CORE_INITIALIZE_H

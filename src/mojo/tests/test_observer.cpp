@@ -845,6 +845,7 @@ BOOST_AUTO_TEST_CASE(test_object_manager_create)
 
 BOOST_AUTO_TEST_CASE(test_project_ui)
 {
+	core::initialize();
 	TestObjectManager::initialize();
 
 	// std::shared_ptr<Project> project = TestObjectManager::create<Project>();
@@ -894,6 +895,7 @@ BOOST_AUTO_TEST_CASE(test_project_ui)
 	}
 
 	TestObjectManager::deinitialize();
+	core::deinitialize();
 }
 
 BOOST_AUTO_TEST_CASE(test_add_remove_observers)

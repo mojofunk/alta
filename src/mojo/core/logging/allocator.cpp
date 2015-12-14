@@ -2,12 +2,13 @@ namespace logging {
 
 static std::atomic<uint32_t> s_allocator_init_count(0);
 
-static mojo::FixedSizePool* s_allocator_mem_pool = nullptr;
+static FixedSizePool* s_allocator_mem_pool = nullptr;
 
 void initialize_allocator()
 {
 	if (++s_allocator_init_count != 1) return;
 
+	assert(s_allocator_mem_pool == nullptr);
 	s_allocator_mem_pool = new FixedSizePool(128, 1024);
 }
 
@@ -16,7 +17,7 @@ void deinitialize_allocator()
 	if (--s_allocator_init_count != 0) return;
 
 	delete s_allocator_mem_pool;
-	s_allocator_mem_pool = 0;
+	s_allocator_mem_pool = nullptr;
 }
 
 void* logging_allocate(std::size_t size)

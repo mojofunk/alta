@@ -1,11 +1,13 @@
-MOJO_DEBUG_DOMAIN(APPLICATION);
+Application* Application::s_instance = nullptr;
 
-Application* Application::s_instance = 0;
+std::shared_ptr<logging::Logger> AppLogger;
 
 Application::Application()
 {
 	core::initialize();
 	s_instance = this;
+
+	AppLogger = logging::make_logger("Application");
 
 	data =
 	    std::unique_ptr<internal::ApplicationData>(new internal::ApplicationData);
@@ -17,7 +19,9 @@ Application::Application()
 
 Application::~Application()
 {
-	s_instance = 0;
+	data.reset();
+	AppLogger.reset();
+	s_instance = nullptr;
 	core::deinitialize();
 }
 
@@ -28,14 +32,14 @@ void Application::iteration(bool block)
 
 void Application::new_project()
 {
-	MOJO_DEBUG(APPLICATION);
+	M_LOG_CALL(AppLogger);
 	s_instance->data->worker.call_async(
 	    boost::bind(&Application::new_project_internal, boost::ref(*s_instance)));
 }
 
 void Application::open_project(const std::string& project_file)
 {
-	MOJO_DEBUG(APPLICATION);
+	M_LOG_CALL(AppLogger);
 	s_instance->data->worker.call_async(
 	    boost::bind(&Application::open_project_internal,
 	                boost::ref(*s_instance),
@@ -64,7 +68,7 @@ Project* Application::get_active_project()
 
 void Application::close_project(Project* p)
 {
-	MOJO_DEBUG(APPLICATION);
+	M_LOG_CALL(AppLogger);
 	s_instance->data->worker.call_async(boost::bind(
 	    &Application::close_project_internal, boost::ref(*s_instance), p));
 }
@@ -83,7 +87,7 @@ Application::connect_project_removed(const ProjectRemovedFunc& slot)
 
 void Application::add_track(Project* p, const TrackOptions& options)
 {
-	MOJO_DEBUG(APPLICATION);
+	M_LOG_CALL(AppLogger);
 	s_instance->data->worker.call_async(boost::bind(
 	    &Application::add_track_internal, boost::ref(*s_instance), p, options));
 }

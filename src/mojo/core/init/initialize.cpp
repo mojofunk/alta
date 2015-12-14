@@ -1,5 +1,3 @@
-MOJO_DEBUG_DOMAIN(CORE_INITIALIZE);
-
 static std::atomic<uint32_t> s_init_core_count(0);
 
 #ifndef NDEBUG
@@ -17,17 +15,35 @@ void set_debugging_from_env_var()
 
 namespace core {
 
+std::shared_ptr<logging::Logger> Init;
+std::shared_ptr<logging::Logger> RunLoop;
+
+static void initialize_loggers ()
+{
+	Init = logging::make_logger("Init");
+	RunLoop = logging::make_logger("RunLoop");
+}
+
+static void deinitialize_loggers ()
+{
+	Init.reset();
+	RunLoop.reset();
+}
+
 void initialize()
 {
 	if (++s_init_core_count != 1) return;
 
-	logging::initialize ();
+	logging::initialize();
+	logging::add_sink(std::make_shared<logging::OStreamSink>());
+
+	initialize_loggers();
 
 #ifndef NDEBUG
 	set_debugging_from_env_var();
 #endif
 
-	MOJO_DEBUG_MSG(CORE_INITIALIZE, "Initializing mojo-core");
+	M_LOG(core::Init, "Initializing mojo-core");
 
 	types::initialize();
 }
@@ -41,9 +57,11 @@ void deinitialize()
 {
 	if (--s_init_core_count != 0) return;
 
-	MOJO_DEBUG_MSG(CORE_INITIALIZE, "Deinitializing mojo-core");
+	M_LOG(core::Init, "Deinitializing mojo-core");
 
 	types::deinitialize();
+
+	deinitialize_loggers();
 
 	logging::deinitialize ();
 }

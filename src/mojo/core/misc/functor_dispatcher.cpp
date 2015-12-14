@@ -1,11 +1,3 @@
-MOJO_DEBUG_DOMAIN(FUNCTOR_DISPATCHER);
-
-std::shared_ptr<logging::Logger>& FunctorDispatcher::get_logger()
-{
-	static std::shared_ptr<logging::Logger> logger = logging::make_logger("FunctorDispatcher");
-	return logger;
-};
-
 FunctorDispatcher::FunctorDispatcher()
 {
 }
@@ -22,7 +14,7 @@ void FunctorDispatcher::call_sync(const function_type& func)
 		// no more calls functors are queued
 		return;
 	}
-	MOJO_DEBUG(FUNCTOR_DISPATCHER);
+	M_LOG_CALL(core::RunLoop);
 	queue(func);
 	iteration(true);
 }
@@ -34,7 +26,7 @@ void FunctorDispatcher::call_async(const function_type& func)
 		// no more calls functors are queued
 		return;
 	}
-	MOJO_DEBUG(FUNCTOR_DISPATCHER);
+	M_LOG_CALL(core::RunLoop);
 	queue(func);
 	iteration(false);
 }
@@ -47,7 +39,7 @@ void FunctorDispatcher::queue(const function_type& func)
 
 void FunctorDispatcher::do_work()
 {
-	MOJO_DEBUG(FUNCTOR_DISPATCHER);
+	M_LOG_CALL(core::RunLoop);
 	process_queue();
 }
 
@@ -62,7 +54,7 @@ void FunctorDispatcher::process_queue()
 
 		// unlock while executing
 		lock.unlock();
-		MOJO_DEBUG(FUNCTOR_DISPATCHER);
+		M_LOG_CALL(core::RunLoop);
 		func();
 		lock.lock();
 	}

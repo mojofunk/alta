@@ -20,6 +20,21 @@ void deinit_thread()
 	}
 }
 
+BOOST_AUTO_TEST_CASE(test_core_initializer_basic)
+{
+	BOOST_CHECK(!core::initialized());
+
+	core::initialize();
+	core::deinitialize();
+
+	BOOST_CHECK(!core::initialized());
+
+	core::initialize();
+	core::deinitialize();
+
+	BOOST_CHECK(!core::initialized());
+}
+
 BOOST_AUTO_TEST_CASE(test_core_initializer)
 {
 	BOOST_REQUIRE(!core::initialized());

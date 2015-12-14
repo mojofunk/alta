@@ -10,9 +10,6 @@
 
 BOOST_AUTO_TEST_CASE(test_application)
 {
-	int argc = framework::master_test_suite().argc;
-	char** argv = framework::master_test_suite().argv;
-
 	Application app;
 	std::unique_ptr<ExampleApplication> example_app(new ExampleApplication());
 
@@ -37,9 +34,6 @@ void test_application_module(const ModuleSP& mod)
 
 BOOST_AUTO_TEST_CASE(test_get_modules)
 {
-	int argc = framework::master_test_suite().argc;
-	char** argv = framework::master_test_suite().argv;
-
 	Application app;
 	ModuleSPSet modules = Application::get_modules();
 
