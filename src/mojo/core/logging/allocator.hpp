@@ -3,6 +3,14 @@
 
 namespace logging {
 
+MOJO_API void initialize_allocator();
+
+MOJO_API void deinitialize_allocator();
+
+MOJO_API void* logging_allocate(std::size_t size);
+
+MOJO_API void logging_deallocate(void* ptr);
+
 template <typename T>
 class Allocator {
 public:
@@ -41,7 +49,7 @@ public:
 	                        typename std::allocator<void>::const_pointer = 0)
 	{
 		if (cnt <= std::numeric_limits<std::size_t>::max() / sizeof(T)) {
-			void* ptr = logging::allocate(cnt * sizeof(T));
+			void* ptr = logging_allocate(cnt * sizeof(T));
 			if (ptr) {
 				return static_cast<T*>(ptr);
 			}
@@ -49,7 +57,7 @@ public:
 		throw std::bad_alloc();
 	}
 
-	inline void deallocate(pointer ptr, size_type cnt) { logging::deallocate(ptr); }
+	inline void deallocate(pointer ptr, size_type cnt) { logging_deallocate(ptr); }
 
 	inline size_type max_size() const
 	{

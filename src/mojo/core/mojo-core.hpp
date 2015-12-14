@@ -21,9 +21,9 @@ MOJO_BEGIN_NAMESPACE
 
 #include "logging/fwd.hpp"
 #include "logging/timestamp.hpp"
-#include "logging/logging.hpp"
 #include "logging/allocator.hpp"
 #include "logging/string.hpp"
+#include "logging/logging.hpp"
 #include "logging/sink.hpp"
 #include "logging/ostream_sink.hpp"
 #include "logging/log.hpp"

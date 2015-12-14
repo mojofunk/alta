@@ -7,6 +7,7 @@ MOJO_BEGIN_NAMESPACE
 // Now include all source files
 
 #include "logging/debug.hpp"
+#include "logging/allocator.cpp"
 #include "logging/format.cpp"
 #include "logging/record.cpp"
 #include "logging/log.cpp"

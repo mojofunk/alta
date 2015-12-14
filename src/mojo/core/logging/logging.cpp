@@ -2,19 +2,17 @@ namespace logging {
 
 static std::atomic<uint32_t> s_init_logging_count(0);
 
-static mojo::FixedSizePool* s_log_mem_pool = nullptr;
-
 static ASyncLog* s_log = nullptr;
 
-static ThreadNameRegistry<std::string>* s_thread_name_registry = nullptr;
+static ThreadNameRegistry<String>* s_thread_name_registry = nullptr;
 
 void initialize()
 {
 	if (++s_init_logging_count != 1) return;
 
-	s_log_mem_pool = new FixedSizePool(128, 1024);
+	initialize_allocator();
 	s_log = new ASyncLog;
-	s_thread_name_registry = new ThreadNameRegistry<std::string>;
+	s_thread_name_registry = new ThreadNameRegistry<String>;
 }
 
 void deinitialize()
@@ -25,40 +23,7 @@ void deinitialize()
 	s_thread_name_registry = 0;
 	delete s_log;
 	s_log = 0;
-	delete s_log_mem_pool;
-	s_log_mem_pool = 0;
-}
-
-void* allocate(std::size_t size)
-{
-	void* ptr = 0;
-
-	std::cout << "allocate(" << size << ") = ";
-
-	assert(s_log_mem_pool);
-
-	if (size > s_log_mem_pool->max_size()) {
-		std::cout << "log allocating using operator new" << std::endl;
-		ptr = ::operator new(size);
-	} else {
-		std::cout << "log allocating using log pool" << std::endl;
-		ptr = s_log_mem_pool->allocate(size);
-		std::cout << "log pool available : " << s_log_mem_pool->available()
-		          << std::endl;
-	}
-
-	return ptr;
-}
-
-void deallocate(void* ptr)
-{
-	if (s_log_mem_pool->is_from(ptr)) {
-		std::cout << "log deallocating using mem pool" << std::endl;
-		s_log_mem_pool->deallocate(ptr);
-	} else {
-		std::cout << "log deallocating using std::free" << std::endl;
-		::operator delete(ptr);
-	}
+	deinitialize_allocator();
 }
 
 void add_sink(std::shared_ptr<Sink> sink_ptr)
@@ -106,7 +71,7 @@ void deregister_thread_name()
 	s_thread_name_registry->unregister_thread();
 }
 
-std::string thread_name()
+String thread_name()
 {
 	return s_thread_name_registry->get_thread_name();
 }

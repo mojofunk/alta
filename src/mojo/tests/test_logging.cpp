@@ -69,13 +69,13 @@ M_DEFINE_LOGGER(MacroTest);
 
 BOOST_AUTO_TEST_CASE(logging_macro_test)
 {
-	const std::string thread_name("logging_macro_test_thread");
+	const char * const thread_name = "logging_macro_test_thread";
 
 	logging::initialize();
 
 	logging::add_sink(std::make_shared<logging::OStreamSink>());
 
-	logging::register_thread_name(thread_name.c_str());
+	logging::register_thread_name(thread_name);
 
 	BOOST_CHECK(logging::thread_name() == thread_name);
 
