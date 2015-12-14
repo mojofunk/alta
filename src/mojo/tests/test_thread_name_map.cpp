@@ -26,7 +26,7 @@ BOOST_AUTO_TEST_CASE(thread_name_map_basic_test)
 	BOOST_CHECK(test_thread_map().get_name() !=
 	            test_thread_map().unknown_thread_name());
 
-	BOOST_CHECK(test_thread_map().erase_name(thread_name));
+	BOOST_CHECK(test_thread_map().erase_name());
 
 	BOOST_CHECK(test_thread_map().get_name() ==
 	            test_thread_map().unknown_thread_name());
@@ -45,7 +45,7 @@ static void thread_name_map_test_do_work()
 		// boost test is not thread safe so use assert until figuring out a good
 		// way to return test status from thread
 		assert(test_thread_map().get_name() == thread_name);
-		test_thread_map().erase_name(thread_name);
+		test_thread_map().erase_name();
 	}
 }
 

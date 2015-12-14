@@ -19,7 +19,7 @@ public:
 		                                               thread_name)).second;
 	}
 
-	bool erase_name(const StringType& thread_name)
+	bool erase_name()
 	{
 		std::unique_lock<std::mutex> lock(m_thread_name_map_mutex);
 		return (m_thread_name_map.erase(std::this_thread::get_id()));
