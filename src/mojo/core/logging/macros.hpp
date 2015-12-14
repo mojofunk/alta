@@ -1,6 +1,10 @@
 #ifndef MOJO_LOGGING_MACROS_H
 #define MOJO_LOGGING_MACROS_H
 
+#define M_DECLARE_LOGGER(Name) extern std::shared_ptr<logging::Logger> Name;
+
+#define M_DEFINE_LOGGER(Name) std::shared_ptr<logging::Logger> Name;
+
 #define M_LOG(Logger, Message)                                                 \
 	Logger->write_record(Message,                                                 \
 	                     logging::thread_name(),                                  \

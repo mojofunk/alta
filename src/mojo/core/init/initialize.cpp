@@ -15,19 +15,22 @@ void set_debugging_from_env_var()
 
 namespace core {
 
-std::shared_ptr<logging::Logger> Init;
-std::shared_ptr<logging::Logger> RunLoop;
+M_DEFINE_LOGGER(INIT);
+M_DEFINE_LOGGER(RUN_LOOP);
+M_DEFINE_LOGGER(STRING_CONVERT);
 
 static void initialize_loggers ()
 {
-	Init = logging::make_logger("Init");
-	RunLoop = logging::make_logger("RunLoop");
+	INIT = logging::make_logger("Init");
+	RUN_LOOP = logging::make_logger("RunLoop");
+	STRING_CONVERT = logging::make_logger("StringConvert");
 }
 
 static void deinitialize_loggers ()
 {
-	Init.reset();
-	RunLoop.reset();
+	INIT.reset();
+	RUN_LOOP.reset();
+	STRING_CONVERT.reset();
 }
 
 void initialize()
@@ -43,7 +46,7 @@ void initialize()
 	set_debugging_from_env_var();
 #endif
 
-	M_LOG(core::Init, "Initializing mojo-core");
+	M_LOG(INIT, "Initializing mojo-core");
 
 	types::initialize();
 }
@@ -57,7 +60,7 @@ void deinitialize()
 {
 	if (--s_init_core_count != 0) return;
 
-	M_LOG(core::Init, "Deinitializing mojo-core");
+	M_LOG(INIT, "Deinitializing mojo-core");
 
 	types::deinitialize();
 

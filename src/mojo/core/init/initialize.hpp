@@ -24,8 +24,9 @@ bool initialized();
  */
 void deinitialize();
 
-extern std::shared_ptr<logging::Logger> Init;
-extern std::shared_ptr<logging::Logger> RunLoop;
+M_DECLARE_LOGGER(INIT);
+M_DECLARE_LOGGER(RUN_LOOP);
+M_DECLARE_LOGGER(STRING_CONVERT);
 
 } // namespace core
 
