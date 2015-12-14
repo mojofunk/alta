@@ -1,5 +1,11 @@
 MOJO_DEBUG_DOMAIN(FUNCTOR_DISPATCHER);
 
+std::shared_ptr<logging::Logger>& FunctorDispatcher::get_logger()
+{
+	static std::shared_ptr<logging::Logger> logger = logging::make_logger("FunctorDispatcher");
+	return logger;
+};
+
 FunctorDispatcher::FunctorDispatcher()
 {
 }

@@ -33,10 +33,10 @@ BOOST_AUTO_TEST_CASE(basic_logging_test)
 
 	test_logger->write_record("This is a test message",
 	                         "test thread",
-	                         GlibTimeStampSource::get_timestamp_microseconds(),
+	                         logging::TimeStamp::get_microseconds(),
 	                         __LINE__,
 	                         __FILE__,
-	                         G_STRFUNC);
+	                         M_STRFUNC);
 
 	// so async sink has a chance to handle message
 	mojo::sleep(1);
@@ -65,62 +65,29 @@ BOOST_AUTO_TEST_CASE(basic_logging_enumerate_loggers_test)
 	logging::deinitialize();
 }
 
-logging::ASyncLog& get_macro_test_log()
-{
-	static logging::ASyncLog default_log;
-	return default_log;
-}
-
-ThreadNameMap<logging::String>& get_macro_test_thread_map()
-{
-	static ThreadNameMap<logging::String> macro_test_map;
-	return macro_test_map;
-}
-
-#define T_DECLARE_LOGGER(Name) extern const logging::Logger& Name_logger();
-
-#define T_LOGGER(Log, Name)                                                    \
-	const logging::Logger& Name_logger()                                          \
-	{                                                                             \
-		static const logging::Logger logger(Log, #Name);                             \
-		return logger;                                                               \
-	}
-
-T_DECLARE_LOGGER(macro_test)
-
-T_LOGGER(get_macro_test_log(), macro_test)
-
-#define T_LOG(Name, Message)                                                   \
-	Name_logger().write_record(Message,                                           \
-	                           get_macro_test_thread_map().get_name(),            \
-	                           GlibTimeStampSource::get_timestamp_microseconds(), \
-	                           __LINE__,                                          \
-	                           __FILE__,                                          \
-	                           G_STRFUNC);
-
-// Log a record of a function call
-#define T_LOG_CALL(Name)                                                       \
-	Name_logger().write_record("Timestamp",                                       \
-	                           get_macro_test_thread_map().get_name(),            \
-	                           GlibTimeStampSource::get_timestamp_microseconds(), \
-	                           __LINE__,                                          \
-	                           __FILE__,                                          \
-	                           G_STRFUNC);
+M_DEFINE_LOGGER(MacroTest);
 
 BOOST_AUTO_TEST_CASE(logging_macro_test)
 {
+	const std::string thread_name("logging_macro_test_thread");
+
 	logging::initialize();
-	get_macro_test_thread_map().insert_name("logging_macro_test_thread");
 
-	T_LOG_CALL(macro_test);
+	logging::add_sink(std::make_shared<logging::OStreamSink>());
 
-	T_LOG(macro_test, "This is a test of logging macros");
+	logging::register_thread_name(thread_name.c_str());
 
-	T_LOG_CALL(macro_test);
-	get_macro_test_thread_map().erase_name("logging_macro_test_thread");
+	BOOST_CHECK(logging::thread_name() == thread_name);
 
-	// necessary to process records and free Record
-	get_macro_test_log().quit();
+	M_LOG_CALL(MacroTest);
+
+	M_LOG(MacroTest, "This is a test of logging macros");
+
+	M_LOG_CALL(MacroTest);
+
+	mojo::sleep(1);
+
+	logging::deregister_thread_name();
 	logging::deinitialize();
 }
 

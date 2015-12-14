@@ -6,18 +6,23 @@ static mojo::FixedSizePool* s_log_mem_pool = nullptr;
 
 static ASyncLog* s_log = nullptr;
 
+static ThreadNameRegistry<std::string>* s_thread_name_registry = nullptr;
+
 void initialize()
 {
 	if (++s_init_logging_count != 1) return;
 
 	s_log_mem_pool = new FixedSizePool(128, 1024);
 	s_log = new ASyncLog;
+	s_thread_name_registry = new ThreadNameRegistry<std::string>;
 }
 
 void deinitialize()
 {
 	if (--s_init_logging_count != 0) return;
 
+	delete s_thread_name_registry;
+	s_thread_name_registry = 0;
 	delete s_log;
 	s_log = 0;
 	delete s_log_mem_pool;
@@ -89,6 +94,21 @@ std::shared_ptr<Logger> make_logger(const char* const logging_domain)
 std::set<std::shared_ptr<Logger>> get_loggers()
 {
 	return s_log->get_loggers();
+}
+
+void register_thread_name(const char* const thread_name)
+{
+	s_thread_name_registry->register_thread(thread_name);
+}
+
+void deregister_thread_name()
+{
+	s_thread_name_registry->unregister_thread();
+}
+
+std::string thread_name()
+{
+	return s_thread_name_registry->get_thread_name();
 }
 
 } // namespace logging

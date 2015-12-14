@@ -14,6 +14,24 @@
 
 MOJO_BEGIN_NAMESPACE
 
+#include "misc/semaphore.hpp"
+#include "misc/worker.hpp"
+
+#include "logging/fwd.hpp"
+#include "logging/thread_name_registry.hpp"
+#include "logging/timestamp.hpp"
+#include "logging/logging.hpp"
+#include "logging/allocator.hpp"
+#include "logging/string.hpp"
+#include "logging/sink.hpp"
+#include "logging/ostream_sink.hpp"
+#include "logging/log.hpp"
+#include "logging/logger.hpp"
+#include "logging/format.hpp"
+#include "logging/record.hpp"
+#include "logging/async_log.hpp"
+#include "logging/macros.hpp"
+
 #include "audio/types.hpp"
 #include "audio/utils.hpp"
 #include "audio/cycle_timer.hpp"
@@ -38,6 +56,8 @@ MOJO_BEGIN_NAMESPACE
 #include "time/time.hpp"
 #include "time/timing.hpp"
 
+#include "threads/thread_name_map.hpp"
+
 #include "memory/garbage_collector.hpp"
 #include "memory/fixed_size_pool.hpp"
 #include "memory/fixed_size_object_pool.hpp"
@@ -46,25 +66,9 @@ MOJO_BEGIN_NAMESPACE
 #include "lockfree/ring_buffer.hpp"
 
 #include "misc/null_deleter.hpp"
-#include "misc/semaphore.hpp"
-#include "misc/worker.hpp"
 #include "misc/functor_dispatcher.hpp"
 #include "misc/sample_block.hpp"
 #include "misc/spinwait.hpp"
-
-#include "logging/fwd.hpp"
-#include "logging/logging.hpp"
-#include "logging/allocator.hpp"
-#include "logging/sink.hpp"
-#include "logging/ostream_sink.hpp"
-#include "logging/string.hpp"
-#include "logging/log.hpp"
-#include "logging/logger.hpp"
-#include "logging/format.hpp"
-#include "logging/record.hpp"
-#include "logging/async_log.hpp"
-
-#include "threads/thread_name_map.hpp"
 
 #include "typesystem/forward.hpp"
 #include "typesystem/typedefs.hpp"
