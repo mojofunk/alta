@@ -5,7 +5,7 @@ namespace logging {
 
 MOJO_API
 String
-format(Allocator<char>& alloc, fmt::StringRef format_str, fmt::ArgList args);
+format(Allocator<char> alloc, fmt::StringRef format_str, fmt::ArgList args);
 
 FMT_VARIADIC(String, format, Allocator<char>, fmt::StringRef)
 }
