@@ -26,7 +26,7 @@ public:
 	 * make more sense that allowing callers to specify which thread to log the
 	 * message in as they may get it wrong for some reason.
 	 */
-	void write_record(const char* const msg,
+	void write_record(const String& msg,
 	                  const String& thread_name,
 	                  uint64_t timestamp,
 	                  int line,

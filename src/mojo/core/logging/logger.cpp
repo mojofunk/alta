@@ -7,7 +7,7 @@ Logger::Logger(Log& the_log, const char* const domain)
 {
 }
 
-void Logger::write_record(const char* const msg,
+void Logger::write_record(const String& msg,
                           const String& thread_name,
                           uint64_t timestamp,
                           int line,
