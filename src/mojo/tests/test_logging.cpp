@@ -227,6 +227,9 @@ BOOST_AUTO_TEST_CASE(log_format_test)
 {
 	logging::initialize();
 
+	M_DEFINE_LOGGER(FormatLogger);
+	M_GET_LOGGER(FormatLogger);
+
 	AllocData alloc_data_before;
 
 	{
@@ -240,9 +243,16 @@ BOOST_AUTO_TEST_CASE(log_format_test)
 
 		std::cout << log_str << std::endl;
 
-		logging::String another_str = M_FORMAT("stdout: {}: {}:\n", __LINE__, __FILE__);
+		logging::String format_str =
+		    M_FORMAT("stdout: {}: {}: {}\n", __LINE__, __FILE__, M_STRFUNC);
 
-		std::cout << another_str << std::endl;
+		std::cout << format_str << std::endl;
+
+		M_LOG_CALL(FormatLogger);
+
+		M_LOG(FormatLogger, format_str);
+
+		M_LOG_CALL(FormatLogger);
 	}
 
 	AllocData alloc_data_after;
