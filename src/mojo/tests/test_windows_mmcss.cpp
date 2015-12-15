@@ -8,7 +8,7 @@
 
 BOOST_AUTO_TEST_CASE(test_windows_mmcss)
 {
-	BOOST_CHECK(mmcss::initialize());
+	core::initialize();
 
 	HANDLE task_handle;
 
@@ -16,11 +16,11 @@ BOOST_AUTO_TEST_CASE(test_windows_mmcss)
 	mmcss::set_thread_priority(task_handle, mmcss::AVRT_PRIORITY_NORMAL);
 
 	// probably not necessary
-	mojo::usleep(1000000);
+	mojo::sleep(1);
 
 	// TODO check that it has taken effect
 
 	mmcss::revert_thread_characteristics(task_handle);
 
-	BOOST_CHECK(mmcss::deinitialize());
+	core::deinitialize();
 }

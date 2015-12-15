@@ -1,5 +1,3 @@
-MOJO_DEBUG_DOMAIN(WINDOWS_MMCSS)
-
 typedef HANDLE(WINAPI* AvSetMmThreadCharacteristicsA_t)(LPCSTR TaskName,
                                                         LPDWORD TaskIndex);
 
@@ -16,14 +14,18 @@ static AvSetMmThreadPriority_t AvSetMmThreadPriority = NULL;
 
 namespace mmcss {
 
+M_DEFINE_LOGGER(WindowsMMCSS);
+
 bool initialize()
 {
 	if (avrt_dll != NULL) return true;
 
 	avrt_dll = LoadLibraryA("avrt.dll");
 
+	M_GET_LOGGER(WindowsMMCSS);
+
 	if (avrt_dll == NULL) {
-		MOJO_DEBUG_MSG(WINDOWS_MMCSS, "Unable to load avrt.dll");
+		M_LOG(WindowsMMCSS, "Unable to load avrt.dll");
 		return false;
 	}
 	bool unload_dll = false;
@@ -33,8 +35,7 @@ bool initialize()
 	        avrt_dll, "AvSetMmThreadCharacteristicsA");
 
 	if (AvSetMmThreadCharacteristicsA == NULL) {
-		MOJO_DEBUG_MSG(WINDOWS_MMCSS,
-		               "Unable to resolve AvSetMmThreadCharacteristicsA");
+		M_LOG(WindowsMMCSS, "Unable to resolve AvSetMmThreadCharacteristicsA");
 		unload_dll = true;
 	}
 
@@ -43,8 +44,7 @@ bool initialize()
 	        avrt_dll, "AvRevertMmThreadCharacteristics");
 
 	if (AvRevertMmThreadCharacteristics == NULL) {
-		MOJO_DEBUG_MSG(WINDOWS_MMCSS,
-		               "Unable to resolve AvRevertMmThreadCharacteristics");
+		M_LOG(WindowsMMCSS, "Unable to resolve AvRevertMmThreadCharacteristics");
 		unload_dll = true;
 	}
 
@@ -52,13 +52,13 @@ bool initialize()
 	    (AvSetMmThreadPriority_t)GetProcAddress(avrt_dll, "AvSetMmThreadPriority");
 
 	if (AvSetMmThreadPriority == NULL) {
-		MOJO_DEBUG_MSG(WINDOWS_MMCSS, "Unable to resolve AvSetMmThreadPriority");
+		M_LOG(WindowsMMCSS, "Unable to resolve AvSetMmThreadPriority");
 		unload_dll = true;
 	}
 
 	if (unload_dll) {
-		MOJO_DEBUG_MSG(WINDOWS_MMCSS,
-		               "Unable to resolve necessary symbols, unloading avrt.dll");
+		M_LOG(WindowsMMCSS,
+		      "Unable to resolve necessary symbols, unloading avrt.dll");
 		deinitialize();
 	}
 
@@ -70,7 +70,7 @@ bool deinitialize()
 	if (avrt_dll == NULL) return true;
 
 	if (FreeLibrary(avrt_dll) == 0) {
-		MOJO_DEBUG_MSG(WINDOWS_MMCSS, "Unable to unload avrt.dll");
+		M_LOG(WindowsMMCSS, "Unable to unload avrt.dll");
 		return false;
 	}
 
@@ -94,31 +94,28 @@ bool set_thread_characteristics(const std::string& task_name,
 	    AvSetMmThreadCharacteristicsA(task_name.c_str(), &task_index_dummy);
 
 	if (*task_handle == 0) {
-		MOJO_DEBUG_MSG(
-		    WINDOWS_MMCSS,
-		    compose("Failed to set Thread Characteristics to %", task_name));
+		M_LOG(WindowsMMCSS,
+		      M_FORMAT("Failed to set Thread Characteristics to {}", task_name));
 		DWORD error = GetLastError();
 
 		switch (error) {
 		case ERROR_INVALID_TASK_INDEX:
-			MOJO_DEBUG_MSG(WINDOWS_MMCSS, "Invalid Task Index");
+			M_LOG(WindowsMMCSS, "Invalid Task Index");
 			break;
 		case ERROR_INVALID_TASK_NAME:
-			MOJO_DEBUG_MSG(WINDOWS_MMCSS, "Invalid Task Name");
+			M_LOG(WindowsMMCSS, "Invalid Task Name");
 			break;
 		case ERROR_PRIVILEGE_NOT_HELD:
-			MOJO_DEBUG_MSG(WINDOWS_MMCSS, "MMCSS: Privilege not held");
+			M_LOG(WindowsMMCSS, "MMCSS: Privilege not held");
 			break;
 		default:
-			MOJO_DEBUG_MSG(WINDOWS_MMCSS,
-			               "MMCSS: Unknown error setting thread characteristics");
+			M_LOG(WindowsMMCSS, "MMCSS: Unknown error setting thread characteristics");
 			break;
 		}
 		return false;
 	}
 
-	MOJO_DEBUG_MSG(WINDOWS_MMCSS,
-	               compose("Set thread characteristics to %", task_name));
+	M_LOG(WindowsMMCSS, M_FORMAT("Set thread characteristics to {}", task_name));
 
 	return true;
 }
@@ -128,11 +125,11 @@ bool revert_thread_characteristics(void* task_handle)
 	if (AvRevertMmThreadCharacteristics == NULL) return false;
 
 	if (AvRevertMmThreadCharacteristics(task_handle) == 0) {
-		MOJO_DEBUG_MSG(WINDOWS_MMCSS, "Failed to set revert thread characteristics");
+		M_LOG(WindowsMMCSS, "Failed to set revert thread characteristics");
 		return false;
 	}
 
-	MOJO_DEBUG_MSG(WINDOWS_MMCSS, "Reverted thread characteristics");
+	M_LOG(WindowsMMCSS, "Reverted thread characteristics");
 
 	return true;
 }
@@ -142,12 +139,11 @@ bool set_thread_priority(void* task_handle, AVRT_PRIORITY priority)
 	if (AvSetMmThreadPriority == NULL) return false;
 
 	if (AvSetMmThreadPriority(task_handle, priority) == 0) {
-		MOJO_DEBUG_MSG(WINDOWS_MMCSS,
-		               compose("Failed to set thread priority %", priority));
+		M_LOG(WindowsMMCSS, M_FORMAT("Failed to set thread priority {}", priority));
 		return false;
 	}
 
-	MOJO_DEBUG_MSG(WINDOWS_MMCSS, compose("Set thread priority to %", priority));
+	M_LOG(WindowsMMCSS, M_FORMAT("Set thread priority to {}", priority));
 
 	return true;
 }
