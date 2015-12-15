@@ -41,12 +41,12 @@ void write_record(Record* record)
 	s_log->write_record(record);
 }
 
-std::shared_ptr<Logger> make_logger(const char* const logging_domain)
+Logger* get_logger(const char* const domain)
 {
-	return s_log->make_logger(logging_domain);
+	return s_log->get_logger(domain);
 }
 
-std::set<std::shared_ptr<Logger>> get_loggers()
+std::set<Logger*> get_loggers()
 {
 	return s_log->get_loggers();
 }

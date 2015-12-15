@@ -34,7 +34,7 @@ BOOST_AUTO_TEST_CASE(basic_logging_test)
 
 	logging::add_sink(ostream_sink);
 
-	auto test_logger = logging::make_logger("test_logger");
+	auto test_logger = logging::get_logger("test_logger");
 
 	BOOST_REQUIRE (test_logger);
 
@@ -61,13 +61,13 @@ BOOST_AUTO_TEST_CASE(basic_logging_enumerate_loggers_test)
 {
 	logging::initialize();
 
-	auto logger1 = logging::make_logger("test_logger1");
-	auto logger2 = logging::make_logger("test_logger2");
+	auto logger1 = logging::get_logger("test_logger1");
+	auto logger2 = logging::get_logger("test_logger2");
 
 	BOOST_CHECK(logger1->get_domain() == "test_logger1");
 	BOOST_CHECK(logger2->get_domain() == "test_logger2");
 
-	std::set<std::shared_ptr<logging::Logger>> loggers = logging::get_loggers();
+	std::set<logging::Logger*> loggers = logging::get_loggers();
 
 	BOOST_CHECK(loggers.size() == 2);
 
@@ -86,7 +86,8 @@ BOOST_AUTO_TEST_CASE(logging_macro_test)
 
 	BOOST_CHECK(logging::thread_name() == thread_name);
 
-	auto MacroLogger = logging::make_logger("MacroLogger");
+	M_DEFINE_LOGGER(MacroLogger);
+	M_GET_LOGGER(MacroLogger);
 
 	M_LOG_CALL(MacroLogger);
 

@@ -24,9 +24,9 @@ bool initialized();
  */
 void deinitialize();
 
-M_DECLARE_LOGGER(INIT);
-M_DECLARE_LOGGER(RUN_LOOP);
-M_DECLARE_LOGGER(STRING_CONVERT);
+M_DECLARE_LOGGER(Init);
+M_DECLARE_LOGGER(RunLoop);
+M_DECLARE_LOGGER(StringConvert);
 
 } // namespace core
 

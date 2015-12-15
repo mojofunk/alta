@@ -16,14 +16,18 @@ public: // Log interface
 
 	void write_record(Record* record) override;
 
-	std::shared_ptr<Logger> make_logger(const char* const domain) override;
+	Logger* get_logger(const char* const domain) override;
 
-	std::set<std::shared_ptr<Logger>> get_loggers() const override;
+	std::set<Logger*> get_loggers() const override;
 
 private: // RunLoop
 	void do_work() override;
 
 	void process_records();
+
+private: // loggers
+
+	void destroy_loggers();
 
 private: // data
 
@@ -34,7 +38,7 @@ private: // data
 	std::set<std::shared_ptr<Sink>> m_sinks;
 	mutable std::mutex m_sinks_mutex;
 
-	std::set<std::shared_ptr<Logger>> m_loggers;
+	std::set<Logger*> m_loggers;
 	mutable std::mutex m_loggers_mutex;
 
 	std::thread m_record_processing_thread;

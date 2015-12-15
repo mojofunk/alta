@@ -36,6 +36,7 @@ public:
 private:
 	Log& m_log;
 
+	// I think we want to copy this
 	const char* const m_domain;
 
 	bool m_enabled; // should probably be atomic

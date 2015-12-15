@@ -16,6 +16,17 @@ ASyncLog::~ASyncLog()
 
 	// process/drop any log messages still left in queue
 	process_records();
+	destroy_loggers();
+}
+
+void
+ASyncLog::destroy_loggers()
+{
+	// no need to lock in dtor
+
+	for (auto logger : m_loggers) {
+		delete logger;
+	}
 }
 
 void ASyncLog::add_sink(std::shared_ptr<Sink> sink)
@@ -41,15 +52,20 @@ void ASyncLog::write_record(Record* record)
 	iteration(false);
 }
 
-std::shared_ptr<Logger> ASyncLog::make_logger(const char* const domain)
+Logger* ASyncLog::get_logger(const char* const domain)
 {
-	auto logger = std::make_shared<Logger>(*this, domain);
+	// search for existing logger
 	std::unique_lock<std::mutex> lock(m_loggers_mutex);
+
+	// do we want to compare addresses or string equality or just make a new
+	// logger anyway even if strings are equal.
+
+	Logger* logger = new Logger(*this, domain);
 	m_loggers.insert(logger);
 	return logger;
 }
 
-std::set<std::shared_ptr<Logger>> ASyncLog::get_loggers() const
+std::set<Logger*> ASyncLog::get_loggers() const
 {
 	std::unique_lock<std::mutex> lock(m_loggers_mutex);
 	auto tmp = m_loggers;

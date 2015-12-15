@@ -1,13 +1,13 @@
 Application* Application::s_instance = nullptr;
 
-std::shared_ptr<logging::Logger> APPLICATION;
+M_DEFINE_LOGGER(Application);
 
 Application::Application()
 {
 	core::initialize();
 	s_instance = this;
 
-	APPLICATION = logging::make_logger("Application");
+	M_GET_LOGGER(Application);
 
 	data =
 	    std::unique_ptr<internal::ApplicationData>(new internal::ApplicationData);
@@ -20,7 +20,6 @@ Application::Application()
 Application::~Application()
 {
 	data.reset();
-	APPLICATION.reset();
 	s_instance = nullptr;
 	core::deinitialize();
 }
@@ -32,14 +31,14 @@ void Application::iteration(bool block)
 
 void Application::new_project()
 {
-	M_LOG_CALL(APPLICATION);
+	M_LOG_CALL(Application);
 	s_instance->data->worker.call_async(
 	    boost::bind(&Application::new_project_internal, boost::ref(*s_instance)));
 }
 
 void Application::open_project(const std::string& project_file)
 {
-	M_LOG_CALL(APPLICATION);
+	M_LOG_CALL(Application);
 	s_instance->data->worker.call_async(
 	    boost::bind(&Application::open_project_internal,
 	                boost::ref(*s_instance),
@@ -68,7 +67,7 @@ Project* Application::get_active_project()
 
 void Application::close_project(Project* p)
 {
-	M_LOG_CALL(APPLICATION);
+	M_LOG_CALL(Application);
 	s_instance->data->worker.call_async(boost::bind(
 	    &Application::close_project_internal, boost::ref(*s_instance), p));
 }
@@ -87,7 +86,7 @@ Application::connect_project_removed(const ProjectRemovedFunc& slot)
 
 void Application::add_track(Project* p, const TrackOptions& options)
 {
-	M_LOG_CALL(APPLICATION);
+	M_LOG_CALL(Application);
 	s_instance->data->worker.call_async(boost::bind(
 	    &Application::add_track_internal, boost::ref(*s_instance), p, options));
 }
