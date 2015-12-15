@@ -9,12 +9,6 @@ public: // Log interface
 
 	virtual void remove_sink(std::shared_ptr<Sink> sink) = 0;
 
-	// @return true if logger with added, false if logger found with same name?
-	virtual bool add_logger (std::shared_ptr<Logger> logger) = 0;
-
-	// @return true if logger was removed or false if not found?
-	virtual bool remove_logger (std::shared_ptr<Logger> logger) = 0;
-
 	virtual void write_record(Record* record) = 0;
 
 	virtual std::shared_ptr<Logger> make_logger(const char* const domain) = 0;

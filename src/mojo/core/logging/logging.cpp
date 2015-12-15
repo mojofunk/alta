@@ -36,16 +36,6 @@ void remove_sink(std::shared_ptr<Sink> sink_ptr)
 	s_log->remove_sink(sink_ptr);
 }
 
-void add_logger (std::shared_ptr<Logger> logger)
-{
-	s_log->add_logger(logger);
-}
-
-void remove_logger (std::shared_ptr<Logger> logger)
-{
-	s_log->remove_logger(logger);
-}
-
 void write_record(Record* record)
 {
 	s_log->write_record(record);

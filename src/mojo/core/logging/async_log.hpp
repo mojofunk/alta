@@ -14,12 +14,6 @@ public: // Log interface
 
 	void remove_sink(std::shared_ptr<Sink> sink) override;
 
-	// @return true if logger with added, false if logger found with same name?
-	bool add_logger (std::shared_ptr<Logger> logger) override;
-
-	// @return true if logger was removed or false if not found?
-	bool remove_logger (std::shared_ptr<Logger> logger) override;
-
 	void write_record(Record* record) override;
 
 	std::shared_ptr<Logger> make_logger(const char* const domain) override;

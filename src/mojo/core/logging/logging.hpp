@@ -11,10 +11,6 @@ MOJO_API void add_sink(std::shared_ptr<Sink> sink_ptr);
 
 MOJO_API void remove_sink(std::shared_ptr<Sink> sink_ptr);
 
-MOJO_API void add_logger (std::shared_ptr<Logger> logger);
-
-MOJO_API void remove_logger (std::shared_ptr<Logger> logger);
-
 MOJO_API void write_record(Record* record);
 
 MOJO_API std::shared_ptr<Logger> make_logger(const char* const logging_domain);

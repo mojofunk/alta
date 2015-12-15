@@ -30,18 +30,6 @@ void ASyncLog::remove_sink(std::shared_ptr<Sink> sink)
 	m_sinks.erase(sink);
 }
 
-bool ASyncLog::add_logger(std::shared_ptr<Logger> logger)
-{
-	std::unique_lock<std::mutex> lock(m_loggers_mutex);
-	m_loggers.insert(logger);
-}
-
-bool ASyncLog::remove_logger(std::shared_ptr<Logger> logger)
-{
-	std::unique_lock<std::mutex> lock(m_loggers_mutex);
-	m_loggers.erase(logger);
-}
-
 void ASyncLog::write_record(Record* record)
 {
 	if (m_quit) return;
@@ -56,7 +44,8 @@ void ASyncLog::write_record(Record* record)
 std::shared_ptr<Logger> ASyncLog::make_logger(const char* const domain)
 {
 	auto logger = std::make_shared<Logger>(*this, domain);
-	add_logger(logger);
+	std::unique_lock<std::mutex> lock(m_loggers_mutex);
+	m_loggers.insert(logger);
 	return logger;
 }
 
