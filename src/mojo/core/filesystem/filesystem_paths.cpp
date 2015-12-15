@@ -1,5 +1,3 @@
-MOJO_DEBUG_DOMAIN(FILESYSTEM_PATHS);
-
 fs::path get_user_config_directory()
 {
 	return g_get_user_config_dir();
