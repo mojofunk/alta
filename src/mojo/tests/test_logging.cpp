@@ -237,8 +237,12 @@ BOOST_AUTO_TEST_CASE(log_format_test)
 		logging::String log_str =
 		    format(alloc, "stdout: {}: {}:\n", __LINE__, __FILE__);
 
-		// print to stdout
+
 		std::cout << log_str << std::endl;
+
+		logging::String another_str = M_FORMAT("stdout: {}: {}:\n", __LINE__, __FILE__);
+
+		std::cout << another_str << std::endl;
 	}
 
 	AllocData alloc_data_after;

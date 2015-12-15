@@ -23,4 +23,6 @@
 	                           __FILE__,                                          \
 	                           M_STRFUNC)
 
+#define M_FORMAT(...) logging::format(logging::Allocator<char>(), __VA_ARGS__)
+
 #endif // MOJO_LOGGING_MACROS_H
