@@ -41,6 +41,10 @@ void initialize()
 
 	M_LOG(Init, "Initializing mojo-core");
 
+#ifdef MOJO_WINDOWS
+	mmcss::initialize();
+#endif
+
 	types::initialize();
 }
 
@@ -54,6 +58,10 @@ void deinitialize()
 	if (--s_init_core_count != 0) return;
 
 	M_LOG(Init, "Deinitializing mojo-core");
+
+#ifdef MOJO_WINDOWS
+	mmcss::deinitialize();
+#endif
 
 	types::deinitialize();
 
