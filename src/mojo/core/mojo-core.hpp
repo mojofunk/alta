@@ -61,10 +61,10 @@ MOJO_BEGIN_NAMESPACE
 #include "memory/fixed_size_pool.hpp"
 #include "memory/fixed_size_object_pool.hpp"
 #include "memory/fixed_size_pool_allocator.hpp"
+#include "memory/null_deleter.hpp"
 
 #include "lockfree/ring_buffer.hpp"
 
-#include "misc/null_deleter.hpp"
 #include "misc/functor_dispatcher.hpp"
 #include "misc/sample_block.hpp"
 #include "misc/spinwait.hpp"
