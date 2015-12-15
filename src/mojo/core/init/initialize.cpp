@@ -15,17 +15,6 @@ void set_debugging_from_env_var()
 
 namespace core {
 
-M_DEFINE_LOGGER(Init);
-M_DEFINE_LOGGER(RunLoop);
-M_DEFINE_LOGGER(StringConvert);
-
-static void initialize_loggers ()
-{
-	M_GET_LOGGER(Init);
-	M_GET_LOGGER(RunLoop);
-	M_GET_LOGGER(StringConvert);
-}
-
 void initialize()
 {
 	if (++s_init_core_count != 1) return;

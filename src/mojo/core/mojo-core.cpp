@@ -16,6 +16,9 @@ MOJO_BEGIN_NAMESPACE
 #include "logging/ostream_sink.cpp"
 #include "logging/logging.cpp"
 
+#include "private/loggers.hpp"
+#include "private/loggers.cpp"
+
 #include "audio/utils.cpp"
 
 #include "midi/midi_util.cpp"

@@ -24,10 +24,6 @@ bool initialized();
  */
 void deinitialize();
 
-M_DECLARE_LOGGER(Init);
-M_DECLARE_LOGGER(RunLoop);
-M_DECLARE_LOGGER(StringConvert);
-
 } // namespace core
 
 #endif // MOJO_CORE_CORE_INITIALIZE_H
