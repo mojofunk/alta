@@ -15,7 +15,7 @@
 MOJO_BEGIN_NAMESPACE
 
 #include "misc/semaphore.hpp"
-#include "misc/worker.hpp"
+#include "misc/run_loop.hpp"
 
 #include "threads/thread_name_registry.hpp"
 

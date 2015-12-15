@@ -1,13 +1,13 @@
-Worker::Worker()
+RunLoop::RunLoop()
     : m_quit(false)
 {
 }
 
-Worker::~Worker()
+RunLoop::~RunLoop()
 {
 }
 
-void Worker::run()
+void RunLoop::run()
 {
 	while (can_run()) {
 		m_iter_sema.wait();
@@ -22,7 +22,7 @@ void Worker::run()
 	}
 }
 
-void Worker::quit()
+void RunLoop::quit()
 {
 	if (m_quit) return;
 
@@ -38,7 +38,7 @@ void Worker::quit()
 	m_cond.wait(lock);
 }
 
-bool Worker::can_run()
+bool RunLoop::can_run()
 {
 	std::unique_lock<std::mutex> lock(m_iter_mtx);
 
@@ -49,7 +49,7 @@ bool Worker::can_run()
 	return true;
 }
 
-void Worker::iteration(bool block)
+void RunLoop::iteration(bool block)
 {
 	if (block) {
 		std::unique_lock<std::mutex> lock(m_iter_mtx);

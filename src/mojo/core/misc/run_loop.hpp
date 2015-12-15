@@ -1,21 +1,21 @@
-#ifndef MOJO_API_WORKER_H
-#define MOJO_API_WORKER_H
+#ifndef MOJO_RUN_LOOP_H
+#define MOJO_RUN_LOOP_H
 
-class Worker {
+class RunLoop {
 public:
 	/**
-	 * Create a new Worker, run() must be called to start
+	 * Create a new RunLoop, run() must be called to start
 	 * the main loop.
 	 */
-	Worker();
+	RunLoop();
 
 	/**
 	 * assert that quit() has been called.
 	 */
-	virtual ~Worker();
+	virtual ~RunLoop();
 
 	/**
-	 * Start the main loop, this will block until quit is called
+	 * Start the loop, this will block until quit is called
 	 */
 	void run();
 
@@ -40,4 +40,4 @@ protected:
 	Semaphore m_iter_sema;
 };
 
-#endif // MOJO_API_WORKER_H
+#endif // MOJO_RUN_LOOP_H

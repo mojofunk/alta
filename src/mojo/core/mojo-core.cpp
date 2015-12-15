@@ -38,7 +38,7 @@ MOJO_BEGIN_NAMESPACE
 #include "memory/garbage_collector.cpp"
 
 #include "misc/semaphore.cpp"
-#include "misc/worker.cpp"
+#include "misc/run_loop.cpp"
 #include "misc/functor_dispatcher.cpp"
 #include "misc/sample_block.cpp"
 

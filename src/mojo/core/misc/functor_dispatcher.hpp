@@ -5,7 +5,7 @@
  * The FunctorDispatcher class accepts worker functions to
  * be called in another thread.
  */
-class FunctorDispatcher : public Worker {
+class FunctorDispatcher : public RunLoop {
 public:
 	typedef std::function<void()> function_type;
 

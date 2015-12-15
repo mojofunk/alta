@@ -3,7 +3,7 @@
 
 namespace logging {
 
-class ASyncLog : public Log, public mojo::Worker {
+class ASyncLog : public Log, public mojo::RunLoop {
 public:
 	ASyncLog();
 
