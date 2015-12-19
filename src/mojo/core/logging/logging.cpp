@@ -4,6 +4,8 @@ static std::atomic<uint32_t> s_init_logging_count(0);
 
 static ASyncLog* s_log = nullptr;
 
+static Sink* s_default_sink = nullptr;
+
 static ThreadNameRegistry<String>* s_thread_name_registry = nullptr;
 
 void initialize()
@@ -12,6 +14,8 @@ void initialize()
 
 	initialize_allocator();
 	s_log = new ASyncLog;
+	s_default_sink = new OStreamSink;
+	s_log->add_sink(s_default_sink);
 	s_thread_name_registry = new ThreadNameRegistry<String>;
 }
 
@@ -21,6 +25,9 @@ void deinitialize()
 
 	delete s_thread_name_registry;
 	s_thread_name_registry = nullptr;
+	s_log->remove_sink(s_default_sink);
+	delete s_default_sink;
+	s_default_sink = nullptr;
 	delete s_log;
 	s_log = nullptr;
 	deinitialize_allocator();
@@ -28,12 +35,21 @@ void deinitialize()
 
 void add_sink(Sink* sink_ptr)
 {
+	s_log->remove_sink(s_default_sink);
 	s_log->add_sink(sink_ptr);
 }
 
 void remove_sink(Sink* sink_ptr)
 {
 	s_log->remove_sink(sink_ptr);
+	if (s_log->get_sinks().empty()) {
+		s_log->add_sink(s_default_sink);
+	}
+}
+
+std::set<Sink*> get_sinks()
+{
+	return s_log->get_sinks();
 }
 
 void write_record(Record* record)

@@ -41,6 +41,13 @@ void ASyncLog::remove_sink(Sink* sink)
 	m_sinks.erase(sink);
 }
 
+std::set<Sink*> ASyncLog::get_sinks() const
+{
+	std::unique_lock<std::mutex> lock(m_sinks_mutex);
+	auto tmp = m_sinks;
+	return tmp;
+}
+
 void ASyncLog::write_record(Record* record)
 {
 	if (m_quit) return;

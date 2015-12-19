@@ -9,6 +9,8 @@ public: // Log interface
 
 	virtual void remove_sink(Sink* sink) = 0;
 
+	virtual std::set<Sink*> get_sinks() const = 0;
+
 	virtual void write_record(Record* record) = 0;
 
 	/**

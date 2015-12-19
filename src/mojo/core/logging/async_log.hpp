@@ -14,6 +14,8 @@ public: // Log interface
 
 	void remove_sink(Sink* sink) override;
 
+	std::set<Sink*> get_sinks() const override;
+
 	void write_record(Record* record) override;
 
 	Logger* get_logger(const char* const domain) override;
