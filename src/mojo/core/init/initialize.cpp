@@ -20,7 +20,6 @@ void initialize()
 	if (++s_init_core_count != 1) return;
 
 	logging::initialize();
-	logging::add_sink(std::make_shared<logging::OStreamSink>());
 
 	initialize_loggers();
 
