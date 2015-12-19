@@ -10,9 +10,9 @@ public:
 	~ASyncLog();
 
 public: // Log interface
-	void add_sink(std::shared_ptr<Sink> sink) override;
+	void add_sink(Sink* sink) override;
 
-	void remove_sink(std::shared_ptr<Sink> sink) override;
+	void remove_sink(Sink* sink) override;
 
 	void write_record(Record* record) override;
 
@@ -35,7 +35,7 @@ private: // data
 	using RecordQueueType = moodycamel::ConcurrentQueue<Record*>;
 	RecordQueueType m_record_queue;
 
-	std::set<std::shared_ptr<Sink>> m_sinks;
+	std::set<Sink*> m_sinks;
 	mutable std::mutex m_sinks_mutex;
 
 	std::set<Logger*> m_loggers;

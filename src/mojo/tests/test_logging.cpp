@@ -32,7 +32,7 @@ BOOST_AUTO_TEST_CASE(basic_logging_test)
 
 	auto ostream_sink = std::make_shared<logging::OStreamSink>();
 
-	logging::add_sink(ostream_sink);
+	logging::add_sink(ostream_sink.get());
 
 	auto test_logger = logging::get_logger("test_logger");
 
@@ -50,7 +50,7 @@ BOOST_AUTO_TEST_CASE(basic_logging_test)
 	// so async sink has a chance to handle message
 	mojo::sleep(1);
 
-	logging::remove_sink (ostream_sink);
+	logging::remove_sink (ostream_sink.get());
 
 	// need to quit before deinitialize or Records will not be deallocated
 	//test_log.quit();
@@ -80,7 +80,9 @@ BOOST_AUTO_TEST_CASE(logging_macro_test)
 
 	logging::initialize();
 
-	logging::add_sink(std::make_shared<logging::OStreamSink>());
+	auto ostream_sink = std::make_shared<logging::OStreamSink>();
+
+	logging::add_sink(ostream_sink.get());
 
 	logging::register_thread_name(thread_name);
 

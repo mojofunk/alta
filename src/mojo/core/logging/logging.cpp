@@ -26,12 +26,12 @@ void deinitialize()
 	deinitialize_allocator();
 }
 
-void add_sink(std::shared_ptr<Sink> sink_ptr)
+void add_sink(Sink* sink_ptr)
 {
 	s_log->add_sink(sink_ptr);
 }
 
-void remove_sink(std::shared_ptr<Sink> sink_ptr)
+void remove_sink(Sink* sink_ptr)
 {
 	s_log->remove_sink(sink_ptr);
 }

@@ -29,13 +29,13 @@ ASyncLog::destroy_loggers()
 	}
 }
 
-void ASyncLog::add_sink(std::shared_ptr<Sink> sink)
+void ASyncLog::add_sink(Sink* sink)
 {
 	std::unique_lock<std::mutex> lock(m_sinks_mutex);
 	m_sinks.insert(sink);
 }
 
-void ASyncLog::remove_sink(std::shared_ptr<Sink> sink)
+void ASyncLog::remove_sink(Sink* sink)
 {
 	std::unique_lock<std::mutex> lock(m_sinks_mutex);
 	m_sinks.erase(sink);

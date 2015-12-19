@@ -7,9 +7,9 @@ MOJO_API void initialize();
 
 MOJO_API void deinitialize();
 
-MOJO_API void add_sink(std::shared_ptr<Sink> sink_ptr);
+MOJO_API void add_sink(Sink* sink_ptr);
 
-MOJO_API void remove_sink(std::shared_ptr<Sink> sink_ptr);
+MOJO_API void remove_sink(Sink* sink_ptr);
 
 MOJO_API void write_record(Record* record);
 
