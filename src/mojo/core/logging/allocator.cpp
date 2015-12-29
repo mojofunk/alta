@@ -9,7 +9,7 @@ void initialize_allocator()
 	if (++s_allocator_init_count != 1) return;
 
 	assert(s_allocator_mem_pool == nullptr);
-	s_allocator_mem_pool = new FixedSizePool(128, 1024);
+	s_allocator_mem_pool = new FixedSizePool(128, 16348);
 }
 
 void deinitialize_allocator()
@@ -22,29 +22,30 @@ void deinitialize_allocator()
 
 void* logging_allocate(std::size_t size)
 {
-	void* ptr = 0;
+	void* ptr = nullptr;
 
 	assert(s_allocator_mem_pool);
 
-	if (size > s_allocator_mem_pool->max_size()) {
-		LOGGING_DEBUG("logging allocator allocating (%d) bytes using global new", size);
-		ptr = ::operator new(size);
-	} else {
-		LOGGING_DEBUG("logging allocator allocating (%d) bytes using pool", size);
-		ptr = s_allocator_mem_pool->allocate(size);
-		LOGGING_DEBUG("log pool available %d", s_allocator_mem_pool->available());
-	}
+	ptr = s_allocator_mem_pool->allocate(size);
 
+	if (ptr == nullptr) {
+		ptr = ::operator new(size);
+		LOGGING_DEBUG("logging allocator allocated (%d) bytes using global new\n", size);
+	} else {
+		LOGGING_DEBUG("logging allocator allocated (%d) bytes using pool\n", size);
+		LOGGING_DEBUG("log pool available %d\n", s_allocator_mem_pool->available());
+	}
 	return ptr;
 }
 
 void logging_deallocate(void* ptr)
 {
 	if (s_allocator_mem_pool->is_from(ptr)) {
-		LOGGING_DEBUG("log deallocating using mem pool");
+		LOGGING_DEBUG("log deallocating using mem pool, available %d\n",
+		              s_allocator_mem_pool->available());
 		s_allocator_mem_pool->deallocate(ptr);
 	} else {
-		LOGGING_DEBUG("log deallocating using global delete");
+		LOGGING_DEBUG("log deallocating using global delete\n");
 		::operator delete(ptr);
 	}
 }
