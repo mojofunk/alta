@@ -38,7 +38,6 @@ public:
 	void* allocate(const std::size_t bytes)
 	{
 		if (bytes > m_size_bytes) {
-			assert(true);
 			return nullptr;
 		}
 
