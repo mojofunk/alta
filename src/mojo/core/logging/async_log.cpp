@@ -53,7 +53,7 @@ void ASyncLog::write_record(Record* record)
 	if (m_quit) return;
 
 	if (!m_record_queue.try_enqueue(record)) {
-		LOGGING_DEBUG("Unable to enqueue Record using non-blocking API");
+		LOGGING_DEBUG("Unable to enqueue Record using non-blocking API\n");
 		m_record_queue.enqueue(record);
 	}
 	iteration(false);
@@ -90,10 +90,11 @@ void ASyncLog::process_records()
 
 	while (m_record_queue.try_dequeue(record)) {
 		std::unique_lock<std::mutex> lock(m_sinks_mutex);
+		LOGGING_DEBUG("Processing Log Records\n");
 		for (auto sink : m_sinks) {
 			sink->handle_record(*record);
 		}
-		LOGGING_DEBUG("Deleting Record");
+		LOGGING_DEBUG("Deleting Record\n");
 		delete record;
 	}
 }
