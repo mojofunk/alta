@@ -103,6 +103,59 @@ BOOST_AUTO_TEST_CASE(logging_macro_test)
 	logging::deinitialize();
 }
 
+static std::atomic<bool> test_logging_alloc_done(false);
+
+M_DEFINE_LOGGER(ThreadTestLogger);
+
+void test_logging_alloc_thread()
+{
+	cout << "Started Perf thread" << endl;
+	while (!test_logging_alloc_done) {
+		M_LOG_CALL(ThreadTestLogger);
+		// The amount of log messages per unit of time will determine how large the
+		// pool will need to be to avoid allocation from global new/heap. If the
+		// sleep call is removed then the logging thread will more than likely not
+		// be able to process records fast enough to free up memory to avoid heap
+		// allocation.
+		mojo::usleep(g_random_int_range(200, 600));
+	}
+}
+
+void test_logging_alloc_iteration()
+{
+	test_logging_alloc_done = false;
+	const int num_logging_threads = 4;
+
+	std::vector<std::thread> logging_threads;
+
+	for (int i = 0; i != num_logging_threads; ++i) {
+		logging_threads.push_back(std::thread(test_logging_alloc_thread));
+	}
+
+	mojo::sleep(10);
+
+	test_logging_alloc_done = true;
+
+	for (auto& t : logging_threads) {
+		BOOST_CHECK_NO_THROW(t.join());
+	}
+}
+
+BOOST_AUTO_TEST_CASE(logging_alloc_test)
+{
+	logging::initialize();
+
+	auto ostream_sink = std::make_shared<logging::OStreamSink>();
+
+	logging::add_sink(ostream_sink.get());
+
+	M_GET_LOGGER(ThreadTestLogger);
+
+	test_logging_alloc_iteration();
+
+	logging::deinitialize();
+}
+
 // Total number of bytes that have been allocated using operator new
 std::size_t operator_new_bytes_allocated = 0;
 
