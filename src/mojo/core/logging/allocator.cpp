@@ -9,7 +9,7 @@ void initialize_allocator()
 	if (++s_allocator_init_count != 1) return;
 
 	assert(s_allocator_mem_pool == nullptr);
-	s_allocator_mem_pool = new FixedSizePool(128, 16348);
+	s_allocator_mem_pool = new FixedSizePool(128, 1024);
 }
 
 void deinitialize_allocator()
