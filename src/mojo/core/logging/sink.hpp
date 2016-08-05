@@ -5,6 +5,9 @@ namespace logging {
 
 class Sink {
 public:
+	virtual ~Sink() { };
+
+public:
 	//virtual std::string name() = 0;
 
 	/*
