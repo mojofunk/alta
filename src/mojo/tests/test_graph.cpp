@@ -10,7 +10,7 @@ struct Processor : public Node {
 	string name;
 
 protected:
-	virtual void on_activate() { BOOST_MESSAGE(name); }
+	virtual void on_activate() { BOOST_TEST_MESSAGE(name); }
 };
 
 bool graph_contains_node(Node*)

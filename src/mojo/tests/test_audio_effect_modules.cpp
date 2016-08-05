@@ -16,16 +16,16 @@ void test_plugin_path(const fs::path& path)
 void test_info(AudioEffectInfoSP info)
 {
 	BOOST_REQUIRE(info);
-	BOOST_MESSAGE(info->get_name());
-	BOOST_MESSAGE(info->get_path());
+	BOOST_TEST_MESSAGE(info->get_name());
+	BOOST_TEST_MESSAGE(info->get_path());
 }
 
 void test_parameter_info(const AudioEffectParameterInfo& info)
 {
-	BOOST_MESSAGE(info.name);
-	BOOST_MESSAGE(info.min_value);
-	BOOST_MESSAGE(info.max_value);
-	BOOST_MESSAGE(info.default_value);
+	BOOST_TEST_MESSAGE(info.name);
+	BOOST_TEST_MESSAGE(info.min_value);
+	BOOST_TEST_MESSAGE(info.max_value);
+	BOOST_TEST_MESSAGE(info.default_value);
 }
 
 void test_audio_effect(AudioEffectSP aeffect)
