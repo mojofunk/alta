@@ -45,7 +45,9 @@ BOOST_AUTO_TEST_CASE(test_tmp_writable_directory)
 	BOOST_CHECK(m_tmp_dirs.size() == num_dirs);
 
 	for (auto const& path : m_tmp_dirs) {
-		BOOST_CHECK_NO_THROW(fs::remove(path) == 1);
+		int files_removed_cnt = 0;
+		BOOST_CHECK_NO_THROW(files_removed_cnt = fs::remove(path));
+		BOOST_CHECK(files_removed_cnt = 1);
 	}
 }
 
