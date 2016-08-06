@@ -28,7 +28,9 @@ public:
 	{
 		if (!change) return false;
 
+		// TODO check insertion was successful
 		m_changes.insert(change);
+		return true;
 	}
 
 	bool empty() const { return m_changes.empty(); }

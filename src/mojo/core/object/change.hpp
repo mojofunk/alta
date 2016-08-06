@@ -32,6 +32,7 @@ public:
 
 		// The types must always be the same
 		// assert (new_value.value.type() == old_value.value.type());
+		return true; // TODO If value changed
 	}
 
 	Property old_value;

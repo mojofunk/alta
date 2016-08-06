@@ -495,6 +495,7 @@ public:
 		for (auto const observer : m_project_observers) {
 			observer->route_added(route);
 		}
+		return true; // TODO if added
 	}
 
 	bool remove_route(const shared_ptr<Route>& route)
@@ -510,6 +511,7 @@ public:
 		for (auto const observer : m_project_observers) {
 			observer->route_removed(route);
 		}
+		return true; // TODO if removed
 	}
 
 	/**

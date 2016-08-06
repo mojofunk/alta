@@ -22,7 +22,7 @@ public:
 
 	connection_t on_changed_signal(const changed_slot_t& slot)
 	{
-		m_changed_signal.connect(slot);
+		return m_changed_signal.connect(slot);
 	}
 
 	void destroy() { m_destroy_signal(); }
@@ -37,7 +37,7 @@ public:
 	 */
 	connection_t on_destroy_signal(const destroy_slot_t& slot)
 	{
-		m_destroy_signal.connect(slot);
+		return m_destroy_signal.connect(slot);
 	}
 
 protected:
