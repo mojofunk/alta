@@ -86,6 +86,11 @@ def configure(conf):
                    mandatory=True,
                    uselib_store='WINMM')
 
+    conf.check(compiler='c',
+               lib='atomic',
+               mandatory=False,
+               uselib_store='ATOMIC')
+
     print ("configure mojo tests")
 
 
@@ -170,10 +175,12 @@ def build(bld):
         return
 
     local_tests = tests
+    global uselibs
+
+    uselibs += ['ATOMIC']
 
     if bld.env.TARGET_WINDOWS:
         local_tests += windows_tests
-        global uselibs
         uselibs += ['WINMM']
 
     for test in local_tests:
