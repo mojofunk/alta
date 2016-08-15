@@ -54,15 +54,23 @@ public:
 
 	void deallocate(void* ptr)
 	{
-		if (!is_from(ptr)) {
-			assert(true);
-			return;
-		}
-		if (m_queue.try_enqueue((char*)ptr)) {
-			m_available++;
+		assert(is_from(ptr));
+
+		int retries = 0;
+		bool enqueue_success = false;
+		do {
+			enqueue_success = m_queue.try_enqueue((char*)ptr);
+			retries++;
+		} while (!enqueue_success && retries != 5);
+
+		if (!enqueue_success) {
+			enqueue_success = m_queue.enqueue((char*)ptr);
 		} else {
-			assert(true);
+			// print debug message
 		}
+
+		assert(enqueue_success);
+		m_available++;
 		ptr = nullptr;
 	}
 
