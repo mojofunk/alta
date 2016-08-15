@@ -20,14 +20,9 @@ public:
 	bool get_enabled() const { return m_enabled; }
 	void set_enabled(bool enable) { m_enabled = enable; }
 
-	/**
-	 * The logging API could expose a ThreadNameMap<String>
-	 * that the Logging classes look up to get the thread name which seems to
-	 * make more sense that allowing callers to specify which thread to log the
-	 * message in as they may get it wrong for some reason.
-	 */
 	void write_record(const String& msg,
-	                  const String& thread_name,
+	                  const uint32_t cpu_id,
+	                  const std::thread::id thread_id,
 	                  uint64_t timestamp,
 	                  int line,
 	                  const char* file_name,

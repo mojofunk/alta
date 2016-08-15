@@ -21,7 +21,7 @@ MOJO_API void register_thread_name(const char* const thread_name);
 
 MOJO_API void deregister_thread_name();
 
-MOJO_API String thread_name();
+MOJO_API String thread_name(std::thread::id const& thread_id);
 
 } // namespace logging
 

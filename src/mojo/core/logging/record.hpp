@@ -6,14 +6,16 @@ namespace logging {
 struct Record {
 	Record(const String& p_message,
 	       const char* const p_logger_name,
-	       const String& p_thread_name,
+	       const uint32_t p_cpu_id,
+	       const std::thread::id p_thread_id,
 	       uint64_t p_timestamp,
 	       int p_line,
 	       const char* const p_file_name,
 	       const char* const p_function_name)
 	    : message(p_message)
 	    , logger_name(p_logger_name)
-	    , thread_name(p_thread_name)
+	    , cpu_id(p_cpu_id)
+	    , thread_id(p_thread_id)
 	    , timestamp(p_timestamp)
 	    , line(p_line)
 	    , file_name(p_file_name)
@@ -25,7 +27,9 @@ struct Record {
 
 	const String logger_name;
 
-	const String thread_name;
+	const uint32_t cpu_id;
+
+	const std::thread::id thread_id;
 
 	const uint64_t timestamp;
 

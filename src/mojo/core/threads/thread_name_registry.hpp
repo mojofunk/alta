@@ -2,8 +2,8 @@
 #define MOJO_THREAD_NAME_REGISTRY_H
 
 /**
- * Ideally this would be lock-free or at least use a ReadWriteLock/RCU or
- * perhaps TLS, but this will do for now.
+ * Ideally this would be lock-free or perhaps use TLS, but using a try_lock for
+ * reading the thread name should be sufficient for now.
  */
 template <class StringType>
 class ThreadNameRegistry {
@@ -11,33 +11,42 @@ public:
 	typedef StringType string_type;
 
 public:
-	bool register_thread(const StringType& thread_name)
+	bool register_thread(const char* const thread_name)
 	{
-		std::unique_lock<std::mutex> lock(m_thread_name_map_mutex);
+		std::lock_guard<std::mutex> lock(m_thread_name_map_mutex);
 
-		return m_thread_name_map.insert(std::make_pair(std::this_thread::get_id(),
-		                                               thread_name)).second;
+		bool inserted =
+		    m_thread_name_map.insert(std::make_pair(std::this_thread::get_id(),
+		                                            thread_name)).second;
+
+		return inserted;
 	}
 
 	bool unregister_thread()
 	{
-		std::unique_lock<std::mutex> lock(m_thread_name_map_mutex);
+		std::lock_guard<std::mutex> lock(m_thread_name_map_mutex);
 		return (m_thread_name_map.erase(std::this_thread::get_id()));
 	}
 
 	/**
-	 * If the thread is not known should the id be converted to a string rather
-	 * than returning a fixed string as at least that will allow differentiating
-	 * between threads.
+	 * @return Return the thread name associated with the thread_id or a string
+	 * representing an unknown thread name.
 	 */
-	StringType get_thread_name()
+	StringType get_thread_name(std::thread::id const& thread_id)
 	{
-		std::unique_lock<std::mutex> lock(m_thread_name_map_mutex);
-		typename ThreadNameRegistryType::const_iterator i =
-		    m_thread_name_map.find(std::this_thread::get_id());
+		std::unique_lock<std::mutex> lock(m_thread_name_map_mutex, std::try_to_lock);
 
-		if (i != m_thread_name_map.end()) {
-			return i->second;
+		if (lock.owns_lock()) {
+			StringType thread_name;
+			typename ThreadNameRegistryType::const_iterator i =
+			    m_thread_name_map.find(thread_id);
+
+			if (i != m_thread_name_map.end()) {
+				thread_name = i->second;
+				return thread_name;
+			}
+		} else {
+			// debug message
 		}
 		return unknown_thread_name();
 	}

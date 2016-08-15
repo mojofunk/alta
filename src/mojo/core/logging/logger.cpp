@@ -8,7 +8,8 @@ Logger::Logger(Log& the_log, const char* const domain)
 }
 
 void Logger::write_record(const String& msg,
-                          const String& thread_name,
+                          const uint32_t cpu_id,
+                          const std::thread::id thread_id,
                           uint64_t timestamp,
                           int line,
                           const char* file_name,
@@ -20,7 +21,7 @@ void Logger::write_record(const String& msg,
 
 	// logging::create_record()?
 	Record* record = new Record(
-	    msg, m_domain, thread_name, timestamp, line, file_name, function_name);
+	    msg, m_domain, cpu_id, thread_id, timestamp, line, file_name, function_name);
 
 	m_log.write_record(record);
 }

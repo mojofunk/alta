@@ -12,24 +12,28 @@ static ThreadNameRegistry<std::string>& test_thread_registry()
 
 BOOST_AUTO_TEST_CASE(thread_name_registry_basic_test)
 {
-	BOOST_CHECK(test_thread_registry().get_thread_name() ==
-	            test_thread_registry().unknown_thread_name());
+	BOOST_CHECK(
+	    test_thread_registry().get_thread_name(std::this_thread::get_id()) ==
+	    test_thread_registry().unknown_thread_name());
 
 	const std::string thread_name("Basic Test");
 
-	BOOST_CHECK(test_thread_registry().register_thread(thread_name));
+	BOOST_CHECK(test_thread_registry().register_thread(thread_name.c_str()));
 
-	BOOST_CHECK(!test_thread_registry().register_thread(thread_name));
+	BOOST_CHECK(!test_thread_registry().register_thread(thread_name.c_str()));
 
-	BOOST_CHECK(test_thread_registry().get_thread_name() == thread_name);
+	BOOST_CHECK(test_thread_registry().get_thread_name(
+	                std::this_thread::get_id()) == thread_name);
 
-	BOOST_CHECK(test_thread_registry().get_thread_name() !=
-	            test_thread_registry().unknown_thread_name());
+	BOOST_CHECK(
+	    test_thread_registry().get_thread_name(std::this_thread::get_id()) !=
+	    test_thread_registry().unknown_thread_name());
 
 	BOOST_CHECK(test_thread_registry().unregister_thread());
 
-	BOOST_CHECK(test_thread_registry().get_thread_name() ==
-	            test_thread_registry().unknown_thread_name());
+	BOOST_CHECK(
+	    test_thread_registry().get_thread_name(std::this_thread::get_id()) ==
+	    test_thread_registry().unknown_thread_name());
 }
 
 static std::atomic<bool> thread_name_registry_test_exit(false);
@@ -41,10 +45,11 @@ static void thread_name_registry_test_do_work()
 	while (!thread_name_registry_test_exit) {
 		const std::string thread_name =
 		    "thread name " + std::to_string(thread_name_count++);
-		test_thread_registry().register_thread(thread_name);
+		test_thread_registry().register_thread(thread_name.c_str());
 		// boost test is not thread safe so use assert until figuring out a good
 		// way to return test status from thread
-		assert(test_thread_registry().get_thread_name() == thread_name);
+		assert(test_thread_registry().get_thread_name(std::this_thread::get_id()) ==
+		       thread_name);
 		test_thread_registry().unregister_thread();
 	}
 }

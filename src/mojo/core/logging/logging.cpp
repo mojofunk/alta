@@ -77,9 +77,9 @@ void deregister_thread_name()
 	s_thread_name_registry->unregister_thread();
 }
 
-String thread_name()
+String thread_name(std::thread::id const& thread_id)
 {
-	return s_thread_name_registry->get_thread_name();
+	return s_thread_name_registry->get_thread_name(thread_id);
 }
 
 } // namespace logging

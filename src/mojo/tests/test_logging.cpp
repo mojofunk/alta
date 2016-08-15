@@ -41,11 +41,12 @@ BOOST_AUTO_TEST_CASE(basic_logging_test)
 	BOOST_CHECK (test_logger->get_enabled());
 
 	test_logger->write_record("This is a test message",
-	                         "test thread",
-	                         logging::TimeStamp::get_microseconds(),
-	                         __LINE__,
-	                         __FILE__,
-	                         M_STRFUNC);
+	                          get_cpu_id(),
+	                          std::this_thread::get_id(),
+	                          logging::TimeStamp::get_microseconds(),
+	                          __LINE__,
+	                          __FILE__,
+	                          M_STRFUNC);
 
 	// so async sink has a chance to handle message
 	mojo::sleep(1);
@@ -86,7 +87,7 @@ BOOST_AUTO_TEST_CASE(logging_macro_test)
 
 	logging::register_thread_name(thread_name);
 
-	BOOST_CHECK(logging::thread_name() == thread_name);
+	BOOST_CHECK(logging::thread_name(std::this_thread::get_id()) == thread_name);
 
 	M_DEFINE_LOGGER(MacroLogger);
 	M_GET_LOGGER(MacroLogger);
