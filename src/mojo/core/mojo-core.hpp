@@ -86,6 +86,7 @@ MOJO_BEGIN_NAMESPACE
 
 #include "system/resource.hpp"
 #include "system/utils.hpp"
+#include "system/cpu_id.hpp"
 
 #include "string/compose.hpp"
 #include "string/convert.hpp"

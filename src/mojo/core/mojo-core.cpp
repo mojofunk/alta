@@ -50,6 +50,7 @@ MOJO_BEGIN_NAMESPACE
 #include "modules/library.cpp"
 #include "modules/glib_library.cpp"
 
+#include "system/cpu_id.cpp"
 #include "system/resource.cpp"
 #include "system/utils.cpp"
 
