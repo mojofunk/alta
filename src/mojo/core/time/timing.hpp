@@ -61,12 +61,18 @@ public:
 		return 0;
 	}
 
-	/// Elapsed time in microseconds
+	/// @return Elapsed time in microseconds
 	uint64_t elapsed() const
 	{
 		if (!valid()) return 0;
 		uint64_t elapsed = m_last_val - m_start_val;
 		return elapsed;
+	}
+
+	/// @return Elapsed time in milliseconds
+	uint64_t elapsed_msecs() const
+	{
+		return elapsed() / 1000;
 	}
 
 private:
