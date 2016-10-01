@@ -42,7 +42,7 @@ $BUILD_DIR/src/mojo/midi_driver:
 MOJO_TEST_LIBRARY_PATH=$BUILD_DIR/src/mojo/tests:
 
 THIRD_PARTY_LIBRARY_PATH=\
-$BUILD_DIR/src/third_party/cppformat
+$BUILD_DIR/src/third_party/fmt
 
 export LD_LIBRARY_PATH=\
 $GLEAM_LIBRARY_PATH:\

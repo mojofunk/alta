@@ -14,21 +14,21 @@ def configure(conf):
 
 def build(bld):
 
-    source_files = os.path.join('cppformat', 'format.cc')
-    include_dirs = 'cppformat'
+    source_files = os.path.join('fmt', 'fmt.cc')
+    include_dirs = '.'
 
     if bld.env.ENABLE_SHARED:
         bld.shlib(
             includes=include_dirs,
             export_includes='.',
             source=source_files,
-            target='cppformat',
-            name='CPPFORMAT_SHARED')
+            target='fmt',
+            name='FMT_SHARED')
 
     if bld.env.ENABLE_STATIC:
         bld.stlib(
             includes=include_dirs,
             export_includes='.',
             source=source_files,
-            target='cppformat',
-            name='CPPFORMAT_STATIC')
+            target='fmt',
+            name='FMT_STATIC')

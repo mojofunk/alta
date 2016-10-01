@@ -6,9 +6,9 @@ tests = '''
 test_application
 test_boost_lockfree
 test_core_initialize
-test_cppformat
 test_debug
 test_engine
+test_fmt
 test_garbage_collector
 test_resource
 test_ring_buffer

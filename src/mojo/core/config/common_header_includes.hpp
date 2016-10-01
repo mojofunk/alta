@@ -49,7 +49,7 @@
 #include <boost/lockfree/queue.hpp>
 #include <boost/lockfree/stack.hpp>
 
-#include "cppformat/format.h"
+#include "fmt/format.h"
 
 #include "moodycamel/concurrentqueue.h"
 
