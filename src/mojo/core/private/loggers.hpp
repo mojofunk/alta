@@ -7,7 +7,7 @@ M_DECLARE_LOGGER(Init);
 M_DECLARE_LOGGER(RunLoop);
 M_DECLARE_LOGGER(StringConvert);
 
-void initialize_loggers ();
+void initialize_loggers();
 
 } // namespace core
 

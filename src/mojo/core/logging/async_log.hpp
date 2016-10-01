@@ -28,11 +28,9 @@ private: // RunLoop
 	void process_records();
 
 private: // loggers
-
 	void destroy_loggers();
 
 private: // data
-
 	// queue for Records
 	using RecordQueueType = moodycamel::ConcurrentQueue<Record*>;
 	RecordQueueType m_record_queue;

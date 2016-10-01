@@ -20,8 +20,14 @@ void Logger::write_record(const String& msg,
 	}
 
 	// logging::create_record()?
-	Record* record = new Record(
-	    msg, m_domain, cpu_id, thread_id, timestamp, line, file_name, function_name);
+	Record* record = new Record(msg,
+	                            m_domain,
+	                            cpu_id,
+	                            thread_id,
+	                            timestamp,
+	                            line,
+	                            file_name,
+	                            function_name);
 
 	m_log.write_record(record);
 }

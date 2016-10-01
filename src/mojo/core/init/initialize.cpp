@@ -53,7 +53,7 @@ void deinitialize()
 
 	types::deinitialize();
 
-	logging::deinitialize ();
+	logging::deinitialize();
 }
 
 } // namespace core

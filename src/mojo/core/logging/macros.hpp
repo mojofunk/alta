@@ -18,7 +18,7 @@
 
 #define M_LOG_CALL(Name)                                                       \
 	Name##Logger->write_record("Timestamp",                                       \
-	                           mojo::get_cpu_id(),                             \
+	                           mojo::get_cpu_id(),                                \
 	                           std::this_thread::get_id(),                        \
 	                           logging::TimeStamp::get_microseconds(),            \
 	                           __LINE__,                                          \

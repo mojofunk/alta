@@ -28,7 +28,7 @@ BOOST_AUTO_TEST_CASE(basic_logging_test)
 	// use bool arg to indicate sync logging with async default?
 	logging::initialize();
 
-	//logging::set_sync();
+	// logging::set_sync();
 
 	auto ostream_sink = std::make_shared<logging::OStreamSink>();
 
@@ -36,9 +36,9 @@ BOOST_AUTO_TEST_CASE(basic_logging_test)
 
 	auto test_logger = logging::get_logger("test_logger");
 
-	BOOST_REQUIRE (test_logger);
+	BOOST_REQUIRE(test_logger);
 
-	BOOST_CHECK (test_logger->get_enabled());
+	BOOST_CHECK(test_logger->get_enabled());
 
 	test_logger->write_record("This is a test message",
 	                          get_cpu_id(),
@@ -51,10 +51,10 @@ BOOST_AUTO_TEST_CASE(basic_logging_test)
 	// so async sink has a chance to handle message
 	mojo::sleep(1);
 
-	logging::remove_sink (ostream_sink.get());
+	logging::remove_sink(ostream_sink.get());
 
 	// need to quit before deinitialize or Records will not be deallocated
-	//test_log.quit();
+	// test_log.quit();
 	logging::deinitialize();
 }
 
@@ -77,7 +77,7 @@ BOOST_AUTO_TEST_CASE(basic_logging_enumerate_loggers_test)
 
 BOOST_AUTO_TEST_CASE(logging_macro_test)
 {
-	const char * const thread_name = "logging_macro_test_thread";
+	const char* const thread_name = "logging_macro_test_thread";
 
 	logging::initialize();
 
@@ -295,7 +295,6 @@ BOOST_AUTO_TEST_CASE(log_format_test)
 
 		logging::String log_str =
 		    format(alloc, "stdout: {}: {}:\n", __LINE__, __FILE__);
-
 
 		std::cout << log_str << std::endl;
 

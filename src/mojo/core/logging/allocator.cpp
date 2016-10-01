@@ -30,7 +30,8 @@ void* logging_allocate(std::size_t size)
 
 	if (ptr == nullptr) {
 		ptr = ::operator new(size);
-		LOGGING_DEBUG("logging allocator allocated (%d) bytes using global new\n", size);
+		LOGGING_DEBUG("logging allocator allocated (%d) bytes using global new\n",
+		              size);
 	} else {
 		LOGGING_DEBUG("logging allocator allocated (%d) bytes using pool\n", size);
 		LOGGING_DEBUG("log pool available %d\n", s_allocator_mem_pool->available());

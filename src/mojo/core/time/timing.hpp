@@ -70,10 +70,7 @@ public:
 	}
 
 	/// @return Elapsed time in milliseconds
-	uint64_t elapsed_msecs() const
-	{
-		return elapsed() / 1000;
-	}
+	uint64_t elapsed_msecs() const { return elapsed() / 1000; }
 
 private:
 	uint64_t m_start_val;

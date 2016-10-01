@@ -82,15 +82,13 @@ public:
 };
 
 template <class U1, class U2>
-inline bool operator==(const Allocator<U1>& x,
-                       const Allocator<U2>& y) noexcept
+inline bool operator==(const Allocator<U1>& x, const Allocator<U2>& y) noexcept
 {
 	return true;
 }
 
 template <class U1, class U2>
-inline bool operator!=(const Allocator<U1>& x,
-                       const Allocator<U2>& y) noexcept
+inline bool operator!=(const Allocator<U1>& x, const Allocator<U2>& y) noexcept
 {
 	return !(x == y);
 }

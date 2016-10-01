@@ -5,10 +5,10 @@ namespace logging {
 
 class Sink {
 public:
-	virtual ~Sink() { };
+	virtual ~Sink(){};
 
 public:
-	//virtual std::string name() = 0;
+	// virtual std::string name() = 0;
 
 	/*
 	 * The Record is only valid for the duration of call.

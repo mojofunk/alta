@@ -19,8 +19,7 @@ ASyncLog::~ASyncLog()
 	destroy_loggers();
 }
 
-void
-ASyncLog::destroy_loggers()
+void ASyncLog::destroy_loggers()
 {
 	// no need to lock in dtor
 
