@@ -23,44 +23,45 @@ out = 'waf-build'
 
 
 def compiler_is_clang(conf):
-    clang_check_source='''
+    clang_check_source = '''
 #ifndef __clang__
 #error
 #endif
 int main() { return 0; }'''
 
-    return conf.check_cxx(fragment = clang_check_source,
-            features = 'cxx',
-            mandatory = False,
-            execute = False,
-            msg = 'Checking for clang compiler')
+    return conf.check_cxx(fragment=clang_check_source,
+                          features='cxx',
+                          mandatory=False,
+                          execute=False,
+                          msg='Checking for clang compiler')
 
 
 def compiler_is_msvc(conf):
-    msvc_check_source='''
+    msvc_check_source = '''
 #ifndef _MSC_VER
 #error
 #endif
 int main() { return 0; }'''
 
-    return conf.check_cxx(fragment = msvc_check_source,
-            features = 'cxx',
-            mandatory = False,
-            execute = False,
-            msg = 'Checking for msvc compiler')
+    return conf.check_cxx(fragment=msvc_check_source,
+                          features='cxx',
+                          mandatory=False,
+                          execute=False,
+                          msg='Checking for msvc compiler')
+
 
 def compiler_is_mingw(conf):
-    mingw_check_source='''
+    mingw_check_source = '''
 #ifndef __MINGW32__
 #error
 #endif
 int main() { return 0; }'''
 
-    return conf.check_cxx(fragment = mingw_check_source,
-            features = 'cxx',
-            mandatory = False,
-            execute = False,
-            msg = 'Checking for mingw compiler')
+    return conf.check_cxx(fragment=mingw_check_source,
+                          features='cxx',
+                          mandatory=False,
+                          execute=False,
+                          msg='Checking for mingw compiler')
 
 
 def options(opt):

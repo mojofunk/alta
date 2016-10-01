@@ -72,6 +72,7 @@ use_static = [
 test_includes = ['.']
 test_defines = ['BOOST_TEST_DYN_LINK=1']
 
+
 def init():
     pass
 
@@ -128,8 +129,8 @@ def build_tests_shared(bld):
 
 
 def build_shared(bld):
-        build_single_tests_shared(bld)
-        build_tests_shared(bld)
+    build_single_tests_shared(bld)
+    build_tests_shared(bld)
 
 
 def build_single_tests_static(bld):
@@ -166,8 +167,8 @@ def build_tests_static(bld):
 
 
 def build_static(bld):
-        build_single_tests_static(bld)
-        build_tests_static(bld)
+    build_single_tests_static(bld)
+    build_tests_static(bld)
 
 
 def build(bld):

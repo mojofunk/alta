@@ -2,6 +2,7 @@
 # encoding: utf-8
 # Tim Mayberry, 2008
 
+
 def init():
     pass
 

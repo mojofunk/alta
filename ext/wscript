@@ -4,9 +4,11 @@
 subdirs = '''
 '''
 
+
 def configure(conf):
     # not sure if configuring external libraries is necessary yet
     pass
+
 
 def build(bld):
     # process subfolders from here
