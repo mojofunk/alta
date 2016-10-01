@@ -50,17 +50,21 @@ MOJO_BEGIN_NAMESPACE
 #include "modules/library.cpp"
 #include "modules/glib_library.cpp"
 
-#include "system/cpu_id.cpp"
 #include "system/resource.cpp"
 #include "system/utils.cpp"
 
 #include "typesystem/type_names.cpp"
 #include "typesystem/type_system.cpp"
 
-#ifdef MOJO_WINDOWS
+#if defined(MOJO_WINDOWS)
 #include "native/windows_source_includes.hpp"
+
+#include "native/windows_cpu_id.cpp"
 #include "native/windows_mmcss.cpp"
 #include "native/windows_timer_utils.cpp"
+#elif defined(MOJO_LINUX)
+#include "native/linux_cpu_id.cpp"
+
 #endif
 
 MOJO_END_NAMESPACE
