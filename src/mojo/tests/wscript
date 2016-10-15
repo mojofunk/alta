@@ -81,10 +81,9 @@ def configure(conf):
     if not conf.env.WITH_TESTS:
         return
 
-    if conf.env.TARGET_PLATFORM == 'windows':
+    if conf.env.TARGET_WINDOWS:
         conf.check(compiler='c',
                    lib='winmm',
-                   mandatory=True,
                    uselib_store='WINMM')
 
     if conf.env.TOOLSET_CLANG:
