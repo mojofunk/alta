@@ -87,10 +87,10 @@ def configure(conf):
                    mandatory=True,
                    uselib_store='WINMM')
 
-    conf.check(compiler='c',
-               lib='atomic',
-               mandatory=False,
-               uselib_store='ATOMIC')
+    if conf.env.TOOLSET_CLANG:
+        conf.check(compiler='c',
+                   lib='atomic',
+                   uselib_store='ATOMIC')
 
     print ("configure mojo tests")
 
