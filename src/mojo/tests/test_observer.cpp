@@ -18,34 +18,30 @@ public:
 /**
  * An instance of a class deriving from TestObject must be held in a
  * std::shared_ptr as TestObject derives from
- *std::enable_shared_from_this<TestObject>
+ * std::enable_shared_from_this<TestObject>
  *
  * The lifetime of a class deriving from TestObject can be controlled in two
- *ways.
+ * ways.
  *
  * The shared_ptr is created by client code and the lifetime of the object is
  * controlled by the number of shared_ptr instances. When the last shared_ptr
  * instance is destructed the TestObject derived destructor is called as per
- *usual
- * shared_ptr usage.
+ * usual shared_ptr usage.
  *
  * Or the shared_ptr is created via TestObjectManager::create<Type>() factory
  * interface in which case the TestObjectManager holds an extra strong
- *reference.
- * The TestObject manager will periodically check if it is the only reference
- * holder to the TestObject instance and if so drop its reference so the
- *destructor
- * is called. The other situation is when an TestObject instance is forcefully
- * destroyed with object->destroy() which indicates to strong reference holders
- * to drop their references. The manager will receive the drop_references
- * callback and will know that it should soon be the only reference holder to
- * the TestObject instance and if the reference count doesn't drop to 1 within a
- * certain period of time there may be a strong reference that isn't going out
- * of scope when it should.
+ * reference. The TestObject manager will periodically check if it is the only
+ * reference holder to the TestObject instance and if so drop its reference so
+ * the destructor is called. The other situation is when an TestObject instance
+ * is forcefully destroyed with object->destroy() which indicates to strong
+ * reference holders to drop their references. The manager will receive the
+ * drop_references callback and will know that it should soon be the only
+ * reference holder to the TestObject instance and if the reference count
+ * doesn't drop to 1 within a certain period of time there may be a strong
+ * reference that isn't going out of scope when it should.
  *
  * An TestObjectManager is used to be able to control when and in which thread
- *an
- * TestObject instance is deleted.
+ * an TestObject instance is deleted.
  *
  * The TestObject destructor should only be called when there are no other
  * reference holders. As long as references to TestObject instances are held in
@@ -67,21 +63,17 @@ public:
  * it knows may hold a reference to the TestObject instance.
  *
  * In the case of a single threaded GUI where an TestObject instance is created
- *in
- * a non-GUI thread and a callback is executed to tell the GUI about the new
+ * in a non-GUI thread and a callback is executed to tell the GUI about the new
  * TestObject the GUI code must immediately register a callback to handle
- *forceful
- * destruction and then queue the new TestObject to be handled by the GUI
- *thread.
- * This ensures that if a forceful destruction of the instance occurs before
- * the GUI has processed the new TestObject it can still queue the reference to
- *be
- * dropped and it won't miss the forceful destruction signal.
+ * forceful destruction and then queue the new TestObject to be handled by the
+ * GUI thread.  This ensures that if a forceful destruction of the instance
+ * occurs before the GUI has processed the new TestObject it can still queue
+ * the reference to be dropped and it won't miss the forceful destruction
+ * signal.
  *
  * Using the TestObjectManager class should be optional for TestObject derived
- *classes
- * and the TestObject class should not hold a reference to the TestObjectManager
- *class
+ * classes and the TestObject class should not hold a reference to the
+ * TestObjectManager class
  *
  * This implies that TestObject creation should occur through a central factory
  * interface where TestObject instances are created and then registered with the
@@ -93,11 +85,10 @@ public:
  * only run the thread for a maximum period of time etc.
  *
  * If the destroy method is called on an TestObject instance the
- *TestObjectManager will
- * queue that instance for final destruction. The TestObjectManager can easily
- * detect if any references are being held when they shouldn't if the reference
- * count is still > 1 after a sufficient period of time has elapsed for all
- * threads to have run and removed their reference.
+ * TestObjectManager will queue that instance for final destruction. The
+ * TestObjectManager can easily detect if any references are being held when
+ * they shouldn't if the reference count is still > 1 after a sufficient period
+ * of time has elapsed for all threads to have run and removed their reference.
  */
 class TestObject : public enable_shared_from_this<TestObject> {
 public:
@@ -325,10 +316,10 @@ class Route;
  * have been created yet.
  *
  * One possible way around this limitation would be to define a set of
- * ObserverMember classes that are members of the class doing the observing and
+ * ObserverProxy classes that are members of the class doing the observing and
  * basically just forwarding callbacks onto the parent class.
  *
- * This would allow the ObserverMember class to be held in a shared_ptr that is
+ * This would allow the ObserverProxy class to be held in a shared_ptr that is
  * valid during class construction/destruction and this should handle automatic
  * disconnection(I think)
  */
