@@ -331,7 +331,7 @@ def build(bld):
 
     bld.recurse('src')
 
-    if bld.env['RUN_TESTS']:
+    if bld.env.RUN_TESTS:
         bld.add_post_fun(test)
 
 
