@@ -83,7 +83,7 @@ def set_config_env_from_options(conf):
 
 
 def display_config(conf):
-    Logs.info('Target System            : %s' % conf.env.TARGET_SYSTEM)
+    Logs.info('Host System              : %s' % conf.env.HOST_SYSTEM)
     Logs.info('Toolset                  : %s' % conf.env.TOOLSET)
     Logs.info('C compiler flags         : %s' % conf.env.CFLAGS)
     Logs.info('C++ compiler flags       : %s' % conf.env.CXXFLAGS)
@@ -130,18 +130,6 @@ def set_msvc_compiler_flags(conf):
     conf.env.append_value('LINKFLAGS', link_flags)
 
 
-def set_target_system(conf):
-    print('Setting Target system from compiler check')
-    if conf.compiler_is_mingw() or conf.compiler_is_msvc():
-        conf.env.TARGET_SYSTEM = 'Windows'
-        conf.env.TARGET_WINDOWS = True
-        conf.env.TARGET_LINUX = False
-    else:
-        conf.env.TARGET_SYSTEM = 'Linux'
-        conf.env.TARGET_LINUX = True
-        conf.env.TARGET_WINDOWS = False
-
-
 def check_library_dependencies(conf):
 
     common_deps = \
@@ -172,13 +160,11 @@ def check_library_dependencies(conf):
 
 
 def configure(conf):
+    conf.load('gnu_dirs')
     conf.load('toolset', tooldir='waftools')
+    conf.load('host_system', tooldir='waftools')
 
     set_config_env_from_options(conf)
-
-    conf.load('gnu_dirs')
-
-    set_target_system(conf)
 
     if conf.env.TOOLSET_GCC:
         set_gcc_compiler_flags(conf)
