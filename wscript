@@ -75,12 +75,6 @@ def display_config(conf):
     Logs.info('Enable JUCE library      : %s' % conf.env.WITH_JUCE)
 
 
-def check_required_deps(conf, deps):
-    for pkg, version in deps.items():
-        conf.check_cfg(package=pkg, atleast_version=version, mandatory=1)
-        conf.check_cfg(package=pkg, args='--cflags --libs')
-
-
 def set_gcc_compiler_flags(conf):
     cxx_flags = []
     conf.check_cxx(cxxflags=["-std=c++11"])
@@ -120,7 +114,7 @@ def check_library_dependencies(conf):
             'sndfile': '1.0.20'
         }
 
-    check_required_deps(conf, common_deps)
+    conf.pkgconfig_check_required_deps(common_deps)
 
     if not conf.check(
             lib='boost_filesystem-mt', uselib_store='BOOST_FILESYSTEM', mandatory=False):
@@ -144,6 +138,7 @@ def configure(conf):
     conf.load('host_system', tooldir='waftools')
     conf.load('library', tooldir='waftools')
     conf.load('tests', tooldir='waftools')
+    conf.load('pkgconfig', tooldir='waftools')
 
     set_config_env_from_options(conf)
 
