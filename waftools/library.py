@@ -4,7 +4,6 @@
 
 
 def options(opt):
-    print ('library: options')
     opt.add_option(
         '--enable-shared',
         action='store_true',

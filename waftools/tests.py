@@ -3,7 +3,6 @@
 # Tim Mayberry, 2017
 
 def options(opt):
-    print ('tests: options')
     opt.add_option(
         '--with-tests',
         action='store_true',

@@ -89,7 +89,6 @@ def load_toolset(self):
 
 
 def options(opt):
-    print ('toolset: options')
     opt.add_option(
         '--toolset',
         type='string',

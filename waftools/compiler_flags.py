@@ -9,8 +9,6 @@ import toolset
 
 
 def options(opt):
-    print ('compiler_flags: options')
-
     opt.add_option(
         '--optimize',
         action='store_true',
