@@ -26,15 +26,9 @@ def options(opt):
     # options provided by the modules
     opt.load('compiler_c')
     opt.load('compiler_cxx')
-
     opt.load('gnu_dirs')
+    opt.load('toolset', tooldir='waftools')
 
-    opt.add_option(
-        '--toolset',
-        type='string',
-        dest='toolset',
-        default='auto',
-        help='Compiler and Toolset options: auto, gcc, clang, mingw, msvc')
     opt.add_option(
         '--with-tests',
         action='store_true',
@@ -79,7 +73,6 @@ def options(opt):
 
 def set_config_env_from_options(conf):
     # Use same order as above and use all capitals to indicate they are const
-    conf.env.TOOLSET = conf.options.toolset
     conf.env.WITH_TESTS = conf.options.with_tests
     conf.env.ENABLE_SHARED = conf.options.enable_shared
     conf.env.ENABLE_STATIC = conf.options.enable_static
@@ -137,78 +130,6 @@ def set_msvc_compiler_flags(conf):
     conf.env.append_value('LINKFLAGS', link_flags)
 
 
-def set_toolset_from_compiler_check(conf):
-    print('Setting Toolset from compiler check')
-    if conf.compiler_is_clang():
-        set_toolset_clang(conf)
-    elif conf.compiler_is_msvc():
-        set_toolset_msvc(conf)
-    else:
-        set_toolset_gcc(conf)
-
-
-def set_toolset_gcc(conf):
-    conf.env.TOOLSET = 'gcc'
-    conf.env.TOOLSET_GCC = True
-    conf.env.TOOLSET_CLANG = False
-    conf.env.TOOLSET_MSVC = False
-
-
-def set_toolset_clang(conf):
-    conf.env.TOOLSET = 'clang'
-    conf.env.TOOLSET_GCC = False
-    conf.env.TOOLSET_CLANG = True
-    conf.env.TOOLSET_MSVC = False
-
-
-def set_toolset_msvc(conf):
-    conf.env.TOOLSET = 'msvc'
-    conf.env.TOOLSET_GCC = False
-    conf.env.TOOLSET_CLANG = False
-    conf.env.TOOLSET_MSVC = True
-
-
-def check_toolset_clang(conf):
-    if not conf.compiler_is_clang():
-        print ("Clang compiler not detected")
-        sys.exit(1)
-
-
-def check_toolset_msvc(conf):
-    if not conf.compiler_is_msvc():
-        print ("MSVC compiler not detected")
-        sys.exit(1)
-
-
-def check_toolset_mingw(conf):
-    if not conf.compiler_is_mingw():
-        print ("MingW compiler/toolset not detected")
-        sys.exit(1)
-
-
-def load_toolset(conf):
-    if conf.env.TOOLSET == 'gcc':
-        conf.load('gcc')
-        conf.load('g++')
-        set_toolset_gcc(conf)
-    elif conf.env.TOOLSET == 'clang':
-        conf.load('clang')
-        conf.load('clang++')
-        set_toolset_clang(conf)
-        check_toolset_clang(conf)
-    elif conf.env.TOOLSET == 'msvc':
-        conf.load('msvc')
-        set_toolset_msvc(conf)
-        check_toolset_msvc(conf)
-    elif conf.env.TOOLSET == 'auto':
-        conf.load('compiler_c')
-        conf.load('compiler_cxx')
-        set_toolset_from_compiler_check(conf)
-    else:
-        print ("Unsupported Toolset option")
-        sys.exit(1)
-
-
 def set_target_system(conf):
     print('Setting Target system from compiler check')
     if conf.compiler_is_mingw() or conf.compiler_is_msvc():
@@ -251,11 +172,9 @@ def check_library_dependencies(conf):
 
 
 def configure(conf):
-    conf.load('compiler_checks', tooldir='waftools')
+    conf.load('toolset', tooldir='waftools')
 
     set_config_env_from_options(conf)
-
-    load_toolset(conf)
 
     conf.load('gnu_dirs')
 
