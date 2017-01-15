@@ -28,14 +28,10 @@ def options(opt):
     opt.load('compiler_cxx')
     opt.load('gnu_dirs')
     opt.load('toolset', tooldir='waftools')
+    opt.load('compiler_flags', tooldir='waftools')
     opt.load('library', tooldir='waftools')
     opt.load('tests', tooldir='waftools')
 
-    opt.add_option(
-        '--optimize',
-        action='store_true',
-        default=False,
-        help='Enable Optimization')
     opt.add_option(
         '--disable-debug-logging',
         action='store_false',
@@ -75,33 +71,6 @@ def display_config(conf):
     Logs.info('Enable JUCE library      : %s' % conf.env.WITH_JUCE)
 
 
-def set_gcc_compiler_flags(conf):
-    cxx_flags = []
-    conf.check_cxx(cxxflags=["-std=c++11"])
-    cxx_flags.append('-std=c++11')
-
-    conf.env.append_value('CXXFLAGS', cxx_flags)
-
-    if conf.options.optimize:
-        conf.env.append_value('CFLAGS', '-DNDEBUG')
-        conf.env.append_value('CXXFLAGS', '-DNDEBUG')
-    else:
-        conf.env.append_value('CFLAGS', '-g')
-        conf.env.append_value('CXXFLAGS', '-g')
-
-    if not conf.options.disable_debug_logging:
-        conf.env.append_value('CFLAGS', '-DMOJO_ENABLE_DEBUG_LOGGING')
-        conf.env.append_value('CXXFLAGS', '-DMOJO_ENABLE_DEBUG_LOGGING')
-
-
-def set_msvc_compiler_flags(conf):
-    # much more to do here
-    cxx_debug_flags = ['/DEBUG', '/Od', '/MD', '/Zi', '/EHsc']
-    link_flags = ['/DEBUG']
-    # enable exceptions
-    conf.env.append_value('CXXFLAGS', cxx_debug_flags)
-    conf.env.append_value('LINKFLAGS', link_flags)
-
 
 def check_library_dependencies(conf):
 
@@ -136,18 +105,16 @@ def configure(conf):
     conf.load('gnu_dirs')
     conf.load('toolset', tooldir='waftools')
     conf.load('host_system', tooldir='waftools')
+    conf.load('compiler_flags', tooldir='waftools')
     conf.load('library', tooldir='waftools')
     conf.load('tests', tooldir='waftools')
     conf.load('pkgconfig', tooldir='waftools')
 
     set_config_env_from_options(conf)
 
-    if conf.env.TOOLSET_GCC:
-        set_gcc_compiler_flags(conf)
-    if conf.env.TOOLSET_CLANG:
-        set_gcc_compiler_flags(conf)
-    elif conf.env.TOOLSET_MSVC:
-        set_msvc_compiler_flags(conf)
+    if not conf.options.disable_debug_logging:
+        conf.env.append_value('CFLAGS', '-DMOJO_ENABLE_DEBUG_LOGGING')
+        conf.env.append_value('CXXFLAGS', '-DMOJO_ENABLE_DEBUG_LOGGING')
 
     check_library_dependencies(conf)
 
