@@ -22,48 +22,6 @@ top = '.'
 out = 'waf-build'
 
 
-def compiler_is_clang(conf):
-    clang_check_source = '''
-#ifndef __clang__
-#error
-#endif
-int main() { return 0; }'''
-
-    return conf.check_cxx(fragment=clang_check_source,
-                          features='cxx',
-                          mandatory=False,
-                          execute=False,
-                          msg='Checking for clang compiler')
-
-
-def compiler_is_msvc(conf):
-    msvc_check_source = '''
-#ifndef _MSC_VER
-#error
-#endif
-int main() { return 0; }'''
-
-    return conf.check_cxx(fragment=msvc_check_source,
-                          features='cxx',
-                          mandatory=False,
-                          execute=False,
-                          msg='Checking for msvc compiler')
-
-
-def compiler_is_mingw(conf):
-    mingw_check_source = '''
-#ifndef __MINGW32__
-#error
-#endif
-int main() { return 0; }'''
-
-    return conf.check_cxx(fragment=mingw_check_source,
-                          features='cxx',
-                          mandatory=False,
-                          execute=False,
-                          msg='Checking for mingw compiler')
-
-
 def options(opt):
     # options provided by the modules
     opt.load('compiler_c')
@@ -181,9 +139,9 @@ def set_msvc_compiler_flags(conf):
 
 def set_toolset_from_compiler_check(conf):
     print('Setting Toolset from compiler check')
-    if compiler_is_clang(conf):
+    if conf.compiler_is_clang():
         set_toolset_clang(conf)
-    elif compiler_is_msvc(conf):
+    elif conf.compiler_is_msvc():
         set_toolset_msvc(conf)
     else:
         set_toolset_gcc(conf)
@@ -211,19 +169,19 @@ def set_toolset_msvc(conf):
 
 
 def check_toolset_clang(conf):
-    if not compiler_is_clang(conf):
+    if not conf.compiler_is_clang():
         print ("Clang compiler not detected")
         sys.exit(1)
 
 
 def check_toolset_msvc(conf):
-    if not compiler_is_msvc(conf):
+    if not conf.compiler_is_msvc():
         print ("MSVC compiler not detected")
         sys.exit(1)
 
 
 def check_toolset_mingw(conf):
-    if not compiler_is_mingw(conf):
+    if not conf.compiler_is_mingw():
         print ("MingW compiler/toolset not detected")
         sys.exit(1)
 
@@ -253,7 +211,7 @@ def load_toolset(conf):
 
 def set_target_system(conf):
     print('Setting Target system from compiler check')
-    if compiler_is_mingw(conf) or compiler_is_msvc(conf):
+    if conf.compiler_is_mingw() or conf.compiler_is_msvc():
         conf.env.TARGET_SYSTEM = 'Windows'
         conf.env.TARGET_WINDOWS = True
         conf.env.TARGET_LINUX = False
@@ -293,6 +251,7 @@ def check_library_dependencies(conf):
 
 
 def configure(conf):
+    conf.load('compiler_checks', tooldir='waftools')
 
     set_config_env_from_options(conf)
 
