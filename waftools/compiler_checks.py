@@ -49,5 +49,3 @@ int main() { return 0; }'''
                           msg='Checking for mingw compiler')
 
 
-def configure(ctx):
-    print ('compiler_checks: Configure')
