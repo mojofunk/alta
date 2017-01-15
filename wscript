@@ -28,22 +28,13 @@ def options(opt):
     opt.load('compiler_cxx')
     opt.load('gnu_dirs')
     opt.load('toolset', tooldir='waftools')
+    opt.load('library', tooldir='waftools')
 
     opt.add_option(
         '--with-tests',
         action='store_true',
         default=False,
         help='Enable Testsuite')
-    opt.add_option(
-        '--enable-shared',
-        action='store_true',
-        default=False,
-        help='Build shared libraries')
-    opt.add_option(
-        '--enable-static',
-        action='store_true',
-        default=False,
-        help='Build static libraries')
     opt.add_option(
         '--optimize',
         action='store_true',
@@ -74,8 +65,6 @@ def options(opt):
 def set_config_env_from_options(conf):
     # Use same order as above and use all capitals to indicate they are const
     conf.env.WITH_TESTS = conf.options.with_tests
-    conf.env.ENABLE_SHARED = conf.options.enable_shared
-    conf.env.ENABLE_STATIC = conf.options.enable_static
     conf.env.DEBUG_LOGGING = not conf.options.disable_debug_logging
     conf.env.WITH_GTKMM_UI = conf.options.with_gtkmm_ui
     conf.env.WITH_JUCE = conf.options.with_juce
@@ -163,6 +152,7 @@ def configure(conf):
     conf.load('gnu_dirs')
     conf.load('toolset', tooldir='waftools')
     conf.load('host_system', tooldir='waftools')
+    conf.load('library', tooldir='waftools')
 
     set_config_env_from_options(conf)
 
@@ -174,10 +164,6 @@ def configure(conf):
         set_msvc_compiler_flags(conf)
 
     check_library_dependencies(conf)
-
-    if not conf.env.ENABLE_SHARED and not conf.env.ENABLE_STATIC:
-        # needed because of the weird waf options design
-        conf.env.ENABLE_SHARED = True
 
     conf.recurse('src')
 
