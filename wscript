@@ -29,12 +29,8 @@ def options(opt):
     opt.load('gnu_dirs')
     opt.load('toolset', tooldir='waftools')
     opt.load('library', tooldir='waftools')
+    opt.load('tests', tooldir='waftools')
 
-    opt.add_option(
-        '--with-tests',
-        action='store_true',
-        default=False,
-        help='Enable Testsuite')
     opt.add_option(
         '--optimize',
         action='store_true',
@@ -55,20 +51,13 @@ def options(opt):
         action='store_true',
         default=False,
         help='Build JUCE library')
-    opt.add_option(
-        '--run-tests',
-        action='store_true',
-        default=False,
-        help='Run testsuite after build')
 
 
 def set_config_env_from_options(conf):
     # Use same order as above and use all capitals to indicate they are const
-    conf.env.WITH_TESTS = conf.options.with_tests
     conf.env.DEBUG_LOGGING = not conf.options.disable_debug_logging
     conf.env.WITH_GTKMM_UI = conf.options.with_gtkmm_ui
     conf.env.WITH_JUCE = conf.options.with_juce
-    conf.env.RUN_TESTS = conf.options.run_tests
 
 
 def display_config(conf):
@@ -80,6 +69,7 @@ def display_config(conf):
     Logs.info('Enable shared            : %s' % conf.env.ENABLE_SHARED)
     Logs.info('Enable static            : %s' % conf.env.ENABLE_STATIC)
     Logs.info('Build tests              : %s' % conf.env.WITH_TESTS)
+    Logs.info('Run tests                : %s' % conf.env.RUN_TESTS)
     Logs.info('Enable debug logging     : %s' % conf.env.DEBUG_LOGGING)
     Logs.info('Enable Gtkmm UI          : %s' % conf.env.WITH_GTKMM_UI)
     Logs.info('Enable JUCE library      : %s' % conf.env.WITH_JUCE)
@@ -153,6 +143,7 @@ def configure(conf):
     conf.load('toolset', tooldir='waftools')
     conf.load('host_system', tooldir='waftools')
     conf.load('library', tooldir='waftools')
+    conf.load('tests', tooldir='waftools')
 
     set_config_env_from_options(conf)
 
