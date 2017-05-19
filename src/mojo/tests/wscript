@@ -81,7 +81,7 @@ def configure(conf):
     if not conf.env.WITH_TESTS:
         return
 
-    if conf.env.TARGET_WINDOWS:
+    if conf.env.HOST_SYSTEM_WINDOWS:
         conf.check(compiler='c',
                    lib='winmm',
                    uselib_store='WINMM')
@@ -179,7 +179,7 @@ def build(bld):
 
     uselibs += ['ATOMIC']
 
-    if bld.env.TARGET_WINDOWS:
+    if bld.env.HOST_SYSTEM_WINDOWS:
         local_tests += windows_tests
         uselibs += ['WINMM']
 

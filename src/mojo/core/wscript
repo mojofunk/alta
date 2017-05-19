@@ -14,7 +14,7 @@ def configure(conf):
         define_name='HAVE_EXECINFO',
         mandatory=False)
 
-    if conf.env.TARGET_WINDOWS:
+    if conf.env.HOST_SYSTEM_WINDOWS:
         conf.check(lib='winmm', uselib_store='WINMM')
 
     conf.write_config_header('config/config.hpp')
@@ -25,7 +25,7 @@ def build(bld):
     use_local_static = ['src_include_path', 'FMT_STATIC', 'MOODYCAMEL']
     use_local_shared = ['src_include_path', 'FMT_SHARED', 'MOODYCAMEL']
 
-    if bld.env.TARGET_WINDOWS:
+    if bld.env.HOST_SYSTEM_WINDOWS:
         uselib += ['WINMM']
 
     defines = ['PROGRAM_DIR_NAME="' + bld.env.PROGRAM_DIR_NAME + '"']
