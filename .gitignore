@@ -12,5 +12,7 @@ doc/docbook/*xml*/entities.ent
 *.swp
 *~
 waf-build/
+.waf-*
+waf-*
 .lock*
 *.pyc
