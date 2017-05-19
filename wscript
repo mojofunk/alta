@@ -129,8 +129,6 @@ def build(bld):
     bld.env.PROGRAM_NAME = APPNAME
     bld.env.PROGRAM_EXE_NAME = 'alta' + MAJOR_VERSION
     bld.env.PROGRAM_DIR_NAME = bld.env.PROGRAM_EXE_NAME
-    # redefine LIBDIR so all libs get installed automatically
-    bld.env.LIBDIR = "%s/%s" % (bld.env.LIBDIR, bld.env.PROGRAM_DIR_NAME)
 
     bld.recurse('src')
 
