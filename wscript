@@ -27,10 +27,10 @@ def options(opt):
     opt.load('compiler_c')
     opt.load('compiler_cxx')
     opt.load('gnu_dirs')
-    opt.load('toolset', tooldir='waftools')
-    opt.load('compiler_flags', tooldir='waftools')
-    opt.load('library', tooldir='waftools')
-    opt.load('tests', tooldir='waftools')
+    opt.load('toolset')
+    opt.load('compiler_flags')
+    opt.load('library')
+    opt.load('tests')
 
     opt.add_option(
         '--disable-debug-logging',
@@ -103,12 +103,12 @@ def check_library_dependencies(conf):
 
 def configure(conf):
     conf.load('gnu_dirs')
-    conf.load('toolset', tooldir='waftools')
-    conf.load('host_system', tooldir='waftools')
-    conf.load('compiler_flags', tooldir='waftools')
-    conf.load('library', tooldir='waftools')
-    conf.load('tests', tooldir='waftools')
-    conf.load('pkgconfig', tooldir='waftools')
+    conf.load('toolset')
+    conf.load('host_system')
+    conf.load('compiler_flags')
+    conf.load('library')
+    conf.load('tests')
+    conf.load('pkgconfig')
 
     set_config_env_from_options(conf)
 
