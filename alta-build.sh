@@ -175,7 +175,7 @@ function configure ()
 	if [ -z ${BUILD_ALL_CONFIGS+x} ]; then
 		sync
 		cd $CONFIG_BUILD_DIR || exit 1
-		./waf configure ${config["$ALTA_BUILD_CONFIG"]} "$@" || exit 1
+		./wafer configure ${config["$ALTA_BUILD_CONFIG"]} "$@" || exit 1
 	else
 		for conf in "${!config[@]}"
 		do
@@ -183,7 +183,7 @@ function configure ()
 			CONFIG_BUILD_DIR="$ALTA_BUILD_ROOT/$ALTA_BRANCH-$ALTA_BUILD_CONFIG"
 			sync
 			cd $CONFIG_BUILD_DIR || exit 1
-			./waf configure ${config["$ALTA_BUILD_CONFIG"]} "$@" || exit 1
+			./wafer configure ${config["$ALTA_BUILD_CONFIG"]} "$@" || exit 1
 		done
 	fi
 }
@@ -193,7 +193,7 @@ function build ()
 	if [ -z ${BUILD_ALL_CONFIGS+x} ]; then
 		sync
 		cd $CONFIG_BUILD_DIR || exit 1
-		./waf "$@" || exit 1
+		./wafer "$@" || exit 1
 	else
 		for conf in "${!config[@]}"
 		do
@@ -201,7 +201,7 @@ function build ()
 			CONFIG_BUILD_DIR="$ALTA_BUILD_ROOT/$ALTA_BRANCH-$ALTA_BUILD_CONFIG"
 			sync
 			cd $CONFIG_BUILD_DIR || exit 1
-			./waf "$@" || exit 1
+			./wafer "$@" || exit 1
 		done
 	fi
 }
@@ -209,7 +209,7 @@ function build ()
 function install ()
 {
 	cd $CONFIG_BUILD_DIR || exit 1
-	./waf install "$@"
+	./wafer install "$@"
 }
 
 function test ()
@@ -217,7 +217,7 @@ function test ()
 	if [ -z ${BUILD_ALL_CONFIGS+x} ]; then
 		echo "Testing in build directory $CONFIG_BUILD_DIR"
 		cd $CONFIG_BUILD_DIR || exit 1
-		./waf test "$@"
+		./wafer test "$@"
 	else
 		for conf in "${!config[@]}"
 		do
