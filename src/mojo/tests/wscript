@@ -20,6 +20,7 @@ test_string_convert
 test_string_compose
 test_string_pool
 test_thread_name_registry
+test_timeline
 test_timing
 test_type_system
 test_graph

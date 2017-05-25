@@ -34,6 +34,7 @@ MOJO_BEGIN_NAMESPACE
 #include "logging/macros.hpp"
 
 #include "audio/types.hpp"
+#include "audio/timeline.hpp"
 #include "audio/utils.hpp"
 #include "audio/cycle_timer.hpp"
 
