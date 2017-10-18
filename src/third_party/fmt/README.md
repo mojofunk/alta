@@ -1,1 +1,1 @@
-This is version 3.0.0 of fmt library [libfmt.net](http://fmtlib.net)
+This is version 3.0.2 of fmt library [libfmt.net](http://fmtlib.net)
