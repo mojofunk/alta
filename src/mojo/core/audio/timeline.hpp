@@ -1,9 +1,9 @@
 #ifndef MOJO_CORE_TIMELINE_H
 #define MOJO_CORE_TIMELINE_H
 
-typedef int64_t sample_t;
+typedef int64_t sample_count_t;
 
-typedef double qnote_t;
+typedef double qnote_count_t;
 
 // not used ATM
 enum TimelineUnit {
@@ -22,12 +22,12 @@ enum TimelineUnit {
 class TimelineDuration
 {
 public: // member variables
-	const sample_t samples;
-	const qnote_t qnotes;
+	const sample_count_t samples;
+	const qnote_count_t qnotes;
 
 public: // ctors
 	// Create a duration with all valid values
-	TimelineDuration(sample_t p_samples, qnote_t p_qnotes)
+	TimelineDuration(sample_count_t p_samples, qnote_count_t p_qnotes)
 	    : samples(p_samples)
 	    , qnotes(p_qnotes)
 	{
@@ -36,7 +36,7 @@ public: // ctors
 	// Create invalid duration
 	TimelineDuration()
 		: samples(0)
-		, qnotes(std::numeric_limits<qnote_t>::infinity())
+		, qnotes(std::numeric_limits<qnote_count_t>::infinity())
 	{}
 
 	TimelineDuration(const TimelineDuration&) = default;
@@ -58,18 +58,18 @@ public: // operators
 public: // methods
 	bool valid() const
 	{
-		return qnotes != std::numeric_limits<qnote_t>::infinity();
+		return qnotes != std::numeric_limits<qnote_count_t>::infinity();
 	}
 
 public: // static constants
 
 	static TimelineDuration min() {
-		return TimelineDuration(1, std::numeric_limits<qnote_t>::min());
+		return TimelineDuration(1, std::numeric_limits<qnote_count_t>::min());
 	}
 
 	static TimelineDuration max() {
-		return TimelineDuration(std::numeric_limits<sample_t>::max(),
-		                        std::numeric_limits<qnote_t>::max());
+		return TimelineDuration(std::numeric_limits<sample_count_t>::max(),
+		                        std::numeric_limits<qnote_count_t>::max());
 	}
 
 };
@@ -81,12 +81,12 @@ public: // static constants
 class TimelinePosition
 {
 public: // member variables
-	sample_t sample;
-	qnote_t qnote;
+	sample_count_t sample;
+	qnote_count_t qnote;
 
 public: // ctors
 	// All values are valid
-	TimelinePosition(sample_t p_sample, qnote_t p_qnote)
+	TimelinePosition(sample_count_t p_sample, qnote_count_t p_qnote)
 	    : sample(p_sample)
 	    , qnote(p_qnote)
 	{
@@ -97,7 +97,7 @@ public: // ctors
 	// All values are invalid
 	TimelinePosition()
 	    : sample(0)
-	    , qnote(std::numeric_limits<qnote_t>::infinity())
+	    , qnote(std::numeric_limits<qnote_count_t>::infinity())
 	{
 	}
 
@@ -106,7 +106,7 @@ public: // ctors
 public: // methods
 	bool valid() const
 	{
-		return qnote != std::numeric_limits<qnote_t>::infinity();
+		return qnote != std::numeric_limits<qnote_count_t>::infinity();
 	}
 
 public: // operators
@@ -179,8 +179,8 @@ public: // static constants
 
 	static TimelinePosition max()
 	{
-		return TimelinePosition(std::numeric_limits<sample_t>::max(),
-		                        std::numeric_limits<qnote_t>::max());
+		return TimelinePosition(std::numeric_limits<sample_count_t>::max(),
+		                        std::numeric_limits<qnote_count_t>::max());
 	}
 };
 
