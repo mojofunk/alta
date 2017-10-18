@@ -29,7 +29,7 @@ public:
  * usual shared_ptr usage.
  *
  * Or the shared_ptr is created via TestObjectManager::create<Type>() factory
- * interface in which case the TestObjectManager holds an extra strong
+ * interface in which case the TestObjectManager holds an additional strong
  * reference. The TestObject manager will periodically check if it is the only
  * reference holder to the TestObject instance and if so drop its reference so
  * the destructor is called. The other situation is when an TestObject instance
@@ -40,15 +40,15 @@ public:
  * doesn't drop to 1 within a certain period of time there may be a strong
  * reference that isn't going out of scope when it should.
  *
- * An TestObjectManager is used to be able to control when and in which thread
- * an TestObject instance is deleted.
+ * A TestObjectManager is used to be able to control when and in which
+ * thread a TestObject instance is deleted.
  *
  * The TestObject destructor should only be called when there are no other
  * reference holders. As long as references to TestObject instances are held in
  * shared_ptr and any raw pointer usage is only while holding a strong
  * reference then there should be no dangling references...
  *
- * We also want to be able to forcefully destroy an TestObject instance, which
+ * We also want to be able to forcefully destroy a TestObject instance, which
  * means all reference holders will have to drop their references. In order to
  * facilitate that, the reference holders must register a callback when they
  * acquire the reference that can be executed to signal to drop any references
@@ -60,7 +60,7 @@ public:
  *
  * If the dropping of references is performed in a asynchronous manner then the
  * reference holder queues for the reference to be dropped in whatever threads
- * it knows may hold a reference to the TestObject instance.
+ * it knows hold a reference to the TestObject instance.
  *
  * In the case of a single threaded GUI where an TestObject instance is created
  * in a non-GUI thread and a callback is executed to tell the GUI about the new
