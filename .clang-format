@@ -45,6 +45,7 @@ Standard:        Cpp11
 IndentWidth:     1
 TabWidth:        1
 UseTab:          ForIndentation
+SortIncludes: false
 SpacesInParentheses: false
 SpacesInAngles:  false
 SpaceInEmptyParentheses: false
