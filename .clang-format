@@ -13,10 +13,12 @@ AllowShortFunctionsOnASingleLine: Inline
 AlwaysBreakTemplateDeclarations: true
 AlwaysBreakBeforeMultilineStrings: false
 # not available until clang 3.6
-#AlwaysBreakAfterDefinitionReturnType: true
+AlwaysBreakAfterReturnType: TopLevel
 BreakBeforeBinaryOperators: false
 BreakBeforeTernaryOperators: true
 BreakConstructorInitializersBeforeComma: true
+BreakBeforeBraces: Linux
+BinPackArguments: false
 BinPackParameters: false
 ColumnLimit:     80
 ConstructorInitializerAllOnOneLineOrOnePerLine: false
@@ -43,7 +45,6 @@ Standard:        Cpp11
 IndentWidth:     1
 TabWidth:        1
 UseTab:          ForIndentation
-BreakBeforeBraces: Stroustrup
 SpacesInParentheses: false
 SpacesInAngles:  false
 SpaceInEmptyParentheses: false
