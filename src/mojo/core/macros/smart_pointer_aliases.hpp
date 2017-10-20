@@ -1,5 +1,5 @@
-#ifndef MOJO_CORE_SMART_POINTERS_H
-#define MOJO_CORE_SMART_POINTERS_H
+#ifndef MOJO_CORE_SMART_POINTER_ALIASES_H
+#define MOJO_CORE_SMART_POINTER_ALIASES_H
 
 #define MOJO_DEFINE_POINTER_TYPEDEFS(Class)                                    \
 	using Class##UP = std::unique_ptr<Class>;                                     \
@@ -30,4 +30,4 @@
 	MOJO_DEFINE_POINTER_LIST_TYPEDEFS(Class)                                      \
 	MOJO_DEFINE_POINTER_VECTOR_TYPEDEFS(Class)
 
-#endif // MOJO_CORE_SMART_POINTERS_H
+#endif // MOJO_CORE_SMART_POINTER_ALIASES_H
