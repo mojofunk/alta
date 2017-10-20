@@ -14,17 +14,20 @@ PortmidiMIDIDriver::~PortmidiMIDIDriver()
 	terminate();
 }
 
-MIDIInputDeviceSPSet PortmidiMIDIDriver::get_input_devices()
+MIDIInputDeviceSPSet
+PortmidiMIDIDriver::get_input_devices()
 {
 	return m_inputs;
 }
 
-MIDIOutputDeviceSPSet PortmidiMIDIDriver::get_output_devices()
+MIDIOutputDeviceSPSet
+PortmidiMIDIDriver::get_output_devices()
 {
 	return m_outputs;
 }
 
-bool PortmidiMIDIDriver::initialize()
+bool
+PortmidiMIDIDriver::initialize()
 {
 	if (m_initialized) return true;
 
@@ -39,7 +42,8 @@ bool PortmidiMIDIDriver::initialize()
 	return false;
 }
 
-bool PortmidiMIDIDriver::terminate()
+bool
+PortmidiMIDIDriver::terminate()
 {
 	if (!m_initialized) return true;
 
@@ -54,7 +58,8 @@ bool PortmidiMIDIDriver::terminate()
 	return false;
 }
 
-void PortmidiMIDIDriver::refresh_devices()
+void
+PortmidiMIDIDriver::refresh_devices()
 {
 	int device_count = Pm_CountDevices();
 

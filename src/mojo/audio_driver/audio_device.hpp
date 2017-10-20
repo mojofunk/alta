@@ -4,7 +4,8 @@
 /**
  *
  */
-class AudioDevice {
+class AudioDevice
+{
 public: // ctors
 	virtual ~AudioDevice();
 

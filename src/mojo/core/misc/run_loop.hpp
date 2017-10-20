@@ -1,7 +1,8 @@
 #ifndef MOJO_RUN_LOOP_H
 #define MOJO_RUN_LOOP_H
 
-class RunLoop {
+class RunLoop
+{
 public:
 	/**
 	 * Create a new RunLoop, run() must be called to start

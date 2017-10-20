@@ -1,7 +1,8 @@
 #ifndef MOJO_LOGGING_FORMAT_H
 #define MOJO_LOGGING_FORMAT_H
 
-namespace logging {
+namespace logging
+{
 
 MOJO_API
 String

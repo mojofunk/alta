@@ -1,7 +1,8 @@
 #ifndef MOJO_LADSPA_AUDIO_EFFECT_MODULE_H
 #define MOJO_LADSPA_AUDIO_EFFECT_MODULE_H
 
-class LADSPAAudioEffectModule : public AudioEffectModule {
+class LADSPAAudioEffectModule : public AudioEffectModule
+{
 public: // constructors
 	LADSPAAudioEffectModule();
 

@@ -1,5 +1,6 @@
 
-namespace {
+namespace
+{
 
 const char* const s_property_position = "position";
 const char* const s_property_duration = "duration";
@@ -22,12 +23,14 @@ Event::Event(const count_t& pos, const count_t& dur)
 {
 }
 
-void Event::get_properties(Properties& props) const
+void
+Event::get_properties(Properties& props) const
 {
 	props.set_property(s_property_position_id, position);
 	props.set_property(s_property_duration_id, duration);
 }
 
-void Event::set_properties(const Properties& props)
+void
+Event::set_properties(const Properties& props)
 {
 }

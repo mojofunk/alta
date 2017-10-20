@@ -1,9 +1,11 @@
 #ifndef MOJO_LOGGING_LOG_H
 #define MOJO_LOGGING_LOG_H
 
-namespace logging {
+namespace logging
+{
 
-class Log {
+class Log
+{
 public: // Log interface
 	virtual void add_sink(Sink* sink) = 0;
 
@@ -25,6 +27,7 @@ public: // Log interface
 
 } // namespace logging
 
-void log(const char* log_domain, const std::string& msg);
+void
+log(const char* log_domain, const std::string& msg);
 
 #endif // MOJO_LOGGING_LOG_H

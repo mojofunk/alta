@@ -1,7 +1,8 @@
 #ifndef MOJO_EVENT_H
 #define MOJO_EVENT_H
 
-class Event : public Object {
+class Event : public Object
+{
 public:
 	Event();
 

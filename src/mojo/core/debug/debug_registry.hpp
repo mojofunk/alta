@@ -1,7 +1,8 @@
 #ifndef MOJO_CORE_DEBUG_REGISTRY_H
 #define MOJO_CORE_DEBUG_REGISTRY_H
 
-class DebugRegistry {
+class DebugRegistry
+{
 private: // types
 	using DomainMapType = std::map<std::string, uint32_t>;
 

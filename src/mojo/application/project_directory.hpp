@@ -1,7 +1,8 @@
 #ifndef MOJO_PROJECT_DIRECTORY_H
 #define MOJO_PROJECT_DIRECTORY_H
 
-class ProjectDirectory {
+class ProjectDirectory
+{
 public:
 	/**
 	 * @param project_path An absolute path to a project directory.

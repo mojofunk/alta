@@ -35,9 +35,10 @@ public: // ctors
 
 	// Create invalid duration
 	TimelineDuration()
-		: samples(0)
-		, qnotes(std::numeric_limits<qnote_count_t>::infinity())
-	{}
+	    : samples(0)
+	    , qnotes(std::numeric_limits<qnote_count_t>::infinity())
+	{
+	}
 
 	TimelineDuration(const TimelineDuration&) = default;
 
@@ -46,7 +47,7 @@ public: // operators
 
 	bool operator==(const TimelineDuration& other) const
 	{
-		assert (valid());
+		assert(valid());
 		return samples == other.samples && qnotes == other.qnotes;
 	}
 
@@ -62,16 +63,16 @@ public: // methods
 	}
 
 public: // static constants
-
-	static TimelineDuration min() {
+	static TimelineDuration min()
+	{
 		return TimelineDuration(1, std::numeric_limits<qnote_count_t>::min());
 	}
 
-	static TimelineDuration max() {
+	static TimelineDuration max()
+	{
 		return TimelineDuration(std::numeric_limits<sample_count_t>::max(),
 		                        std::numeric_limits<qnote_count_t>::max());
 	}
-
 };
 
 /*
@@ -90,8 +91,8 @@ public: // ctors
 	    : sample(p_sample)
 	    , qnote(p_qnote)
 	{
-	 assert (sample >= 0);
-	 assert (qnote >= 0.0);
+		assert(sample >= 0);
+		assert(qnote >= 0.0);
 	}
 
 	// All values are invalid
@@ -110,12 +111,11 @@ public: // methods
 	}
 
 public: // operators
-
 	TimelinePosition& operator=(const TimelinePosition&) = default;
 
 	bool operator==(const TimelinePosition& other) const
 	{
-		assert (valid());
+		assert(valid());
 		return sample == other.sample && qnote == other.qnote;
 	}
 
@@ -127,20 +127,20 @@ public: // operators
 	// get the duration between two TimelinePositions
 	TimelineDuration operator-(const TimelinePosition& pos) const
 	{
-		assert (pos < *this);
+		assert(pos < *this);
 		return TimelineDuration(sample - pos.sample, qnote - pos.qnote);
 	}
 
 	TimelinePosition operator+(const TimelineDuration& duration) const
 	{
-		assert (valid() && duration.valid());
-		return TimelinePosition (sample + duration.samples, qnote + duration.qnotes);
+		assert(valid() && duration.valid());
+		return TimelinePosition(sample + duration.samples, qnote + duration.qnotes);
 	}
 
 	TimelinePosition operator-(const TimelineDuration& duration) const
 	{
-		assert (valid() && duration.valid());
-		return TimelinePosition (sample - duration.samples, qnote - duration.qnotes);
+		assert(valid() && duration.valid());
+		return TimelinePosition(sample - duration.samples, qnote - duration.qnotes);
 	}
 
 	/*
@@ -152,25 +152,25 @@ public: // operators
 
 	bool operator>(const TimelinePosition& other) const
 	{
-		assert (valid());
+		assert(valid());
 		return sample > other.sample;
 	}
 
 	bool operator<(const TimelinePosition& other) const
 	{
-		assert (valid());
+		assert(valid());
 		return sample < other.sample;
 	}
 
 	bool operator>=(const TimelinePosition& other) const
 	{
-		assert (valid());
+		assert(valid());
 		return sample >= other.sample;
 	}
 
 	bool operator<=(const TimelinePosition& other) const
 	{
-		assert (valid());
+		assert(valid());
 		return sample <= other.sample;
 	}
 
@@ -184,8 +184,8 @@ public: // static constants
 	}
 };
 
-static TimelineDuration duration_between(const TimelinePosition& pos1,
-                                         const TimelinePosition& pos2)
+static TimelineDuration
+duration_between(const TimelinePosition& pos1, const TimelinePosition& pos2)
 {
 	if (pos1 > pos2) {
 		return pos1 - pos2;
@@ -210,7 +210,7 @@ public: // ctors
 	    : start(start)
 	    , end(end)
 	{
-		//assert (end > start);
+		// assert (end > start);
 	}
 
 	// Allow creation of invalid Range ?
@@ -219,10 +219,7 @@ public: // ctors
 	TimelineRange(const TimelineRange&) = default;
 
 public:
-	TimelineDuration duration() const
-	{
-		return end - start;
-	}
+	TimelineDuration duration() const { return end - start; }
 
 	bool operator==(const TimelineRange& other) const
 	{

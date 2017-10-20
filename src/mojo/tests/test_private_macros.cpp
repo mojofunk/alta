@@ -8,7 +8,8 @@
 
 class ApplicationPrivate;
 
-class Application {
+class Application
+{
 public:
 	static std::string directory_path();
 	static std::string file_path();
@@ -31,7 +32,8 @@ private:
 	M_DISALLOW_COPY_AND_ASSIGN(Application);
 };
 
-class ApplicationPrivate {
+class ApplicationPrivate
+{
 public:
 	ApplicationPrivate()
 	    : m_directory_path("private_test_directory_path")
@@ -61,36 +63,42 @@ Application::Application()
 {
 }
 
-void Application::initialize()
+void
+Application::initialize()
 {
 	assert(!instance);
 	instance = new Application;
 }
 
-void Application::deinitialize()
+void
+Application::deinitialize()
 {
 	delete instance;
 }
 
-std::string Application::directory_path()
+std::string
+Application::directory_path()
 {
 	ApplicationPrivate* d = instance->d_ptr.get();
 	return d->m_directory_path;
 }
 
-std::string Application::file_path()
+std::string
+Application::file_path()
 {
 	ApplicationPrivate* d = instance->d_ptr.get();
 	return d->file_path();
 }
 
-std::string Application::name()
+std::string
+Application::name()
 {
 	ApplicationPrivate* d = instance->d_ptr.get();
 	return d->m_name;
 }
 
-std::string Application::executable_name()
+std::string
+Application::executable_name()
 {
 	ApplicationPrivate* d = instance->d_ptr.get();
 	return d->m_executable_name;
@@ -110,7 +118,8 @@ BOOST_AUTO_TEST_CASE(private_no_inheritance_test)
 
 class BasePrivate;
 
-class Base {
+class Base
+{
 protected:
 	Base(BasePrivate*);
 
@@ -122,7 +131,8 @@ protected:
 	M_DECLARE_PRIVATE(Base)
 };
 
-class BasePrivate {
+class BasePrivate
+{
 public:
 	virtual ~BasePrivate() = 0;
 
@@ -146,7 +156,8 @@ Base::Base(BasePrivate* priv_ptr)
 
 class DerivedPrivate;
 
-class Derived : public Base {
+class Derived : public Base
+{
 	M_DECLARE_PRIVATE(Derived)
 protected:
 	Derived(DerivedPrivate*);
@@ -155,7 +166,8 @@ public:
 	Derived();
 };
 
-class DerivedPrivate : public BasePrivate {
+class DerivedPrivate : public BasePrivate
+{
 	M_DECLARE_PUBLIC(Derived)
 public:
 };

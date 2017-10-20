@@ -15,14 +15,17 @@ struct ResourceLimit {
 /**
  * @return true on success, false on error
  */
-bool get_resource_limit(ResourceType resource, ResourceLimit& limit);
+bool
+get_resource_limit(ResourceType resource, ResourceLimit& limit);
 
 /**
  * @return true on success, false on error
  */
-bool set_resource_limit(ResourceType resource, const ResourceLimit& limit);
+bool
+set_resource_limit(ResourceType resource, const ResourceLimit& limit);
 
 /// @return The amount of physical memory in bytes
-int64_t physical_memory_size();
+int64_t
+physical_memory_size();
 
 #endif // MOJO_RESOURCE_H

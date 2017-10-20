@@ -1,7 +1,8 @@
 #ifndef MOJO_AUDIO_CYCLE_TIMER_H
 #define MOJO_AUDIO_CYCLE_TIMER_H
 
-class CycleTimer {
+class CycleTimer
+{
 public:
 	CycleTimer()
 	    : m_cycle_start(0)

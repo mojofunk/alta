@@ -23,7 +23,8 @@ BOOST_AUTO_TEST_CASE(test_application)
 	example_app->close_projects();
 }
 
-void test_application_module(const ModuleSP& mod)
+void
+test_application_module(const ModuleSP& mod)
 {
 	BOOST_REQUIRE(mod);
 

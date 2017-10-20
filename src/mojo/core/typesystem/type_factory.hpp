@@ -1,7 +1,8 @@
 #ifndef MOJO_TYPE_FACTORY_H
 #define MOJO_TYPE_FACTORY_H
 
-class TypeFactory {
+class TypeFactory
+{
 public:
 	virtual std::string type_name() const = 0;
 

@@ -1,7 +1,8 @@
 static std::atomic<uint32_t> s_init_core_count(0);
 
 #ifndef NDEBUG
-void set_debugging_from_env_var()
+void
+set_debugging_from_env_var()
 {
 	using tokenizer = boost::tokenizer<boost::char_separator<char>>;
 	boost::char_separator<char> sep(",");
@@ -13,9 +14,11 @@ void set_debugging_from_env_var()
 }
 #endif
 
-namespace core {
+namespace core
+{
 
-void initialize()
+void
+initialize()
 {
 	if (++s_init_core_count != 1) return;
 
@@ -36,12 +39,14 @@ void initialize()
 	types::initialize();
 }
 
-bool initialized()
+bool
+initialized()
 {
 	return (s_init_core_count != 0);
 }
 
-void deinitialize()
+void
+deinitialize()
 {
 	if (--s_init_core_count != 0) return;
 

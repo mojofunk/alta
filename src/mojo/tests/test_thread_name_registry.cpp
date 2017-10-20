@@ -4,7 +4,8 @@
 
 #include "test_includes.hpp"
 
-static ThreadNameRegistry<std::string>& test_thread_registry()
+static ThreadNameRegistry<std::string>&
+test_thread_registry()
 {
 	static ThreadNameRegistry<std::string> s_test_thread_registry;
 	return s_test_thread_registry;
@@ -38,7 +39,8 @@ BOOST_AUTO_TEST_CASE(thread_name_registry_basic_test)
 
 static std::atomic<bool> thread_name_registry_test_exit(false);
 
-static void thread_name_registry_test_do_work()
+static void
+thread_name_registry_test_do_work()
 {
 	static std::atomic<int> thread_name_count(0);
 

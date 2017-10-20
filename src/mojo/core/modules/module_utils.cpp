@@ -1,4 +1,5 @@
-ModuleSP open_module(const fs::path& module_path)
+ModuleSP
+open_module(const fs::path& module_path)
 {
 	Module::factory_func_t factory = 0;
 
@@ -17,7 +18,8 @@ ModuleSP open_module(const fs::path& module_path)
 	return mojo::ModuleSP(p);
 }
 
-ModuleSPSet discover_modules(const Searchpath& sp)
+ModuleSPSet
+discover_modules(const Searchpath& sp)
 {
 	paths_t module_paths;
 

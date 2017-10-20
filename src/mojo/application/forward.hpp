@@ -17,7 +17,8 @@ class Track;
 class ApplicationEventHandler;
 class Property;
 
-namespace internal {
+namespace internal
+{
 
 class ApplicationData;
 

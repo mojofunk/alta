@@ -1,7 +1,8 @@
 #ifndef MOJO_AUDIO_SEQUENCE_H
 #define MOJO_AUDIO_SEQUENCE_H
 
-class AudioSequence : public Object {
+class AudioSequence : public Object
+{
 public: // typedefs
 	typedef AudioEventSPSet::iterator iterator;
 	typedef AudioEventSPSet::const_iterator const_iterator;

@@ -4,7 +4,8 @@
 
 #include "mojo-audio-driver.hpp"
 
-class JACKAudioDriverModule : public AudioDriverModule {
+class JACKAudioDriverModule : public AudioDriverModule
+{
 public: // constructors
 	JACKAudioDriverModule();
 	~JACKAudioDriverModule();

@@ -1,7 +1,8 @@
 #ifndef MOJO_CORE_STACK_TRACE_H
 #define MOJO_CORE_STACK_TRACE_H
 
-class MOJO_API StackTrace {
+class MOJO_API StackTrace
+{
 public:
 	/**
 	 * Creates a stack trace at the current location

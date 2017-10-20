@@ -13,7 +13,8 @@
  * - the state of the connections to and from the track.
  * - reference to any buffers, they are passed in for processing
  */
-class AudioTrack : public Track {
+class AudioTrack : public Track
+{
 public:
 	// constructors
 	AudioTrack();

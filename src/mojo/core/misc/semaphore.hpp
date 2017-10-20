@@ -1,7 +1,8 @@
 #ifndef MOJO_CORE_SEMAPHORE_H
 #define MOJO_CORE_SEMAPHORE_H
 
-class Semaphore {
+class Semaphore
+{
 public:
 	// prevent copying and assignment
 	Semaphore(const Semaphore& sema) = delete;

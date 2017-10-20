@@ -7,20 +7,23 @@
 #include "mojo-application.hpp"
 #include "mojo-audio-effect.hpp"
 
-void test_plugin_path(const fs::path& path)
+void
+test_plugin_path(const fs::path& path)
 {
 	BOOST_REQUIRE(!path.empty());
 	BOOST_TEST_MESSAGE(path.string());
 }
 
-void test_info(AudioEffectInfoSP info)
+void
+test_info(AudioEffectInfoSP info)
 {
 	BOOST_REQUIRE(info);
 	BOOST_TEST_MESSAGE(info->get_name());
 	BOOST_TEST_MESSAGE(info->get_path());
 }
 
-void test_parameter_info(const AudioEffectParameterInfo& info)
+void
+test_parameter_info(const AudioEffectParameterInfo& info)
 {
 	BOOST_TEST_MESSAGE(info.name);
 	BOOST_TEST_MESSAGE(info.min_value);
@@ -28,7 +31,8 @@ void test_parameter_info(const AudioEffectParameterInfo& info)
 	BOOST_TEST_MESSAGE(info.default_value);
 }
 
-void test_audio_effect(AudioEffectSP aeffect)
+void
+test_audio_effect(AudioEffectSP aeffect)
 {
 	BOOST_REQUIRE(aeffect);
 	test_info(aeffect->get_info());
@@ -42,7 +46,8 @@ void test_audio_effect(AudioEffectSP aeffect)
 	}
 }
 
-void test_audio_effect_module(AudioEffectModuleSP mod)
+void
+test_audio_effect_module(AudioEffectModuleSP mod)
 {
 	BOOST_REQUIRE(mod);
 

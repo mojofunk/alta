@@ -1,7 +1,8 @@
 #ifndef MOJO_DUMMY_ARCHIVE_H
 #define MOJO_DUMMY_ARCHIVE_H
 
-class DummyArchive : public Archive {
+class DummyArchive : public Archive
+{
 public: // Archive interface
 	virtual void write(const fs::path& file_path, const Properties& props);
 

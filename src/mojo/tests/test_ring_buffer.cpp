@@ -5,7 +5,8 @@
 #include "test_includes.hpp"
 
 template <class T>
-void print_read_vectors(RingBuffer<T>& rb)
+void
+print_read_vectors(RingBuffer<T>& rb)
 {
 	typename RingBuffer<T>::Vectors rv = rb.get_read_vectors();
 
@@ -18,7 +19,8 @@ void print_read_vectors(RingBuffer<T>& rb)
 }
 
 template <class T>
-void print_write_vectors(RingBuffer<T>& rb)
+void
+print_write_vectors(RingBuffer<T>& rb)
 {
 	typename RingBuffer<T>::Vectors rv = rb.get_write_vectors();
 
@@ -178,7 +180,8 @@ uint32_t total_read = 0;
 
 static bool producer_thread_failed = false;
 
-void producer_thread()
+void
+producer_thread()
 {
 	while (!s_producer_exit) {
 		if (rb.write_available() == 0) {
@@ -211,7 +214,8 @@ void producer_thread()
 
 static bool consumer_thread_failed = false;
 
-void consumer_thread()
+void
+consumer_thread()
 {
 	while (!s_consumer_exit) {
 		if (rb.read_available() == 0) {

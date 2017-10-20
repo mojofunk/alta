@@ -1,6 +1,7 @@
 using namespace mojo;
 
-bool get_resource_limit(ResourceType resource, ResourceLimit& limit)
+bool
+get_resource_limit(ResourceType resource, ResourceLimit& limit)
 {
 	if (resource == OpenFiles) {
 #ifdef MOJO_WINDOWS
@@ -35,7 +36,8 @@ bool get_resource_limit(ResourceType resource, ResourceLimit& limit)
 	return false;
 }
 
-bool set_resource_limit(ResourceType resource, const ResourceLimit& limit)
+bool
+set_resource_limit(ResourceType resource, const ResourceLimit& limit)
 {
 	if (resource == OpenFiles) {
 #ifdef MOJO_WINDOWS
@@ -57,7 +59,8 @@ bool set_resource_limit(ResourceType resource, const ResourceLimit& limit)
 	return false;
 }
 
-int64_t physical_memory_size()
+int64_t
+physical_memory_size()
 {
 
 #ifdef MOJO_LINUX

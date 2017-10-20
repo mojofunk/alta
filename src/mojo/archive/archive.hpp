@@ -16,7 +16,8 @@
  *
  * Archive needs to be more explicit in what types are supported
  */
-class Archive {
+class Archive
+{
 public: // ctors
 	virtual ~Archive();
 

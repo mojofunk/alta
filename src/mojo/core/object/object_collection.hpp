@@ -1,7 +1,8 @@
 #ifndef MOJO_OBJECT_COLLECTION_H
 #define MOJO_OBJECT_COLLECTION_H
 
-class ObjectCollection {
+class ObjectCollection
+{
 public:
 	typedef std::list<ObjectSP> container_t;
 	typedef container_t::iterator iterator;

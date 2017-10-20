@@ -7,15 +7,17 @@
 #include "mojo-audio-driver.hpp"
 #include "mojo-application.hpp"
 
-namespace {
+namespace
+{
 float left_phase(0);
 float right_phase(0);
 }
 
-AudioDevice::callback_result_t callback(const float* input_buffer,
-                                        const float* output_buffer,
-                                        count_t frames,
-                                        void* user_data)
+AudioDevice::callback_result_t
+callback(const float* input_buffer,
+         const float* output_buffer,
+         count_t frames,
+         void* user_data)
 {
 	BOOST_TEST_MESSAGE(compose("Test Callback: frames %", frames));
 
@@ -39,7 +41,8 @@ AudioDevice::callback_result_t callback(const float* input_buffer,
 	return AudioDevice::CONTINUE;
 }
 
-void test_device(AudioDeviceSP dev)
+void
+test_device(AudioDeviceSP dev)
 {
 	BOOST_REQUIRE(dev);
 
@@ -92,7 +95,8 @@ void test_device(AudioDeviceSP dev)
 	BOOST_CHECK(!dev->is_open());
 }
 
-void print_device_info(AudioDeviceSP dev)
+void
+print_device_info(AudioDeviceSP dev)
 {
 	BOOST_REQUIRE(dev);
 	BOOST_TEST_MESSAGE(compose("Device name: %", dev->get_name()));
@@ -113,7 +117,8 @@ void print_device_info(AudioDeviceSP dev)
 	BOOST_TEST_MESSAGE(compose("Supported Samplerates: %", oss.str()));
 }
 
-void test_audio_driver_module(AudioDriverModuleSP mod)
+void
+test_audio_driver_module(AudioDriverModuleSP mod)
 {
 	BOOST_REQUIRE(mod);
 

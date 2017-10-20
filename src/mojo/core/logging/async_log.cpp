@@ -1,4 +1,5 @@
-namespace logging {
+namespace logging
+{
 
 ASyncLog::ASyncLog()
     : m_record_queue(32768 * 4) // max capacity, max threads
@@ -19,7 +20,8 @@ ASyncLog::~ASyncLog()
 	destroy_loggers();
 }
 
-void ASyncLog::destroy_loggers()
+void
+ASyncLog::destroy_loggers()
 {
 	// no need to lock in dtor
 
@@ -28,26 +30,30 @@ void ASyncLog::destroy_loggers()
 	}
 }
 
-void ASyncLog::add_sink(Sink* sink)
+void
+ASyncLog::add_sink(Sink* sink)
 {
 	std::unique_lock<std::mutex> lock(m_sinks_mutex);
 	m_sinks.insert(sink);
 }
 
-void ASyncLog::remove_sink(Sink* sink)
+void
+ASyncLog::remove_sink(Sink* sink)
 {
 	std::unique_lock<std::mutex> lock(m_sinks_mutex);
 	m_sinks.erase(sink);
 }
 
-std::set<Sink*> ASyncLog::get_sinks() const
+std::set<Sink*>
+ASyncLog::get_sinks() const
 {
 	std::unique_lock<std::mutex> lock(m_sinks_mutex);
 	auto tmp = m_sinks;
 	return tmp;
 }
 
-void ASyncLog::write_record(Record* record)
+void
+ASyncLog::write_record(Record* record)
 {
 	if (m_quit) return;
 
@@ -58,7 +64,8 @@ void ASyncLog::write_record(Record* record)
 	iteration(false);
 }
 
-Logger* ASyncLog::get_logger(const char* const domain)
+Logger*
+ASyncLog::get_logger(const char* const domain)
 {
 	// search for existing logger
 	std::unique_lock<std::mutex> lock(m_loggers_mutex);
@@ -71,19 +78,22 @@ Logger* ASyncLog::get_logger(const char* const domain)
 	return logger;
 }
 
-std::set<Logger*> ASyncLog::get_loggers() const
+std::set<Logger*>
+ASyncLog::get_loggers() const
 {
 	std::unique_lock<std::mutex> lock(m_loggers_mutex);
 	auto tmp = m_loggers;
 	return tmp;
 }
 
-void ASyncLog::do_work()
+void
+ASyncLog::do_work()
 {
 	process_records();
 }
 
-void ASyncLog::process_records()
+void
+ASyncLog::process_records()
 {
 	Record* record = nullptr;
 

@@ -1,13 +1,15 @@
 #ifndef MOJO_CORE_TIMING_H
 #define MOJO_CORE_TIMING_H
 
-MOJO_API bool get_min_max_avg_total(const std::vector<uint64_t>& values,
-                                    uint64_t& min,
-                                    uint64_t& max,
-                                    uint64_t& avg,
-                                    uint64_t& total);
+MOJO_API bool
+get_min_max_avg_total(const std::vector<uint64_t>& values,
+                      uint64_t& min,
+                      uint64_t& max,
+                      uint64_t& avg,
+                      uint64_t& total);
 
-MOJO_API std::string timing_summary(const std::vector<uint64_t>& values);
+MOJO_API std::string
+timing_summary(const std::vector<uint64_t>& values);
 
 /**
  * This class allows collecting timing data using two different
@@ -30,7 +32,8 @@ MOJO_API std::string timing_summary(const std::vector<uint64_t>& values);
  * intervals but I didn't feel it necessary to have two separate
  * classes.
  */
-class MOJO_API Timing {
+class MOJO_API Timing
+{
 public:
 	Timing()
 	    : m_start_val(0)
@@ -77,7 +80,8 @@ private:
 	uint64_t m_last_val;
 };
 
-class MOJO_API TimingData {
+class MOJO_API TimingData
+{
 public:
 	TimingData()
 	    : m_reserve_size(256)
@@ -133,7 +137,8 @@ private:
 	std::vector<uint64_t> m_elapsed_values;
 };
 
-class MOJO_API Timed {
+class MOJO_API Timed
+{
 public:
 	Timed(TimingData& data)
 	    : m_data(data)

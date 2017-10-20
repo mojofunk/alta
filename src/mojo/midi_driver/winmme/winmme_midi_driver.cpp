@@ -14,24 +14,28 @@ WinMMEMIDIDriver::~WinMMEMIDIDriver()
 	terminate();
 }
 
-MIDIInputDeviceSPSet WinMMEMIDIDriver::get_input_devices()
+MIDIInputDeviceSPSet
+WinMMEMIDIDriver::get_input_devices()
 {
 	return m_inputs;
 }
 
-MIDIOutputDeviceSPSet WinMMEMIDIDriver::get_output_devices()
+MIDIOutputDeviceSPSet
+WinMMEMIDIDriver::get_output_devices()
 {
 	return m_outputs;
 }
 
-bool WinMMEMIDIDriver::initialize()
+bool
+WinMMEMIDIDriver::initialize()
 {
 	if (m_initialized) return true;
 	// TODO
 	return false;
 }
 
-bool WinMMEMIDIDriver::terminate()
+bool
+WinMMEMIDIDriver::terminate()
 {
 	if (!m_initialized) return true;
 
@@ -39,7 +43,8 @@ bool WinMMEMIDIDriver::terminate()
 	return false;
 }
 
-void WinMMEMIDIDriver::refresh_devices()
+void
+WinMMEMIDIDriver::refresh_devices()
 {
 	// TODO
 }

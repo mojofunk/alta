@@ -1,27 +1,34 @@
 #ifndef MOJO_CORE_DEBUG_H
 #define MOJO_CORE_DEBUG_H
 
-namespace debug {
+namespace debug
+{
 
-DebugRegistry& get_registry();
+DebugRegistry&
+get_registry();
 
-uint32_t get_domain_index(const char* domain_name);
+uint32_t
+get_domain_index(const char* domain_name);
 
-bool get_enabled(uint32_t domain_index);
+bool
+get_enabled(uint32_t domain_index);
 
-void set_enabled(uint32_t domain_index, bool enable);
+void
+set_enabled(uint32_t domain_index, bool enable);
 
-void log_message(const char* file,
-                 int line,
-                 uint32_t domain,
-                 const std::string& str);
+void
+log_message(const char* file,
+            int line,
+            uint32_t domain,
+            const std::string& str);
 
 } // namespace debug
 
 #ifdef MOJO_ENABLE_DEBUG_LOGGING
 
 #define MOJO_DEBUG_DOMAIN(domain_name)                                         \
-	namespace {                                                                   \
+	namespace                                                                     \
+	{                                                                             \
 	uint32_t domain_name = mojo::debug::get_domain_index(#domain_name);           \
 	}
 

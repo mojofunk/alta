@@ -2,7 +2,8 @@ MidiTrack::MidiTrack()
 {
 }
 
-void MidiTrack::get_properties(Properties& props) const
+void
+MidiTrack::get_properties(Properties& props) const
 {
 	Track::get_properties(props);
 
@@ -10,7 +11,8 @@ void MidiTrack::get_properties(Properties& props) const
 	// ObjectSP(m_midi_sequence)));
 }
 
-void MidiTrack::set_properties(const Properties& props)
+void
+MidiTrack::set_properties(const Properties& props)
 {
 	Track::set_properties(props);
 

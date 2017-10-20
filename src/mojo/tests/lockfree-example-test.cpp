@@ -17,7 +17,8 @@ const int iterations = 10000000;
 const int producer_thread_count = 4;
 const int consumer_thread_count = 4;
 
-void producer(void)
+void
+producer(void)
 {
 	for (int i = 0; i != iterations; ++i) {
 		int value = ++producer_count;
@@ -28,7 +29,8 @@ void producer(void)
 
 boost::atomic<bool> done(false);
 
-void consumer(void)
+void
+consumer(void)
 {
 	int value;
 	while (!done) {
@@ -40,7 +42,8 @@ void consumer(void)
 		++consumer_count;
 }
 
-void test_iteration()
+void
+test_iteration()
 {
 	producer_count = 0;
 	consumer_count = 0;
@@ -64,7 +67,8 @@ void test_iteration()
 	assert(producer_count == consumer_count);
 }
 
-int main(int argc, char* argv[])
+int
+main(int argc, char* argv[])
 {
 	using namespace std;
 	cout << "boost::lockfree::queue is ";

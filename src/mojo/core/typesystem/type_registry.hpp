@@ -1,7 +1,8 @@
 #ifndef MOJO_CORE_TYPE_REGISTRY_H
 #define MOJO_CORE_TYPE_REGISTRY_H
 
-class TypeRegistry {
+class TypeRegistry
+{
 public:
 	void set_type_name(const std::type_info& info, const std::string& type_name)
 	{

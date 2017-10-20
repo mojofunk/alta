@@ -7,7 +7,8 @@
  * "search path string" contains absolute directory paths
  * separated by a colon(:) or a semi-colon(;) on windows.
  */
-class Searchpath {
+class Searchpath
+{
 public:
 	typedef paths_t::iterator iterator;
 	typedef paths_t::const_iterator const_iterator;

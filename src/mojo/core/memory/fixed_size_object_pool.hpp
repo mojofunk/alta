@@ -2,7 +2,8 @@
 #define MOJO_CORE_FIXED_SIZE_OBJECT_POOL_H
 
 template <class T>
-class FixedSizeObjectPool {
+class FixedSizeObjectPool
+{
 public:
 	FixedSizeObjectPool(const uint16_t count)
 	    : m_fixed_pool(sizeof(T), count)

@@ -37,7 +37,8 @@ std::atomic_bool done(false);
 
 std::atomic_bool alloc_is_from_test(true);
 
-void allocate()
+void
+allocate()
 {
 	while (alloc_count < iterations) {
 		int* int_ptr = threaded_int_pool.allocate();
@@ -57,7 +58,8 @@ void allocate()
 	}
 }
 
-void deallocate()
+void
+deallocate()
 {
 	int* int_alloc = nullptr;
 	while (!done) {
@@ -75,7 +77,8 @@ void deallocate()
 	}
 }
 
-void test_memory_pool_iteration()
+void
+test_memory_pool_iteration()
 {
 	alloc_count = 0;
 	dealloc_count = 0;

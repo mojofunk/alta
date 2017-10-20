@@ -2,7 +2,8 @@
 #include <cxxabi.h>
 #endif
 
-std::string demangle_symbol(const std::string& mangled_symbol)
+std::string
+demangle_symbol(const std::string& mangled_symbol)
 {
 #if defined(__GLIBCXX__)
 	int status;
@@ -12,14 +13,14 @@ std::string demangle_symbol(const std::string& mangled_symbol)
 		std::string demangled_symbol(realname);
 		free(realname);
 		return demangled_symbol;
-	}
-	catch (const std::exception&) {
+	} catch (const std::exception&) {
 	}
 #endif
 	return mangled_symbol;
 }
 
-std::string demangle(std::string const& str)
+std::string
+demangle(std::string const& str)
 {
 	std::string::size_type const b = str.find_first_of("(");
 

@@ -1,4 +1,5 @@
-namespace logging {
+namespace logging
+{
 
 using MemoryWriter = fmt::BasicMemoryWriter<char, Allocator<char>>;
 

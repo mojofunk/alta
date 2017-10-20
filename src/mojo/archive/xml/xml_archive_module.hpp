@@ -1,7 +1,8 @@
 #ifndef MOJO_XML_ARCHIVE_MODULE_H
 #define MOJO_XML_ARCHIVE_MODULE_H
 
-class XMLArchiveModule : public ArchiveModule {
+class XMLArchiveModule : public ArchiveModule
+{
 public: // constructors
 	XMLArchiveModule();
 	~XMLArchiveModule();

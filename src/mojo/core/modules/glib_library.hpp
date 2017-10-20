@@ -1,7 +1,8 @@
 #ifndef MOJO_GLIB_LIBRARY_H
 #define MOJO_GLIB_LIBRARY_H
 
-class GlibLibrary : public Library {
+class GlibLibrary : public Library
+{
 public: // constructors
 	GlibLibrary(const fs::path& filepath);
 

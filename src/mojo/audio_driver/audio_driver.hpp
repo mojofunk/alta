@@ -1,7 +1,8 @@
 #ifndef MOJO_AUDIO_DRIVER_H
 #define MOJO_AUDIO_DRIVER_H
 
-class AudioDriver {
+class AudioDriver
+{
 public: // ctors
 	virtual ~AudioDriver();
 

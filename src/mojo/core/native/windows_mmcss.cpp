@@ -12,11 +12,13 @@ static AvSetMmThreadCharacteristicsA_t AvSetMmThreadCharacteristicsA = NULL;
 static AvRevertMmThreadCharacteristics_t AvRevertMmThreadCharacteristics = NULL;
 static AvSetMmThreadPriority_t AvSetMmThreadPriority = NULL;
 
-namespace mmcss {
+namespace mmcss
+{
 
 M_DEFINE_LOGGER(WindowsMMCSS);
 
-bool initialize()
+bool
+initialize()
 {
 	if (avrt_dll != NULL) return true;
 
@@ -65,7 +67,8 @@ bool initialize()
 	return true;
 }
 
-bool deinitialize()
+bool
+deinitialize()
 {
 	if (avrt_dll == NULL) return true;
 
@@ -83,8 +86,8 @@ bool deinitialize()
 	return true;
 }
 
-bool set_thread_characteristics(const std::string& task_name,
-                                void** task_handle)
+bool
+set_thread_characteristics(const std::string& task_name, void** task_handle)
 {
 	if (AvSetMmThreadCharacteristicsA == NULL) return false;
 
@@ -120,7 +123,8 @@ bool set_thread_characteristics(const std::string& task_name,
 	return true;
 }
 
-bool revert_thread_characteristics(void* task_handle)
+bool
+revert_thread_characteristics(void* task_handle)
 {
 	if (AvRevertMmThreadCharacteristics == NULL) return false;
 
@@ -134,7 +138,8 @@ bool revert_thread_characteristics(void* task_handle)
 	return true;
 }
 
-bool set_thread_priority(void* task_handle, AVRT_PRIORITY priority)
+bool
+set_thread_priority(void* task_handle, AVRT_PRIORITY priority)
 {
 	if (AvSetMmThreadPriority == NULL) return false;
 

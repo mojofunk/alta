@@ -18,9 +18,11 @@ static const std::string italian_locale_name("it_IT");
 static const std::string MAX_INT16_STR("32767");
 static const std::string MIN_INT16_STR("-32768");
 
-namespace {
+namespace
+{
 
-class LocaleGuard {
+class LocaleGuard
+{
 public:
 	LocaleGuard(const std::string& locale)
 	{
@@ -378,9 +380,11 @@ BOOST_AUTO_TEST_CASE(bool_conversion)
 static const double s_test_double = 31459.265359;
 static const int s_iter_count = 100000;
 
-namespace {
+namespace
+{
 
-bool check_au_stream()
+bool
+check_au_stream()
 {
 	std::ostringstream os;
 
@@ -388,8 +392,7 @@ bool check_au_stream()
 		// This is not a valid locale on Windows but that doesn't matter as
 		// this test is not run on Windows as it is known to fail
 		os.imbue(std::locale("en_AU"));
-	}
-	catch (...) {
+	} catch (...) {
 		std::cerr << "Unable to imbue stream with en_AU locale" << std::endl;
 		return false;
 	}
@@ -400,7 +403,8 @@ bool check_au_stream()
 	return found_decimal_point && found_thousands_comma;
 }
 
-bool check_c_stream()
+bool
+check_c_stream()
 {
 	std::ostringstream os;
 
@@ -409,8 +413,7 @@ bool check_c_stream()
 		// but std::locale("C") does
 		// os.imbue(std::locale("C"));
 		os.imbue(std::locale::classic());
-	}
-	catch (...) {
+	} catch (...) {
 		std::cerr << "Unable to imbue stream with std::locale::classic()"
 		          << std::endl;
 		return false;
@@ -419,7 +422,8 @@ bool check_c_stream()
 	return os.str().find('.') != std::string::npos;
 }
 
-bool check_fr_printf()
+bool
+check_fr_printf()
 {
 	char buf[32];
 	snprintf(buf, sizeof(buf), "%.12g", s_test_double);
@@ -427,21 +431,24 @@ bool check_fr_printf()
 	return found;
 }
 
-void check_au_stream_thread()
+void
+check_au_stream_thread()
 {
 	for (int n = 0; n < s_iter_count; n++) {
 		assert(check_au_stream());
 	}
 }
 
-void check_c_stream_thread()
+void
+check_c_stream_thread()
 {
 	for (int n = 0; n < s_iter_count; n++) {
 		assert(check_c_stream());
 	}
 }
 
-void check_fr_printf_thread()
+void
+check_fr_printf_thread()
 {
 	for (int n = 0; n < s_iter_count; n++) {
 		assert(check_fr_printf());
@@ -479,9 +486,11 @@ BOOST_AUTO_TEST_CASE(imbue_thread_safety)
 }
 #endif
 
-namespace {
+namespace
+{
 
-void check_string_to_thread()
+void
+check_string_to_thread()
 {
 	for (int n = 0; n < s_iter_count; n++) {
 		string str;
@@ -522,7 +531,8 @@ BOOST_AUTO_TEST_CASE(string_to_thread_safety)
 }
 #endif
 
-bool glib_double_to_string(const double& val, std::string& str)
+bool
+glib_double_to_string(const double& val, std::string& str)
 {
 	char buffer[G_ASCII_DTOSTR_BUF_SIZE];
 
@@ -531,7 +541,8 @@ bool glib_double_to_string(const double& val, std::string& str)
 	return true;
 }
 
-bool glib_string_to_double(const std::string& str, double& val)
+bool
+glib_string_to_double(const std::string& str, double& val)
 {
 	val = g_ascii_strtod(str.c_str(), NULL);
 	// TODO can we check for errors in a thread-safe way
@@ -541,9 +552,11 @@ bool glib_string_to_double(const std::string& str, double& val)
 #define GLIB_MAX_DOUBLE_STR "1.7976931348623157e+308"
 #define GLIB_MIN_DOUBLE_STR "2.2250738585072014e-308"
 
-namespace {
+namespace
+{
 
-void check_glib_double_conversion()
+void
+check_glib_double_conversion()
 {
 	std::string str;
 
@@ -573,9 +586,11 @@ BOOST_AUTO_TEST_CASE(g_ascii_double_conversion)
 	check_glib_double_conversion();
 }
 
-namespace {
+namespace
+{
 
-void check_glib_double_conversion_thread()
+void
+check_glib_double_conversion_thread()
 {
 	for (int n = 0; n < s_iter_count; n++) {
 		check_glib_double_conversion();
@@ -601,9 +616,11 @@ BOOST_AUTO_TEST_CASE(g_ascii_double_conversion_thread_safety)
 	fr_printf_thread.join();
 }
 
-namespace {
+namespace
+{
 
-bool int32_to_string(const int32_t& val, std::string& str)
+bool
+int32_to_string(const int32_t& val, std::string& str)
 {
 	char buffer[32];
 
@@ -616,7 +633,8 @@ bool int32_to_string(const int32_t& val, std::string& str)
 	return true;
 }
 
-bool string_to_int32(std::string& str, int32_t& val)
+bool
+string_to_int32(std::string& str, int32_t& val)
 {
 	if (sscanf(str.c_str(), "%" SCNi32, &val) != 1) {
 		return false;
@@ -624,7 +642,8 @@ bool string_to_int32(std::string& str, int32_t& val)
 	return true;
 }
 
-void check_g_snprintf_sscanf_int32_conversion()
+void
+check_g_snprintf_sscanf_int32_conversion()
 {
 	// convert int32 to string using snprintf
 	string str;
@@ -643,7 +662,8 @@ void check_g_snprintf_sscanf_int32_conversion()
 	BOOST_CHECK_EQUAL(numeric_limits<int32_t>::min(), val);
 }
 
-void check_g_snprintf_sscanf_int32_conversion_thread()
+void
+check_g_snprintf_sscanf_int32_conversion_thread()
 {
 	for (int n = 0; n < s_iter_count; n++) {
 		check_g_snprintf_sscanf_int32_conversion();
@@ -681,41 +701,48 @@ BOOST_AUTO_TEST_CASE(g_int32_conversion_thread_safety)
 	fr_printf_thread.join();
 }
 
-namespace {
+namespace
+{
 
-bool check_int_convert()
+bool
+check_int_convert()
 {
 	int32_t num = g_random_int();
 	return (num == mojo::string_to<int32_t>(mojo::to_string(num)));
 }
 
-bool check_float_convert()
+bool
+check_float_convert()
 {
 	float num = (float)g_random_double();
 	return (num == mojo::string_to<float>(mojo::to_string(num)));
 }
 
-bool check_double_convert()
+bool
+check_double_convert()
 {
 	double num = g_random_double();
 	return (num == mojo::string_to<double>(mojo::to_string(num)));
 }
 
-void check_int_convert_thread()
+void
+check_int_convert_thread()
 {
 	for (int n = 0; n < s_iter_count; n++) {
 		assert(check_int_convert());
 	}
 }
 
-void check_float_convert_thread()
+void
+check_float_convert_thread()
 {
 	for (int n = 0; n < s_iter_count; n++) {
 		assert(check_float_convert());
 	}
 }
 
-void check_double_convert_thread()
+void
+check_double_convert_thread()
 {
 	for (int n = 0; n < s_iter_count; n++) {
 		assert(check_double_convert());

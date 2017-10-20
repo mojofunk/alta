@@ -28,17 +28,20 @@ LADSPAAudioEffectInfo::LADSPAAudioEffectInfo(const fs::path& path,
 	m_name = descriptor->Name;
 }
 
-std::string LADSPAAudioEffectInfo::get_name() const
+std::string
+LADSPAAudioEffectInfo::get_name() const
 {
 	return m_name;
 }
 
-fs::path LADSPAAudioEffectInfo::get_path() const
+fs::path
+LADSPAAudioEffectInfo::get_path() const
 {
 	return m_path;
 }
 
-uint32_t LADSPAAudioEffectInfo::get_index() const
+uint32_t
+LADSPAAudioEffectInfo::get_index() const
 {
 	return m_index;
 }

@@ -7,7 +7,8 @@ FunctorDispatcher::~FunctorDispatcher()
 	assert(m_queue.empty());
 }
 
-void FunctorDispatcher::call_sync(const function_type& func)
+void
+FunctorDispatcher::call_sync(const function_type& func)
 {
 	if (m_quit) {
 		// This should be some sort of error the caller must guarentee that
@@ -19,7 +20,8 @@ void FunctorDispatcher::call_sync(const function_type& func)
 	iteration(true);
 }
 
-void FunctorDispatcher::call_async(const function_type& func)
+void
+FunctorDispatcher::call_async(const function_type& func)
 {
 	if (m_quit) {
 		// This should be some sort of error the caller must guarentee that
@@ -31,19 +33,22 @@ void FunctorDispatcher::call_async(const function_type& func)
 	iteration(false);
 }
 
-void FunctorDispatcher::queue(const function_type& func)
+void
+FunctorDispatcher::queue(const function_type& func)
 {
 	std::unique_lock<std::mutex> lock(m_queue_mutex);
 	m_queue.push(func);
 }
 
-void FunctorDispatcher::do_work()
+void
+FunctorDispatcher::do_work()
 {
 	M_LOG_CALL(core::RunLoop);
 	process_queue();
 }
 
-void FunctorDispatcher::process_queue()
+void
+FunctorDispatcher::process_queue()
 {
 	std::unique_lock<std::mutex> lock(m_queue_mutex);
 

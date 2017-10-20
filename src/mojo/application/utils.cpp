@@ -1,4 +1,5 @@
-std::string track_type_to_string(TrackType type)
+std::string
+track_type_to_string(TrackType type)
 {
 	if (type == AUDIO) {
 		return "Audio";

@@ -10,7 +10,8 @@ StackTrace::StackTrace()
 #endif
 }
 
-const void* const* StackTrace::get_addresses(size_t& count) const
+const void* const*
+StackTrace::get_addresses(size_t& count) const
 {
 	count = m_count;
 	if (m_count) {
@@ -19,12 +20,14 @@ const void* const* StackTrace::get_addresses(size_t& count) const
 	return NULL;
 }
 
-void StackTrace::print(size_t start_offset) const
+void
+StackTrace::print(size_t start_offset) const
 {
 	to_stream(std::cerr, start_offset);
 }
 
-void StackTrace::to_stream(std::ostream& os, size_t start_offset) const
+void
+StackTrace::to_stream(std::ostream& os, size_t start_offset) const
 {
 #ifdef HAVE_EXECINFO
 	char** trace_lines = backtrace_symbols(m_trace, m_count);
@@ -39,7 +42,8 @@ void StackTrace::to_stream(std::ostream& os, size_t start_offset) const
 #endif
 }
 
-std::string StackTrace::to_string(size_t start_offset) const
+std::string
+StackTrace::to_string(size_t start_offset) const
 {
 	std::ostringstream oss;
 	to_stream(oss, start_offset);

@@ -1,7 +1,8 @@
 #ifndef MOJO_WINMME_MIDI_DRIVER_H
 #define MOJO_WINMME_MIDI_DRIVER_H
 
-class WinMMEMIDIDriver : public MIDIDriver {
+class WinMMEMIDIDriver : public MIDIDriver
+{
 public: // ctors
 	WinMMEMIDIDriver();
 	~WinMMEMIDIDriver();

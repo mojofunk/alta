@@ -1,8 +1,9 @@
-bool get_min_max_avg_total(const std::vector<uint64_t>& values,
-                           uint64_t& min,
-                           uint64_t& max,
-                           uint64_t& avg,
-                           uint64_t& total)
+bool
+get_min_max_avg_total(const std::vector<uint64_t>& values,
+                      uint64_t& min,
+                      uint64_t& max,
+                      uint64_t& avg,
+                      uint64_t& total)
 {
 	if (values.empty()) {
 		return false;
@@ -25,7 +26,8 @@ bool get_min_max_avg_total(const std::vector<uint64_t>& values,
 	return true;
 }
 
-std::string timing_summary(const std::vector<uint64_t>& values)
+std::string
+timing_summary(const std::vector<uint64_t>& values)
 {
 	std::ostringstream oss;
 

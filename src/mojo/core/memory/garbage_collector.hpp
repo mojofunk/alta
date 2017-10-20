@@ -1,7 +1,8 @@
 #ifndef MOJO_CORE_GARBAGE_COLLECTOR_H
 #define MOJO_CORE_GARBAGE_COLLECTOR_H
 
-class GarbageCollector {
+class GarbageCollector
+{
 public:
 	/**
 	 * TODO Using ConcurrentQueue params properly?

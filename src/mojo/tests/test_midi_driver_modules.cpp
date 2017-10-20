@@ -7,9 +7,11 @@
 #include "mojo-midi-driver.hpp"
 #include "mojo-application.hpp"
 
-namespace {
+namespace
+{
 
-MIDIDevice::timestamp_t midi_time_callback(void* user_data)
+MIDIDevice::timestamp_t
+midi_time_callback(void* user_data)
 {
 	static MIDIDevice::timestamp_t time = mojo::get_monotonic_time() / 1000;
 
@@ -19,7 +21,8 @@ MIDIDevice::timestamp_t midi_time_callback(void* user_data)
 }
 }
 
-void test_input_device(MIDIDeviceSP dev)
+void
+test_input_device(MIDIDeviceSP dev)
 {
 	BOOST_REQUIRE(dev);
 
@@ -50,7 +53,8 @@ void test_input_device(MIDIDeviceSP dev)
 	}
 }
 
-void test_output_device(MIDIDeviceSP dev)
+void
+test_output_device(MIDIDeviceSP dev)
 {
 	BOOST_REQUIRE(dev);
 
@@ -101,19 +105,22 @@ void test_output_device(MIDIDeviceSP dev)
 	}
 }
 
-void print_input_device_info(MIDIInputDeviceSP input_dev)
+void
+print_input_device_info(MIDIInputDeviceSP input_dev)
 {
 	BOOST_REQUIRE(input_dev);
 	BOOST_TEST_MESSAGE(compose("Input Device name: %", input_dev->get_name()));
 }
 
-void print_output_device_info(MIDIOutputDeviceSP output_dev)
+void
+print_output_device_info(MIDIOutputDeviceSP output_dev)
 {
 	BOOST_REQUIRE(output_dev);
 	BOOST_TEST_MESSAGE(compose("Output Device name: %", output_dev->get_name()));
 }
 
-void test_midi_driver_module(MIDIDriverModuleSP mod)
+void
+test_midi_driver_module(MIDIDriverModuleSP mod)
 {
 	BOOST_REQUIRE(mod);
 

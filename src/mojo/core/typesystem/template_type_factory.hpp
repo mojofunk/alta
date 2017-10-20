@@ -2,7 +2,8 @@
 #define MOJO_TEMPLATE_TYPE_FACTORY_H
 
 template <class T>
-class TemplateTypeFactory : public TypeFactory {
+class TemplateTypeFactory : public TypeFactory
+{
 public:
 	TemplateTypeFactory(const std::string& type_name)
 	    : m_type_name(type_name)

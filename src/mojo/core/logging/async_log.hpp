@@ -1,9 +1,11 @@
 #ifndef MOJO_LOGGING_ASYNC_LOG_H
 #define MOJO_LOGGING_ASYNC_LOG_H
 
-namespace logging {
+namespace logging
+{
 
-class ASyncLog : public Log, public mojo::RunLoop {
+class ASyncLog : public Log, public mojo::RunLoop
+{
 public:
 	ASyncLog();
 

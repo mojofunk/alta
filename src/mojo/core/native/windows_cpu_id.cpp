@@ -1,4 +1,5 @@
-uint32_t get_cpu_id()
+uint32_t
+get_cpu_id()
 {
 	return GetCurrentProcessorNumber();
 }

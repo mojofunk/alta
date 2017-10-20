@@ -28,7 +28,8 @@
  *
  *
  */
-class Project : Object {
+class Project : Object
+{
 public: // Object interface
 	virtual void get_properties(Properties& props) const;
 

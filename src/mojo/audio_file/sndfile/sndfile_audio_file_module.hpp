@@ -1,7 +1,8 @@
 #ifndef MOJO_SNDFILE_AUDIO_FILE_MODULE_H
 #define MOJO_SNDFILE_AUDIO_FILE_MODULE_H
 
-class SndfileAudioFileModule : public AudioFileModule {
+class SndfileAudioFileModule : public AudioFileModule
+{
 public: // constructors
 	SndfileAudioFileModule();
 	~SndfileAudioFileModule();

@@ -1,7 +1,8 @@
 #ifndef PORTAUDIO_AUDIO_DRIVER_H
 #define PORTAUDIO_AUDIO_DRIVER_H
 
-class PortaudioAudioDriver : public AudioDriver {
+class PortaudioAudioDriver : public AudioDriver
+{
 public: // constructors
 	PortaudioAudioDriver();
 	~PortaudioAudioDriver();

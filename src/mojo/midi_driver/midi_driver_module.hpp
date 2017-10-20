@@ -4,7 +4,8 @@
 /**
  *
  */
-class MIDIDriverModule : public Module {
+class MIDIDriverModule : public Module
+{
 public: // ctors
 	virtual ~MIDIDriverModule();
 

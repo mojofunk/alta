@@ -4,7 +4,8 @@
 /**
  *
  */
-class WinMMEMIDIDriverModule : public MIDIDriverModule {
+class WinMMEMIDIDriverModule : public MIDIDriverModule
+{
 public: // ctors
 	WinMMEMIDIDriverModule();
 	~WinMMEMIDIDriverModule();

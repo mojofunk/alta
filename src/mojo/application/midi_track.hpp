@@ -1,7 +1,8 @@
 #ifndef MOJO_MIDI_TRACK_H
 #define MOJO_MIDI_TRACK_H
 
-class MidiTrack : public Track {
+class MidiTrack : public Track
+{
 public:
 	// constructors
 	MidiTrack();

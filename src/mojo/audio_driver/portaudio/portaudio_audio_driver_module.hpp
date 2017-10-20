@@ -4,7 +4,8 @@
 
 #include <mojo-portaudio-audio-driver.hpp>
 
-class PortaudioAudioDriverModule : public AudioDriverModule {
+class PortaudioAudioDriverModule : public AudioDriverModule
+{
 public: // constructors
 	PortaudioAudioDriverModule();
 	~PortaudioAudioDriverModule();

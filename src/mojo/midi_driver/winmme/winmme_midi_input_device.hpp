@@ -4,7 +4,8 @@
 /**
  *
  */
-class WinMMEMIDIInputDevice : public MIDIInputDevice {
+class WinMMEMIDIInputDevice : public MIDIInputDevice
+{
 public: // ctors
 	WinMMEMIDIInputDevice(/*TODO*/);
 	~WinMMEMIDIInputDevice();

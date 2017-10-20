@@ -1,7 +1,8 @@
 #ifndef MOJO_NULL_DELETER_H
 #define MOJO_NULL_DELETER_H
 
-namespace internal {
+namespace internal
+{
 
 struct null_deleter {
 	void operator()(void const*) const {}

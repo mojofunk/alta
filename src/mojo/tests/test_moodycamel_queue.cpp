@@ -40,12 +40,13 @@ BOOST_AUTO_TEST_CASE(test_moodycamel_queue_concurrency)
 
 	// Producers
 	for (int i = 0; i != 10; ++i) {
-		threads[i] = std::thread([&](int i) {
-			                         for (int j = 0; j != 10; ++j) {
-				                         q.enqueue(i * 10 + j);
-			                         }
-			                        },
-		                         i);
+		threads[i] = std::thread(
+		    [&](int i) {
+			    for (int j = 0; j != 10; ++j) {
+				    q.enqueue(i * 10 + j);
+			    }
+			   },
+		    i);
 	}
 
 	// Consumers
@@ -86,14 +87,15 @@ BOOST_AUTO_TEST_CASE(test_moodycamel_queue_concurrency_bulk)
 
 	// Producers
 	for (int i = 0; i != 10; ++i) {
-		threads[i] = std::thread([&](int i) {
-			                         int items[10];
-			                         for (int j = 0; j != 10; ++j) {
-				                         items[j] = i * 10 + j;
-			                         }
-			                         q.enqueue_bulk(items, 10);
-			                        },
-		                         i);
+		threads[i] = std::thread(
+		    [&](int i) {
+			    int items[10];
+			    for (int j = 0; j != 10; ++j) {
+				    items[j] = i * 10 + j;
+			    }
+			    q.enqueue_bulk(items, 10);
+			   },
+		    i);
 	}
 
 	// Consumers
@@ -186,7 +188,8 @@ static std::atomic<int> pop_count(0);
 
 static std::atomic<bool> done(false);
 
-void produce_foo()
+void
+produce_foo()
 {
 	for (int i = 0; i != iterations; ++i) {
 		shared_ptr<InstanceCounter> foo_ptr = make_shared<InstanceCounter>();
@@ -195,7 +198,8 @@ void produce_foo()
 	}
 }
 
-void consume_foo()
+void
+consume_foo()
 {
 	shared_ptr<InstanceCounter> foo_ptr;
 	int value = 0;
@@ -210,7 +214,8 @@ void consume_foo()
 	}
 }
 
-void test_queue_iteration_shared_ptr()
+void
+test_queue_iteration_shared_ptr()
 {
 	done = false;
 	push_count = 0;

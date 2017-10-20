@@ -1,7 +1,8 @@
 #ifndef MOJO_CORE_WINDOWS_MMCSS_H
 #define MOJO_CORE_WINDOWS_MMCSS_H
 
-namespace mmcss {
+namespace mmcss
+{
 
 enum AVRT_PRIORITY {
 	AVRT_PRIORITY_VERYLOW = -2,
@@ -16,16 +17,20 @@ enum error_codes {
 	ERROR_INVALID_TASK_INDEX = 1551
 };
 
-bool initialize();
+bool
+initialize();
 
-bool deinitialize();
+bool
+deinitialize();
 
-bool set_thread_characteristics(const std::string& task_name,
-                                void** task_handle);
+bool
+set_thread_characteristics(const std::string& task_name, void** task_handle);
 
-bool revert_thread_characteristics(void* task_handle);
+bool
+revert_thread_characteristics(void* task_handle);
 
-bool set_thread_priority(void*, AVRT_PRIORITY);
+bool
+set_thread_priority(void*, AVRT_PRIORITY);
 
 } // namespace mmcss
 

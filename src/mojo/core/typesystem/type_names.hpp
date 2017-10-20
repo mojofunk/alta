@@ -1,7 +1,8 @@
 #ifndef MOJO_TYPE_NAMES_H
 #define MOJO_TYPE_NAMES_H
 
-class MOJO_API TypeNames {
+class MOJO_API TypeNames
+{
 public:
 	static const char* const int32_type_name;
 	static const char* const int64_type_name;

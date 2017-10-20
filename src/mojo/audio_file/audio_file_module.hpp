@@ -1,7 +1,8 @@
 #ifndef MOJO_AUDIO_FILE_MODULE_H
 #define MOJO_AUDIO_FILE_MODULE_H
 
-class AudioFileModule : public Module {
+class AudioFileModule : public Module
+{
 public: // constructors
 	~AudioFileModule();
 

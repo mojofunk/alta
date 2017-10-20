@@ -6,7 +6,8 @@
 
 #include "mojo-application.hpp"
 
-class ExampleApplication {
+class ExampleApplication
+{
 public: // ctors
 	ExampleApplication();
 

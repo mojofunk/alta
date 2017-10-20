@@ -1,7 +1,8 @@
 #ifndef MOJO_AUDIO_FILE_H
 #define MOJO_AUDIO_FILE_H
 
-class AudioFile {
+class AudioFile
+{
 public:
 	virtual ~AudioFile();
 

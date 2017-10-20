@@ -10,13 +10,14 @@ PortmidiMIDIInputDevice::~PortmidiMIDIInputDevice()
 {
 }
 
-std::string PortmidiMIDIInputDevice::get_name() const
+std::string
+PortmidiMIDIInputDevice::get_name() const
 {
 	return get_device_info()->name;
 }
 
-MIDIDevice::error_t PortmidiMIDIInputDevice::open(time_callback_t* callback,
-                                                  void* user_data)
+MIDIDevice::error_t
+PortmidiMIDIInputDevice::open(time_callback_t* callback, void* user_data)
 {
 	PmError err = Pm_OpenInput(&m_stream, m_id, NULL, 1024, callback, user_data);
 
@@ -28,7 +29,8 @@ MIDIDevice::error_t PortmidiMIDIInputDevice::open(time_callback_t* callback,
 	return (MIDIDevice::error_t)err;
 }
 
-MIDIDevice::error_t PortmidiMIDIInputDevice::close()
+MIDIDevice::error_t
+PortmidiMIDIInputDevice::close()
 {
 	if (m_stream == NULL) return MIDIDevice::UNKNOWN_ERROR;
 
@@ -42,12 +44,14 @@ MIDIDevice::error_t PortmidiMIDIInputDevice::close()
 	return (MIDIDevice::error_t)err;
 }
 
-std::string PortmidiMIDIInputDevice::get_error_string(error_t err)
+std::string
+PortmidiMIDIInputDevice::get_error_string(error_t err)
 {
 	return Pm_GetErrorText((PmError)err);
 }
 
-uint32_t PortmidiMIDIInputDevice::read(Event* buffer, int32_t size)
+uint32_t
+PortmidiMIDIInputDevice::read(Event* buffer, int32_t size)
 {
 	int read = Pm_Read(m_stream, (PmEvent*)buffer, size);
 
@@ -60,7 +64,8 @@ uint32_t PortmidiMIDIInputDevice::read(Event* buffer, int32_t size)
 	return read;
 }
 
-PmDeviceInfo const* PortmidiMIDIInputDevice::get_device_info() const
+PmDeviceInfo const*
+PortmidiMIDIInputDevice::get_device_info() const
 {
 	return Pm_GetDeviceInfo(m_id);
 }

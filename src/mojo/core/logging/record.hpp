@@ -1,7 +1,8 @@
 #ifndef MOJO_LOGGING_RECORD_H
 #define MOJO_LOGGING_RECORD_H
 
-namespace logging {
+namespace logging
+{
 
 struct Record {
 	Record(const String& p_message,

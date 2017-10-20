@@ -8,7 +8,8 @@
 
 class TestObject;
 
-class TestObjectReferenceOwner {
+class TestObjectReferenceOwner
+{
 public:
 	virtual ~TestObjectReferenceOwner() {}
 
@@ -90,7 +91,8 @@ public:
  * they shouldn't if the reference count is still > 1 after a sufficient period
  * of time has elapsed for all threads to have run and removed their reference.
  */
-class TestObject : public enable_shared_from_this<TestObject> {
+class TestObject : public enable_shared_from_this<TestObject>
+{
 public:
 	/**
 	 * The destructor for an TestObject must not be called until destroy is called
@@ -170,7 +172,8 @@ TestObject::~TestObject()
 	//	assert (m_object_observers.empty());
 }
 
-class TestObjectGC : public TestObjectReferenceOwner {
+class TestObjectGC : public TestObjectReferenceOwner
+{
 public: // ctors
 	virtual ~TestObjectGC() {}
 
@@ -182,7 +185,8 @@ public: // interface
 	void drop_references(const shared_ptr<TestObject>&) = 0;
 };
 
-class DefaultTestObjectGC : public TestObjectGC {
+class DefaultTestObjectGC : public TestObjectGC
+{
 public:
 	DefaultTestObjectGC()
 	    : m_thread(std::ref(*this))
@@ -252,7 +256,8 @@ private:
 	std::set<shared_ptr<TestObject>> m_managed_objects;
 };
 
-class TestObjectManager {
+class TestObjectManager
+{
 public:
 	static void initialize();
 
@@ -283,18 +288,21 @@ struct TestObjectManager::Impl {
 	std::unique_ptr<TestObjectGC> m_gc;
 };
 
-void TestObjectManager::initialize()
+void
+TestObjectManager::initialize()
 {
 	s_impl = unique_ptr<Impl>(new Impl);
 	s_impl->m_gc = unique_ptr<TestObjectGC>(new DefaultTestObjectGC);
 }
 
-void TestObjectManager::deinitialize()
+void
+TestObjectManager::deinitialize()
 {
 	s_impl.reset();
 }
 
-TestObjectGC& TestObjectManager::get_gc()
+TestObjectGC&
+TestObjectManager::get_gc()
 {
 	return *(s_impl->m_gc.get());
 }
@@ -324,7 +332,8 @@ class Route;
  * disconnection(I think)
  */
 
-class RouteObserver {
+class RouteObserver
+{
 public:
 	virtual void mute_enabled_changed(const shared_ptr<Route>&,
 	                                  bool mute_enabled) = 0;
@@ -332,7 +341,8 @@ public:
 	                                  bool solo_enabled) = 0;
 };
 
-class Route : public TestObject {
+class Route : public TestObject
+{
 public: // ctors
 	Route()
 	    : m_mute_enabled(false)
@@ -412,13 +422,15 @@ private: // data
 
 class Track;
 
-class TrackObserver {
+class TrackObserver
+{
 public:
 	virtual void record_enabled_changed(const shared_ptr<Track>&,
 	                                    bool record_enabled) = 0;
 };
 
-class Track : public Route {
+class Track : public Route
+{
 public:
 	Track()
 	    : m_record_enabled(false)
@@ -465,13 +477,15 @@ private:
 
 class Project;
 
-class ProjectObserver {
+class ProjectObserver
+{
 public:
 	virtual void route_added(const shared_ptr<Route>& track) = 0;
 	virtual void route_removed(const shared_ptr<Route>& track) = 0;
 };
 
-class Project : public TestObject, public TestObjectReferenceOwner {
+class Project : public TestObject, public TestObjectReferenceOwner
+{
 public:
 	bool add_route(const shared_ptr<Route>& route)
 	{
@@ -581,11 +595,13 @@ private:
 	std::mutex m_route_mutex;
 };
 
-class Widget {
+class Widget
+{
 public:
 };
 
-class RouteWidget : public Widget, public RouteObserver {
+class RouteWidget : public Widget, public RouteObserver
+{
 public:
 	RouteWidget(const shared_ptr<Route>& route)
 	    : m_route(route)
@@ -617,7 +633,8 @@ protected:
 	shared_ptr<Route> m_route;
 };
 
-class TrackWidget : public RouteWidget, public TrackObserver {
+class TrackWidget : public RouteWidget, public TrackObserver
+{
 public:
 	TrackWidget(const shared_ptr<Track>& track)
 	    : RouteWidget(track)
@@ -657,7 +674,8 @@ class UI;
 
 class ProjectUI : public Widget,
                   public ProjectObserver,
-                  public TestObjectReferenceOwner {
+                  public TestObjectReferenceOwner
+{
 public:
 	ProjectUI(const shared_ptr<Project>& project, int id)
 	    : m_thread(std::ref(*this))

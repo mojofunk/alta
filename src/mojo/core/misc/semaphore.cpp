@@ -3,7 +3,8 @@ Semaphore::Semaphore(uint32_t initial_val)
 {
 }
 
-void Semaphore::wait()
+void
+Semaphore::wait()
 {
 	std::unique_lock<std::mutex> lock(m_mutex);
 	while (m_counter < 1) {
@@ -13,15 +14,15 @@ void Semaphore::wait()
 	--m_counter;
 }
 
-bool Semaphore::try_wait()
+bool
+Semaphore::try_wait()
 {
 	std::unique_lock<std::mutex> lock(m_mutex, std::defer_lock);
 	try {
 		if (!lock.try_lock()) {
 			return false;
 		}
-	}
-	catch (...) {
+	} catch (...) {
 		return false;
 	}
 	// lock successful
@@ -35,7 +36,8 @@ bool Semaphore::try_wait()
 	return true;
 }
 
-void Semaphore::post()
+void
+Semaphore::post()
 {
 	++m_counter;
 	m_cond.notify_one();

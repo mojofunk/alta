@@ -4,7 +4,8 @@
 /**
  *
  */
-class PortmidiMIDIDriverModule : public MIDIDriverModule {
+class PortmidiMIDIDriverModule : public MIDIDriverModule
+{
 public: // ctors
 	PortmidiMIDIDriverModule();
 	~PortmidiMIDIDriverModule();

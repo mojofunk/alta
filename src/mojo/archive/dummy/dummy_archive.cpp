@@ -1,8 +1,10 @@
-void DummyArchive::read(const fs::path& file_path, Properties& props)
+void
+DummyArchive::read(const fs::path& file_path, Properties& props)
 {
 }
 
-void DummyArchive::write_object(std::ostream& os, const ObjectSP& obj)
+void
+DummyArchive::write_object(std::ostream& os, const ObjectSP& obj)
 {
 	const std::string type_name = types::get_type_name(typeid(*obj));
 
@@ -25,15 +27,17 @@ void DummyArchive::write_object(std::ostream& os, const ObjectSP& obj)
 	os << std::endl;
 }
 
-void DummyArchive::write_object_collection(std::ostream& os,
-                                           const ObjectCollection& col)
+void
+DummyArchive::write_object_collection(std::ostream& os,
+                                      const ObjectCollection& col)
 {
 	for (ObjectCollection::const_iterator i = col.begin(); i != col.end(); ++i) {
 		write_object(os, *i);
 	}
 }
 
-void DummyArchive::write_property(std::ostream& os, const Property& prop)
+void
+DummyArchive::write_property(std::ostream& os, const Property& prop)
 {
 	const std::string type_name = types::get_type_name(prop.value.type());
 
@@ -55,7 +59,8 @@ void DummyArchive::write_property(std::ostream& os, const Property& prop)
 	}
 }
 
-void DummyArchive::write(const fs::path& file_path, const Properties& props)
+void
+DummyArchive::write(const fs::path& file_path, const Properties& props)
 {
 	std::ofstream output_file(file_path.string().c_str());
 

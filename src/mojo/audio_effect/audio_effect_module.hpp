@@ -6,7 +6,8 @@
  * for different plugin AudioEffect API's such as VST, LADSPA,
  * AudioUnit and LV2.
  */
-class AudioEffectModule : public Module {
+class AudioEffectModule : public Module
+{
 public: // ctors
 	virtual ~AudioEffectModule();
 

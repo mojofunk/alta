@@ -6,7 +6,8 @@
  * performance of set vs unordered_set
  */
 template <class StringType>
-class StringPool {
+class StringPool
+{
 public:
 	using InternedString = const char*;
 

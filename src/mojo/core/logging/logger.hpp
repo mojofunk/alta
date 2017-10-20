@@ -1,7 +1,8 @@
 #ifndef MOJO_LOGGING_LOGGER_H
 #define MOJO_LOGGING_LOGGER_H
 
-namespace logging {
+namespace logging
+{
 
 /**
  * The Logger class needs a reference to a Log instance to send the log message
@@ -9,7 +10,8 @@ namespace logging {
  *
  * The Logger class will only send the message if it is enabled.
  */
-class Logger {
+class Logger
+{
 public:
 	Logger(Log& the_log, const char* const domain);
 

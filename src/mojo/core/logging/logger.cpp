@@ -1,4 +1,5 @@
-namespace logging {
+namespace logging
+{
 
 Logger::Logger(Log& the_log, const char* const domain)
     : m_log(the_log)
@@ -7,13 +8,14 @@ Logger::Logger(Log& the_log, const char* const domain)
 {
 }
 
-void Logger::write_record(const String& msg,
-                          const uint32_t cpu_id,
-                          const std::thread::id thread_id,
-                          uint64_t timestamp,
-                          int line,
-                          const char* file_name,
-                          const char* function_name) const
+void
+Logger::write_record(const String& msg,
+                     const uint32_t cpu_id,
+                     const std::thread::id thread_id,
+                     uint64_t timestamp,
+                     int line,
+                     const char* file_name,
+                     const char* function_name) const
 {
 	if (!m_enabled) {
 		return;

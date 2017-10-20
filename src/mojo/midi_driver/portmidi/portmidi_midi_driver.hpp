@@ -1,7 +1,8 @@
 #ifndef MOJO_PORTMIDI_MIDI_DRIVER_H
 #define MOJO_PORTMIDI_MIDI_DRIVER_H
 
-class PortmidiMIDIDriver : public MIDIDriver {
+class PortmidiMIDIDriver : public MIDIDriver
+{
 public: // ctors
 	PortmidiMIDIDriver();
 	~PortmidiMIDIDriver();

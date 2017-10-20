@@ -1,7 +1,8 @@
 #ifndef MOJO_PROPERTIES_H
 #define MOJO_PROPERTIES_H
 
-class Properties {
+class Properties
+{
 public:
 	typedef std::set<Property> container_t;
 	typedef container_t::iterator iterator;

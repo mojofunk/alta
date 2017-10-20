@@ -1,7 +1,8 @@
 #ifndef MOJO_MIDI_DRIVER_H
 #define MOJO_MIDI_DRIVER_H
 
-class MIDIDriver {
+class MIDIDriver
+{
 public: // ctors
 	virtual ~MIDIDriver();
 

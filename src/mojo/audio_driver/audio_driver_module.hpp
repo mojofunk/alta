@@ -4,7 +4,8 @@
 /**
  *
  */
-class AudioDriverModule : public Module {
+class AudioDriverModule : public Module
+{
 public: // ctors
 	virtual ~AudioDriverModule();
 

@@ -1,7 +1,8 @@
 #ifndef MOJO_TRANSPORT_H
 #define MOJO_TRANSPORT_H
 
-class Transport {
+class Transport
+{
 public:
 	void start();
 	void stop();

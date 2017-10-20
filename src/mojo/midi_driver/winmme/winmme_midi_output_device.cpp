@@ -8,29 +8,33 @@ WinMMEMIDIOutputDevice::~WinMMEMIDIOutputDevice()
 {
 }
 
-std::string WinMMEMIDIOutputDevice::get_name() const
+std::string
+WinMMEMIDIOutputDevice::get_name() const
 {
 	// TODO
 	return std::string();
 }
 
-MIDIDevice::error_t WinMMEMIDIOutputDevice::open(time_callback_t* callback,
-                                                 void* user_data)
+MIDIDevice::error_t
+WinMMEMIDIOutputDevice::open(time_callback_t* callback, void* user_data)
 {
 	// TODO
 }
 
-MIDIDevice::error_t WinMMEMIDIOutputDevice::close()
+MIDIDevice::error_t
+WinMMEMIDIOutputDevice::close()
 {
 	// TODO
 }
 
-std::string WinMMEMIDIOutputDevice::get_error_string(error_t err)
+std::string
+WinMMEMIDIOutputDevice::get_error_string(error_t err)
 {
 	// TODO
 }
 
-MIDIDevice::error_t WinMMEMIDIOutputDevice::write(Event* buffer, int32_t size)
+MIDIDevice::error_t
+WinMMEMIDIOutputDevice::write(Event* buffer, int32_t size)
 {
 	// TODO
 }

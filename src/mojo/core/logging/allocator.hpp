@@ -1,18 +1,24 @@
 #ifndef MOJO_LOGGING_ALLOCATOR_H
 #define MOJO_LOGGING_ALLOCATOR_H
 
-namespace logging {
+namespace logging
+{
 
-MOJO_API void initialize_allocator();
+MOJO_API void
+initialize_allocator();
 
-MOJO_API void deinitialize_allocator();
+MOJO_API void
+deinitialize_allocator();
 
-MOJO_API void* logging_allocate(std::size_t size);
+MOJO_API void*
+logging_allocate(std::size_t size);
 
-MOJO_API void logging_deallocate(void* ptr);
+MOJO_API void
+logging_deallocate(void* ptr);
 
 template <typename T>
-class Allocator {
+class Allocator
+{
 public:
 	typedef T value_type;
 	typedef value_type* pointer;
@@ -82,13 +88,15 @@ public:
 };
 
 template <class U1, class U2>
-inline bool operator==(const Allocator<U1>& x, const Allocator<U2>& y) noexcept
+inline bool
+operator==(const Allocator<U1>& x, const Allocator<U2>& y) noexcept
 {
 	return true;
 }
 
 template <class U1, class U2>
-inline bool operator!=(const Allocator<U1>& x, const Allocator<U2>& y) noexcept
+inline bool
+operator!=(const Allocator<U1>& x, const Allocator<U2>& y) noexcept
 {
 	return !(x == y);
 }

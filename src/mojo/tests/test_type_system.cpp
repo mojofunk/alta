@@ -7,13 +7,15 @@
 #include "mojo-application.hpp"
 
 template <class T>
-bool test_type_name(const string& type_name)
+bool
+test_type_name(const string& type_name)
 {
 	return (types::get_type_name(typeid(T)) == type_name);
 }
 
 template <class T>
-void test_type_factory(const string& type_name)
+void
+test_type_factory(const string& type_name)
 {
 	T* instance = boost::any_cast<T*>(types::create_type(type_name));
 

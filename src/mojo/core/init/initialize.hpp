@@ -1,7 +1,8 @@
 #ifndef MOJO_CORE_CORE_INITIALIZE_H
 #define MOJO_CORE_CORE_INITIALIZE_H
 
-namespace core {
+namespace core
+{
 
 /**
  * Initialize the core library, this must be called before
@@ -9,7 +10,8 @@ namespace core {
  * calls to deinitialize. This is necessary for modules etc
  * that cannot know of the initialization state of mojo-core.
  */
-void initialize();
+void
+initialize();
 
 /**
  * @return true if mojo-core has been initialized.
@@ -17,12 +19,14 @@ void initialize();
  * This is really only for testing, you should not depend
  * on the state of initialization returned.
  */
-bool initialized();
+bool
+initialized();
 
 /**
  * Deinitialize mojo-core library.
  */
-void deinitialize();
+void
+deinitialize();
 
 } // namespace core
 

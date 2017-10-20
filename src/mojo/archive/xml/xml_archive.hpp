@@ -22,7 +22,8 @@
   Archives are only expected to know about the Object class so all references
   must be stored as objectref types and then referenced by id
  */
-class XMLArchive : public Archive {
+class XMLArchive : public Archive
+{
 public:
 	virtual void write(const fs::path& file_path, const Properties& props);
 

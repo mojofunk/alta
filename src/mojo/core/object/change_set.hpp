@@ -7,7 +7,8 @@
  * Why can't this just be std::set<Change>? do we want ChangeSet
  * to inherit from Object? I don't think so.
  */
-class ChangeSet {
+class ChangeSet
+{
 public:
 	typedef std::set<Change> container_t;
 	typedef container_t::iterator iterator;

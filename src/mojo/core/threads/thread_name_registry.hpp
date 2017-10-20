@@ -6,7 +6,8 @@
  * reading the thread name should be sufficient for now.
  */
 template <class StringType>
-class ThreadNameRegistry {
+class ThreadNameRegistry
+{
 public:
 	typedef StringType string_type;
 
@@ -16,8 +17,9 @@ public:
 		std::lock_guard<std::mutex> lock(m_thread_name_map_mutex);
 
 		bool inserted =
-		    m_thread_name_map.insert(std::make_pair(std::this_thread::get_id(),
-		                                            thread_name)).second;
+		    m_thread_name_map
+		        .insert(std::make_pair(std::this_thread::get_id(), thread_name))
+		        .second;
 
 		return inserted;
 	}

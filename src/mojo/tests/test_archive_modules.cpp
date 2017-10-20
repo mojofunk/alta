@@ -8,9 +8,10 @@
 #include "mojo-application.hpp"
 
 template <class T>
-void check_property(const Properties& props,
-                    const string& property_name,
-                    const T& expected_value)
+void
+check_property(const Properties& props,
+               const string& property_name,
+               const T& expected_value)
 {
 	T prop_value;
 
@@ -19,21 +20,24 @@ void check_property(const Properties& props,
 	BOOST_CHECK_EQUAL(prop_value, expected_value);
 }
 
-void insert_some_properties(Properties& props)
+void
+insert_some_properties(Properties& props)
 {
 	props.set_property("name", string("timbyr"));
 	props.set_property("age", 12);
 	props.set_property("avgloc", 10.53f);
 }
 
-void check_some_properties(Properties& props)
+void
+check_some_properties(Properties& props)
 {
 	check_property<std::string>(props, "name", "timbyr");
 	check_property<int32_t>(props, "age", 12);
 	check_property<float>(props, "avgloc", 10.23f);
 }
 
-void test_archive(ArchiveSP archive, const string& filename)
+void
+test_archive(ArchiveSP archive, const string& filename)
 {
 	Properties props;
 

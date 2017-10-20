@@ -1,9 +1,11 @@
 #ifndef MOJO_LOGGING_SINK_H
 #define MOJO_LOGGING_SINK_H
 
-namespace logging {
+namespace logging
+{
 
-class Sink {
+class Sink
+{
 public:
 	virtual ~Sink(){};
 

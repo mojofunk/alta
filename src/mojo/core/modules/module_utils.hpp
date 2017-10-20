@@ -1,12 +1,15 @@
 #ifndef MOJO_MODULE_UTILS_H
 #define MOJO_MODULE_UTILS_H
 
-ModuleSP open_module(const fs::path& filepath);
+ModuleSP
+open_module(const fs::path& filepath);
 
-ModuleSPSet discover_modules(const Searchpath& sp);
+ModuleSPSet
+discover_modules(const Searchpath& sp);
 
 template <class T>
-std::set<std::shared_ptr<T>> get_modules_of_type(const ModuleSPSet& modules)
+std::set<std::shared_ptr<T>>
+get_modules_of_type(const ModuleSPSet& modules)
 {
 	typedef std::shared_ptr<T> module_type;
 	typedef std::set<module_type> set_type;

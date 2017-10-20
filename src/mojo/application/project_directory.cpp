@@ -3,7 +3,8 @@ ProjectDirectory::ProjectDirectory(const fs::path& project_path)
 {
 }
 
-bool ProjectDirectory::create()
+bool
+ProjectDirectory::create()
 {
 	bool is_new = false;
 
@@ -16,7 +17,8 @@ bool ProjectDirectory::create()
 	return is_new;
 }
 
-bool ProjectDirectory::is_valid() const
+bool
+ProjectDirectory::is_valid() const
 {
 	if (!fs::is_directory(m_root_path)) return false;
 
@@ -28,17 +30,20 @@ bool ProjectDirectory::is_valid() const
 	return true;
 }
 
-const fs::path ProjectDirectory::audiofiles_path() const
+const fs::path
+ProjectDirectory::audiofiles_path() const
 {
 	return m_root_path / audiofiles_dir_name;
 }
 
-const fs::path ProjectDirectory::peak_path() const
+const fs::path
+ProjectDirectory::peak_path() const
 {
 	return m_root_path / peak_dir_name;
 }
 
-const std::vector<fs::path> ProjectDirectory::sub_directories() const
+const std::vector<fs::path>
+ProjectDirectory::sub_directories() const
 {
 	std::vector<fs::path> tmp_paths;
 

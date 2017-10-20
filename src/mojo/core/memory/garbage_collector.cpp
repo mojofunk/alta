@@ -1,5 +1,6 @@
 // TODO proper logging
-void GarbageCollector::run()
+void
+GarbageCollector::run()
 {
 	// create a vector to hold the contents of the queue, not a good design in
 	// terms of minimizing memory usage etc but it will do for now

@@ -5,7 +5,8 @@
  * A Change contains the information relating
  * to a state change in an Object class.
  */
-class Change {
+class Change
+{
 private:
 	Change();
 

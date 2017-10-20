@@ -1,7 +1,8 @@
 #ifndef MOJO_LADSPA_AUDIO_EFFECT_H
 #define MOJO_LADSPA_AUDIO_EFFECT_H
 
-class LADSPAAudioEffect : public AudioEffect {
+class LADSPAAudioEffect : public AudioEffect
+{
 public: // ctors
 	LADSPAAudioEffect(LADSPAAudioEffectInfoSP info, samplerate_t);
 

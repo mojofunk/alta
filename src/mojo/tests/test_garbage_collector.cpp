@@ -17,13 +17,15 @@ static std::atomic<int> test_gc_count(0);
 
 static const int max_instances = 100000;
 
-class TestGC {
+class TestGC
+{
 public:
 	TestGC() { ++test_gc_count; }
 	~TestGC() { --test_gc_count; }
 };
 
-void test_garbage_collector_basic_producer_thread()
+void
+test_garbage_collector_basic_producer_thread()
 {
 	while (!done) {
 		// set a max instance count
@@ -44,7 +46,8 @@ void test_garbage_collector_basic_producer_thread()
 	}
 }
 
-void test_garbage_collector_basic_gc_thread()
+void
+test_garbage_collector_basic_gc_thread()
 {
 	cout << "Started GC thread" << endl;
 	while (!done) {
@@ -53,7 +56,8 @@ void test_garbage_collector_basic_gc_thread()
 	}
 }
 
-void test_garbage_collector_basic_iteration()
+void
+test_garbage_collector_basic_iteration()
 {
 	done = false;
 

@@ -8,7 +8,8 @@
 
 const string project_filename = "project1";
 
-void add_random_events(AudioSequenceSP aseq)
+void
+add_random_events(AudioSequenceSP aseq)
 {
 	int min_event_count = 1;
 	int max_event_count = 100;

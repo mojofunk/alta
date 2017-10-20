@@ -1,7 +1,8 @@
 #ifndef MOJO_TRACK_H
 #define MOJO_TRACK_H
 
-class Track : public Object {
+class Track : public Object
+{
 public:
 	// constructors
 	Track();

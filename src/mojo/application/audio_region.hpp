@@ -5,7 +5,8 @@
  * An AudioRegion is a section within a clip with an offset and duration
  * and a snap point.
  */
-class AudioRegion : public Object {
+class AudioRegion : public Object
+{
 public:
 	AudioRegion();
 

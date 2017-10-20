@@ -8,7 +8,8 @@
 
 using namespace std::chrono;
 
-class GlibTimeStampSource {
+class GlibTimeStampSource
+{
 public:
 	static uint64_t get_timestamp_microseconds() { return g_get_monotonic_time(); }
 	// static int64_t get_timestamp_nanoseconds { return g_get_monotonic_time(); }
@@ -108,7 +109,8 @@ static std::atomic<bool> test_logging_alloc_done(false);
 
 M_DEFINE_LOGGER(ThreadTestLogger);
 
-void test_logging_alloc_thread()
+void
+test_logging_alloc_thread()
 {
 	cout << "Started Perf thread" << endl;
 	while (!test_logging_alloc_done) {
@@ -122,7 +124,8 @@ void test_logging_alloc_thread()
 	}
 }
 
-void test_logging_alloc_iteration()
+void
+test_logging_alloc_iteration()
 {
 	test_logging_alloc_done = false;
 	const int num_logging_threads = 4;
@@ -168,13 +171,15 @@ std::size_t operator_new_allocation_total = 0;
 
 std::atomic<bool> enable_global_debug_allocator_output;
 
-void set_global_debug_allocator_output(bool on_off)
+void
+set_global_debug_allocator_output(bool on_off)
 {
 	enable_global_debug_allocator_output = on_off;
 }
 
 // need per thread allocators/stats
-void* operator new(std::size_t sz) // throw(std::bad_alloc)
+void*
+operator new(std::size_t sz) // throw(std::bad_alloc)
 {
 	operator_new_bytes_allocated += sz;
 	if (enable_global_debug_allocator_output) {
@@ -185,13 +190,15 @@ void* operator new(std::size_t sz) // throw(std::bad_alloc)
 	return std::malloc(sz);
 }
 
-void operator delete(void* ptr) throw()
+void
+operator delete(void* ptr) throw()
 {
 	--operator_new_allocation_count;
 	std::free(ptr);
 }
 
-void print_operator_new_stats()
+void
+print_operator_new_stats()
 {
 	std::cout << "Total bytes allocated using ::operator new = "
 	          << operator_new_bytes_allocated << '\n';

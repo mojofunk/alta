@@ -70,7 +70,8 @@
  *
  * This class perhaps should be called GraphProcessor
  */
-class Engine {
+class Engine
+{
 public: // ctors
 	Engine();
 

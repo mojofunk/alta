@@ -10,13 +10,15 @@ AudioRegion::AudioRegion(const count_t& offset, const count_t& dur)
 {
 }
 
-void AudioRegion::get_properties(Properties& props) const
+void
+AudioRegion::get_properties(Properties& props) const
 {
 	props.set_property(s_property_audio_clip, m_audio_clip);
 	props.set_property(s_property_offset, m_offset);
 	props.set_property(s_property_duration, m_duration);
 }
 
-void AudioRegion::set_properties(const Properties& props)
+void
+AudioRegion::set_properties(const Properties& props)
 {
 }

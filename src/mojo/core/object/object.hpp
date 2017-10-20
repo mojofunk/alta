@@ -1,7 +1,8 @@
 #ifndef MOJO_OBJECT_H
 #define MOJO_OBJECT_H
 
-class Object {
+class Object
+{
 	typedef signals::signal<void(const ChangeSet&)> changed_signal_t;
 	typedef signals::signal<void()> destroy_signal_t;
 

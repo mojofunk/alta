@@ -6,14 +6,16 @@
 
 const int iterations = 1e6;
 
-void init_thread()
+void
+init_thread()
 {
 	for (int i = 0; i < iterations; ++i) {
 		core::initialize();
 	}
 }
 
-void deinit_thread()
+void
+deinit_thread()
 {
 	for (int i = 0; i < iterations; ++i) {
 		core::deinitialize();

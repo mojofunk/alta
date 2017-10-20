@@ -28,7 +28,8 @@ static std::atomic<int> pop_count(0);
 
 static std::atomic<bool> done(false);
 
-void produce()
+void
+produce()
 {
 	for (int i = 0; i != iterations; ++i) {
 		int value = ++push_count;
@@ -37,7 +38,8 @@ void produce()
 	}
 }
 
-void consume()
+void
+consume()
 {
 	int value = 0;
 	while (!done) {
@@ -51,7 +53,8 @@ void consume()
 	}
 }
 
-void test_queue_iteration()
+void
+test_queue_iteration()
 {
 	done = false;
 	push_count = 0;

@@ -35,11 +35,13 @@ BOOST_AUTO_TEST_CASE(test_windows_qpc_timer)
 	cout << "Max QPC interval = " << max_interval << endl;
 }
 
-namespace {
+namespace
+{
 
-void get_tgt_granularity(uint32_t& min_elapsed,
-                         uint32_t& max_elapsed,
-                         uint32_t& avg_elapsed)
+void
+get_tgt_granularity(uint32_t& min_elapsed,
+                    uint32_t& max_elapsed,
+                    uint32_t& avg_elapsed)
 {
 	min_elapsed = 1000;
 	max_elapsed = 0;
@@ -61,9 +63,10 @@ void get_tgt_granularity(uint32_t& min_elapsed,
 	avg_elapsed = total_elapsed / count;
 }
 
-void get_sleep_granularity(uint32_t& min_elapsed,
-                           uint32_t& max_elapsed,
-                           uint32_t& avg_elapsed)
+void
+get_sleep_granularity(uint32_t& min_elapsed,
+                      uint32_t& max_elapsed,
+                      uint32_t& avg_elapsed)
 {
 	min_elapsed = 1000;
 	max_elapsed = 0;
@@ -86,8 +89,8 @@ void get_sleep_granularity(uint32_t& min_elapsed,
 	avg_elapsed = total_elapsed / count;
 }
 
-void test_tgt_granularity(const std::string& test_name,
-                          uint32_t& tgt_avg_elapsed)
+void
+test_tgt_granularity(const std::string& test_name, uint32_t& tgt_avg_elapsed)
 {
 	uint32_t tgt_min_elapsed = 0;
 	uint32_t tgt_max_elapsed = 0;
@@ -100,8 +103,9 @@ void test_tgt_granularity(const std::string& test_name,
 	cout << "TGT " << test_name << " avg elapsed = " << tgt_avg_elapsed << endl;
 }
 
-void test_sleep_granularity(const std::string& test_name,
-                            uint32_t& sleep_avg_elapsed)
+void
+test_sleep_granularity(const std::string& test_name,
+                       uint32_t& sleep_avg_elapsed)
 {
 	uint32_t sleep_min_elapsed = 0;
 	uint32_t sleep_max_elapsed = 0;

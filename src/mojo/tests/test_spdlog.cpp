@@ -12,22 +12,26 @@ std::shared_ptr<spdlog::logger> s_application_log;
 std::shared_ptr<spdlog::logger> s_project_log;
 std::shared_ptr<spdlog::logger> s_audio_clip_log;
 
-std::shared_ptr<spdlog::logger>& application_log()
+std::shared_ptr<spdlog::logger>&
+application_log()
 {
 	return s_application_log;
 }
 
-std::shared_ptr<spdlog::logger>& project_log()
+std::shared_ptr<spdlog::logger>&
+project_log()
 {
 	return s_project_log;
 }
 
-std::shared_ptr<spdlog::logger>& audio_clip_log()
+std::shared_ptr<spdlog::logger>&
+audio_clip_log()
 {
 	return s_audio_clip_log;
 }
 
-void initialize_loggers()
+void
+initialize_loggers()
 {
 	spdlog::set_pattern("[%n] [thread %t] [%fus] %v");
 	s_application_log = spdlog::stdout_logger_mt("Application");
@@ -35,7 +39,8 @@ void initialize_loggers()
 	s_audio_clip_log = spdlog::stdout_logger_mt("AudioClip");
 }
 
-void deinitialize_loggers()
+void
+deinitialize_loggers()
 {
 	s_application_log.reset();
 	s_project_log.reset();
@@ -136,8 +141,7 @@ BOOST_AUTO_TEST_CASE(test_spdlog_example)
 		async_file->info() << "This is async log.."
 		                   << "Should be very fast!";
 		spdlog::drop_all(); // Close all loggers
-	}
-	catch (const spd::spdlog_ex& ex) {
+	} catch (const spd::spdlog_ex& ex) {
 		std::cout << "Log failed: " << ex.what() << std::endl;
 	}
 }

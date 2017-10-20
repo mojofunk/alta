@@ -1,9 +1,11 @@
 #ifndef MOJO_APPLICATION_DATA_H
 #define MOJO_APPLICATION_DATA_H
 
-namespace internal {
+namespace internal
+{
 
-class WorkerThread {
+class WorkerThread
+{
 public:
 	typedef std::function<void()> function_t;
 

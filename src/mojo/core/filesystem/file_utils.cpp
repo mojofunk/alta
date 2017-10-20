@@ -1,6 +1,7 @@
-std::size_t find_matching_files(const std::vector<fs::path>& paths,
-                                FileMatchFunc match_func,
-                                std::vector<fs::path>& result)
+std::size_t
+find_matching_files(const std::vector<fs::path>& paths,
+                    FileMatchFunc match_func,
+                    std::vector<fs::path>& result)
 {
 	for (auto const& path : paths) {
 		find_matching_files(path, match_func, result);
@@ -9,9 +10,10 @@ std::size_t find_matching_files(const std::vector<fs::path>& paths,
 	return result.size();
 }
 
-std::size_t find_matching_files(const fs::path& dir_path,
-                                FileMatchFunc match_func,
-                                std::vector<fs::path>& result)
+std::size_t
+find_matching_files(const fs::path& dir_path,
+                    FileMatchFunc match_func,
+                    std::vector<fs::path>& result)
 {
 	if (!exists(dir_path)) return 0;
 
@@ -27,9 +29,10 @@ std::size_t find_matching_files(const fs::path& dir_path,
 	return result.size();
 }
 
-std::size_t find_matching_file(const std::vector<fs::path>& paths,
-                               const std::string& filename,
-                               std::vector<fs::path>& result)
+std::size_t
+find_matching_file(const std::vector<fs::path>& paths,
+                   const std::string& filename,
+                   std::vector<fs::path>& result)
 {
 	for (auto const& path : paths) {
 		find_matching_file(path, filename, result);
@@ -38,9 +41,10 @@ std::size_t find_matching_file(const std::vector<fs::path>& paths,
 	return result.size();
 }
 
-std::size_t find_matching_file(const fs::path& dir_path,
-                               const std::string& filename,
-                               std::vector<fs::path>& result)
+std::size_t
+find_matching_file(const fs::path& dir_path,
+                   const std::string& filename,
+                   std::vector<fs::path>& result)
 {
 	if (!exists(dir_path)) return 0;
 
@@ -56,9 +60,10 @@ std::size_t find_matching_file(const fs::path& dir_path,
 	return result.size();
 }
 
-bool find_matching_file(const fs::path& dir_path,
-                        const std::string& filename,
-                        fs::path& result)
+bool
+find_matching_file(const fs::path& dir_path,
+                   const std::string& filename,
+                   fs::path& result)
 {
 	std::vector<fs::path> paths;
 
@@ -70,7 +75,8 @@ bool find_matching_file(const fs::path& dir_path,
 	return found;
 }
 
-const fs::path get_non_existent_file_path(const fs::path& desired_file_path)
+const fs::path
+get_non_existent_file_path(const fs::path& desired_file_path)
 {
 
 	if (!fs::exists(desired_file_path)) {
@@ -102,7 +108,8 @@ const fs::path get_non_existent_file_path(const fs::path& desired_file_path)
 	return final_path;
 }
 
-fs::path tmp_writable_directory(const char* domain, const std::string& prefix)
+fs::path
+tmp_writable_directory(const char* domain, const std::string& prefix)
 {
 	fs::path tmp_dir = fs::path(g_get_tmp_dir()) / domain;
 

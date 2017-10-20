@@ -1,4 +1,5 @@
-int get_midi_msg_length(uint8_t status_byte)
+int
+get_midi_msg_length(uint8_t status_byte)
 {
 	// define these with meaningful names
 	switch (status_byte & 0xf0) {

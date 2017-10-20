@@ -1,6 +1,7 @@
 MOJO_DEBUG_DOMAIN(APPLICATION_INTERNAL);
 
-void Application::new_project_internal()
+void
+Application::new_project_internal()
 {
 	ProjectSP pi(new Project);
 	MOJO_DEBUG(APPLICATION_INTERNAL);
@@ -11,7 +12,8 @@ void Application::new_project_internal()
 	data->m_project_added(pi.get());
 }
 
-void Application::open_project_internal(const std::string& project_file)
+void
+Application::open_project_internal(const std::string& project_file)
 {
 	ProjectSP pi(new Project);
 
@@ -23,7 +25,8 @@ void Application::open_project_internal(const std::string& project_file)
 	// signal async
 }
 
-void Application::close_project_internal(Project* p)
+void
+Application::close_project_internal(Project* p)
 {
 	MOJO_DEBUG(APPLICATION_INTERNAL);
 	ProjectSP sp(p, internal::null_deleter());
@@ -46,7 +49,8 @@ void Application::close_project_internal(Project* p)
 	data->projects.erase(i);
 }
 
-void Application::set_active_project_internal(Project* p)
+void
+Application::set_active_project_internal(Project* p)
 {
 	// data->engine->reset();
 
@@ -59,7 +63,8 @@ void Application::set_active_project_internal(Project* p)
 	// signal sync?
 }
 
-void Application::add_track_internal(Project* p, const TrackOptions& options)
+void
+Application::add_track_internal(Project* p, const TrackOptions& options)
 {
 	// std::cerr << "Options type: " << track_type_to_string (options.type) <<
 	// std::endl;

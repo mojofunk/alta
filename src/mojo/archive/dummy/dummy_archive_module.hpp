@@ -1,7 +1,8 @@
 #ifndef MOJO_DUMMY_ARCHIVE_MODULE_H
 #define MOJO_DUMMY_ARCHIVE_MODULE_H
 
-class DummyArchiveModule : public ArchiveModule {
+class DummyArchiveModule : public ArchiveModule
+{
 public: // constructors
 	DummyArchiveModule();
 	~DummyArchiveModule();

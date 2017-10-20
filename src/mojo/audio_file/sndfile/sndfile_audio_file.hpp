@@ -1,7 +1,8 @@
 #ifndef MOJO_SNDFILE_AUDIO_FILE_H
 #define MOJO_SNDFILE_AUDIO_FILE_H
 
-class SndfileException : public std::runtime_error {
+class SndfileException : public std::runtime_error
+{
 public:
 	SndfileException(const std::string& what)
 	    : std::runtime_error(what)
@@ -9,7 +10,8 @@ public:
 	}
 };
 
-class SndfileAudioFile : public AudioFile {
+class SndfileAudioFile : public AudioFile
+{
 public:
 	SndfileAudioFile(const std::string& path);
 

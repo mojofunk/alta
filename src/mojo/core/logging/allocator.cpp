@@ -1,10 +1,12 @@
-namespace logging {
+namespace logging
+{
 
 static std::atomic<uint32_t> s_allocator_init_count(0);
 
 static FixedSizePool* s_allocator_mem_pool = nullptr;
 
-void initialize_allocator()
+void
+initialize_allocator()
 {
 	if (++s_allocator_init_count != 1) return;
 
@@ -12,7 +14,8 @@ void initialize_allocator()
 	s_allocator_mem_pool = new FixedSizePool(128, 1024);
 }
 
-void deinitialize_allocator()
+void
+deinitialize_allocator()
 {
 	if (--s_allocator_init_count != 0) return;
 
@@ -20,7 +23,8 @@ void deinitialize_allocator()
 	s_allocator_mem_pool = nullptr;
 }
 
-void* logging_allocate(std::size_t size)
+void*
+logging_allocate(std::size_t size)
 {
 	void* ptr = nullptr;
 
@@ -39,7 +43,8 @@ void* logging_allocate(std::size_t size)
 	return ptr;
 }
 
-void logging_deallocate(void* ptr)
+void
+logging_deallocate(void* ptr)
 {
 	if (s_allocator_mem_pool->is_from(ptr)) {
 		LOGGING_DEBUG("log deallocating using mem pool, available %d\n",

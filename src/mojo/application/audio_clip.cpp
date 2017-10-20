@@ -7,10 +7,12 @@ AudioClip::AudioClip()
 {
 }
 
-void AudioClip::get_properties(Properties& props) const
+void
+AudioClip::get_properties(Properties& props) const
 {
 }
 
-void AudioClip::set_properties(const Properties& props)
+void
+AudioClip::set_properties(const Properties& props)
 {
 }

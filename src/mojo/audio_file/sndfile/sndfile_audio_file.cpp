@@ -13,27 +13,32 @@ SndfileAudioFile::~SndfileAudioFile()
 {
 }
 
-AudioFileFormatSP SndfileAudioFile::format()
+AudioFileFormatSP
+SndfileAudioFile::format()
 {
 	return m_format;
 }
 
-count_t SndfileAudioFile::read_frames(float* buf, count_t frame_count)
+count_t
+SndfileAudioFile::read_frames(float* buf, count_t frame_count)
 {
 	return sf_readf_float(m_sf, buf, frame_count);
 }
 
-count_t SndfileAudioFile::write_frames(float* buf, count_t frame_count)
+count_t
+SndfileAudioFile::write_frames(float* buf, count_t frame_count)
 {
 	return sf_writef_float(m_sf, buf, frame_count);
 }
 
-count_t SndfileAudioFile::seek(count_t frame_offset)
+count_t
+SndfileAudioFile::seek(count_t frame_offset)
 {
 	return sf_seek(m_sf, frame_offset, SEEK_SET);
 }
 
-count_t SndfileAudioFile::frames() const
+count_t
+SndfileAudioFile::frames() const
 {
 	// read current frame offset
 	sf_count_t frame_pos = sf_seek(m_sf, 0, SEEK_CUR);
@@ -45,12 +50,14 @@ count_t SndfileAudioFile::frames() const
 	return frames;
 }
 
-samplerate_t SndfileAudioFile::samplerate() const
+samplerate_t
+SndfileAudioFile::samplerate() const
 {
 	return m_info.samplerate;
 }
 
-channel_count_t SndfileAudioFile::channels() const
+channel_count_t
+SndfileAudioFile::channels() const
 {
 	return m_info.channels;
 }

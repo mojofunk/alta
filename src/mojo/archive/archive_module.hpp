@@ -1,7 +1,8 @@
 #ifndef MOJO_ARCHIVE_MODULE_H
 #define MOJO_ARCHIVE_MODULE_H
 
-class ArchiveModule : public Module {
+class ArchiveModule : public Module
+{
 public: // ctors
 	virtual ~ArchiveModule();
 

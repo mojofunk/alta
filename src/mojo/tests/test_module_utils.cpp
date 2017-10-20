@@ -6,7 +6,8 @@
 
 #include "mojo-audio-file.hpp"
 
-fs::path get_sndfile_module_path()
+fs::path
+get_sndfile_module_path()
 {
 #ifdef MOJO_WINDOWS
 	std::string module_name("mojo-audio-file-sndfile");
@@ -59,7 +60,8 @@ BOOST_AUTO_TEST_CASE(module_typeinfo_test)
 	BOOST_CHECK(audio_module);
 }
 
-void test_module(const ModuleSP& mod)
+void
+test_module(const ModuleSP& mod)
 {
 	BOOST_REQUIRE(mod);
 

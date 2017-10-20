@@ -2,7 +2,8 @@
 #define MOJO_ELAPSED_TIMER_H
 
 template <class T>
-class ElapsedTimer {
+class ElapsedTimer
+{
 public:
 	ElapsedTimer()
 	    : m_start_time(T::get_timestamp_microseconds())

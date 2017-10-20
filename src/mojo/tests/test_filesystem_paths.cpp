@@ -4,7 +4,8 @@
 
 #include "test_includes.hpp"
 
-void log_paths(const paths_t& paths)
+void
+log_paths(const paths_t& paths)
 {
 	for (auto const& i : paths) {
 		BOOST_TEST_MESSAGE(i);
@@ -47,13 +48,15 @@ BOOST_AUTO_TEST_CASE(test_config_search_path)
 	log_paths(config_paths);
 }
 
-void test_path(const fs::path& p)
+void
+test_path(const fs::path& p)
 {
 	BOOST_REQUIRE(!p.empty());
 	BOOST_TEST_MESSAGE(p);
 }
 
-void test_search_path(const Searchpath& sp)
+void
+test_search_path(const Searchpath& sp)
 {
 	for_each(sp.begin(), sp.end(), test_path);
 }

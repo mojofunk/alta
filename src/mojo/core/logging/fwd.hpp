@@ -1,7 +1,8 @@
 #ifndef MOJO_LOGGING_FWD_H
 #define MOJO_LOGGING_FWD_H
 
-namespace logging {
+namespace logging
+{
 class Log;
 class Logger;
 class Sink;

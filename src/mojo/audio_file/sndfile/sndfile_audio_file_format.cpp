@@ -3,7 +3,8 @@ SndfileAudioFileFormat::SndfileAudioFileFormat(int sndfile_format)
 {
 }
 
-std::string SndfileAudioFileFormat::name() const
+std::string
+SndfileAudioFileFormat::name() const
 {
 	SF_FORMAT_INFO info;
 
@@ -22,7 +23,8 @@ std::string SndfileAudioFileFormat::name() const
 	return major_format_name + ", " + minor_format_name;
 }
 
-std::string SndfileAudioFileFormat::extension() const
+std::string
+SndfileAudioFileFormat::extension() const
 {
 	SF_FORMAT_INFO info;
 
@@ -33,7 +35,8 @@ std::string SndfileAudioFileFormat::extension() const
 	return std::string(".") + info.extension;
 }
 
-int SndfileAudioFileFormat::format() const
+int
+SndfileAudioFileFormat::format() const
 {
 	return m_format;
 }

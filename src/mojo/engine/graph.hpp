@@ -7,7 +7,8 @@ class Node;
  * A Graph can be made up of many disconnected directed acyclic graph's(DAG)
  * where each DAG can be processed by a number of threads.
  */
-class Graph {
+class Graph
+{
 public:
 	// Node* create_node(callback_func_t, void* user_data);
 	// destroy_node(Node*);

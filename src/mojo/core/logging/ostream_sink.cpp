@@ -1,6 +1,8 @@
-namespace logging {
+namespace logging
+{
 
-void OStreamSink::handle_record(Record& record)
+void
+OStreamSink::handle_record(Record& record)
 {
 	std::cout << "Logger: " << record.logger_name
 	          << ", Log Message: " << record.message

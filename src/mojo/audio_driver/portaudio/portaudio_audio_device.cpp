@@ -11,12 +11,14 @@ PortaudioAudioDevice::~PortaudioAudioDevice()
 {
 }
 
-std::string PortaudioAudioDevice::get_name() const
+std::string
+PortaudioAudioDevice::get_name() const
 {
 	return get_device_info()->name;
 }
 
-int PortaudioAudioDevice::portaudio_callback(
+int
+PortaudioAudioDevice::portaudio_callback(
     const void* input_buffer,
     void* output_buffer,
     unsigned long frames_per_buffer,
@@ -37,12 +39,13 @@ int PortaudioAudioDevice::portaudio_callback(
 	return 1;
 }
 
-AudioDevice::error_t PortaudioAudioDevice::open(uint32_t input_channels,
-                                                uint32_t output_channels,
-                                                uint32_t samplerate,
-                                                uint32_t buffersize,
-                                                callback_t* cb,
-                                                void* user_data)
+AudioDevice::error_t
+PortaudioAudioDevice::open(uint32_t input_channels,
+                           uint32_t output_channels,
+                           uint32_t samplerate,
+                           uint32_t buffersize,
+                           callback_t* cb,
+                           void* user_data)
 {
 	PaStreamParameters input_params = get_default_input_params();
 	PaStreamParameters output_params = get_default_output_params();
@@ -71,12 +74,14 @@ AudioDevice::error_t PortaudioAudioDevice::open(uint32_t input_channels,
 	return (AudioDevice::error_t)err;
 }
 
-bool PortaudioAudioDevice::is_open()
+bool
+PortaudioAudioDevice::is_open()
 {
 	return m_stream != NULL;
 }
 
-AudioDevice::error_t PortaudioAudioDevice::start()
+AudioDevice::error_t
+PortaudioAudioDevice::start()
 {
 	PaError err = Pa_StartStream(m_stream);
 	if (err == paNoError) {
@@ -88,7 +93,8 @@ AudioDevice::error_t PortaudioAudioDevice::start()
 	return AudioDevice::UNKNOWN_ERROR;
 }
 
-bool PortaudioAudioDevice::is_active()
+bool
+PortaudioAudioDevice::is_active()
 {
 	if (m_stream == NULL) return false;
 
@@ -102,7 +108,8 @@ bool PortaudioAudioDevice::is_active()
 	return false;
 }
 
-AudioDevice::error_t PortaudioAudioDevice::stop()
+AudioDevice::error_t
+PortaudioAudioDevice::stop()
 {
 	PaError err = Pa_StopStream(m_stream);
 	if (err == paNoError) {
@@ -114,7 +121,8 @@ AudioDevice::error_t PortaudioAudioDevice::stop()
 	return AudioDevice::UNKNOWN_ERROR;
 }
 
-bool PortaudioAudioDevice::is_stopped()
+bool
+PortaudioAudioDevice::is_stopped()
 {
 	if (m_stream == NULL) return false;
 
@@ -128,7 +136,8 @@ bool PortaudioAudioDevice::is_stopped()
 	return false;
 }
 
-AudioDevice::error_t PortaudioAudioDevice::close()
+AudioDevice::error_t
+PortaudioAudioDevice::close()
 {
 	PaError err = Pa_CloseStream(m_stream);
 	if (err == paNoError) {
@@ -142,7 +151,8 @@ AudioDevice::error_t PortaudioAudioDevice::close()
 	return AudioDevice::UNKNOWN_ERROR;
 }
 
-AudioDevice::error_t PortaudioAudioDevice::abort()
+AudioDevice::error_t
+PortaudioAudioDevice::abort()
 {
 	PaError err = Pa_AbortStream(m_stream);
 	if (err == paNoError) {
@@ -156,17 +166,20 @@ AudioDevice::error_t PortaudioAudioDevice::abort()
 	return AudioDevice::UNKNOWN_ERROR;
 }
 
-std::string PortaudioAudioDevice::get_error_string(error_t err)
+std::string
+PortaudioAudioDevice::get_error_string(error_t err)
 {
 	return Pa_GetErrorText(err);
 }
 
-PaDeviceInfo const* PortaudioAudioDevice::get_device_info() const
+PaDeviceInfo const*
+PortaudioAudioDevice::get_device_info() const
 {
 	return Pa_GetDeviceInfo(m_device_index);
 }
 
-PaStreamParameters PortaudioAudioDevice::get_default_input_params() const
+PaStreamParameters
+PortaudioAudioDevice::get_default_input_params() const
 {
 	PaStreamParameters input_params;
 	input_params.device = m_device_index;
@@ -177,7 +190,8 @@ PaStreamParameters PortaudioAudioDevice::get_default_input_params() const
 	return input_params;
 }
 
-PaStreamParameters PortaudioAudioDevice::get_default_output_params() const
+PaStreamParameters
+PortaudioAudioDevice::get_default_output_params() const
 {
 	PaStreamParameters output_params;
 	output_params.device = m_device_index;
@@ -188,22 +202,26 @@ PaStreamParameters PortaudioAudioDevice::get_default_output_params() const
 	return output_params;
 }
 
-channel_count_t PortaudioAudioDevice::max_input_channels() const
+channel_count_t
+PortaudioAudioDevice::max_input_channels() const
 {
 	return get_device_info()->maxInputChannels;
 }
 
-channel_count_t PortaudioAudioDevice::max_output_channels() const
+channel_count_t
+PortaudioAudioDevice::max_output_channels() const
 {
 	return get_device_info()->maxOutputChannels;
 }
 
-samplerate_t PortaudioAudioDevice::get_default_samplerate() const
+samplerate_t
+PortaudioAudioDevice::get_default_samplerate() const
 {
 	return get_device_info()->defaultSampleRate;
 }
 
-void PortaudioAudioDevice::get_supported_samplerates(
+void
+PortaudioAudioDevice::get_supported_samplerates(
     std::vector<samplerate_t>& supported_rates) const
 {
 	PaStreamParameters input_params = get_default_input_params();
@@ -219,7 +237,8 @@ void PortaudioAudioDevice::get_supported_samplerates(
 	}
 }
 
-double PortaudioAudioDevice::get_input_latency()
+double
+PortaudioAudioDevice::get_input_latency()
 {
 	if (m_stream == NULL) return 0.0;
 
@@ -230,7 +249,8 @@ double PortaudioAudioDevice::get_input_latency()
 	return info->inputLatency;
 }
 
-double PortaudioAudioDevice::get_output_latency()
+double
+PortaudioAudioDevice::get_output_latency()
 {
 	if (m_stream == NULL) return 0.0;
 
@@ -241,7 +261,8 @@ double PortaudioAudioDevice::get_output_latency()
 	return info->outputLatency;
 }
 
-uint32_t PortaudioAudioDevice::get_current_samplerate() const
+uint32_t
+PortaudioAudioDevice::get_current_samplerate() const
 {
 	if (m_stream == NULL) return 0.0;
 
@@ -252,7 +273,8 @@ uint32_t PortaudioAudioDevice::get_current_samplerate() const
 	return info->sampleRate;
 }
 
-double PortaudioAudioDevice::get_cpu_load() const
+double
+PortaudioAudioDevice::get_cpu_load() const
 {
 	if (m_stream == NULL) return 0.0;
 

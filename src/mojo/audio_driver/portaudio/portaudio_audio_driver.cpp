@@ -13,14 +13,16 @@ PortaudioAudioDriver::~PortaudioAudioDriver()
 	terminate();
 }
 
-AudioDeviceSPSet PortaudioAudioDriver::get_devices() const
+AudioDeviceSPSet
+PortaudioAudioDriver::get_devices() const
 {
 	AudioDeviceSPSet devices;
 	discover_devices(devices);
 	return devices;
 }
 
-bool PortaudioAudioDriver::initialize()
+bool
+PortaudioAudioDriver::initialize()
 {
 	if (m_initialized) return true;
 
@@ -35,7 +37,8 @@ bool PortaudioAudioDriver::initialize()
 	return false;
 }
 
-bool PortaudioAudioDriver::terminate()
+bool
+PortaudioAudioDriver::terminate()
 {
 	if (!m_initialized) return true;
 
@@ -50,7 +53,8 @@ bool PortaudioAudioDriver::terminate()
 	return false;
 }
 
-void PortaudioAudioDriver::discover_devices(AudioDeviceSPSet& devices)
+void
+PortaudioAudioDriver::discover_devices(AudioDeviceSPSet& devices)
 {
 	int device_count = Pa_GetDeviceCount();
 

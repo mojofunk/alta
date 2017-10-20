@@ -76,7 +76,8 @@
  *
  * The Task class will notify the caller when the task is complete.
  */
-class Application {
+class Application
+{
 public: // ctors
 	Application();
 

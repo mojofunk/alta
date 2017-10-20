@@ -1,7 +1,8 @@
 #ifndef MOJO_LIBRARY_H
 #define MOJO_LIBRARY_H
 
-class Library {
+class Library
+{
 public:
 	virtual ~Library();
 
@@ -18,8 +19,10 @@ public:
 	virtual bool is_library(const fs::path& filepath) = 0;
 };
 
-LibrarySP create_library(const fs::path& filepath);
+LibrarySP
+create_library(const fs::path& filepath);
 
-bool is_library(const fs::path& filepath);
+bool
+is_library(const fs::path& filepath);
 
 #endif // MOJO_LIBRARY_H

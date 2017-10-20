@@ -1,4 +1,5 @@
-namespace logging {
+namespace logging
+{
 
 static std::atomic<uint32_t> s_init_logging_count(0);
 
@@ -8,7 +9,8 @@ static Sink* s_default_sink = nullptr;
 
 static ThreadNameRegistry<String>* s_thread_name_registry = nullptr;
 
-void initialize()
+void
+initialize()
 {
 	if (++s_init_logging_count != 1) return;
 
@@ -19,7 +21,8 @@ void initialize()
 	s_thread_name_registry = new ThreadNameRegistry<String>;
 }
 
-void deinitialize()
+void
+deinitialize()
 {
 	if (--s_init_logging_count != 0) return;
 
@@ -33,13 +36,15 @@ void deinitialize()
 	deinitialize_allocator();
 }
 
-void add_sink(Sink* sink_ptr)
+void
+add_sink(Sink* sink_ptr)
 {
 	s_log->remove_sink(s_default_sink);
 	s_log->add_sink(sink_ptr);
 }
 
-void remove_sink(Sink* sink_ptr)
+void
+remove_sink(Sink* sink_ptr)
 {
 	s_log->remove_sink(sink_ptr);
 	if (s_log->get_sinks().empty()) {
@@ -47,37 +52,44 @@ void remove_sink(Sink* sink_ptr)
 	}
 }
 
-std::set<Sink*> get_sinks()
+std::set<Sink*>
+get_sinks()
 {
 	return s_log->get_sinks();
 }
 
-void write_record(Record* record)
+void
+write_record(Record* record)
 {
 	s_log->write_record(record);
 }
 
-Logger* get_logger(const char* const domain)
+Logger*
+get_logger(const char* const domain)
 {
 	return s_log->get_logger(domain);
 }
 
-std::set<Logger*> get_loggers()
+std::set<Logger*>
+get_loggers()
 {
 	return s_log->get_loggers();
 }
 
-void register_thread_name(const char* const thread_name)
+void
+register_thread_name(const char* const thread_name)
 {
 	s_thread_name_registry->register_thread(thread_name);
 }
 
-void deregister_thread_name()
+void
+deregister_thread_name()
 {
 	s_thread_name_registry->unregister_thread();
 }
 
-String thread_name(std::thread::id const& thread_id)
+String
+thread_name(std::thread::id const& thread_id)
 {
 	return s_thread_name_registry->get_thread_name(thread_id);
 }

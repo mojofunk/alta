@@ -2,7 +2,8 @@
 #ifndef PORTAUDIO_AUDIO_DEVICE
 #define PORTAUDIO_AUDIO_DEVICE
 
-class PortaudioAudioDevice : public AudioDevice {
+class PortaudioAudioDevice : public AudioDevice
+{
 public: // Constructors
 	PortaudioAudioDevice(PaDeviceIndex);
 	~PortaudioAudioDevice();

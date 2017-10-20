@@ -1,7 +1,8 @@
 #ifndef MOJO_LADSPA_AUDIO_EFFECT_INFO_H
 #define MOJO_LADSPA_AUDIO_EFFECT_INFO_H
 
-class LADSPAAudioEffectInfo : public AudioEffectInfo {
+class LADSPAAudioEffectInfo : public AudioEffectInfo
+{
 public:
 	LADSPAAudioEffectInfo(const fs::path&, uint32_t index);
 

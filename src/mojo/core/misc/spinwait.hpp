@@ -1,7 +1,8 @@
 #ifndef MOJO_CORE_SPINWAIT_H
 #define MOJO_CORE_SPINWAIT_H
 
-inline void spinwait(uint64_t usecs)
+inline void
+spinwait(uint64_t usecs)
 {
 	mojo::Timing timing;
 

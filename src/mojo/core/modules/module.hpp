@@ -6,7 +6,8 @@
  *
  * Should there be a ModuleInfo class?
  */
-class Module {
+class Module
+{
 public: // typedefs
 	typedef void* (*factory_func_t)(void);
 

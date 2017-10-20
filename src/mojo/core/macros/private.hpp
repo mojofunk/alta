@@ -2,7 +2,8 @@
 #define MOJO_CORE_PRIVATE_H
 
 template <typename T>
-static inline T* mojo_get_ptr_helper(T* ptr)
+static inline T*
+mojo_get_ptr_helper(T* ptr)
 {
 	return ptr;
 }

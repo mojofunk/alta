@@ -1,7 +1,8 @@
 #ifndef MOJO_AUDIO_EFFECT_INFO_H
 #define MOJO_AUDIO_EFFECT_INFO_H
 
-class AudioEffectInfo {
+class AudioEffectInfo
+{
 public: // Constructors
 	virtual ~AudioEffectInfo();
 

@@ -1,7 +1,8 @@
 #ifndef MOJO_AUDIO_EVENT_H
 #define MOJO_AUDIO_EVENT_H
 
-class AudioEvent : public Event {
+class AudioEvent : public Event
+{
 public:
 	AudioEvent();
 

@@ -23,7 +23,8 @@
  * How to write to AudioClip in buffer size chunks and
  * signal that a write has been completed?
  */
-class AudioClip : public Object {
+class AudioClip : public Object
+{
 public:
 	/**
 	 * Create a new AudioClip from an existing audiofile

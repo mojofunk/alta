@@ -1,7 +1,8 @@
 #ifndef MOJO_AUDIO_REGION_EVENT_H
 #define MOJO_AUDIO_REGION_EVENT_H
 
-class AudioRegionEvent : public AudioEvent {
+class AudioRegionEvent : public AudioEvent
+{
 public:
 	AudioRegionEvent();
 

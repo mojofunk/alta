@@ -41,39 +41,47 @@ LADSPAAudioEffect::~LADSPAAudioEffect()
 {
 }
 
-AudioEffectInfoSP LADSPAAudioEffect::get_info() const
+AudioEffectInfoSP
+LADSPAAudioEffect::get_info() const
 {
 	return m_info;
 }
 
-AudioEffect::ParameterList LADSPAAudioEffect::get_parameter_list() const
+AudioEffect::ParameterList
+LADSPAAudioEffect::get_parameter_list() const
 {
 	return m_parameters;
 }
 
-void LADSPAAudioEffect::get_parameter_info(uint32_t param_id,
-                                           AudioEffectParameterInfo& info) const
+void
+LADSPAAudioEffect::get_parameter_info(uint32_t param_id,
+                                      AudioEffectParameterInfo& info) const
 {
 	info.name = m_descriptor->PortNames[param_id];
 }
 
-float LADSPAAudioEffect::get_parameter(uint32_t param_id) const
+float
+LADSPAAudioEffect::get_parameter(uint32_t param_id) const
 {
 	return 0;
 }
 
-void LADSPAAudioEffect::set_parameter(uint32_t param_id, float value)
+void
+LADSPAAudioEffect::set_parameter(uint32_t param_id, float value)
 {
 }
 
-void LADSPAAudioEffect::activate()
+void
+LADSPAAudioEffect::activate()
 {
 }
 
-void LADSPAAudioEffect::deactivate()
+void
+LADSPAAudioEffect::deactivate()
 {
 }
 
-void LADSPAAudioEffect::set_block_size(uint32_t frames)
+void
+LADSPAAudioEffect::set_block_size(uint32_t frames)
 {
 }

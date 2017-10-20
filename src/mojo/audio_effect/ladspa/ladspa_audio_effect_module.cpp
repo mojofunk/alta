@@ -10,23 +10,26 @@ LADSPAAudioEffectModule::~LADSPAAudioEffectModule()
 {
 }
 
-std::string LADSPAAudioEffectModule::get_author()
+std::string
+LADSPAAudioEffectModule::get_author()
 {
 	return "Tim Mayberry";
 }
 
-std::string LADSPAAudioEffectModule::get_description()
+std::string
+LADSPAAudioEffectModule::get_description()
 {
 	return "LADSPA module";
 }
 
-std::string LADSPAAudioEffectModule::get_version()
+std::string
+LADSPAAudioEffectModule::get_version()
 {
 	return "0.0.1";
 }
 
-AudioEffectSP LADSPAAudioEffectModule::open(AudioEffectInfoSP info,
-                                            samplerate_t rate)
+AudioEffectSP
+LADSPAAudioEffectModule::open(AudioEffectInfoSP info, samplerate_t rate)
 {
 	LADSPAAudioEffectInfoSP ladspa_info =
 	    std::dynamic_pointer_cast<LADSPAAudioEffectInfo>(info);
@@ -36,33 +39,37 @@ AudioEffectSP LADSPAAudioEffectModule::open(AudioEffectInfoSP info,
 
 	try {
 		aeffect = AudioEffectSP(new LADSPAAudioEffect(ladspa_info, rate));
-	}
-	catch (...) {
+	} catch (...) {
 		//
 	}
 	return aeffect;
 }
 
-paths_t LADSPAAudioEffectModule::get_plugin_directory_paths() const
+paths_t
+LADSPAAudioEffectModule::get_plugin_directory_paths() const
 {
 	return m_plugin_dirs;
 }
 
-void LADSPAAudioEffectModule::set_plugin_directory_paths(const paths_t& paths)
+void
+LADSPAAudioEffectModule::set_plugin_directory_paths(const paths_t& paths)
 {
 }
 
-paths_t LADSPAAudioEffectModule::get_preset_directory_paths() const
+paths_t
+LADSPAAudioEffectModule::get_preset_directory_paths() const
 {
 	return paths_t();
 }
 
-void LADSPAAudioEffectModule::set_preset_directory_paths(const paths_t& paths)
+void
+LADSPAAudioEffectModule::set_preset_directory_paths(const paths_t& paths)
 {
 }
 
-void LADSPAAudioEffectModule::get_info(const fs::path& path,
-                                       AudioEffectInfoSPSet& info_set)
+void
+LADSPAAudioEffectModule::get_info(const fs::path& path,
+                                  AudioEffectInfoSPSet& info_set)
 {
 	LADSPA_Descriptor_Function ladspa_func = NULL;
 
@@ -82,7 +89,8 @@ void LADSPAAudioEffectModule::get_info(const fs::path& path,
 	}
 }
 
-AudioEffectInfoSPSet LADSPAAudioEffectModule::get_plugin_info()
+AudioEffectInfoSPSet
+LADSPAAudioEffectModule::get_plugin_info()
 {
 	paths_t paths;
 	find_matching_files(m_plugin_dirs, is_library, paths);
@@ -96,12 +104,14 @@ AudioEffectInfoSPSet LADSPAAudioEffectModule::get_plugin_info()
 	return info_set;
 }
 
-std::string LADSPAAudioEffectModule::get_plugin_api_name() const
+std::string
+LADSPAAudioEffectModule::get_plugin_api_name() const
 {
 	return "LADSPA";
 }
 
-MOJO_CAPI void* mojo_module_factory(void)
+MOJO_CAPI void*
+mojo_module_factory(void)
 {
 	return new LADSPAAudioEffectModule;
 }

@@ -4,7 +4,8 @@
 
 #include <mojo-audio-driver.hpp>
 
-class JackAudioDevice : public AudioDevice {
+class JackAudioDevice : public AudioDevice
+{
 public: // Constructors
 	JackAudioDevice();
 	~JackAudioDevice();

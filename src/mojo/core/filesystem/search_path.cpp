@@ -1,4 +1,5 @@
-namespace {
+namespace
+{
 
 #ifdef MOJO_WINDOWS
 const char* const path_delimiter = ";";
@@ -45,13 +46,15 @@ Searchpath::Searchpath(const Searchpath& other)
 {
 }
 
-void Searchpath::add_directory(const fs::path& directory_path)
+void
+Searchpath::add_directory(const fs::path& directory_path)
 {
 	// test for existance and warn etc?
 	m_dirs.push_back(directory_path);
 }
 
-const std::string Searchpath::to_string() const
+const std::string
+Searchpath::to_string() const
 {
 	std::string path;
 
@@ -65,35 +68,41 @@ const std::string Searchpath::to_string() const
 	return path;
 }
 
-Searchpath& Searchpath::operator=(const Searchpath& path)
+Searchpath&
+Searchpath::operator=(const Searchpath& path)
 {
 	m_dirs = path.m_dirs;
 	return *this;
 }
 
-Searchpath& Searchpath::operator+=(const Searchpath& spath)
+Searchpath&
+Searchpath::operator+=(const Searchpath& spath)
 {
 	m_dirs.insert(m_dirs.end(), spath.m_dirs.begin(), spath.m_dirs.end());
 	return *this;
 }
 
-Searchpath& Searchpath::operator+=(const fs::path& directory_path)
+Searchpath&
+Searchpath::operator+=(const fs::path& directory_path)
 {
 	add_directory(directory_path);
 	return *this;
 }
 
-const Searchpath Searchpath::operator+(const fs::path& directory_path)
+const Searchpath
+Searchpath::operator+(const fs::path& directory_path)
 {
 	return Searchpath(*this) += directory_path;
 }
 
-const Searchpath Searchpath::operator+(const Searchpath& spath)
+const Searchpath
+Searchpath::operator+(const Searchpath& spath)
 {
 	return Searchpath(*this) += spath;
 }
 
-Searchpath& Searchpath::add_subdirectory_to_paths(const std::string& subdir)
+Searchpath&
+Searchpath::add_subdirectory_to_paths(const std::string& subdir)
 {
 	paths_t tmp;
 	std::string directory_path;
@@ -107,7 +116,8 @@ Searchpath& Searchpath::add_subdirectory_to_paths(const std::string& subdir)
 	return *this;
 }
 
-Searchpath& Searchpath::operator/(const std::string& subdir)
+Searchpath&
+Searchpath::operator/(const std::string& subdir)
 {
 	return add_subdirectory_to_paths(subdir);
 }

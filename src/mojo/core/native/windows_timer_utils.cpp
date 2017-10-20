@@ -1,8 +1,10 @@
 MOJO_DEBUG_DOMAIN(WINDOWS_TIMER_UTILS)
 
-namespace {
+namespace
+{
 
-static UINT& mmtimer_resolution()
+static UINT&
+mmtimer_resolution()
 {
 	static UINT timer_res_ms = 0;
 	return timer_res_ms;
@@ -10,9 +12,11 @@ static UINT& mmtimer_resolution()
 
 } // namespace
 
-namespace mmtimers {
+namespace mmtimers
+{
 
-bool get_min_resolution(uint32_t& min_resolution_ms)
+bool
+get_min_resolution(uint32_t& min_resolution_ms)
 {
 	TIMECAPS caps;
 
@@ -25,7 +29,8 @@ bool get_min_resolution(uint32_t& min_resolution_ms)
 	return true;
 }
 
-bool set_min_resolution()
+bool
+set_min_resolution()
 {
 	uint32_t min_resolution = 0;
 
@@ -39,7 +44,8 @@ bool set_min_resolution()
 	return true;
 }
 
-bool set_resolution(uint32_t timer_resolution_ms)
+bool
+set_resolution(uint32_t timer_resolution_ms)
 {
 	if (mmtimer_resolution() != 0) {
 		MOJO_DEBUG_MSG(
@@ -62,7 +68,8 @@ bool set_resolution(uint32_t timer_resolution_ms)
 	return true;
 }
 
-bool reset_resolution()
+bool
+reset_resolution()
 {
 	// You must match calls to timeBegin/EndPeriod with the same resolution
 	if (timeEndPeriod(mmtimer_resolution()) != TIMERR_NOERROR) {
@@ -76,11 +83,13 @@ bool reset_resolution()
 
 } // namespace mmtimers
 
-namespace {
+namespace
+{
 
 static double timer_rate_us = 0.0;
 
-static bool test_qpc_validity()
+static bool
+test_qpc_validity()
 {
 	int64_t last_timer_val = qpc::get_microseconds();
 	if (last_timer_val < 0) return false;
@@ -97,9 +106,11 @@ static bool test_qpc_validity()
 
 } // namespace
 
-namespace qpc {
+namespace qpc
+{
 
-bool check_timer_valid()
+bool
+check_timer_valid()
 {
 	if (!timer_rate_us) {
 		return false;
@@ -107,7 +118,8 @@ bool check_timer_valid()
 	return test_qpc_validity();
 }
 
-bool initialize()
+bool
+initialize()
 {
 	LARGE_INTEGER freq;
 	if (!QueryPerformanceFrequency(&freq) || freq.QuadPart < 1) {
@@ -121,7 +133,8 @@ bool initialize()
 	return !timer_rate_us;
 }
 
-int64_t get_microseconds()
+int64_t
+get_microseconds()
 {
 	LARGE_INTEGER current_val;
 

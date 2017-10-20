@@ -6,7 +6,8 @@
  *
  * A cross fade is a transition.
  */
-class transition {
+class transition
+{
 };
 
 #endif // MOJO_TRANSITION_H

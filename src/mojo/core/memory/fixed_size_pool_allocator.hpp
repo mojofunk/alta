@@ -16,7 +16,8 @@
  * std::numeric_limits<std::uint16_t>::max() as result of boost::lockfree
  */
 template <typename T>
-class FixedSizePoolAllocator {
+class FixedSizePoolAllocator
+{
 public:
 	typedef T value_type;
 	typedef value_type* pointer;

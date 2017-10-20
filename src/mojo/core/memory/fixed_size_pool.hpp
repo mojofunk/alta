@@ -1,7 +1,8 @@
 #ifndef MOJO_CORE_FIXED_SIZE_POOL_H
 #define MOJO_CORE_FIXED_SIZE_POOL_H
 
-class FixedSizePool {
+class FixedSizePool
+{
 public:
 	// Add an alignment argument
 	FixedSizePool(const std::size_t size_bytes,

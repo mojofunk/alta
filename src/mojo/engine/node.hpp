@@ -1,7 +1,8 @@
 #ifndef MOJO_NODE_H
 #define MOJO_NODE_H
 
-class Node {
+class Node
+{
 public:
 	/**
 	 * @return true if Node has any output ports/outgoing edges.

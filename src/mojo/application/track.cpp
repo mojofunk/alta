@@ -1,4 +1,5 @@
-namespace {
+namespace
+{
 
 const char* const property_name = "name";
 }
@@ -11,21 +12,25 @@ Track::Track()
 {
 }
 
-void Track::get_properties(Properties& props) const
+void
+Track::get_properties(Properties& props) const
 {
 	props.set_property(s_property_name_id, m_name);
 }
 
-void Track::set_properties(const Properties& props)
+void
+Track::set_properties(const Properties& props)
 {
 }
 
-std::string Track::get_name() const
+std::string
+Track::get_name() const
 {
 	return m_name;
 }
 
-void Track::set_name(const std::string& new_name)
+void
+Track::set_name(const std::string& new_name)
 {
 	Change name_change(s_property_name_id, m_name);
 

@@ -24,19 +24,22 @@ Application::~Application()
 	core::deinitialize();
 }
 
-void Application::iteration(bool block)
+void
+Application::iteration(bool block)
 {
 	s_instance->data->worker.iteration(block);
 }
 
-void Application::new_project()
+void
+Application::new_project()
 {
 	M_LOG_CALL(Application);
 	s_instance->data->worker.call_async(
 	    boost::bind(&Application::new_project_internal, boost::ref(*s_instance)));
 }
 
-void Application::open_project(const std::string& project_file)
+void
+Application::open_project(const std::string& project_file)
 {
 	M_LOG_CALL(Application);
 	s_instance->data->worker.call_async(
@@ -45,27 +48,32 @@ void Application::open_project(const std::string& project_file)
 	                project_file));
 }
 
-void Application::save_project_as(Project*, const std::string& filename)
+void
+Application::save_project_as(Project*, const std::string& filename)
 {
 }
 
-void Application::save_project(Project*)
+void
+Application::save_project(Project*)
 {
 }
 
-void Application::set_active_project(Project* p)
+void
+Application::set_active_project(Project* p)
 {
 	if (s_instance->data->active_project == p) return;
 	s_instance->data->worker.call_async(boost::bind(
 	    &Application::set_active_project_internal, boost::ref(*s_instance), p));
 }
 
-Project* Application::get_active_project()
+Project*
+Application::get_active_project()
 {
 	return s_instance->data->active_project;
 }
 
-void Application::close_project(Project* p)
+void
+Application::close_project(Project* p)
 {
 	M_LOG_CALL(Application);
 	s_instance->data->worker.call_async(boost::bind(
@@ -84,19 +92,22 @@ Application::connect_project_removed(const ProjectRemovedFunc& slot)
 	return s_instance->data->m_project_removed.connect(slot);
 }
 
-void Application::add_track(Project* p, const TrackOptions& options)
+void
+Application::add_track(Project* p, const TrackOptions& options)
 {
 	M_LOG_CALL(Application);
 	s_instance->data->worker.call_async(boost::bind(
 	    &Application::add_track_internal, boost::ref(*s_instance), p, options));
 }
 
-bool Application::is_audio_track(Track* t)
+bool
+Application::is_audio_track(Track* t)
 {
 	return dynamic_cast<AudioTrack*>(t);
 }
 
-AudioFileSP Application::open_audiofile(const fs::path& p)
+AudioFileSP
+Application::open_audiofile(const fs::path& p)
 {
 	AudioFileModuleSPSet modules = get_audiofile_modules();
 
@@ -108,37 +119,44 @@ AudioFileSP Application::open_audiofile(const fs::path& p)
 	return AudioFileSP();
 }
 
-ModuleSPSet Application::get_modules()
+ModuleSPSet
+Application::get_modules()
 {
 	return s_instance->data->m_modules;
 }
 
-AudioFileModuleSPSet Application::get_audiofile_modules()
+AudioFileModuleSPSet
+Application::get_audiofile_modules()
 {
 	return get_modules_of_type<AudioFileModule>(get_modules());
 }
 
-AudioDriverModuleSPSet Application::get_audio_driver_modules()
+AudioDriverModuleSPSet
+Application::get_audio_driver_modules()
 {
 	return get_modules_of_type<AudioDriverModule>(get_modules());
 }
 
-AudioEffectModuleSPSet Application::get_audio_effect_modules()
+AudioEffectModuleSPSet
+Application::get_audio_effect_modules()
 {
 	return get_modules_of_type<AudioEffectModule>(get_modules());
 }
 
-MIDIDriverModuleSPSet Application::get_midi_driver_modules()
+MIDIDriverModuleSPSet
+Application::get_midi_driver_modules()
 {
 	return get_modules_of_type<MIDIDriverModule>(get_modules());
 }
 
-ArchiveModuleSPSet Application::get_archive_modules()
+ArchiveModuleSPSet
+Application::get_archive_modules()
 {
 	return get_modules_of_type<ArchiveModule>(get_modules());
 }
 
-ArchiveSP Application::create_archive()
+ArchiveSP
+Application::create_archive()
 {
 	ArchiveModuleSPSet modules = get_archive_modules();
 
@@ -149,7 +167,8 @@ ArchiveSP Application::create_archive()
 	return ArchiveSP();
 }
 
-void Application::register_types()
+void
+Application::register_types()
 {
 	types::register_type(TypeFactorySP(new TemplateTypeFactory<ObjectCollection>(
 	    TypeNames::collection_type_name)));

@@ -7,7 +7,8 @@
 #include "mojo-audio-file.hpp"
 #include "mojo-application.hpp"
 
-void test_audiofile_format(AudioFileFormatSP format)
+void
+test_audiofile_format(AudioFileFormatSP format)
 {
 	BOOST_REQUIRE(format);
 
@@ -15,7 +16,8 @@ void test_audiofile_format(AudioFileFormatSP format)
 	BOOST_TEST_MESSAGE(format->extension());
 }
 
-void test_read_audiofile(AudioFileSP af)
+void
+test_read_audiofile(AudioFileSP af)
 {
 	const unsigned int frame_count = 4096U;
 	const unsigned int buffer_size = frame_count * af->channels();
@@ -45,7 +47,8 @@ void test_read_audiofile(AudioFileSP af)
 	delete[] buffer;
 }
 
-void test_open_existing_file(AudioFileModuleSP mod)
+void
+test_open_existing_file(AudioFileModuleSP mod)
 {
 	fs::path project_path;
 
@@ -75,14 +78,16 @@ void test_open_existing_file(AudioFileModuleSP mod)
 	test_read_audiofile(af);
 }
 
-void test_formats(const AudioFileFormatSPSet& formats)
+void
+test_formats(const AudioFileFormatSPSet& formats)
 {
 	BOOST_CHECK(!formats.empty());
 
 	for_each(formats.begin(), formats.end(), test_audiofile_format);
 }
 
-void test_audiofile_module(AudioFileModuleSP mod)
+void
+test_audiofile_module(AudioFileModuleSP mod)
 {
 	BOOST_REQUIRE(mod);
 

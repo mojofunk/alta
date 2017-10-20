@@ -3,7 +3,8 @@
 
 // TODO use allocator
 template <class T>
-class RingBuffer {
+class RingBuffer
+{
 public:
 	RingBuffer(size_t size)
 	    : m_size(size)
@@ -108,7 +109,8 @@ private: // Data
 };
 
 template <class T>
-typename RingBuffer<T>::Vectors RingBuffer<T>::get_read_vectors()
+typename RingBuffer<T>::Vectors
+RingBuffer<T>::get_read_vectors()
 {
 	RingBuffer<T>::Vectors v;
 
@@ -140,7 +142,8 @@ typename RingBuffer<T>::Vectors RingBuffer<T>::get_read_vectors()
 }
 
 template <class T>
-typename RingBuffer<T>::Vectors RingBuffer<T>::get_write_vectors()
+typename RingBuffer<T>::Vectors
+RingBuffer<T>::get_write_vectors()
 {
 	RingBuffer<T>::Vectors v;
 
@@ -172,7 +175,8 @@ typename RingBuffer<T>::Vectors RingBuffer<T>::get_write_vectors()
 }
 
 template <class T>
-size_t RingBuffer<T>::read(T* dest, size_t count)
+size_t
+RingBuffer<T>::read(T* dest, size_t count)
 {
 	Vectors rv = get_read_vectors();
 
@@ -196,7 +200,8 @@ size_t RingBuffer<T>::read(T* dest, size_t count)
 }
 
 template <class T>
-size_t RingBuffer<T>::write(const T* src, size_t count)
+size_t
+RingBuffer<T>::write(const T* src, size_t count)
 {
 	Vectors wv = get_write_vectors();
 

@@ -17,7 +17,8 @@ ExampleApplication::~ExampleApplication()
 	BOOST_TEST_MESSAGE("ExampleApplication: ~ExampleApplication()");
 }
 
-void ExampleApplication::on_project_added(Project* p)
+void
+ExampleApplication::on_project_added(Project* p)
 {
 	std::lock_guard<std::mutex> lock(m_mutex);
 	BOOST_TEST_MESSAGE("ExampleApplication: Project Added");
@@ -27,7 +28,8 @@ void ExampleApplication::on_project_added(Project* p)
 	BOOST_ASSERT(new_size != orig_size);
 }
 
-void ExampleApplication::on_project_removed(Project* p)
+void
+ExampleApplication::on_project_removed(Project* p)
 {
 	std::lock_guard<std::mutex> lock(m_mutex);
 	BOOST_TEST_MESSAGE("ExampleApplication: Project Removed");
@@ -38,7 +40,8 @@ void ExampleApplication::on_project_removed(Project* p)
 	BOOST_ASSERT(new_size != orig_size);
 }
 
-void ExampleApplication::close_projects()
+void
+ExampleApplication::close_projects()
 {
 	auto i = m_projects.begin();
 

@@ -4,7 +4,8 @@
 /**
  *
  */
-class PortmidiMIDIOutputDevice : public MIDIOutputDevice {
+class PortmidiMIDIOutputDevice : public MIDIOutputDevice
+{
 public: // ctors
 	PortmidiMIDIOutputDevice(PmDeviceID);
 	~PortmidiMIDIOutputDevice();

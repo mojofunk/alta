@@ -4,7 +4,8 @@
 /**
  *
  */
-class MIDIDevice {
+class MIDIDevice
+{
 public: // ctors
 	virtual ~MIDIDevice();
 

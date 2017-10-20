@@ -4,12 +4,14 @@ GlibLibrary::GlibLibrary(const fs::path& library_path)
 {
 }
 
-fs::path GlibLibrary::get_filepath() const
+fs::path
+GlibLibrary::get_filepath() const
 {
 	return m_filepath;
 }
 
-bool GlibLibrary::open()
+bool
+GlibLibrary::open()
 {
 	m_module = g_module_open(m_filepath.string().c_str(), G_MODULE_BIND_LAZY);
 
@@ -20,17 +22,20 @@ bool GlibLibrary::open()
 	return true;
 }
 
-bool GlibLibrary::close()
+bool
+GlibLibrary::close()
 {
 	return g_module_close(m_module);
 }
 
-std::string GlibLibrary::get_error_string() const
+std::string
+GlibLibrary::get_error_string() const
 {
 	return g_module_error();
 }
 
-void* GlibLibrary::resolve(const std::string& symbol_name)
+void*
+GlibLibrary::resolve(const std::string& symbol_name)
 {
 	if (!open()) return NULL;
 
@@ -47,7 +52,8 @@ void* GlibLibrary::resolve(const std::string& symbol_name)
 	return func;
 }
 
-bool GlibLibrary::is_library(const fs::path& filepath)
+bool
+GlibLibrary::is_library(const fs::path& filepath)
 {
 	return (fs::extension(filepath) == "." G_MODULE_SUFFIX);
 }

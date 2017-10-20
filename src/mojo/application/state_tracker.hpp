@@ -5,7 +5,8 @@
  * The StateTracker class monitors Objects for property changes
  * and then stores the property changes in an Archive
  */
-class StateTracker : public Object {
+class StateTracker : public Object
+{
 public:
 	StateTracker();
 

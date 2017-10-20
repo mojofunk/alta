@@ -1,7 +1,8 @@
 #ifndef MOJO_AUDIO_EFFECT_H
 #define MOJO_AUDIO_EFFECT_H
 
-class AudioEffect {
+class AudioEffect
+{
 public:
 	typedef std::set<uint32_t> ParameterList;
 
