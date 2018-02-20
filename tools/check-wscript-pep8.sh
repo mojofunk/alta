@@ -1,8 +1,8 @@
 #! /bin/bash
 
-if hash pep8 2>/dev/null; then
-    find ../ -type f -name "wscript" | xargs pep8
+if hash pycodestyle 2>/dev/null; then
+    find ../ -type f -name "wscript" | xargs pycodestyle
 else
-    echo "pep8 is not installed, cannot check wscript files for pep8 conformity"
-	echo "try $ sudo pip install pep8"
+    echo "pycodestyle is not installed, cannot check wscript files for pep8 conformity"
+	echo "try $ sudo pip install pycodestyle"
 fi
