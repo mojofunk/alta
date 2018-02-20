@@ -71,7 +71,6 @@ def display_config(conf):
     Logs.info('Enable JUCE library      : %s' % conf.env.WITH_JUCE)
 
 
-
 def check_library_dependencies(conf):
 
     common_deps = \
